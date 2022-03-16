@@ -9,7 +9,7 @@ import main.java.view.MainView;
 public final class TowersAndStuff {
 
 	private TowersAndStuff() { }
-	
+
 	/**
      *
      * @param args not used
@@ -17,5 +17,5 @@ public final class TowersAndStuff {
 	public static void main(final String[] args) {
         MainView.main();
     }
-	
+
 }
