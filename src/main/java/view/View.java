@@ -1,7 +1,12 @@
 package main.java.view;
 
-import java.awt.Dimension;
+import javax.swing.JPanel;
 
 public interface View {
+	
+	void CreateDefaultWindow();
+	void show();
+	
+	JPanel getPanel();
 
 }

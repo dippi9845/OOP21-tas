@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class ViewImpl implements View {
 
@@ -12,19 +13,32 @@ public class ViewImpl implements View {
     private final Dimension  defaultWindowSize = scaleDimension(SCREEN_SIZE, 2);
     private final Dimension  minWindowSize = scaleDimension(SCREEN_SIZE, 5);
     
-    private final JFrame frame;
-	
-    public ViewImpl() {
+    private JFrame frame;
+    private JPanel rootPanel;
+    
+    @Override
+	public void CreateDefaultWindow() {
     	this.frame = new JFrame(WINDOW_NAME);
     	this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	this.frame.setSize(defaultWindowSize);
     	frame.setMinimumSize(minWindowSize);
     	
-    	this.frame.setVisible(true);
-    }
+    	this.rootPanel = new JPanel();
+    	this.frame.getContentPane().add(this.rootPanel);
+	}
+    
+    @Override
+	public JPanel getPanel() {
+		return this.rootPanel;
+	}
     
     private Dimension scaleDimension(Dimension dimension, double proportion) {
     	return new Dimension((int)(dimension.getWidth()/proportion), (int)(dimension.getHeight()/proportion));
     }
+
+	@Override
+	public void show() {
+		this.frame.setVisible(true);
+	}
     
 }
