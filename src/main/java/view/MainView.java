@@ -5,7 +5,7 @@ import main.java.controller.MainController;
 
 public class MainView extends DefaultViewImpl{
 	
-    private final GameView gameView;
+    private final GameScene gameView;
     
     private final Controller controller;
 
@@ -13,11 +13,10 @@ public class MainView extends DefaultViewImpl{
         this.controller = new MainController();
         
         CreateDefaultWindow();
-        gameView = new GameViewImpl(getFrame());
-        
-        //gameView.CreateGameView();
+        this.gameView = new GameSceneImpl(getPanel());
         
         show();
+
 	}
 	
     public static void main() {
