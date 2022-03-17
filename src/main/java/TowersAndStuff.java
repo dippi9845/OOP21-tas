@@ -8,13 +8,13 @@ import main.java.view.MainView;
  */
 public final class TowersAndStuff {
 
-	private TowersAndStuff() { }
+    private TowersAndStuff() { }
 
-	/**
+    /**
      *
      * @param args not used
      */
-	public static void main(final String[] args) {
+    public static void main(final String[] args) {
         MainView.main();
     }
 

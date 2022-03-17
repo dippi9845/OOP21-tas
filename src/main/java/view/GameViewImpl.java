@@ -5,18 +5,18 @@ import javax.swing.JTextField;
 
 public class GameViewImpl implements GameView {
 	
-	private final JPanel rootPanel;
-	
-	public GameViewImpl(JPanel root) {
-		this.rootPanel = root;
+    private final JPanel rootPanel;
+    
+    public GameViewImpl(JPanel root) {
+        this.rootPanel = root;
 	}
 
-	@Override
+    @Override
 	public void CreateGameView() {
-		/*
-		 * Qui verranno inizializzate le text box, le le finestre etc
-		 */ 
-		this.rootPanel.add(new JTextField("Welcome to Javatpoint."));	// questo e' solo un esempio, da cancellare
+        /*
+         * Qui verranno inizializzate le text box, le le finestre etc
+         */ 
+        this.rootPanel.add(new JTextField("Welcome to Javatpoint."));	// questo e' solo un esempio, da cancellare
 	}
 
 }
