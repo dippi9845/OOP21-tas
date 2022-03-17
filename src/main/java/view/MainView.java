@@ -1,25 +1,26 @@
 package main.java.view;
 
-import main.java.controller.*;
+import main.java.controller.Controller;
+import main.java.controller.MainController;
 
-public class MainView extends ViewImpl{
+public class MainView extends DefaultViewImpl{
 	
-    final Controller controller;
+    private final GameView gameView;
     
-    final GameView gameView;
+    private final Controller controller;
 
-    public MainView(Controller controller) {
-        this.controller = controller;
+    public MainView() {
+        this.controller = new MainController();
         
         CreateDefaultWindow();
+        gameView = new GameViewImpl(getFrame());
         
-        gameView = new GameViewImpl(getPanel());
-        gameView.CreateGameView();
+        //gameView.CreateGameView();
         
         show();
 	}
 	
     public static void main() {
-        new MainView(new MainController());
+        new MainView();
     }
 }

@@ -1,12 +1,12 @@
 package main.java.view;
 
-import javax.swing.JPanel;
+import javax.swing.JFrame;
 
-public interface View {
+public interface DefaultView {
     
     void CreateDefaultWindow();
     void show();
     
-    JPanel getPanel();
+    JFrame getFrame();
 
 }

@@ -4,9 +4,8 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-public class ViewImpl implements View {
+public class DefaultViewImpl implements DefaultView {
 
     private static final String WINDOW_NAME = "Towers and Stuff";
     private static final Dimension SCREEN_SIZE = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
@@ -14,7 +13,6 @@ public class ViewImpl implements View {
     private final Dimension  minWindowSize = scaleDimension(SCREEN_SIZE, 5);
     
     private JFrame frame;
-    private JPanel rootPanel;
     
     @Override
     public void CreateDefaultWindow() {
@@ -22,14 +20,11 @@ public class ViewImpl implements View {
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setSize(defaultWindowSize);
         frame.setMinimumSize(minWindowSize);
-        
-        this.rootPanel = new JPanel();
-        this.frame.getContentPane().add(this.rootPanel);
     }
     
     @Override
-    public JPanel getPanel() {
-        return this.rootPanel;
+    public JFrame getFrame() {
+        return this.frame;
     }
     
     private Dimension scaleDimension(Dimension dimension, double proportion) {

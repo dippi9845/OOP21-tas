@@ -1,14 +1,14 @@
 package main.java.view;
 
-import javax.swing.JPanel;
+import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 public class GameViewImpl implements GameView {
 	
-    private final JPanel rootPanel;
+    private final JFrame rootFrame;
     
-    public GameViewImpl(JPanel root) {
-        this.rootPanel = root;
+    public GameViewImpl(JFrame root) {
+        this.rootFrame = root;
 	}
 
     @Override
@@ -16,7 +16,7 @@ public class GameViewImpl implements GameView {
         /*
          * Qui verranno inizializzate le text box, le le finestre etc
          */ 
-        this.rootPanel.add(new JTextField("Welcome to Javatpoint."));	// questo e' solo un esempio, da cancellare
+        this.rootFrame.add(new JTextField("Welcome to Javatpoint."));	// questo e' solo un esempio, da cancellare
 	}
 
 }
