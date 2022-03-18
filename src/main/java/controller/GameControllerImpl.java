@@ -1,8 +1,13 @@
 package main.java.controller;
 
-public class GameControllerImpl implements GameController {
+import main.java.view.GameSceneImpl;
+
+public class GameControllerImpl extends GameController {
     
-    public GameControllerImpl() {
+    final GameSceneImpl view;
+    
+    public GameControllerImpl(final GameSceneImpl scene) {
+        this.view = scene;
         
     }
 

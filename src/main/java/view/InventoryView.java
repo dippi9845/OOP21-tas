@@ -4,6 +4,8 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import main.java.controller.Controller;
+
 public class InventoryView implements ViewComponent {
     
     private final JPanel inventoryCanvas;
@@ -17,6 +19,12 @@ public class InventoryView implements ViewComponent {
     @Override
     public JPanel getPanel() {
         return this.inventoryCanvas;
+    }
+
+    @Override
+    public void setObserver(Controller controller) {
+        // TODO Auto-generated method stub
+        
     }
 
 }

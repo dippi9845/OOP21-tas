@@ -1,5 +1,9 @@
 package main.java.view;
 
- public interface GameScene {
+import main.java.controller.Controller;
 
+public interface GameScene {
+
+     public void setObserver(Controller controller);
+     
 }

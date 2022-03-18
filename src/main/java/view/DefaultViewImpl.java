@@ -6,7 +6,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class DefaultViewImpl implements DefaultView {
+public abstract class DefaultViewImpl implements View {
 
     private static final String WINDOW_NAME = "Towers and Stuff";
     private static final Dimension SCREEN_SIZE = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
@@ -16,7 +16,6 @@ public class DefaultViewImpl implements DefaultView {
     private JFrame frame;
     private JPanel rootPanel;
     
-    @Override
     public void CreateDefaultWindow() {
         this.frame = new JFrame(WINDOW_NAME);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

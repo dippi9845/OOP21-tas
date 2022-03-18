@@ -1,5 +1,5 @@
 package main.java.controller;
 
-public interface GameController {
+public abstract class GameController implements Controller {
 
 }
