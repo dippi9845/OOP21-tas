@@ -5,18 +5,24 @@ import main.java.view.MainView;
 
 public class MainControllerImpl implements MainController {
     
-    Controller controller;
-    final MainView mainView;
-    GameSceneImpl scene;
+    private Controller controller;
+    private final MainView mainView;
+    private GameSceneImpl scene;
 	
     public MainControllerImpl() {
         this.mainView = new MainView();
         
         this.controller = createGame(this.mainView);    // manca il model
         
-        this.mainView.show();
-        
 	}
+    
+    @Override
+    public void mainLoop() {
+        while (true) {
+            this.controller.nextTick();
+            this.mainView.show();
+        }
+    }
     
     public Controller createMenu(final MainView view) {
         // TODO
@@ -35,7 +41,7 @@ public class MainControllerImpl implements MainController {
     * @param args not used
     */
    public static void main(final String[] args) {
-       new MainControllerImpl();
+       new MainControllerImpl().mainLoop();
    }
 
 }
