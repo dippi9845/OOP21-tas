@@ -5,6 +5,7 @@ public interface Enemy {
     void moveForward();
     void dealDamage();
     
+    boolean isDead();
     double getHealth();
     Position getPosition();
 
