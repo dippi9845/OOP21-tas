@@ -29,6 +29,13 @@ public class EnemiesHandlerImpl implements EnemiesHandler {
         System.out.println("Test Enemy spawned");
         
     }
+    
+    @Override
+    public void moveEnemies() {
+        for (Enemy enemy: this.enemiesList) {
+            enemy.moveForward();
+        }
+    }
 
     @Override
     public int getWave() {
