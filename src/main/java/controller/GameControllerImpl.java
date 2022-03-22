@@ -1,22 +1,25 @@
 package main.java.controller;
 
-import main.java.model.GameModel;
+import main.java.model.EnemiesHandlerImpl;
+import main.java.model.Position;
 import main.java.view.GameSceneImpl;
 
 public class GameControllerImpl extends GameController {
     
     final GameSceneImpl view;
-    final GameModel game;
+    private final EnemiesHandlerImpl enemiesHandler;
     
     public GameControllerImpl(final GameSceneImpl scene) {
         this.view = scene;
-        this.game = new GameModel();    //TODO: manca l'inserimento della posizione dello spawner e altro...
+        
+        this.enemiesHandler = new EnemiesHandlerImpl(new Position(100, 100));
+        //TODO: manca l'inserimento della posizione dello spawner e altro...
         
     }
 
     @Override
     public void nextTick() {
-        this.game.moveEnemies();
+        this.enemiesHandler.moveEnemies();
     }
     
 }
