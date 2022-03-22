@@ -1,4 +1,6 @@
-package main.java.model;
+package main.java.model.enemies;
+
+import main.java.model.Position;
 
 public interface Enemy {
     
