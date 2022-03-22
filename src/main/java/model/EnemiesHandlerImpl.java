@@ -3,14 +3,17 @@ package main.java.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.java.model.enemies.Enemy;
+import main.java.model.enemies.RedEnemy;
+
 public class EnemiesHandlerImpl implements EnemiesHandler {
     
     private final Position enemySpawner;
     private List<Enemy> enemiesList = new ArrayList<Enemy>();
     private int actualWave;
     
-    public EnemiesHandlerImpl(Position enemySpawner) {
-        this.enemySpawner = enemySpawner;
+    public EnemiesHandlerImpl(Position enemySpawnerPosition) {
+        this.enemySpawner = enemySpawnerPosition;
         this.actualWave = 0;
         
         setNextWave();
