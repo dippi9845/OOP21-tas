@@ -1,14 +1,13 @@
 package main.java.model.enemies;
 
-import main.java.model.Position;
+import main.java.model.Entity;
 
-public interface Enemy {
+public interface Enemy extends Entity {
     
     void moveForward();
     void dealDamage();
     
     boolean isDead();
     double getHealth();
-    Position getPosition();
 
 }

@@ -1,5 +1,6 @@
 package main.java.controller;
 
+import main.java.view.GameScene;
 import main.java.view.GameSceneImpl;
 import main.java.view.MainView;
 
@@ -7,7 +8,7 @@ public class MainControllerImpl implements MainController {
     
     private Controller controller;
     private final MainView mainView;
-    private GameSceneImpl scene;
+    private GameScene scene;
 	
     public MainControllerImpl() {
         this.mainView = new MainView();

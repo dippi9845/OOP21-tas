@@ -6,7 +6,7 @@ public class RedEnemy implements Enemy {
     
     private Position actualPosition;
     private double health = 1;
-    private final int speed = 5;
+    private static final int SPEED = 5;
     
     public RedEnemy(Position position) {
         this.actualPosition = position;
@@ -14,7 +14,7 @@ public class RedEnemy implements Enemy {
 
     @Override
     public void moveForward() {
-        this.actualPosition.setPosition(this.actualPosition.getX() + this.speed, this.actualPosition.getY());
+        this.actualPosition.setPosition(this.actualPosition.getX() + SPEED, this.actualPosition.getY());
         System.out.println("Enemy moving");
     }
 
