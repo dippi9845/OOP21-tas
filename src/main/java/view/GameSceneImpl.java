@@ -1,6 +1,7 @@
 package main.java.view;
 
 import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
 
 import main.java.controller.Controller;
@@ -26,6 +27,11 @@ public class GameSceneImpl implements GameScene {
     public void setObserver(Controller controller) {
         // TODO Auto-generated method stub
         
+    }
+
+    @Override
+    public ViewComponent getGameView() {
+        return this.gameView;
     }
 
 }
