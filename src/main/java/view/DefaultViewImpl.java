@@ -19,11 +19,13 @@ public abstract class DefaultViewImpl implements View {
     public void CreateDefaultWindow() {
         this.frame = new JFrame(WINDOW_NAME);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setMinimumSize(minWindowSize);
         this.frame.setPreferredSize(defaultWindowSize);
-        frame.setMinimumSize(minWindowSize);
+        this.frame.setResizable(true);
         
         this.rootPanel = new JPanel();
         this.frame.getContentPane().add(this.rootPanel);
+        this.frame.pack();
     }
     
     @Override
@@ -37,7 +39,6 @@ public abstract class DefaultViewImpl implements View {
     
     @Override
     public void show() {
-        this.frame.pack();
         this.frame.setVisible(true);
     }
     
