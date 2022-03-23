@@ -19,17 +19,20 @@ public class EnemiesHandlerImpl implements EnemiesHandler {
         setNextWave();
     }
 
-    private void setNextWave() {
+    @Override
+    public void setNextWave() {
         this.actualWave++;
-        spawnTestEnemy();
-        //TODO: manca l'implementazione dei nemici che spawnano
-        
     }
     
-    private void spawnTestEnemy() {
+    @Override
+    public Enemy spawnTestEnemy() {
         //TODO: questo metodo serve solo per testare il giusto spawn dei nemici. Da cancellare!!!
-        this.enemiesList.add(new RedEnemy(enemySpawner));
+        Enemy enemy = new RedEnemy(enemySpawner);
+        this.enemiesList.add(enemy);
+        
         System.out.println("Test Enemy spawned");
+        
+        return enemy;
         
     }
     
@@ -43,6 +46,16 @@ public class EnemiesHandlerImpl implements EnemiesHandler {
     @Override
     public int getWave() {
         return this.actualWave;
+    }
+
+    @Override
+    public List<Enemy> getEnemies() {
+        return enemiesList;
+    }
+
+    @Override
+    public boolean cleanWave() {
+        return enemiesList.isEmpty();
     }
 
 }
