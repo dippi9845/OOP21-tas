@@ -1,10 +1,13 @@
 package main.java.view;
 
 import java.awt.Color;
+import java.util.List;
+
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import main.java.controller.Controller;
+import main.java.model.Entity;
 
 public class InventoryView implements ViewComponent {
     
@@ -23,6 +26,12 @@ public class InventoryView implements ViewComponent {
 
     @Override
     public void setObserver(Controller controller) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void drawEntities(List<Entity> entities) {
         // TODO Auto-generated method stub
         
     }
