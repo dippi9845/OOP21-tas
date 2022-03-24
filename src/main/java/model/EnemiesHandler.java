@@ -12,5 +12,6 @@ public interface EnemiesHandler {
     boolean cleanWave();
     int getWave();
     List<Enemy> getEnemies();
+    List<Entity> getEnemiesAsEntities();
     
 }

@@ -9,9 +9,10 @@ import main.java.model.Entity;
 
 public interface ViewComponent {
     
-    JPanel getPanel();
-    void drawEntities(List<Entity> entities);
+    abstract void resize();
+    abstract void drawEntities(List<Entity> entities);
 
-    void setObserver(Controller controller);
+    abstract JPanel getPanel();
+    abstract void setObserver(Controller controller);
 
 }

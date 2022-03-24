@@ -36,4 +36,10 @@ public class InventoryView implements ViewComponent {
         
     }
 
+    @Override
+    public void resize() {
+        // TODO Auto-generated method stub
+        
+    }
+
 }
