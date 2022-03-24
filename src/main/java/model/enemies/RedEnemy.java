@@ -1,9 +1,12 @@
 package main.java.model.enemies;
 
-import main.java.model.Position;
+import java.awt.Dimension;
+
+import main.java.utils.Position;
 
 public class RedEnemy implements Enemy {
     
+    private final static Dimension DEFAULT_DIMENSION = new Dimension(100, 100);
     private Position actualPosition;
     private double health = 1;
     private static final int SPEED = 5;
@@ -37,6 +40,11 @@ public class RedEnemy implements Enemy {
     @Override
     public boolean isDead() {
         return this.health <= 0;
+    }
+
+    @Override
+    public Dimension getDefaultDimension() {
+        return DEFAULT_DIMENSION;
     }
 
 }
