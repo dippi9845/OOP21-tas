@@ -13,7 +13,6 @@ public class MainControllerImpl implements MainController {
     public MainControllerImpl() {
         this.mainView = new MainView();
         this.controller = createGame(this.mainView);    // manca il model
-        this.mainView.setObserver(this);
         
 	}
     

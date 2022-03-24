@@ -6,8 +6,6 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import main.java.controller.MainController;
-
 public abstract class DefaultViewImpl implements View {
 
     private static final String WINDOW_NAME = "Towers and Stuff";
@@ -15,7 +13,7 @@ public abstract class DefaultViewImpl implements View {
     private final Dimension  defaultWindowSize = scaleDimension(SCREEN_SIZE, 2);
     private final Dimension  minWindowSize = scaleDimension(SCREEN_SIZE, 5);
     
-    protected JFrame frame;
+    private JFrame frame;
     private JPanel rootPanel;
     
     public void CreateDefaultWindow() {
@@ -44,7 +42,5 @@ public abstract class DefaultViewImpl implements View {
         
         this.frame.setVisible(true);
     }
-    
-    abstract void setObserver(MainController obs);
     
 }

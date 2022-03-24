@@ -22,12 +22,6 @@ public class GameSceneImpl implements GameScene {
         this.rootPanel.add(this.inventoryView.getPanel(), BorderLayout.EAST);
         
 	}
-    
-    @Override
-    public void resize() {
-        gameView.resize();
-        inventoryView.resize();
-    }
 
     public void setObserver(Controller controller) {
         // TODO Auto-generated method stub

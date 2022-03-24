@@ -1,6 +1,8 @@
 package main.java.view;
 
 import java.awt.GridBagLayout;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +25,12 @@ public class GameView implements ViewComponent {
     public GameView() {
         this.rootCanvas.add(this.gameBoard);
         this.gameBoard.setLayout(null); //TODO: se metto null, funziona, ma e' una bad practice
+        
+        this.gameBoard.addComponentListener(new ComponentAdapter() {
+            public void componentResized(ComponentEvent componentEvent) {
+                resize();
+            }
+        });
         
         this.rootCanvas.setBackground(Color.BLACK);
         this.gameBoard.setBackground(Color.DARK_GRAY);
