@@ -12,18 +12,10 @@ public class MainControllerImpl implements MainController {
 	
     public MainControllerImpl() {
         this.mainView = new MainView();
-        
         this.controller = createGame(this.mainView);    // manca il model
+        this.mainView.setObserver(this);
         
 	}
-    
-    @Override
-    public void mainLoop() {
-        while (true) {
-            this.controller.nextTick();
-            this.mainView.show();
-        }
-    }
     
     public Controller createMenu(final MainView view) {
         // TODO
@@ -35,6 +27,19 @@ public class MainControllerImpl implements MainController {
         Controller controller = new GameControllerImpl(this.scene);
         this.scene.setObserver(controller);
         return controller;
+    }
+    
+    @Override
+    public Controller getController() {
+        return this.controller;
+    }
+    
+    @Override
+    public void mainLoop() {
+        while (true) {  //TODO: cambiare il true con qualcosa di piu' concreto
+            this.controller.nextTick();
+            this.mainView.show();
+        }
     }
     
     /**
