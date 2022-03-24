@@ -13,11 +13,11 @@ import java.util.stream.Stream;
 
 import javax.imageio.ImageIO;
 
+import main.java.utils.GameSpecs;
 import main.java.model.Entity;
 
 public class ImageLoaderImpl implements ImageLoader {
     
-    private static final int DEFAULT_RESOLUTION = 720;  //TODO: forse sarebbe meglio implementare questa costanta piu in profondita' in modo che anche altre classi possano usufruirne
     private static final String RESOURCE_PATH = "src" + System.getProperty("file.separator") + "main" + System.getProperty("file.separator") + "resources";
     HashMap<String, BufferedImage> images = new HashMap<String, BufferedImage>();
     
@@ -47,24 +47,29 @@ public class ImageLoaderImpl implements ImageLoader {
     @Override
     public BufferedImage getImageByEntity(Entity entity, Dimension CanvasDimension) {
         if (CanvasDimension.width == 0 || CanvasDimension.height == 0) {
-            CanvasDimension.width = DEFAULT_RESOLUTION;
-            CanvasDimension.height  = DEFAULT_RESOLUTION;
+            CanvasDimension = GameSpecs.GAME_UNITS;
         }
+        Dimension newImageDimension = getNewImageDimension(CanvasDimension, entity.getDefaultDimension());
         return scale(images.get(Introspector.decapitalize(
                 entity.getClass().getSimpleName())),
-                getNewImageDimension(CanvasDimension.width, (int)entity.getPosition().getX()),
-                getNewImageDimension(CanvasDimension.height, (int)entity.getPosition().getX()));
+                newImageDimension);
     }
     
-    private int getNewImageDimension(int canvasDimension, int originalImageDimension) {
-        return (int)((double)canvasDimension/((double)DEFAULT_RESOLUTION/(double)originalImageDimension));
+    private Dimension getNewImageDimension(Dimension canvasDimension, Dimension originalImageDimension) {
+        int newX = (int)((double)canvasDimension.width / ((double)GameSpecs.GAME_UNITS.width / (double)originalImageDimension.width));
+        int newY = (int)((double)canvasDimension.height / ((double)GameSpecs.GAME_UNITS.height / (double)originalImageDimension.height));
+        
+        return new Dimension(newX, newY);
     }
     
-    private BufferedImage scale(BufferedImage src, int newWidth, int newHeight) {
+    private BufferedImage scale(BufferedImage src, Dimension newDimension) {
+        int newWidth = newDimension.width;
+        int newHeight = newDimension.height;
         BufferedImage img = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
         int originalWidth = src.getWidth();
         int originalHeight = src.getHeight();
         int[] ys = new int[newHeight];
+        
         for (int y = 0; y < newHeight; y++)
             ys[y] = y * originalHeight / newHeight;
         for (int x = 0; x < newWidth; x++) {
