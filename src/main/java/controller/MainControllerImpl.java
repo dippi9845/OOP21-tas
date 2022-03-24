@@ -6,13 +6,13 @@ import main.java.view.MainView;
 
 public class MainControllerImpl implements MainController {
     
-    private Controller controller;
+    private Controller sceneController;
     private final MainView mainView;
     private GameScene scene;
 	
     public MainControllerImpl() {
         this.mainView = new MainView();
-        this.controller = createGame(this.mainView);    // manca il model
+        this.sceneController = createGame(this.mainView);    // manca il model
         
 	}
     
@@ -30,13 +30,13 @@ public class MainControllerImpl implements MainController {
     
     @Override
     public Controller getController() {
-        return this.controller;
+        return this.sceneController;
     }
     
     @Override
     public void mainLoop() {
         while (true) {  //TODO: cambiare il true con qualcosa di piu' concreto
-            this.controller.nextTick();
+            this.sceneController.nextTick();
             this.mainView.show();
         }
     }
