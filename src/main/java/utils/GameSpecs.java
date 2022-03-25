@@ -4,6 +4,7 @@ import java.awt.Dimension;
 
 public final class GameSpecs {
 
-    public final static Dimension GAME_UNITS = new Dimension(720, 720);
+    private final static int MAX_UNIT = 1000;
+    public final static Dimension GAME_UNITS = new Dimension(MAX_UNIT, MAX_UNIT);
     
 }
