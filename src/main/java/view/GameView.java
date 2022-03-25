@@ -5,11 +5,9 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.Color;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.java.controller.Controller;
@@ -20,7 +18,7 @@ public class GameView implements ViewComponent {
     private final JPanel rootCanvas = new JPanel(new GridBagLayout());  //TODO: forse e' meglio creare anche un japanel piu piccola su cui si baseranno tutte le figure minori e tenere questa come bordo (es i video su yt)
     private final JPanel gameBoard = new SquarePanel();
     private final ImageLoader imGetter = new ImageLoaderImpl();
-    private final HashMap<Entity, JLabel> entityLables = new HashMap<Entity, JLabel>();
+    private final HashMap<Entity, AdaptiveLabel> entityLables = new HashMap<Entity, AdaptiveLabel>();
     
     public GameView() {
         this.rootCanvas.add(this.gameBoard);
@@ -37,21 +35,19 @@ public class GameView implements ViewComponent {
     }
     
     @Override
-    public void drawEntities(List<Entity> entities) {
-        for (Entity entity: entities) {
-            if (entityLables.get(entity).getWidth() != 0) {
-                entityLables.get(entity).setBounds(20, 20, entityLables.get(entity).getIcon().getIconHeight(), entityLables.get(entity).getIcon().getIconWidth());
-            } else {
-                entityLables.get(entity).setBounds(20, 20, (int)entity.getPosition().getX(), (int)entity.getPosition().getY());
-            }
+    public void drawEntities() {
+        for (Map.Entry<Entity, AdaptiveLabel> entityMap: entityLables.entrySet()) {
+            entityMap.getValue().setPosition(entityMap.getKey().getPosition());
         }
     }
     
+    @Override
     public void addEntityLabel(Entity entity) {
-        JLabel entityLable = new JLabel();
-        entityLable.setIcon(new ImageIcon(imGetter.getImageByEntity(entity, this.gameBoard.getSize())));
-        entityLables.put(entity, entityLable);
-        this.gameBoard.add(entityLable);
+        AdaptiveLabel entityLabel = new AdaptiveLabel();
+        entityLabel.setIcon(new ImageIcon(imGetter.getImageByEntity(entity, this.gameBoard.getSize())));
+        entityLables.put(entity, entityLabel);
+        this.gameBoard.add(entityLabel);
+        entityLabel.setAdaptive();
     }
     
     @Override
@@ -67,7 +63,7 @@ public class GameView implements ViewComponent {
 
     @Override
     public void resize() {
-        for (Map.Entry<Entity, JLabel> entityMap: entityLables.entrySet()) {
+        for (Map.Entry<Entity, AdaptiveLabel> entityMap: entityLables.entrySet()) {
             entityMap.getValue().setIcon(new ImageIcon(imGetter.getImageByEntity(entityMap.getKey(), this.gameBoard.getSize())));
         }
     }
