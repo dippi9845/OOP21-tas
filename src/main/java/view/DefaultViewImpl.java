@@ -34,12 +34,11 @@ public abstract class DefaultViewImpl implements View {
     }
     
     private Dimension scaleDimension(Dimension dimension, double proportion) {
-        return new Dimension((int)(dimension.getWidth()/proportion), (int)(dimension.getHeight()/proportion));
+        return new Dimension((int)(dimension.getWidth() / proportion), (int)(dimension.getHeight() / proportion));
     }
     
     @Override
     public void show() {
-        
         this.frame.setVisible(true);
     }
     
