@@ -1,7 +1,6 @@
 package main.java.view;
 
 import java.awt.Color;
-import java.util.List;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
