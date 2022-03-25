@@ -19,4 +19,5 @@ class SquarePanel extends JPanel {
         Dimension d = new Dimension(size,size);
         return d;
     }
+    
 }

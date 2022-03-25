@@ -16,7 +16,7 @@ public abstract class DefaultViewImpl implements View {
     private JFrame frame;
     private JPanel rootPanel;
     
-    public void CreateDefaultWindow() {
+    public void createDefaultWindow() {
         this.frame = new JFrame(WINDOW_NAME);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setMinimumSize(minWindowSize);
