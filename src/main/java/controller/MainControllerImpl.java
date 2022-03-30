@@ -16,11 +16,13 @@ public class MainControllerImpl implements MainController {
         
 	}
     
+    @Override
     public Controller createMenu(final MainView view) {
         // TODO
         return null;
     }
     
+    @Override
     public Controller createGame(final MainView view) {
         this.scene = new GameSceneImpl(view.getPanel());
         Controller controller = new GameControllerImpl(this.scene);
