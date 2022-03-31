@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 
 public interface View {
     
-    void createDefaultWindow();
+    void createWindow();
     void show();
     
     JPanel getPanel();
