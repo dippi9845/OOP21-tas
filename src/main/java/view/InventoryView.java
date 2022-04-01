@@ -1,8 +1,12 @@
 package main.java.view;
 
 import java.awt.Color;
+
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import main.java.controller.Controller;
+import main.java.model.Entity;
 
 public class InventoryView implements ViewComponent {
     
@@ -17,6 +21,36 @@ public class InventoryView implements ViewComponent {
     @Override
     public JPanel getPanel() {
         return this.inventoryCanvas;
+    }
+
+    @Override
+    public void setObserver(Controller controller) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void drawEntity(Entity entity) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void resize() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void addEntityLabel(Entity entity) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void redrawEntities() {
+        // TODO Auto-generated method stub
+        
     }
 
 }

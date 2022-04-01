@@ -3,10 +3,12 @@ package main.java.view;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
+import main.java.controller.Controller;
+
 public class GameSceneImpl implements GameScene {
 	
     private final JPanel rootPanel;
-    private final ViewComponent gameView;
+    private final GameView gameView;
     private final ViewComponent inventoryView;
     
     public GameSceneImpl(JPanel root) {
@@ -20,5 +22,15 @@ public class GameSceneImpl implements GameScene {
         this.rootPanel.add(this.inventoryView.getPanel(), BorderLayout.EAST);
         
 	}
+
+    public void setObserver(Controller controller) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public GameView getGameView() {
+        return this.gameView;
+    }
 
 }

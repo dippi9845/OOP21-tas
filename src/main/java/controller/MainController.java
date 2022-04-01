@@ -1,17 +1,12 @@
 package main.java.controller;
 
-public class MainController implements Controller {
-	
-    public MainController() {
-        
-	}
-    
-    public void createMenu() {
-        // TODO
-    }
-    
-    public void createGame() {
-        new GameControllerImpl();
-    }
+import main.java.view.MainView;
+
+public interface MainController {
+
+    void mainLoop();
+    Controller createMenu(final MainView view);
+    Controller createGame(final MainView view);
+    Controller getController();
 
 }

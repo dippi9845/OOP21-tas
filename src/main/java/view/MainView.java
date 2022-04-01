@@ -1,25 +1,55 @@
 package main.java.view;
 
-import main.java.controller.Controller;
-import main.java.controller.MainController;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
-public class MainView extends DefaultViewImpl{
-	
-    private final GameScene gameView;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class MainView implements View {
+    private static final String WINDOW_NAME = "Towers and Stuff";
+    private static final Dimension SCREEN_SIZE = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
+    private final Dimension  defaultWindowSize = scaleDimension(SCREEN_SIZE, 2);
+    private final Dimension  minWindowSize = scaleDimension(SCREEN_SIZE, 5);
     
-    private final Controller controller;
+    private JFrame frame;
+    private JPanel rootPanel;
 
     public MainView() {
-        this.controller = new MainController();
-        
-        CreateDefaultWindow();
-        this.gameView = new GameSceneImpl(getPanel());
-        
-        show();
-
+        createWindow();
 	}
-	
-    public static void main() {
-        new MainView();
+    
+    @Override
+    public void createWindow() {
+        this.frame = new JFrame(WINDOW_NAME);
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setMinimumSize(minWindowSize);
+        this.frame.setPreferredSize(defaultWindowSize);
+        this.frame.setResizable(true);
+        
+        this.rootPanel = new JPanel();
+        this.frame.getContentPane().add(this.rootPanel);
+        this.frame.pack();
     }
+    
+
+    @Override
+    public JPanel getPanel() {
+        return this.rootPanel;
+    }
+    
+    private Dimension scaleDimension(Dimension dimension, double proportion) {
+        return new Dimension((int)(dimension.getWidth() / proportion), (int)(dimension.getHeight() / proportion));
+    }
+    
+    @Override
+    public void show() {
+        this.frame.setVisible(true);
+    }
+
+    @Override
+    public void update() {
+        this.frame.repaint();
+    }
+
 }
