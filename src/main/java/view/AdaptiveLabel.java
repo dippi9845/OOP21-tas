@@ -18,7 +18,13 @@ public class AdaptiveLabel extends JLabel {
     
     public void setPosition(Position pos) {
         this.actualPosition = pos;
-        setBounds((int)this.actualPosition.getX(), (int)this.actualPosition.getY(), (int)getPreferredSize().getWidth(), (int)getPreferredSize().getHeight());
+        draw(this.actualPosition);
+    }
+    
+    public void draw(Position pos) {
+        int xPos = (int)(pos.getX() - getPreferredSize().getWidth() / 2);
+        int yPos = (int)(pos.getY() - getPreferredSize().getHeight() / 2);
+        setBounds(xPos, yPos, (int)getPreferredSize().getWidth(), (int)getPreferredSize().getHeight());
     }
     
     public void setAdaptive() throws NullPointerException {
@@ -26,13 +32,8 @@ public class AdaptiveLabel extends JLabel {
             public void componentResized(ComponentEvent componentEvent) {
                 int x = (int)((double)getParent().getWidth() / (double)GameSpecs.GAME_UNITS.width * (double)actualPosition.getX());
                 int y = (int)((double)getParent().getHeight() / (double)GameSpecs.GAME_UNITS.height * (double)actualPosition.getY());
-                Position newPos = new Position(x, y);
-                
-                if (getIcon() == null) {
-                    setBounds((int)newPos.getX(), (int)newPos.getY(), (int)getPreferredSize().getWidth(), (int)getPreferredSize().getHeight());
-                } else {
-                    setBounds((int)newPos.getX(), (int)newPos.getY(), getIcon().getIconWidth(), getIcon().getIconHeight());
-                }
+
+                draw(new Position(x, y));
             }
         });
     }
