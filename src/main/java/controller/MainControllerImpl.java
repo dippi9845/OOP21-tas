@@ -3,6 +3,7 @@ package main.java.controller;
 import main.java.view.GameScene;
 import main.java.view.GameSceneImpl;
 import main.java.view.MainView;
+import main.java.utils.GameSpecs;
 
 public class MainControllerImpl implements MainController {
     
@@ -37,9 +38,32 @@ public class MainControllerImpl implements MainController {
     
     @Override
     public void mainLoop() {
-        while (true) {  //TODO: cambiare il true con qualcosa di piu' concreto
-            this.sceneController.nextTick();
-            this.mainView.show();
+        this.sceneController.nextTick();
+        this.mainView.show();
+        
+        double next_game_tick = System.currentTimeMillis(); //TODO: qui in mezzo c'e' roba per l'FPS counter, sarebbe meglio rimuoverli
+        double last_frame_time = System.currentTimeMillis();
+        int loops;
+        int fps = 0;
+        
+        while (true) {  //TODO: cambiare il true con qualcosa di piu' concreto tipo il click di un pulsante o altro
+            loops = 0;
+            
+            while (System.currentTimeMillis() > next_game_tick && loops < GameSpecs.MAX_FRAMESKIP) {
+                this.sceneController.nextTick();
+
+                next_game_tick += GameSpecs.SKIP_TICKS;
+                loops++;
+                fps++;
+            }
+            
+            if (System.currentTimeMillis() - last_frame_time > 1000) {
+                last_frame_time = System.currentTimeMillis();
+                System.out.println(fps);
+                fps = 0;
+            }
+
+            this.mainView.update();
         }
     }
     
