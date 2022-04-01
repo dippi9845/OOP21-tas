@@ -6,6 +6,7 @@ public interface View {
     
     void createWindow();
     void show();
+    void update();
     
     JPanel getPanel();
 

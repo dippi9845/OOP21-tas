@@ -17,7 +17,6 @@ public class MainView implements View {
 
     public MainView() {
         createWindow();
-        show();
 	}
     
     @Override
@@ -46,6 +45,11 @@ public class MainView implements View {
     @Override
     public void show() {
         this.frame.setVisible(true);
+    }
+
+    @Override
+    public void update() {
+        this.frame.repaint();
     }
 
 }
