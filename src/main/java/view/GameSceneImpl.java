@@ -29,7 +29,7 @@ public class GameSceneImpl implements GameScene {
     }
 
     @Override
-    public GameView getView() {
+    public GameView getGameView() {
         return this.gameView;
     }
 
