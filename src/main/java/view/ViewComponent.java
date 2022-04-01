@@ -9,7 +9,8 @@ public interface ViewComponent {
     
     void resize();
     void drawEntity(Entity entity);
-    public void addEntityLabel(Entity entity);
+    void addEntityLabel(Entity entity);
+    void redrawEntities();
 
     JPanel getPanel();
     void setObserver(Controller controller);
