@@ -18,7 +18,6 @@ public class RedEnemy implements Enemy {
     @Override
     public void moveForward() {
         this.actualPosition.setPosition(this.actualPosition.getX() + SPEED, this.actualPosition.getY());
-        System.out.println("Enemy moving");
     }
 
     @Override
