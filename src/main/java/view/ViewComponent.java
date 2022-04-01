@@ -7,11 +7,11 @@ import main.java.model.Entity;
 
 public interface ViewComponent {
     
-    abstract void resize();
-    abstract void drawEntities();
+    void resize();
+    void drawEntity(Entity entity);
     public void addEntityLabel(Entity entity);
 
-    abstract JPanel getPanel();
-    abstract void setObserver(Controller controller);
+    JPanel getPanel();
+    void setObserver(Controller controller);
 
 }

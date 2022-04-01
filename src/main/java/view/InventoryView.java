@@ -30,7 +30,7 @@ public class InventoryView implements ViewComponent {
     }
 
     @Override
-    public void drawEntities() {
+    public void drawEntity(Entity entity) {
         // TODO Auto-generated method stub
         
     }
