@@ -15,6 +15,7 @@ public class MainControllerImpl implements MainController {
         this.mainView = new MainView();
         this.sceneController = createGame(this.mainView);    // manca il model
         
+        this.mainView.show();
 	}
     
     @Override
@@ -38,9 +39,6 @@ public class MainControllerImpl implements MainController {
     
     @Override
     public void mainLoop() {
-        this.sceneController.nextTick();
-        this.mainView.show();
-        
         double next_game_tick = System.currentTimeMillis(); //TODO: qui in mezzo c'e' roba per l'FPS counter, sarebbe meglio rimuoverli
         double last_frame_time = System.currentTimeMillis();
         int loops;
