@@ -1,26 +1,55 @@
 package main.java.view;
 
-import main.java.controller.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
-public class MainView extends ViewImpl{
-	
-	final Controller controller;
-	
-	final GameView gameView;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-	public MainView(Controller controller) {
-		this.controller = controller;
-		
-		CreateDefaultWindow();
-		
-		gameView = new GameViewImpl(getPanel());
-		gameView.CreateGameView();
-		
-		
-		show();
+public class MainView implements View {
+    private static final String WINDOW_NAME = "Towers and Stuff";
+    private static final Dimension SCREEN_SIZE = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
+    private final Dimension  defaultWindowSize = scaleDimension(SCREEN_SIZE, 2);
+    private final Dimension  minWindowSize = scaleDimension(SCREEN_SIZE, 5);
+    
+    private JFrame frame;
+    private JPanel rootPanel;
+
+    public MainView() {
+        createWindow();
 	}
-	
-	public static void main() {
-		new MainView(new MainController());
+    
+    @Override
+    public void createWindow() {
+        this.frame = new JFrame(WINDOW_NAME);
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setMinimumSize(minWindowSize);
+        this.frame.setPreferredSize(defaultWindowSize);
+        this.frame.setResizable(true);
+        
+        this.rootPanel = new JPanel();
+        this.frame.getContentPane().add(this.rootPanel);
+        this.frame.pack();
     }
+    
+
+    @Override
+    public JPanel getPanel() {
+        return this.rootPanel;
+    }
+    
+    private Dimension scaleDimension(Dimension dimension, double proportion) {
+        return new Dimension((int)(dimension.getWidth() / proportion), (int)(dimension.getHeight() / proportion));
+    }
+    
+    @Override
+    public void show() {
+        this.frame.setVisible(true);
+    }
+
+    @Override
+    public void update() {
+        this.frame.repaint();
+    }
+
 }

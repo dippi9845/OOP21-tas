@@ -1,6 +1,6 @@
 package main.java;
 
-import main.java.view.MainView;
+import main.java.controller.MainControllerImpl;
 
 /**
  * The main class that launch the game
@@ -8,14 +8,14 @@ import main.java.view.MainView;
  */
 public final class TowersAndStuff {
 
-	private TowersAndStuff() { }
+    private TowersAndStuff() { }
 
-	/**
+    /**
      *
      * @param args not used
      */
-	public static void main(final String[] args) {
-        MainView.main();
+    public static void main(final String[] args) {
+        MainControllerImpl.main(args);
     }
 
 }
