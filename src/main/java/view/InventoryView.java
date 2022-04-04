@@ -47,10 +47,4 @@ public class InventoryView implements ViewComponent {
         
     }
 
-    @Override
-    public void redrawEntities() {
-        // TODO Auto-generated method stub
-        
-    }
-
 }

@@ -66,11 +66,4 @@ public class GameView implements ViewComponent {
         }
     }
 
-    @Override
-    public void redrawEntities() {
-        for (Map.Entry<Entity, AdaptiveLabel> entityMap: entityLables.entrySet()) {
-            entityMap.getValue().setPosition(entityMap.getKey().getPosition());
-        }
-    }
-
 }
