@@ -30,8 +30,12 @@ public class GameControllerImpl extends GameController {
             spawnEnemy();
         }
         
-        this.enemiesHandler.moveEnemies();
-        this.gameScene.getGameView().redrawEntities();
+        if (!this.enemiesHandler.cleanWave()) {
+            for (Enemy enemy : enemiesHandler.getEnemies()) {
+                //enemy.moveForward();
+                this.gameScene.getGameView().drawEntity(enemy);
+            }
+        }
     }
     
 }
