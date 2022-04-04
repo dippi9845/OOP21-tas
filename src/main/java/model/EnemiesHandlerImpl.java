@@ -34,7 +34,6 @@ public class EnemiesHandlerImpl implements EnemiesHandler {
         System.out.println("Test Enemy spawned");
         
         return enemy;
-        
     }
 
     @Override
@@ -49,8 +48,13 @@ public class EnemiesHandlerImpl implements EnemiesHandler {
     }
 
     @Override
-    public boolean cleanWave() {
+    public boolean isWaveClean() {
         return enemiesList.isEmpty();
+    }
+
+    @Override
+    public void removeEnemy(Enemy enemy) {
+        this.enemiesList.remove(enemy);
     }
 
 }

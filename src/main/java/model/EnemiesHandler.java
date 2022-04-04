@@ -8,8 +8,11 @@ public interface EnemiesHandler {
     
     void setNextWave();
     Enemy spawnTestEnemy();
-    boolean cleanWave();
+    boolean isWaveClean();
     int getWave();
+    
     List<Enemy> getEnemies();
+    
+    void removeEnemy(Enemy enemy);
     
 }
