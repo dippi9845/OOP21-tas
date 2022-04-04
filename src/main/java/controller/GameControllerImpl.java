@@ -17,6 +17,7 @@ public class GameControllerImpl extends GameController {
         this.enemiesHandler = new EnemiesHandlerImpl(new Position(500, 500));
         //TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
         
+        spawnEnemy();
     }
     
     private void spawnEnemy() {
@@ -24,17 +25,29 @@ public class GameControllerImpl extends GameController {
         this.gameScene.getGameView().addEntityLabel(enemy);
     }
     
+    private void killEnemy(Enemy enemy) {
+        this.gameScene.getGameView().removeEntityLabel(enemy);
+        this.enemiesHandler.removeEnemy(enemy);
+    }
+    
+    private void enemyCheck() {
+        int i = 0;
+        while (i < enemiesHandler.getEnemies().size()) {
+            Enemy enemy = enemiesHandler.getEnemies().get(i);
+            if (!enemy.isDead()) {
+                enemy.moveForward();
+                this.gameScene.getGameView().drawEntity(enemy);
+            } else {
+                killEnemy(enemy);
+            }
+            i++;
+        }
+    }
+    
     @Override
     public void nextTick() {
-        if (this.enemiesHandler.cleanWave()) {  //TODO: questa condizione verra cambiata
-            spawnEnemy();
-        }
-        
-        if (!this.enemiesHandler.cleanWave()) {
-            for (Enemy enemy : enemiesHandler.getEnemies()) {
-                //enemy.moveForward();
-                this.gameScene.getGameView().drawEntity(enemy);
-            }
+        if (!this.enemiesHandler.isWaveClean()) {
+            enemyCheck();
         }
     }
     
