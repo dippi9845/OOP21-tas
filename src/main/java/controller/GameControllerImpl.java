@@ -30,7 +30,7 @@ public class GameControllerImpl extends GameController {
         this.enemiesHandler.removeEnemy(enemy);
     }
     
-    private void enemyCheck() {
+    private void enemiesCheck() {
         int i = 0;
         while (i < enemiesHandler.getEnemies().size()) {
             Enemy enemy = enemiesHandler.getEnemies().get(i);
@@ -47,7 +47,7 @@ public class GameControllerImpl extends GameController {
     @Override
     public void nextTick() {
         if (!this.enemiesHandler.isWaveClean()) {
-            enemyCheck();
+            enemiesCheck();
         }
     }
     
