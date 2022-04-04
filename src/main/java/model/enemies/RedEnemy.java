@@ -21,9 +21,8 @@ public class RedEnemy implements Enemy {
     }
 
     @Override
-    public void dealDamage() {
-        // TODO Auto-generated method stub
-
+    public void dealDamage(double damage) {
+        this.health -= damage;
     }
 
     @Override

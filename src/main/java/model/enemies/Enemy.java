@@ -5,7 +5,7 @@ import main.java.model.Entity;
 public interface Enemy extends Entity {
     
     void moveForward();
-    void dealDamage();
+    void dealDamage(double damage);
     
     boolean isDead();
     double getHealth();
