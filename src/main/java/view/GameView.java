@@ -10,7 +10,6 @@ import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import main.java.controller.Controller;
 import main.java.model.Entity;
 
 public class GameView implements ViewComponent {
@@ -49,12 +48,18 @@ public class GameView implements ViewComponent {
     }
     
     @Override
+    public void removeEntityLabel(Entity entity) {
+        this.gameBoard.remove(this.entityLables.get(entity));
+        this.entityLables.remove(entity);
+    }
+    
+    @Override
     public JPanel getPanel() {
         return this.rootCanvas;
     }
 
     @Override
-    public void setObserver(Controller controller) {
+    public void setObserver() {
         // TODO Auto-generated method stub
         
     }
