@@ -36,27 +36,12 @@ public class EnemiesHandlerImpl implements EnemiesHandler {
         return enemy;
         
     }
-    
-    @Override
-    public void moveEnemies() {
-        for (Enemy enemy: this.enemiesList) {
-            enemy.moveForward();
-        }
-    }
 
     @Override
     public int getWave() {
         return this.actualWave;
     }
 
-    @Override
-    public List<Entity> getEnemiesAsEntities() {
-        List<Entity> entityList = new ArrayList<Entity>();
-        for (Enemy e: this.enemiesList) {
-            entityList.add(e);
-        }
-        return entityList;
-    }
     
     @Override
     public List<Enemy> getEnemies() {
