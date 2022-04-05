@@ -7,11 +7,12 @@ import main.java.model.enemies.Enemy;
 public interface EnemiesHandler {
     
     void setNextWave();
-    Enemy spawnTestEnemy();
-    void moveEnemies();
-    boolean cleanWave();
+    Enemy spawnEnemy();
+    boolean isWaveClean();
     int getWave();
+    
     List<Enemy> getEnemies();
-    List<Entity> getEnemiesAsEntities();
+    
+    void removeEnemy(Enemy enemy);
     
 }

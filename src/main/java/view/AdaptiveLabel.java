@@ -21,19 +21,17 @@ public class AdaptiveLabel extends JLabel {
         draw(this.actualPosition);
     }
     
-    public void draw(Position pos) {
-        int xPos = (int)(pos.getX() - getPreferredSize().getWidth() / 2);
-        int yPos = (int)(pos.getY() - getPreferredSize().getHeight() / 2);
+    private void draw(Position pos) {
+        int xPos = (int)((double)getParent().getWidth() / (double)GameSpecs.GAME_UNITS.width * (double)pos.getX() - getPreferredSize().getWidth() / 2);
+        int yPos = (int)((double)getParent().getHeight() / (double)GameSpecs.GAME_UNITS.height * (double)pos.getY() - getPreferredSize().getHeight() / 2);
+
         setBounds(xPos, yPos, (int)getPreferredSize().getWidth(), (int)getPreferredSize().getHeight());
     }
     
     public void setAdaptive() throws NullPointerException {
         this.getParent().addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent componentEvent) {
-                int x = (int)((double)getParent().getWidth() / (double)GameSpecs.GAME_UNITS.width * (double)actualPosition.getX());
-                int y = (int)((double)getParent().getHeight() / (double)GameSpecs.GAME_UNITS.height * (double)actualPosition.getY());
-
-                draw(new Position(x, y));
+                draw(actualPosition);
             }
         });
     }

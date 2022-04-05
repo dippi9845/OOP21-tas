@@ -5,7 +5,6 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import main.java.controller.Controller;
 import main.java.model.Entity;
 
 public class InventoryView implements ViewComponent {
@@ -24,7 +23,7 @@ public class InventoryView implements ViewComponent {
     }
 
     @Override
-    public void setObserver(Controller controller) {
+    public void setObserver() {
         // TODO Auto-generated method stub
         
     }
@@ -48,7 +47,7 @@ public class InventoryView implements ViewComponent {
     }
 
     @Override
-    public void redrawEntities() {
+    public void removeEntityLabel(Entity entity) {
         // TODO Auto-generated method stub
         
     }

@@ -7,6 +7,6 @@ import main.java.utils.Position;
 public interface Entity {
     
     Position getPosition();
-    Dimension getDefaultDimension();
+    Dimension getBodyDimension();
 
 }
