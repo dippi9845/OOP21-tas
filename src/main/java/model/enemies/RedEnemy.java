@@ -1,23 +1,51 @@
 package main.java.model.enemies;
 
 import java.awt.Dimension;
+import java.util.List;
 
 import main.java.utils.Position;
+import main.java.utils.GameSpecs;
 
 public class RedEnemy implements Enemy {
     
-    private final static Dimension DEFAULT_DIMENSION = new Dimension(100, 100);
+    private final Dimension bodyDimension = new Dimension(100, 100);
     private Position actualPosition;
     private double health = 1;
-    private static final int SPEED = 5;
+    private static final double SPEED_PER_SECOND = 60;
+    private final double speed = SPEED_PER_SECOND / GameSpecs.TICKS_PER_SECOND;
     
-    public RedEnemy(Position position) {
-        this.actualPosition = position;
+    private int reachedNode = 0;
+    private final List<Position> nodesPosition;
+    
+    public RedEnemy(List<Position> nodesPosition) throws IllegalArgumentException  {
+        if (nodesPosition.isEmpty()) {
+            throw new IllegalArgumentException("@nodesPosition can't be an empty array!");
+        }
+        
+        this.nodesPosition = nodesPosition;
+        this.actualPosition = this.nodesPosition.get(this.reachedNode);
     }
 
     @Override
     public void moveForward() {
-        this.actualPosition.setPosition(this.actualPosition.getX() + SPEED, this.actualPosition.getY());
+        double distanceToBeTraveled = this.speed;
+        while (distanceToBeTraveled > 0 && (this.nodesPosition.size() - 1 > this.reachedNode)) {
+            Position nextPos = this.nodesPosition.get(this.reachedNode+1);
+            
+            // checks if the distance to the next node is higher than the speed x tick to avoid overshooting the objective
+            if (Position.findDistance(this.actualPosition, nextPos) > this.speed) {
+                double angle = Math.atan2(nextPos.getY()-this.actualPosition.getY(),nextPos.getX()-this.actualPosition.getX());
+                double newX = this.actualPosition.getX() + this.speed * Math.cos( angle );
+                double newY = this.actualPosition.getY() + this.speed * Math.sin( angle );
+                
+                this.actualPosition.setPosition(newX, newY);
+                distanceToBeTraveled = 0;
+            } else {
+                distanceToBeTraveled -= Position.findDistance(this.actualPosition, nextPos);
+                this.actualPosition.setPosition(nextPos);
+                this.reachedNode++;
+            }
+        }
     }
 
     @Override
@@ -41,8 +69,8 @@ public class RedEnemy implements Enemy {
     }
 
     @Override
-    public Dimension getDefaultDimension() {
-        return DEFAULT_DIMENSION;
+    public Dimension getBodyDimension() {
+        return bodyDimension;
     }
 
 }

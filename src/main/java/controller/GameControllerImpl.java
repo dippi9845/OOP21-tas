@@ -16,7 +16,7 @@ public class GameControllerImpl extends GameController {
     public GameControllerImpl(final GameScene scene) {
         this.gameScene = scene;
         
-        this.enemiesHandler = new EnemiesHandlerImpl(Arrays.asList(new Position(500, 500)));
+        this.enemiesHandler = new EnemiesHandlerImpl(Arrays.asList(new Position(500, 500), new Position(750, 750), new Position(0, 1000)));
         //TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
         
         spawnEnemy();
