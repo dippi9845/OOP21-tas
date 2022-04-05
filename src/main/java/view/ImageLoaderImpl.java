@@ -49,7 +49,7 @@ public class ImageLoaderImpl implements ImageLoader {
         if (CanvasDimension.width == 0 || CanvasDimension.height == 0) {
             CanvasDimension = GameSpecs.GAME_UNITS;
         }
-        Dimension newImageDimension = getNewImageDimension(CanvasDimension, entity.getDefaultDimension());
+        Dimension newImageDimension = getNewImageDimension(CanvasDimension, entity.getBodyDimension());
         return scale(images.get(Introspector.decapitalize(
                 entity.getClass().getSimpleName())),
                 newImageDimension);

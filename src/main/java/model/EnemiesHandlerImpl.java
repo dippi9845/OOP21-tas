@@ -9,12 +9,15 @@ import main.java.utils.Position;
 
 public class EnemiesHandlerImpl implements EnemiesHandler {
     
-    private final Position enemySpawner;
     private List<Enemy> enemiesList = new ArrayList<Enemy>();
     private int actualWave;
+    private final List<Position> nodesPosition;
     
-    public EnemiesHandlerImpl(Position enemySpawnerPosition) {
-        this.enemySpawner = enemySpawnerPosition;
+    public EnemiesHandlerImpl(List<Position> nodesPosition) throws IllegalArgumentException {
+        if (nodesPosition.isEmpty()) {
+            throw new IllegalArgumentException("@nodesPosition can't be an empty array!");
+        }
+        this.nodesPosition = nodesPosition;
         this.actualWave = 0;
         
         setNextWave();
@@ -26,12 +29,9 @@ public class EnemiesHandlerImpl implements EnemiesHandler {
     }
     
     @Override
-    public Enemy spawnTestEnemy() {
-        //TODO: questo metodo serve solo per testare il giusto spawn dei nemici. Da cancellare!!!
-        Enemy enemy = new RedEnemy(enemySpawner);
+    public Enemy spawnEnemy() {
+        Enemy enemy = new RedEnemy(this.nodesPosition);
         this.enemiesList.add(enemy);
-        
-        System.out.println("Test Enemy spawned");
         
         return enemy;
     }

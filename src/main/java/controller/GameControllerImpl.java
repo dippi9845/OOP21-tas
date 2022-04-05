@@ -1,5 +1,7 @@
 package main.java.controller;
 
+import java.util.Arrays;
+
 import main.java.model.EnemiesHandler;
 import main.java.model.EnemiesHandlerImpl;
 import main.java.model.enemies.Enemy;
@@ -14,14 +16,14 @@ public class GameControllerImpl extends GameController {
     public GameControllerImpl(final GameScene scene) {
         this.gameScene = scene;
         
-        this.enemiesHandler = new EnemiesHandlerImpl(new Position(500, 500));
+        this.enemiesHandler = new EnemiesHandlerImpl(Arrays.asList(new Position(500, 500)));
         //TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
         
         spawnEnemy();
     }
     
     private void spawnEnemy() {
-        Enemy enemy = this.enemiesHandler.spawnTestEnemy();
+        Enemy enemy = this.enemiesHandler.spawnEnemy();
         this.gameScene.getGameView().addEntityLabel(enemy);
     }
     

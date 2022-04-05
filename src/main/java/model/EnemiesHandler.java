@@ -7,7 +7,7 @@ import main.java.model.enemies.Enemy;
 public interface EnemiesHandler {
     
     void setNextWave();
-    Enemy spawnTestEnemy();
+    Enemy spawnEnemy();
     boolean isWaveClean();
     int getWave();
     
