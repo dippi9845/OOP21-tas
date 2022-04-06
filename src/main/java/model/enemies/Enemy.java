@@ -9,5 +9,8 @@ public interface Enemy extends Entity {
     
     boolean isDead();
     double getHealth();
+    int getMoney();
+    int getDamage();
+    boolean pathCompleted();
 
 }

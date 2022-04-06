@@ -11,6 +11,8 @@ public class RedEnemy implements Enemy {
     private final Dimension bodyDimension = new Dimension(100, 100);
     private Position actualPosition;
     private double health = 1;
+    private final int money = 50;
+    private final int damage = 10;
     private static final double SPEED_PER_SECOND = 60;
     private final double speed = SPEED_PER_SECOND / GameSpecs.TICKS_PER_SECOND;
     
@@ -71,6 +73,21 @@ public class RedEnemy implements Enemy {
     @Override
     public Dimension getBodyDimension() {
         return bodyDimension;
+    }
+
+    @Override
+    public int getMoney() {
+        return money;
+    }
+
+    @Override
+    public int getDamage() {
+        return damage;
+    }
+
+    @Override
+    public boolean pathCompleted() {
+        return this.nodesPosition.size() > this.reachedNode;
     }
 
 }
