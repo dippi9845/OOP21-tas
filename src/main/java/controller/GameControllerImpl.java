@@ -37,8 +37,7 @@ public class GameControllerImpl extends GameController {
     }
     
     private void enemiesCheck() {
-        int i = 0;
-        while (i < enemiesHandler.getEnemies().size()) {
+        for (int i=0; i < enemiesHandler.getEnemies().size(); i++) {
             Enemy enemy = enemiesHandler.getEnemies().get(i);
             
             if (enemy.isDead()) {
@@ -54,7 +53,6 @@ public class GameControllerImpl extends GameController {
             
             enemy.moveForward();
             this.gameScene.getGameView().drawEntity(enemy);
-            i++;
         }
     }
     
