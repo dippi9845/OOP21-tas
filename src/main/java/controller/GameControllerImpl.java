@@ -42,7 +42,7 @@ public class GameControllerImpl extends GameController {
             Enemy enemy = enemiesHandler.getEnemies().get(i);
             
             if (enemy.isDead()) {
-                this.playerStats.givePlayerMoney(enemy.getMoney());
+                this.playerStats.giveMoney2Player(enemy.getMoney());
                 killEnemy(enemy);
                 continue;
             }

@@ -18,7 +18,7 @@ public class GameModelImpl implements GameModel {
     }
 
     @Override
-    public void givePlayerMoney(int money) {
+    public void giveMoney2Player(int money) {
         this.playerMoney += money;
     }
 
