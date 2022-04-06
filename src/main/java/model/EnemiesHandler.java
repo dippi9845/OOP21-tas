@@ -6,13 +6,13 @@ import main.java.model.enemies.Enemy;
 
 public interface EnemiesHandler {
     
-    void setNextWave();
+    
     Enemy spawnEnemy();
-    boolean isWaveClean();
-    int getWave();
-    
-    List<Enemy> getEnemies();
-    
     void removeEnemy(Enemy enemy);
     
+    boolean isWaveClean();
+    int getWave();
+    void setNextWave();
+    List<Enemy> getEnemies();
+ 
 }

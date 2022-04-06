@@ -22,11 +22,6 @@ public class EnemiesHandlerImpl implements EnemiesHandler {
         
         setNextWave();
     }
-
-    @Override
-    public void setNextWave() {
-        this.actualWave++;
-    }
     
     @Override
     public Enemy spawnEnemy() {
@@ -35,26 +30,30 @@ public class EnemiesHandlerImpl implements EnemiesHandler {
         
         return enemy;
     }
-
-    @Override
-    public int getWave() {
-        return this.actualWave;
-    }
-
     
     @Override
-    public List<Enemy> getEnemies() {
-        return enemiesList;
+    public void removeEnemy(Enemy enemy) {
+        this.enemiesList.remove(enemy);
+    }
+    
+    @Override
+    public void setNextWave() {
+        this.actualWave++;
     }
 
     @Override
     public boolean isWaveClean() {
         return enemiesList.isEmpty();
     }
+    
+    @Override
+    public int getWave() {
+        return this.actualWave;
+    }
 
     @Override
-    public void removeEnemy(Enemy enemy) {
-        this.enemiesList.remove(enemy);
+    public List<Enemy> getEnemies() {
+        return enemiesList;
     }
 
 }
