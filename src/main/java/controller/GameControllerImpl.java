@@ -4,18 +4,22 @@ import java.util.Arrays;
 
 import main.java.model.EnemiesHandler;
 import main.java.model.EnemiesHandlerImpl;
+import main.java.model.GameModel;
+import main.java.model.GameModelImpl;
 import main.java.model.enemies.Enemy;
 import main.java.utils.Position;
 import main.java.view.GameScene;
 
 public class GameControllerImpl extends GameController {
     
-    final GameScene gameScene;
+    private final GameScene gameScene;
     private final EnemiesHandler enemiesHandler;
+    private final GameModel playerStats;
     
     public GameControllerImpl(final GameScene scene) {
         this.gameScene = scene;
         
+        this.playerStats = new GameModelImpl();
         this.enemiesHandler = new EnemiesHandlerImpl(Arrays.asList(new Position(500, 500), new Position(750, 750), new Position(0, 1000)));
         //TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
         
@@ -36,12 +40,20 @@ public class GameControllerImpl extends GameController {
         int i = 0;
         while (i < enemiesHandler.getEnemies().size()) {
             Enemy enemy = enemiesHandler.getEnemies().get(i);
-            if (!enemy.isDead()) {
-                enemy.moveForward();
-                this.gameScene.getGameView().drawEntity(enemy);
-            } else {
+            
+            if (enemy.isDead()) {
+                this.playerStats.givePlayerMoney(enemy.getMoney());
                 killEnemy(enemy);
+                continue;
             }
+            if (enemy.hasCompletedPath()) {
+                this.playerStats.dealDamage2Player(enemy.getDamage());
+                killEnemy(enemy);
+                continue;
+            }
+            
+            enemy.moveForward();
+            this.gameScene.getGameView().drawEntity(enemy);
             i++;
         }
     }
