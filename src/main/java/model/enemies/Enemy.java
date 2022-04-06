@@ -11,6 +11,6 @@ public interface Enemy extends Entity {
     double getHealth();
     int getMoney();
     int getDamage();
-    boolean pathCompleted();
+    boolean hasCompletedPath();
 
 }

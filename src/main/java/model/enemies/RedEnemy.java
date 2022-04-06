@@ -86,8 +86,8 @@ public class RedEnemy implements Enemy {
     }
 
     @Override
-    public boolean pathCompleted() {
-        return this.nodesPosition.size() > this.reachedNode;
+    public boolean hasCompletedPath() {
+        return this.reachedNode + 1 >= this.nodesPosition.size();
     }
 
 }
