@@ -19,8 +19,6 @@ public class EnemiesHandlerImpl implements EnemiesHandler {
         }
         this.nodesPosition = nodesPosition;
         this.actualWave = 0;
-        
-        setNextWave();
     }
     
     @Override
