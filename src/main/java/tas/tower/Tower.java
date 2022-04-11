@@ -1,14 +1,15 @@
 package main.java.tas.tower;
 import main.java.tas.model.enemies.Enemy;
-import
+import main.java.tas.utils.Position;
+
 public abstract class Tower {
 	private Enemy target;
 	private final int damage;
 	private final Position pos;
-	private final int raggio;
+	private final int radius;
 	private final int wait;
 	
-	abstract protected void Attacca();
+	
 	
 	
 }
