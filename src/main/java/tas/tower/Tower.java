@@ -9,6 +9,12 @@ public abstract class Tower {
 	private final int radius;
 	private final int wait;
 	
+	Tower(final Position pos, final int damage, final int radius, final int wait) {
+		this.damage = damage;
+		this.pos = pos;
+		this.radius = radius;
+		this.wait = wait;
+	}
 	
 	
 	
