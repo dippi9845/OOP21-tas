@@ -7,13 +7,11 @@ public abstract class Tower {
 	private final int damage;
 	private final Position pos;
 	private final int radius;
-	private final int wait;
 	
-	Tower(final Position pos, final int damage, final int radius, final int wait) {
+	Tower(final Position pos, final int damage, final int radius) {
 		this.damage = damage;
 		this.pos = pos;
 		this.radius = radius;
-		this.wait = wait;
 	}
 	
 	abstract protected void attack();
