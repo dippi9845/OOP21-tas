@@ -16,6 +16,18 @@ public abstract class Tower {
 		this.wait = wait;
 	}
 	
+	abstract protected void attack();
 	
+	protected boolean isValidTarget(final Enemy e) {
+		if (Position.findDistance(this.pos, e.getPosition()) <= this.radius) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	abstract protected void setTarget(Enemy e);
 	
+	abstract public void compute();
 }
