@@ -4,9 +4,8 @@ import java.util.List;
 
 import main.java.tas.model.enemies.Enemy;
 
-public interface EnemiesHandler {
-    
-    
+public interface EnemiesLogic {
+
     Enemy spawnEnemy();
     void removeEnemy(Enemy enemy);
     
@@ -14,5 +13,5 @@ public interface EnemiesHandler {
     int getWave();
     void setNextWave();
     List<Enemy> getEnemies();
- 
+    
 }
