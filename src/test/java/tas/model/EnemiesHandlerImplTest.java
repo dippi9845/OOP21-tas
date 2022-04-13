@@ -1,9 +1,11 @@
-package main.java.tas.model;
+package test.java.tas.model;
 
 import static org.junit.Assert.*;
 import java.util.Arrays;
 import org.junit.Test;
 
+import main.java.tas.model.EnemyFactory;
+import main.java.tas.model.EnemyFactoryImpl;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 

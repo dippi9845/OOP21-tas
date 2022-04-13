@@ -1,8 +1,11 @@
-package main.java.tas.model;
+package test.java.tas.model;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import main.java.tas.model.GameModel;
+import main.java.tas.model.GameModelImpl;
 
 public class GameModelImplTest {
 
