@@ -13,5 +13,6 @@ public interface EnemiesLogic {
     int getWave();
     void setNextWave();
     List<Enemy> getEnemies();
+    boolean areEnemiesInQueue();
     
 }

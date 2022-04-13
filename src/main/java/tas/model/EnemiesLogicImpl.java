@@ -49,5 +49,10 @@ public class EnemiesLogicImpl implements EnemiesLogic {
     public List<Enemy> getEnemies() {
         return aliveEnemiesList;
     }
+
+    @Override
+    public boolean areEnemiesInQueue() {
+        return !this.enemyToBeSpawned.isEmpty();
+    }
     
 }
