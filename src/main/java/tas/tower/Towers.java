@@ -9,12 +9,7 @@ public class Towers {
 	static public final List<Enemy> ENEMYLIST = new LinkedList<Enemy>();
 	
 	static public boolean isValidTarget(final Enemy e, final Tower t) {
-		if (Position.findDistance(t.getPos(), e.getPosition()) <= t.getRadius()) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return Position.findDistance(t.getPos(), e.getPosition()) <= t.getRadius();
 	}
 	
 	static public Enemy findFirstEnemy(final Tower t) {
