@@ -17,7 +17,7 @@ public abstract class AbstractBasicTower implements Tower{
 	
 	abstract protected void attack();
 
-	abstract protected void setTarget(Enemy e);
+	abstract protected void setTarget(final Enemy e);
 	
 	abstract public void compute();
 	
