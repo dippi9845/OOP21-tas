@@ -6,11 +6,13 @@ public abstract class AbstractBasicTower implements Tower{
 	private final int damage;
 	private final Position pos;
 	private final int radius;
+	private final int delay;
 	
-	AbstractBasicTower(final Position pos, final int damage, final int radius) {
+	AbstractBasicTower(final Position pos, final int damage, final int radius, final int delay) {
 		this.damage = damage;
 		this.pos = pos;
 		this.radius = radius;
+		this.delay = delay;
 	}
 	
 	abstract protected void attack();
@@ -18,6 +20,10 @@ public abstract class AbstractBasicTower implements Tower{
 	abstract protected void setTarget(Enemy e);
 	
 	abstract public void compute();
+	
+	public int getDelay() {
+		return this.delay;
+	}
 	
 	public int getDamage() {
 		return this.damage;
