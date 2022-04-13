@@ -6,8 +6,6 @@ import main.java.tas.model.enemies.Enemy;
 
 public interface WaveFactory {
     
-    static List<Class<? extends Enemy>> createEnemiesToBeSpawn(int wave) throws UnsupportedOperationException{
-        throw new UnsupportedOperationException("Method not implemented");
-    }
+    List<Enemy> createEnemiesToBeSpawn(int wave);
 
 }

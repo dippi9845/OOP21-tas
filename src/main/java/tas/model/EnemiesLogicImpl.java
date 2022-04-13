@@ -10,18 +10,23 @@ public class EnemiesLogicImpl implements EnemiesLogic {
     
     private final List<Enemy> aliveEnemiesList = new ArrayList<Enemy>();
     private int actualWave;
-    private final EnemyFactory enemyFactory;
+    private final WaveFactory waveFactory;
+    private List<Enemy> enemyToBeSpawned = new ArrayList<Enemy>();
 
     public EnemiesLogicImpl(List<Position> nodesPosition) {
-        this.enemyFactory = new EnemyFactoryImpl(nodesPosition);
+        this.waveFactory = new WaveFactoryImpl(nodesPosition);
         this.actualWave = 0;
     }
 
     @Override
-    public Enemy spawnEnemy() {
-        Enemy enemy = this.enemyFactory.spawnRedEnemy();
-        this.aliveEnemiesList.add(enemy);
+    public Enemy spawnEnemy() throws IllegalArgumentException {
+        if (this.enemyToBeSpawned.isEmpty()) {
+            throw new IllegalArgumentException("There are no enemies to be spawn");
+        }
         
+        Enemy enemy = this.enemyToBeSpawned.remove(0);
+        this.aliveEnemiesList.add(enemy);
+
         return enemy;
     }
 
@@ -32,7 +37,7 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 
     @Override
     public boolean isWaveClean() {
-        return aliveEnemiesList.isEmpty();
+        return this.aliveEnemiesList.isEmpty() && this.enemyToBeSpawned.isEmpty();
     }
 
     @Override
@@ -43,6 +48,8 @@ public class EnemiesLogicImpl implements EnemiesLogic {
     @Override
     public void setNextWave() {
         this.actualWave++;
+        this.enemyToBeSpawned = this.waveFactory.createEnemiesToBeSpawn(actualWave);
+        System.out.println("Wave increased to: " + this.actualWave);
     }
 
     @Override

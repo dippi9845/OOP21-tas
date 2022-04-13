@@ -22,13 +22,13 @@ public class GameController implements Controller {
         this.playerStats = new GameModelImpl();
         this.enemiesHandler = new EnemiesLogicImpl(Arrays.asList(new Position(500, 500), new Position(750, 750), new Position(0, 1000)));
         //TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
-        
-        spawnEnemy();
     }
     
-    private void spawnEnemy() {
-        Enemy enemy = this.enemiesHandler.spawnEnemy();
-        this.gameScene.getGameView().addEntityLabel(enemy);
+    private void spawnEnemies() {
+        if (this.enemiesHandler.areEnemiesInQueue()) {
+            Enemy enemy = this.enemiesHandler.spawnEnemy();
+            this.gameScene.getGameView().addEntityLabel(enemy);
+        }
     }
     
     private void killEnemy(Enemy enemy) {
@@ -58,7 +58,10 @@ public class GameController implements Controller {
     
     @Override
     public void nextTick() {
-        if (!this.enemiesHandler.isWaveClean()) {
+        if (this.enemiesHandler.isWaveClean()) {
+            this.enemiesHandler.setNextWave();
+        } else {
+            spawnEnemies();
             enemiesCheck();
         }
     }
