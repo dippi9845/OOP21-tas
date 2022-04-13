@@ -13,13 +13,11 @@ public class Towers {
 	}
 	
 	static public Enemy findFirstEnemy(final Tower t) {
-		Enemy e = null;
 		for (var i : ENEMYLIST) {
 			if (Towers.isValidTarget(i, t)) {
-				e = i;
-				break; // Brutto ma necessario
+				return i;
 			}
 		}
-		return e;
+		return null;
 	}
 }
