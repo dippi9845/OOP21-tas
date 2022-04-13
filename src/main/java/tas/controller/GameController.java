@@ -2,8 +2,8 @@ package main.java.tas.controller;
 
 import java.util.Arrays;
 
-import main.java.tas.model.EnemiesFactory;
-import main.java.tas.model.EnemiesFactoryImpl;
+import main.java.tas.model.EnemiesLogic;
+import main.java.tas.model.EnemiesLogicImpl;
 import main.java.tas.model.GameModel;
 import main.java.tas.model.GameModelImpl;
 import main.java.tas.model.enemies.Enemy;
@@ -13,14 +13,14 @@ import main.java.tas.view.GameScene;
 public class GameController implements Controller {
     
     private final GameScene gameScene;
-    private final EnemiesFactory enemiesHandler;
+    private final EnemiesLogic enemiesHandler;
     private final GameModel playerStats;
     
     public GameController(final GameScene scene) {
         this.gameScene = scene;
         
         this.playerStats = new GameModelImpl();
-        this.enemiesHandler = new EnemiesFactoryImpl(Arrays.asList(new Position(500, 500), new Position(750, 750), new Position(0, 1000)));
+        this.enemiesHandler = new EnemiesLogicImpl(Arrays.asList(new Position(500, 500), new Position(750, 750), new Position(0, 1000)));
         //TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
         
         spawnEnemy();
