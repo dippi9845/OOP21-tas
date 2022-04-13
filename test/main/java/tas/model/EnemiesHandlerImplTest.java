@@ -11,7 +11,7 @@ public class EnemiesHandlerImplTest {
 
     @Test
     public void testSpawnMultipleEnemies() {
-        final EnemiesFactory enemiesHanlder = new EnemiesFactoryImpl(Arrays.asList(new Position(0, 0)));
+        final EnemyFactory enemiesHanlder = new EnemyFactoryImpl(Arrays.asList(new Position(0, 0)));
         final int enemiesNumber = 1000;
         
         for (int i=0; i < enemiesNumber; i++) {
@@ -23,7 +23,7 @@ public class EnemiesHandlerImplTest {
 
     @Test
     public void testRemoveEnemies() {
-        final EnemiesFactory enemiesHanlder = new EnemiesFactoryImpl(Arrays.asList(new Position(0, 0)));
+        final EnemyFactory enemiesHanlder = new EnemyFactoryImpl(Arrays.asList(new Position(0, 0)));
         final int enemiesNumber = 100;
         final int enemyEliminationRate = 2;
         
@@ -39,7 +39,7 @@ public class EnemiesHandlerImplTest {
     @Test
     public void testWaveLogic() {
         final int wavesToSkip = 15;
-        final EnemiesFactory enemiesHanlder = new EnemiesFactoryImpl(Arrays.asList(new Position(0, 0)));
+        final EnemyFactory enemiesHanlder = new EnemyFactoryImpl(Arrays.asList(new Position(0, 0)));
         
         for (int i=0; i < wavesToSkip; i++) {
             enemiesHanlder.setNextWave();
