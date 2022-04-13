@@ -3,7 +3,6 @@ import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
 public abstract class AbstractBasicTower implements Tower{
-	private Enemy target;
 	private final int damage;
 	private final Position pos;
 	private final int radius;
