@@ -22,7 +22,13 @@ public class BasicTower extends AbstractBasicTower {
 
 	@Override
 	public void compute() {
-		// TODO Auto-generated method stub
+		if (Towers.isValidTarget(this.target, this)) {
+			this.attack();
+			// TODO sleep
+		}
+		else {
+			this.setTarget(Towers.findFirstEnemy(this));
+		}
 
 	}
 
