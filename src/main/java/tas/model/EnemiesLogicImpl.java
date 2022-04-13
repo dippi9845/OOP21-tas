@@ -8,7 +8,7 @@ import main.java.tas.utils.Position;
 
 public class EnemiesLogicImpl implements EnemiesLogic {
     
-    private List<Enemy> aliveEnemiesList = new ArrayList<Enemy>();
+    private final List<Enemy> aliveEnemiesList = new ArrayList<Enemy>();
     private int actualWave;
     private final EnemyFactory enemyFactory;
 
