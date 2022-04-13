@@ -25,7 +25,7 @@ public class RedEnemy implements Enemy {
         }
         
         this.nodesPosition = nodesPosition;
-        this.actualPosition = this.nodesPosition.get(this.reachedNode);
+        this.actualPosition = new Position(this.nodesPosition.get(this.reachedNode).getX(), this.nodesPosition.get(this.reachedNode).getY());
     }
 
     @Override
