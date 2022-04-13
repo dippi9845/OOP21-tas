@@ -8,7 +8,7 @@ public abstract class AbstractBasicTower implements Tower{
 	private final int radius;
 	private final int delay;
 	
-	AbstractBasicTower(final Position pos, final int damage, final int radius, final int delay) {
+	protected AbstractBasicTower(final Position pos, final int damage, final int radius, final int delay) {
 		this.damage = damage;
 		this.pos = pos;
 		this.radius = radius;
