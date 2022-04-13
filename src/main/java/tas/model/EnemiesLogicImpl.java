@@ -58,6 +58,11 @@ public class EnemiesLogicImpl implements EnemiesLogic {
     }
 
     @Override
+    public boolean areEnemiesOnBoard() {
+        return !this.aliveEnemiesList.isEmpty();
+    }
+    
+    @Override
     public boolean areEnemiesInQueue() {
         return !this.enemyToBeSpawned.isEmpty();
     }
