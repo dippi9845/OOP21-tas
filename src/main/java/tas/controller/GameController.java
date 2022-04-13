@@ -15,6 +15,7 @@ public class GameController implements Controller {
     private final GameScene gameScene;
     private final EnemiesLogic enemiesHandler;
     private final GameModel playerStats;
+    private double lastEnemySpawnTime = 0;
     
     public GameController(final GameScene scene) {
         this.gameScene = scene;
@@ -25,15 +26,22 @@ public class GameController implements Controller {
     }
     
     private void spawnEnemies() {
-        if (this.enemiesHandler.areEnemiesInQueue()) {
-            Enemy enemy = this.enemiesHandler.spawnEnemy();
-            this.gameScene.getGameView().addEntityLabel(enemy);
+        if (System.currentTimeMillis() - lastEnemySpawnTime < 2000) {
+            return;
         }
+        
+        Enemy enemy = this.enemiesHandler.spawnEnemy();
+        this.gameScene.getGameView().addEntityLabel(enemy);
+        lastEnemySpawnTime = System.currentTimeMillis();
     }
     
     private void killEnemy(Enemy enemy) {
         this.gameScene.getGameView().removeEntityLabel(enemy);
         this.enemiesHandler.removeEnemy(enemy);
+    }
+    
+    private void increaseWave() {
+        this.enemiesHandler.setNextWave();
     }
     
     private void enemiesCheck() {
@@ -59,9 +67,13 @@ public class GameController implements Controller {
     @Override
     public void nextTick() {
         if (this.enemiesHandler.isWaveClean()) {
-            this.enemiesHandler.setNextWave();
-        } else {
+            increaseWave();
+        }
+        if (this.enemiesHandler.areEnemiesInQueue()) {
             spawnEnemies();
+        }
+        
+        if (this.enemiesHandler.areEnemiesOnBoard()) {
             enemiesCheck();
         }
     }
