@@ -6,6 +6,8 @@ import main.java.tas.model.EnemiesLogic;
 import main.java.tas.model.EnemiesLogicImpl;
 import main.java.tas.model.GameModel;
 import main.java.tas.model.GameModelImpl;
+import main.java.tas.model.TimeCurve;
+import main.java.tas.model.TimeCurveImpl;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 import main.java.tas.view.GameScene;
@@ -15,7 +17,7 @@ public class GameController implements Controller {
     private final GameScene gameScene;
     private final EnemiesLogic enemiesHandler;
     private final GameModel playerStats;
-    private double lastEnemySpawnTime = 0;
+    private final TimeCurve timer = new TimeCurveImpl();
     
     public GameController(final GameScene scene) {
         this.gameScene = scene;
@@ -26,13 +28,13 @@ public class GameController implements Controller {
     }
     
     private void spawnEnemies() {
-        if (System.currentTimeMillis() - lastEnemySpawnTime < 2000) {
+        if (!this.timer.isTimeForAction(this.enemiesHandler.getWave())) {
             return;
         }
         
         Enemy enemy = this.enemiesHandler.spawnEnemy();
         this.gameScene.getGameView().addEntityLabel(enemy);
-        lastEnemySpawnTime = System.currentTimeMillis();
+        this.timer.actionPerformed();
     }
     
     private void killEnemy(Enemy enemy) {
@@ -67,6 +69,15 @@ public class GameController implements Controller {
     @Override
     public void nextTick() {
         if (this.enemiesHandler.isWaveClean()) {
+            increaseWave();
+            increaseWave();
+            increaseWave();
+            increaseWave();
+            increaseWave();
+            increaseWave();
+            increaseWave();
+            increaseWave();
+            increaseWave();
             increaseWave();
         }
         if (this.enemiesHandler.areEnemiesInQueue()) {
