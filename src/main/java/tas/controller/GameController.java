@@ -70,15 +70,6 @@ public class GameController implements Controller {
     public void nextTick() {
         if (this.enemiesHandler.isWaveClean()) {
             increaseWave();
-            increaseWave();
-            increaseWave();
-            increaseWave();
-            increaseWave();
-            increaseWave();
-            increaseWave();
-            increaseWave();
-            increaseWave();
-            increaseWave();
         }
         if (this.enemiesHandler.areEnemiesInQueue()) {
             spawnEnemies();
