@@ -9,6 +9,9 @@ public abstract class AbsractMultipleTower extends AbstractBasicTower implements
 	final List<Enemy> enemyList = new LinkedList<>();
 	final int maxEnemy;
 	
+	private boolean isFull() {
+		return this.enemyList.size() < this.maxEnemy;
+	}
 	
 	protected AbsractMultipleTower(Position pos, int damage, int radius, int delay, final int maxTarget) {
 		super(pos, damage, radius, delay);
