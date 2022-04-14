@@ -3,6 +3,7 @@ package main.java.tas.model;
 import java.util.List;
 
 import main.java.tas.model.enemies.Enemy;
+import main.java.tas.model.enemies.PinkEnemy;
 import main.java.tas.model.enemies.RedEnemy;
 import main.java.tas.utils.Position;
 
@@ -20,6 +21,11 @@ public class EnemyFactoryImpl implements EnemyFactory {
     @Override
     public Enemy spawnRedEnemy() {
         return new RedEnemy(this.nodesPosition);
+    }
+
+    @Override
+    public Enemy spawnPinkEnemy() {
+        return new PinkEnemy(this.nodesPosition);
     }
    
 }
