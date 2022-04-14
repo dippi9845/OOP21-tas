@@ -37,8 +37,8 @@ public class RedEnemy implements Enemy {
             // checks if the distance to the next node is higher than the speed x tick to avoid overshooting the objective
             if (Position.findDistance(this.actualPosition, nextPos) > this.speed) {
                 double angle = Math.atan2(nextPos.getY()-this.actualPosition.getY(),nextPos.getX()-this.actualPosition.getX());
-                double newX = this.actualPosition.getX() + this.speed * Math.cos( angle );
-                double newY = this.actualPosition.getY() + this.speed * Math.sin( angle );
+                double newX = this.actualPosition.getX() + this.speed * Math.cos(angle);
+                double newY = this.actualPosition.getY() + this.speed * Math.sin(angle);
                 
                 this.actualPosition.setPosition(newX, newY);
                 distanceToBeTraveled = 0;
