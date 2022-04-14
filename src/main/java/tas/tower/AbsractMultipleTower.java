@@ -20,7 +20,7 @@ public abstract class AbsractMultipleTower extends AbstractBasicTower implements
 
 	@Override
 	protected void attack() {
-		
+		enemyList.forEach(x->x.dealDamage(this.getDamage()));
 	}
 
 	@Override
