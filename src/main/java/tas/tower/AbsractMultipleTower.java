@@ -8,7 +8,7 @@ import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
 public abstract class AbsractMultipleTower extends AbstractBasicTower implements Tower {
-	final List<Enemy> enemyList = new LinkedList<>();
+	final List<Enemy> enemyList = new LinkedList<>(); // TODO forse meglio un arraylist
 	final int maxEnemy;
 	
 	private boolean isFull() {
@@ -36,8 +36,13 @@ public abstract class AbsractMultipleTower extends AbstractBasicTower implements
 
 	@Override
 	public void compute() {
-		
-
+		if (!this.isFull()) {
+			List<Enemy> toAdd = Towers.findAll(this::isValidTarget);
+			toAdd.stream().limit(this.maxEnemy - this.enemyList.size()).forEach(this::setTarget);
+		}
+		// TODO rimuovere i nemici lontani
+		this.attack();
+		// TODO sleep
 	}
 
 }
