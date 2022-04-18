@@ -2,6 +2,8 @@ package main.java.tas.tower;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
@@ -10,7 +12,11 @@ public abstract class AbsractMultipleTower extends AbstractBasicTower implements
 	final int maxEnemy;
 	
 	private boolean isFull() {
-		return this.enemyList.size() < this.maxEnemy;
+		return this.enemyList.size() == this.maxEnemy;
+	}
+	
+	private boolean isValidTarget(final Enemy e) {
+		return (!this.isFull() && !this.enemyList.contains(e) && Towers.isValidTarget(e, this));
 	}
 	
 	protected AbsractMultipleTower(Position pos, int damage, int radius, int delay, final int maxTarget) {
@@ -25,7 +31,7 @@ public abstract class AbsractMultipleTower extends AbstractBasicTower implements
 
 	@Override
 	protected void setTarget(Enemy e) {
-		
+
 	}
 
 	@Override
