@@ -27,7 +27,7 @@ public class BasicTower extends AbstractBasicTower {
 			// TODO sleep
 		}
 		else {
-			this.setTarget(Towers.findFirstEnemy(this));
+			Towers.findFirstEnemy(this).ifPresent(this::setTarget);
 		}
 
 	}

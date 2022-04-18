@@ -1,6 +1,7 @@
 package main.java.tas.tower;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.LinkedList;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -14,13 +15,8 @@ public class Towers {
 		return Position.findDistance(t.getPos(), e.getPosition()) <= t.getRadius();
 	}
 	
-	static public Enemy findFirstEnemy(final Tower t) {
-		for (var i : ENEMYLIST) {
-			if (Towers.isTargetInRange(i, t)) {
-				return i;
-			}
-		}
-		return null;
+	static public Optional<Enemy> findFirstEnemy(final Tower t) {
+		return ENEMYLIST.stream().filter(x->Towers.isTargetInRange(x, t)).findFirst();
 	}
 	
 	static public List<Enemy> findAll(Predicate<Enemy> f) {
