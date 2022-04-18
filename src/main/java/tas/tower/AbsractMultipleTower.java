@@ -21,10 +21,6 @@ public abstract class AbsractMultipleTower extends AbstractBasicTower implements
 		super(pos, damage, radius, delay);
 		this.maxEnemy = maxTarget;
 	}
-	
-	protected void removeTarget(final Enemy e) {
-		this.enemyList.remove(e);
-	}
 
 	@Override
 	protected void attack() {
