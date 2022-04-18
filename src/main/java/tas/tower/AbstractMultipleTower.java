@@ -5,7 +5,7 @@ import java.util.List;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
-public abstract class AbsractMultipleTower extends AbstractBasicTower implements Tower {
+public abstract class AbstractMultipleTower extends AbstractBasicTower implements Tower {
 	final List<Enemy> enemyList = new LinkedList<>(); // TODO forse meglio un arraylist
 	final int maxEnemy;
 	
@@ -17,7 +17,7 @@ public abstract class AbsractMultipleTower extends AbstractBasicTower implements
 		return (!this.isFull() && !this.enemyList.contains(e) && Towers.isValidTarget(e, this));
 	}
 	
-	protected AbsractMultipleTower(Position pos, int damage, int radius, int delay, final int maxTarget) {
+	protected AbstractMultipleTower(Position pos, int damage, int radius, int delay, final int maxTarget) {
 		super(pos, damage, radius, delay);
 		this.maxEnemy = maxTarget;
 	}
