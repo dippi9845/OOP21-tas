@@ -6,8 +6,8 @@ import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
 public abstract class AbstractMultipleTower extends AbstractBasicTower implements Tower {
-	final List<Enemy> enemyList = new LinkedList<>(); // TODO forse meglio un arraylist
-	final int maxEnemy;
+	private final List<Enemy> enemyList = new LinkedList<>(); // TODO forse meglio un arraylist
+	private final int maxEnemy;
 	
 	private boolean isFull() {
 		return this.enemyList.size() == this.maxEnemy;
