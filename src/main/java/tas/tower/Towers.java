@@ -2,6 +2,8 @@ package main.java.tas.tower;
 
 import java.util.List;
 import java.util.LinkedList;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
@@ -19,5 +21,9 @@ public class Towers {
 			}
 		}
 		return null;
+	}
+	
+	static public List<Enemy> findAll(Predicate<Enemy> f) {
+		return ENEMYLIST.stream().filter(f).collect(Collectors.toList());
 	}
 }
