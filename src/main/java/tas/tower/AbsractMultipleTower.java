@@ -31,7 +31,7 @@ public abstract class AbsractMultipleTower extends AbstractBasicTower implements
 
 	@Override
 	protected void setTarget(Enemy e) {
-
+		this.enemyList.add(e);
 	}
 
 	@Override
