@@ -11,8 +11,11 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 	private final List<Enemy> enemyList = new LinkedList<>(); // TODO forse meglio un arraylist
 	private final int maxEnemy;
 	
-	protected abstract boolean isValidTarget(final Enemy e);
-	
+	protected AbstractMultipleTower(Position pos, int damage, int radius, int delay, final int maxTarget) {
+		super(pos, damage, radius, delay);
+		this.maxEnemy = maxTarget;
+	}
+
 	protected List<Enemy> getEnemyList() {
 		return this.enemyList;
 	}
@@ -29,11 +32,6 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 		return this.enemyList.size() == this.maxEnemy;
 	}
 	
-	protected AbstractMultipleTower(Position pos, int damage, int radius, int delay, final int maxTarget) {
-		super(pos, damage, radius, delay);
-		this.maxEnemy = maxTarget;
-	}
-
 	@Override
 	protected void attack() {
 		enemyList.forEach(x->x.dealDamage(this.getDamage()));
@@ -44,7 +42,8 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 		this.enemyList.add(e);
 	}
 
+	protected abstract boolean isValidTarget(final Enemy e);
+
 	@Override
 	abstract public void compute();
-
 }
