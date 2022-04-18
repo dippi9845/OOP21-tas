@@ -15,7 +15,7 @@ public class Towers {
 		return Position.findDistance(t.getPos(), e.getPosition()) <= t.getRadius();
 	}
 	
-	static public Optional<Enemy> findFirstEnemy(final Tower t) {
+	static public Optional<Enemy> findFirstEnemyInRange(final Tower t) {
 		return ENEMYLIST.stream().filter(x->Towers.isTargetInRange(x, t)).findFirst();
 	}
 	
