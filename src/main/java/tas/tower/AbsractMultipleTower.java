@@ -42,7 +42,7 @@ public abstract class AbsractMultipleTower extends AbstractBasicTower implements
 			List<Enemy> toAdd = Towers.findAll(this::isValidTarget);
 			toAdd.stream().limit(this.maxEnemy - this.enemyList.size()).forEach(this::setTarget);
 		}
-		// TODO rimuovere i nemici lontani
+		this.enemyList.stream().filter(x->!Towers.isValidTarget(x, this)).forEach(this.enemyList::remove);
 		this.attack();
 		// TODO sleep
 	}
