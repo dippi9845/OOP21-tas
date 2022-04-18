@@ -22,7 +22,7 @@ public class BasicTower extends AbstractBasicTower {
 
 	@Override
 	public void compute() {
-		if (Towers.isValidTarget(this.target, this)) {
+		if (Towers.isTargetInRange(this.target, this)) {
 			this.attack();
 			// TODO sleep
 		}

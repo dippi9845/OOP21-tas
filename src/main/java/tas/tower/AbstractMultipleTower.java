@@ -14,7 +14,7 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 	}
 	
 	private boolean isValidTarget(final Enemy e) {
-		return (!this.isFull() && !this.enemyList.contains(e) && Towers.isValidTarget(e, this));
+		return (!this.isFull() && !this.enemyList.contains(e) && Towers.isTargetInRange(e, this));
 	}
 	
 	protected AbstractMultipleTower(Position pos, int damage, int radius, int delay, final int maxTarget) {
@@ -38,7 +38,7 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 			List<Enemy> toAdd = Towers.findAll(this::isValidTarget);
 			toAdd.stream().limit(this.maxEnemy - this.enemyList.size()).forEach(this::setTarget);
 		}
-		this.enemyList.stream().filter(x->!Towers.isValidTarget(x, this)).forEach(this.enemyList::remove);
+		this.enemyList.stream().filter(x->!Towers.isTargetInRange(x, this)).forEach(this.enemyList::remove);
 		this.attack();
 		// TODO sleep
 	}
