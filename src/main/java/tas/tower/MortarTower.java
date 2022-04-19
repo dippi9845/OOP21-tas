@@ -17,17 +17,24 @@ public class MortarTower extends AbstractMultipleTower {
 	}
 	
 	private boolean isFirstInRange(final Enemy e) {
-		
+		return Towers.isTargetInRange(e, this) &&
+			  !Towers.isInRange(e.getPosition(), this.getPos(), minRange);
 	}
 
 	@Override
 	protected boolean isValidTarget(final Enemy e) {
-		
+		return Towers.isInRange(e.getPosition(), this.center, this.attackRange);
 	}
 
 	@Override
 	public void compute() {
-		
+		Optional<Enemy> target = Towers.findFistEnemyByPredicate(this::isFirstInRange);
+		if (target.isPresent()) {
+			this.center = target.get().getPosition();
+			Towers.findAll(this::isValidTarget).forEach(this::setTarget);
+			this.attack();
+			this.clear();
+		}
 		// TODO sleep
 	}
 
