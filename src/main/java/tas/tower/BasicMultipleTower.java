@@ -12,7 +12,7 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 	@Override
 	protected boolean isValidTarget(final Enemy e) {
 		return (!this.isFull()
-				&& !this.getEnemyList().contains(e)
+				&& !this.contains(e)
 				&& Towers.isTargetInRange(e, this));
 	}
 	
@@ -21,13 +21,13 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 		if (!this.isFull()) {
 			Towers.findAll(this::isValidTarget)
 				  .stream()
-				  .limit(this.getMaxEnemy() - this.getEnemyList().size())
+				  .limit(this.getMaxEnemy() - this.getEnemyStream().count())
 				  .forEach(this::setTarget);
 		}
 		
 		this.getEnemyStream()
 			.filter(x->!Towers.isTargetInRange(x, this))
-			.forEach(this.getEnemyList()::remove);
+			.forEach(this::remove);
 		
 		this.attack();
 		// TODO sleep

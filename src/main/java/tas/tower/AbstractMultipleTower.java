@@ -16,8 +16,8 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 		this.maxEnemy = maxTarget;
 	}
 
-	protected List<Enemy> getEnemyList() {
-		return this.enemyList;
+	protected boolean contains(final Enemy e) {
+		return this.enemyList.contains(e);
 	}
 	
 	protected Stream<Enemy> getEnemyStream() {
