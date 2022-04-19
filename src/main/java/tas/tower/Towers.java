@@ -11,8 +11,12 @@ import main.java.tas.utils.Position;
 public class Towers {
 	static public final List<Enemy> ENEMYLIST = new LinkedList<Enemy>();
 	
+	static public boolean isInRange(final Position x, final Position y, final int radius) {
+		return Position.findDistance(x, y) <= radius;
+	}
+	
 	static public boolean isTargetInRange(final Enemy e, final Tower t) {
-		return Position.findDistance(t.getPos(), e.getPosition()) <= t.getRadius();
+		return isInRange(e.getPosition(), t.getPos(), t.getRadius());
 	}
 	
 	static public Optional<Enemy> findFirstEnemyInRange(final Tower t) {
