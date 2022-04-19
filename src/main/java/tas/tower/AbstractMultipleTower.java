@@ -32,6 +32,14 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 		return this.enemyList.size() == this.maxEnemy;
 	}
 	
+	protected void remove(final Enemy e) {
+		this.enemyList.remove(e);
+	}
+
+	protected void clear() {
+		enemyList.clear();
+	}
+
 	@Override
 	protected void attack() {
 		enemyList.forEach(x->x.dealDamage(this.getDamage()));
