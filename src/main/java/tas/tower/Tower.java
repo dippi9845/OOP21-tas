@@ -10,5 +10,7 @@ public interface Tower {
 	
 	public int getRadius();
 	
+	public int getCost();
+
 	public Position getPos();
 }

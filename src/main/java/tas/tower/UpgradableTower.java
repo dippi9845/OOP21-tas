@@ -4,6 +4,4 @@ public interface UpgradableTower extends Tower {
 	
 	public int getLevel();
 	
-	public void upgrade();
-	
 }
