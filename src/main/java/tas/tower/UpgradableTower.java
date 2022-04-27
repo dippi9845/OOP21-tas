@@ -2,11 +2,8 @@ package main.java.tas.tower;
 
 public interface UpgradableTower extends Tower {
 	
-	public int getCost();
+	public int getLevel();
 	
-	public boolean upgradable(final int money);
-	
-	public boolean upgrade();
-	
+	public void upgrade();
 	
 }
