@@ -23,22 +23,27 @@ public abstract class AbstractBasicTower implements Tower{
 
 	abstract public void compute();
 
+	@Override
 	public int getDelay() {
 		return this.delay;
 	}
 
+	@Override
 	public int getCost() {
 		return this.cost;
 	}
 
+	@Override
 	public int getDamage() {
 		return this.damage;
 	}
 
+	@Override
 	public Position getPos() {
 		return this.pos;
 	}
 
+	@Override
 	public int getRadius() {
 		return this.radius;
 	}
