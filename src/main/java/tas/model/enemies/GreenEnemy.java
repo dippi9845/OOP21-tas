@@ -14,7 +14,6 @@ public class GreenEnemy extends AbstractEnemy {
     private final double speed = SPEED_PER_SECOND / GameSpecs.TICKS_PER_SECOND;
     
     public GreenEnemy(List<Position> nodesPosition) {
-        System.out.println("Green Enemy spawned");
         super.create(nodesPosition, this.health, this.money, this.damage, this.speed);
     }
 
