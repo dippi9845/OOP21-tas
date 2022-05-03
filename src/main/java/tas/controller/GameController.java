@@ -2,8 +2,6 @@ package main.java.tas.controller;
 
 import java.util.Arrays;
 
-import main.java.tas.model.EnemiesLogic;
-import main.java.tas.model.EnemiesLogicImpl;
 import main.java.tas.model.GameModel;
 import main.java.tas.model.GameModelImpl;
 import main.java.tas.model.TimeCurve;

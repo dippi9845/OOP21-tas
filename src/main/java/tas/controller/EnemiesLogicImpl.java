@@ -1,8 +1,10 @@
-package main.java.tas.model;
+package main.java.tas.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import main.java.tas.model.WaveFactory;
+import main.java.tas.model.WaveFactoryImpl;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
