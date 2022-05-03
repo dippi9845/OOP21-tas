@@ -3,7 +3,7 @@ import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
 public abstract class AbstractBasicTower implements Tower{
-	private final int damage;
+	private int damage;
 	private final Position pos;
 	private final int radius;
 	private final int delay;
@@ -22,6 +22,10 @@ public abstract class AbstractBasicTower implements Tower{
 	abstract protected void setTarget(final Enemy e);
 
 	abstract public void compute();
+
+	protected void increaseDamage(final int amount) {
+		this.damage += damage;
+	}
 
 	@Override
 	public int getDelay() {
