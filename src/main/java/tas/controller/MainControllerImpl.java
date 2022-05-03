@@ -7,7 +7,7 @@ import main.java.tas.utils.GameSpecs;
 
 public class MainControllerImpl implements MainController {
     
-    private Controller sceneController;
+    private SceneController sceneController;
     private final MainView mainView;
     private GameScene scene;
 	
@@ -19,21 +19,21 @@ public class MainControllerImpl implements MainController {
 	}
     
     @Override
-    public Controller createMenu(final MainView view) {
+    public SceneController createMenu(final MainView view) {
         // TODO
         return null;
     }
     
     @Override
-    public Controller createGame(final MainView view) {
+    public SceneController createGame(final MainView view) {
         this.scene = new GameSceneImpl(view.getPanel());
-        Controller controller = new GameController(this.scene);
+        SceneController controller = new GameController(this.scene);
         this.scene.setObserver(controller);
         return controller;
     }
     
     @Override
-    public Controller getController() {
+    public SceneController getController() {
         return this.sceneController;
     }
     

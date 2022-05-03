@@ -1,6 +1,6 @@
 package main.java.tas.controller;
 
-public interface Controller {
+public interface SceneController {
 
     void nextTick();
     
