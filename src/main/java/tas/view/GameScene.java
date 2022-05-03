@@ -1,10 +1,10 @@
 package main.java.tas.view;
 
-import main.java.tas.controller.Controller;
+import main.java.tas.controller.SceneController;
 
 public interface GameScene {
 
-    void setObserver(Controller controller);
+    void setObserver(SceneController controller);
     GameView getGameView();
      
 }

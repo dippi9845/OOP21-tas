@@ -10,7 +10,7 @@ import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 import main.java.tas.view.GameScene;
 
-public class GameController implements Controller {
+public class GameController implements SceneController {
     
     private final GameScene gameScene;
     private final EnemiesLogic enemiesHandler;

@@ -5,8 +5,8 @@ import main.java.tas.view.MainView;
 public interface MainController {
 
     void mainLoop();
-    Controller createMenu(final MainView view);
-    Controller createGame(final MainView view);
-    Controller getController();
+    SceneController createMenu(final MainView view);
+    SceneController createGame(final MainView view);
+    SceneController getController();
 
 }

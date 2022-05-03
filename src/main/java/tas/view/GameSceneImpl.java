@@ -3,7 +3,7 @@ package main.java.tas.view;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
-import main.java.tas.controller.Controller;
+import main.java.tas.controller.SceneController;
 
 public class GameSceneImpl implements GameScene {
 	
@@ -23,7 +23,7 @@ public class GameSceneImpl implements GameScene {
         
 	}
 
-    public void setObserver(Controller controller) {
+    public void setObserver(SceneController controller) {
         // TODO Auto-generated method stub
         
     }
