@@ -18,6 +18,7 @@ public class WaveFactoryImpl implements WaveFactory {
         List<Enemy> enemiesList = new ArrayList<Enemy>();
         
         enemiesList.addAll(getRedEnemyByWave(wave));
+        enemiesList.addAll(getGreenEnemyByWave(wave));
         enemiesList.addAll(getPinkEnemyByWave(wave));
         
         return enemiesList;
@@ -36,6 +37,24 @@ public class WaveFactoryImpl implements WaveFactory {
         
         for (int i=0; i < enemiesForWave; i++) {
             eList.add(this.enemyFactory.spawnRedEnemy());
+        }
+        
+        return eList;
+    }
+    
+    private List<Enemy> getGreenEnemyByWave(int wave) {
+        int enemiesForWave = 0;
+        List<Enemy> eList = new ArrayList<Enemy>();
+        
+        if (3 < wave && wave < 10) {
+            enemiesForWave = (int) (Math.round(Math.log((Math.pow((wave-2.9), 9))) / Math.log(50)) + 5.5);
+        }
+        if (wave >= 10) {
+            enemiesForWave = wave;
+        }
+        
+        for (int i=0; i < enemiesForWave; i++) {
+            eList.add(this.enemyFactory.spawnGreenEnemy());
         }
         
         return eList;

@@ -5,6 +5,7 @@ import main.java.tas.model.enemies.Enemy;
 public interface EnemyFactory {
     
     Enemy spawnRedEnemy();
+    Enemy spawnGreenEnemy();
     Enemy spawnPinkEnemy();
     
 }
