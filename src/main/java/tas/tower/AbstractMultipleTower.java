@@ -11,7 +11,7 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 	private final List<Enemy> enemyList = new LinkedList<>(); // TODO forse meglio un arraylist
 	private final int maxEnemy;
 	
-	protected AbstractMultipleTower(Position pos, int damage, int radius, int delay, final int cost, final int maxTarget) {
+	protected AbstractMultipleTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final int maxTarget) {
 		super(pos, damage, radius, delay, cost);
 		this.maxEnemy = maxTarget;
 	}

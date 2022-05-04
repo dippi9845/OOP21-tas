@@ -9,7 +9,7 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 	private final int attackRange;
 	private Position targetPos;
 	
-	protected AbstractAreaTower(Position pos, int damage, int radius, int delay, int cost, int maxTarget, final int attackRange) {
+	protected AbstractAreaTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final int maxTarget, final int attackRange) {
 		super(pos, damage, radius, delay, cost, maxTarget);
 		this.attackRange = attackRange;
 	}

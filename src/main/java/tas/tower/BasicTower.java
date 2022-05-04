@@ -6,7 +6,7 @@ import main.java.tas.utils.Position;
 public class BasicTower extends AbstractBasicTower {
 	private Enemy target = null; // TODO cambiare con gli opzionali
 	
-	protected BasicTower(Position pos, int damage, int radius, int delay, int cost) {
+	protected BasicTower(final Position pos, final int damage, final int radius, final int delay, final int cost) {
 		super(pos, damage, radius, delay, cost);
 	}
 

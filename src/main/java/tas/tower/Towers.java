@@ -23,11 +23,11 @@ public class Towers {
 		return ENEMYLIST.stream().filter(x->Towers.isTargetInRange(x, t)).findFirst();
 	}
 	
-	static public Optional<Enemy> findFistEnemyByPredicate(Predicate<Enemy> f) {
+	static public Optional<Enemy> findFistEnemyByPredicate(final Predicate<Enemy> f) {
 		return ENEMYLIST.stream().filter(f).findFirst();
 	}
 	
-	static public List<Enemy> findAll(Predicate<Enemy> f) {
+	static public List<Enemy> findAll(final Predicate<Enemy> f) {
 		return ENEMYLIST.stream().filter(f).collect(Collectors.toList());
 	}
 }
