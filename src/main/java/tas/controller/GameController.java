@@ -31,13 +31,20 @@ public class GameController implements SceneController {
         }
         
         Enemy enemy = this.enemiesHandler.spawnEnemy();
+        if (enemy == null) {
+            return;
+        }
         this.gameScene.getGameView().addEntityLabel(enemy);
         this.timer.actionPerformed();
     }
     
     private void killEnemy(Enemy enemy) {
         this.gameScene.getGameView().removeEntityLabel(enemy);
-        this.enemiesHandler.removeEnemy(enemy);
+        try {
+            this.enemiesHandler.removeEnemy(enemy);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
     }
     
     private void increaseWave() {
