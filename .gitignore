@@ -1,9 +1,6 @@
 # Compiled class file
 *.class
 
-# Gradle
-.gradle/
-
 # Log file
 *.log
 
@@ -20,3 +17,6 @@ hs_err_pid*
 
 # binary file
 bin/
+
+#JavaDoc
+doc/
