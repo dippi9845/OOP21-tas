@@ -15,15 +15,20 @@ public class EnemiesLogicImpl implements EnemiesLogic {
     private final WaveFactory waveFactory;
     private List<Enemy> enemyToBeSpawned = new ArrayList<Enemy>();
 
+    /**
+     * Constructor that create
+     * @param nodesPosition is a list with the nodes that the enemies will have to travel 
+     */
     public EnemiesLogicImpl(List<Position> nodesPosition) {
         this.waveFactory = new WaveFactoryImpl(nodesPosition);
         this.actualWave = 0;
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Enemy spawnEnemy() throws IllegalArgumentException {
+    public Enemy spawnEnemy() {
         if (this.enemyToBeSpawned.isEmpty()) {
-            throw new IllegalArgumentException("There are no enemies to be spawn");
+            return null;
         }
         
         Enemy enemy = this.enemyToBeSpawned.remove(0);
@@ -32,21 +37,28 @@ public class EnemiesLogicImpl implements EnemiesLogic {
         return enemy;
     }
 
+    /** {@inheritDoc} */
     @Override
-    public void removeEnemy(Enemy enemy) {
+    public void removeEnemy(Enemy enemy) throws NoSuchFieldException {
+        if (!this.aliveEnemiesList.contains(enemy)) {
+            throw new NoSuchFieldException("This enemy is not alive");
+        }
         this.aliveEnemiesList.remove(enemy);
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean isWaveClean() {
         return this.aliveEnemiesList.isEmpty() && this.enemyToBeSpawned.isEmpty();
     }
 
+    /** {@inheritDoc} */
     @Override
     public int getWave() {
         return this.actualWave;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void setNextWave() {
         this.actualWave++;
@@ -54,16 +66,19 @@ public class EnemiesLogicImpl implements EnemiesLogic {
         System.out.println("Wave increased to: " + this.actualWave);
     }
 
+    /** {@inheritDoc} */
     @Override
     public List<Enemy> getEnemies() {
         return aliveEnemiesList;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean areEnemiesOnBoard() {
         return !this.aliveEnemiesList.isEmpty();
     }
     
+    /** {@inheritDoc} */
     @Override
     public boolean areEnemiesInQueue() {
         return !this.enemyToBeSpawned.isEmpty();
