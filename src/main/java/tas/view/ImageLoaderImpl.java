@@ -18,7 +18,7 @@ import main.java.tas.model.Entity;
 
 public class ImageLoaderImpl implements ImageLoader {
     
-    private static final String RESOURCE_PATH = "src" + System.getProperty("file.separator") + "main" + System.getProperty("file.separator") + "resources" + System.getProperty("file.separator") + "images";
+    private static final String RESOURCE_PATH = "res" + System.getProperty("file.separator") + "images";
     HashMap<String, BufferedImage> images = new HashMap<String, BufferedImage>();
     
     public ImageLoaderImpl() {
