@@ -5,25 +5,33 @@ import main.java.tas.view.GameSceneImpl;
 import main.java.tas.view.MainView;
 import main.java.tas.utils.GameSpecs;
 
+/**
+ * Class that implements {@link MainController}
+ */
 public class MainControllerImpl implements MainController {
     
     private SceneController sceneController;
     private final MainView mainView;
     private GameScene scene;
 	
+    /**
+     * Constructor that creates the main controller of the game
+     */
     public MainControllerImpl() {
         this.mainView = new MainView();
-        this.sceneController = createGame(this.mainView);    // manca il model
+        this.sceneController = createGame(this.mainView);
         
         this.mainView.show();
 	}
     
+    /** {@inheritDoc} */
     @Override
     public SceneController createMenu(final MainView view) {
         // TODO
         return null;
     }
     
+    /** {@inheritDoc} */
     @Override
     public SceneController createGame(final MainView view) {
         this.scene = new GameSceneImpl(view.getPanel());
@@ -32,11 +40,13 @@ public class MainControllerImpl implements MainController {
         return controller;
     }
     
+    /** {@inheritDoc} */
     @Override
     public SceneController getController() {
         return this.sceneController;
     }
     
+    /** {@inheritDoc} */
     @Override
     public void mainLoop() {
         double next_game_tick = System.currentTimeMillis(); //TODO: qui in mezzo c'e' roba per l'FPS counter, sarebbe meglio rimuoverli
@@ -66,7 +76,7 @@ public class MainControllerImpl implements MainController {
     }
     
     /**
-    *
+    * The main method that starts the game
     * @param args not used
     */
    public static void main(final String[] args) {
