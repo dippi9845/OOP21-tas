@@ -8,6 +8,9 @@ import main.java.tas.model.WaveFactoryImpl;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
+/**
+ * Class that implements {@link EnemiesLogic}
+ */
 public class EnemiesLogicImpl implements EnemiesLogic {
     
     private final List<Enemy> aliveEnemiesList = new ArrayList<Enemy>();
