@@ -50,6 +50,8 @@ public class GameView implements ViewComponent {
     @Override
     public void removeEntityLabel(Entity entity) {
         this.gameBoard.remove(this.entityLables.get(entity));
+        this.gameBoard.revalidate();
+        this.gameBoard.repaint();
         this.entityLables.remove(entity);
     }
     

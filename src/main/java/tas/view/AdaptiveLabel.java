@@ -29,7 +29,7 @@ public class AdaptiveLabel extends JLabel {
     }
     
     public void setAdaptive() throws NullPointerException {
-        this.getParent().addComponentListener(new ComponentAdapter() {
+        this.addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent componentEvent) {
                 draw(actualPosition);
             }
