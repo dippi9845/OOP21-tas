@@ -35,12 +35,6 @@ public class InventoryView implements ViewComponent {
     }
 
     @Override
-    public void resize() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
     public void addEntityLabel(Entity entity) {
         // TODO Auto-generated method stub
         

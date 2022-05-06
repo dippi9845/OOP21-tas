@@ -19,7 +19,7 @@ import main.java.tas.model.Entity;
 public class ImageLoaderImpl implements ImageLoader {
     
     private static final String RESOURCE_PATH = "res" + System.getProperty("file.separator") + "images";
-    HashMap<String, BufferedImage> images = new HashMap<String, BufferedImage>();
+    private final HashMap<String, BufferedImage> images = new HashMap<String, BufferedImage>();
     
     public ImageLoaderImpl() {
         loadAllImages();

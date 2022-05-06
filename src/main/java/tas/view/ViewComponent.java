@@ -6,7 +6,6 @@ import main.java.tas.model.Entity;
 
 public interface ViewComponent {
     
-    void resize();
     void drawEntity(Entity entity);
     void addEntityLabel(Entity entity);
     void removeEntityLabel(Entity entity);
