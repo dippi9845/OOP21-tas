@@ -1,8 +1,5 @@
 package main.java.tas.view;
 
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-
 import javax.swing.JLabel;
 
 import main.java.tas.utils.Position;
@@ -26,14 +23,6 @@ public class AdaptiveLabel extends JLabel {
         int yPos = (int)((double)getParent().getHeight() / (double)GameSpecs.GAME_UNITS.height * (double)pos.getY() - getPreferredSize().getHeight() / 2);
 
         setBounds(xPos, yPos, (int)getPreferredSize().getWidth(), (int)getPreferredSize().getHeight());
-    }
-    
-    public void setAdaptive() throws NullPointerException {
-        this.addComponentListener(new ComponentAdapter() {
-            public void componentResized(ComponentEvent componentEvent) {
-                draw(actualPosition);
-            }
-        });
     }
 
 }
