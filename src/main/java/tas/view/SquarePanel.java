@@ -5,6 +5,7 @@ import java.awt.Dimension;
 
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -36,7 +37,11 @@ class SquarePanel extends JPanel {
     
     public void addEntity(Entity e) {
         AdaptiveLabel entityLabel = new AdaptiveLabel();
-        entityLabel.setIcon(new ImageIcon(imGetter.getImageByEntity(e, this.getPreferredSize())));
+        try {
+            entityLabel.setIcon(new ImageIcon(imGetter.getImageByEntity(e, this.getPreferredSize())));
+        } catch (FileNotFoundException e1) {
+            System.out.println(e1);
+        }
         entityLables.put(e, entityLabel);
         this.add(entityLabel);
     }
@@ -45,7 +50,11 @@ class SquarePanel extends JPanel {
         this.addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent componentEvent) {
                 for (Map.Entry<Entity, AdaptiveLabel> entityMap: entityLables.entrySet()) {
-                    entityMap.getValue().setIcon(new ImageIcon(imGetter.getImageByEntity(entityMap.getKey(), getPreferredSize())));
+                    try {
+                        entityMap.getValue().setIcon(new ImageIcon(imGetter.getImageByEntity(entityMap.getKey(), getPreferredSize())));
+                    } catch (FileNotFoundException e1) {
+                        System.out.println(e1);
+                    }
                 }
             }
         });

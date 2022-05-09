@@ -19,7 +19,7 @@ public class AbstractEnemy implements Enemy {
     
     public AbstractEnemy create(List<Position> nodesPosition, double health, int money, int damage, double speed) throws IllegalArgumentException  {
         if (nodesPosition.isEmpty()) {
-            throw new IllegalArgumentException("@nodesPosition can't be an empty array!");
+            throw new IllegalArgumentException("@param nodesPosition can't be an empty array!");
         }
         
         this.nodesPosition = nodesPosition;
