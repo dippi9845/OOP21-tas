@@ -27,7 +27,7 @@ public class GameController implements SceneController {
     public GameController(final GameScene scene) {
         this.gameScene = scene;
         
-        this.playerStats = new GameModelImpl();
+        this.playerStats = new GameModelImpl(100, 150);
         this.enemiesHandler = new EnemiesLogicImpl(Arrays.asList(new Position(500, 500), new Position(750, 750), new Position(0, 1000)));
         //TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
     }
