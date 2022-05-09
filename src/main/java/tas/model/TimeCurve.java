@@ -6,10 +6,10 @@ package main.java.tas.model;
 public interface TimeCurve {
     
     /**
-     * @param wave is the actual wave of the game
+     * @param x is horizontal coordinate of the function
      * @return True if the the difference between the last time the actionPerformed method
      * was called and the actual time is greater then a fixed amount
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException if @param x is less than 0
      */
     boolean isTimeForAction(int wave)  throws IllegalArgumentException;
     

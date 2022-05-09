@@ -9,6 +9,7 @@ import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 import main.java.tas.view.GameScene;
 
+
 /**
  * Class that implements {@link SceneController}
  */
@@ -17,7 +18,7 @@ public class GameController implements SceneController {
     private final GameScene gameScene;
     private final EnemiesLogic enemiesHandler;
     private final GameModel playerStats;
-    private final TimeCurve timer = new TimeCurveImpl();
+    private final TimeCurve timer = new TimeCurveImpl((x) -> (int)(10/(x+1.5) + 1));
     
     /**
      * Constructor that creates a game controller for the given game scene
