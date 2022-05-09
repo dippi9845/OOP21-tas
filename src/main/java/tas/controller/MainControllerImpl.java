@@ -3,6 +3,7 @@ package main.java.tas.controller;
 import main.java.tas.view.GameScene;
 import main.java.tas.view.GameSceneImpl;
 import main.java.tas.view.MainView;
+import main.java.tas.model.GameModelImpl;
 import main.java.tas.utils.GameSpecs;
 
 /**
@@ -35,7 +36,7 @@ public class MainControllerImpl implements MainController {
     @Override
     public SceneController createGame(final MainView view) {
         this.scene = new GameSceneImpl(view.getPanel());
-        SceneController controller = new GameController(this.scene);
+        SceneController controller = new GameController(this.scene, new GameModelImpl(100, 150));
         this.scene.setObserver(controller);
         return controller;
     }

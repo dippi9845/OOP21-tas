@@ -3,7 +3,6 @@ package main.java.tas.controller;
 import java.util.Arrays;
 
 import main.java.tas.model.GameModel;
-import main.java.tas.model.GameModelImpl;
 import main.java.tas.model.TimeCurve;
 import main.java.tas.model.TimeCurveImpl;
 import main.java.tas.model.enemies.Enemy;
@@ -24,10 +23,10 @@ public class GameController implements SceneController {
      * Constructor that creates a game controller for the given game scene
      * @param scene the graphic scene controller
      */
-    public GameController(final GameScene scene) {
+    public GameController(final GameScene scene, GameModel gameModel) {
         this.gameScene = scene;
         
-        this.playerStats = new GameModelImpl(100, 150);
+        this.playerStats = gameModel;
         this.enemiesHandler = new EnemiesLogicImpl(Arrays.asList(new Position(500, 500), new Position(750, 750), new Position(0, 1000)));
         //TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
     }
