@@ -5,9 +5,12 @@ import java.util.List;
 
 import main.java.tas.utils.Position;
 
+/**
+ * An abstract class that models an Enemy
+ */
 public class AbstractEnemy implements Enemy {
     
-    private final Dimension bodyDimension = new Dimension(100, 100);
+    private Dimension bodyDimension;
     private Position actualPosition;
     private double health;
     private int money;
@@ -17,15 +20,27 @@ public class AbstractEnemy implements Enemy {
     private int reachedNode;
     private List<Position> nodesPosition;
     
-    public AbstractEnemy create(List<Position> nodesPosition, double health, int money, int damage, double speed) throws IllegalArgumentException  {
+    /**
+     * Set up the enemy with the given parameters
+     * @param nodesPosition the nodes that the enemy will have to travel 
+     * @param health the health of the enemy
+     * @param money the money that the enemy can drop
+     * @param damage the damage that the enemy can deal
+     * @param speed the speed of the enemy (pixels/seconds)
+     * @param bodyDimension the dimension of the enemy
+     * @return the enemy
+     * @throws IllegalArgumentException if @param nodesPosition is empty
+     */
+    public AbstractEnemy create(List<Position> nodesPosition, double health, int money, int damage, double speed, Dimension bodyDimension) throws IllegalArgumentException  {
         if (nodesPosition.isEmpty()) {
-            throw new IllegalArgumentException("@nodesPosition can't be an empty array!");
+            throw new IllegalArgumentException("@param nodesPosition can't be an empty array!");
         }
         
         this.nodesPosition = nodesPosition;
         this.reachedNode = 0;
         this.actualPosition = new Position(this.nodesPosition.get(this.reachedNode).getX(), this.nodesPosition.get(this.reachedNode).getY());
         
+        this.bodyDimension = bodyDimension;
         this.health = health;
         this.money = money;
         this.damage = damage;
@@ -33,16 +48,19 @@ public class AbstractEnemy implements Enemy {
         return this;
     }
 
+    /** {@inheritDoc} */
     @Override
     public Position getPosition() {
         return this.actualPosition;
     }
 
+    /** {@inheritDoc} */
     @Override
     public Dimension getBodyDimension() {
         return this.bodyDimension;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void moveForward() {
         double distanceToBeTraveled = this.speed;
@@ -65,31 +83,37 @@ public class AbstractEnemy implements Enemy {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public void dealDamage(double damage) {
         this.health -= damage;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean isDead() {
         return this.health <= 0;
     }
 
+    /** {@inheritDoc} */
     @Override
     public double getHealth() {
         return this.health;
     }
 
+    /** {@inheritDoc} */
     @Override
     public int getMoney() {
         return this.money;
     }
 
+    /** {@inheritDoc} */
     @Override
     public int getDamage() {
         return this.damage;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean hasCompletedPath() {
         return this.reachedNode + 1 >= this.nodesPosition.size();

@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.stream.Stream;
+import java.io.FileNotFoundException;
 
 import javax.imageio.ImageIO;
 
@@ -19,7 +20,7 @@ import main.java.tas.model.Entity;
 public class ImageLoaderImpl implements ImageLoader {
     
     private static final String RESOURCE_PATH = "res" + System.getProperty("file.separator") + "images";
-    HashMap<String, BufferedImage> images = new HashMap<String, BufferedImage>();
+    private final HashMap<String, BufferedImage> imagesMap = new HashMap<String, BufferedImage>();
     
     public ImageLoaderImpl() {
         loadAllImages();
@@ -31,27 +32,31 @@ public class ImageLoaderImpl implements ImageLoader {
                 .filter(Files::isRegularFile)
                 .forEach(filePath -> loadImage(filePath.toFile()));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            System.out.println(e);
         } 
     }
     
     private void loadImage(File file) {
         try {
-            this.images.put(file.getName().replaceFirst("[.][^.]+$", ""), ImageIO.read(file));
+            this.imagesMap.put(file.getName().replaceFirst("[.][^.]+$", ""), ImageIO.read(file));
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
     }
 
     @Override
-    public BufferedImage getImageByEntity(Entity entity, Dimension CanvasDimension) {
+    public BufferedImage getImageByEntity(Entity entity, Dimension CanvasDimension) throws FileNotFoundException {
         if (CanvasDimension.width == 0 || CanvasDimension.height == 0) {
             CanvasDimension = GameSpecs.GAME_UNITS;
         }
+        
+        String entityName = Introspector.decapitalize(entity.getClass().getSimpleName());
+        if (!this.imagesMap.containsKey(entityName)) {
+            throw new FileNotFoundException("The given entity (" + entity + ") has no image in the 'res' folder");
+        }
+        
         Dimension newImageDimension = getNewImageDimension(CanvasDimension, entity.getBodyDimension());
-        return scale(images.get(Introspector.decapitalize(
-                entity.getClass().getSimpleName())),
+        return scale(this.imagesMap.get(entityName),
                 newImageDimension);
     }
     

@@ -19,7 +19,7 @@ public class EnemiesLogicImpl implements EnemiesLogic {
     private List<Enemy> enemyToBeSpawned = new ArrayList<Enemy>();
 
     /**
-     * Constructor that create
+     * Constructor that creates the logic of the enemy waves
      * @param nodesPosition is a list with the nodes that the enemies will have to travel 
      */
     public EnemiesLogicImpl(List<Position> nodesPosition) {

@@ -5,10 +5,8 @@ import java.util.List;
 import main.java.tas.model.enemies.Enemy;
 
 /**
- * An interface for an enemies handler 
- * 
+ * An interface for an enemies handler
  */
-
 public interface EnemiesLogic {
 
     /**
