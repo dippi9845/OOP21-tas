@@ -27,6 +27,10 @@ class SquarePanel extends JPanel {
     private final HashMap<Entity, AdaptiveLabel> entityLables = new HashMap<Entity, AdaptiveLabel>();
     private final ImageLoader imGetter = new ImageLoaderImpl();
 
+    public SquarePanel() {
+        super();
+        setAdaptive();
+    }
     @Override
     public Dimension getPreferredSize() {
         Container c = this.getParent();
@@ -46,7 +50,7 @@ class SquarePanel extends JPanel {
         this.add(entityLabel);
     }
 
-    public void setAdaptive() {
+    private void setAdaptive() {
         this.addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent componentEvent) {
                 for (Map.Entry<Entity, AdaptiveLabel> entityMap: entityLables.entrySet()) {

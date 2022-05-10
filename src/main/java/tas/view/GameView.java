@@ -15,7 +15,6 @@ public class GameView implements ViewComponent {
     public GameView() {
         this.rootCanvas.add(this.gameBoard);
         this.gameBoard.setLayout(null); //TODO: se metto null, funziona, ma e' una bad practice
-        this.gameBoard.setAdaptive();
         
         this.rootCanvas.setBackground(Color.BLACK);
         this.gameBoard.setBackground(Color.DARK_GRAY);
