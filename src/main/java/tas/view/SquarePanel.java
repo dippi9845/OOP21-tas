@@ -18,19 +18,24 @@ import javax.swing.JPanel;
 import main.java.tas.model.Entity;
 import main.java.tas.utils.Position;
 
+/**
+ * Class that implements a square version of the {@link JPanel}
+ */
 class SquarePanel extends JPanel {
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = 1L;
     private final HashMap<Entity, AdaptiveLabel> entityLables = new HashMap<Entity, AdaptiveLabel>();
     private final ImageLoader imGetter = new ImageLoaderImpl();
 
+    /**
+     * Set up the SquarePanel
+     */
     public SquarePanel() {
         super();
         setAdaptive();
     }
+    
+    /** {@inheritDoc} */
     @Override
     public Dimension getPreferredSize() {
         Container c = this.getParent();
@@ -39,6 +44,10 @@ class SquarePanel extends JPanel {
         return d;
     }
     
+    /**
+     * Creates a label for the given entity and generate its image
+     * @param e
+     */
     public void addEntity(Entity e) {
         AdaptiveLabel entityLabel = new AdaptiveLabel();
         try {
@@ -50,6 +59,9 @@ class SquarePanel extends JPanel {
         this.add(entityLabel);
     }
 
+    /**
+     * Method that set all the components of the panel to be resized with it
+     */
     private void setAdaptive() {
         this.addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent componentEvent) {
@@ -64,10 +76,21 @@ class SquarePanel extends JPanel {
         });
     }
 
+    /**
+     * Allows to redraw a given entity
+     * NOTE: The entity must be added first with {@link #addEntity} 
+     * @param e the entity that has to be redrawn
+     * @param newPos the position where the entity will be drawn
+     */
     public void redrawEntity(Entity e, Position newPos) {
         this.entityLables.get(e).setPosition(newPos);
     }
 
+    /**
+     * Method that removes the label of a given entity
+     * NOTE: The entity must be added first with {@link #addEntity} 
+     * @param e the entity that has to be removed
+     */
     public void removeEntity(Entity e) {
         this.remove(this.entityLables.get(e));
         this.revalidate();
@@ -75,11 +98,13 @@ class SquarePanel extends JPanel {
         this.entityLables.remove(e);
     }
     
+    // TODO: capire come gestire la cosa delle serializable
     private void writeObject(ObjectOutputStream stream)
             throws IOException {
         stream.defaultWriteObject();
     }
 
+    // TODO: capire come gestire la cosa delle serializable
     private void readObject(ObjectInputStream stream)
             throws IOException, ClassNotFoundException {
         stream.defaultReadObject();
