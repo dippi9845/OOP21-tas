@@ -1,4 +1,4 @@
-package main.java.tas.model;
+package main.java.tas.controller;
 
 import java.util.List;
 
