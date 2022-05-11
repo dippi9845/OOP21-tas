@@ -19,6 +19,10 @@ public class Towers {
 		return isInRange(e.getPosition(), t.getPos(), t.getRadius());
 	}
 	
+	static public Optional<Enemy> findFirstEnemyInRange(final Position t, final int radius) {
+		return findFistEnemyByPredicate(e->Towers.isInRange(e.getPosition(), t, radius));
+	}
+	
 	static public Optional<Enemy> findFirstEnemyInRange(final Tower t) {
 		return findFistEnemyByPredicate(x->Towers.isTargetInRange(x, t));
 	}
