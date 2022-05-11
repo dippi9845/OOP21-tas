@@ -12,7 +12,7 @@ import main.java.tas.model.Entity;
  */
 public class GameView implements ViewComponent {
     
-    private final JPanel rootCanvas = new JPanel(new GridBagLayout());  //TODO: forse e' meglio creare anche un japanel piu piccola su cui si baseranno tutte le figure minori e tenere questa come bordo (es i video su yt)
+    private final JPanel rootCanvas = new JPanel(new GridBagLayout());
     private final SquarePanel gameBoard = new SquarePanel();
     
     /**
@@ -20,7 +20,7 @@ public class GameView implements ViewComponent {
      */
     public GameView() {
         this.rootCanvas.add(this.gameBoard);
-        this.gameBoard.setLayout(null); //TODO: se metto null, funziona, ma e' una bad practice
+        this.gameBoard.setLayout(null);
         
         this.rootCanvas.setBackground(Color.BLACK);
         this.gameBoard.setBackground(Color.DARK_GRAY);
