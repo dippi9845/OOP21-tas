@@ -20,7 +20,7 @@ public class Towers {
 	}
 	
 	static public Optional<Enemy> findFirstEnemyInRange(final Tower t) {
-		return ENEMYLIST.stream().filter(x->Towers.isTargetInRange(x, t)).findFirst();
+		return findFistEnemyByPredicate(x->Towers.isTargetInRange(x, t));
 	}
 	
 	static public Optional<Enemy> findFistEnemyByPredicate(final Predicate<Enemy> f) {
