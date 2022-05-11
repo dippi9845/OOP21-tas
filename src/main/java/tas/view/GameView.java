@@ -49,6 +49,13 @@ public class GameView implements ViewComponent {
     public JPanel getPanel() {
         return this.rootCanvas;
     }
+    
+    /**
+     * @return the game panel of the view
+     */
+    public SquarePanel getGamePanel() {
+        return this.gameBoard;
+    }
 
     /** {@inheritDoc} */
     @Override

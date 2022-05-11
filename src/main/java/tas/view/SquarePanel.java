@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,31 +27,35 @@ import main.java.tas.utils.Position;
 /**
  * Class that implements a square version of the {@link JPanel}
  */
-class SquarePanel extends JPanel {
+public class SquarePanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private final HashMap<Entity, AdaptiveLabel> entityLables = new HashMap<Entity, AdaptiveLabel>();
     private final ImageLoader imGetter = new ImageLoaderImpl();
-    private List<Position> linePoints = new ArrayList<Position>();;
+    
+    private List<Position> linePoints = new ArrayList<Position>();
+    private Color lineColor;
+    private int lineThickness;
 
     /**
      * Set up the SquarePanel
      */
     public SquarePanel() {
         super();
-        setLines(Arrays.asList(new Position(500, 500), new Position(750, 750), new Position(0, 1000))); //TODO: fixxare
         setAdaptive();
     }
     
-    public SquarePanel(List<Position> linesPoints) {
+    public SquarePanel(List<Position> linesPoints, Color color, int thickness) {
         this();
-        setLines(linesPoints);
+        setLine(linesPoints, color, thickness);
     }
     
-    public void setLines(List<Position> linesPoints) throws IllegalArgumentException {
+    public void setLine(List<Position> linesPoints, Color color, int thickness) throws IllegalArgumentException {
         if (linesPoints.size() == 1) {
             throw new IllegalArgumentException("@param linesPoints must contains at least 2 elements or 0 to remove the line!");
         }
+        this.lineColor = color;
+        this.lineThickness = thickness;
         this.linePoints = linesPoints;
     }
     
@@ -65,8 +68,8 @@ class SquarePanel extends JPanel {
         double scaleFactorX = this.getWidth() / GameSpecs.GAME_UNITS.getWidth();
         double scaleFactorY = this.getHeight() / GameSpecs.GAME_UNITS.getHeight();
         Graphics2D g2 = (Graphics2D) g;
-        g2.setStroke(new BasicStroke((int) (Math.max(scaleFactorX, scaleFactorY) * 100)));
-        g2.setColor(new Color(255, 255, 255));
+        g2.setStroke(new BasicStroke((int) (Math.max(scaleFactorX, scaleFactorY) * this.lineThickness)));
+        g2.setColor(this.lineColor);
         for (int i=0; i < this.linePoints.size()-1; i++) {
             int x1 = (int) (this.linePoints.get(i).getX() * scaleFactorX);
             int y1 = (int) (this.linePoints.get(i).getY() * scaleFactorY);
