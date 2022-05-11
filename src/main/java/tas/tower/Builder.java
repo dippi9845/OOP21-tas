@@ -15,10 +15,10 @@ public class Builder {
 	}
 	
 	private Type attackType = Type.BASIC;
-	private Position pos;
-	private int damage;
+	private final Position pos;
+	private final int damage;
+	private final int radius;
 	private int delay;
-	private int radius;
 	private int cost;
 	private boolean upgradable = false;
 	
@@ -30,16 +30,12 @@ public class Builder {
 	private Optional<UnaryOperator<Integer>> upgradeDamage = Optional.empty();
 	private Optional<UnaryOperator<Integer>> upgradeCost = Optional.empty();
 	private Optional<Integer> startUpgradeCost = Optional.empty();
-	private Optional<Integer> maxLevel = Optional.empty();	
+	private Optional<Integer> maxLevel = Optional.empty();
 	
-	public Builder damage(final int damage) {
+	public Builder(final Position pos, final int damage, final int radius) {
+		this.pos = pos;
 		this.damage = damage;
-		return this;
-	}
-	
-	public Builder radius(final int radius) {
 		this.radius = radius;
-		return this;
 	}
 	
 	public Builder delay(final int delay) {
@@ -49,11 +45,6 @@ public class Builder {
 	
 	public Builder attackType(final Type type) {
 		this.attackType = type;
-		return this;
-	}
-	
-	public Builder position(final Position pos) {
-		this.pos = pos;
 		return this;
 	}
 	
