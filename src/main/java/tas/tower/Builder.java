@@ -14,28 +14,39 @@ enum Type {
 
 public class Builder {
 	
-	private Type attackType = Type.BASIC;
+	private Type attackType;
 	private final Position pos;
 	private final int damage;
 	private final int radius;
 	private int delay;
 	private int cost;
-	private boolean upgradable = false;
+	private boolean upgradable;
 	
-	private Optional<Integer> maximumTarget = Optional.empty();
+	private Optional<Integer> maximumTarget;
 	
-	private Optional<Integer> attackRange = Optional.empty();
-	private Optional<Supplier<Optional<Enemy>>> findFirst = Optional.empty();
+	private Optional<Integer> attackRange;
+	private Optional<Supplier<Optional<Enemy>>> findFirst;
 	
-	private Optional<UnaryOperator<Integer>> upgradeDamage = Optional.empty();
-	private Optional<UnaryOperator<Integer>> upgradeCost = Optional.empty();
-	private Optional<Integer> startUpgradeCost = Optional.empty();
-	private Optional<Integer> maxLevel = Optional.empty();
+	private Optional<UnaryOperator<Integer>> upgradeDamage;
+	private Optional<UnaryOperator<Integer>> upgradeCost;
+	private Optional<Integer> startUpgradeCost;
+	private Optional<Integer> maxLevel;
 	
 	public Builder(final Position pos, final int damage, final int radius) {
 		this.pos = pos;
 		this.damage = damage;
 		this.radius = radius;
+		
+		this.attackType = Type.BASIC;
+		this.upgradable = false;
+		
+		this.maximumTarget = Optional.empty();
+		this.attackRange = Optional.empty();
+		this.findFirst = Optional.empty();
+		this.upgradeDamage = Optional.empty();
+		this.upgradeCost = Optional.empty();
+		this.startUpgradeCost = Optional.empty();
+		this.maxLevel = Optional.empty();
 	}
 	
 	public Builder delay(final int delay) {
