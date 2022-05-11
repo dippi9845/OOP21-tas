@@ -23,18 +23,23 @@ public class EnemiesFactoryImplTest {
         final EnemyFactory enemiesFactory = new EnemyFactoryImpl(Arrays.asList(new Position(0, 0)));
         final List<Enemy> enemiesList = new ArrayList<Enemy>();
         final int enemiesNumber = 1000; // spawning x enemies of each type
+        int enemyTypeNumber;
         
         Method[] allMethods = enemiesFactory.getClass().getDeclaredMethods();
+        enemyTypeNumber = allMethods.length;
         for (Method method : allMethods) {
+            if (!method.getName().contains("spawn")) {
+                enemyTypeNumber--;
+                continue;
+            }
             if (Modifier.isPublic(method.getModifiers())) {
                 for (int i=0; i < enemiesNumber; i++) {
-                    System.out.println(method.invoke(enemiesFactory).getClass());
                     enemiesList.add((Enemy) method.invoke(enemiesFactory));
                 }
             }
         }
         
-        assertEquals(enemiesList.size(), enemiesNumber * allMethods.length);
+        assertEquals(enemiesList.size(), enemiesNumber * enemyTypeNumber);
     }
     
 }

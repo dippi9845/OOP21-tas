@@ -1,39 +1,68 @@
 package main.java.tas.utils;
 
+/**
+ * Class that models a position
+ */
 public class Position {
 
-    private double X;
-    private double Y;
+    private double x;
+    private double y;
     
-    public Position(double X, double Y) {
-        setPosition(X, Y);
+    /**
+     * Constructor that set up the position
+     * @param x the first coordinate
+     * @param y the second coordinate
+     */
+    public Position(double x, double y) {
+        setPosition(x, y);
     }
     
+    /**
+     * Allows to overwrite the old position
+     * @param pos the new position
+     */
     public void setPosition(Position pos) {
         setPosition(pos.getX(), pos.getY());
     }
     
-    public void setPosition(double X, double Y) {
-        this.X = X;
-        this.Y = Y;
+    /**
+     * Allows to overwrite the old position
+     * @param x the first coordinate
+     * @param y the second coordinate
+     */
+    public void setPosition(double x, double y) {
+        this.x = x;
+        this.y = y;
     }
     
+    /**
+     * @return the first coordinate
+     */
     public double getX() {
-        return this.X;
+        return this.x;
     }
     
+    /**
+     * @return the second coordinate
+     */
     public double getY() {
-        return this.Y;
+        return this.y;
     }
     
+    /**
+     * Calculate the distance between 2 coordinates
+     * @param pos1 the first position
+     * @param pos2 the second position
+     * @return the distance between the 2 coordinate
+     */
     public static double findDistance(Position pos1, Position pos2) {
         return Math.hypot(pos1.getX()-pos2.getX(), pos1.getY()-pos2.getY());
     }
     
-    
+    /** {@inheritDoc} */
     @Override
     public String toString() {
-        return new String(X + " - " + Y);
+        return new String(x + " - " + y);
     }
     
 }

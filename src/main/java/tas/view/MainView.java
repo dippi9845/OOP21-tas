@@ -6,6 +6,9 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * Class that implements a {@link View}
+ */
 public class MainView implements View {
     private static final String WINDOW_NAME = "Towers and Stuff";
     private static final Dimension SCREEN_SIZE = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
@@ -15,10 +18,14 @@ public class MainView implements View {
     private JFrame frame;
     private JPanel rootPanel;
 
+    /**
+     * Constructor that set up the main view
+     */
     public MainView() {
         createWindow();
 	}
     
+    /** {@inheritDoc} */
     @Override
     public void createWindow() {
         this.frame = new JFrame(WINDOW_NAME);
@@ -32,21 +39,29 @@ public class MainView implements View {
         this.frame.pack();
     }
     
-
+    /** {@inheritDoc} */
     @Override
     public JPanel getPanel() {
         return this.rootPanel;
     }
     
+    /**
+     * Gets a scaled dimension
+     * @param dimension that has to be scaled
+     * @param proportion the proportion that scales the dimension
+     * @return the scaled dimension
+     */
     private Dimension scaleDimension(Dimension dimension, double proportion) {
         return new Dimension((int)(dimension.getWidth() / proportion), (int)(dimension.getHeight() / proportion));
     }
     
+    /** {@inheritDoc} */
     @Override
     public void show() {
         this.frame.setVisible(true);
     }
 
+    /** {@inheritDoc} */
     @Override
     public void update() {
         this.frame.repaint();
