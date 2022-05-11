@@ -27,6 +27,10 @@ public class Towers {
 		return ENEMYLIST.stream().filter(f).findFirst();
 	}
 	
+	static public Optional<Enemy> findFistEnemyBiPredicate(final Predicate<Enemy> f, final Predicate<Enemy> g) {
+		return ENEMYLIST.stream().filter(f).filter(g).findFirst();
+	}
+	
 	static public List<Enemy> findAll(final Predicate<Enemy> f) {
 		return ENEMYLIST.stream().filter(f).collect(Collectors.toList());
 	}
