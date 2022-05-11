@@ -1,15 +1,52 @@
 package main.java.tas.tower;
 
+import main.java.tas.utils.Position;
+
 public interface TowerFactory {
-	Tower cannon();
+	default Tower basicCannon(final Position pos) {
+		return new Builder(pos, 50, 9)
+				   .delay(500)
+				   .build();
+	}
 	
-	Tower archerTower();
+	default Tower basicArcherTower(final Position pos) {
+		return new Builder(pos, 60, 14)
+				   .delay(500)
+				   .build();
+	}
 	
-	Tower flamethrower();
+	default Tower flameTrower(final Position pos) {
+		return new Builder(pos, 10, 6)
+				   .delay(100)
+				   .build();
+	}
 	
-	Tower gastower();
+	default Tower gasTower(final Position pos) {
+		return new Builder(pos, 7, 6)
+				   .delay(100)
+				   .attackType(Type.MULTIPLE)
+				   .maximumTarget(Integer.MAX_VALUE)
+				   .build();
+	}
 	
-	Tower mortar();
+	default Tower mortar(final Position pos) {
+		return new Builder(pos, 25, 16)
+				   .delay(5000)
+				   .attackType(Type.AREA)
+				   .attackRange(Integer.MAX_VALUE)
+				   .findFirst(()->{
+					   return Towers.findFistEnemyBiPredicate(e->Towers.isInRange(pos, e.getPosition(), 16),
+							   								  e->!Towers.isInRange(pos, e.getPosition(), 4));
+				   })
+				   .build();
+	}
 	
-	Tower tesla();
+	default Tower tesla(final Position pos) {
+		return new Builder(pos, 40, 10)
+				   .delay(1100)
+				   .attackType(Type.AREA)
+				   .attackRange(5)
+				   .findFirst(()->{return Towers.findFirstEnemyInRange(pos, 10);})
+				   .build();
+	}
 }
