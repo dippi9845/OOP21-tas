@@ -1,4 +1,4 @@
-package main.java.tas.tower;
+package main.java.tas.model.tower;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;

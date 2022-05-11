@@ -1,4 +1,4 @@
-package main.java.tas.tower;
+package main.java.tas.model.tower;
 
 import main.java.tas.utils.Position;
 
