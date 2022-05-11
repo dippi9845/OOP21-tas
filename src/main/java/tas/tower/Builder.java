@@ -6,13 +6,13 @@ import java.util.function.UnaryOperator;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
+enum Type {
+	BASIC,
+	MULTIPLE,
+	AREA
+}
+
 public class Builder {
-	
-	enum Type {
-		BASIC,
-		MULTIPLE,
-		AREA
-	}
 	
 	private Type attackType = Type.BASIC;
 	private final Position pos;
