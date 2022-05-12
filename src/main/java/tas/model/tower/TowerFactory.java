@@ -9,15 +9,71 @@ public interface TowerFactory {
 				   .build();
 	}
 	
+	default Tower biCannon(final Position pos) {
+		return new Builder(pos, 50, 9)
+				   .delay(500)
+				   .attackType(Type.MULTIPLE)
+				   .maximumTarget(2)
+				   .build();
+	}
+	
+	default Tower triCannon(final Position pos) {
+		return new Builder(pos, 50, 9)
+				   .delay(500)
+				   .attackType(Type.MULTIPLE)
+				   .maximumTarget(3)
+				   .build();
+	}
+	
 	default Tower basicArcherTower(final Position pos) {
 		return new Builder(pos, 60, 14)
 				   .delay(500)
 				   .build();
 	}
 	
+	default Tower biArcherTower(final Position pos) {
+		return new Builder(pos, 60, 14)
+				   .delay(500)
+				   .attackType(Type.MULTIPLE)
+				   .maximumTarget(2)
+				   .build();
+	}
+	
+	default Tower triArcherTower(final Position pos) {
+		return new Builder(pos, 60, 14)
+				   .delay(500)
+				   .attackType(Type.MULTIPLE)
+				   .maximumTarget(3)
+				   .build();
+	}
+	
 	default Tower flameTrower(final Position pos) {
 		return new Builder(pos, 10, 6)
 				   .delay(100)
+				   .build();
+	}
+	
+	default Tower biFlameTrower(final Position pos) {
+		return new Builder(pos, 10, 6)
+				   .delay(100)
+				   .attackType(Type.MULTIPLE)
+				   .maximumTarget(2)
+				   .build();
+	}
+	
+	default Tower triFlameTrower(final Position pos) {
+		return new Builder(pos, 10, 6)
+				   .delay(100)
+				   .attackType(Type.MULTIPLE)
+				   .maximumTarget(3)
+				   .build();
+	}
+	
+	default Tower quadFlameTrower(final Position pos) {
+		return new Builder(pos, 10, 6)
+				   .delay(100)
+				   .attackType(Type.MULTIPLE)
+				   .maximumTarget(4)
 				   .build();
 	}
 	

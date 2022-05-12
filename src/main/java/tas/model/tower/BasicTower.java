@@ -1,10 +1,12 @@
 package main.java.tas.model.tower;
 
+import java.util.Optional;
+
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
 public class BasicTower extends AbstractBasicTower {
-	private Enemy target = null; // TODO cambiare con gli opzionali
+	private Optional<Enemy> target = Optional.empty();
 	
 	protected BasicTower(final Position pos, final int damage, final int radius, final int delay, final int cost) {
 		super(pos, damage, radius, delay, cost);
@@ -12,17 +14,17 @@ public class BasicTower extends AbstractBasicTower {
 
 	@Override
 	protected void attack() {
-		this.target.dealDamage(this.getDamage());
+		this.target.ifPresent(x->x.dealDamage(getDamage()));
 	}
 
 	@Override
 	protected void setTarget(final Enemy e) {
-		this.target = e;
+		this.target = Optional.ofNullable(e);
 	}
 
 	@Override
 	public void compute() {
-		if (Towers.isTargetInRange(this.target, this)) {
+		if (this.target.isPresent() && Towers.isTargetInRange(this.target.get(), this)) {
 			this.attack();
 			// TODO sleep
 		}
