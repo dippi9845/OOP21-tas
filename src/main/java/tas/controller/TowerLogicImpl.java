@@ -17,10 +17,12 @@ public class TowerLogicImpl implements TowerLogic {
 	@Override
 	public void buildTower(final Tower t) {
 		this.builtTowers.add(new Thread(t));
+		this.builtTowers.get(this.builtTowers.size() - 1).run();
 	}
 	
 	// TODO abbelire
-	public void closeAll() throws InterruptedException {
+	@Override
+	public void closeAll() {
 		this.builtTowers.stream().forEach(x->{
 			try {
 				x.join();
