@@ -41,5 +41,16 @@ public class GameModelImpl implements GameModel {
     public int getPlayerMoney() {
         return this.playerMoney;
     }
+    
+    /** {@inheritDoc} */
+    public boolean spendMoney(final int amount) {
+    	if (this.playerMoney >= amount) {
+    		this.playerMoney -= amount;
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+    }
 
 }

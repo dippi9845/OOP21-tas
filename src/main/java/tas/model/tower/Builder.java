@@ -18,7 +18,8 @@ public class Builder {
 	private final Position pos;
 	private final int damage;
 	private final int radius;
-	private int delay;
+	private final int delay;
+	private final String imageName;
 	private int cost;
 	private boolean upgradable;
 	
@@ -32,10 +33,12 @@ public class Builder {
 	private Optional<Integer> startUpgradeCost;
 	private Optional<Integer> maxLevel;
 	
-	public Builder(final Position pos, final int damage, final int radius) {
+	public Builder(final Position pos, final int damage, final int radius, final int delay, final String imageName) {
 		this.pos = pos;
 		this.damage = damage;
 		this.radius = radius;
+		this.delay = delay;
+		this.imageName = imageName;
 		
 		this.attackType = Type.BASIC;
 		this.upgradable = false;
@@ -47,11 +50,6 @@ public class Builder {
 		this.upgradeCost = Optional.empty();
 		this.startUpgradeCost = Optional.empty();
 		this.maxLevel = Optional.empty();
-	}
-	
-	public Builder delay(final int delay) {
-		this.delay = delay;
-		return this;
 	}
 	
 	public Builder attackType(final Type type) {
@@ -107,21 +105,21 @@ public class Builder {
 					throw new IllegalStateException("attack range or maximum target or find first cannot be defined in a basic tower");
 				}
 				
-				t = new BasicTower(this.pos, this.damage, this.radius, this.delay, this.cost);
+				t = new BasicTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.imageName);
 				break;
 				
 		case MULTIPLE:
 				if (this.maximumTarget.isEmpty() || this.attackRange.isPresent()  || this.findFirst.isPresent()) {
 					throw new IllegalStateException("maximum target not defined or attack range or find first cannot be definde in a multiple tower");
 				}
-				t = new BasicMultipleTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.maximumTarget.get());
+				t = new BasicMultipleTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.imageName, this.maximumTarget.get());
 				break;
 				
 		case AREA:
 				if (this.maximumTarget.isEmpty() || this.attackRange.isEmpty() || this.findFirst.isEmpty()) {
 					throw new IllegalStateException("maximum target or attack range or findfisrt is not defined");
 				}
-				t = new AbstractAreaTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.maximumTarget.get(), this.attackRange.get()) {
+				t = new AbstractAreaTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.imageName, this.maximumTarget.get(), this.attackRange.get()) {
 
 					@Override
 					protected Optional<Enemy> firstTarget() {

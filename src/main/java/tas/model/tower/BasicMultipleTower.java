@@ -5,8 +5,8 @@ import main.java.tas.utils.Position;
 
 public class BasicMultipleTower extends AbstractMultipleTower {
 	
-	protected BasicMultipleTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final int maxTarget) {
-		super(pos, damage, radius, delay, cost, maxTarget);
+	protected BasicMultipleTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final String imageName, final int maxTarget) {
+		super(pos, damage, radius, delay, cost, imageName, maxTarget);
 	}
 	
 	@Override

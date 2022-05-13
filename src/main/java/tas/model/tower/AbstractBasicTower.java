@@ -8,13 +8,15 @@ public abstract class AbstractBasicTower implements Tower{
 	private final int radius;
 	private final int delay;
 	private final int cost;
+	private final String imageName;
 	
-	protected AbstractBasicTower(final Position pos, final int damage, final int radius, final int delay, final int cost) {
+	protected AbstractBasicTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final String imageName) {
 		this.damage = damage;
 		this.pos = pos;
 		this.radius = radius;
 		this.delay = delay;
 		this.cost = cost;
+		this.imageName = imageName;
 	}
 
 	abstract protected void attack();
@@ -50,5 +52,10 @@ public abstract class AbstractBasicTower implements Tower{
 	@Override
 	public int getRadius() {
 		return this.radius;
+	}
+
+	@Override
+	public String getTowerImageName() {
+		return this.imageName;
 	}
 }
