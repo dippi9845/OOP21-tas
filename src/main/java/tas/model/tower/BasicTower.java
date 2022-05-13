@@ -8,8 +8,8 @@ import main.java.tas.utils.Position;
 public class BasicTower extends AbstractBasicTower {
 	private Optional<Enemy> target = Optional.empty();
 	
-	protected BasicTower(final Position pos, final int damage, final int radius, final int delay, final int cost) {
-		super(pos, damage, radius, delay, cost);
+	protected BasicTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final String imageName) {
+		super(pos, damage, radius, delay, cost, imageName);
 	}
 
 	@Override

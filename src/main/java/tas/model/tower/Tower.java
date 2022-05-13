@@ -16,6 +16,11 @@ public interface Tower extends Entity {
 		return this.getPos();
 	}
 	
+	@Override
+	default String getImageName() {
+		return this.getTowerImageName();
+	}
+	
 	public void compute();
 	
 	public int getDamage();
@@ -25,6 +30,8 @@ public interface Tower extends Entity {
 	public int getCost();
 	
 	public int getDelay();
+	
+	public String getTowerImageName();
 
 	public Position getPos();
 }

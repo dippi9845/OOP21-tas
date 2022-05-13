@@ -63,6 +63,11 @@ public class UpgradableTowerImpl implements UpgradableTower{
 	}
 
 	@Override
+	public String getTowerImageName() {
+		return this.tower.getImageName();
+	}
+
+	@Override
 	public void upgradeDamage() {
 		if (this.levelUnderMax()) {
 			this.tower.increaseDamage(this.increasedamage.apply(this.getLevel()));
