@@ -34,7 +34,7 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 	abstract protected Optional<Enemy> firstTarget();
 
 	@Override
-	public void compute() {
+	public void compute() throws InterruptedException {
 		Optional<Enemy> target = this.firstTarget();
 		if (target.isPresent()) {
 			this.targetPos = target.get().getPosition();
@@ -42,7 +42,7 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 			this.attack();
 			this.clear();
 		}
-		// TODO sleep
+		Thread.sleep(this.getDelay());
 	}
 
 }

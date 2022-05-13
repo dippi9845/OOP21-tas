@@ -28,7 +28,7 @@ public class UpgradableTowerImpl implements UpgradableTower{
 	}
 
 	@Override
-	public void compute() {
+	public void compute() throws InterruptedException {
 		this.tower.compute();
 	}
 

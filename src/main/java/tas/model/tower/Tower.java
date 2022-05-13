@@ -18,10 +18,14 @@ public interface Tower extends Entity, Runnable {
 	
 	@Override
 	default void run() {
-		this.compute();
+		try {
+			this.compute();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public void compute();
+	public void compute() throws InterruptedException;
 	
 	public int getDamage();
 	

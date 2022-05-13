@@ -17,7 +17,7 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 	}
 	
 	@Override
-	public void compute() {
+	public void compute() throws InterruptedException {
 		if (!this.isFull()) {
 			Towers.findAll(this::isValidTarget)
 				  .stream()
@@ -30,7 +30,7 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 			.forEach(this::remove);
 		
 		this.attack();
-		// TODO sleep
+		Thread.sleep(this.getDelay());
 	}
 
 }
