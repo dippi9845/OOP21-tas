@@ -32,10 +32,11 @@ public class Builder {
 	private Optional<Integer> startUpgradeCost;
 	private Optional<Integer> maxLevel;
 	
-	public Builder(final Position pos, final int damage, final int radius) {
+	public Builder(final Position pos, final int damage, final int radius, final int delay) {
 		this.pos = pos;
 		this.damage = damage;
 		this.radius = radius;
+		this.delay = delay;
 		
 		this.attackType = Type.BASIC;
 		this.upgradable = false;
@@ -47,11 +48,6 @@ public class Builder {
 		this.upgradeCost = Optional.empty();
 		this.startUpgradeCost = Optional.empty();
 		this.maxLevel = Optional.empty();
-	}
-	
-	public Builder delay(final int delay) {
-		this.delay = delay;
-		return this;
 	}
 	
 	public Builder attackType(final Type type) {
