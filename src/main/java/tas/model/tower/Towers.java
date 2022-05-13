@@ -9,7 +9,7 @@ import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
 public class Towers {
-	static public final List<Enemy> ENEMYLIST = new LinkedList<Enemy>();
+	static public List<Enemy> ENEMYLIST;
 	
 	static public boolean isInRange(final Position x, final Position y, final int radius) {
 		return Position.findDistance(x, y) <= radius;

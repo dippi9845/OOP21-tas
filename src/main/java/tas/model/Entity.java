@@ -18,5 +18,7 @@ public interface Entity {
      * @return the dimension of the entity
      */
     Dimension getBodyDimension();
+    
+    String getImageName();
 
 }
