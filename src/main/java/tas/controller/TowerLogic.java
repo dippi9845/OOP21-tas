@@ -6,4 +6,6 @@ public interface TowerLogic {
 	
 	// add tower t to the list of current towers
 	void buildTower(final Tower t);
+	
+	public void closeAll();
 }

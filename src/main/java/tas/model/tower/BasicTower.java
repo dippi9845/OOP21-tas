@@ -23,10 +23,10 @@ public class BasicTower extends AbstractBasicTower {
 	}
 
 	@Override
-	public void compute() {
+	public void compute() throws InterruptedException {
 		if (this.target.isPresent() && Towers.isTargetInRange(this.target.get(), this)) {
 			this.attack();
-			// TODO sleep
+			Thread.sleep(this.getDelay());
 		}
 		else {
 			Towers.findFirstEnemyInRange(this).ifPresent(this::setTarget);
