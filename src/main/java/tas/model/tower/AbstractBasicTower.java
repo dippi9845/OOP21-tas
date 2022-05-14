@@ -23,7 +23,7 @@ public abstract class AbstractBasicTower implements Tower{
 	
 	abstract protected void setTarget(final Enemy e);
 
-	abstract public void compute();
+	abstract public void compute() throws InterruptedException;
 
 	protected void increaseDamage(final int amount) {
 		this.damage += damage;

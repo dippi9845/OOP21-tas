@@ -4,7 +4,7 @@ import main.java.tas.model.Entity;
 import main.java.tas.utils.Position;
 import java.awt.Dimension;
 
-public interface Tower extends Entity {
+public interface Tower extends Entity, Runnable {
 	
 	@Override
 	default Dimension getBodyDimension() {
@@ -17,11 +17,21 @@ public interface Tower extends Entity {
 	}
 	
 	@Override
+
 	default String getImageName() {
 		return this.getTowerImageName();
 	}
 	
-	public void compute();
+	default void run() {
+		try {
+			this.compute();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void compute() throws InterruptedException;
+
 	
 	public int getDamage();
 	

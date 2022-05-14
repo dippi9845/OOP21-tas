@@ -23,6 +23,7 @@ public class GameController implements SceneController {
     private final TimeCurve timer = new TimeCurveImpl((x) -> (int)(10/(x+1.5) + 1));
     private final Color pathColor = new Color(255, 255, 255);
     private final int pathThickness = 50;
+    private final TowerLogic towerLogic;
     
     /**
      * Constructor that creates a game controller for the given game scene
@@ -36,6 +37,9 @@ public class GameController implements SceneController {
         List<Position> pathNodes = Arrays.asList(new Position(500, 500), new Position(750, 750), new Position(0, 1000));
         this.enemiesHandler = new EnemiesLogicImpl(pathNodes);
         this.gameScene.getGameView().getGamePanel().setLine(pathNodes, pathColor, pathThickness);
+        
+        this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(), this.gameScene.getGameView().getGamePanel()::addEntity);
+        
         //TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
     }
     
