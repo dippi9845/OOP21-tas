@@ -38,7 +38,7 @@ public class GameController implements SceneController {
         this.enemiesHandler = new EnemiesLogicImpl(pathNodes);
         this.gameScene.getGameView().getGamePanel().setLine(pathNodes, pathColor, pathThickness);
         
-        this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(), this.gameScene.getGameView().getGamePanel()::addEntity);
+        this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(), this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
         
         //TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
     }
