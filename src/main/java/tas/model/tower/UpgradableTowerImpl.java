@@ -1,8 +1,6 @@
 package main.java.tas.model.tower;
 
 import java.util.function.UnaryOperator;
-
-import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
 public class UpgradableTowerImpl implements UpgradableTower{

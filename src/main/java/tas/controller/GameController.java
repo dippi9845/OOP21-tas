@@ -25,6 +25,8 @@ public class GameController implements SceneController {
     private final int pathThickness = 50;
     private final TowerLogic towerLogic;
     
+    // TODO Aggiungere metodo per aggiungere una torre (this.towerLogic.buildTower(final Tower t))
+    
     /**
      * Constructor that creates a game controller for the given game scene
      * @param scene the graphic scene controller
@@ -38,7 +40,7 @@ public class GameController implements SceneController {
         this.enemiesHandler = new EnemiesLogicImpl(pathNodes);
         this.gameScene.getGameView().getGamePanel().setLine(pathNodes, pathColor, pathThickness);
         
-        this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(), this.gameScene.getGameView().getGamePanel()::addEntity);
+        this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(), this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
         
         //TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
     }

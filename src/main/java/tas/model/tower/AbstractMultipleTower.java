@@ -1,9 +1,8 @@
 package main.java.tas.model.tower;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Stream;
-
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
@@ -20,8 +19,8 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 		return this.enemyList.contains(e);
 	}
 	
-	protected Stream<Enemy> getEnemyStream() {
-		return this.enemyList.stream();
+	protected List<Enemy> getEnemyList() {
+		return Collections.unmodifiableList(this.enemyList);
 	}
 	
 	protected int getMaxEnemy() {

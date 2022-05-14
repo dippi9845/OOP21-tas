@@ -2,13 +2,15 @@ package main.java.tas.model.tower;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.LinkedList;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
 public class Towers {
+	
+	private Towers() {}
+	
 	static public List<Enemy> ENEMYLIST;
 	
 	static public boolean isInRange(final Position x, final Position y, final int radius) {
