@@ -17,7 +17,6 @@ public interface Tower extends Entity, Runnable {
 	}
 	
 	@Override
-
 	default String getImageName() {
 		return this.getTowerImageName();
 	}
@@ -31,7 +30,6 @@ public interface Tower extends Entity, Runnable {
 	}
 	
 	public void compute() throws InterruptedException;
-
 	
 	public int getDamage();
 	

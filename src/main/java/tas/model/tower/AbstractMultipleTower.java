@@ -3,7 +3,6 @@ package main.java.tas.model.tower;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
-
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
