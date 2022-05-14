@@ -25,6 +25,8 @@ public class GameController implements SceneController {
     private final int pathThickness = 50;
     private final TowerLogic towerLogic;
     
+    // TODO Aggiungere metodo per aggiungere una torre (this.towerLogic.buildTower(final Tower t))
+    
     /**
      * Constructor that creates a game controller for the given game scene
      * @param scene the graphic scene controller
