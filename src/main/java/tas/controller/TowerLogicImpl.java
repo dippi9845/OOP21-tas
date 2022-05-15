@@ -21,11 +21,15 @@ public class TowerLogicImpl implements TowerLogic {
 	}
 	
 	@Override
-	public void buildTower(final Tower t) {
+	public boolean buildTower(final Tower t) {
 		if (this.spendMoney.test(t.getCost())) {
 			this.builtTowers.add(new Thread(t));
 			this.builtTowers.get(this.builtTowers.size() - 1).run();
-			this.addToPanel.accept(t);
+			this.addToPanel.accept(t);	
+			return true;
+		}
+		else {
+			return false;
 		}
 	}
 	

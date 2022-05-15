@@ -5,7 +5,7 @@ import main.java.tas.model.tower.Tower;
 public interface TowerLogic {
 	
 	// add tower t to the list of current towers
-	void buildTower(final Tower t);
+	public boolean buildTower(final Tower t);
 	
 	public void closeAll();
 }
