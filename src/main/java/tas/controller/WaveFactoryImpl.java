@@ -9,9 +9,10 @@ import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
 /**
- * Class that implements {@link WaveFactory}
+ * Class that implements {@link WaveLogic}
  */
-public class WaveFactoryImpl implements WaveFactory {
+public class WaveFactoryImpl implements WaveLogic {
+    
    private final EnemyFactory enemyFactory;
     
    /**

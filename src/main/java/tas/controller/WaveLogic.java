@@ -7,7 +7,7 @@ import main.java.tas.model.enemies.Enemy;
 /**
  * An interface for
  */
-public interface WaveFactory {
+public interface WaveLogic {
     
     /**
      * Generates a list with some enemies given the wave

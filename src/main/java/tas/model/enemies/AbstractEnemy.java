@@ -8,7 +8,7 @@ import main.java.tas.utils.Position;
 /**
  * An abstract class that models an Enemy
  */
-public class AbstractEnemy implements Enemy {
+public abstract class AbstractEnemy implements Enemy {
     
     private Dimension bodyDimension;
     private Position actualPosition;

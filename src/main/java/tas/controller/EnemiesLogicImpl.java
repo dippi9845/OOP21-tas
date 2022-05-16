@@ -13,7 +13,7 @@ public class EnemiesLogicImpl implements EnemiesLogic {
     
     private final List<Enemy> aliveEnemiesList = new ArrayList<Enemy>();
     private int actualWave;
-    private final WaveFactory waveFactory;
+    private final WaveLogic waveFactory;
     private List<Enemy> enemyToBeSpawned = new ArrayList<Enemy>();
 
     /**

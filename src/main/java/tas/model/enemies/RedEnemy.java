@@ -26,4 +26,9 @@ public class RedEnemy extends AbstractEnemy {
         super.create(nodesPosition, this.health, this.money, this.damage, this.speed, this.bodyDimension);
     }
 
+    @Override
+    public String getImageName() {
+        return "redEnemy";
+    }
+
 }

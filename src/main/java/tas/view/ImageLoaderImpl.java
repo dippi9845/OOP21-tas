@@ -2,7 +2,6 @@ package main.java.tas.view;
 
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
-import java.beans.Introspector;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
