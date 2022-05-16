@@ -8,7 +8,7 @@ import main.java.tas.utils.IntArgumentOperator;
 public class TimeCurveImpl implements TimeCurve {
     
     private double lastActionTime;
-    private final IntArgumentOperator function;
+    private IntArgumentOperator function;
 
     /**
      * Constructor that set up the timer
@@ -16,8 +16,14 @@ public class TimeCurveImpl implements TimeCurve {
      * returns the y one
      */
     public TimeCurveImpl(IntArgumentOperator func) {
-        this.function = func;
+        setFunction(func);
         this.lastActionTime = 0;
+    }
+    
+    /** {@inheritDoc} */
+    @Override
+    public void setFunction(IntArgumentOperator func) {
+        this.function = func;
     }
     
     /** {@inheritDoc} */
