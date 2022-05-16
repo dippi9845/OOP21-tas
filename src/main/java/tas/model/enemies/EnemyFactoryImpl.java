@@ -1,11 +1,7 @@
-package main.java.tas.model;
+package main.java.tas.model.enemies;
 
 import java.util.List;
 
-import main.java.tas.model.enemies.Enemy;
-import main.java.tas.model.enemies.GreenEnemy;
-import main.java.tas.model.enemies.PinkEnemy;
-import main.java.tas.model.enemies.RedEnemy;
 import main.java.tas.utils.Position;
 
 /**

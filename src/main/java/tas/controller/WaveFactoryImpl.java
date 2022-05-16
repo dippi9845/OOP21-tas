@@ -3,9 +3,9 @@ package main.java.tas.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.tas.model.EnemyFactory;
-import main.java.tas.model.EnemyFactoryImpl;
 import main.java.tas.model.enemies.Enemy;
+import main.java.tas.model.enemies.EnemyFactory;
+import main.java.tas.model.enemies.EnemyFactoryImpl;
 import main.java.tas.utils.Position;
 
 /**
