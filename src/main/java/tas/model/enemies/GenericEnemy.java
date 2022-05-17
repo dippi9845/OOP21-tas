@@ -3,22 +3,24 @@ package main.java.tas.model.enemies;
 import java.awt.Dimension;
 import java.util.List;
 
+import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.Position;
 
 /**
- * An abstract class that models an Enemy
+ * Class that models an Enemy
  */
-public abstract class AbstractEnemy implements Enemy {
+public class GenericEnemy implements Enemy {
     
-    private Dimension bodyDimension;
-    private Position actualPosition;
+    private final Dimension bodyDimension;
+    private final Position actualPosition;
     private double health;
-    private int money;
-    private int damage;
-    private double speed;
+    private final int money;
+    private final int damage;
+    private final double speed;
+    private final String imageName;
     
     private int reachedNode;
-    private List<Position> nodesPosition;
+    private final List<Position> nodesPosition;
     
     /**
      * Set up the enemy with the given parameters
@@ -28,10 +30,11 @@ public abstract class AbstractEnemy implements Enemy {
      * @param damage the damage that the enemy can deal
      * @param speed the speed of the enemy (pixels/seconds)
      * @param bodyDimension the dimension of the enemy
+     * @param imageName the name of the image of the enemy
      * @return the enemy
      * @throws IllegalArgumentException if @param nodesPosition is empty
      */
-    public AbstractEnemy create(List<Position> nodesPosition, double health, int money, int damage, double speed, Dimension bodyDimension) throws IllegalArgumentException  {
+    public GenericEnemy(List<Position> nodesPosition, double health, int money, int damage, double speed, Dimension bodyDimension, String imageName) throws IllegalArgumentException  {
         if (nodesPosition.isEmpty()) {
             throw new IllegalArgumentException("@param nodesPosition can't be an empty array!");
         }
@@ -44,8 +47,8 @@ public abstract class AbstractEnemy implements Enemy {
         this.health = health;
         this.money = money;
         this.damage = damage;
-        this.speed = speed;
-        return this;
+        this.speed = speed / GameSpecs.TICKS_PER_SECOND;
+        this.imageName = imageName;
     }
 
     /** {@inheritDoc} */
@@ -117,6 +120,11 @@ public abstract class AbstractEnemy implements Enemy {
     @Override
     public boolean hasCompletedPath() {
         return this.reachedNode + 1 >= this.nodesPosition.size();
+    }
+
+    @Override
+    public String getImageName() {
+        return this.imageName;
     }
 
 }
