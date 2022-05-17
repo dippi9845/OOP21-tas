@@ -27,9 +27,9 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 
     /** {@inheritDoc} */
     @Override
-    public Enemy spawnEnemy() {
+    public Enemy spawnEnemy()  throws IndexOutOfBoundsException {
         if (this.enemyToBeSpawned.isEmpty()) {
-            return null;
+            throw new IndexOutOfBoundsException("There are no enemies to be spawn");
         }
         
         Enemy enemy = this.enemyToBeSpawned.remove(0);

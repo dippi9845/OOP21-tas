@@ -54,9 +54,6 @@ public class GameController implements SceneController {
         }
         
         Enemy enemy = this.enemiesHandler.spawnEnemy();
-        if (enemy == null) {
-            return;
-        }
         this.gameScene.getGameView().addEntityLabel(enemy);
         this.timer.actionPerformed();
     }
