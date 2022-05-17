@@ -65,7 +65,7 @@ public abstract class AbstractEnemy implements Enemy {
     public void moveForward() {
         double distanceToBeTraveled = this.speed;
         while (distanceToBeTraveled > 0 && (this.nodesPosition.size() - 1 > this.reachedNode)) {
-            Position nextPos = this.nodesPosition.get(this.reachedNode+1);
+            Position nextPos = this.nodesPosition.get(this.reachedNode + 1);
             
             // checks if the distance to the next node is higher than the speed x tick to avoid overshooting the objective
             if (Position.findDistance(this.actualPosition, nextPos) > this.speed) {
