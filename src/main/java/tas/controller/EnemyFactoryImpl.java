@@ -4,23 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.java.tas.model.enemies.Enemy;
-import main.java.tas.model.enemies.EnemyFactory;
-import main.java.tas.model.enemies.EnemyFactoryImpl;
+import main.java.tas.model.enemies.EnemyBuilder;
+import main.java.tas.model.enemies.EnemyBuilderImpl;
 import main.java.tas.utils.Position;
 
 /**
- * Class that implements {@link WaveLogic}
+ * Class that implements {@link EnemyFactory}
  */
-public class WaveFactoryImpl implements WaveLogic {
+public class EnemyFactoryImpl implements EnemyFactory {
     
-   private final EnemyFactory enemyFactory;
+   private final EnemyBuilder enemyFactory;
     
    /**
     * Constructor that generates the wave factory
     * @param nodesPosition is a list with the nodes that the enemies will have to travel 
     */
-    public WaveFactoryImpl(List<Position> nodesPosition) {
-        this.enemyFactory = new EnemyFactoryImpl(nodesPosition);
+    public EnemyFactoryImpl(List<Position> nodesPosition) {
+        this.enemyFactory = new EnemyBuilderImpl(nodesPosition);
     }
 
     /** {@inheritDoc} */

@@ -12,15 +12,15 @@ import java.util.List;
 import org.junit.Test;
 
 import main.java.tas.model.enemies.Enemy;
-import main.java.tas.model.enemies.EnemyFactory;
-import main.java.tas.model.enemies.EnemyFactoryImpl;
+import main.java.tas.model.enemies.EnemyBuilder;
+import main.java.tas.model.enemies.EnemyBuilderImpl;
 import main.java.tas.utils.Position;
 
 public class EnemiesFactoryImplTest {
 
     @Test
     public void testSpawnMultipleEnemies() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-        final EnemyFactory enemiesFactory = new EnemyFactoryImpl(Arrays.asList(new Position(0, 0)));
+        final EnemyBuilder enemiesFactory = new EnemyBuilderImpl(Arrays.asList(new Position(0, 0)));
         final List<Enemy> enemiesList = new ArrayList<Enemy>();
         final int enemiesNumber = 1000; // spawning x enemies of each type
         int enemyTypeNumber;

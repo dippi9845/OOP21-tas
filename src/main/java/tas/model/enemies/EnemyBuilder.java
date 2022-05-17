@@ -4,7 +4,7 @@ package main.java.tas.model.enemies;
  * An interface for an enemy factory
  * 
  */
-public interface EnemyFactory {
+public interface EnemyBuilder {
     
     /**
      * @return a {@link RedEnemy}

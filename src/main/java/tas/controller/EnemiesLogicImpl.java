@@ -13,7 +13,7 @@ public class EnemiesLogicImpl implements EnemiesLogic {
     
     private final List<Enemy> aliveEnemiesList = new ArrayList<Enemy>();
     private int actualWave;
-    private final WaveLogic waveFactory;
+    private final EnemyFactory waveFactory;
     private List<Enemy> enemyToBeSpawned = new ArrayList<Enemy>();
 
     /**
@@ -21,7 +21,7 @@ public class EnemiesLogicImpl implements EnemiesLogic {
      * @param nodesPosition is a list with the nodes that the enemies will have to travel 
      */
     public EnemiesLogicImpl(List<Position> nodesPosition) {
-        this.waveFactory = new WaveFactoryImpl(nodesPosition);
+        this.waveFactory = new EnemyFactoryImpl(nodesPosition);
         this.actualWave = 0;
     }
 
