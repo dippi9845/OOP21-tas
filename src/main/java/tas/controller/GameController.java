@@ -2,6 +2,7 @@ package main.java.tas.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.awt.Color;
 
 import main.java.tas.model.GameModel;
@@ -52,9 +53,11 @@ public class GameController implements SceneController {
         if (!this.timer.isTimeForAction(this.enemiesHandler.getWave())) {
             return;
         }
-        
-        Enemy enemy = this.enemiesHandler.spawnEnemy();
-        this.gameScene.getGameView().addEntityLabel(enemy);
+
+        Optional<Enemy> enemy = this.enemiesHandler.spawnEnemy();
+        if (enemy.isPresent()) {
+            this.gameScene.getGameView().addEntityLabel(enemy.get());
+        }
         this.timer.actionPerformed();
     }
     

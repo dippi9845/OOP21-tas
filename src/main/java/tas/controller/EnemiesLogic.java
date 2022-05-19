@@ -1,6 +1,7 @@
 package main.java.tas.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import main.java.tas.model.enemies.Enemy;
 
@@ -12,9 +13,8 @@ public interface EnemiesLogic {
     /**
      * Moves an enemy from the queue list to the alive list
      * @return returns the enemy
-     * @throws IndexOutOfBoundsException if there are no enemies to be spawn
      */
-    Enemy spawnEnemy() throws IndexOutOfBoundsException;
+    Optional<Enemy> spawnEnemy() throws IndexOutOfBoundsException;
     
     /**
      * Removes the given enemy from the
