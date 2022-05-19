@@ -2,6 +2,7 @@ package main.java.tas.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
@@ -26,16 +27,18 @@ public class EnemiesLogicImpl implements EnemiesLogic {
     }
 
     /** {@inheritDoc} */
+    
+    //TODO: return optional
     @Override
-    public Enemy spawnEnemy()  throws IndexOutOfBoundsException {
+    public Optional<Enemy> spawnEnemy() {
         if (this.enemyToBeSpawned.isEmpty()) {
-            throw new IndexOutOfBoundsException("There are no enemies to be spawn");
+            return Optional.empty();
         }
         
         Enemy enemy = this.enemyToBeSpawned.remove(0);
         this.aliveEnemiesList.add(enemy);
 
-        return enemy;
+        return Optional.of(enemy);
     }
 
     /** {@inheritDoc} */
