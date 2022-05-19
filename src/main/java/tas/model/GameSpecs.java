@@ -1,4 +1,4 @@
-package main.java.tas.utils;
+package main.java.tas.model;
 
 import java.awt.Dimension;
 

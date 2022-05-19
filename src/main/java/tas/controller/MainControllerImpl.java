@@ -4,7 +4,7 @@ import main.java.tas.view.GameScene;
 import main.java.tas.view.GameSceneImpl;
 import main.java.tas.view.MainView;
 import main.java.tas.model.GameModelImpl;
-import main.java.tas.utils.GameSpecs;
+import main.java.tas.model.GameSpecs;
 
 /**
  * Class that implements {@link MainController}
