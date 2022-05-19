@@ -1,11 +1,8 @@
-package main.java.tas.controller;
+package main.java.tas.model.enemies;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.tas.model.enemies.Enemy;
-import main.java.tas.model.enemies.EnemyBuilder;
-import main.java.tas.model.enemies.EnemyBuilderImpl;
 import main.java.tas.utils.Position;
 
 /**

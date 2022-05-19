@@ -1,8 +1,6 @@
-package main.java.tas.controller;
+package main.java.tas.model.enemies;
 
 import java.util.List;
-
-import main.java.tas.model.enemies.Enemy;
 
 /**
  * An interface for
