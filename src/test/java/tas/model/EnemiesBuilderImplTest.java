@@ -16,7 +16,7 @@ import main.java.tas.model.enemies.EnemyBuilder;
 import main.java.tas.model.enemies.EnemyBuilderImpl;
 import main.java.tas.utils.Position;
 
-public class EnemiesFactoryImplTest {
+public class EnemiesBuilderImplTest {
 
     @Test
     public void testSpawnMultipleEnemies() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
