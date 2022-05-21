@@ -2,7 +2,6 @@ package main.java.tas.view;
 
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
-import java.beans.Introspector;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,8 +13,8 @@ import java.io.FileNotFoundException;
 
 import javax.imageio.ImageIO;
 
-import main.java.tas.utils.GameSpecs;
 import main.java.tas.model.Entity;
+import main.java.tas.model.GameSpecs;
 
 /**
  * Class that implements an {@link ImageLoader}

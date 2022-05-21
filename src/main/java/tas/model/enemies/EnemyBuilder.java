@@ -1,15 +1,10 @@
-package main.java.tas.model;
-
-import main.java.tas.model.enemies.Enemy;
-import main.java.tas.model.enemies.RedEnemy;
-import main.java.tas.model.enemies.GreenEnemy;
-import main.java.tas.model.enemies.PinkEnemy;
+package main.java.tas.model.enemies;
 
 /**
  * An interface for an enemy factory
  * 
  */
-public interface EnemyFactory {
+public interface EnemyBuilder {
     
     /**
      * @return a {@link RedEnemy}
