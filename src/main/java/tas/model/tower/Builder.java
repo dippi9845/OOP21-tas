@@ -57,6 +57,11 @@ public class Builder {
 		return this;
 	}
 	
+	public Builder setUpgradable(final boolean upgradable) {
+		this.upgradable = upgradable;
+		return this;
+	}
+
 	public Builder cost(final int cost) {
 		this.cost = cost;
 		return this;
@@ -67,7 +72,7 @@ public class Builder {
 		return this;
 	}
 	
-	public Builder attackRange(final int range) {
+	public Builder damageRange(final int range) {
 		this.attackRange = Optional.ofNullable(range);
 		return this;
 	}

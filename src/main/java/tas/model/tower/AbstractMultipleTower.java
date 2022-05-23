@@ -50,7 +50,4 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 	}
 
 	protected abstract boolean isValidTarget(final Enemy e);
-
-	@Override
-	abstract public void compute() throws InterruptedException;
 }

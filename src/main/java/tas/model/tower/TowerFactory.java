@@ -77,7 +77,7 @@ public interface TowerFactory {
 	default Tower mortar(final Position pos) {
 		return new Builder(pos, 25, 16, 5000, "mortar.png")
 				   .attackType(Type.AREA)
-				   .attackRange(Integer.MAX_VALUE)
+				   .damageRange(Integer.MAX_VALUE)
 				   .findFirst(()->{
 					   return Towers.findFistEnemyBiPredicate(e->Towers.isInRange(pos, e.getPosition(), 16),
 							   								  e->!Towers.isInRange(pos, e.getPosition(), 4));
@@ -88,7 +88,7 @@ public interface TowerFactory {
 	default Tower tesla(final Position pos) {
 		return new Builder(pos, 40, 10, 1100, "tesla.png")
 				   .attackType(Type.AREA)
-				   .attackRange(5)
+				   .damageRange(5)
 				   .findFirst(()->{return Towers.findFirstEnemyInRange(pos, 10);})
 				   .build();
 	}

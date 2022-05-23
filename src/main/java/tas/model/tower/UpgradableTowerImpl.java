@@ -37,22 +37,22 @@ public class UpgradableTowerImpl implements UpgradableTower{
 
 	@Override
 	public int getRadius() {
-		return this.getRadius();
+		return this.tower.getRadius();
 	}
 
 	@Override
 	public int getCost() {
-		return this.getCost();
+		return this.tower.getCost();
 	}
 
 	@Override
 	public int getDelay() {
-		return this.getDelay();
+		return this.tower.getDelay();
 	}
 
 	@Override
 	public Position getPos() {
-		return this.getPos();
+		return this.tower.getPos();
 	}
 
 	@Override
