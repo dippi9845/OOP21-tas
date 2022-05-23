@@ -1,13 +1,11 @@
-package main.java.tas.controller;
+package main.java.tas.model.enemies;
 
 import java.util.List;
-
-import main.java.tas.model.enemies.Enemy;
 
 /**
  * An interface for
  */
-public interface WaveFactory {
+public interface EnemyFactory {
     
     /**
      * Generates a list with some enemies given the wave

@@ -2,8 +2,11 @@ package main.java.tas.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import main.java.tas.model.enemies.Enemy;
+import main.java.tas.model.enemies.EnemyFactory;
+import main.java.tas.model.enemies.EnemyFactoryImpl;
 import main.java.tas.utils.Position;
 
 /**
@@ -13,7 +16,7 @@ public class EnemiesLogicImpl implements EnemiesLogic {
     
     private final List<Enemy> aliveEnemiesList = new ArrayList<Enemy>();
     private int actualWave;
-    private final WaveFactory waveFactory;
+    private final EnemyFactory waveFactory;
     private List<Enemy> enemyToBeSpawned = new ArrayList<Enemy>();
 
     /**
@@ -21,21 +24,23 @@ public class EnemiesLogicImpl implements EnemiesLogic {
      * @param nodesPosition is a list with the nodes that the enemies will have to travel 
      */
     public EnemiesLogicImpl(List<Position> nodesPosition) {
-        this.waveFactory = new WaveFactoryImpl(nodesPosition);
+        this.waveFactory = new EnemyFactoryImpl(nodesPosition);
         this.actualWave = 0;
     }
 
     /** {@inheritDoc} */
+    
+    //TODO: return optional
     @Override
-    public Enemy spawnEnemy() {
+    public Optional<Enemy> spawnEnemy() {
         if (this.enemyToBeSpawned.isEmpty()) {
-            return null;
+            return Optional.empty();
         }
         
         Enemy enemy = this.enemyToBeSpawned.remove(0);
         this.aliveEnemiesList.add(enemy);
 
-        return enemy;
+        return Optional.of(enemy);
     }
 
     /** {@inheritDoc} */
