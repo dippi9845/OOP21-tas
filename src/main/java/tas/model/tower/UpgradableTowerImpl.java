@@ -84,4 +84,13 @@ public class UpgradableTowerImpl implements UpgradableTower{
 		return this.costUpgrade() <= money && this.levelUnderMax();
 	}
 
+	@Override
+	public String toString() {
+		return "UpgradableTower [tower=" + tower + ", upgradecost=" + upgradecost + ", increasedamage="
+				+ increasedamage + ", increasecost=" + increasecost + ", level=" + level + ", maxLevel=" + maxLevel
+				+ ", getDamage()=" + getDamage() + ", getRadius()=" + getRadius() + ", getCost()=" + getCost()
+				+ ", getDelay()=" + getDelay() + ", getPos()=" + getPos() + ", costUpgrade()=" + costUpgrade()
+				+ ", getTowerImageName()=" + getTowerImageName() + ", getLevel()=" + getLevel() + "]";
+	}
+
 }
