@@ -4,7 +4,7 @@ import main.java.tas.utils.Position;
 
 public interface MortartFactory {
 	
-	default Tower basicMortar(final Position pos) {
+	static public Tower basicMortar(final Position pos) {
 		return new Builder(pos, 25, 16, 5000, "mortar")
 				   .attackType(Type.AREA)
 				   .damageRange(3)
@@ -19,7 +19,7 @@ public interface MortartFactory {
 				   .build();
 	}
 	
-	default Tower superMortar(final Position pos) {
+	static public Tower superMortar(final Position pos) {
 		return new Builder(pos, 10, 12, 8000, "supermortar")
 		   .attackType(Type.AREA)
 		   .damageRange(4)
@@ -34,7 +34,7 @@ public interface MortartFactory {
 		   .build();
 	}
 	
-	default Tower godMortar(final Position pos) {
+	static public Tower godMortar(final Position pos) {
 		return new Builder(pos, 10, 12, 8000, "godmortar")
 		   .attackType(Type.AREA)
 		   .damageRange(6)
