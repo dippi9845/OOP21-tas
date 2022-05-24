@@ -17,7 +17,7 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 		return this.targetPos;
 	}
 	
-	protected void settargetposition(final Position pos) {
+	protected void setTargetPosition(final Position pos) {
 		this.targetPos = pos;
 	}
 
