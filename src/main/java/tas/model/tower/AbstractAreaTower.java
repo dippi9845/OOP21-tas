@@ -44,4 +44,12 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 		Thread.sleep(this.getDelay());
 	}
 
+	@Override
+	public String toString() {
+		return "AbstractAreaTower [attackRange=" + attackRange + ", targetPos=" + targetPos + ", getEnemyList()="
+				+ getEnemyList() + ", getMaxEnemy()=" + getMaxEnemy() + ", isFull()=" + isFull() + ", getDelay()="
+				+ getDelay() + ", getCost()=" + getCost() + ", getDamage()=" + getDamage() + ", getPos()=" + getPos()
+				+ ", getRadius()=" + getRadius() + ", getTowerImageName()=" + getTowerImageName() + "]";
+	}
+
 }
