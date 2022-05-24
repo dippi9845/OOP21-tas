@@ -5,7 +5,7 @@ import main.java.tas.model.Entity;
 import main.java.tas.model.tower.Tower;
 
 public interface TowerLogic {
-	
+  
 	public boolean buildTower(final Tower t);
 	
 	public void closeAll();

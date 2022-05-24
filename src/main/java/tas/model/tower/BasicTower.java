@@ -5,6 +5,7 @@ import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
 public class BasicTower extends AbstractBasicTower {
+
 	private Optional<Enemy> target = Optional.empty();
 	
 	protected BasicTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final String imageName) {
@@ -31,6 +32,13 @@ public class BasicTower extends AbstractBasicTower {
 			Towers.findFirstEnemyInRange(this).ifPresent(this::setTarget);
 		}
 
+	}
+	
+	@Override
+	public String toString() {
+		return "BasicTower [target=" + target + ", getDelay()=" + getDelay() + ", getCost()=" + getCost()
+				+ ", getDamage()=" + getDamage() + ", getPos()=" + getPos() + ", getRadius()=" + getRadius()
+				+ ", getTowerImageName()=" + getTowerImageName() + "]";
 	}
 
 }

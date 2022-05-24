@@ -34,4 +34,12 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 		Thread.sleep(this.getDelay());
 	}
 
+	@Override
+	public String toString() {
+		return "BasicMultipleTower [getEnemyList()=" + getEnemyList() + ", getMaxEnemy()=" + getMaxEnemy()
+				+ ", isFull()=" + isFull() + ", getDelay()=" + getDelay() + ", getCost()=" + getCost()
+				+ ", getDamage()=" + getDamage() + ", getPos()=" + getPos() + ", getRadius()=" + getRadius()
+				+ ", getTowerImageName()=" + getTowerImageName() + "]";
+	}
+
 }
