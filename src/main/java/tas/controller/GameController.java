@@ -121,6 +121,8 @@ public class GameController implements SceneController {
         if (this.enemiesHandler.areEnemiesOnBoard()) {
             enemiesCheck();
         }
+        
+        this.towerLogic.drawTowers(this.gameScene.getGameView()::drawEntity);
     }
     
 }
