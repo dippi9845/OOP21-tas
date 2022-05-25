@@ -58,4 +58,10 @@ public class InventoryView implements ViewComponent {
         
     }
 
+    @Override
+    public void setTextLableText(String text, String id) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

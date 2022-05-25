@@ -37,6 +37,13 @@ public interface ViewComponent {
     void addTextLabel(String text, String id, String anchor);
 
     /**
+     * Changes the text of a textLabel
+     * @param text that will be shown
+     * @param id of the text label
+     */
+    void setTextLableText(String text, String id);
+    
+    /**
      * Removes the text label by the given id
      * @param id
      */
