@@ -59,9 +59,9 @@ public class InventoryView implements ViewComponent {
     }
 
     @Override
-    public void setTextLableText(String text, String id) {
+    public AdaptiveLabel getTextLabel(String id) {
         // TODO Auto-generated method stub
-        
+        return null;
     }
 
 }

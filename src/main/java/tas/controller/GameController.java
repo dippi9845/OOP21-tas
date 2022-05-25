@@ -86,7 +86,7 @@ public class GameController implements SceneController {
      */
     private void increaseWave() {
         this.enemiesHandler.setNextWave();
-        this.gameScene.getGameView().setTextLableText("⬤ " + this.enemiesHandler.getWave(), "wave");
+        this.gameScene.getGameView().getTextLabel("wave").setText("⬤ " + this.enemiesHandler.getWave());
     }
     
     /**
@@ -99,13 +99,13 @@ public class GameController implements SceneController {
             
             if (enemy.isDead()) {
                 this.playerStats.giveMoney2Player(enemy.getMoney());
-                this.gameScene.getGameView().setTextLableText("＄ " + this.playerStats.getPlayerMoney(), "money");
+                this.gameScene.getGameView().getTextLabel("money").setText("＄ " + this.playerStats.getPlayerMoney());
                 killEnemy(enemy);
                 continue;
             }
             if (enemy.hasCompletedPath()) {
                 this.playerStats.dealDamage2Player(enemy.getDamage());
-                this.gameScene.getGameView().setTextLableText("♥ " + this.playerStats.getHP(), "healt");
+                this.gameScene.getGameView().getTextLabel("healt").setText("♥ " + this.playerStats.getHP());
                 killEnemy(enemy);
                 continue;
             }
