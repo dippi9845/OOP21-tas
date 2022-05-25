@@ -46,4 +46,16 @@ public class InventoryView implements ViewComponent {
         
     }
 
+    @Override
+    public void addTextLabel(String text, String id, String anchor) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void removeTextLabel(String id) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

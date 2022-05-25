@@ -46,6 +46,18 @@ public class GameView implements ViewComponent {
     
     /** {@inheritDoc} */
     @Override
+    public void addTextLabel(String text, String id, String anchor) {
+        this.gameBoard.addTextLabel(text, id, anchor);
+    }
+    
+    /** {@inheritDoc} */
+    @Override
+    public void removeTextLabel(String id) {
+        this.gameBoard.removeTextLabel(id);
+    }
+    
+    /** {@inheritDoc} */
+    @Override
     public JPanel getPanel() {
         return this.rootCanvas;
     }
