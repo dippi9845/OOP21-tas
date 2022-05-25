@@ -103,6 +103,35 @@ public class Builder {
 	}
 	
 	public Tower build() throws IllegalStateException {
+		
+		if (this.damage <= 0) {
+			throw new IllegalArgumentException("damage can't be less equal to zero");
+		}
+		
+		if (this.radius <= 0) {
+			throw new IllegalArgumentException("radius can't be less equal to zero");
+		}
+		
+		if (this.delay <= 0) {
+			throw new IllegalArgumentException("delay can't be less equal to zero");
+		}
+		
+		if (this.maximumTarget.isPresent() && this.maximumTarget.get() <= 0) {
+			throw new IllegalArgumentException("maximumTarget can't be less equal to zero");
+		}
+		
+		if (this.attackRange.isPresent() && this.attackRange.get() <= 0) {
+			throw new IllegalArgumentException("attackRange can't be less equal to zero");
+		}
+		
+		if (this.startUpgradeCost.isPresent() && this.startUpgradeCost.get() <= 0) {
+			throw new IllegalArgumentException("startUpgradeCost can't be less equal to zero");
+		}
+		
+		if (this.maxLevel.isPresent() && this.maxLevel.get() <= 0) {
+			throw new IllegalArgumentException("maxLevel can't be less equal to zero");
+		}
+		
 		final AbstractBasicTower t;
 		switch (this.attackType) {
 		case BASIC:

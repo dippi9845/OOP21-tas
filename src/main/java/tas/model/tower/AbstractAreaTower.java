@@ -17,7 +17,7 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 		return this.targetPos;
 	}
 	
-	protected void settargetposition(final Position pos) {
+	protected void setTargetPosition(final Position pos) {
 		this.targetPos = pos;
 	}
 
@@ -42,6 +42,14 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 			this.clear();
 		}
 		Thread.sleep(this.getDelay());
+	}
+
+	@Override
+	public String toString() {
+		return "AbstractAreaTower [attackRange=" + attackRange + ", targetPos=" + targetPos + ", getEnemyList()="
+				+ getEnemyList() + ", getMaxEnemy()=" + getMaxEnemy() + ", isFull()=" + isFull() + ", getDelay()="
+				+ getDelay() + ", getCost()=" + getCost() + ", getDamage()=" + getDamage() + ", getPos()=" + getPos()
+				+ ", getRadius()=" + getRadius() + ", getTowerImageName()=" + getTowerImageName() + "]";
 	}
 
 }
