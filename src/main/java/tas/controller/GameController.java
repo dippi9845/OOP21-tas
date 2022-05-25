@@ -46,6 +46,10 @@ public class GameController implements SceneController {
         
         this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(), this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
         
+        this.gameScene.getGameView().addTextLabel("♥ " + this.playerStats.getHP(), "healt", "NW");
+        this.gameScene.getGameView().addTextLabel("⬤ " + this.enemiesHandler.getWave(), "wave", "NE");
+        this.gameScene.getGameView().addTextLabel("＄ " + this.playerStats.getPlayerMoney(), "money", "SE");
+        
         //TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
     }
     
@@ -82,6 +86,7 @@ public class GameController implements SceneController {
      */
     private void increaseWave() {
         this.enemiesHandler.setNextWave();
+        this.gameScene.getGameView().setTextLableText("⬤ " + this.enemiesHandler.getWave(), "wave");
     }
     
     /**
@@ -94,11 +99,13 @@ public class GameController implements SceneController {
             
             if (enemy.isDead()) {
                 this.playerStats.giveMoney2Player(enemy.getMoney());
+                this.gameScene.getGameView().setTextLableText("＄ " + this.playerStats.getPlayerMoney(), "money");
                 killEnemy(enemy);
                 continue;
             }
             if (enemy.hasCompletedPath()) {
                 this.playerStats.dealDamage2Player(enemy.getDamage());
+                this.gameScene.getGameView().setTextLableText("♥ " + this.playerStats.getHP(), "healt");
                 killEnemy(enemy);
                 continue;
             }

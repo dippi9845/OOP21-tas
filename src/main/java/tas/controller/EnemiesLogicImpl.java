@@ -69,7 +69,6 @@ public class EnemiesLogicImpl implements EnemiesLogic {
     public void setNextWave() {
         this.actualWave++;
         this.enemyToBeSpawned = this.waveFactory.createEnemiesToBeSpawn(actualWave);
-        System.out.println("Wave increased to: " + this.actualWave);
     }
 
     /** {@inheritDoc} */
