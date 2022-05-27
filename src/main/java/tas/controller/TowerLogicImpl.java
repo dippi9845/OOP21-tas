@@ -25,7 +25,7 @@ public class TowerLogicImpl implements TowerLogic {
 	public boolean buildTower(final Tower t) {
 		if (this.spendMoney.test(t.getCost())) {
 			final Thread th = new Thread(t);
-			th.run();
+			th.start();
 			this.towerThreads.add(th);
 			
 			this.builtTowers.add(t);
