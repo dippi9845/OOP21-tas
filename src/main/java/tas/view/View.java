@@ -26,5 +26,10 @@ public interface View {
      * @return the main {@link JPanel} of the window
      */
     JPanel getPanel();
+    
+    /**
+     * disposes of the window
+     */
+    void dispose();
 
 }

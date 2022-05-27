@@ -2,9 +2,16 @@ package main.java.tas.controller;
 
 import main.java.tas.view.GameScene;
 import main.java.tas.view.GameSceneImpl;
+import main.java.tas.view.LevelSelectSceneImpl;
+import main.java.tas.view.MainMenuSceneImpl;
 import main.java.tas.view.MainView;
+
+
+
 import main.java.tas.model.GameModelImpl;
 import main.java.tas.model.GameSpecs;
+import main.java.tas.model.MenuModel;
+import main.java.tas.model.MenuModelImpl;
 
 /**
  * Class that implements {@link MainController}
@@ -12,15 +19,17 @@ import main.java.tas.model.GameSpecs;
 public class MainControllerImpl implements MainController {
     
     private SceneController sceneController;
-    private final MainView mainView;
+    private MainView mainView;
     private GameScene scene;
-	
+	private MenuModel menuModel;
+	private int currentMenuMode = 1;
     /**
      * Constructor that creates the main controller of the game
      */
     public MainControllerImpl() {
+    	this.menuModel = new MenuModelImpl();
         this.mainView = new MainView();
-        this.sceneController = createGame(this.mainView);
+        this.sceneController = createMenu(this.mainView);
         
         this.mainView.show();
 	}
@@ -28,16 +37,26 @@ public class MainControllerImpl implements MainController {
     /** {@inheritDoc} */
     @Override
     public SceneController createMenu(final MainView view) {
-        // TODO
-        return null;
+    	this.scene = new MainMenuSceneImpl(view.getPanel());
+        SceneController controller = new MainMenuController(this.scene,this.menuModel);
+        this.scene.setObserver(controller);
+        return controller;
+    }
+    
+    public SceneController createLevelSelect(final MainView view) {
+    	this.scene = new LevelSelectSceneImpl(view.getPanel(), this.menuModel);
+        SceneController controller = new LevelSelectController(this.scene,this.menuModel);
+        this.scene.setObserver(controller);
+        return controller;
     }
     
     /** {@inheritDoc} */
     @Override
     public SceneController createGame(final MainView view) {
         this.scene = new GameSceneImpl(view.getPanel());
-        SceneController controller = new GameController(this.scene, new GameModelImpl(100, 150));
+        SceneController controller = new GameController(((GameSceneImpl)this.scene), new GameModelImpl(100, 150));
         this.scene.setObserver(controller);
+        
         return controller;
     }
     
@@ -73,6 +92,30 @@ public class MainControllerImpl implements MainController {
             }
 
             this.mainView.update();
+            
+            //I check if the currentMenuMode has changed and if it has I update it and open the new window
+            if (this.currentMenuMode != this.menuModel.getMainScene()) {
+            	this.currentMenuMode = this.menuModel.getMainScene();
+            	System.out.println("I have entered loop 1");
+            	if(this.currentMenuMode == 1) {
+            		this.mainView.dispose();
+            		this.mainView = new MainView();
+            		this.mainView.show();
+            		this.sceneController = createMenu(this.mainView);
+            	}
+            	if(this.currentMenuMode == 2) {
+            		this.mainView.dispose();
+            		this.mainView = new MainView();
+            		this.mainView.show();
+            		this.sceneController = createGame(this.mainView);
+            	}
+            	if(this.currentMenuMode == 3) {
+            		this.mainView.dispose();
+            		this.mainView = new MainView();
+            		this.mainView.show();
+            		this.sceneController = createLevelSelect(this.mainView);
+            	}
+            }
         }
     }
     

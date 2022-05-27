@@ -37,8 +37,6 @@ public class GameSceneImpl implements GameScene {
         
     }
 
-    /** {@inheritDoc} */
-    @Override
     public GameView getGameView() {
         return this.gameView;
     }

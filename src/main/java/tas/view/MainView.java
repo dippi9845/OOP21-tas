@@ -65,6 +65,18 @@ public class MainView implements View {
     @Override
     public void update() {
         this.frame.repaint();
+        this.frame.revalidate();
     }
+
+	@Override
+	public void dispose() {
+		this.frame.dispose();
+		
+	}
+	
+	public void removePanel(){
+		this.frame.getContentPane().removeAll();
+	}
+	
 
 }

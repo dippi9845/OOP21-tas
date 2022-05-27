@@ -13,9 +13,6 @@ public interface GameScene {
      */
     void setObserver(SceneController observer);
     
-    /**
-     * @return the game view
-     */
-    GameView getGameView();
+    
      
 }

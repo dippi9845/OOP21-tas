@@ -10,7 +10,7 @@ import main.java.tas.model.TimeCurve;
 import main.java.tas.model.TimeCurveImpl;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
-import main.java.tas.view.GameScene;
+import main.java.tas.view.GameSceneImpl;
 
 
 /**
@@ -18,7 +18,7 @@ import main.java.tas.view.GameScene;
  */
 public class GameController implements SceneController {
     
-    private final GameScene gameScene;
+    private final GameSceneImpl gameScene;
     private final EnemiesLogic enemiesHandler;
     private final GameModel playerStats;
     private final TimeCurve timer = new TimeCurveImpl((x) -> (int)(10/(x+1.5) + 1));
@@ -32,14 +32,14 @@ public class GameController implements SceneController {
      * Constructor that creates a game controller for the given game scene
      * @param scene the graphic scene controller
      */
-    public GameController(final GameScene scene, GameModel gameModel) {
+    public GameController(final GameSceneImpl scene, GameModel gameModel) {
         this.gameScene = scene;
         
         this.playerStats = gameModel;
         
         List<Position> pathNodes = Arrays.asList(new Position(500, 500), new Position(750, 750), new Position(0, 1000));
         this.enemiesHandler = new EnemiesLogicImpl(pathNodes);
-        this.gameScene.getGameView().getGamePanel().setLine(pathNodes, pathColor, pathThickness);
+        ((GameSceneImpl)this.gameScene).getGameView().getGamePanel().setLine(pathNodes, pathColor, pathThickness);
         
         this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(), this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
         
