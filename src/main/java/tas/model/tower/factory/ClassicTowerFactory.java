@@ -1,7 +1,6 @@
 package main.java.tas.model.tower.factory;
 
 import java.util.function.UnaryOperator;
-
 import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Builder;
 import main.java.tas.utils.Position;

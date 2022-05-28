@@ -2,7 +2,6 @@ package main.java.tas.model.tower;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
-
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
