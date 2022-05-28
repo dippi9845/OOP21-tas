@@ -69,7 +69,7 @@ class ClassicTowerFactory {
 	
 	public Builder nTargetStandard(final Position pos, final UnaryOperator<Integer> upCost, final UnaryOperator<Integer> upDamage, final int n) {
 		return this.upgradableStarndard(pos, upCost, upDamage)
-				   .attackType(Type.MULTIPLE)
+				   .attackType(AttackType.MULTIPLE)
 				   .maximumTarget(n);
 	}
 }

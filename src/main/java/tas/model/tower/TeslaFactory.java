@@ -6,7 +6,7 @@ public interface TeslaFactory {
 	
 	static public Tower basicTesla(final Position pos) {
 		return new Builder(pos, 100, 9, 1100, "godmortar")
-		   .attackType(Type.AREA)
+		   .attackType(AttackType.AREA)
 		   .damageRange(7)
 		   .setUpgradable(true)
 		   .upgradeCost(x->15)
@@ -20,7 +20,7 @@ public interface TeslaFactory {
 	
 	static public Tower superTesla(final Position pos) {
 		return new Builder(pos, 150, 9, 1100, "godmortar")
-		   .attackType(Type.AREA)
+		   .attackType(AttackType.AREA)
 		   .damageRange(7)
 		   .setUpgradable(true)
 		   .upgradeCost(x->x*x)
@@ -34,7 +34,7 @@ public interface TeslaFactory {
 	
 	static public Tower godTesla(final Position pos) {
 		return new Builder(pos, 200, 9, 1100, "godmortar")
-		   .attackType(Type.AREA)
+		   .attackType(AttackType.AREA)
 		   .damageRange(7)
 		   .setUpgradable(true)
 		   .upgradeCost(x->(int)Math.pow(x, x) + 20)

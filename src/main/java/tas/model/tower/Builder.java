@@ -6,7 +6,7 @@ import java.util.function.UnaryOperator;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
-enum Type {
+enum AttackType {
 	BASIC,
 	MULTIPLE,
 	AREA
@@ -14,7 +14,7 @@ enum Type {
 
 public class Builder {
 	
-	private Type attackType;
+	private AttackType attackType;
 	private final Position pos;
 	private final int damage;
 	private final int radius;
@@ -40,7 +40,7 @@ public class Builder {
 		this.delay = delay;
 		this.imageName = imageName;
 		
-		this.attackType = Type.BASIC;
+		this.attackType = AttackType.BASIC;
 		this.upgradable = false;
 		
 		this.maximumTarget = Optional.empty();
@@ -52,8 +52,8 @@ public class Builder {
 		this.maxLevel = Optional.empty();
 	}
 	
-	public Builder attackType(final Type type) {
-		this.attackType = type;
+	public Builder attackType(final AttackType attackType) {
+		this.attackType = attackType;
 		return this;
 	}
 	

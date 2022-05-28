@@ -6,7 +6,7 @@ public interface MortartFactory {
 	
 	static public Tower basicMortar(final Position pos) {
 		return new Builder(pos, 25, 16, 5000, "mortar")
-				   .attackType(Type.AREA)
+				   .attackType(AttackType.AREA)
 				   .damageRange(3)
 				   .setUpgradable(true)
 				   .upgradeCost(x->10)
@@ -21,7 +21,7 @@ public interface MortartFactory {
 	
 	static public Tower superMortar(final Position pos) {
 		return new Builder(pos, 10, 12, 8000, "supermortar")
-		   .attackType(Type.AREA)
+		   .attackType(AttackType.AREA)
 		   .damageRange(4)
 		   .setUpgradable(true)
 		   .upgradeCost(x->x*x)
@@ -36,7 +36,7 @@ public interface MortartFactory {
 	
 	static public Tower godMortar(final Position pos) {
 		return new Builder(pos, 10, 12, 8000, "godmortar")
-		   .attackType(Type.AREA)
+		   .attackType(AttackType.AREA)
 		   .damageRange(6)
 		   .setUpgradable(true)
 		   .upgradeCost(x->(int)Math.pow(x, x) + 15)
