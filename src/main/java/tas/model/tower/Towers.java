@@ -16,11 +16,37 @@ public class Towers {
 	
 	/**
 	 * List of all current alive enemies
-	 *
-	 * Initialized in {@link main.java.tas.controller.TowerLogicImpl#TowerLogicImpl(List, java.util.function.Consumer, Predicate)}
-	 * and never change it
 	 */
-	static public List<Enemy> ENEMYLIST;
+	static private Optional<List<Enemy>> ENEMYLIST = Optional.empty();
+
+	/**
+	 * Initialize ENEMYLIST only one time.
+	 * here is where is called the one time {@link main.java.tas.controller.TowerLogicImpl#TowerLogicImpl(List, java.util.function.Consumer, Predicate)}.
+	 * @param enemyList list of enemy
+	 * @throws IllegalStateException if the method is called when the list was already initialized
+	 */
+	static public void initEnemyList(final List<Enemy> enemyList) throws IllegalStateException{
+		if (ENEMYLIST.isEmpty()) {
+			ENEMYLIST = Optional.ofNullable(enemyList);
+		}
+		else {
+			throw new IllegalStateException("Enemy list was already initialized");
+		}
+	}
+
+	/**
+	 * returns ENEMYLIST if is initialized
+	 * @return list of enemies
+	 * @throws IllegalStateException if is not initialized
+	 */
+	static public List<Enemy> getEnemyList() throws IllegalStateException{
+		if (ENEMYLIST.isEmpty()) {
+			throw new IllegalStateException("Enemy list is not initialized, you have to initialize it by calling initEnemyList");
+		}
+		else {
+			return ENEMYLIST.get();
+		}
+	}
 	
 	/**
 	 * Check if the distance between two position is under the radius
@@ -63,12 +89,12 @@ public class Towers {
 	}
 	
 	/**
-	 * Find the first enemy in the list {@link Towers#ENEMYLIST}, that satisfies the predicate given
+	 * Find the first enemy in the list that satisfies the predicate given
 	 * @param f Predicate to be satisfied
 	 * @return Optional of enemy, that is empty if no enemy was found, otherwise the enemy found
 	 */
 	static public Optional<Enemy> findFistEnemyByPredicate(final Predicate<Enemy> f) {
-		return ENEMYLIST.stream().filter(f).findFirst();
+		return getEnemyList().stream().filter(f).findFirst();
 	}
 	
 	/**
@@ -78,7 +104,7 @@ public class Towers {
 	 * @return Optional of enemy, that is empty if no enemy was found, otherwise the enemy found
 	 */
 	static public Optional<Enemy> findFistEnemyBiPredicate(final Predicate<Enemy> f, final Predicate<Enemy> g) {
-		return ENEMYLIST.stream().filter(f).filter(g).findFirst();
+		return getEnemyList().stream().filter(f).filter(g).findFirst();
 	}
 	
 	/**
@@ -87,6 +113,6 @@ public class Towers {
 	 * @return List containing all the enemies that satisfies the predicate
 	 */
 	static public List<Enemy> findAll(final Predicate<Enemy> f) {
-		return ENEMYLIST.stream().filter(f).collect(Collectors.toList());
+		return getEnemyList().stream().filter(f).collect(Collectors.toList());
 	}
 }
