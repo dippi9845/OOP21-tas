@@ -27,10 +27,6 @@ public class GameController implements SceneController {
     private final int pathThickness = 50;
     private final TowerLogic towerLogic;
     
-    public boolean addTower(final Tower t) {
-    	return this.towerLogic.buildTower(t);
-    }
-    
     /**
      * Constructor that creates a game controller for the given game scene
      * @param scene the graphic scene controller
@@ -51,6 +47,15 @@ public class GameController implements SceneController {
         this.gameScene.getGameView().addTextLabel("＄ " + this.playerStats.getPlayerMoney(), "money", "SE");
         
         //TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
+    }
+    
+    /**
+     * Build the tower given
+     * @param t actual tower
+     * @return true if the tower was build
+     */
+    public boolean addTower(final Tower t) {
+    	return this.towerLogic.buildTower(t);
     }
     
     /**
