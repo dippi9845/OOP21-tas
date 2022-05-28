@@ -6,12 +6,18 @@ import java.util.function.UnaryOperator;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
+/** 
+ * This enumeration is used to specify the attack type of the tower that we want to build
+ */
 enum AttackType {
 	BASIC,
 	MULTIPLE,
 	AREA
 }
 
+/**
+ * A class specialized to Build Towers
+ */
 public class Builder {
 	
 	private AttackType attackType;
@@ -33,6 +39,14 @@ public class Builder {
 	private Optional<Integer> startUpgradeCost;
 	private Optional<Integer> maxLevel;
 	
+	/**
+	 * The constructor has the basic fields, that without one of them the tower can't be instanced
+	 * @param pos Position of the Tower
+	 * @param damage Damage of the Tower
+	 * @param radius Radius of the Tower
+	 * @param delay Delay of the Tower
+	 * @param imageName Name of the image of the tower
+	 */
 	public Builder(final Position pos, final int damage, final int radius, final int delay, final String imageName) {
 		this.pos = pos;
 		this.damage = damage;
@@ -52,56 +66,119 @@ public class Builder {
 		this.maxLevel = Optional.empty();
 	}
 	
+	/**
+	 * Set The attack type of the tower
+	 * @param attackType the attack type
+	 * @return this object
+	 */
 	public Builder attackType(final AttackType attackType) {
 		this.attackType = attackType;
 		return this;
 	}
 	
+	/**
+	 * Give the possibility to be upgradable
+	 * @param upgradable boolean, True if the tower must be upgradable, false otherwise
+	 * @return this object
+	 */
 	public Builder setUpgradable(final boolean upgradable) {
 		this.upgradable = upgradable;
 		return this;
 	}
 
+	/**
+	 * Set the cost of the Tower
+	 * @param cost integer that must be greater than 0
+	 * @return this object
+	 */
 	public Builder cost(final int cost) {
 		this.cost = cost;
 		return this;
 	}
-	
+
+	/**
+	 * Set the maximum number of enemies that the tower can target,
+	 * the attack type must be Multiple or Area
+	 * @param max integer that must be greater than 0
+	 * @return this object
+	 */
 	public Builder maximumTarget(final int max) {
 		this.maximumTarget = Optional.ofNullable(max);
 		return this;
 	}
 	
+	/**
+	 * Set the damageRange of area attack
+	 * the attack type must be area
+	 * @param range integer that must be greater than 0
+	 * @return this object
+	 */
 	public Builder damageRange(final int range) {
 		this.attackRange = Optional.ofNullable(range);
 		return this;
 	}
 	
+	/**
+	 * set the finstFirst function for the area tower
+	 * attack type must be area
+	 * @param findFirstEnemy supplier that provide the enemies
+	 * @return this object
+	 */
 	public Builder findFirst(final Supplier<Optional<Enemy>> findFirstEnemy) {
 		this.findFirst = Optional.ofNullable(findFirstEnemy);
 		return this;
 	}
 	
+	/**
+	 * set the function that provide an increase of damage by giving the level,
+	 * the tower must be upgradable
+	 * @param upgradeDamage UnaryOperator that associate an increase of damage to a level
+	 * @return this object
+	 */
 	public Builder upgradeDamage(final UnaryOperator<Integer> upgradeDamage) {
 		this.upgradeDamage = Optional.ofNullable(upgradeDamage);
 		return this;
 	}
 	
+	/**
+	 * set the function that provide an increase of cost by giving the level,
+	 * the tower must be upgradable
+	 * @param upgradeCost UnaryOperator that associate an increase of cost to a level
+	 * @return this object
+	 */
 	public Builder upgradeCost(final UnaryOperator<Integer> upgradeCost) {
 		this.upgradeCost = Optional.ofNullable(upgradeCost);
 		return this;
 	}
 	
+	/**
+	 * set the staring upgrade cost,
+	 * the tower must be upgradable
+	 * @param startUpgradeCost integer that must be grater than 0
+	 * @return this object
+	 */
 	public Builder startUpgradeCost(final int startUpgradeCost) {
 		this.startUpgradeCost = Optional.ofNullable(startUpgradeCost);
 		return this;
 	}
 	
+	/**
+	 * set the maximum level of upgrade,
+	 * the tower must be upgradable
+	 * @param maxLevel integer that must be grater than 0
+	 * @return this object
+	 */
 	public Builder maxLevel(final int maxLevel) {
 		this.maxLevel = Optional.ofNullable(maxLevel);
 		return this;
 	}
 	
+	/**
+	 * Build the tower requested, by the given parameters,
+	 * even performing a check of the parameters
+	 * @return the actual tower, by the given parameters
+	 * @throws IllegalStateException if there is a bad configuration of the parameters
+	 */
 	public Tower build() throws IllegalStateException {
 		
 		if (this.damage <= 0) {
