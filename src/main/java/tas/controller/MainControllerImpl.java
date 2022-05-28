@@ -113,6 +113,9 @@ public class MainControllerImpl implements MainController {
             		this.mainView.show();
             		this.sceneController = createLevelSelect(this.mainView);
             	}
+            	if(this.currentMenuMode == 4) {
+            		System.exit(0);
+            	}
             }
         }
     }
