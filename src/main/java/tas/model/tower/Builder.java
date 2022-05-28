@@ -16,7 +16,10 @@ enum AttackType {
 }
 
 /**
- * A class specialized to Build Towers
+ * A class specialized to Build ,
+ * to start, you have to call the constructor,
+ * next you have to call the method to set more parameters,
+ * in cascade notation
  */
 public class Builder {
 	
