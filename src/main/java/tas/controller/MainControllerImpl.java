@@ -30,7 +30,6 @@ public class MainControllerImpl implements MainController {
     	this.menuModel = new MenuModelImpl();
         this.mainView = new MainView();
         this.sceneController = createMenu(this.mainView);
-        
         this.mainView.show();
 	}
     
@@ -96,7 +95,6 @@ public class MainControllerImpl implements MainController {
             //I check if the currentMenuMode has changed and if it has I update it and open the new window
             if (this.currentMenuMode != this.menuModel.getMainScene()) {
             	this.currentMenuMode = this.menuModel.getMainScene();
-            	System.out.println("I have entered loop 1");
             	if(this.currentMenuMode == 1) {
             		this.mainView.dispose();
             		this.mainView = new MainView();
