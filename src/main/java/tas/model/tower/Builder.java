@@ -209,6 +209,10 @@ public class Builder {
 			throw new IllegalArgumentException("maxLevel can't be less equal to zero");
 		}
 		
+		if (this.imageName.isBlank()) {
+			throw new IllegalArgumentException("imageName is blanck");
+		}
+		
 		final AbstractBasicTower t;
 		switch (this.attackType) {
 		case BASIC:
