@@ -1,5 +1,6 @@
 package main.java.tas.model.tower;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -45,7 +46,7 @@ public class Towers {
 			throw new IllegalStateException("Enemy list is not initialized, you have to initialize it by calling initEnemyList");
 		}
 		else {
-			return ENEMYLIST.get();
+			return Collections.unmodifiableList(ENEMYLIST.get());
 		}
 	}
 	
