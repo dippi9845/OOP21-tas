@@ -55,23 +55,37 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 		return this.enemyList.size() == this.maxEnemy;
 	}
 	
+	/**
+	 * Removes an enemy to enemies targeted
+	 * @param e
+	 */
 	protected void remove(final Enemy e) {
 		this.enemyList.remove(e);
 	}
 
+	/**
+	 * Clear enemy list
+	 */
 	protected void clear() {
-		enemyList.clear();
+		this.enemyList.clear();
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected void attack() {
-		enemyList.forEach(x->x.dealDamage(this.getDamage()));
+		this.enemyList.forEach(x->x.dealDamage(this.getDamage()));
 	}
-
+	
+	/** {@inheritDoc} */
 	@Override
 	protected void setTarget(final Enemy e) {
 		this.enemyList.add(e);
 	}
 
+	/**
+	 * Check if an enemy is a valid target
+	 * @param e Enemy
+	 * @return True if the enemy e is valid as target
+	 */
 	protected abstract boolean isValidTarget(final Enemy e);
 }
