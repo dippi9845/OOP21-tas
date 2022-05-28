@@ -38,7 +38,7 @@ public class Towers {
 
 	/**
 	 * returns ENEMYLIST if is initialized
-	 * @return list of enemies
+	 * @return list of enemies, unmodifiable
 	 * @throws IllegalStateException if is not initialized
 	 */
 	static public List<Enemy> getEnemyList() throws IllegalStateException{
