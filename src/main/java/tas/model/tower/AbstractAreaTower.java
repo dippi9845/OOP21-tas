@@ -20,7 +20,7 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 	 * @param delay Tower delay
 	 * @param cost Tower cost
 	 * @param imageName  Tower image name
-	 * @param maxTarget Max number of target that this tower can handle at the time
+	 * @param maxTarget Max number of target that this tower can attack by area at the time
 	 * @param attackRange Range of attack given by the first target
 	 */
 	protected AbstractAreaTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final String imageName, final int maxTarget, final int attackRange) {
