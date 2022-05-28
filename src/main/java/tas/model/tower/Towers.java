@@ -8,7 +8,8 @@ import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
 /**
- * A collections of functions used by all towers to help them to achieve some tasks and avoid some repetitions
+ * A collections of functions used by all towers to help them to achieve some tasks,
+ * avoid some repetitions and abstract from other implementations
  */
 public class Towers {
 	
