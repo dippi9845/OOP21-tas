@@ -43,37 +43,37 @@ public interface Tower extends Entity, Runnable {
 	
 	/**
 	 * This method implements the behavior of the tower, at every wake up of the Thread
-	 * @throws InterruptedException
+	 * @throws InterruptedException, if some error occurs during Thread.sleep
 	 */
 	public void compute() throws InterruptedException;
 	
 	/**
-	 * @return Returns the damage of the tower
+	 * @return the damage of the tower
 	 */
 	public int getDamage();
 	
 	/**
-	 * @return Returns the radius of the tower
+	 * @return the radius of the tower
 	 */
 	public int getRadius();
 	
 	/**
-	 * @return Returns the cost of the tower
+	 * @return the cost of the tower
 	 */
 	public int getCost();
 	
 	/**
-	 * @return Returns the delay of the tower
+	 * @return the delay of the tower
 	 */
 	public int getDelay();
 	
 	/**
-	 * @return Returns the name of the image linked to the tower
+	 * @return the name of the image linked to the tower
 	 */
 	public String getTowerImageName();
 	
 	/**
-	 * @return Returns the position of the tower
+	 * @return the position of the tower
 	 */
 	public Position getPos();
 }
