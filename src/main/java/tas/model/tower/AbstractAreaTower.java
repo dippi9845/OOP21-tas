@@ -52,7 +52,10 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 		Towers.findAll(this::isValidTarget).forEach(this::setTarget);
 	}
 
-	/** */
+	/**
+	 * Abstract method, delegate to concrete class the decision to choose the first target
+	 * @return an optional of enemy that is empty if the first target was not found
+	 */
 	abstract protected Optional<Enemy> firstTarget();
 
 	/** {@inheritDoc} */
@@ -68,6 +71,7 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 		Thread.sleep(this.getDelay());
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public String toString() {
 		return "AbstractAreaTower [attackRange=" + attackRange + ", targetPos=" + targetPos + ", getEnemyList()="
