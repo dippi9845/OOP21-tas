@@ -5,9 +5,7 @@ import main.java.tas.view.GameSceneImpl;
 import main.java.tas.view.LevelSelectSceneImpl;
 import main.java.tas.view.MainMenuSceneImpl;
 import main.java.tas.view.MainView;
-
-
-
+import main.java.tas.view.SettingsSceneImpl;
 import main.java.tas.model.GameModelImpl;
 import main.java.tas.model.GameSpecs;
 import main.java.tas.model.MenuModel;
@@ -49,13 +47,19 @@ public class MainControllerImpl implements MainController {
         return controller;
     }
     
+    public SceneController createSettings(final MainView view) {
+    	this.scene = new SettingsSceneImpl(view.getPanel(), this.menuModel);
+        SceneController controller = new SettingsController(this.scene,this.menuModel);
+        this.scene.setObserver(controller);
+        return controller;
+    }
+    
     /** {@inheritDoc} */
     @Override
     public SceneController createGame(final MainView view) {
         this.scene = new GameSceneImpl(view.getPanel());
         SceneController controller = new GameController(((GameSceneImpl)this.scene), new GameModelImpl(100, 150));
         this.scene.setObserver(controller);
-        
         return controller;
     }
     
@@ -112,6 +116,12 @@ public class MainControllerImpl implements MainController {
             		this.mainView = new MainView();
             		this.mainView.show();
             		this.sceneController = createLevelSelect(this.mainView);
+            	}
+            	if(this.currentMenuMode == 5) {
+            		this.mainView.dispose();
+            		this.mainView = new MainView();
+            		this.mainView.show();
+            		this.sceneController = createSettings(this.mainView);
             	}
             	if(this.currentMenuMode == 4) {
             		System.exit(0);
