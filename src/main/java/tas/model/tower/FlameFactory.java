@@ -39,36 +39,30 @@ public interface FlameFactory {
 	}
 	
 	static private ClassicTowerFactory constructor(final String imageName) {
-		return new ClassicTowerFactory(FlameFactory.getDamage(),
-									   FlameFactory.getRange(),
-									   FlameFactory.getDelay(),
-									   FlameFactory.getBuildCost(),
-									   FlameFactory.getStartUpCost(),
-									   FlameFactory.getMaxLevel(),
-									   imageName);
+		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(), getMaxLevel(), imageName);
 	}
 	
 	static public Tower basicFlame(final Position pos) {
 		return constructor("flame")
-				   .upgradableStarndard(pos, FlameFactory.getIncreaseCost(), FlameFactory.getIncreaseDamage())
+				   .upgradableStarndard(pos, getIncreaseCost(), getIncreaseDamage())
 				   .build();
 	}
 	
 	static public Tower biFlame(final Position pos) {
 		return constructor("biflame")
-			   .nTargetStandard(pos, FlameFactory.getIncreaseCost(), FlameFactory.getIncreaseDamage(), 2)
+			   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 2)
 			   .build();
 	}
 	
 	static public Tower triFlame(final Position pos) {
 		return constructor("triflame")
-				   .nTargetStandard(pos, FlameFactory.getIncreaseCost(), FlameFactory.getIncreaseDamage(), 3)
+				   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 3)
 				   .build();
 	}
 	
 	static public Tower quadFlame(final Position pos) {
 		return constructor("quadflame")
-				   .nTargetStandard(pos, FlameFactory.getIncreaseCost(), FlameFactory.getIncreaseDamage(), 4)
+				   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 4)
 				   .build();
 	}
 }

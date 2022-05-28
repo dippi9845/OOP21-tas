@@ -37,18 +37,12 @@ interface GasFactory {
 	}
 	
 	static private ClassicTowerFactory constructor(final String imageName) {
-		return new ClassicTowerFactory(GasFactory.getDamage(),
-									   GasFactory.getRange(),
-									   GasFactory.getDelay(),
-									   GasFactory.getBuildCost(),
-									   GasFactory.getStartUpCost(),
-									   GasFactory.getMaxLevel(),
-									   imageName);
+		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(), getMaxLevel(), imageName);
 	}
 	
 	static public Tower gasTower(final Position pos) {
 		return constructor("gas")
-				   .nTargetStandard(pos, GasFactory.getIncreaseCost(), GasFactory.getIncreaseDamage(), Integer.MAX_VALUE)
+				   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), Integer.MAX_VALUE)
 				   .build();
 	}
 }

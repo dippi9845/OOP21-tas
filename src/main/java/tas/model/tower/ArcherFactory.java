@@ -30,13 +30,7 @@ public interface ArcherFactory {
 	}
 	
 	static private ClassicTowerFactory constructor(final String imageName) {
-		return new ClassicTowerFactory(ArcherFactory.getDamage(),
-									   ArcherFactory.getRange(),
-									   ArcherFactory.getDelay(),
-									   ArcherFactory.getBuildCost(),
-									   ArcherFactory.getStartUpCost(),
-									   ArcherFactory.getMaxLevel(),
-									   imageName);
+		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(), getMaxLevel(), imageName);
 	}
 
 	static private UnaryOperator<Integer> getIncreaseCost() {
@@ -49,25 +43,25 @@ public interface ArcherFactory {
 	
 	static public Tower basicArcher(final Position pos) {
 		return constructor("archer")
-			   .upgradableStarndard(pos, ArcherFactory.getIncreaseCost(), ArcherFactory.getIncreaseDamage())
+			   .upgradableStarndard(pos, getIncreaseCost(), getIncreaseDamage())
 			   .build();
 	}
 	
 	static public Tower biArcher(final Position pos) {
 		return constructor("biarcher")
-			   .nTargetStandard(pos, ArcherFactory.getIncreaseCost(), ArcherFactory.getIncreaseDamage(), 2)
+			   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 2)
 			   .build();
 	}
 	
 	static public Tower triArcher(final Position pos) {
 		return constructor("triarcher")
-			   .nTargetStandard(pos, ArcherFactory.getIncreaseCost(), ArcherFactory.getIncreaseDamage(), 3)
+			   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 3)
 			   .build();
 	}
 	
 	static public Tower quadArcher(final Position pos) {
 		return constructor("quadarcher")
-			   .nTargetStandard(pos, ArcherFactory.getIncreaseCost(), ArcherFactory.getIncreaseDamage(), 4)
+			   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 4)
 			   .build();
 	}
 }

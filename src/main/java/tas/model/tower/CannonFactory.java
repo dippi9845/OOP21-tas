@@ -30,13 +30,7 @@ public interface CannonFactory{
 	}
 	
 	static private ClassicTowerFactory constructor(final String imageName) {
-		return new ClassicTowerFactory(CannonFactory.getDamage(),
-									   CannonFactory.getRange(),
-									   CannonFactory.getDelay(),
-									   CannonFactory.getBuildCost(),
-									   CannonFactory.getStartUpCost(),
-									   CannonFactory.getMaxLevel(),
-									   imageName);
+		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(), getMaxLevel(), imageName);
 	}
 	
 	static private UnaryOperator<Integer> getIncreaseCost() {
@@ -49,25 +43,25 @@ public interface CannonFactory{
 	
 	static public Tower basicCannon(final Position pos) {
 		return constructor("cannon")
-				   .upgradableStarndard(pos, CannonFactory.getIncreaseCost(), CannonFactory.getIncreaseDamage())
+				   .upgradableStarndard(pos, getIncreaseCost(), getIncreaseDamage())
 				   .build();
 	}
 	
 	static public Tower biCannon(final Position pos) {
 		return constructor("bicannon")
-				   .nTargetStandard(pos, CannonFactory.getIncreaseCost(), CannonFactory.getIncreaseDamage(), 2)
+				   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 2)
 				   .build();
 	}
 	
 	static public Tower triCannon(final Position pos) {
 		return constructor("tricannon")
-				   .nTargetStandard(pos, CannonFactory.getIncreaseCost(), CannonFactory.getIncreaseDamage(), 3)
+				   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 3)
 				   .build();
 	}
 	
 	static public Tower quadCannon(final Position pos) {
 		return constructor("quadcannon")
-				   .nTargetStandard(pos, CannonFactory.getIncreaseCost(), CannonFactory.getIncreaseDamage(), 4)
+				   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 4)
 				   .build();
 	}
 	
