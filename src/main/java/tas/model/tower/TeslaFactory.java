@@ -5,7 +5,7 @@ import main.java.tas.utils.Position;
 public interface TeslaFactory {
 	
 	static public Tower basicTesla(final Position pos) {
-		return new Builder(pos, 100, 9, 1100, "godmortar")
+		return new Builder(pos, 100, 9, 1100, "tesla")
 		   .attackType(AttackType.AREA)
 		   .damageRange(7)
 		   .setUpgradable(true)
@@ -19,7 +19,7 @@ public interface TeslaFactory {
 	}
 	
 	static public Tower superTesla(final Position pos) {
-		return new Builder(pos, 150, 9, 1100, "godmortar")
+		return new Builder(pos, 150, 9, 1100, "superTesla")
 		   .attackType(AttackType.AREA)
 		   .damageRange(7)
 		   .setUpgradable(true)
@@ -33,7 +33,7 @@ public interface TeslaFactory {
 	}
 	
 	static public Tower godTesla(final Position pos) {
-		return new Builder(pos, 200, 9, 1100, "godmortar")
+		return new Builder(pos, 200, 9, 1100, "godtesla")
 		   .attackType(AttackType.AREA)
 		   .damageRange(7)
 		   .setUpgradable(true)
