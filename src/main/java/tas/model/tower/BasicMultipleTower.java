@@ -5,17 +5,29 @@ import main.java.tas.utils.Position;
 
 public class BasicMultipleTower extends AbstractMultipleTower {
 	
+	/**
+	 * Constructor, protected
+	 * @param pos Tower position
+	 * @param damage Tower damage
+	 * @param radius Tower radius, where it can attack enemies
+	 * @param delay Tower delay
+	 * @param cost Tower cost
+	 * @param imageName  Tower image name
+	 * @param maxTarget Max number of target that this tower can handle at the time
+	 */
 	protected BasicMultipleTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final String imageName, final int maxTarget) {
 		super(pos, damage, radius, delay, cost, imageName, maxTarget);
 	}
-	
+
+	/** {@inheritDoc} */
 	@Override
 	protected boolean isValidTarget(final Enemy e) {
 		return (!this.isFull()
 				&& !this.contains(e)
 				&& Towers.isTargetInRange(e, this));
 	}
-	
+
+	/** {@inheritDoc} */
 	@Override
 	public void compute() throws InterruptedException {
 		if (!this.isFull()) {
@@ -34,6 +46,7 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 		Thread.sleep(this.getDelay());
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public String toString() {
 		return "BasicMultipleTower [getEnemyList()=" + getEnemyList() + ", getMaxEnemy()=" + getMaxEnemy()
