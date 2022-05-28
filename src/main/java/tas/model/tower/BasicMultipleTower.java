@@ -3,6 +3,10 @@ package main.java.tas.model.tower;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
+/**
+ * This class is a basic implementation of AbstractMultipleTower
+ * this BasicMultipleTower model a tower that attack the first maxTarget in the range
+ */
 public class BasicMultipleTower extends AbstractMultipleTower {
 	
 	/**

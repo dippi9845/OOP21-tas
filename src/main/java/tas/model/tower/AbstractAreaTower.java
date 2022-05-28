@@ -4,6 +4,10 @@ import java.util.Optional;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
+/**
+ * An abstract tower that need only a method to be instanced {@link AbstractAreaTower#firstTarget()} 
+ * This class model a tower that one it found an enemy, all the other near will be attacked
+ */
 public abstract class AbstractAreaTower extends AbstractMultipleTower {
 	private final int attackRange;
 	private Position targetPos;

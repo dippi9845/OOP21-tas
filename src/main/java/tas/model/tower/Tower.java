@@ -4,6 +4,12 @@ import main.java.tas.model.Entity;
 import main.java.tas.utils.Position;
 import java.awt.Dimension;
 
+/**
+ * An Interface that model a generic Tower, that extends Entity and Runnable
+ * 
+ * Extends Entity: so can be drawable
+ * Extends Runnable: so every tower can run concurrently
+ */
 public interface Tower extends Entity, Runnable {
 	
 	/**

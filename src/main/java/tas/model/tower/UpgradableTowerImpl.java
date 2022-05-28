@@ -3,6 +3,10 @@ package main.java.tas.model.tower;
 import java.util.function.UnaryOperator;
 import main.java.tas.utils.Position;
 
+/**
+ * A class that implements the interface UpgradableTower {@link UpgradableTower}
+ * It takes an AbstracBasicTower and with delegation implements all the Tower interface methods
+ */
 public class UpgradableTowerImpl implements UpgradableTower{
 	
 	private final AbstractBasicTower tower;

@@ -1,5 +1,9 @@
 package main.java.tas.model.tower;
 
+/**
+ * An Interface that model a tower that can be upgraded the damage
+ *
+ */
 public interface UpgradableTower extends Tower {
 	
 	/**

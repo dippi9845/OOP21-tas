@@ -4,6 +4,10 @@ import java.util.Optional;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
+/**
+ * This concrete class model a Simple Tower with just one target
+ *
+ */
 public class BasicTower extends AbstractBasicTower {
 
 	private Optional<Enemy> target = Optional.empty();

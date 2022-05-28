@@ -3,6 +3,10 @@ package main.java.tas.model.tower;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
+/**
+ * This abstract class model a simple tower with some basic methods
+ *
+ */
 public abstract class AbstractBasicTower implements Tower{
 	private int damage;
 	private final Position pos;
