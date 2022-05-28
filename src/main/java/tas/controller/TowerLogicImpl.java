@@ -16,7 +16,7 @@ public class TowerLogicImpl implements TowerLogic {
 	private final Predicate<Integer> spendMoney;
 	
 	public TowerLogicImpl(final List<Enemy> enemyList, final Consumer<Entity> addToPanel, final Predicate<Integer> spendMoney) {
-		Towers.ENEMYLIST = enemyList;
+		Towers.initEnemyList(enemyList);
 		this.addToPanel = addToPanel;
 		this.spendMoney = spendMoney;
 	}
