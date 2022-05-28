@@ -82,7 +82,9 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 	/** {@inheritDoc} */
 	@Override
 	protected void setTarget(final Enemy e) {
-		this.enemyList.add(e);
+		if (!this.isFull() && !this.contains(e)) {
+			this.enemyList.add(e);
+		}
 	}
 
 	/**
