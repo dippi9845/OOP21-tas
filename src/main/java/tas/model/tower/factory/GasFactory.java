@@ -1,6 +1,8 @@
-package main.java.tas.model.tower;
+package main.java.tas.model.tower.factory;
 
 import java.util.function.UnaryOperator;
+
+import main.java.tas.model.tower.Tower;
 import main.java.tas.utils.Position;
 
 interface GasFactory {

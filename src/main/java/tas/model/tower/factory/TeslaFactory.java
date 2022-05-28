@@ -1,5 +1,9 @@
-package main.java.tas.model.tower;
+package main.java.tas.model.tower.factory;
 
+import main.java.tas.model.tower.AttackType;
+import main.java.tas.model.tower.Builder;
+import main.java.tas.model.tower.Tower;
+import main.java.tas.model.tower.Towers;
 import main.java.tas.utils.Position;
 
 public interface TeslaFactory {
