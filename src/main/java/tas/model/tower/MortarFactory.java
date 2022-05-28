@@ -2,7 +2,7 @@ package main.java.tas.model.tower;
 
 import main.java.tas.utils.Position;
 
-public interface MortartFactory {
+public interface MortarFactory {
 	
 	static public Tower basicMortar(final Position pos) {
 		return new Builder(pos, 25, 16, 5000, "mortar")
