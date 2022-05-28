@@ -8,30 +8,54 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 	private final int attackRange;
 	private Position targetPos;
 	
+	/**
+	 * Constructor, protected
+	 * @param pos Tower position
+	 * @param damage Tower damage
+	 * @param radius Tower radius, where it can attack enemies
+	 * @param delay Tower delay
+	 * @param cost Tower cost
+	 * @param imageName  Tower image name
+	 * @param maxTarget Max number of target that this tower can handle at the time
+	 * @param attackRange Range of attack given by the first target
+	 */
 	protected AbstractAreaTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final String imageName, final int maxTarget, final int attackRange) {
 		super(pos, damage, radius, delay, cost, imageName, maxTarget);
 		this.attackRange = attackRange;
 	}
 	
+	/**
+	 * @return position of the last target
+	 */
 	protected Position getTagetPosition() {
 		return this.targetPos;
 	}
-	
+
+	/**
+	 * Set the position of the targeted target
+	 * @param pos Position of the target to be set
+	 */
 	protected void setTargetPosition(final Position pos) {
 		this.targetPos = pos;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected boolean isValidTarget(final Enemy e) {
 		return Towers.isInRange(e.getPosition(), this.targetPos, this.attackRange);
 	}
-	
+
+	/**
+	 * Target all the enemies nearby the first target
+	 */
 	private void addNearbyTarget() {
 		Towers.findAll(this::isValidTarget).forEach(this::setTarget);
 	}
-	
+
+	/** */
 	abstract protected Optional<Enemy> firstTarget();
 
+	/** {@inheritDoc} */
 	@Override
 	public void compute() throws InterruptedException {
 		Optional<Enemy> target = this.firstTarget();
