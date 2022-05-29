@@ -2,18 +2,8 @@ package main.java.tas.model.tower;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
-
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
-
-/** 
- * This enumeration is used to specify the attack type of the tower that we want to build
- */
-enum AttackType {
-	BASIC,
-	MULTIPLE,
-	AREA
-}
 
 /**
  * A class specialized to Build ,

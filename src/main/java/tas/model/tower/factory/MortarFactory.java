@@ -1,9 +1,24 @@
-package main.java.tas.model.tower;
+package main.java.tas.model.tower.factory;
 
+import main.java.tas.model.tower.AttackType;
+import main.java.tas.model.tower.Builder;
+import main.java.tas.model.tower.Tower;
+import main.java.tas.model.tower.Towers;
 import main.java.tas.utils.Position;
 
-public interface MortartFactory {
+/**
+ * Interface that build a Mortar tower,
+ * this tower is a area tower so it has area damage,
+ * the first target must be in the first range, but it must
+ * stay outside another small range
+ */
+public interface MortarFactory {
 	
+	/**
+	 * this Mortar has a growth of the damage and cost linear
+	 * @param pos Position of the Mortar
+	 * @return Mortar tower
+	 */
 	static public Tower basicMortar(final Position pos) {
 		return new Builder(pos, 25, 16, 5000, "mortar")
 				   .attackType(AttackType.AREA)
@@ -19,6 +34,11 @@ public interface MortartFactory {
 				   .build();
 	}
 	
+	/**
+	 * this Mortar has a growth of the damage and cost quadratic
+	 * @param pos Position of the Mortar
+	 * @return Mortar tower
+	 */
 	static public Tower superMortar(final Position pos) {
 		return new Builder(pos, 10, 12, 8000, "supermortar")
 		   .attackType(AttackType.AREA)
@@ -34,6 +54,11 @@ public interface MortartFactory {
 		   .build();
 	}
 	
+	/**
+	 * this Mortar has a growth of the damage and cost exponential
+	 * @param pos Position of the Mortar
+	 * @return Mortar tower
+	 */
 	static public Tower godMortar(final Position pos) {
 		return new Builder(pos, 10, 12, 8000, "godmortar")
 		   .attackType(AttackType.AREA)
