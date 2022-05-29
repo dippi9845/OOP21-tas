@@ -6,8 +6,17 @@ import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.Towers;
 import main.java.tas.utils.Position;
 
+/**
+ * Interface that build a Tesla tower,
+ * is an area tower, and the first target is the nearest
+ */
 public interface TeslaFactory {
 	
+	/**
+	 * this tesla has a growth of the damage and cost linear
+	 * @param pos Position of the Tesla
+	 * @return Tesla tower
+	 */
 	static public Tower basicTesla(final Position pos) {
 		return new Builder(pos, 100, 9, 1100, "tesla")
 		   .attackType(AttackType.AREA)
@@ -22,6 +31,11 @@ public interface TeslaFactory {
 		   .build();
 	}
 	
+	/**
+	 * this tesla has a growth of the damage and cost quadratic
+	 * @param pos Position of the Tesla
+	 * @return Super Tesla tower
+	 */
 	static public Tower superTesla(final Position pos) {
 		return new Builder(pos, 150, 9, 1100, "superTesla")
 		   .attackType(AttackType.AREA)
@@ -36,6 +50,11 @@ public interface TeslaFactory {
 		   .build();
 	}
 	
+	/**
+	 * this tesla has a growth of the damage and cost exponential
+	 * @param pos Position of the Tesla
+	 * @return God Tesla tower
+	 */
 	static public Tower godTesla(final Position pos) {
 		return new Builder(pos, 200, 9, 1100, "godtesla")
 		   .attackType(AttackType.AREA)
