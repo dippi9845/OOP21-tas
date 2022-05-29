@@ -7,7 +7,7 @@ import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
 /**
- * An abstract class that model a Tower with an undefined number of enemies targeted
+ * An abstract class that model a Tower with an undefined number of enemies targeted.
  */
 public abstract class AbstractMultipleTower extends AbstractBasicTower implements Tower {
 	private final List<Enemy> enemyList = new LinkedList<>();
