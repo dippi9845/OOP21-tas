@@ -37,11 +37,12 @@ public interface ViewComponent {
     void addTextLabel(String text, String id, String anchor);
 
     /**
-     * Changes the text of a textLabel
-     * @param text that will be shown
-     * @param id of the text label
+     * Return the label of the given id
+     * NOTE: returns null if the label does not exist
+     * @param id of the label
+     * @return the label
      */
-    void setTextLableText(String text, String id);
+    AdaptiveLabel getTextLabel(String id);
     
     /**
      * Removes the text label by the given id

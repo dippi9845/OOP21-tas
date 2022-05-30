@@ -120,16 +120,16 @@ public class SquarePanel extends AdaptivePanel {
     }
     
     /**
-     * Changes the text of a textLabel
-     * @param text that will be shown
-     * @param id of the text label
+     * Return the label of the given id
+     * NOTE: returns null if the label does not exist
+     * @param id of the label
+     * @return the label
      */
-    public void setTextLableText(String text, String id) {
+    public AdaptiveLabel getTextLabel(String id) {
         if (!this.textLables.containsKey(id)) {
-            return;
+            return null;
         }
-        
-        this.textLables.get(id).setText(text);
+        return this.textLables.get(id);
     }
     
     /**

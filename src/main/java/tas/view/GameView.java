@@ -52,8 +52,8 @@ public class GameView implements ViewComponent {
     
     /** {@inheritDoc} */
     @Override
-    public void setTextLableText(String text, String id) {
-        this.gameBoard.setTextLableText(text, id);
+    public AdaptiveLabel getTextLabel(String id) {
+        return this.gameBoard.getTextLabel(id);
     }
     
     /** {@inheritDoc} */
