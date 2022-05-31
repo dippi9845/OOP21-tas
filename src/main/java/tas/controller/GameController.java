@@ -27,10 +27,6 @@ public class GameController implements SceneController {
     private final int pathThickness = 50;
     private final TowerLogic towerLogic;
     
-    public boolean addTower(final Tower t) {
-    	return this.towerLogic.buildTower(t);
-    }
-    
     /**
      * Constructor that creates a game controller for the given game scene
      * @param scene the graphic scene controller
@@ -46,7 +42,20 @@ public class GameController implements SceneController {
         
         this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(), this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
         
+        this.gameScene.getGameView().addTextLabel("♥ " + this.playerStats.getHP(), "healt", "NW");
+        this.gameScene.getGameView().addTextLabel("⬤ " + this.enemiesHandler.getWave(), "wave", "NE");
+        this.gameScene.getGameView().addTextLabel("＄ " + this.playerStats.getPlayerMoney(), "money", "SE");
+        
         //TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
+    }
+    
+    /**
+     * Build the tower given
+     * @param t actual tower
+     * @return true if the tower was build
+     */
+    public boolean addTower(final Tower t) {
+    	return this.towerLogic.buildTower(t);
     }
     
     /**
@@ -82,6 +91,7 @@ public class GameController implements SceneController {
      */
     private void increaseWave() {
         this.enemiesHandler.setNextWave();
+        this.gameScene.getGameView().getTextLabel("wave").setText("⬤ " + this.enemiesHandler.getWave());
     }
     
     /**
@@ -94,11 +104,13 @@ public class GameController implements SceneController {
             
             if (enemy.isDead()) {
                 this.playerStats.giveMoney2Player(enemy.getMoney());
+                this.gameScene.getGameView().getTextLabel("money").setText("＄ " + this.playerStats.getPlayerMoney());
                 killEnemy(enemy);
                 continue;
             }
             if (enemy.hasCompletedPath()) {
                 this.playerStats.dealDamage2Player(enemy.getDamage());
+                this.gameScene.getGameView().getTextLabel("healt").setText("♥ " + this.playerStats.getHP());
                 killEnemy(enemy);
                 continue;
             }
