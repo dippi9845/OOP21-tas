@@ -1,37 +1,40 @@
 package main.java.tas.model;
 
 /**
- * An interface for a Game Model
+ * An interface for a Game Model.
  */
 public interface GameModel {
-    
+
     /**
-     * Increases the amount of money
+     * Increases the amount of money.
+     * 
      * @param money the amount by which it will be increased
      */
     void giveMoney2Player(int money);
-    
+
     /**
-     * Deals an amount of damage to the player
+     * Deals an amount of damage to the player.
+     * 
      * @param damage the damage that will be dealt
      */
     void dealDamage2Player(int damage);
-    
+
     /**
      * @return the health of the player
      */
     int getHP();
-    
+
     /**
      * @return the amount of money that the player has
      */
     int getPlayerMoney();
-    
+
     /**
-     * Decreases the amount of money
+     * Decreases the amount of money.
+     * 
      * @param money amount by which it will be decreased
      * @return true if the transaction went correctly, false otherwise
      */
     boolean spendMoney(final int amount);
-    
+
 }

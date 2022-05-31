@@ -6,15 +6,17 @@ import java.util.List;
 import main.java.tas.utils.Position;
 
 /**
- * Class that implements {@link EnemyBuilder}
+ * Class that implements {@link EnemyBuilder}.
  */
 public class EnemyBuilderImpl implements EnemyBuilder {
-    
+
     private final List<Position> nodesPosition;
-    
+
     /**
-     * Constructor that creates a factory for the enemies 
-     * @param nodesPosition is a list with the nodes that the enemies will have to travel 
+     * Constructor that creates a factory for the enemies .
+     * 
+     * @param nodesPosition is a list with the nodes that the enemies will have to
+     *                      travel
      * @throws IllegalArgumentException if the @param nodesPosition is empty
      */
     public EnemyBuilderImpl(List<Position> nodesPosition) throws IllegalArgumentException {
@@ -23,7 +25,7 @@ public class EnemyBuilderImpl implements EnemyBuilder {
         }
         this.nodesPosition = nodesPosition;
     }
-    
+
     /** {@inheritDoc} */
     @Override
     public Enemy spawnRedEnemy() {
@@ -41,5 +43,5 @@ public class EnemyBuilderImpl implements EnemyBuilder {
     public Enemy spawnPinkEnemy() {
         return new GenericEnemy(this.nodesPosition, 2, 100, 10, 90, new Dimension(100, 100), "pinkEnemy");
     }
-   
+
 }

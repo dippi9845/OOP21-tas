@@ -14,9 +14,9 @@ public class TimeCurveImplTest {
         final int waitingTime = 5;
         final TimeCurve timer = new TimeCurveImpl((x) -> waitingTime);
         timer.actionPerformed();
-        assertFalse(timer.isTimeForAction(waitingTime-2));
-        assertFalse(timer.isTimeForAction(waitingTime+2));
-        
+        assertFalse(timer.isTimeForAction(waitingTime - 2));
+        assertFalse(timer.isTimeForAction(waitingTime + 2));
+
     }
 
 }
