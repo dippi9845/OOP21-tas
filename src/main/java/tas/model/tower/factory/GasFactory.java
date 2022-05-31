@@ -8,7 +8,7 @@ import main.java.tas.utils.Position;
  * An interface that is specified to build gas tower
  * it basically attack every enemy in the range at low delay
  */
-interface GasFactory {
+public interface GasFactory {
 	
 	/**
 	 * @return the damage of Gas Tower

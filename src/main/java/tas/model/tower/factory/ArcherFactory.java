@@ -10,6 +10,7 @@ import main.java.tas.utils.Position;
 public interface ArcherFactory {
 	
 	/**
+	 * Return the damage of Archer Tower
 	 * @return the damage of Archer Tower
 	 */
 	static public int getDamage() {
@@ -17,6 +18,7 @@ public interface ArcherFactory {
 	}
 	
 	/**
+	 * Return the range of Archer Tower
 	 * @return the range of Archer Tower
 	 */
 	static public int getRange() {
@@ -24,6 +26,7 @@ public interface ArcherFactory {
 	}
 
 	/**
+	 * Return the delay of Archer Tower
 	 * @return the delay of Archer Tower
 	 */
 	static public int getDelay() {
@@ -31,6 +34,7 @@ public interface ArcherFactory {
 	}
 	
 	/**
+	 * Return the build cost of Archer Tower
 	 * @return the build cost of Archer Tower
 	 */
 	static public int getBuildCost() {
@@ -38,6 +42,7 @@ public interface ArcherFactory {
 	}
 	
 	/**
+	 * Return the start upgrade cost of Archer Tower
 	 * @return the start upgrade cost of Archer Tower
 	 */
 	static public int getStartUpCost() {
@@ -45,6 +50,7 @@ public interface ArcherFactory {
 	}
 	
 	/**
+	 * Return the max level of Archer Tower
 	 * @return the max level of Archer Tower
 	 */
 	static public int getMaxLevel() {
@@ -52,6 +58,7 @@ public interface ArcherFactory {
 	}
 	
 	/**
+	 * Return ClassicTowerFactory with all preset for Archer Tower
 	 * @param imageName image name of the tower
 	 * @return ClassicTowerFactory with all preset for Archer Tower
 	 */
@@ -67,6 +74,7 @@ public interface ArcherFactory {
 	}
 	
 	/**
+	 * Return the UnaryOperator that associate for a level an increase of damage of Archer Tower
 	 * @return the UnaryOperator that associate for a level an increase of damage of Archer Tower
 	 */
 	static private UnaryOperator<Integer> getIncreaseDamage() {
@@ -74,6 +82,7 @@ public interface ArcherFactory {
 	}
 	
 	/**
+	 * Return an archer with only one target possible, and upgradable
 	 * @param pos Position of the tower
 	 * @return an archer with only one target possible, and upgradable
 	 */
@@ -84,6 +93,7 @@ public interface ArcherFactory {
 	}
 	
 	/**
+	 * Return an archer with two targets possible, and upgradable
 	 * @param pos Position of the tower
 	 * @return an archer with two targets possible, and upgradable
 	 */
@@ -94,6 +104,7 @@ public interface ArcherFactory {
 	}
 	
 	/**
+	 * Return an archer with three targets possible, and upgradable
 	 * @param pos Position of the tower
 	 * @return an archer with three targets possible, and upgradable
 	 */
@@ -104,6 +115,7 @@ public interface ArcherFactory {
 	}
 	
 	/**
+	 * Return an archer with four targets possible, and upgradable
 	 * @param pos Position of the tower
 	 * @return an archer with four targets possible, and upgradable
 	 */

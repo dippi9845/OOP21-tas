@@ -174,6 +174,10 @@ public class Builder {
 	 */
 	public Tower build() throws IllegalStateException {
 		
+		if (this.pos == null) {
+			throw new IllegalArgumentException("position can't be null");
+		}
+		
 		if (this.damage <= 0) {
 			throw new IllegalArgumentException("damage can't be less equal to zero");
 		}
@@ -184,6 +188,10 @@ public class Builder {
 		
 		if (this.delay <= 0) {
 			throw new IllegalArgumentException("delay can't be less equal to zero");
+		}
+		
+		if (this.cost < 0) {
+			throw new IllegalArgumentException("cost can't be less than zero");
 		}
 		
 		if (this.maximumTarget.isPresent() && this.maximumTarget.get() <= 0) {
