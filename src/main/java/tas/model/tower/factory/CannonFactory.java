@@ -10,6 +10,7 @@ import main.java.tas.utils.Position;
 public interface CannonFactory{
 	
 	/**
+	 * Return the damage of Cannon Tower
 	 * @return the damage of Cannon Tower
 	 */
 	static public int getDamage() {
@@ -17,6 +18,7 @@ public interface CannonFactory{
 	}
 	
 	/**
+	 * Return the range of Cannon Tower
 	 * @return the range of Cannon Tower
 	 */
 	static public int getRange() {
@@ -24,6 +26,7 @@ public interface CannonFactory{
 	}
 	
 	/**
+	 * Return the delay of Cannon Tower
 	 * @return the delay of Cannon Tower
 	 */
 	static public int getDelay() {
@@ -31,6 +34,7 @@ public interface CannonFactory{
 	}
 	
 	/**
+	 * Return the build cost of Cannon Tower
 	 * @return the build cost of Cannon Tower
 	 */
 	static public int getBuildCost() {
@@ -38,6 +42,7 @@ public interface CannonFactory{
 	}
 	
 	/**
+	 * Return the start upgrade cost of Cannon Tower
 	 * @return the start upgrade cost of Cannon Tower
 	 */
 	static public int getStartUpCost() {
@@ -45,6 +50,7 @@ public interface CannonFactory{
 	}
 	
 	/**
+	 * Return the max level of Cannon Tower
 	 * @return the max level of Cannon Tower
 	 */
 	static public int getMaxLevel() {
@@ -52,6 +58,7 @@ public interface CannonFactory{
 	}
 	
 	/**
+	 * Return ClassicTowerFactory with all preset for Cannon Tower
 	 * @param imageName image name of the tower
 	 * @return ClassicTowerFactory with all preset for Cannon Tower
 	 */
@@ -60,6 +67,7 @@ public interface CannonFactory{
 	}
 	
 	/**
+	 * Return the UnaryOperator that associate for a level an increase of cost of Cannon Tower
 	 * @return the UnaryOperator that associate for a level an increase of cost of Cannon Tower
 	 */
 	static private UnaryOperator<Integer> getIncreaseCost() {
@@ -67,6 +75,7 @@ public interface CannonFactory{
 	}
 	
 	/**
+	 * Return the UnaryOperator that associate for a level an increase of damage of Cannon Tower
 	 * @return the UnaryOperator that associate for a level an increase of damage of Cannon Tower
 	 */
 	static private UnaryOperator<Integer> getIncreaseDamage() {
@@ -74,6 +83,7 @@ public interface CannonFactory{
 	}
 	
 	/**
+	 * Return an cannon with only one target possible, and upgradable
 	 * @param pos Position of the tower
 	 * @return an cannon with only one target possible, and upgradable
 	 */
@@ -84,6 +94,7 @@ public interface CannonFactory{
 	}
 	
 	/**
+	 * Return an cannon with two targets possible, and upgradable
 	 * @param pos Position of the tower
 	 * @return an cannon with two targets possible, and upgradable
 	 */
@@ -94,6 +105,7 @@ public interface CannonFactory{
 	}
 	
 	/**
+	 * Return  an cannon with three targets possible, and upgradable
 	 * @param pos Position of the tower
 	 * @return  an cannon with three targets possible, and upgradable
 	 */
@@ -104,8 +116,9 @@ public interface CannonFactory{
 	}
 	
 	/**
+	 * Return an cannon with four targets possible, and upgradable
 	 * @param pos Position of the tower
-	 * @return  an cannon with four targets possible, and upgradable
+	 * @return an cannon with four targets possible, and upgradable
 	 */
 	static public Tower quadCannon(final Position pos) {
 		return constructor("quadcannon")
