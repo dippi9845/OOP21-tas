@@ -190,6 +190,10 @@ public class Builder {
 			throw new IllegalArgumentException("delay can't be less equal to zero");
 		}
 		
+		if (this.cost < 0) {
+			throw new IllegalArgumentException("cost can't be less than zero");
+		}
+		
 		if (this.maximumTarget.isPresent() && this.maximumTarget.get() <= 0) {
 			throw new IllegalArgumentException("maximumTarget can't be less equal to zero");
 		}
