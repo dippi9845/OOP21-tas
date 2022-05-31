@@ -25,6 +25,7 @@ public interface TeslaFactory {
 		   .upgradeCost(x->15)
 		   .upgradeDamage(x->50)
 		   .maxLevel(15)
+		   .maximumTarget(4)
 		   .findFirst(()->{
 			   return Towers.findFirstEnemyInRange(pos, 9);
 		   })
@@ -44,6 +45,7 @@ public interface TeslaFactory {
 		   .upgradeCost(x->x*x)
 		   .upgradeDamage(x->x*x*3)
 		   .maxLevel(10)
+		   .maximumTarget(8)
 		   .findFirst(()->{
 			   return Towers.findFirstEnemyInRange(pos, 9);
 		   })
@@ -63,6 +65,7 @@ public interface TeslaFactory {
 		   .upgradeCost(x->(int)Math.pow(x, x) + 20)
 		   .upgradeDamage(x->(int)Math.pow(x, x))
 		   .maxLevel(5)
+		   .maximumTarget(100)
 		   .findFirst(()->{
 			   return Towers.findFirstEnemyInRange(pos, 9);
 		   })

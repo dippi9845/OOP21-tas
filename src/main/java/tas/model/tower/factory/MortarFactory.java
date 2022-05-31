@@ -27,6 +27,7 @@ public interface MortarFactory {
 				   .upgradeCost(x->10)
 				   .upgradeDamage(x->15)
 				   .maxLevel(15)
+				   .maximumTarget(Integer.MAX_VALUE)
 				   .findFirst(()->{
 					   return Towers.findFistEnemyBiPredicate(e->Towers.isInRange(pos, e.getPosition(), 16),
 							   								  e->!Towers.isInRange(pos, e.getPosition(), 4));
@@ -47,6 +48,7 @@ public interface MortarFactory {
 		   .upgradeCost(x->x*x)
 		   .upgradeDamage(x->x*x*2)
 		   .maxLevel(10)
+		   .maximumTarget(Integer.MAX_VALUE)
 		   .findFirst(()->{
 			   return Towers.findFistEnemyBiPredicate(e->Towers.isInRange(pos, e.getPosition(), 12),
 					   								  e->!Towers.isInRange(pos, e.getPosition(), 4));
@@ -67,6 +69,7 @@ public interface MortarFactory {
 		   .upgradeCost(x->(int)Math.pow(x, x) + 15)
 		   .upgradeDamage(x->(int)Math.pow(x, x))
 		   .maxLevel(5)
+		   .maximumTarget(Integer.MAX_VALUE)
 		   .findFirst(()->{
 			   return Towers.findFistEnemyBiPredicate(e->Towers.isInRange(pos, e.getPosition(), 12),
 					   								  e->!Towers.isInRange(pos, e.getPosition(), 4));
