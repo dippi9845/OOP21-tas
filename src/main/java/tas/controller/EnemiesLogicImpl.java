@@ -1,6 +1,7 @@
 package main.java.tas.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -74,7 +75,7 @@ public class EnemiesLogicImpl implements EnemiesLogic {
     /** {@inheritDoc} */
     @Override
     public List<Enemy> getEnemies() {
-        return aliveEnemiesList;
+        return Collections.unmodifiableList(this.aliveEnemiesList);
     }
 
     /** {@inheritDoc} */
