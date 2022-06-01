@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
-
 import org.junit.jupiter.api.Test;
 import main.java.tas.model.tower.factory.*;
 import main.java.tas.utils.Position;
@@ -23,6 +22,32 @@ class BuildTest {
 	private final UnaryOperator<Integer> upgradeDamageTest = x->x;
 	private final UnaryOperator<Integer> upgradeCostTest = x->x;
 	
+	private void raiseIllegalStateException(final Supplier<Tower> towerMaker, final String error) {
+		try {
+			Tower t = towerMaker.get();
+			fail(error);
+		}
+		catch (IllegalStateException e) {
+			
+		}
+		catch (Exception e) {
+			fail(e.getMessage());
+		}
+	}
+	
+	private void raiseIllegalArgumentException(final Supplier<Tower> towerMaker, final String error) {
+		try {
+			Tower t = towerMaker.get();
+			fail(error);
+		}
+		catch (IllegalArgumentException e) {
+			
+		}
+		catch (Exception e) {
+			fail(e.getMessage());
+		}
+	}
+	
 	@Test
 	void testBasicBuild() {
 		Tower t = new Builder(this.pos, 100, 100, 100, "bla bla").build();
@@ -37,271 +62,137 @@ class BuildTest {
 	
 	@Test
 	void testWrongBasicBuild() {
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		this.raiseIllegalStateException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla bla")
 					  .damageRange(10)
 					  .build();
-		}
-		catch (IllegalStateException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "You cannot define damage range to basic tower");
+
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		this.raiseIllegalStateException(() ->  {
+			return new Builder(this.pos, 100, 100, 100, "bla bla")
 					  .maximumTarget(10)
 					  .build();
-		}
-		catch (IllegalStateException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "You cannot define maximum target to basic tower");
+
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		this.raiseIllegalStateException(() ->  {
+			return new Builder(this.pos, 100, 100, 100, "bla bla")
 					  .findFirst(this.findFirstTest)
 					  .build();
-		}
-		catch (IllegalStateException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "You cannot define find fisrt method to basic tower");
 		
 	}
 	
 	@Test
 	void testNullValues() {
-		try {
-			Tower t = new Builder(null, 100, 100, 100, "bla").build();
-			fail("Position can't be null");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(null, 100, 100, 100, "bla").build();
+		}, "Position can't be null");
 		
-		try {
-			Tower t = new Builder(this.pos, 0, 100, 100, "bla bla").build();
-			fail("zero as parameter can't be accepted");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 0, 100, 100, "bla bla").build();
+		}, "zero as parameter can't be accepted");
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 0, 100, "bla bla").build();
-			fail("zero as parameter can't be accepted");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 0, 100, "bla bla").build();
+		}, "zero as parameter can't be accepted");
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 0, "bla bla").build();
-			fail("zero as parameter can't be accepted");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, 0, "bla bla").build();
+		}, "zero as parameter can't be accepted");
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla")
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla")
 					  .attackType(AttackType.MULTIPLE)
 					  .maximumTarget(0)
 					  .build();
-			fail("zero as parameter can't be accepted");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "zero as parameter can't be accepted");
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla bla")
 					  .setUpgradable(true)
 					  .startUpgradeCost(0)
 					  .upgradeCost(this.upgradeCostTest)
 					  .upgradeDamage(this.upgradeDamageTest)
 					  .maxLevel(10)
 					  .build();
-			fail("zero as parameter can't be accepted");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "zero as parameter can't be accepted");
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla bla")
 					  .setUpgradable(true)
 					  .startUpgradeCost(1)
 					  .upgradeCost(this.upgradeCostTest)
 					  .upgradeDamage(this.upgradeDamageTest)
 					  .maxLevel(0)
 					  .build();
-			fail("zero as parameter can't be accepted");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "zero as parameter can't be accepted");
 	}
 	
 	@Test
 	void testNegativeValuesBuild() {
-		try {
-			Tower t = new Builder(this.pos, -100, 100, 100, "bla bla").build();
-			fail("negative parameter can't be accepted");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
 		
-		try {
-			Tower t = new Builder(this.pos, 100, -100, 100, "bla bla").build();
-			fail("negative parameter can't be accepted");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, -100, 100, 100, "bla bla").build();
+		}, "negative parameter can't be accepted");
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 100, -100, "bla bla").build();
-			fail("negative parameter can't be accepted");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, -100, 100, "bla bla").build();
+		}, "negative parameter can't be accepted");
+		
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, -100, "bla bla").build();
+		}, "negative parameter can't be accepted");
 
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla")
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla")
 					  .cost(-1)
 					  .build();
-			fail("negative parameter can't be accepted");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "negative parameter can't be accepted");
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla")
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla")
 					  .attackType(AttackType.MULTIPLE)
 					  .maximumTarget(-1)
 					  .build();
-			fail("negative parameter can't be accepted");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "negative parameter can't be accepted");
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla bla")
 					  .setUpgradable(true)
 					  .startUpgradeCost(-1)
 					  .upgradeCost(this.upgradeCostTest)
 					  .upgradeDamage(this.upgradeDamageTest)
 					  .maxLevel(10)
 					  .build();
-			fail("negative parameter can't be accepted");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "negative parameter can't be accepted");
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla bla")
 					  .setUpgradable(true)
 					  .startUpgradeCost(1)
 					  .upgradeCost(this.upgradeCostTest)
 					  .upgradeDamage(this.upgradeDamageTest)
 					  .maxLevel(-10)
 					  .build();
-			fail("negative parameter can't be accepted");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "negative parameter can't be accepted");
 		
 	}
 	
 	@Test
 	void testBlankImageName() {
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "").build();
-			fail("image name can't be blank");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "").build();
+		}, "image name can't be blank");
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, " ").build();
-			fail("image name can't be blank");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, 100, " ").build();
+		}, "image name can't be blank");
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "    ").build();
-			fail("image name can't be blank");
-		}
-		catch (IllegalArgumentException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "    ").build();
+		}, "image name can't be blank");
 	}
 	
 	@Test
@@ -314,36 +205,22 @@ class BuildTest {
 	
 	@Test
 	void testWrongMultiple() {
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		this.raiseIllegalStateException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla bla")
 					  .attackType(AttackType.MULTIPLE)
 					  .maximumTarget(12)
 					  .damageRange(10)
 					  .build();
-			fail("Damage range can't be defined");
-		}
-		catch (IllegalStateException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "Damage range can't be defined");
 		
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		this.raiseIllegalStateException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla bla")
 					  .attackType(AttackType.MULTIPLE)
 					  .maximumTarget(12)
 					  .findFirst(()->Towers.findFirstEnemyInRange(this.pos, 100))
 					  .build();
-			fail("find first can't be defined");
-		}
-		catch (IllegalStateException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "find first can't be defined");
 	}
 	
 	@Test
@@ -358,50 +235,29 @@ class BuildTest {
 	
 	@Test
 	void testwrongArea() {
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		this.raiseIllegalStateException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla bla")
 					  .attackType(AttackType.AREA)
 					  .findFirst(this.findFirstTest)
 					  .damageRange(5)
 					  .build();
-			fail("maximun target not defined");
-		}
-		catch (IllegalStateException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "maximun target not defined");
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		this.raiseIllegalStateException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla bla")
 					  .attackType(AttackType.AREA)
 					  .maximumTarget(12)
 					  .damageRange(5)
 					  .build();
-			fail("find first not defined");
-		}
-		catch (IllegalStateException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "find first not defined");
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		this.raiseIllegalStateException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla bla")
 					  .attackType(AttackType.AREA)
 					  .maximumTarget(12)
 					  .findFirst(this.findFirstTest)
 					  .build();
-			fail("damage range not defined");
-		}
-		catch (IllegalStateException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "damage range not defined");
 		
 	}
 
@@ -418,37 +274,23 @@ class BuildTest {
 	
 	@Test
 	void testWrongUpgradable() {
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		this.raiseIllegalStateException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla bla")
 					  .setUpgradable(true)
 					  .startUpgradeCost(1)
 					  .upgradeCost(this.upgradeCostTest)
 					  .maxLevel(100)
 					  .build();
-			fail("increase damage not defined");
-		}
-		catch (IllegalStateException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "increase damage not defined");
 		
-		try {
-			Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		this.raiseIllegalStateException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla bla")
 					  .setUpgradable(true)
 					  .startUpgradeCost(1)
 					  .upgradeDamage(this.upgradeDamageTest)
 					  .maxLevel(100)
 					  .build();
-			fail("increase cost not defined");
-		}
-		catch (IllegalStateException e) {
-			
-		}
-		catch (Exception e) {
-			fail(e.getMessage());
-		}
+		}, "increase cost not defined");
 	}
 	
 	@Test
