@@ -28,7 +28,7 @@ public class BasicTower extends AbstractBasicTower {
 	/** {@inheritDoc} */
 	@Override
 	protected void attack() {
-		this.target.ifPresent(x->x.dealDamage(getDamage()));
+		this.target.ifPresent(x->Towers.dealDamage(x, this.getDamage()));
 	}
 
 	/** {@inheritDoc} */
