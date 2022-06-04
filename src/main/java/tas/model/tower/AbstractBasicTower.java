@@ -1,5 +1,7 @@
 package main.java.tas.model.tower;
 
+import java.util.Collections;
+import java.util.List;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
@@ -14,6 +16,7 @@ public abstract class AbstractBasicTower implements Tower{
 	private final int delay;
 	private final int cost;
 	private final String imageName;
+	private final List<Enemy> visibleEnemyList;
 	/**
 	 * Constructor, protected
 	 * @param pos Tower position
@@ -22,14 +25,20 @@ public abstract class AbstractBasicTower implements Tower{
 	 * @param delay Tower delay
 	 * @param cost Tower cost
 	 * @param imageName  Tower image name
+	 * @param enemyList List of all enemy in the map
 	 */
-	protected AbstractBasicTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final String imageName) {
+	protected AbstractBasicTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final String imageName, final List<Enemy> enemyList) {
 		this.damage = damage;
 		this.pos = pos;
 		this.radius = radius;
 		this.delay = delay;
 		this.cost = cost;
 		this.imageName = imageName;
+		this.visibleEnemyList = enemyList;
+	}
+	
+	protected List<Enemy> getVisibleEnemyList() {
+		return Collections.unmodifiableList(this.visibleEnemyList);
 	}
 
 	/**
