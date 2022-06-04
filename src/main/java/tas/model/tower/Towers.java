@@ -75,47 +75,52 @@ public class Towers {
 	 * Find the first enemy in range in the list {@link Towers#ENEMYLIST}
 	 * @param t Position of the tower
 	 * @param radius radius of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return Optional of enemy, that is empty if no enemy was found, otherwise the enemy found
 	 */
-	static public Optional<Enemy> findFirstEnemyInRange(final Position t, final int radius) {
-		return findFistEnemyByPredicate(e->Towers.isInRange(e.getPosition(), t, radius));
+	static public Optional<Enemy> findFirstEnemyInRange(final Position t, final int radius, final List<Enemy> enemyList) {
+		return findFistEnemyByPredicate(e->Towers.isInRange(e.getPosition(), t, radius), enemyList);
 	}
 	
 	/**
 	 * Find the first enemy in range in the list {@link Towers#ENEMYLIST}
 	 * @param t Tower of reference
+	 * @param enemyList List of all enemy in the map
 	 * @return Optional of enemy, that is empty if no enemy was found, otherwise the enemy found
 	 */
-	static public Optional<Enemy> findFirstEnemyInRange(final Tower t) {
-		return findFistEnemyByPredicate(x->Towers.isTargetInRange(x, t));
+	static public Optional<Enemy> findFirstEnemyInRange(final Tower t, final List<Enemy> enemyList) {
+		return findFistEnemyByPredicate(x->Towers.isTargetInRange(x, t), enemyList);
 	}
 	
 	/**
 	 * Find the first enemy in the list that satisfies the predicate given
 	 * @param f Predicate to be satisfied
+	 * @param enemyList List of all enemy in the map
 	 * @return Optional of enemy, that is empty if no enemy was found, otherwise the enemy found
 	 */
-	static public Optional<Enemy> findFistEnemyByPredicate(final Predicate<Enemy> f) {
-		return getEnemyList().stream().filter(f).findFirst();
+	static public Optional<Enemy> findFistEnemyByPredicate(final Predicate<Enemy> f, final List<Enemy> enemyList) {
+		return enemyList.stream().filter(f).findFirst();
 	}
 	
 	/**
 	 * Find the first enemy in the list {@link Towers#ENEMYLIST}, that satisfies two given predicates
 	 * @param f The first predicate
 	 * @param g the second predicate
+	 * @param enemyList List of all enemy in the map
 	 * @return Optional of enemy, that is empty if no enemy was found, otherwise the enemy found
 	 */
-	static public Optional<Enemy> findFistEnemyBiPredicate(final Predicate<Enemy> f, final Predicate<Enemy> g) {
-		return getEnemyList().stream().filter(f).filter(g).findFirst();
+	static public Optional<Enemy> findFistEnemyBiPredicate(final Predicate<Enemy> f, final Predicate<Enemy> g, final List<Enemy> enemyList) {
+		return enemyList.stream().filter(f).filter(g).findFirst();
 	}
 	
 	/**
 	 * Find all enemies that satisfies the predicate given, by the list {@link Towers#ENEMYLIST}
 	 * @param f predicate to be satisfied
+	 * @param enemyList List of all enemy in the map
 	 * @return List containing all the enemies that satisfies the predicate
 	 */
-	static public List<Enemy> findAll(final Predicate<Enemy> f) {
-		return getEnemyList().stream().filter(f).collect(Collectors.toList());
+	static public List<Enemy> findAll(final Predicate<Enemy> f, final List<Enemy> enemyList) {
+		return enemyList.stream().filter(f).collect(Collectors.toList());
 	}
 	
 	/**
