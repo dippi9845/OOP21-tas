@@ -37,7 +37,7 @@ public class Towers {
 	}
 	
 	/**
-	 * Find the first enemy in range in the list {@link Towers#ENEMYLIST}
+	 * Find the first enemy in range in the list provided
 	 * @param t Position of the tower
 	 * @param radius radius of the tower
 	 * @param enemyList List of all enemy in the map
@@ -48,7 +48,7 @@ public class Towers {
 	}
 	
 	/**
-	 * Find the first enemy in range in the list {@link Towers#ENEMYLIST}
+	 * Find the first enemy in range in the list provided
 	 * @param t Tower of reference
 	 * @param enemyList List of all enemy in the map
 	 * @return Optional of enemy, that is empty if no enemy was found, otherwise the enemy found
@@ -68,7 +68,7 @@ public class Towers {
 	}
 	
 	/**
-	 * Find the first enemy in the list {@link Towers#ENEMYLIST}, that satisfies two given predicates
+	 * Find the first enemy in the list provided, that satisfies two given predicates
 	 * @param f The first predicate
 	 * @param g the second predicate
 	 * @param enemyList List of all enemy in the map
@@ -79,7 +79,7 @@ public class Towers {
 	}
 	
 	/**
-	 * Find all enemies that satisfies the predicate given, by the list {@link Towers#ENEMYLIST}
+	 * Find all enemies that satisfies the predicate given, by the list provided
 	 * @param f predicate to be satisfied
 	 * @param enemyList List of all enemy in the map
 	 * @return List containing all the enemies that satisfies the predicate

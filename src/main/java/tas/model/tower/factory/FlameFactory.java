@@ -74,8 +74,8 @@ public interface FlameFactory {
 	 * @param enemyList List of all enemy in the map
 	 * @return ClassicTowerFactory with all preset for Flame Tower
 	 */
-	static private ClassicTowerFactory constructor(final String imageName, final List<Enemy> enemylist) {
-		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(), getMaxLevel(), imageName, enemylist);
+	static private ClassicTowerFactory constructor(final String imageName, final List<Enemy> enemyList) {
+		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(), getMaxLevel(), imageName, enemyList);
 	}
 	
 	/**
@@ -83,8 +83,8 @@ public interface FlameFactory {
 	 * @param enemyList List of all enemy in the map
 	 * @return an Flame with only one target possible, and upgradable
 	 */
-	static public Tower basicFlame(final Position pos, final List<Enemy> enemylist) {
-		return constructor("flame", enemylist)
+	static public Tower basicFlame(final Position pos, final List<Enemy> enemyList) {
+		return constructor("flame", enemyList)
 				   .upgradableStarndard(pos, getIncreaseCost(), getIncreaseDamage())
 				   .build();
 	}
@@ -94,8 +94,8 @@ public interface FlameFactory {
 	 * @param enemyList List of all enemy in the map
 	 * @return an Flame with two targets possible, and upgradable
 	 */
-	static public Tower biFlame(final Position pos, final List<Enemy> enemylist) {
-		return constructor("biflame", enemylist)
+	static public Tower biFlame(final Position pos, final List<Enemy> enemyList) {
+		return constructor("biflame", enemyList)
 			   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 2)
 			   .build();
 	}
@@ -105,8 +105,8 @@ public interface FlameFactory {
 	 * @param enemyList List of all enemy in the map
 	 * @return an Flame with three targets possible, and upgradable
 	 */
-	static public Tower triFlame(final Position pos, final List<Enemy> enemylist) {
-		return constructor("triflame", enemylist)
+	static public Tower triFlame(final Position pos, final List<Enemy> enemyList) {
+		return constructor("triflame", enemyList)
 				   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 3)
 				   .build();
 	}
@@ -116,8 +116,8 @@ public interface FlameFactory {
 	 * @param enemyList List of all enemy in the map
 	 * @return an Flame with four targets possible, and upgradable
 	 */
-	static public Tower quadFlame(final Position pos, final List<Enemy> enemylist) {
-		return constructor("quadflame", enemylist)
+	static public Tower quadFlame(final Position pos, final List<Enemy> enemyList) {
+		return constructor("quadflame", enemyList)
 				   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 4)
 				   .build();
 	}

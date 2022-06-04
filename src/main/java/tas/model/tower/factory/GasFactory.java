@@ -74,8 +74,8 @@ public interface GasFactory {
 	 * @param enemyList List of all enemy in the map
 	 * @return ClassicTowerFactory with all preset for Gas Tower
 	 */
-	static private ClassicTowerFactory constructor(final String imageName, final List<Enemy> enemylist) {
-		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(), getMaxLevel(), imageName, enemylist);
+	static private ClassicTowerFactory constructor(final String imageName, final List<Enemy> enemyList) {
+		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(), getMaxLevel(), imageName, enemyList);
 	}
 	
 	/**
@@ -83,8 +83,8 @@ public interface GasFactory {
 	 * @param enemyList List of all enemy in the map
 	 * @return an Gas Tower upgradable
 	 */
-	static public Tower gasTower(final Position pos, final List<Enemy> enemylist) {
-		return constructor("gas", enemylist)
+	static public Tower gasTower(final Position pos, final List<Enemy> enemyList) {
+		return constructor("gas", enemyList)
 				   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), Integer.MAX_VALUE)
 				   .build();
 	}

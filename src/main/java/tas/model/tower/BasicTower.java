@@ -14,7 +14,7 @@ public class BasicTower extends AbstractBasicTower {
 	private Optional<Enemy> target = Optional.empty();
 
 	/**
-	 * Constructor, protected {@link BasicMultipleTower#BasicMultipleTower(Position, int, int, int, int, String, int)}
+	 * Constructor, protected
 	 * @param pos Tower position
 	 * @param damage Tower damage
 	 * @param radius Tower radius, where it can attack enemies
