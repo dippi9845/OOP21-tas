@@ -2,6 +2,8 @@ package test.java.tas.model.tower;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
@@ -18,7 +20,8 @@ import main.java.tas.model.tower.Towers;
 class BuildTest {
 	
 	private final Position pos = new Position(0,0);
-	private final Supplier<Optional<Enemy>> findFirstTest = ()->Towers.findFirstEnemyInRange(this.pos, 100);
+	private final List<Enemy> enemylist = new LinkedList<>();
+	private final Supplier<Optional<Enemy>> findFirstTest = ()->Towers.findFirstEnemyInRange(this.pos, 100, this.enemylist);
 	private final UnaryOperator<Integer> upgradeDamageTest = x->x;
 	private final UnaryOperator<Integer> upgradeCostTest = x->x;
 	
@@ -50,12 +53,12 @@ class BuildTest {
 	
 	@Test
 	void testBasicBuild() {
-		Tower t = new Builder(this.pos, 100, 100, 100, "bla bla").build();
+		Tower t = new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist).build();
 	}
 	
 	@Test
 	void testBasicBuildWithCost() {
-		Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		Tower t = new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .cost(1)
 					  .build();
 	}
@@ -63,21 +66,21 @@ class BuildTest {
 	@Test
 	void testWrongBasicBuild() {
 		this.raiseIllegalStateException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "bla bla")
+			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .damageRange(10)
 					  .build();
 		}, "You cannot define damage range to basic tower");
 
 		
 		this.raiseIllegalStateException(() ->  {
-			return new Builder(this.pos, 100, 100, 100, "bla bla")
+			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .maximumTarget(10)
 					  .build();
 		}, "You cannot define maximum target to basic tower");
 
 		
 		this.raiseIllegalStateException(() ->  {
-			return new Builder(this.pos, 100, 100, 100, "bla bla")
+			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .findFirst(this.findFirstTest)
 					  .build();
 		}, "You cannot define find fisrt method to basic tower");
@@ -87,30 +90,30 @@ class BuildTest {
 	@Test
 	void testNullValues() {
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(null, 100, 100, 100, "bla").build();
+			return new Builder(null, 100, 100, 100, "bla", this.enemylist).build();
 		}, "Position can't be null");
 		
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(this.pos, 0, 100, 100, "bla bla").build();
+			return new Builder(this.pos, 0, 100, 100, "bla bla", this.enemylist).build();
 		}, "zero as parameter can't be accepted");
 		
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(this.pos, 100, 0, 100, "bla bla").build();
+			return new Builder(this.pos, 100, 0, 100, "bla bla", this.enemylist).build();
 		}, "zero as parameter can't be accepted");
 		
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(this.pos, 100, 100, 0, "bla bla").build();
+			return new Builder(this.pos, 100, 100, 0, "bla bla", this.enemylist).build();
 		}, "zero as parameter can't be accepted");
 		
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "bla")
+			return new Builder(this.pos, 100, 100, 100, "bla", this.enemylist)
 					  .attackType(AttackType.MULTIPLE)
 					  .maximumTarget(0)
 					  .build();
 		}, "zero as parameter can't be accepted");
 		
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "bla bla")
+			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .setUpgradable(true)
 					  .startUpgradeCost(0)
 					  .upgradeCost(this.upgradeCostTest)
@@ -120,7 +123,7 @@ class BuildTest {
 		}, "zero as parameter can't be accepted");
 		
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "bla bla")
+			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .setUpgradable(true)
 					  .startUpgradeCost(1)
 					  .upgradeCost(this.upgradeCostTest)
@@ -134,32 +137,32 @@ class BuildTest {
 	void testNegativeValuesBuild() {
 		
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(this.pos, -100, 100, 100, "bla bla").build();
+			return new Builder(this.pos, -100, 100, 100, "bla bla", this.enemylist).build();
 		}, "negative parameter can't be accepted");
 		
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(this.pos, 100, -100, 100, "bla bla").build();
+			return new Builder(this.pos, 100, -100, 100, "bla bla", this.enemylist).build();
 		}, "negative parameter can't be accepted");
 		
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(this.pos, 100, 100, -100, "bla bla").build();
+			return new Builder(this.pos, 100, 100, -100, "bla bla", this.enemylist).build();
 		}, "negative parameter can't be accepted");
 
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "bla")
+			return new Builder(this.pos, 100, 100, 100, "bla", this.enemylist)
 					  .cost(-1)
 					  .build();
 		}, "negative parameter can't be accepted");
 		
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "bla")
+			return new Builder(this.pos, 100, 100, 100, "bla", this.enemylist)
 					  .attackType(AttackType.MULTIPLE)
 					  .maximumTarget(-1)
 					  .build();
 		}, "negative parameter can't be accepted");
 		
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "bla bla")
+			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .setUpgradable(true)
 					  .startUpgradeCost(-1)
 					  .upgradeCost(this.upgradeCostTest)
@@ -169,7 +172,7 @@ class BuildTest {
 		}, "negative parameter can't be accepted");
 		
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "bla bla")
+			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .setUpgradable(true)
 					  .startUpgradeCost(1)
 					  .upgradeCost(this.upgradeCostTest)
@@ -183,21 +186,21 @@ class BuildTest {
 	@Test
 	void testBlankImageName() {
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "").build();
+			return new Builder(this.pos, 100, 100, 100, "", this.enemylist).build();
 		}, "image name can't be blank");
 		
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(this.pos, 100, 100, 100, " ").build();
+			return new Builder(this.pos, 100, 100, 100, " ", this.enemylist).build();
 		}, "image name can't be blank");
 		
 		this.raiseIllegalArgumentException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "    ").build();
+			return new Builder(this.pos, 100, 100, 100, "    ", this.enemylist).build();
 		}, "image name can't be blank");
 	}
 	
 	@Test
 	void testMultiple() {
-		Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		Tower t = new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .attackType(AttackType.MULTIPLE)
 					  .maximumTarget(12)
 					  .build();
@@ -206,7 +209,7 @@ class BuildTest {
 	@Test
 	void testWrongMultiple() {
 		this.raiseIllegalStateException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "bla bla")
+			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .attackType(AttackType.MULTIPLE)
 					  .maximumTarget(12)
 					  .damageRange(10)
@@ -215,17 +218,17 @@ class BuildTest {
 		
 		
 		this.raiseIllegalStateException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "bla bla")
+			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .attackType(AttackType.MULTIPLE)
 					  .maximumTarget(12)
-					  .findFirst(()->Towers.findFirstEnemyInRange(this.pos, 100))
+					  .findFirst(()->Towers.findFirstEnemyInRange(this.pos, 100, this.enemylist))
 					  .build();
 		}, "find first can't be defined");
 	}
 	
 	@Test
 	void testArea() {
-		Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		Tower t = new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 				  .attackType(AttackType.AREA)
 				  .maximumTarget(12)
 				  .findFirst(this.findFirstTest)
@@ -236,7 +239,7 @@ class BuildTest {
 	@Test
 	void testwrongArea() {
 		this.raiseIllegalStateException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "bla bla")
+			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .attackType(AttackType.AREA)
 					  .findFirst(this.findFirstTest)
 					  .damageRange(5)
@@ -244,7 +247,7 @@ class BuildTest {
 		}, "maximun target not defined");
 		
 		this.raiseIllegalStateException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "bla bla")
+			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .attackType(AttackType.AREA)
 					  .maximumTarget(12)
 					  .damageRange(5)
@@ -252,7 +255,7 @@ class BuildTest {
 		}, "find first not defined");
 		
 		this.raiseIllegalStateException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "bla bla")
+			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .attackType(AttackType.AREA)
 					  .maximumTarget(12)
 					  .findFirst(this.findFirstTest)
@@ -263,7 +266,7 @@ class BuildTest {
 
 	@Test
 	void testUpgradable() {
-		Tower t = new Builder(this.pos, 100, 100, 100, "bla bla")
+		Tower t = new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 				  .setUpgradable(true)
 				  .startUpgradeCost(1)
 				  .upgradeCost(this.upgradeCostTest)
@@ -275,7 +278,7 @@ class BuildTest {
 	@Test
 	void testWrongUpgradable() {
 		this.raiseIllegalStateException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "bla bla")
+			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .setUpgradable(true)
 					  .startUpgradeCost(1)
 					  .upgradeCost(this.upgradeCostTest)
@@ -284,7 +287,7 @@ class BuildTest {
 		}, "increase damage not defined");
 		
 		this.raiseIllegalStateException(() -> {
-			return new Builder(this.pos, 100, 100, 100, "bla bla")
+			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .setUpgradable(true)
 					  .startUpgradeCost(1)
 					  .upgradeDamage(this.upgradeDamageTest)
@@ -295,96 +298,96 @@ class BuildTest {
 	
 	@Test
 	void testBasicArcher() {
-		ArcherFactory.basicArcher(this.pos);
+		ArcherFactory.basicArcher(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testBiArcher() {
-		ArcherFactory.biArcher(this.pos);
+		ArcherFactory.biArcher(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testTriArcher() {
-		ArcherFactory.triArcher(this.pos);
+		ArcherFactory.triArcher(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testQuadArcher() {
-		ArcherFactory.quadArcher(this.pos);
+		ArcherFactory.quadArcher(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testBasicCannon() {
-		CannonFactory.basicCannon(this.pos);
+		CannonFactory.basicCannon(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testBiCannon() {
-		CannonFactory.biCannon(this.pos);
+		CannonFactory.biCannon(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testTriCannon() {
-		CannonFactory.triCannon(this.pos);
+		CannonFactory.triCannon(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testQuadCannon() {
-		CannonFactory.quadCannon(this.pos);
+		CannonFactory.quadCannon(this.pos, this.enemylist);
 	}
 
 	@Test
 	void testBasicFlame() {
-		FlameFactory.basicFlame(this.pos);
+		FlameFactory.basicFlame(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testBiFlame() {
-		FlameFactory.biFlame(this.pos);
+		FlameFactory.biFlame(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testTriFlame() {
-		FlameFactory.triFlame(this.pos);
+		FlameFactory.triFlame(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testQuadFlame() {
-		FlameFactory.quadFlame(this.pos);
+		FlameFactory.quadFlame(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testGasTower() {
-		GasFactory.gasTower(this.pos);
+		GasFactory.gasTower(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testBasicMortar() {
-		MortarFactory.basicMortar(this.pos);
+		MortarFactory.basicMortar(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testSuperMortar() {
-		MortarFactory.superMortar(this.pos);
+		MortarFactory.superMortar(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testGodMortar() {
-		MortarFactory.godMortar(this.pos);
+		MortarFactory.godMortar(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testBasicTesla() {
-		TeslaFactory.basicTesla(this.pos);
+		TeslaFactory.basicTesla(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testSuperTesla() {
-		TeslaFactory.superTesla(this.pos);
+		TeslaFactory.superTesla(this.pos, this.enemylist);
 	}
 	
 	@Test
 	void testGodTesla() {
-		TeslaFactory.godTesla(this.pos);
+		TeslaFactory.godTesla(this.pos, this.enemylist);
 	}
 }
