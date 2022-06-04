@@ -1,5 +1,6 @@
 package main.java.tas.model.tower;
 
+import java.util.List;
 import java.util.Optional;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
@@ -20,9 +21,10 @@ public class BasicTower extends AbstractBasicTower {
 	 * @param delay Tower delay
 	 * @param cost Tower cost
 	 * @param imageName  Tower image name
+	 * @param enemyList List of all enemy in the map
 	 */
-	protected BasicTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final String imageName) {
-		super(pos, damage, radius, delay, cost, imageName);
+	protected BasicTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final String imageName, final List<Enemy> enemyList) {
+		super(pos, damage, radius, delay, cost, imageName, enemyList);
 	}
 
 	/** {@inheritDoc} */
@@ -45,7 +47,7 @@ public class BasicTower extends AbstractBasicTower {
 			Thread.sleep(this.getDelay());
 		}
 		else {
-			Towers.findFirstEnemyInRange(this).ifPresent(this::setTarget);
+			Towers.findFirstEnemyInRange(this, this.getVisibleEnemyList()).ifPresent(this::setTarget);
 		}
 
 	}
