@@ -1,6 +1,9 @@
 package main.java.tas.model.tower.factory;
 
+import java.util.List;
 import java.util.function.UnaryOperator;
+
+import main.java.tas.model.enemies.Enemy;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.utils.Position;
 
@@ -68,48 +71,53 @@ public interface FlameFactory {
 	
 	/**
 	 * @param imageName image name of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return ClassicTowerFactory with all preset for Flame Tower
 	 */
-	static private ClassicTowerFactory constructor(final String imageName) {
-		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(), getMaxLevel(), imageName);
+	static private ClassicTowerFactory constructor(final String imageName, final List<Enemy> enemylist) {
+		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(), getMaxLevel(), imageName, enemylist);
 	}
 	
 	/**
 	 * @param pos Position of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return an Flame with only one target possible, and upgradable
 	 */
-	static public Tower basicFlame(final Position pos) {
-		return constructor("flame")
+	static public Tower basicFlame(final Position pos, final List<Enemy> enemylist) {
+		return constructor("flame", enemylist)
 				   .upgradableStarndard(pos, getIncreaseCost(), getIncreaseDamage())
 				   .build();
 	}
 	
 	/**
 	 * @param pos Position of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return an Flame with two targets possible, and upgradable
 	 */
-	static public Tower biFlame(final Position pos) {
-		return constructor("biflame")
+	static public Tower biFlame(final Position pos, final List<Enemy> enemylist) {
+		return constructor("biflame", enemylist)
 			   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 2)
 			   .build();
 	}
 	
 	/**
 	 * @param pos Position of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return an Flame with three targets possible, and upgradable
 	 */
-	static public Tower triFlame(final Position pos) {
-		return constructor("triflame")
+	static public Tower triFlame(final Position pos, final List<Enemy> enemylist) {
+		return constructor("triflame", enemylist)
 				   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 3)
 				   .build();
 	}
 	
 	/**
 	 * @param pos Position of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return an Flame with four targets possible, and upgradable
 	 */
-	static public Tower quadFlame(final Position pos) {
-		return constructor("quadflame")
+	static public Tower quadFlame(final Position pos, final List<Enemy> enemylist) {
+		return constructor("quadflame", enemylist)
 				   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 4)
 				   .build();
 	}

@@ -1,6 +1,9 @@
 package main.java.tas.model.tower.factory;
 
+import java.util.List;
 import java.util.function.UnaryOperator;
+
+import main.java.tas.model.enemies.Enemy;
 import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Builder;
 import main.java.tas.utils.Position;
@@ -18,6 +21,7 @@ class ClassicTowerFactory {
 	private final int startUpCost;
 	private final int maxLevel;
 	private final String imageName;
+	private final List<Enemy> enemyList;
 	
 	/**
 	 * Constructor
@@ -28,8 +32,9 @@ class ClassicTowerFactory {
 	 * @param startUpCost start upgrade cost of the Tower
 	 * @param maxLevel maximum level of the Tower
 	 * @param imageName image name of the Tower
+	 * @param enemyList List of all enemy in the map
 	 */
-	protected ClassicTowerFactory(final int damage, final int range, final int delay, final int buildCost, final int startUpCost, final int maxLevel, final String imageName) {
+	protected ClassicTowerFactory(final int damage, final int range, final int delay, final int buildCost, final int startUpCost, final int maxLevel, final String imageName, final List<Enemy> enemyList) {
 		this.damage = damage;
 		this.range = range;
 		this.delay = delay;
@@ -37,6 +42,7 @@ class ClassicTowerFactory {
 		this.startUpCost = startUpCost;
 		this.maxLevel = maxLevel;
 		this.imageName = imageName;
+		this.enemyList = enemyList;
 	}
 	
 	/**
@@ -93,7 +99,7 @@ class ClassicTowerFactory {
 	 * @return builder with all preset already set
 	 */
 	public Builder basicStarndard(final Position pos) {
-		return new Builder(pos, this.getDamage(), this.getRange(), this.getDelay(), this.getImageName())
+		return new Builder(pos, this.getDamage(), this.getRange(), this.getDelay(), this.getImageName(), this.enemyList)
 				   .cost(this.getBuildCost());
 	}
 	
