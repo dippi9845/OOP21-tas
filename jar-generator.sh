@@ -4,4 +4,4 @@ if [[ ! -d bin/ || $COMPILED == "0" ]]; then
 	echo "No compilation found, will be run"
 	./compile.sh
 fi
-jar -cfm test.jar MANIFEST.MF res/ -C bin/ .
+jar -cfm TowerAndStuff.jar MANIFEST.MF res/ -C bin/ .
