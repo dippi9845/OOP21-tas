@@ -117,4 +117,13 @@ public class Towers {
 	static public List<Enemy> findAll(final Predicate<Enemy> f) {
 		return getEnemyList().stream().filter(f).collect(Collectors.toList());
 	}
+	
+	/**
+	 * Deal damage to an Enemy, in order to abstract from the Enemy implementation
+	 * @param e Enemy to deal damage to
+	 * @param damage amount of damage
+	 */
+	static public void dealDamage(final Enemy e, final int damage) {
+		e.dealDamage(damage);
+	}
 }

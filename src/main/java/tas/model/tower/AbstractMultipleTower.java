@@ -76,7 +76,7 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 	/** {@inheritDoc} */
 	@Override
 	protected void attack() {
-		this.enemyList.forEach(x->x.dealDamage(this.getDamage()));
+		this.enemyList.forEach(x->Towers.dealDamage(x, this.getDamage()));
 	}
 	
 	/** {@inheritDoc} */
