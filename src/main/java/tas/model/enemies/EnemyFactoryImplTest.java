@@ -1,4 +1,4 @@
-package test.java.tas.model;
+package main.java.tas.model.enemies;
 
 import static org.junit.Assert.*;
 
@@ -6,8 +6,6 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import main.java.tas.model.enemies.EnemyFactory;
-import main.java.tas.model.enemies.EnemyFactoryImpl;
 import main.java.tas.utils.Position;
 
 public class EnemyFactoryImplTest {
