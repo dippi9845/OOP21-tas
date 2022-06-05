@@ -1,24 +1,24 @@
 package main.java.tas.model.enemies;
 
 /**
- * An interface for an enemy factory
+ * An interface for an enemy builder.
  * 
  */
 public interface EnemyBuilder {
-    
+
     /**
-     * @return a {@link RedEnemy}
+     * @return an enemy of red type
      */
     Enemy spawnRedEnemy();
-    
+
     /**
-     * @return a {@link GreenEnemy}
+     * @return an enemy of green type
      */
     Enemy spawnGreenEnemy();
-    
+
     /**
-     * @return a {@link PinkEnemy}
+     * @return an enemy of pink type
      */
     Enemy spawnPinkEnemy();
-    
+
 }
