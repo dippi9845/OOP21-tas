@@ -32,7 +32,6 @@ public class GenericEnemy implements Enemy {
      * @param speed         the speed of the enemy (pixels/seconds)
      * @param bodyDimension the dimension of the enemy
      * @param imageName     the name of the image of the enemy
-     * @return the enemy
      * @throws IllegalArgumentException if @param nodesPosition is empty
      */
     public GenericEnemy(List<Position> nodesPosition, double health, int money, int damage, double speed,

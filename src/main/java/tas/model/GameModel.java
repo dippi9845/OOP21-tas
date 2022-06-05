@@ -32,7 +32,7 @@ public interface GameModel {
     /**
      * Decreases the amount of money.
      * 
-     * @param money amount by which it will be decreased
+     * @param amount amount by which it will be decreased
      * @return true if the transaction went correctly, false otherwise
      */
     boolean spendMoney(final int amount);
