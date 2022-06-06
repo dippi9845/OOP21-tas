@@ -21,7 +21,7 @@ import main.java.tas.model.GameSpecs;
  */
 public class ImageLoaderImpl implements ImageLoader {
 
-    private final String RESOURCE_PATH = "res" + System.getProperty("file.separator") + "images";
+    private static String RESOURCE_PATH = "res" + System.getProperty("file.separator") + "images";
     private final HashMap<String, BufferedImage> imagesMap = new HashMap<String, BufferedImage>();
 
     /**
