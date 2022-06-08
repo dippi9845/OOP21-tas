@@ -14,6 +14,7 @@ public class MainControllerImpl implements MainController {
     private SceneController sceneController;
     private final MainView mainView;
     private GameScene scene;
+    private GameSpecs gameSpecs = new GameSpecs();
 
     /**
      * Constructor that creates the main controller of the game.
@@ -60,10 +61,10 @@ public class MainControllerImpl implements MainController {
                        // pulsante o altro
             loops = 0;
 
-            while (System.currentTimeMillis() > next_game_tick && loops < GameSpecs.MAX_FRAMESKIP) {
+            while (System.currentTimeMillis() > next_game_tick && loops < this.gameSpecs.getMaxFrameSkip()) {
                 this.sceneController.nextTick();
 
-                next_game_tick += GameSpecs.SKIP_TICKS;
+                next_game_tick += this.gameSpecs.getSkipTicks();
                 loops++;
                 fps++;
             }

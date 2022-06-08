@@ -15,6 +15,8 @@ public class AdaptiveLabel extends JLabel {
     private Position actualPosition = new Position(0, 0);
     private CustomTextImpl text = new CustomTextImpl();
 
+    private GameSpecs gameSpecs = new GameSpecs();
+
     /**
      * Set the relative position of the label.
      * 
@@ -63,10 +65,10 @@ public class AdaptiveLabel extends JLabel {
      * @param pos is the relative position of the label
      */
     private void draw(Position pos) {
-        int xPos = (int) ((double) getParent().getWidth() / (double) GameSpecs.GAME_UNITS.width * (double) pos.getX()
-                - getPreferredSize().getWidth() / 2);
-        int yPos = (int) ((double) getParent().getHeight() / (double) GameSpecs.GAME_UNITS.height * (double) pos.getY()
-                - getPreferredSize().getHeight() / 2);
+        int xPos = (int) ((double) getParent().getWidth() / (double) this.gameSpecs.getGameUnits().width
+                * (double) pos.getX() - getPreferredSize().getWidth() / 2);
+        int yPos = (int) ((double) getParent().getHeight() / (double) this.gameSpecs.getGameUnits().height
+                * (double) pos.getY() - getPreferredSize().getHeight() / 2);
 
         setBounds(xPos, yPos, (int) getPreferredSize().getWidth(), (int) getPreferredSize().getHeight());
     }

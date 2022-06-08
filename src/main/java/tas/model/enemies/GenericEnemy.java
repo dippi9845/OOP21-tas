@@ -11,6 +11,8 @@ import main.java.tas.utils.Position;
  */
 public class GenericEnemy implements Enemy {
 
+    private GameSpecs gameSpecs = new GameSpecs();
+
     private final Dimension bodyDimension;
     private final Position actualPosition;
     private double health;
@@ -49,7 +51,7 @@ public class GenericEnemy implements Enemy {
         this.health = health;
         this.money = money;
         this.damage = damage;
-        this.speed = speed / GameSpecs.TICKS_PER_SECOND;
+        this.speed = speed / this.gameSpecs.getTickRate();
         this.imageName = imageName;
     }
 
