@@ -1,14 +1,12 @@
 package main.java.tas.model.enemies;
 
 import java.awt.Dimension;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 
 import org.json.JSONObject;
 
 import main.java.tas.utils.Position;
+import main.java.tas.utils.JsonUtils;
 
 /**
  * Class that implements {@link EnemyBuilder}.
@@ -36,24 +34,7 @@ public class EnemyBuilderImpl implements EnemyBuilder {
         }
         this.nodesPosition = nodesPosition;
 
-        this.enemiesSetup = setupJsonData(enemiesJsonSetup);
-    }
-
-    /**
-     * Reads data from a JSON file and returns the relative JSONObject
-     * 
-     * @param jsonPath where the file is
-     * @return the relative JSONObject
-     */
-    private JSONObject setupJsonData(String jsonPath) {
-        String content = "";
-        try {
-            content = Files.readString(Paths.get(jsonPath));
-        } catch (IOException e) {
-            System.out.println("Error: No enemy json file detected!");
-            System.out.println(e);
-        }
-        return new JSONObject(content);
+        this.enemiesSetup = JsonUtils.getJsonData(enemiesJsonSetup);
     }
 
     /**
