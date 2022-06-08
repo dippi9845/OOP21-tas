@@ -19,27 +19,27 @@ import main.java.tas.utils.Position;
 public class EnemiesBuilderImplTest {
 
     @Test
-    public void testSpawnMultipleEnemies() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    public void testSpawnMultipleEnemies()
+            throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         final EnemyBuilder enemiesFactory = new EnemyBuilderImpl(Arrays.asList(new Position(0, 0)));
         final List<Enemy> enemiesList = new ArrayList<Enemy>();
         final int enemiesNumber = 1000; // spawning x enemies of each type
-        int enemyTypeNumber;
-        
+        int enemyTypeNumber = 0;
+
         Method[] allMethods = enemiesFactory.getClass().getDeclaredMethods();
-        enemyTypeNumber = allMethods.length;
         for (Method method : allMethods) {
             if (!method.getName().contains("spawn")) {
-                enemyTypeNumber--;
                 continue;
             }
             if (Modifier.isPublic(method.getModifiers())) {
-                for (int i=0; i < enemiesNumber; i++) {
+                enemyTypeNumber++;
+                for (int i = 0; i < enemiesNumber; i++) {
                     enemiesList.add((Enemy) method.invoke(enemiesFactory));
                 }
             }
         }
-        
+        System.out.println(enemyTypeNumber);
         assertEquals(enemiesList.size(), enemiesNumber * enemyTypeNumber);
     }
-    
+
 }
