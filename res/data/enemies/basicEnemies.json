@@ -1,0 +1,35 @@
+{
+    "RedEnemy":{
+        "image":"redEnemy",
+        "health":1,
+        "money":50,
+        "damage":10,
+        "speed":60,
+        "bodyDimension":{
+            "width":100,
+            "height":100
+        }
+    },
+    "GreenEnemy":{
+        "image":"greenEnemy",
+        "health":10,
+        "money":100,
+        "damage":40,
+        "speed":30,
+        "bodyDimension":{
+            "width":100,
+            "height":100
+        }
+    },
+    "PinkEnemy":{
+        "image":"pinkEnemy",
+        "health":2,
+        "money":100,
+        "damage":10,
+        "speed":90,
+        "bodyDimension":{
+            "width":100,
+            "height":100
+        }
+    }
+}

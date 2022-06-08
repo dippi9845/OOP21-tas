@@ -3,25 +3,25 @@ package main.java.tas.view;
 import javax.swing.JPanel;
 
 /**
- * Interface for a generic view
+ * Interface for a generic view.
  */
 public interface View {
-   
+
     /**
-     * Creates a window
+     * Creates a window.
      */
     void createWindow();
-    
+
     /**
-     * Set the window to visible
+     * Set the window to visible.
      */
     void show();
-    
+
     /**
-     * Updates the window
+     * Updates the window.
      */
     void update();
-    
+
     /**
      * @return the main {@link JPanel} of the window
      */
