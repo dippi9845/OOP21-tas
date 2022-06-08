@@ -3,7 +3,7 @@ package main.java.tas.controller;
 import java.util.function.Consumer;
 import main.java.tas.model.Entity;
 import main.java.tas.model.tower.Builder;
-import main.java.tas.model.tower.factory.FactoryList;
+import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.utils.Position;
 /**
  * An interface that manage all the built towers
@@ -16,7 +16,7 @@ public interface TowerLogic {
 	 * @param pos position of the tower
 	 * @return true if the tower is successfully build
 	 */
-	public boolean placeTower(final FactoryList tower, final Position pos);
+	public boolean placeTower(final DefaultTowers tower, final Position pos);
 	
 	/**
 	 * Build the tower with specific presets

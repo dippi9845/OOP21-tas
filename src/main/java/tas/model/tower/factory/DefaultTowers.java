@@ -1,6 +1,6 @@
 package main.java.tas.model.tower.factory;
 
-public enum FactoryList {
+public enum DefaultTowers {
 	BASICARCHER,
 	BIARCHER,
 	TRIARCHER,

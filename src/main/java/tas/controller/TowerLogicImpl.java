@@ -11,7 +11,7 @@ import main.java.tas.model.tower.Builder;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.factory.ArcherFactory;
 import main.java.tas.model.tower.factory.CannonFactory;
-import main.java.tas.model.tower.factory.FactoryList;
+import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.model.tower.factory.FlameFactory;
 import main.java.tas.model.tower.factory.GasFactory;
 import main.java.tas.model.tower.factory.MortarFactory;
@@ -30,32 +30,32 @@ public class TowerLogicImpl implements TowerLogic {
 	private final List<Thread> towerThreads = new LinkedList<Thread>();
 	private final Consumer<Entity> addToPanel;
 	private final Predicate<Integer> spendMoney;
-	private final Map<FactoryList, BiFunction<Position, List<Enemy>, Tower>> buildMap;
+	private final Map<DefaultTowers, BiFunction<Position, List<Enemy>, Tower>> buildMap;
 	private final List<Enemy> enemyList; 
 	
 	/**
 	 * Initialize the map with all functions that build a tower by the given enumeration code
 	 */
 	private void initBuildMap() {
-		this.buildMap.put(FactoryList.BASICARCHER, ArcherFactory::basicArcher);
-		this.buildMap.put(FactoryList.BIARCHER, ArcherFactory::biArcher);
-		this.buildMap.put(FactoryList.TRIARCHER, ArcherFactory::triArcher);
-		this.buildMap.put(FactoryList.QUADARCHER, ArcherFactory::quadArcher);
-		this.buildMap.put(FactoryList.BASICCANNON, CannonFactory::basicCannon);
-		this.buildMap.put(FactoryList.BICANNON, CannonFactory::biCannon);
-		this.buildMap.put(FactoryList.TRICANNON, CannonFactory::triCannon);
-		this.buildMap.put(FactoryList.QUADCANNON, CannonFactory::quadCannon);
-		this.buildMap.put(FactoryList.BASICFLAME, FlameFactory::basicFlame);
-		this.buildMap.put(FactoryList.BIFLAME, FlameFactory::biFlame);
-		this.buildMap.put(FactoryList.TRIFLAME, FlameFactory::triFlame);
-		this.buildMap.put(FactoryList.QUADFLAME, FlameFactory::quadFlame);
-		this.buildMap.put(FactoryList.GASTOWER, GasFactory::gasTower);
-		this.buildMap.put(FactoryList.BASICMORTAR, MortarFactory::basicMortar);
-		this.buildMap.put(FactoryList.SUPERMORTAR, MortarFactory::superMortar);
-		this.buildMap.put(FactoryList.GODMORTAR, MortarFactory::godMortar);
-		this.buildMap.put(FactoryList.BASICTESLA, TeslaFactory::basicTesla);
-		this.buildMap.put(FactoryList.SUPERTESLA, TeslaFactory::basicTesla);
-		this.buildMap.put(FactoryList.GODTESLA, TeslaFactory::basicTesla);
+		this.buildMap.put(DefaultTowers.BASICARCHER, ArcherFactory::basicArcher);
+		this.buildMap.put(DefaultTowers.BIARCHER, ArcherFactory::biArcher);
+		this.buildMap.put(DefaultTowers.TRIARCHER, ArcherFactory::triArcher);
+		this.buildMap.put(DefaultTowers.QUADARCHER, ArcherFactory::quadArcher);
+		this.buildMap.put(DefaultTowers.BASICCANNON, CannonFactory::basicCannon);
+		this.buildMap.put(DefaultTowers.BICANNON, CannonFactory::biCannon);
+		this.buildMap.put(DefaultTowers.TRICANNON, CannonFactory::triCannon);
+		this.buildMap.put(DefaultTowers.QUADCANNON, CannonFactory::quadCannon);
+		this.buildMap.put(DefaultTowers.BASICFLAME, FlameFactory::basicFlame);
+		this.buildMap.put(DefaultTowers.BIFLAME, FlameFactory::biFlame);
+		this.buildMap.put(DefaultTowers.TRIFLAME, FlameFactory::triFlame);
+		this.buildMap.put(DefaultTowers.QUADFLAME, FlameFactory::quadFlame);
+		this.buildMap.put(DefaultTowers.GASTOWER, GasFactory::gasTower);
+		this.buildMap.put(DefaultTowers.BASICMORTAR, MortarFactory::basicMortar);
+		this.buildMap.put(DefaultTowers.SUPERMORTAR, MortarFactory::superMortar);
+		this.buildMap.put(DefaultTowers.GODMORTAR, MortarFactory::godMortar);
+		this.buildMap.put(DefaultTowers.BASICTESLA, TeslaFactory::basicTesla);
+		this.buildMap.put(DefaultTowers.SUPERTESLA, TeslaFactory::basicTesla);
+		this.buildMap.put(DefaultTowers.GODTESLA, TeslaFactory::basicTesla);
 	}
 	
 	/**
@@ -95,7 +95,7 @@ public class TowerLogicImpl implements TowerLogic {
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean placeTower(final FactoryList tower, final Position pos) {
+	public boolean placeTower(final DefaultTowers tower, final Position pos) {
 		return this.buildTower(this.buildMap.get(tower).apply(pos, this.enemyList));
 	}
 
