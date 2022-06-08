@@ -7,11 +7,11 @@ import java.awt.Dimension;
 /**
  * An Interface that model a generic Tower, that extends Entity and Runnable
  * 
- * Extends Entity: so can be drawable
- * Extends Runnable: so every tower can run concurrently
+ * Extends Entity: so can be drawable Extends Runnable: so every tower can run
+ * concurrently
  */
 public interface Tower extends Entity, Runnable {
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -19,7 +19,7 @@ public interface Tower extends Entity, Runnable {
 	default Dimension getBodyDimension() {
 		return new Dimension(100, 100);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -27,7 +27,7 @@ public interface Tower extends Entity, Runnable {
 	default Position getPosition() {
 		return this.getPos();
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -35,7 +35,7 @@ public interface Tower extends Entity, Runnable {
 	default String getImageName() {
 		return this.getTowerImageName();
 	}
-	
+
 	/**
 	 * Method used by thread, to run the tower in concurrency
 	 */
@@ -46,38 +46,40 @@ public interface Tower extends Entity, Runnable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-	 * This method implements the behavior of the tower, at every wake up of the Thread
+	 * This method implements the behavior of the tower, at every wake up of the
+	 * Thread
+	 * 
 	 * @throws InterruptedException, if some error occurs during Thread.sleep
 	 */
 	public void compute() throws InterruptedException;
-	
+
 	/**
 	 * @return the damage of the tower
 	 */
 	public int getDamage();
-	
+
 	/**
 	 * @return the radius of the tower
 	 */
 	public int getRadius();
-	
+
 	/**
 	 * @return the cost of the tower
 	 */
 	public int getCost();
-	
+
 	/**
 	 * @return the delay of the tower
 	 */
 	public int getDelay();
-	
+
 	/**
 	 * @return the name of the image linked to the tower
 	 */
 	public String getTowerImageName();
-	
+
 	/**
 	 * @return the position of the tower
 	 */

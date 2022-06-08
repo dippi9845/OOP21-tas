@@ -31,10 +31,11 @@ public class TowerLogicImpl implements TowerLogic {
 	private final Consumer<Entity> addToPanel;
 	private final Predicate<Integer> spendMoney;
 	private final Map<DefaultTowers, BiFunction<Position, List<Enemy>, Tower>> buildMap;
-	private final List<Enemy> enemyList; 
-	
+	private final List<Enemy> enemyList;
+
 	/**
-	 * Initialize the map with all functions that build a tower by the given enumeration code
+	 * Initialize the map with all functions that build a tower by the given
+	 * enumeration code
 	 */
 	private void initBuildMap() {
 		this.buildMap.put(DefaultTowers.BASICARCHER, ArcherFactory::basicArcher);
@@ -57,9 +58,10 @@ public class TowerLogicImpl implements TowerLogic {
 		this.buildMap.put(DefaultTowers.SUPERTESLA, TeslaFactory::basicTesla);
 		this.buildMap.put(DefaultTowers.GODTESLA, TeslaFactory::basicTesla);
 	}
-	
+
 	/**
 	 * Add the tower to the list, and create a thread on that
+	 * 
 	 * @param t Tower to add
 	 * @return
 	 */
@@ -76,7 +78,7 @@ public class TowerLogicImpl implements TowerLogic {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Constructor
 	 * 
@@ -84,11 +86,12 @@ public class TowerLogicImpl implements TowerLogic {
 	 * @param addToPanel function that add towers to the panel
 	 * @param spendMoney
 	 */
-	public TowerLogicImpl(final List<Enemy> enemyList, final Consumer<Entity> addToPanel, final Predicate<Integer> spendMoney) {
+	public TowerLogicImpl(final List<Enemy> enemyList, final Consumer<Entity> addToPanel,
+			final Predicate<Integer> spendMoney) {
 		this.addToPanel = addToPanel;
 		this.spendMoney = spendMoney;
 		this.enemyList = enemyList;
-		
+
 		this.buildMap = new HashMap<>();
 		this.initBuildMap();
 	}
@@ -102,8 +105,7 @@ public class TowerLogicImpl implements TowerLogic {
 	/** {@inheritDoc} */
 	@Override
 	public boolean placeTower(final Builder preset) {
-		return this.buildTower(preset.setEnemylist(this.enemyList)
-				   .build());
+		return this.buildTower(preset.setEnemylist(this.enemyList).build());
 	}
 
 	/** {@inheritDoc} */
