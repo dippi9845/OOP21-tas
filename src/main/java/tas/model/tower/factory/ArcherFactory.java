@@ -1,6 +1,8 @@
 package main.java.tas.model.tower.factory;
 
+import java.util.List;
 import java.util.function.UnaryOperator;
+import main.java.tas.model.enemies.Enemy;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.utils.Position;
 
@@ -60,10 +62,11 @@ public interface ArcherFactory {
 	/**
 	 * Return ClassicTowerFactory with all preset for Archer Tower
 	 * @param imageName image name of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return ClassicTowerFactory with all preset for Archer Tower
 	 */
-	static private ClassicTowerFactory constructor(final String imageName) {
-		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(), getMaxLevel(), imageName);
+	static private ClassicTowerFactory constructor(final String imageName, final List<Enemy> enemyList) {
+		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(), getMaxLevel(), imageName, enemyList);
 	}
 
 	/**
@@ -84,10 +87,11 @@ public interface ArcherFactory {
 	/**
 	 * Return an archer with only one target possible, and upgradable
 	 * @param pos Position of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return an archer with only one target possible, and upgradable
 	 */
-	static public Tower basicArcher(final Position pos) {
-		return constructor("archer")
+	static public Tower basicArcher(final Position pos, final List<Enemy> enemyList) {
+		return constructor("archer", enemyList)
 			   .upgradableStarndard(pos, getIncreaseCost(), getIncreaseDamage())
 			   .build();
 	}
@@ -95,10 +99,11 @@ public interface ArcherFactory {
 	/**
 	 * Return an archer with two targets possible, and upgradable
 	 * @param pos Position of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return an archer with two targets possible, and upgradable
 	 */
-	static public Tower biArcher(final Position pos) {
-		return constructor("biarcher")
+	static public Tower biArcher(final Position pos, final List<Enemy> enemyList) {
+		return constructor("biarcher", enemyList)
 			   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 2)
 			   .build();
 	}
@@ -106,10 +111,11 @@ public interface ArcherFactory {
 	/**
 	 * Return an archer with three targets possible, and upgradable
 	 * @param pos Position of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return an archer with three targets possible, and upgradable
 	 */
-	static public Tower triArcher(final Position pos) {
-		return constructor("triarcher")
+	static public Tower triArcher(final Position pos, final List<Enemy> enemyList) {
+		return constructor("triarcher", enemyList)
 			   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 3)
 			   .build();
 	}
@@ -117,10 +123,11 @@ public interface ArcherFactory {
 	/**
 	 * Return an archer with four targets possible, and upgradable
 	 * @param pos Position of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return an archer with four targets possible, and upgradable
 	 */
-	static public Tower quadArcher(final Position pos) {
-		return constructor("quadarcher")
+	static public Tower quadArcher(final Position pos, final List<Enemy> enemyList) {
+		return constructor("quadarcher", enemyList)
 			   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 4)
 			   .build();
 	}

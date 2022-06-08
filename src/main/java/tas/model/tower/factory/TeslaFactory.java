@@ -1,5 +1,8 @@
 package main.java.tas.model.tower.factory;
 
+import java.util.List;
+
+import main.java.tas.model.enemies.Enemy;
 import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Builder;
 import main.java.tas.model.tower.Tower;
@@ -15,10 +18,11 @@ public interface TeslaFactory {
 	/**
 	 * this tesla has a growth of the damage and cost linear
 	 * @param pos Position of the Tesla
+	 * @param enemyList List of all enemy in the map
 	 * @return Tesla tower
 	 */
-	static public Tower basicTesla(final Position pos) {
-		return new Builder(pos, 100, 9, 1100, "tesla")
+	static public Tower basicTesla(final Position pos, final List<Enemy> enemyList) {
+		return new Builder(pos, 100, 9, 1100, "tesla", enemyList)
 		   .attackType(AttackType.AREA)
 		   .damageRange(7)
 		   .setUpgradable(true)
@@ -28,7 +32,7 @@ public interface TeslaFactory {
 		   .startUpgradeCost(10)
 		   .maximumTarget(4)
 		   .findFirst(()->{
-			   return Towers.findFirstEnemyInRange(pos, 9);
+			   return Towers.findFirstEnemyInRange(pos, 9, enemyList);
 		   })
 		   .build();
 	}
@@ -36,10 +40,11 @@ public interface TeslaFactory {
 	/**
 	 * this tesla has a growth of the damage and cost quadratic
 	 * @param pos Position of the Tesla
+	 * @param enemyList List of all enemy in the map
 	 * @return Super Tesla tower
 	 */
-	static public Tower superTesla(final Position pos) {
-		return new Builder(pos, 150, 9, 1100, "superTesla")
+	static public Tower superTesla(final Position pos, final List<Enemy> enemyList) {
+		return new Builder(pos, 150, 9, 1100, "superTesla", enemyList)
 		   .attackType(AttackType.AREA)
 		   .damageRange(7)
 		   .setUpgradable(true)
@@ -49,7 +54,7 @@ public interface TeslaFactory {
 		   .startUpgradeCost(20)
 		   .maximumTarget(8)
 		   .findFirst(()->{
-			   return Towers.findFirstEnemyInRange(pos, 9);
+			   return Towers.findFirstEnemyInRange(pos, 9, enemyList);
 		   })
 		   .build();
 	}
@@ -57,10 +62,11 @@ public interface TeslaFactory {
 	/**
 	 * this tesla has a growth of the damage and cost exponential
 	 * @param pos Position of the Tesla
+	 * @param enemyList List of all enemy in the map
 	 * @return God Tesla tower
 	 */
-	static public Tower godTesla(final Position pos) {
-		return new Builder(pos, 200, 9, 1100, "godtesla")
+	static public Tower godTesla(final Position pos, final List<Enemy> enemyList) {
+		return new Builder(pos, 200, 9, 1100, "godtesla", enemyList)
 		   .attackType(AttackType.AREA)
 		   .damageRange(7)
 		   .setUpgradable(true)
@@ -70,7 +76,7 @@ public interface TeslaFactory {
 		   .startUpgradeCost(100)
 		   .maximumTarget(100)
 		   .findFirst(()->{
-			   return Towers.findFirstEnemyInRange(pos, 9);
+			   return Towers.findFirstEnemyInRange(pos, 9, enemyList);
 		   })
 		   .build();
 	}

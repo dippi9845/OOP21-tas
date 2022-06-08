@@ -4,5 +4,5 @@ echo -n "Do you want to generate the jar with javadoc ? [N/y] "
 read choose
 if [[ $choose == "y" ]]; then
 	jar -cf javadoc.jar doc/
-	rm -r doc/*
+	rm -r doc
 fi

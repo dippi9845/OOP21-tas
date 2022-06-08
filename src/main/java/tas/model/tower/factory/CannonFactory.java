@@ -1,6 +1,8 @@
 package main.java.tas.model.tower.factory;
 
+import java.util.List;
 import java.util.function.UnaryOperator;
+import main.java.tas.model.enemies.Enemy;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.utils.Position;
 
@@ -60,10 +62,11 @@ public interface CannonFactory{
 	/**
 	 * Return ClassicTowerFactory with all preset for Cannon Tower
 	 * @param imageName image name of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return ClassicTowerFactory with all preset for Cannon Tower
 	 */
-	static private ClassicTowerFactory constructor(final String imageName) {
-		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(), getMaxLevel(), imageName);
+	static private ClassicTowerFactory constructor(final String imageName, final List<Enemy> enemyList) {
+		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(), getMaxLevel(), imageName, enemyList);
 	}
 	
 	/**
@@ -85,10 +88,11 @@ public interface CannonFactory{
 	/**
 	 * Return an cannon with only one target possible, and upgradable
 	 * @param pos Position of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return an cannon with only one target possible, and upgradable
 	 */
-	static public Tower basicCannon(final Position pos) {
-		return constructor("cannon")
+	static public Tower basicCannon(final Position pos, final List<Enemy> enemyList) {
+		return constructor("cannon", enemyList)
 				   .upgradableStarndard(pos, getIncreaseCost(), getIncreaseDamage())
 				   .build();
 	}
@@ -96,10 +100,11 @@ public interface CannonFactory{
 	/**
 	 * Return an cannon with two targets possible, and upgradable
 	 * @param pos Position of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return an cannon with two targets possible, and upgradable
 	 */
-	static public Tower biCannon(final Position pos) {
-		return constructor("bicannon")
+	static public Tower biCannon(final Position pos, final List<Enemy> enemyList) {
+		return constructor("bicannon", enemyList)
 				   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 2)
 				   .build();
 	}
@@ -107,10 +112,11 @@ public interface CannonFactory{
 	/**
 	 * Return  an cannon with three targets possible, and upgradable
 	 * @param pos Position of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return  an cannon with three targets possible, and upgradable
 	 */
-	static public Tower triCannon(final Position pos) {
-		return constructor("tricannon")
+	static public Tower triCannon(final Position pos, final List<Enemy> enemyList) {
+		return constructor("tricannon", enemyList)
 				   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 3)
 				   .build();
 	}
@@ -118,10 +124,11 @@ public interface CannonFactory{
 	/**
 	 * Return an cannon with four targets possible, and upgradable
 	 * @param pos Position of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return an cannon with four targets possible, and upgradable
 	 */
-	static public Tower quadCannon(final Position pos) {
-		return constructor("quadcannon")
+	static public Tower quadCannon(final Position pos, final List<Enemy> enemyList) {
+		return constructor("quadcannon", enemyList)
 				   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 4)
 				   .build();
 	}
