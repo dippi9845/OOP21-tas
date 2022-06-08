@@ -9,7 +9,6 @@ import main.java.tas.model.GameModel;
 import main.java.tas.model.TimeCurve;
 import main.java.tas.model.TimeCurveImpl;
 import main.java.tas.model.enemies.Enemy;
-import main.java.tas.model.tower.Tower;
 import main.java.tas.utils.Position;
 import main.java.tas.view.GameScene;
 
@@ -48,16 +47,6 @@ public class GameController implements SceneController {
         this.gameScene.getGameView().addTextLabel("＄ " + this.playerStats.getPlayerMoney(), "money", "SE");
 
         // TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
-    }
-
-    /**
-     * Build the tower given.
-     * 
-     * @param t actual tower
-     * @return true if the tower was build
-     */
-    public boolean addTower(final Tower t) {
-        return this.towerLogic.buildTower(t);
     }
 
     /**

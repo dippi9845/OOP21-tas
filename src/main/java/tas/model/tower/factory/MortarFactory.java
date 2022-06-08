@@ -1,5 +1,8 @@
 package main.java.tas.model.tower.factory;
 
+import java.util.List;
+
+import main.java.tas.model.enemies.Enemy;
 import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Builder;
 import main.java.tas.model.tower.Tower;
@@ -17,10 +20,11 @@ public interface MortarFactory {
 	/**
 	 * this Mortar has a growth of the damage and cost linear
 	 * @param pos Position of the Mortar
+	 * @param enemyList List of all enemy in the map
 	 * @return Mortar tower
 	 */
-	static public Tower basicMortar(final Position pos) {
-		return new Builder(pos, 25, 16, 5000, "mortar")
+	static public Tower basicMortar(final Position pos, final List<Enemy> enemyList) {
+		return new Builder(pos, 25, 16, 5000, "mortar", enemyList)
 				   .attackType(AttackType.AREA)
 				   .damageRange(3)
 				   .setUpgradable(true)
@@ -31,7 +35,7 @@ public interface MortarFactory {
 				   .maximumTarget(Integer.MAX_VALUE)
 				   .findFirst(()->{
 					   return Towers.findFistEnemyBiPredicate(e->Towers.isInRange(pos, e.getPosition(), 16),
-							   								  e->!Towers.isInRange(pos, e.getPosition(), 4));
+							   								  e->!Towers.isInRange(pos, e.getPosition(), 4), enemyList);
 				   })
 				   .build();
 	}
@@ -39,10 +43,11 @@ public interface MortarFactory {
 	/**
 	 * this Mortar has a growth of the damage and cost quadratic
 	 * @param pos Position of the Mortar
+	 * @param enemyList List of all enemy in the map
 	 * @return Mortar tower
 	 */
-	static public Tower superMortar(final Position pos) {
-		return new Builder(pos, 10, 12, 8000, "supermortar")
+	static public Tower superMortar(final Position pos, final List<Enemy> enemyList) {
+		return new Builder(pos, 10, 12, 8000, "supermortar", enemyList)
 		   .attackType(AttackType.AREA)
 		   .damageRange(4)
 		   .setUpgradable(true)
@@ -53,7 +58,7 @@ public interface MortarFactory {
 		   .maximumTarget(Integer.MAX_VALUE)
 		   .findFirst(()->{
 			   return Towers.findFistEnemyBiPredicate(e->Towers.isInRange(pos, e.getPosition(), 12),
-					   								  e->!Towers.isInRange(pos, e.getPosition(), 4));
+					   								  e->!Towers.isInRange(pos, e.getPosition(), 4), enemyList);
 		   })
 		   .build();
 	}
@@ -61,10 +66,11 @@ public interface MortarFactory {
 	/**
 	 * this Mortar has a growth of the damage and cost exponential
 	 * @param pos Position of the Mortar
+	 * @param enemyList List of all enemy in the map
 	 * @return Mortar tower
 	 */
-	static public Tower godMortar(final Position pos) {
-		return new Builder(pos, 10, 12, 8000, "godmortar")
+	static public Tower godMortar(final Position pos, final List<Enemy> enemyList) {
+		return new Builder(pos, 10, 12, 8000, "godmortar", enemyList)
 		   .attackType(AttackType.AREA)
 		   .damageRange(6)
 		   .setUpgradable(true)
@@ -75,7 +81,7 @@ public interface MortarFactory {
 		   .maximumTarget(Integer.MAX_VALUE)
 		   .findFirst(()->{
 			   return Towers.findFistEnemyBiPredicate(e->Towers.isInRange(pos, e.getPosition(), 12),
-					   								  e->!Towers.isInRange(pos, e.getPosition(), 4));
+					   								  e->!Towers.isInRange(pos, e.getPosition(), 4), enemyList);
 		   })
 		   .build();
 	}

@@ -1,6 +1,9 @@
 package main.java.tas.model.tower.factory;
 
+import java.util.List;
 import java.util.function.UnaryOperator;
+
+import main.java.tas.model.enemies.Enemy;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.utils.Position;
 
@@ -68,18 +71,20 @@ public interface GasFactory {
 	
 	/**
 	 * @param imageName image name of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return ClassicTowerFactory with all preset for Gas Tower
 	 */
-	static private ClassicTowerFactory constructor(final String imageName) {
-		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(), getMaxLevel(), imageName);
+	static private ClassicTowerFactory constructor(final String imageName, final List<Enemy> enemyList) {
+		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(), getMaxLevel(), imageName, enemyList);
 	}
 	
 	/**
 	 * @param pos Position of the tower
+	 * @param enemyList List of all enemy in the map
 	 * @return an Gas Tower upgradable
 	 */
-	static public Tower gasTower(final Position pos) {
-		return constructor("gas")
+	static public Tower gasTower(final Position pos, final List<Enemy> enemyList) {
+		return constructor("gas", enemyList)
 				   .nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), Integer.MAX_VALUE)
 				   .build();
 	}

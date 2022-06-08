@@ -1,5 +1,6 @@
 package main.java.tas.model.tower;
 
+import java.util.List;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
 
@@ -17,10 +18,11 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 	 * @param delay Tower delay
 	 * @param cost Tower cost
 	 * @param imageName  Tower image name
+	 * @param enemyList List of all enemy in the map
 	 * @param maxTarget Max number of target that this tower can handle at the time
 	 */
-	protected BasicMultipleTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final String imageName, final int maxTarget) {
-		super(pos, damage, radius, delay, cost, imageName, maxTarget);
+	protected BasicMultipleTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final String imageName, final List<Enemy> enemyList, final int maxTarget) {
+		super(pos, damage, radius, delay, cost, imageName, enemyList, maxTarget);
 	}
 
 	/** {@inheritDoc} */
@@ -33,7 +35,7 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 	@Override
 	public void compute() throws InterruptedException {
 		if (!this.isFull()) {
-			Towers.findAll(this::isValidTarget)
+			Towers.findAll(this::isValidTarget, this.getVisibleEnemyList())
 				  .stream()
 				  .limit(this.getMaxEnemy() - this.getEnemyList().size())
 				  .forEach(this::setTarget);
