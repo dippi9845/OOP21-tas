@@ -87,6 +87,9 @@ class BuildTest {
 		
 	}
 	
+	/**
+	 * Test all possible combination of buildable towers with a parameter that is 0 or null
+	 */
 	@Test
 	void testNullValues() {
 		this.raiseIllegalArgumentException(() -> {
@@ -103,6 +106,10 @@ class BuildTest {
 		
 		this.raiseIllegalArgumentException(() -> {
 			return new Builder(this.pos, 100, 100, 0, "bla bla", this.enemylist).build();
+		}, "zero as parameter can't be accepted");
+		
+		this.raiseIllegalStateException(() -> {
+			return new Builder(this.pos, 100, 100, 0, "bla bla", null).build();
 		}, "zero as parameter can't be accepted");
 		
 		this.raiseIllegalArgumentException(() -> {
@@ -122,6 +129,26 @@ class BuildTest {
 					  .build();
 		}, "zero as parameter can't be accepted");
 		
+		this.raiseIllegalStateException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
+					  .setUpgradable(true)
+					  .startUpgradeCost(1)
+					  .upgradeCost(null)
+					  .upgradeDamage(this.upgradeDamageTest)
+					  .maxLevel(1)
+					  .build();
+		}, "null as upgrade cost can't be accepted");
+		
+		this.raiseIllegalStateException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
+					  .setUpgradable(true)
+					  .startUpgradeCost(1)
+					  .upgradeCost(this.upgradeCostTest)
+					  .upgradeDamage(null)
+					  .maxLevel(1)
+					  .build();
+		}, "zero as upgrade damage can't be accepted");
+		
 		this.raiseIllegalArgumentException(() -> {
 			return new Builder(this.pos, 100, 100, 100, "bla bla", this.enemylist)
 					  .setUpgradable(true)
@@ -131,8 +158,38 @@ class BuildTest {
 					  .maxLevel(0)
 					  .build();
 		}, "zero as parameter can't be accepted");
+		
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla", this.enemylist)
+					  .attackType(AttackType.AREA)
+					  .maximumTarget(0)
+					  .damageRange(10)
+					  .findFirst(findFirstTest)
+					  .build();
+		}, "zero as parameter can't be accepted");
+		
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla", this.enemylist)
+					  .attackType(AttackType.AREA)
+					  .maximumTarget(10)
+					  .damageRange(0)
+					  .findFirst(findFirstTest)
+					  .build();
+		}, "zero as parameter can't be accepted");
+		
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla", this.enemylist)
+					  .attackType(AttackType.AREA)
+					  .maximumTarget(10)
+					  .damageRange(10)
+					  .findFirst(null)
+					  .build();
+		}, "null as find first can't be accepted");
 	}
-	
+
+	/**
+	 * Test all possible negative values
+	 */
 	@Test
 	void testNegativeValuesBuild() {
 		
@@ -181,8 +238,25 @@ class BuildTest {
 					  .build();
 		}, "negative parameter can't be accepted");
 		
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla", this.enemylist)
+					  .attackType(AttackType.AREA)
+					  .maximumTarget(-1)
+					  .damageRange(10)
+					  .findFirst(findFirstTest)
+					  .build();
+		}, "zero as parameter can't be accepted");
+		
+		this.raiseIllegalArgumentException(() -> {
+			return new Builder(this.pos, 100, 100, 100, "bla", this.enemylist)
+					  .attackType(AttackType.AREA)
+					  .maximumTarget(10)
+					  .damageRange(-1)
+					  .findFirst(findFirstTest)
+					  .build();
+		}, "zero as parameter can't be accepted");
 	}
-	
+
 	@Test
 	void testBlankImageName() {
 		this.raiseIllegalArgumentException(() -> {
