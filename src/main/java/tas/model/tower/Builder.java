@@ -35,7 +35,7 @@ public class Builder {
 	private Optional<Integer> maxLevel;
 	
 	/**
-	 * The constructor has the basic fields, that without one of them the tower can't be instanced
+	 * The constructor has the basic fields, that without one of them the tower can't be instanced (except for enemy list)
 	 * @param pos Position of the Tower
 	 * @param damage Damage of the Tower
 	 * @param radius Radius of the Tower
@@ -63,6 +63,14 @@ public class Builder {
 		this.maxLevel = Optional.empty();
 	}
 	
+	/**
+	 * The constructor has the basic fields, without the list of all visible enemy
+	 * @param pos Position of the Tower
+	 * @param damage Damage of the Tower
+	 * @param radius Radius of the Tower
+	 * @param delay Delay of the Tower
+	 * @param imageName Name of the image of the tower
+	 */
 	public Builder(final Position pos, final int damage, final int radius, final int delay, final String imageName) {
 		this.pos = pos;
 		this.damage = damage;
