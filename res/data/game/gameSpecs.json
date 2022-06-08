@@ -1,0 +1,8 @@
+{
+    "gameUnits":{
+        "width":1000,
+        "height":1000
+    },
+    "tickRate":60,
+    "maxFrameSkip":5
+}
