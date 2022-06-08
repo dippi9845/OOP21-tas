@@ -33,6 +33,9 @@ public class TowerLogicImpl implements TowerLogic {
 	private final Map<FactoryList, BiFunction<Position, List<Enemy>, Tower>> buildMap;
 	private final List<Enemy> enemyList; 
 	
+	/**
+	 * Initialize the map with all functions that build a tower by the given enumeration code
+	 */
 	private void initBuildMap() {
 		this.buildMap.put(FactoryList.BASICARCHER, ArcherFactory::basicArcher);
 		this.buildMap.put(FactoryList.BIARCHER, ArcherFactory::biArcher);
@@ -56,6 +59,25 @@ public class TowerLogicImpl implements TowerLogic {
 	}
 	
 	/**
+	 * Add the tower to the list, and create a thread on that
+	 * @param t Tower to add
+	 * @return
+	 */
+	private boolean buildTower(final Tower t) {
+		if (this.spendMoney.test(t.getCost())) {
+			final Thread th = new Thread(t);
+			th.start();
+			this.towerThreads.add(th);
+
+			this.builtTowers.add(t);
+			this.addToPanel.accept(t);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
 	 * Constructor
 	 * 
 	 * @param enemyList  list that contains all the enemies alive
@@ -71,29 +93,17 @@ public class TowerLogicImpl implements TowerLogic {
 		this.initBuildMap();
 	}
 
+	/** {@inheritDoc} */
+	@Override
 	public boolean placeTower(final FactoryList tower, final Position pos) {
 		return this.buildTower(this.buildMap.get(tower).apply(pos, this.enemyList));
-	}
-	
-	public boolean placeTower(final Builder preset) {
-		return this.buildTower(preset.setEnemylist(this.enemyList)
-				   .build());
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean buildTower(final Tower t) {
-		if (this.spendMoney.test(t.getCost())) {
-			final Thread th = new Thread(t);
-			th.start();
-			this.towerThreads.add(th);
-
-			this.builtTowers.add(t);
-			this.addToPanel.accept(t);
-			return true;
-		} else {
-			return false;
-		}
+	public boolean placeTower(final Builder preset) {
+		return this.buildTower(preset.setEnemylist(this.enemyList)
+				   .build());
 	}
 
 	/** {@inheritDoc} */
