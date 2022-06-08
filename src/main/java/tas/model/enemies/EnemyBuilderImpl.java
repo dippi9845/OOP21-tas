@@ -34,7 +34,7 @@ public class EnemyBuilderImpl implements EnemyBuilder {
         }
         this.nodesPosition = nodesPosition;
 
-        this.enemiesSetup = JsonUtils.setupJsonData(enemiesJsonSetup);
+        this.enemiesSetup = JsonUtils.getJsonData(enemiesJsonSetup);
     }
 
     /**
