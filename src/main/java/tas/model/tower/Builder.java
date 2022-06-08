@@ -213,6 +213,7 @@ public class Builder {
 	 * even performing a check of the parameters
 	 * @return the actual tower, by the given parameters
 	 * @throws IllegalStateException if there is a bad configuration of the parameters
+	 * @throws IllegalArgumentException if an argument passed is not valid (integer less than 0, or null)
 	 */
 	public Tower build() throws IllegalStateException, IllegalArgumentException {
 		
