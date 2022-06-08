@@ -24,6 +24,8 @@ public class ImageLoaderImpl implements ImageLoader {
     private static String RESOURCE_PATH = "res" + System.getProperty("file.separator") + "images";
     private final HashMap<String, BufferedImage> imagesMap = new HashMap<String, BufferedImage>();
 
+    private GameSpecs gameSpecs = new GameSpecs();
+
     /**
      * Set up the loader.
      */
@@ -59,7 +61,7 @@ public class ImageLoaderImpl implements ImageLoader {
     @Override
     public BufferedImage getImageByEntity(Entity entity, Dimension CanvasDimension) throws FileNotFoundException {
         if (CanvasDimension.width == 0 || CanvasDimension.height == 0) {
-            CanvasDimension = GameSpecs.GAME_UNITS;
+            CanvasDimension = this.gameSpecs.getGameUnits();
         }
 
         String entityName = entity.getImageName();
@@ -81,9 +83,9 @@ public class ImageLoaderImpl implements ImageLoader {
      */
     private Dimension getNewImageDimension(Dimension canvasDimension, Dimension originalImageDimension) {
         int newX = (int) ((double) canvasDimension.width
-                / ((double) GameSpecs.GAME_UNITS.width / (double) originalImageDimension.width));
+                / ((double) this.gameSpecs.getGameUnits().width / (double) originalImageDimension.width));
         int newY = (int) ((double) canvasDimension.height
-                / ((double) GameSpecs.GAME_UNITS.height / (double) originalImageDimension.height));
+                / ((double) this.gameSpecs.getGameUnits().height / (double) originalImageDimension.height));
 
         return new Dimension(newX, newY);
     }

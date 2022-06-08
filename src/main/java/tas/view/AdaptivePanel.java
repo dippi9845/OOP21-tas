@@ -24,6 +24,8 @@ public abstract class AdaptivePanel extends JPanel {
     private Color lineColor;
     private int lineThickness;
 
+    private GameSpecs gameSpecs = new GameSpecs();
+
     /**
      * Set up a line that will be drawn at every frame.
      * 
@@ -51,8 +53,8 @@ public abstract class AdaptivePanel extends JPanel {
             return;
         }
 
-        double scaleFactorX = this.getWidth() / GameSpecs.GAME_UNITS.getWidth();
-        double scaleFactorY = this.getHeight() / GameSpecs.GAME_UNITS.getHeight();
+        double scaleFactorX = this.getWidth() / this.gameSpecs.getGameUnits().getWidth();
+        double scaleFactorY = this.getHeight() / this.gameSpecs.getGameUnits().getHeight();
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke((int) (Math.max(scaleFactorX, scaleFactorY) * this.lineThickness)));
         g2.setColor(this.lineColor);

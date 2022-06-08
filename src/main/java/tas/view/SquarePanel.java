@@ -28,6 +28,8 @@ public class SquarePanel extends AdaptivePanel {
     private final HashMap<String, AdaptiveLabel> textLables = new HashMap<String, AdaptiveLabel>();
     private final ImageLoader imGetter = new ImageLoaderImpl();
 
+    private GameSpecs gameSpecs = new GameSpecs();
+
     /**
      * Set up the SquarePanel.
      */
@@ -88,16 +90,18 @@ public class SquarePanel extends AdaptivePanel {
                     new Position(tempLabel.getPreferredSize().getWidth(), tempLabel.getPreferredSize().getHeight()));
             break;
         case "NE":
-            tempLabel.setPosition(new Position(GameSpecs.GAME_UNITS.width - tempLabel.getPreferredSize().getWidth(),
-                    tempLabel.getPreferredSize().getHeight()));
+            tempLabel.setPosition(
+                    new Position(this.gameSpecs.getGameUnits().width - tempLabel.getPreferredSize().getWidth(),
+                            tempLabel.getPreferredSize().getHeight()));
             break;
         case "SW":
             tempLabel.setPosition(new Position(tempLabel.getPreferredSize().getWidth(),
-                    GameSpecs.GAME_UNITS.height - tempLabel.getPreferredSize().getHeight()));
+                    this.gameSpecs.getGameUnits().height - tempLabel.getPreferredSize().getHeight()));
             break;
         case "SE":
-            tempLabel.setPosition(new Position(GameSpecs.GAME_UNITS.width - tempLabel.getPreferredSize().getWidth(),
-                    GameSpecs.GAME_UNITS.height - tempLabel.getPreferredSize().getHeight()));
+            tempLabel.setPosition(
+                    new Position(this.gameSpecs.getGameUnits().width - tempLabel.getPreferredSize().getWidth(),
+                            this.gameSpecs.getGameUnits().height - tempLabel.getPreferredSize().getHeight()));
             break;
         default:
             throw new IllegalArgumentException("The anchor must be one of: NW, NE, SW, SE");
