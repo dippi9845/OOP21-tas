@@ -1,5 +1,5 @@
 #!/bin/bash
-$COMPILED=`find bin/ -name "*.class" 2>/dev/null | wc -l`
+COMPILED=`find bin/ -name "*.class" 2>/dev/null | wc -l`
 if [[ ! -d bin/ || $COMPILED == "0" ]]; then
 	echo "No compilation found, will be run"
 	./compile.sh
