@@ -21,10 +21,6 @@ import main.java.tas.utils.Position;
  */
 class AttackTest {
 	
-	private boolean SpendMoney(final int money) {
-		return true;
-	}
-	
 	@Test
 	void BasicTower() throws InterruptedException {
 		List<Enemy> enemies = new LinkedList<>();
