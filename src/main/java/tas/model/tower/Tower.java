@@ -37,11 +37,24 @@ public interface Tower extends Entity, Runnable {
 	}
 
 	/**
+	 * Return true if is time to stop for the thread
+	 * @return true if is time to stop for the thread
+	 */
+	public boolean isStop();
+	
+	/**
+	 * Stop the thread
+	 */
+	public void stop();
+	
+	/**
 	 * Method used by thread, to run the tower in concurrency
 	 */
 	default void run() {
 		try {
-			this.compute();
+			while (!this.isStop()) {
+				this.compute();
+			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

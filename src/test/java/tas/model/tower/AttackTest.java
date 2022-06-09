@@ -220,7 +220,7 @@ class AttackTest {
 		manager.placeTower(DefaultTowers.BASICCANNON, new Position(52, 52));
 		manager.placeTower(DefaultTowers.BASICCANNON, new Position(53, 53));
 		
-		Thread.sleep(1500);
+		Thread.sleep(650);
 		
 		manager.closeAll();
 		

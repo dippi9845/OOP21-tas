@@ -127,4 +127,14 @@ public class UpgradableTowerImpl implements UpgradableTower {
 				+ getTowerImageName() + ", getLevel()=" + getLevel() + "]";
 	}
 
+	@Override
+	public boolean isStop() {
+		return this.tower.isStop();
+	}
+
+	@Override
+	public void stop() {
+		this.tower.stop();
+	}
+
 }

@@ -111,6 +111,8 @@ public class TowerLogicImpl implements TowerLogic {
 	/** {@inheritDoc} */
 	@Override
 	public void closeAll() {
+		this.builtTowers.stream().forEach(x->x.stop());
+		
 		this.towerThreads.stream().forEach(x -> {
 			try {
 				x.join();
