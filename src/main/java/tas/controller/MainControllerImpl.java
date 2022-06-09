@@ -5,6 +5,7 @@ import main.java.tas.view.GameSceneImpl;
 import main.java.tas.view.LevelSelectSceneImpl;
 import main.java.tas.view.MainMenuSceneImpl;
 import main.java.tas.view.MainView;
+import main.java.tas.view.SandboxModeScene;
 import main.java.tas.view.SettingsSceneImpl;
 import main.java.tas.model.GameModelImpl;
 import main.java.tas.model.GameSpecs;
@@ -43,6 +44,13 @@ public class MainControllerImpl implements MainController {
     public SceneController createLevelSelect(final MainView view) {
     	this.scene = new LevelSelectSceneImpl(view.getPanel(), this.menuModel);
         SceneController controller = new LevelSelectController(this.scene,this.menuModel);
+        this.scene.setObserver(controller);
+        return controller;
+    }
+    
+    public SceneController createSandBoxMode(final MainView view) {
+    	this.scene = new SandboxModeScene(view.getPanel(), this.menuModel);
+        SceneController controller = new SandboxModeController(this.scene,this.menuModel);
         this.scene.setObserver(controller);
         return controller;
     }
@@ -122,6 +130,12 @@ public class MainControllerImpl implements MainController {
             		this.mainView = new MainView();
             		this.mainView.show();
             		this.sceneController = createSettings(this.mainView);
+            	}
+            	if(this.currentMenuMode == 6) {
+            		this.mainView.dispose();
+            		this.mainView = new MainView();
+            		this.mainView.show();
+            		this.sceneController = createSandBoxMode(this.mainView);
             	}
             	if(this.currentMenuMode == 4) {
             		System.exit(0);
