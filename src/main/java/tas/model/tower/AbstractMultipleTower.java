@@ -1,6 +1,5 @@
 package main.java.tas.model.tower;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import main.java.tas.model.enemies.Enemy;
@@ -11,7 +10,7 @@ import main.java.tas.utils.Position;
  * targeted.
  */
 public abstract class AbstractMultipleTower extends AbstractBasicTower implements Tower {
-	private final List<Enemy> enemyList = new LinkedList<>();
+	private List<Enemy> enemyList = new LinkedList<>();
 	private final int maxEnemy;
 
 	/**
@@ -43,10 +42,11 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 	}
 
 	/**
-	 * @return an immutable list of current enemies targeted
+	 * Return the current target list, must be mutable, due to the possibility to remove a target during the game
+	 * @return a mutable list of current enemies targeted
 	 */
 	protected List<Enemy> getEnemyList() {
-		return Collections.unmodifiableList(this.enemyList);
+		return this.enemyList;
 	}
 
 	/**
