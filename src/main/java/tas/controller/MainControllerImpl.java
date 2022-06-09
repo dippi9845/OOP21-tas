@@ -16,6 +16,9 @@ public class MainControllerImpl implements MainController {
     private GameScene scene;
     private GameSpecs gameSpecs = new GameSpecs();
 
+    private int playerHealth = 100;
+    private int playerMoney = 150;
+
     /**
      * Constructor that creates the main controller of the game.
      */
@@ -37,7 +40,7 @@ public class MainControllerImpl implements MainController {
     @Override
     public SceneController createGame(final MainView view) {
         this.scene = new GameSceneImpl(view.getPanel());
-        SceneController controller = new GameController(this.scene, new GameModelImpl(100, 150));
+        SceneController controller = new GameController(this.scene, new GameModelImpl(playerHealth, playerMoney));
         this.scene.setObserver(controller);
         return controller;
     }

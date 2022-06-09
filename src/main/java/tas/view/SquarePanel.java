@@ -1,8 +1,10 @@
 package main.java.tas.view;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -27,6 +29,8 @@ public class SquarePanel extends AdaptivePanel {
     private final HashMap<Entity, AdaptiveLabel> entityLables = new HashMap<Entity, AdaptiveLabel>();
     private final HashMap<String, AdaptiveLabel> textLables = new HashMap<String, AdaptiveLabel>();
     private final ImageLoader imGetter = new ImageLoaderImpl();
+    private String bgImageName = null;
+    private BufferedImage bgImage = null;
 
     private GameSpecs gameSpecs = new GameSpecs();
 
@@ -36,6 +40,16 @@ public class SquarePanel extends AdaptivePanel {
     public SquarePanel() {
         super();
         setAdaptive();
+    }
+
+    /**
+     * Set up the SquarePanel with an image
+     * 
+     * @param bgImage the image of the background
+     */
+    public SquarePanel(String bgImageName) {
+        this();
+        setBgImage(bgImageName);
     }
 
     /**
@@ -161,6 +175,15 @@ public class SquarePanel extends AdaptivePanel {
                 for (Map.Entry<String, AdaptiveLabel> textLabelMap : textLables.entrySet()) {
                     textLabelMap.getValue().redraw();
                 }
+
+                // re-scale the background image
+                if (bgImage != null) {
+                    try {
+                        bgImage = imGetter.getImageByName(bgImageName, getPreferredSize());
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         });
     }
@@ -187,6 +210,27 @@ public class SquarePanel extends AdaptivePanel {
         this.revalidate();
         this.repaint();
         this.entityLables.remove(e);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    protected void paintComponent(Graphics g) {
+        if (this.bgImage != null) {
+            g.drawImage(this.bgImage, 0, 0, null);
+        }
+        super.paintComponent(g);
+    }
+
+    /**
+     * @param bgImage image of the background
+     */
+    public void setBgImage(String bgImageName) {
+        this.bgImageName = bgImageName;
+        try {
+            this.bgImage = imGetter.getImageByName(bgImageName);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

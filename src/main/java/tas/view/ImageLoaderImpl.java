@@ -73,6 +73,21 @@ public class ImageLoaderImpl implements ImageLoader {
         return scaleImage(this.imagesMap.get(entityName), newImageDimension);
     }
 
+    /** {@inheritDoc} */
+    @Override
+    public BufferedImage getImageByName(String imageName) throws FileNotFoundException {
+        if (!this.imagesMap.containsKey(imageName)) {
+            throw new FileNotFoundException("There is no image named (" + imageName + ") in the 'res' folder");
+        }
+        return this.imagesMap.get(imageName);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public BufferedImage getImageByName(String imageName, Dimension CanvasDimension) throws FileNotFoundException {
+        return scaleImage(getImageByName(imageName), CanvasDimension);
+    }
+
     /**
      * Gets the dimension of the new image.
      * 
