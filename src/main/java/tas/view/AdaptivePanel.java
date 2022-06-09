@@ -48,8 +48,6 @@ public abstract class AdaptivePanel extends JPanel {
     /** {@inheritDoc} */
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
         if (this.linePoints.isEmpty()) {
             return;
         }
