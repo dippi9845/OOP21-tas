@@ -5,10 +5,10 @@ package main.java.tas.model.tower;
  *
  */
 public interface UpgradableTower extends Tower {
-	
+
 	/**
 	 * @return the current level of upgrade
- 	 */
+	 */
 	public int getLevel();
 
 	/**
@@ -18,6 +18,7 @@ public interface UpgradableTower extends Tower {
 
 	/**
 	 * Checks if the tower is upgradable
+	 * 
 	 * @param money the current disponibility of money by the player
 	 * @return True if the tower is upgradable, false otherwise
 	 */
@@ -27,5 +28,5 @@ public interface UpgradableTower extends Tower {
 	 * Upgrade the damage to the next level
 	 */
 	public void upgradeDamage();
-	
+
 }

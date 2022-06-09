@@ -10,7 +10,6 @@ import main.java.tas.model.GameSpecs;
  * Class that implements {@link MainController}.
  */
 public class MainControllerImpl implements MainController {
-
     private SceneController sceneController;
     private final MainView mainView;
     private GameScene scene;
@@ -90,5 +89,4 @@ public class MainControllerImpl implements MainController {
     public static void main(final String[] args) {
         new MainControllerImpl().mainLoop();
     }
-
 }

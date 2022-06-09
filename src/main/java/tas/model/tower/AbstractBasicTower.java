@@ -9,7 +9,7 @@ import main.java.tas.utils.Position;
  * This abstract class model a simple tower with some basic methods
  *
  */
-public abstract class AbstractBasicTower implements Tower{
+public abstract class AbstractBasicTower implements Tower {
 	private int damage;
 	private final Position pos;
 	private final int radius;
@@ -17,17 +17,21 @@ public abstract class AbstractBasicTower implements Tower{
 	private final int cost;
 	private final String imageName;
 	private final List<Enemy> visibleEnemyList;
+	private boolean stopTh;
+	
 	/**
 	 * Constructor, protected
-	 * @param pos Tower position
-	 * @param damage Tower damage
-	 * @param radius Tower radius, where it can attack enemies
-	 * @param delay Tower delay
-	 * @param cost Tower cost
-	 * @param imageName  Tower image name
+	 * 
+	 * @param pos       Tower position
+	 * @param damage    Tower damage
+	 * @param radius    Tower radius, where it can attack enemies
+	 * @param delay     Tower delay
+	 * @param cost      Tower cost
+	 * @param imageName Tower image name
 	 * @param enemyList List of all enemy in the map
 	 */
-	protected AbstractBasicTower(final Position pos, final int damage, final int radius, final int delay, final int cost, final String imageName, final List<Enemy> enemyList) {
+	protected AbstractBasicTower(final Position pos, final int damage, final int radius, final int delay,
+			final int cost, final String imageName, final List<Enemy> enemyList) {
 		this.damage = damage;
 		this.pos = pos;
 		this.radius = radius;
@@ -35,25 +39,38 @@ public abstract class AbstractBasicTower implements Tower{
 		this.cost = cost;
 		this.imageName = imageName;
 		this.visibleEnemyList = enemyList;
+		this.stopTh = false;
 	}
-	
+
 	protected List<Enemy> getVisibleEnemyList() {
 		return Collections.unmodifiableList(this.visibleEnemyList);
 	}
 
+	/** {@inheritDoc} */
+	public boolean isStop() {
+		return this.stopTh;
+	}
+	
+	/** {@inheritDoc} */
+	public void stop() {
+		this.stopTh = true;
+	}
+	
 	/**
 	 * Deal damage to the target
 	 */
 	abstract protected void attack();
-	
+
 	/**
 	 * Sets the target of this tower
+	 * 
 	 * @param e Enemy to be focused
 	 */
 	abstract protected void setTarget(final Enemy e);
 
 	/**
 	 * Increase the damage of the tower, in order to upgrade it
+	 * 
 	 * @param amount Amount of damage that increase
 	 */
 	protected void increaseDamage(final int amount) {

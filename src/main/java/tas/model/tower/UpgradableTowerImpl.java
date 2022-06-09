@@ -5,25 +5,31 @@ import main.java.tas.utils.Position;
 
 /**
  * A class that implements the interface UpgradableTower {@link UpgradableTower}
- * It takes an AbstracBasicTower and with delegation implements all the Tower interface methods
+ * It takes an AbstracBasicTower and with delegation implements all the Tower
+ * interface methods
  */
-public class UpgradableTowerImpl implements UpgradableTower{
-	
+public class UpgradableTowerImpl implements UpgradableTower {
+
 	private final AbstractBasicTower tower;
 	private int upgradecost;
 	private final UnaryOperator<Integer> increasedamage;
 	private final UnaryOperator<Integer> increasecost;
 	private int level;
 	private final int maxLevel;
+
 	/**
 	 * Constructor, protected
-	 * @param tower Tower which can be upgradable 
-	 * @param increasedamage UnaryOperator that delegate the increase of damage of the tower
-	 * @param increasecost UnaryOperator that delegate the increase of cost of the tower
+	 * 
+	 * @param tower            Tower which can be upgradable
+	 * @param increasedamage   UnaryOperator that delegate the increase of damage of
+	 *                         the tower
+	 * @param increasecost     UnaryOperator that delegate the increase of cost of
+	 *                         the tower
 	 * @param startCostUpgrade the stating cost of upgrade
-	 * @param maxLevel maximum level that the tower can reach
+	 * @param maxLevel         maximum level that the tower can reach
 	 */
-	protected UpgradableTowerImpl(final AbstractBasicTower tower, final UnaryOperator<Integer> increasedamage, final UnaryOperator<Integer> increasecost,  final int startCostUpgrade, final int maxLevel) {
+	protected UpgradableTowerImpl(final AbstractBasicTower tower, final UnaryOperator<Integer> increasedamage,
+			final UnaryOperator<Integer> increasecost, final int startCostUpgrade, final int maxLevel) {
 		this.tower = tower;
 		this.increasedamage = increasedamage;
 		this.increasecost = increasecost;
@@ -34,6 +40,7 @@ public class UpgradableTowerImpl implements UpgradableTower{
 
 	/**
 	 * Check if the current level is under the maximum
+	 * 
 	 * @return True if the current level is under the maximum, False otherwise
 	 */
 	private boolean levelUnderMax() {
@@ -113,11 +120,21 @@ public class UpgradableTowerImpl implements UpgradableTower{
 	/** {@inheritDoc} */
 	@Override
 	public String toString() {
-		return "UpgradableTower [tower=" + tower + ", upgradecost=" + upgradecost + ", increasedamage="
-				+ increasedamage + ", increasecost=" + increasecost + ", level=" + level + ", maxLevel=" + maxLevel
-				+ ", getDamage()=" + getDamage() + ", getRadius()=" + getRadius() + ", getCost()=" + getCost()
-				+ ", getDelay()=" + getDelay() + ", getPos()=" + getPos() + ", costUpgrade()=" + costUpgrade()
-				+ ", getTowerImageName()=" + getTowerImageName() + ", getLevel()=" + getLevel() + "]";
+		return "UpgradableTower [tower=" + tower + ", upgradecost=" + upgradecost + ", increasedamage=" + increasedamage
+				+ ", increasecost=" + increasecost + ", level=" + level + ", maxLevel=" + maxLevel + ", getDamage()="
+				+ getDamage() + ", getRadius()=" + getRadius() + ", getCost()=" + getCost() + ", getDelay()="
+				+ getDelay() + ", getPos()=" + getPos() + ", costUpgrade()=" + costUpgrade() + ", getTowerImageName()="
+				+ getTowerImageName() + ", getLevel()=" + getLevel() + "]";
+	}
+
+	@Override
+	public boolean isStop() {
+		return this.tower.isStop();
+	}
+
+	@Override
+	public void stop() {
+		this.tower.stop();
 	}
 
 }

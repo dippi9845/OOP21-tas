@@ -6,9 +6,9 @@ package main.java.tas.controller;
  */
 public interface SceneController {
 
-    /**
-     * This is the main function that will be called at every tick.
-     */
-    void nextTick();
+	/**
+	 * This is the main function that will be called at every tick.
+	 */
+	void nextTick();
 
 }
