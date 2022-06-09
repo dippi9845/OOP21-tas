@@ -18,8 +18,7 @@ public interface ImageLoader {
      * @param entity          that needs an image
      * @param CanvasDimension the dimension of the canvas
      * @return the requested image
-     * @throws FileNotFoundException if there is no image with the same name of the
-     *                               entity (with the first letter lower case)
+     * @throws FileNotFoundException if there is no image
      */
     BufferedImage getImageByEntity(Entity entity, Dimension CanvasDimension) throws FileNotFoundException;
 
