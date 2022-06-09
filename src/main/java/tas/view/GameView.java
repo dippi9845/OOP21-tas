@@ -23,7 +23,7 @@ public class GameView implements ViewComponent {
         this.gameBoard.setLayout(null);
 
         this.rootCanvas.setBackground(Color.BLACK);
-        this.gameBoard.setBackground(Color.DARK_GRAY);
+        this.gameBoard.setBgImage("bgImage");
     }
 
     /** {@inheritDoc} */
