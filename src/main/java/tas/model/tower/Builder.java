@@ -52,7 +52,7 @@ public class Builder {
 		this.radius = radius;
 		this.delay = delay;
 		this.imageName = imageName;
-		this.visibleEnemy = Optional.of(enemyList);
+		this.visibleEnemy = Optional.ofNullable(enemyList);
 
 		this.attackType = AttackType.BASIC;
 		this.upgradable = false;

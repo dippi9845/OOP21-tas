@@ -98,8 +98,8 @@ class BuildTest {
 		}, "zero as parameter can't be accepted");
 
 		this.raiseIllegalStateException(() -> {
-			return new Builder(this.pos, 100, 100, 0, "bla bla", null).build();
-		}, "zero as parameter can't be accepted");
+			return new Builder(this.pos, 100, 100, 100, "bla bla", null).build();
+		}, "null as parameter can't be accepted");
 
 		this.raiseIllegalArgumentException(() -> {
 			return new Builder(this.pos, 100, 100, 100, "bla", this.enemylist).attackType(AttackType.MULTIPLE)
@@ -138,7 +138,7 @@ class BuildTest {
 					.maximumTarget(10).damageRange(0).findFirst(findFirstTest).build();
 		}, "zero as parameter can't be accepted");
 
-		this.raiseIllegalArgumentException(() -> {
+		this.raiseIllegalStateException(() -> {
 			return new Builder(this.pos, 100, 100, 100, "bla", this.enemylist).attackType(AttackType.AREA)
 					.maximumTarget(10).damageRange(10).findFirst(null).build();
 		}, "null as find first can't be accepted");
