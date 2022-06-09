@@ -55,8 +55,8 @@ public class TowerLogicImpl implements TowerLogic {
 		this.buildMap.put(DefaultTowers.SUPERMORTAR, MortarFactory::superMortar);
 		this.buildMap.put(DefaultTowers.GODMORTAR, MortarFactory::godMortar);
 		this.buildMap.put(DefaultTowers.BASICTESLA, TeslaFactory::basicTesla);
-		this.buildMap.put(DefaultTowers.SUPERTESLA, TeslaFactory::basicTesla);
-		this.buildMap.put(DefaultTowers.GODTESLA, TeslaFactory::basicTesla);
+		this.buildMap.put(DefaultTowers.SUPERTESLA, TeslaFactory::superTesla);
+		this.buildMap.put(DefaultTowers.GODTESLA, TeslaFactory::godTesla);
 	}
 
 	/**
