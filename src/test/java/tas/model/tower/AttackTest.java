@@ -88,6 +88,14 @@ class AttackTest {
 	
 	@Test
 	void AreaTower() throws InterruptedException {
+		List<Enemy> enemies = new LinkedList<>();
+		FakeEnemy e = new FakeEnemy(new Position(50, 50), 100);
+		FakeEnemy e1 = new FakeEnemy(new Position(51, 50), 100);
+		enemies.add(e);
+		enemies.add(e1);
 		
+		Tower t = new Builder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies)
+					  .attackType(AttackType.AREA)
+					  .build();
 	}
 }
