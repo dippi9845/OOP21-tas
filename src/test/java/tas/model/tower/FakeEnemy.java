@@ -47,7 +47,9 @@ class FakeEnemy implements Enemy {
 
 	@Override
 	public void dealDamage(final double damage) {
-		this.health -= damage;
+		if (!this.isDead()) {
+			this.health -= damage;
+		}
 	}
 
 	@Override
