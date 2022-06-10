@@ -7,9 +7,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import main.java.tas.model.Entity;
+//import main.java.tas.model.Entity;
 
-public class InventoryView implements ViewComponent {
+public class InventoryView /*implements ViewComponent*/ {
     
     private final JPanel inventoryCanvas;
     private final JPanel towerButtonsCanvas;
@@ -42,7 +42,7 @@ public class InventoryView implements ViewComponent {
         
     }
 
-    @Override
+    //@Override
     public JPanel getPanel() {
         return this.inventoryCanvas;
     }
@@ -55,13 +55,13 @@ public class InventoryView implements ViewComponent {
       tower4Button.addActionListener(listener); 
         
     }
-
+/*
     @Override
     public void drawEntity(Entity entity) {
         // TODO Auto-generated method stub
         
     }
-
+    
     @Override
     public void addEntityLabel(Entity entity) {
         // TODO Auto-generated method stub
@@ -79,5 +79,6 @@ public class InventoryView implements ViewComponent {
 		// TODO Auto-generated method stub
 		
 	}
+	*/
 
 }

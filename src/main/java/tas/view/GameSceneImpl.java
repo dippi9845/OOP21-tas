@@ -2,7 +2,6 @@ package main.java.tas.view;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
-
 import main.java.tas.controller.SceneController;
 
 /**
@@ -12,7 +11,7 @@ public class GameSceneImpl implements GameScene {
 	
     private final JPanel rootPanel;
     private final GameView gameView;
-    private final ViewComponent inventoryView;
+    private final InventoryView inventoryView;
     
     /**
      * Constructor that set up the game scene
