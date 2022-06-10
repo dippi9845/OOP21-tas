@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.BiFunction;
 import main.java.tas.model.Entity;
-import main.java.tas.model.enemies.Enemy;
+import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.Builder;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.factory.ArcherFactory;
