@@ -133,7 +133,6 @@ public class MainControllerImpl implements MainController {
 		                                                    // meglio rimuoverli
 		double last_frame_time = System.currentTimeMillis();
 		int loops;
-		int fps = 0;
 		while (true) { // TODO: cambiare il true con qualcosa di piu' concreto tipo il click di un
 			// pulsante o altro
 			loops = 0;
@@ -143,13 +142,10 @@ public class MainControllerImpl implements MainController {
 
 				next_game_tick += this.gameSpecs.getSkipTicks();
 				loops++;
-				fps++;
 			}
 
 			if (System.currentTimeMillis() - last_frame_time > 1000) {
 				last_frame_time = System.currentTimeMillis();
-				System.out.println(fps);
-				fps = 0;
 			}
 
 			updateCurrentMode();
