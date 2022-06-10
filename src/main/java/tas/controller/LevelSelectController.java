@@ -2,16 +2,17 @@ package main.java.tas.controller;
 
 import java.awt.event.ActionListener;
 import main.java.tas.view.LevelSelectSceneImpl;
+import main.java.tas.view.Scene;
 import main.java.tas.model.MenuModel;
 import main.java.tas.view.GameScene;
 
 public class LevelSelectController implements SceneController {
 	
 	private LevelSelectListener listener;
-	private GameScene scene;
+	private Scene scene;
 	private MenuModel model;
 	
-	public LevelSelectController(GameScene sceneIn, MenuModel theModel) {
+	public LevelSelectController(Scene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
 		((LevelSelectSceneImpl) scene).setObserver(this);
 		this.listener = new LevelSelectListener();

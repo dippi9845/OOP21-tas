@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
-public class LevelSelectSceneImpl implements GameScene {
+public class LevelSelectSceneImpl implements Scene {
 	
 	private JPanel rootPanel;
 	private LevelSelectView View;

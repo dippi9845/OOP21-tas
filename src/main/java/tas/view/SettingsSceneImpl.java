@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
-public class SettingsSceneImpl implements GameScene {
+public class SettingsSceneImpl implements Scene {
 	
 	private JPanel rootPanel;
 	private SettingsView View;

@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
-public class SandboxModeScene implements GameScene {
+public class SandboxModeScene implements Scene {
 	
 	private JPanel rootPanel;
 	private SandboxModeView View;
