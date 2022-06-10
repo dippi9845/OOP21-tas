@@ -2,17 +2,18 @@ package main.java.tas.controller;
 
 import java.awt.event.ActionListener;
 import main.java.tas.view.SandboxModeScene;
+import main.java.tas.view.Scene;
 import main.java.tas.model.MenuModel;
 import main.java.tas.view.GameScene;
 
 public class SandboxModeController implements SceneController {
 	
 	private SandboxModeListener listener;
-	private GameScene scene;
+	private Scene scene;
 	private MenuModel model;
 	private LevelStorageMod mod;
 	
-	public SandboxModeController(GameScene sceneIn, MenuModel theModel) {
+	public SandboxModeController(Scene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
 		((SandboxModeScene) scene).setObserver(this);
 		this.listener = new SandboxModeListener();

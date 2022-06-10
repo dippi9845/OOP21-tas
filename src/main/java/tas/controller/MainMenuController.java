@@ -3,16 +3,17 @@ package main.java.tas.controller;
 
 import java.awt.event.ActionListener;
 import main.java.tas.view.MainMenuSceneImpl;
+import main.java.tas.view.Scene;
 import main.java.tas.model.MenuModel;
 import main.java.tas.view.GameScene;
 
 public class MainMenuController implements SceneController {
 	
 	private MainMenuListener listener;
-	private GameScene scene;
+	private Scene scene;
 	private MenuModel model;
 	
-	public MainMenuController(GameScene sceneIn, MenuModel theModel) {
+	public MainMenuController(Scene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
 		//((MainMenuSceneImpl) scene).setObserver(this);
 		this.listener = new MainMenuListener(((MainMenuSceneImpl) scene).getMenuView());

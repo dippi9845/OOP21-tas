@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import main.java.tas.controller.SceneController;
 
 
-public class MainMenuSceneImpl implements GameScene {
+public class MainMenuSceneImpl implements Scene {
 	
 	private JPanel rootPanel;
 	private MenuView menuView;
