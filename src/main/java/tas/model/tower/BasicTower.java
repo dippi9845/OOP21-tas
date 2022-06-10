@@ -44,7 +44,7 @@ public class BasicTower extends AbstractBasicTower {
 	/** {@inheritDoc} */
 	@Override
 	public void compute() throws InterruptedException {
-		if (this.target.isPresent() && Towers.isTargetInRange(this.target.get(), this)) {
+		if (this.target.isPresent() && Towers.isTargetInRange(this.target.get(), this) && !this.target.get().isDead()) {
 			this.attack();
 			Thread.sleep(this.getDelay());
 		} else {
