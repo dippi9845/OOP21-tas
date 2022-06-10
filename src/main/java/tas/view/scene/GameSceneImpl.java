@@ -14,7 +14,7 @@ public class GameSceneImpl implements GameScene {
 
 	private final JPanel rootPanel;
 	private final GameView gameView;
-	private final ViewComponent inventoryView;
+	private final InventoryView inventoryView;
 
 	/**
 	 * Constructor that set up the game scene.
@@ -36,7 +36,8 @@ public class GameSceneImpl implements GameScene {
 	/** {@inheritDoc} */
 	@Override
 	public void setObserver(SceneController observer) {
-		// TODO Auto-generated method stub
+		this.gameView.setObserver(observer);
+		this.inventoryView.setObserver(observer);
 
 	}
 

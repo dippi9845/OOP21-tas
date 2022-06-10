@@ -5,6 +5,8 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
+import main.java.tas.controller.GameController;
+import main.java.tas.controller.SceneController;
 import main.java.tas.model.Entity;
 
 /**
@@ -75,11 +77,15 @@ public class GameView implements ViewComponent {
 		return this.gameBoard;
 	}
 
-	/** {@inheritDoc} */
+
+	public void setObserver(SceneController gameController) {
+		this.gameBoard.addMouseListener(((GameController) gameController).getMouseListener());
+	}
+
 	@Override
 	public void setObserver() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }
