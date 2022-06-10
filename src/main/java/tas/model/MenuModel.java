@@ -16,7 +16,4 @@ public interface MenuModel {
 	
 	public int getNLevels();
 	
-	public void setNLevels(int newNLevels);
-	
-	public void incNLevels();
 }

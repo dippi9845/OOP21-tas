@@ -31,7 +31,7 @@ public class SandboxModeController implements SceneController {
 			((SandboxModeScene) scene).getView().getButtons().turnOff();
 			mod = new LevelStorageMod(this.listener.getNTilesSelected());
 			mod.addLevel(((SandboxModeScene) scene).getView().getButtons().getTiles());
-			this.model.incNLevels();
+			
 		}
 	}
 	
