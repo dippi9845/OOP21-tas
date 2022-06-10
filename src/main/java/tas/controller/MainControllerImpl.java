@@ -1,6 +1,5 @@
 package main.java.tas.controller;
 
-import main.java.tas.view.GameScene;
 import main.java.tas.view.GameSceneImpl;
 import main.java.tas.view.LevelSelectSceneImpl;
 import main.java.tas.view.MainMenuSceneImpl;
@@ -73,7 +72,8 @@ public class MainControllerImpl implements MainController {
 	@Override
 	public SceneController createGame(final MainView view) {
 		this.scene = new GameSceneImpl(view.getPanel());
-		SceneController controller = new GameController(((GameSceneImpl) this.scene), new GameModelImpl(100, 150));
+		SceneController controller = new GameController(((GameSceneImpl) this.scene),
+		        new GameModelImpl(this.playerHealth, this.playerMoney));
 		this.scene.setObserver(controller);
 		return controller;
 	}
@@ -82,6 +82,47 @@ public class MainControllerImpl implements MainController {
 	@Override
 	public SceneController getController() {
 		return this.sceneController;
+	}
+
+	private void updateCurrentMode() {
+		// I check if the currentMenuMode has changed and if it has I update it and open
+		// the new window
+		if (this.currentMenuMode != this.menuModel.getMainScene()) {
+			this.currentMenuMode = this.menuModel.getMainScene();
+			if (this.currentMenuMode == 1) {
+				this.mainView.dispose();
+				this.mainView = new MainView();
+				this.mainView.show();
+				this.sceneController = createMenu(this.mainView);
+			}
+			if (this.currentMenuMode == 2) {
+				this.mainView.dispose();
+				this.mainView = new MainView();
+				this.mainView.show();
+				this.sceneController = createGame(this.mainView);
+			}
+			if (this.currentMenuMode == 3) {
+				this.mainView.dispose();
+				this.mainView = new MainView();
+				this.mainView.show();
+				this.sceneController = createLevelSelect(this.mainView);
+			}
+			if (this.currentMenuMode == 5) {
+				this.mainView.dispose();
+				this.mainView = new MainView();
+				this.mainView.show();
+				this.sceneController = createSettings(this.mainView);
+			}
+			if (this.currentMenuMode == 6) {
+				this.mainView.dispose();
+				this.mainView = new MainView();
+				this.mainView.show();
+				this.sceneController = createSandBoxMode(this.mainView);
+			}
+			if (this.currentMenuMode == 4) {
+				System.exit(0);
+			}
+		}
 	}
 
 	/** {@inheritDoc} */
@@ -111,47 +152,9 @@ public class MainControllerImpl implements MainController {
 				fps = 0;
 			}
 
-			// I check if the currentMenuMode has changed and if it has I update it and open
-			// the new window
-			if (this.currentMenuMode != this.menuModel.getMainScene()) {
-				this.currentMenuMode = this.menuModel.getMainScene();
-				if (this.currentMenuMode == 1) {
-					this.mainView.dispose();
-					this.mainView = new MainView();
-					this.mainView.show();
-					this.sceneController = createMenu(this.mainView);
-				}
-				if (this.currentMenuMode == 2) {
-					this.mainView.dispose();
-					this.mainView = new MainView();
-					this.mainView.show();
-					this.sceneController = createGame(this.mainView);
-				}
-				if (this.currentMenuMode == 3) {
-					this.mainView.dispose();
-					this.mainView = new MainView();
-					this.mainView.show();
-					this.sceneController = createLevelSelect(this.mainView);
-				}
-				if (this.currentMenuMode == 5) {
-					this.mainView.dispose();
-					this.mainView = new MainView();
-					this.mainView.show();
-					this.sceneController = createSettings(this.mainView);
-				}
-				if (this.currentMenuMode == 6) {
-					this.mainView.dispose();
-					this.mainView = new MainView();
-					this.mainView.show();
-					this.sceneController = createSandBoxMode(this.mainView);
-				}
-				if (this.currentMenuMode == 4) {
-					System.exit(0);
-				}
-				
-				this.mainView.update();
-			}
+			updateCurrentMode();
 
+			this.mainView.update();
 		}
 
 	}
