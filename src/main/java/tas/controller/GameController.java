@@ -42,9 +42,9 @@ public class GameController implements SceneController {
 		this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(),
 				this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
 
-		this.gameScene.getGameView().addTextLabel("♥ " + this.playerStats.getHP(), "healt", "NW");
-		this.gameScene.getGameView().addTextLabel("⬤ " + this.enemiesHandler.getWave(), "wave", "NE");
-		this.gameScene.getGameView().addTextLabel("＄ " + this.playerStats.getPlayerMoney(), "money", "SE");
+		this.gameScene.getGameView().addTextLabel("Health " + this.playerStats.getHP(), "healt", "NW");
+		this.gameScene.getGameView().addTextLabel("Wave " + this.enemiesHandler.getWave(), "wave", "NE");
+		this.gameScene.getGameView().addTextLabel("Money " + this.playerStats.getPlayerMoney(), "money", "SE");
 
 		// TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
 	}
