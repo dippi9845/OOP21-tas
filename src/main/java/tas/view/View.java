@@ -3,7 +3,7 @@ package main.java.tas.view;
 import javax.swing.JPanel;
 
 /**
- * Interface for a generic view
+ * Interface for a generic view.
  */
 public interface View {
    

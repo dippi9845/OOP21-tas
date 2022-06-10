@@ -13,13 +13,18 @@ import main.java.tas.model.MenuModel;
 import main.java.tas.model.MenuModelImpl;
 
 /**
- * Class that implements {@link MainController}
+ * Class that implements {@link MainController}.
  */
 public class MainControllerImpl implements MainController {
+  
+	private SceneController sceneController;
+	private GameScene scene;
+	private GameSpecs gameSpecs = new GameSpecs();
+
+	private int playerHealth = 100;
+	private int playerMoney = 150;
     
-    private SceneController sceneController;
-    private MainView mainView;
-    private GameScene scene;
+  private MainView mainView;
 	private MenuModel menuModel;
 	private int currentMenuMode = 1;
     /**
@@ -91,18 +96,21 @@ public class MainControllerImpl implements MainController {
             while (System.currentTimeMillis() > next_game_tick && loops < GameSpecs.MAX_FRAMESKIP) {
                 this.sceneController.nextTick();
 
-                next_game_tick += GameSpecs.SKIP_TICKS;
-                loops++;
-                fps++;
-            }
-            
-            if (System.currentTimeMillis() - last_frame_time > 1000) {
-                last_frame_time = System.currentTimeMillis();
-                System.out.println(fps);
-                fps = 0;
-            }
+	/** {@inheritDoc} */
+	@Override
+	public SceneController getController() {
+		return this.sceneController;
+	}
 
-            this.mainView.update();
+	/** {@inheritDoc} */
+	@Override
+	public void mainLoop() {
+		double next_game_tick = System.currentTimeMillis(); // TODO: qui in mezzo c'e' roba per l'FPS counter, sarebbe
+															// meglio rimuoverli
+		double last_frame_time = System.currentTimeMillis();
+		int loops;
+		int fps = 0;
+    this.mainView.update();
             
             //I check if the currentMenuMode has changed and if it has I update it and open the new window
             if (this.currentMenuMode != this.menuModel.getMainScene()) {
@@ -152,4 +160,34 @@ public class MainControllerImpl implements MainController {
        new MainControllerImpl().mainLoop();
    }
 
+		while (true) { // TODO: cambiare il true con qualcosa di piu' concreto tipo il click di un
+						// pulsante o altro
+			loops = 0;
+
+			while (System.currentTimeMillis() > next_game_tick && loops < this.gameSpecs.getMaxFrameSkip()) {
+				this.sceneController.nextTick();
+
+				next_game_tick += this.gameSpecs.getSkipTicks();
+				loops++;
+				fps++;
+			}
+
+			if (System.currentTimeMillis() - last_frame_time > 1000) {
+				last_frame_time = System.currentTimeMillis();
+				System.out.println(fps);
+				fps = 0;
+			}
+
+			this.mainView.update();
+		}
+	}
+
+	/**
+	 * The main method that starts the game.
+	 * 
+	 * @param args not used
+	 */
+	public static void main(final String[] args) {
+		new MainControllerImpl().mainLoop();
+	}
 }

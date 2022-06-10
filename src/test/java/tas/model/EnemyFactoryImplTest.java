@@ -12,11 +12,11 @@ import main.java.tas.utils.Position;
 
 public class EnemyFactoryImplTest {
 
-    @Test
-    public void testCreateEnemiesToBeSpawn() {
-        EnemyFactory enemyFactory = new EnemyFactoryImpl(Arrays.asList(new Position(0, 0)));
-        
-        assertFalse(enemyFactory.createEnemiesToBeSpawn(1).isEmpty());
-    }
+	@Test
+	public void testCreateEnemiesToBeSpawn() {
+		EnemyFactory enemyFactory = new EnemyFactoryImpl(Arrays.asList(new Position(0, 0)));
+
+		assertFalse(enemyFactory.createEnemiesToBeSpawn(1).isEmpty());
+	}
 
 }
