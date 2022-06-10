@@ -76,25 +76,6 @@ public class MainControllerImpl implements MainController {
         return controller;
     }
     
-    /** {@inheritDoc} */
-    @Override
-    public SceneController getController() {
-        return this.sceneController;
-    }
-    
-    /** {@inheritDoc} */
-    @Override
-    public void mainLoop() {
-        double next_game_tick = System.currentTimeMillis(); //TODO: qui in mezzo c'e' roba per l'FPS counter, sarebbe meglio rimuoverli
-        double last_frame_time = System.currentTimeMillis();
-        int loops;
-        int fps = 0;
-        
-        while (true) {  //TODO: cambiare il true con qualcosa di piu' concreto tipo il click di un pulsante o altro
-            loops = 0;
-            
-            while (System.currentTimeMillis() > next_game_tick && loops < GameSpecs.MAX_FRAMESKIP) {
-                this.sceneController.nextTick();
 
 	/** {@inheritDoc} */
 	@Override
@@ -150,37 +131,7 @@ public class MainControllerImpl implements MainController {
             	}
             }
         }
-    }
-    
-    /**
-    * The main method that starts the game
-    * @param args not used
-    */
-   public static void main(final String[] args) {
-       new MainControllerImpl().mainLoop();
-   }
 
-		while (true) { // TODO: cambiare il true con qualcosa di piu' concreto tipo il click di un
-						// pulsante o altro
-			loops = 0;
-
-			while (System.currentTimeMillis() > next_game_tick && loops < this.gameSpecs.getMaxFrameSkip()) {
-				this.sceneController.nextTick();
-
-				next_game_tick += this.gameSpecs.getSkipTicks();
-				loops++;
-				fps++;
-			}
-
-			if (System.currentTimeMillis() - last_frame_time > 1000) {
-				last_frame_time = System.currentTimeMillis();
-				System.out.println(fps);
-				fps = 0;
-			}
-
-			this.mainView.update();
-		}
-	}
 
 	/**
 	 * The main method that starts the game.
