@@ -25,6 +25,10 @@ public class GameController implements SceneController {
 	private final int pathThickness = 50;
 	private final TowerLogic towerLogic;
 
+	private final String healthSymbol = "Health";
+	private final String waveSymbol = "Wave";
+	private final String moneySymbol = "Money";
+
 	/**
 	 * Constructor that creates a game controller for the given game scene.
 	 * 
@@ -40,11 +44,12 @@ public class GameController implements SceneController {
 		this.gameScene.getGameView().getGamePanel().setLine(pathNodes, pathColor, pathThickness);
 
 		this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(),
-				this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
+		        this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
 
-		this.gameScene.getGameView().addTextLabel("Health " + this.playerStats.getHP(), "healt", "NW");
-		this.gameScene.getGameView().addTextLabel("Wave " + this.enemiesHandler.getWave(), "wave", "NE");
-		this.gameScene.getGameView().addTextLabel("Money " + this.playerStats.getPlayerMoney(), "money", "SE");
+		this.gameScene.getGameView().addTextLabel(this.healthSymbol + " " + this.playerStats.getHP(), "healt", "NW");
+		this.gameScene.getGameView().addTextLabel(this.waveSymbol + " " + this.enemiesHandler.getWave(), "wave", "NE");
+		this.gameScene.getGameView().addTextLabel(this.moneySymbol + " " + this.playerStats.getPlayerMoney(), "money",
+		        "SE");
 
 		// TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
 	}
@@ -84,7 +89,8 @@ public class GameController implements SceneController {
 	 */
 	private void increaseWave() {
 		this.enemiesHandler.setNextWave();
-		this.gameScene.getGameView().getTextLabel("wave").setText("⬤ " + this.enemiesHandler.getWave());
+		this.gameScene.getGameView().getTextLabel("wave")
+		        .setText(this.waveSymbol + " " + this.enemiesHandler.getWave());
 	}
 
 	/**
@@ -97,13 +103,15 @@ public class GameController implements SceneController {
 
 			if (enemy.isDead()) {
 				this.playerStats.giveMoney2Player(enemy.getMoney());
-				this.gameScene.getGameView().getTextLabel("money").setText("＄ " + this.playerStats.getPlayerMoney());
+				this.gameScene.getGameView().getTextLabel("money")
+				        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
 				killEnemy(enemy);
 				continue;
 			}
 			if (enemy.hasCompletedPath()) {
 				this.playerStats.dealDamage2Player(enemy.getDamage());
-				this.gameScene.getGameView().getTextLabel("healt").setText("♥ " + this.playerStats.getHP());
+				this.gameScene.getGameView().getTextLabel("healt")
+				        .setText(this.healthSymbol + " " + this.playerStats.getHP());
 				killEnemy(enemy);
 				continue;
 			}
