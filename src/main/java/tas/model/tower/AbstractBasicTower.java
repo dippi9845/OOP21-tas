@@ -18,7 +18,7 @@ public abstract class AbstractBasicTower implements Tower {
 	private final String imageName;
 	private final List<Enemy> visibleEnemyList;
 	private boolean stopTh;
-	
+
 	/**
 	 * Constructor, protected
 	 * 
@@ -50,12 +50,12 @@ public abstract class AbstractBasicTower implements Tower {
 	public boolean isStop() {
 		return this.stopTh;
 	}
-	
+
 	/** {@inheritDoc} */
 	public void stop() {
 		this.stopTh = true;
 	}
-	
+
 	/**
 	 * Deal damage to the target
 	 */

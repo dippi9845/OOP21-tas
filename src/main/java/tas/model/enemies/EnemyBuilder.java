@@ -6,19 +6,19 @@ package main.java.tas.model.enemies;
  */
 public interface EnemyBuilder {
 
-    /**
-     * @return an enemy of red type
-     */
-    Enemy spawnRedEnemy();
+	/**
+	 * @return an enemy of red type
+	 */
+	Enemy spawnRedEnemy();
 
-    /**
-     * @return an enemy of green type
-     */
-    Enemy spawnGreenEnemy();
+	/**
+	 * @return an enemy of green type
+	 */
+	Enemy spawnGreenEnemy();
 
-    /**
-     * @return an enemy of pink type
-     */
-    Enemy spawnPinkEnemy();
+	/**
+	 * @return an enemy of pink type
+	 */
+	Enemy spawnPinkEnemy();
 
 }

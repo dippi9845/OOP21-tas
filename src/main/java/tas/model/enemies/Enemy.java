@@ -7,41 +7,41 @@ import main.java.tas.model.Entity;
  */
 public interface Enemy extends Entity {
 
-    /**
-     * Moves the enemy one step forward.
-     */
-    void moveForward();
+	/**
+	 * Moves the enemy one step forward.
+	 */
+	void moveForward();
 
-    /**
-     * Deals damage to the enemy.
-     * 
-     * @param damage the damage that will be dealt
-     */
-    void dealDamage(double damage);
+	/**
+	 * Deals damage to the enemy.
+	 * 
+	 * @param damage the damage that will be dealt
+	 */
+	void dealDamage(double damage);
 
-    /**
-     * @return True if the enemy is dead
-     */
-    boolean isDead();
+	/**
+	 * @return True if the enemy is dead
+	 */
+	boolean isDead();
 
-    /**
-     * @return the health of the enemy
-     */
-    double getHealth();
+	/**
+	 * @return the health of the enemy
+	 */
+	double getHealth();
 
-    /**
-     * @return the amount of money that the enemy can drop
-     */
-    int getMoney();
+	/**
+	 * @return the amount of money that the enemy can drop
+	 */
+	int getMoney();
 
-    /**
-     * @return the amount of damage that the enemy can deal
-     */
-    int getDamage();
+	/**
+	 * @return the amount of damage that the enemy can deal
+	 */
+	int getDamage();
 
-    /**
-     * @return True if the enemy has completed its path
-     */
-    boolean hasCompletedPath();
+	/**
+	 * @return True if the enemy has completed its path
+	 */
+	boolean hasCompletedPath();
 
 }

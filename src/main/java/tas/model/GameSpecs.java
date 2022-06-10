@@ -11,55 +11,55 @@ import main.java.tas.utils.JsonUtils;
  */
 public final class GameSpecs {
 
-    private static String RESOURCE_PATH = "res";
-    private final String enemiesJsonSetup = RESOURCE_PATH + System.getProperty("file.separator") + "data"
-            + System.getProperty("file.separator") + "game" + System.getProperty("file.separator") + "gameSpecs.json";
+	private static String RESOURCE_PATH = "res";
+	private final String enemiesJsonSetup = RESOURCE_PATH + System.getProperty("file.separator") + "data"
+			+ System.getProperty("file.separator") + "game" + System.getProperty("file.separator") + "gameSpecs.json";
 
-    private final Dimension gameUnits;
+	private final Dimension gameUnits;
 
-    private final int tickRate;
-    private final int skipTicks;
-    private final int maxFrameSkip;
+	private final int tickRate;
+	private final int skipTicks;
+	private final int maxFrameSkip;
 
-    /**
-     * Sets up the gameSpecs from a json file
-     */
-    public GameSpecs() {
-        JSONObject jsonSetupList = JsonUtils.getJsonData(enemiesJsonSetup);
+	/**
+	 * Sets up the gameSpecs from a json file
+	 */
+	public GameSpecs() {
+		JSONObject jsonSetupList = JsonUtils.getJsonData(enemiesJsonSetup);
 
-        this.gameUnits = new Dimension(jsonSetupList.getJSONObject("gameUnits").getInt("width"),
-                jsonSetupList.getJSONObject("gameUnits").getInt("height"));
-        this.tickRate = jsonSetupList.getInt("tickRate");
-        this.maxFrameSkip = jsonSetupList.getInt("maxFrameSkip");
-        this.skipTicks = 1000 / this.tickRate;
-    }
+		this.gameUnits = new Dimension(jsonSetupList.getJSONObject("gameUnits").getInt("width"),
+				jsonSetupList.getJSONObject("gameUnits").getInt("height"));
+		this.tickRate = jsonSetupList.getInt("tickRate");
+		this.maxFrameSkip = jsonSetupList.getInt("maxFrameSkip");
+		this.skipTicks = 1000 / this.tickRate;
+	}
 
-    /**
-     * @return the game board dimension
-     */
-    public Dimension getGameUnits() {
-        return this.gameUnits;
-    }
+	/**
+	 * @return the game board dimension
+	 */
+	public Dimension getGameUnits() {
+		return this.gameUnits;
+	}
 
-    /**
-     * @return the tick rate of the game
-     */
-    public int getTickRate() {
-        return this.tickRate;
-    }
+	/**
+	 * @return the tick rate of the game
+	 */
+	public int getTickRate() {
+		return this.tickRate;
+	}
 
-    /**
-     * @return the frame skip margin
-     */
-    public int getSkipTicks() {
-        return this.skipTicks;
-    }
+	/**
+	 * @return the frame skip margin
+	 */
+	public int getSkipTicks() {
+		return this.skipTicks;
+	}
 
-    /**
-     * @return the maximum frames that can be skipped
-     */
-    public int getMaxFrameSkip() {
-        return this.maxFrameSkip;
-    }
+	/**
+	 * @return the maximum frames that can be skipped
+	 */
+	public int getMaxFrameSkip() {
+		return this.maxFrameSkip;
+	}
 
 }
