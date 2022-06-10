@@ -119,9 +119,6 @@ public class MainControllerImpl implements MainController {
 				this.mainView.show();
 				this.sceneController = createSandBoxMode(this.mainView);
 			}
-			if (this.currentMenuMode == 4) {
-				System.exit(0);
-			}
 		}
 	}
 
@@ -133,8 +130,7 @@ public class MainControllerImpl implements MainController {
 		                                                    // meglio rimuoverli
 		double last_frame_time = System.currentTimeMillis();
 		int loops;
-		while (true) { // TODO: cambiare il true con qualcosa di piu' concreto tipo il click di un
-			// pulsante o altro
+		while (this.currentMenuMode != 4) {
 			loops = 0;
 
 			while (System.currentTimeMillis() > next_game_tick && loops < this.gameSpecs.getMaxFrameSkip()) {
