@@ -11,9 +11,9 @@ import java.util.List;
 
 import org.junit.Test;
 
-import main.java.tas.model.enemies.Enemy;
-import main.java.tas.model.enemies.EnemyBuilder;
-import main.java.tas.model.enemies.EnemyBuilderImpl;
+import main.java.tas.model.enemy.Enemy;
+import main.java.tas.model.enemy.EnemyBuilder;
+import main.java.tas.model.enemy.EnemyBuilderImpl;
 import main.java.tas.utils.Position;
 
 public class EnemiesBuilderImplTest {

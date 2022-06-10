@@ -3,7 +3,7 @@ package main.java.tas.controller;
 import java.util.List;
 import java.util.Optional;
 
-import main.java.tas.model.enemies.Enemy;
+import main.java.tas.model.enemy.Enemy;
 
 /**
  * An interface for an enemies handler.

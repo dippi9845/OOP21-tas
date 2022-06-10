@@ -1,9 +1,11 @@
-package main.java.tas.view;
+package main.java.tas.view.scene;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
-
 import main.java.tas.controller.SceneController;
+import main.java.tas.view.GameView;
+import main.java.tas.view.InventoryView;
+import main.java.tas.view.ViewComponent;
 
 /**
  * Class that implements a {@link GameScene}.
@@ -12,7 +14,7 @@ public class GameSceneImpl implements GameScene {
 
 	private final JPanel rootPanel;
 	private final GameView gameView;
-	private final ViewComponent inventoryView;
+	private final InventoryView inventoryView;
 
 	/**
 	 * Constructor that set up the game scene.
@@ -34,7 +36,8 @@ public class GameSceneImpl implements GameScene {
 	/** {@inheritDoc} */
 	@Override
 	public void setObserver(SceneController observer) {
-		// TODO Auto-generated method stub
+		this.gameView.setObserver(observer);
+		this.inventoryView.setObserver(observer);
 
 	}
 
@@ -43,5 +46,4 @@ public class GameSceneImpl implements GameScene {
 	public GameView getGameView() {
 		return this.gameView;
 	}
-
 }

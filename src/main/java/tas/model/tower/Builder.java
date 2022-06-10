@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
-import main.java.tas.model.enemies.Enemy;
+
+import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 
 /**
