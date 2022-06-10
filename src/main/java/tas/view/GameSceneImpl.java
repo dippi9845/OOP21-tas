@@ -2,7 +2,6 @@ package main.java.tas.view;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
-
 import main.java.tas.controller.SceneController;
 
 /**
@@ -43,5 +42,4 @@ public class GameSceneImpl implements GameScene {
 	public GameView getGameView() {
 		return this.gameView;
 	}
-
 }

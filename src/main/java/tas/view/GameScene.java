@@ -6,7 +6,7 @@ import main.java.tas.controller.SceneController;
  * Interface for a game scene.
  */
 public interface GameScene {
-
+ 
 	/**
 	 * Set up an observer for the scene.
 	 * 

@@ -10,7 +10,7 @@ import main.java.tas.model.TimeCurve;
 import main.java.tas.model.TimeCurveImpl;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
-import main.java.tas.view.GameScene;
+import main.java.tas.view.GameSceneImpl;
 
 /**
  * Class that implements {@link SceneController}.
@@ -129,5 +129,4 @@ public class GameController implements SceneController {
 
 		this.towerLogic.drawTowers(this.gameScene.getGameView()::drawEntity);
 	}
-
 }

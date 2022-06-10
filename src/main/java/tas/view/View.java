@@ -6,25 +6,30 @@ import javax.swing.JPanel;
  * Interface for a generic view.
  */
 public interface View {
-
-	/**
-	 * Creates a window.
-	 */
-	void createWindow();
-
-	/**
-	 * Set the window to visible.
-	 */
-	void show();
-
-	/**
-	 * Updates the window.
-	 */
-	void update();
-
-	/**
-	 * @return the main {@link JPanel} of the window
-	 */
-	JPanel getPanel();
+   
+    /**
+     * Creates a window
+     */
+    void createWindow();
+    
+    /**
+     * Set the window to visible
+     */
+    void show();
+    
+    /**
+     * Updates the window
+     */
+    void update();
+    
+    /**
+     * @return the main {@link JPanel} of the window
+     */
+    JPanel getPanel();
+    
+    /**
+     * disposes of the window
+     */
+    void dispose();
 
 }
