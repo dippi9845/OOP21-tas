@@ -5,12 +5,12 @@ package main.java.tas.utils;
  */
 public interface IntArgumentOperator {
 
-    /**
-     * Generic operator.
-     * 
-     * @param a
-     * @return the value given by the lambda expression
-     */
-    public int operate(int a);
+	/**
+	 * Generic operator.
+	 * 
+	 * @param a
+	 * @return the value given by the lambda expression
+	 */
+	public int operate(int a);
 
 }

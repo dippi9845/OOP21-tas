@@ -7,16 +7,16 @@ import main.java.tas.controller.SceneController;
  */
 public interface GameScene {
 
-    /**
-     * Set up an observer for the scene.
-     * 
-     * @param observer is the observer
-     */
-    void setObserver(SceneController observer);
+	/**
+	 * Set up an observer for the scene.
+	 * 
+	 * @param observer is the observer
+	 */
+	void setObserver(SceneController observer);
 
-    /**
-     * @return the game view
-     */
-    GameView getGameView();
+	/**
+	 * @return the game view
+	 */
+	GameView getGameView();
 
 }

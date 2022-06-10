@@ -7,24 +7,24 @@ import javax.swing.JPanel;
  */
 public interface View {
 
-    /**
-     * Creates a window.
-     */
-    void createWindow();
+	/**
+	 * Creates a window.
+	 */
+	void createWindow();
 
-    /**
-     * Set the window to visible.
-     */
-    void show();
+	/**
+	 * Set the window to visible.
+	 */
+	void show();
 
-    /**
-     * Updates the window.
-     */
-    void update();
+	/**
+	 * Updates the window.
+	 */
+	void update();
 
-    /**
-     * @return the main {@link JPanel} of the window
-     */
-    JPanel getPanel();
+	/**
+	 * @return the main {@link JPanel} of the window
+	 */
+	JPanel getPanel();
 
 }

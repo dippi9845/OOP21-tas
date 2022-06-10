@@ -42,7 +42,9 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 	}
 
 	/**
-	 * Return the current target list, must be mutable, due to the possibility to remove a target during the game
+	 * Return the current target list, must be mutable, due to the possibility to
+	 * remove a target during the game
+	 * 
 	 * @return a mutable list of current enemies targeted
 	 */
 	protected List<Enemy> getEnemyList() {

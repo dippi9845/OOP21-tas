@@ -7,12 +7,12 @@ import java.util.List;
  */
 public interface EnemyFactory {
 
-    /**
-     * Generates a list with some enemies given the wave.
-     * 
-     * @param wave of the game
-     * @return list of enemies
-     */
-    List<Enemy> createEnemiesToBeSpawn(int wave);
+	/**
+	 * Generates a list with some enemies given the wave.
+	 * 
+	 * @param wave of the game
+	 * @return list of enemies
+	 */
+	List<Enemy> createEnemiesToBeSpawn(int wave);
 
 }

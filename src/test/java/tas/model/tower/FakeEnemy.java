@@ -15,8 +15,9 @@ class FakeEnemy implements Enemy {
 	private double health;
 
 	@SuppressWarnings("unused")
-	private FakeEnemy() {};
-	
+	private FakeEnemy() {
+	};
+
 	protected FakeEnemy(final Position pos, final double health) {
 		this.pos = pos;
 		this.health = health;
@@ -25,7 +26,7 @@ class FakeEnemy implements Enemy {
 	public void setPosition(final Position pos) {
 		this.pos = pos;
 	}
-	
+
 	@Override
 	public Position getPosition() {
 		return this.pos;

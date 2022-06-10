@@ -13,60 +13,60 @@ import main.java.tas.utils.JsonUtils;
  */
 public class EnemyBuilderImpl implements EnemyBuilder {
 
-    private final List<Position> nodesPosition;
-    private final JSONObject enemiesSetup;
+	private final List<Position> nodesPosition;
+	private final JSONObject enemiesSetup;
 
-    private static String RESOURCE_PATH = "res";
-    private final String enemiesJsonSetup = RESOURCE_PATH + System.getProperty("file.separator") + "data"
-            + System.getProperty("file.separator") + "enemies" + System.getProperty("file.separator")
-            + "basicEnemies.json";
+	private static String RESOURCE_PATH = "res";
+	private final String enemiesJsonSetup = RESOURCE_PATH + System.getProperty("file.separator") + "data"
+			+ System.getProperty("file.separator") + "enemies" + System.getProperty("file.separator")
+			+ "basicEnemies.json";
 
-    /**
-     * Constructor that creates a factory for the enemies .
-     * 
-     * @param nodesPosition is a list with the nodes that the enemies will have to
-     *                      travel
-     * @throws IllegalArgumentException if the @param nodesPosition is empty
-     */
-    public EnemyBuilderImpl(List<Position> nodesPosition) throws IllegalArgumentException {
-        if (nodesPosition.isEmpty()) {
-            throw new IllegalArgumentException("@nodesPosition can't be an empty array!");
-        }
-        this.nodesPosition = nodesPosition;
+	/**
+	 * Constructor that creates a factory for the enemies .
+	 * 
+	 * @param nodesPosition is a list with the nodes that the enemies will have to
+	 *                      travel
+	 * @throws IllegalArgumentException if the @param nodesPosition is empty
+	 */
+	public EnemyBuilderImpl(List<Position> nodesPosition) throws IllegalArgumentException {
+		if (nodesPosition.isEmpty()) {
+			throw new IllegalArgumentException("@nodesPosition can't be an empty array!");
+		}
+		this.nodesPosition = nodesPosition;
 
-        this.enemiesSetup = JsonUtils.getJsonData(enemiesJsonSetup);
-    }
+		this.enemiesSetup = JsonUtils.getJsonData(enemiesJsonSetup);
+	}
 
-    /**
-     * Generates an enemy by the given JsonObject
-     * 
-     * @param eStats the JsonObject where the informations are stored
-     * @return the generated enemy
-     */
-    private Enemy spawnGenericEnemy(JSONObject eStats) {
-        return new GenericEnemy(this.nodesPosition, eStats.getDouble("health"), eStats.getInt("money"),
-                eStats.getInt("damage"), eStats.getDouble("speed"),
-                new Dimension(eStats.getJSONObject("bodyDimension").getInt("width"),
-                        eStats.getJSONObject("bodyDimension").getInt("height")),
-                eStats.getString("image"));
-    }
+	/**
+	 * Generates an enemy by the given JsonObject
+	 * 
+	 * @param eStats the JsonObject where the informations are stored
+	 * @return the generated enemy
+	 */
+	private Enemy spawnGenericEnemy(JSONObject eStats) {
+		return new GenericEnemy(this.nodesPosition, eStats.getDouble("health"), eStats.getInt("money"),
+				eStats.getInt("damage"), eStats.getDouble("speed"),
+				new Dimension(eStats.getJSONObject("bodyDimension").getInt("width"),
+						eStats.getJSONObject("bodyDimension").getInt("height")),
+				eStats.getString("image"));
+	}
 
-    /** {@inheritDoc} */
-    @Override
-    public Enemy spawnRedEnemy() {
-        return spawnGenericEnemy(this.enemiesSetup.getJSONObject("RedEnemy"));
-    }
+	/** {@inheritDoc} */
+	@Override
+	public Enemy spawnRedEnemy() {
+		return spawnGenericEnemy(this.enemiesSetup.getJSONObject("RedEnemy"));
+	}
 
-    /** {@inheritDoc} */
-    @Override
-    public Enemy spawnGreenEnemy() {
-        return spawnGenericEnemy(this.enemiesSetup.getJSONObject("GreenEnemy"));
-    }
+	/** {@inheritDoc} */
+	@Override
+	public Enemy spawnGreenEnemy() {
+		return spawnGenericEnemy(this.enemiesSetup.getJSONObject("GreenEnemy"));
+	}
 
-    /** {@inheritDoc} */
-    @Override
-    public Enemy spawnPinkEnemy() {
-        return spawnGenericEnemy(this.enemiesSetup.getJSONObject("PinkEnemy"));
-    }
+	/** {@inheritDoc} */
+	@Override
+	public Enemy spawnPinkEnemy() {
+		return spawnGenericEnemy(this.enemiesSetup.getJSONObject("PinkEnemy"));
+	}
 
 }

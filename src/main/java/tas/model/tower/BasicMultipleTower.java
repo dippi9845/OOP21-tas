@@ -42,10 +42,11 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 			Towers.findAll(this::isValidTarget, this.getVisibleEnemyList()).stream()
 					.limit(this.getMaxEnemy() - this.getEnemyList().size()).forEach(this::setTarget);
 		}
-		
-		List<Enemy> toRemove = this.getEnemyList().stream().filter(x -> !Towers.isTargetInRange(x, this)).collect(Collectors.toList());
+
+		List<Enemy> toRemove = this.getEnemyList().stream().filter(x -> !Towers.isTargetInRange(x, this))
+				.collect(Collectors.toList());
 		this.getEnemyList().removeAll(toRemove);
-		
+
 		this.attack();
 		Thread.sleep(this.getDelay());
 	}

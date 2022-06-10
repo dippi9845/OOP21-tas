@@ -9,19 +9,19 @@ import main.java.tas.utils.Position;
  */
 public interface Entity {
 
-    /**
-     * @return the position of the entity
-     */
-    Position getPosition();
+	/**
+	 * @return the position of the entity
+	 */
+	Position getPosition();
 
-    /**
-     * @return the dimension of the entity
-     */
-    Dimension getBodyDimension();
+	/**
+	 * @return the dimension of the entity
+	 */
+	Dimension getBodyDimension();
 
-    /**
-     * @return the name of the image that the entity will use
-     */
-    String getImageName();
+	/**
+	 * @return the name of the image that the entity will use
+	 */
+	String getImageName();
 
 }
