@@ -7,8 +7,8 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import main.java.tas.model.enemies.Enemy;
-import main.java.tas.model.enemies.GenericEnemy;
+import main.java.tas.model.enemy.Enemy;
+import main.java.tas.model.enemy.GenericEnemy;
 import main.java.tas.utils.Position;
 
 public class GenricEnemyTest {

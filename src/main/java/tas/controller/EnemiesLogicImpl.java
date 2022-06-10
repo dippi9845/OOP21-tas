@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import main.java.tas.model.enemies.Enemy;
-import main.java.tas.model.enemies.EnemyFactory;
-import main.java.tas.model.enemies.EnemyFactoryImpl;
+import main.java.tas.model.enemy.Enemy;
+import main.java.tas.model.enemy.EnemyFactory;
+import main.java.tas.model.enemy.EnemyFactoryImpl;
 import main.java.tas.utils.Position;
 
 /**
