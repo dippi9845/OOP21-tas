@@ -87,73 +87,74 @@ public class MainControllerImpl implements MainController {
 	/** {@inheritDoc} */
 	@Override
 	public void mainLoop() {
-		
+
 		double next_game_tick = System.currentTimeMillis(); // TODO: qui in mezzo c'e' roba per l'FPS counter, sarebbe
-															// meglio rimuoverli
+		                                                    // meglio rimuoverli
 		double last_frame_time = System.currentTimeMillis();
 		int loops;
 		int fps = 0;
-		 while (true) { // TODO: cambiare il true con qualcosa di piu' concreto tipo il click di un
-             // pulsante o altro
-			 loops = 0;
+		while (true) { // TODO: cambiare il true con qualcosa di piu' concreto tipo il click di un
+			// pulsante o altro
+			loops = 0;
 
-			 while (System.currentTimeMillis() > next_game_tick && loops < this.gameSpecs.getMaxFrameSkip()) {
-				 this.sceneController.nextTick();
+			while (System.currentTimeMillis() > next_game_tick && loops < this.gameSpecs.getMaxFrameSkip()) {
+				this.sceneController.nextTick();
 
-				 next_game_tick += this.gameSpecs.getSkipTicks();
-				 loops++;
-				 fps++;
-			 }
+				next_game_tick += this.gameSpecs.getSkipTicks();
+				loops++;
+				fps++;
+			}
 
-			 if (System.currentTimeMillis() - last_frame_time > 1000) {
-				 last_frame_time = System.currentTimeMillis();
-				 System.out.println(fps);
-				 fps = 0;
-			 }
+			if (System.currentTimeMillis() - last_frame_time > 1000) {
+				last_frame_time = System.currentTimeMillis();
+				System.out.println(fps);
+				fps = 0;
+			}
 
-			 this.mainView.update();
-	            	//I check if the currentMenuMode has changed and if it has I update it and open the new window
-            if (this.currentMenuMode != this.menuModel.getMainScene()) {
-            	this.currentMenuMode = this.menuModel.getMainScene();
-            	if(this.currentMenuMode == 1) {
-            		this.mainView.dispose();
-            		this.mainView = new MainView();
-            		this.mainView.show();
-            		this.sceneController = createMenu(this.mainView);
-            	}
-            	if(this.currentMenuMode == 2) {
-            		this.mainView.dispose();
-            		this.mainView = new MainView();
-            		this.mainView.show();
-            		this.sceneController = createGame(this.mainView);
-            	}
-            	if(this.currentMenuMode == 3) {
-            		this.mainView.dispose();
-            		this.mainView = new MainView();
-            		this.mainView.show();
-            		this.sceneController = createLevelSelect(this.mainView);
-            	}
-            	if(this.currentMenuMode == 5) {
-            		this.mainView.dispose();
-            		this.mainView = new MainView();
-            		this.mainView.show();
-            		this.sceneController = createSettings(this.mainView);
-            	}
-            	if(this.currentMenuMode == 6) {
-            		this.mainView.dispose();
-            		this.mainView = new MainView();
-            		this.mainView.show();
-            		this.sceneController = createSandBoxMode(this.mainView);
-            	}
-            	if(this.currentMenuMode == 4) {
-            		System.exit(0);
-            	}
-            }
-    
-		 }  
-           
-            
-        }
+			// I check if the currentMenuMode has changed and if it has I update it and open
+			// the new window
+			if (this.currentMenuMode != this.menuModel.getMainScene()) {
+				this.currentMenuMode = this.menuModel.getMainScene();
+				if (this.currentMenuMode == 1) {
+					this.mainView.dispose();
+					this.mainView = new MainView();
+					this.mainView.show();
+					this.sceneController = createMenu(this.mainView);
+				}
+				if (this.currentMenuMode == 2) {
+					this.mainView.dispose();
+					this.mainView = new MainView();
+					this.mainView.show();
+					this.sceneController = createGame(this.mainView);
+				}
+				if (this.currentMenuMode == 3) {
+					this.mainView.dispose();
+					this.mainView = new MainView();
+					this.mainView.show();
+					this.sceneController = createLevelSelect(this.mainView);
+				}
+				if (this.currentMenuMode == 5) {
+					this.mainView.dispose();
+					this.mainView = new MainView();
+					this.mainView.show();
+					this.sceneController = createSettings(this.mainView);
+				}
+				if (this.currentMenuMode == 6) {
+					this.mainView.dispose();
+					this.mainView = new MainView();
+					this.mainView.show();
+					this.sceneController = createSandBoxMode(this.mainView);
+				}
+				if (this.currentMenuMode == 4) {
+					System.exit(0);
+				}
+				
+				this.mainView.update();
+			}
+
+		}
+
+	}
 
 	/**
 	 * The main method that starts the game.
