@@ -1,12 +1,12 @@
 package main.java.tas.controller;
 
-import main.java.tas.view.GameSceneImpl;
-import main.java.tas.view.LevelSelectSceneImpl;
-import main.java.tas.view.MainMenuSceneImpl;
 import main.java.tas.view.MainView;
-import main.java.tas.view.SandboxModeScene;
-import main.java.tas.view.Scene;
-import main.java.tas.view.SettingsSceneImpl;
+import main.java.tas.view.scene.GameSceneImpl;
+import main.java.tas.view.scene.LevelSelectSceneImpl;
+import main.java.tas.view.scene.MainMenuSceneImpl;
+import main.java.tas.view.scene.SandboxModeScene;
+import main.java.tas.view.scene.Scene;
+import main.java.tas.view.scene.SettingsSceneImpl;
 import main.java.tas.model.GameModelImpl;
 import main.java.tas.model.GameSpecs;
 import main.java.tas.model.MenuModel;

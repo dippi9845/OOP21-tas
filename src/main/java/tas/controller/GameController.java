@@ -10,7 +10,7 @@ import main.java.tas.model.TimeCurve;
 import main.java.tas.model.TimeCurveImpl;
 import main.java.tas.model.enemies.Enemy;
 import main.java.tas.utils.Position;
-import main.java.tas.view.GameScene;
+import main.java.tas.view.scene.GameScene;
 
 /**
  * Class that implements {@link SceneController}.

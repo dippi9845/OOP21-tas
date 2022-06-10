@@ -2,10 +2,11 @@ package main.java.tas.controller;
 
 
 import java.awt.event.ActionListener;
-import main.java.tas.view.MainMenuSceneImpl;
-import main.java.tas.view.Scene;
+
 import main.java.tas.model.MenuModel;
-import main.java.tas.view.GameScene;
+import main.java.tas.view.scene.GameScene;
+import main.java.tas.view.scene.MainMenuSceneImpl;
+import main.java.tas.view.scene.Scene;
 
 public class MainMenuController implements SceneController {
 	

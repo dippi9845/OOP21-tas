@@ -1,4 +1,4 @@
-package main.java.tas.view;
+package main.java.tas.view.scene;
 
 import java.awt.BorderLayout;
 
@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
+import main.java.tas.view.LevelSelectView;
 public class LevelSelectSceneImpl implements Scene {
 	
 	private JPanel rootPanel;

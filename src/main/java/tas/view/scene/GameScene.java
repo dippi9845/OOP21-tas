@@ -1,6 +1,6 @@
-package main.java.tas.view;
+package main.java.tas.view.scene;
 
-
+import main.java.tas.view.GameView;
 
 /**
  * Interface for a game scene.
