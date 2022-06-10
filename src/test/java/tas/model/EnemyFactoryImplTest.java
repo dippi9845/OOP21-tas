@@ -6,8 +6,8 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import main.java.tas.model.enemies.EnemyFactory;
-import main.java.tas.model.enemies.EnemyFactoryImpl;
+import main.java.tas.model.enemy.EnemyFactory;
+import main.java.tas.model.enemy.EnemyFactoryImpl;
 import main.java.tas.utils.Position;
 
 public class EnemyFactoryImplTest {

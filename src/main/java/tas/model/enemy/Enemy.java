@@ -1,4 +1,4 @@
-package main.java.tas.model.enemies;
+package main.java.tas.model.enemy;
 
 import main.java.tas.model.Entity;
 

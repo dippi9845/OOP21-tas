@@ -2,7 +2,7 @@ package test.java.tas.model.tower;
 
 import java.awt.Dimension;
 
-import main.java.tas.model.enemies.Enemy;
+import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 
 /**
