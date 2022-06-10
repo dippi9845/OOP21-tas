@@ -4,14 +4,15 @@ import java.awt.event.ActionListener;
 import main.java.tas.view.SettingsSceneImpl;
 import main.java.tas.model.MenuModel;
 import main.java.tas.view.GameScene;
+import main.java.tas.view.Scene;
 
 public class SettingsController implements SceneController {
 	
 	private SettingsListener listener;
-	private GameScene scene;
+	private Scene scene;
 	private MenuModel model;
 	
-	public SettingsController(GameScene sceneIn, MenuModel theModel) {
+	public SettingsController(Scene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
 		((SettingsSceneImpl) scene).setObserver(this);
 		this.listener = new SettingsListener();
