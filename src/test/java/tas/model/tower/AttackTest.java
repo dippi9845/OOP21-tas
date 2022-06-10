@@ -29,9 +29,9 @@ class AttackTest {
 	
 	private Enemy getGenericEnemy(final Position pos, final double health) {
 		List<Position> nodesPosition = new LinkedList<>();
-		nodesPosition.add(new Position(0, 0));
-		nodesPosition.add(new Position(0, 0));
-		nodesPosition.add(new Position(0, 0));
+		nodesPosition.add(pos);
+		nodesPosition.add(pos);
+		nodesPosition.add(pos);
 		
 		return new GenericEnemy(nodesPosition, health, 0, 0, 0, new Dimension(1, 1), "Niente");
 	}
