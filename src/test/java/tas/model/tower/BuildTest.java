@@ -10,7 +10,7 @@ import java.util.function.UnaryOperator;
 import org.junit.jupiter.api.Test;
 import main.java.tas.model.tower.factory.*;
 import main.java.tas.utils.Position;
-import main.java.tas.model.enemies.Enemy;
+import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Builder;
 import main.java.tas.model.tower.Tower;
