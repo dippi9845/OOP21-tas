@@ -75,9 +75,5 @@ public class MainView implements View {
 		
 	}
 	
-	public void removePanel(){
-		this.frame.getContentPane().removeAll();
-	}
-	
 
 }

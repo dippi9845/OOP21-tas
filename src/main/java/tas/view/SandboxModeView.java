@@ -2,6 +2,7 @@ package main.java.tas.view;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -9,6 +10,7 @@ import javax.swing.JPanel;
 import main.java.tas.controller.SandboxModeController;
 import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
+import main.java.tas.utils.Position;
 
 public class SandboxModeView  {
 	
@@ -18,7 +20,6 @@ public class SandboxModeView  {
 	private SquarePanel gameBoard = new SquarePanel();
     
     public SandboxModeView(MenuModel theModel){
-    	
     	
 		this.gameBoard.setBgImage("bgImage");
 		this.gamePanel.add(this.gameBoard);
@@ -31,6 +32,10 @@ public class SandboxModeView  {
 	public JPanel getPanel() {
         return this.rootPanel;
     }
+	
+	public SquarePanel getGameBoard(){
+		return this.gameBoard;
+	}
 	
 	public void setObserver(SceneController sandboxModeController) {
 		this.gamePanel.addMouseListener(((SandboxModeController) sandboxModeController).getListener());;
