@@ -18,8 +18,8 @@ public class EnemyBuilderImpl implements EnemyBuilder {
 
 	private static String RESOURCE_PATH = "res";
 	private final String enemiesJsonSetup = RESOURCE_PATH + System.getProperty("file.separator") + "data"
-			+ System.getProperty("file.separator") + "enemies" + System.getProperty("file.separator")
-			+ "basicEnemies.json";
+	        + System.getProperty("file.separator") + "enemies" + System.getProperty("file.separator")
+	        + "basicEnemies.json";
 
 	/**
 	 * Constructor that creates a factory for the enemies .
@@ -28,7 +28,7 @@ public class EnemyBuilderImpl implements EnemyBuilder {
 	 *                      travel
 	 * @throws IllegalArgumentException if the @param nodesPosition is empty
 	 */
-	public EnemyBuilderImpl(List<Position> nodesPosition) throws IllegalArgumentException {
+	public EnemyBuilderImpl(final List<Position> nodesPosition) throws IllegalArgumentException {
 		if (nodesPosition.isEmpty()) {
 			throw new IllegalArgumentException("@nodesPosition can't be an empty array!");
 		}
@@ -43,12 +43,12 @@ public class EnemyBuilderImpl implements EnemyBuilder {
 	 * @param eStats the JsonObject where the informations are stored
 	 * @return the generated enemy
 	 */
-	private Enemy spawnGenericEnemy(JSONObject eStats) {
+	private Enemy spawnGenericEnemy(final JSONObject eStats) {
 		return new GenericEnemy(this.nodesPosition, eStats.getDouble("health"), eStats.getInt("money"),
-				eStats.getInt("damage"), eStats.getDouble("speed"),
-				new Dimension(eStats.getJSONObject("bodyDimension").getInt("width"),
-						eStats.getJSONObject("bodyDimension").getInt("height")),
-				eStats.getString("image"));
+		        eStats.getInt("damage"), eStats.getDouble("speed"),
+		        new Dimension(eStats.getJSONObject("bodyDimension").getInt("width"),
+		                eStats.getJSONObject("bodyDimension").getInt("height")),
+		        eStats.getString("image"));
 	}
 
 	/** {@inheritDoc} */

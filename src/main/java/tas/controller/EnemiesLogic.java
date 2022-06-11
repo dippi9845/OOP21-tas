@@ -23,7 +23,7 @@ public interface EnemiesLogic {
 	 * @param enemy
 	 * @throws NoSuchFieldException if the given enemy is not in the alive list
 	 */
-	void removeEnemy(Enemy enemy) throws NoSuchFieldException;
+	void removeEnemy(final Enemy enemy) throws NoSuchFieldException;
 
 	/**
 	 * Checks there are no enemies alive.

@@ -14,7 +14,7 @@ public class Position {
 	 * @param x the first coordinate
 	 * @param y the second coordinate
 	 */
-	public Position(double x, double y) {
+	public Position(final double x, final double y) {
 		setPosition(x, y);
 	}
 
@@ -23,7 +23,7 @@ public class Position {
 	 * 
 	 * @param pos the new position
 	 */
-	public void setPosition(Position pos) {
+	public void setPosition(final Position pos) {
 		setPosition(pos.getX(), pos.getY());
 	}
 
@@ -33,7 +33,7 @@ public class Position {
 	 * @param x the first coordinate
 	 * @param y the second coordinate
 	 */
-	public void setPosition(double x, double y) {
+	public void setPosition(final double x, final double y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -59,7 +59,7 @@ public class Position {
 	 * @param pos2 the second position
 	 * @return the distance between the 2 coordinate
 	 */
-	public static double findDistance(Position pos1, Position pos2) {
+	public static double findDistance(final Position pos1, final Position pos2) {
 		return Math.hypot(pos1.getX() - pos2.getX(), pos1.getY() - pos2.getY());
 	}
 

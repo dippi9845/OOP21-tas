@@ -13,6 +13,6 @@ public interface EnemyFactory {
 	 * @param wave of the game
 	 * @return list of enemies
 	 */
-	List<Enemy> createEnemiesToBeSpawn(int wave);
+	List<Enemy> createEnemiesToBeSpawn(final int wave);
 
 }

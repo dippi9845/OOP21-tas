@@ -18,13 +18,13 @@ public class EnemyFactoryImpl implements EnemyFactory {
 	 * @param nodesPosition is a list with the nodes that the enemies will have to
 	 *                      travel
 	 */
-	public EnemyFactoryImpl(List<Position> nodesPosition) {
+	public EnemyFactoryImpl(final List<Position> nodesPosition) {
 		this.enemyFactory = new EnemyBuilderImpl(nodesPosition);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public List<Enemy> createEnemiesToBeSpawn(int wave) {
+	public List<Enemy> createEnemiesToBeSpawn(final int wave) {
 		List<Enemy> enemiesList = new ArrayList<Enemy>();
 
 		enemiesList.addAll(getRedEnemyByWave(wave));
@@ -40,7 +40,7 @@ public class EnemyFactoryImpl implements EnemyFactory {
 	 * @param wave of the game
 	 * @return a list with the enemies
 	 */
-	private List<Enemy> getRedEnemyByWave(int wave) {
+	private List<Enemy> getRedEnemyByWave(final int wave) {
 		int enemiesForWave = 0;
 		List<Enemy> eList = new ArrayList<Enemy>();
 
@@ -52,7 +52,7 @@ public class EnemyFactoryImpl implements EnemyFactory {
 			// y = -(0.095 * (x - 5.2)^4 - 0.2 * (x - 5.2)^3 -1.2 * (x - 5.2)^2 +0.8 * (x -
 			// 5.2))
 			enemiesForWave = (int) Math.round(-(0.095 * Math.pow((wave - 5.2), 4) - 0.2 * Math.pow((wave - 5.2), 3)
-					- 1.2 * Math.pow((wave - 5.2), 2) + 0.8 * (wave - 5.2)) + 3.7);
+			        - 1.2 * Math.pow((wave - 5.2), 2) + 0.8 * (wave - 5.2)) + 3.7);
 		}
 
 		for (int i = 0; i < enemiesForWave; i++) {
@@ -68,7 +68,7 @@ public class EnemyFactoryImpl implements EnemyFactory {
 	 * @param wave of the game
 	 * @return a list with the enemies
 	 */
-	private List<Enemy> getGreenEnemyByWave(int wave) {
+	private List<Enemy> getGreenEnemyByWave(final int wave) {
 		int enemiesForWave = 0;
 		List<Enemy> eList = new ArrayList<Enemy>();
 
@@ -94,7 +94,7 @@ public class EnemyFactoryImpl implements EnemyFactory {
 	 * @param wave of the game
 	 * @return a list with the enemies
 	 */
-	private List<Enemy> getPinkEnemyByWave(int wave) {
+	private List<Enemy> getPinkEnemyByWave(final int wave) {
 		int enemiesForWave = 0;
 		List<Enemy> eList = new ArrayList<Enemy>();
 

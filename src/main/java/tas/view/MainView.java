@@ -52,7 +52,7 @@ public class MainView implements View {
 	 * @param proportion the proportion that scales the dimension
 	 * @return the scaled dimension
 	 */
-	private Dimension scaleDimension(Dimension dimension, double proportion) {
+	private Dimension scaleDimension(final Dimension dimension, final double proportion) {
 		return new Dimension((int) (dimension.getWidth() / proportion), (int) (dimension.getHeight() / proportion));
 	}
 

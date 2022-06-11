@@ -11,6 +11,6 @@ public interface IntArgumentOperator {
 	 * @param a
 	 * @return the value given by the lambda expression
 	 */
-	public int operate(int a);
+	public int operate(final int a);
 
 }

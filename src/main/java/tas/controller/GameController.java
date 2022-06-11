@@ -45,7 +45,7 @@ public class GameController implements SceneController {
 	 * 
 	 * @param scene the graphic scene controller
 	 */
-	public GameController(final GameScene scene, GameModel gameModel) {
+	public GameController(final GameScene scene, final GameModel gameModel) {
 		this.gameScene = scene;
 		this.playerStats = gameModel;
 
@@ -85,7 +85,7 @@ public class GameController implements SceneController {
 	 * 
 	 * @param enemy
 	 */
-	private void killEnemy(Enemy enemy) {
+	private void killEnemy(final Enemy enemy) {
 		this.gameScene.getGameView().removeEntityLabel(enemy);
 		try {
 			this.enemiesHandler.removeEnemy(enemy);
@@ -139,7 +139,7 @@ public class GameController implements SceneController {
 		}
 	}
 
-	public Position positionConverter(Point ptr, Dimension dim, Dimension componentDim) {
+	public Position positionConverter(final Point ptr, final Dimension dim, final Dimension componentDim) {
 		double x = ptr.getX() * dim.getWidth() / componentDim.getWidth();
 		double y = ptr.getY() * dim.getHeight() / componentDim.getHeight();
 		return new Position(x, y);

@@ -22,7 +22,7 @@ public class AdaptiveLabel extends JLabel {
 	 * 
 	 * @param pos the relative position of the label
 	 */
-	public void setPosition(Position pos) {
+	public void setPosition(final Position pos) {
 		this.actualPosition = pos;
 		draw(this.actualPosition);
 	}
@@ -34,7 +34,7 @@ public class AdaptiveLabel extends JLabel {
 	 * @param style
 	 * @param size
 	 */
-	public void setFont(String fontName, int style, int size) {
+	public void setFont(final String fontName, final int style, final int size) {
 		this.text.setFontName(fontName);
 		this.text.setFontStyle(style);
 		this.text.setFontSize(size);
@@ -43,7 +43,7 @@ public class AdaptiveLabel extends JLabel {
 
 	/** {@inheritDoc} */
 	@Override
-	public void setText(String text) {
+	public void setText(final String text) {
 		if (this.text == null) {
 			this.text = new CustomTextImpl();
 		}
@@ -64,11 +64,11 @@ public class AdaptiveLabel extends JLabel {
 	 * 
 	 * @param pos is the relative position of the label
 	 */
-	private void draw(Position pos) {
+	private void draw(final Position pos) {
 		int xPos = (int) ((double) getParent().getWidth() / (double) this.gameSpecs.getGameUnits().width
-				* (double) pos.getX() - getPreferredSize().getWidth() / 2);
+		        * (double) pos.getX() - getPreferredSize().getWidth() / 2);
 		int yPos = (int) ((double) getParent().getHeight() / (double) this.gameSpecs.getGameUnits().height
-				* (double) pos.getY() - getPreferredSize().getHeight() / 2);
+		        * (double) pos.getY() - getPreferredSize().getHeight() / 2);
 
 		setBounds(xPos, yPos, (int) getPreferredSize().getWidth(), (int) getPreferredSize().getHeight());
 	}

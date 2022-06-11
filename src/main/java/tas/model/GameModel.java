@@ -10,14 +10,14 @@ public interface GameModel {
 	 * 
 	 * @param money the amount by which it will be increased
 	 */
-	void giveMoney2Player(int money);
+	void giveMoney2Player(final int money);
 
 	/**
 	 * Deals an amount of damage to the player.
 	 * 
 	 * @param damage the damage that will be dealt
 	 */
-	void dealDamage2Player(int damage);
+	void dealDamage2Player(final int damage);
 
 	/**
 	 * @return the health of the player
