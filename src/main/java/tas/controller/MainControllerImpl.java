@@ -22,7 +22,7 @@ public class MainControllerImpl implements MainController {
 	private GameSpecs gameSpecs = new GameSpecs();
 
 	private int playerHealth = 100;
-	private int playerMoney = 150;
+	private int playerMoney = 1000;
 
 	private MainView mainView;
 	private MenuModel menuModel;

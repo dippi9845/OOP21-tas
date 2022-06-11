@@ -4,10 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
 import main.java.tas.model.GameModel;
+import main.java.tas.model.GameSpecs;
 import main.java.tas.model.TimeCurve;
 import main.java.tas.model.TimeCurveImpl;
 import main.java.tas.model.tower.factory.DefaultTowers;
@@ -31,6 +34,7 @@ public class GameController implements SceneController {
 	private DefaultTowers currentTowerSelected;
 	private final ScreenListener screenListener = new ScreenListener();
 	private final InventoryListener inventoryListener = new InventoryListener();
+	private final GameSpecs gameSpecs = new GameSpecs();
 
 	private final String healthSymbol = "Health";
 	private final String waveSymbol = "Wave";
@@ -136,10 +140,17 @@ public class GameController implements SceneController {
 		}
 	}
 	
+	public Position positionConverter(Point ptr, Dimension dim, Dimension componentDim) {
+		double x = ptr.getX()*dim.getWidth()/componentDim.getWidth();
+		double y = ptr.getY()*dim.getHeight()/componentDim.getHeight();
+		return new Position(x, y);
+	}
+	
 	public void screenUpdate() {
 		if (this.screenListener.checkUpdate()) {
 			
-			Position turretPosition = new Position(100, 100);
+			Position turretPosition = positionConverter(this.screenListener.getClickLocation(), this.gameSpecs.getGameUnits(), this.gameScene.getGameView().getGamePanel().getPreferredSize());
+			System.out.println(turretPosition.toString());
 			this.towerLogic.placeTower(currentTowerSelected, turretPosition);
 			this.currentInventoryMode = 0;
 			this.screenListener.resetUpdate();

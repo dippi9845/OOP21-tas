@@ -24,7 +24,8 @@ public class ScreenListener implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		this.clickLocation = e.getLocationOnScreen();
+		this.clickLocation = e.getPoint();
+		System.out.println(clickLocation.toString());
 		this.update = true;
 		
 		
