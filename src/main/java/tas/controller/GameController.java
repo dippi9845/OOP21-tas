@@ -131,7 +131,7 @@ public class GameController implements SceneController {
 			this.gameScene.getGameView().drawEntity(enemy);
 		}
 	}
-	
+
 	public void inventoryUpdate() {
 		if (this.inventoryListener.checkUpdate()) {
 			this.currentTowerSelected = inventoryListener.getTowerSelected();
@@ -139,28 +139,31 @@ public class GameController implements SceneController {
 			this.inventoryListener.resetUpdate();
 		}
 	}
-	
+
 	public Position positionConverter(Point ptr, Dimension dim, Dimension componentDim) {
-		double x = ptr.getX()*dim.getWidth()/componentDim.getWidth();
-		double y = ptr.getY()*dim.getHeight()/componentDim.getHeight();
+		double x = ptr.getX() * dim.getWidth() / componentDim.getWidth();
+		double y = ptr.getY() * dim.getHeight() / componentDim.getHeight();
 		return new Position(x, y);
 	}
-	
+
 	public void screenUpdate() {
 		if (this.screenListener.checkUpdate()) {
-			
-			Position turretPosition = positionConverter(this.screenListener.getClickLocation(), this.gameSpecs.getGameUnits(), this.gameScene.getGameView().getGamePanel().getPreferredSize());
+
+			Position turretPosition = positionConverter(this.screenListener.getClickLocation(),
+			        this.gameSpecs.getGameUnits(), this.gameScene.getGameView().getGamePanel().getPreferredSize());
 			System.out.println(turretPosition.toString());
 			this.towerLogic.placeTower(currentTowerSelected, turretPosition);
+			this.gameScene.getGameView().getTextLabel("money")
+			        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
 			this.currentInventoryMode = 0;
 			this.screenListener.resetUpdate();
 		}
 	}
-	
-	public MouseListener getMouseListener(){
+
+	public MouseListener getMouseListener() {
 		return this.screenListener;
 	}
-	
+
 	public ActionListener getListener() {
 		return this.inventoryListener;
 	}
@@ -178,11 +181,11 @@ public class GameController implements SceneController {
 		if (this.enemiesHandler.areEnemiesOnBoard()) {
 			enemiesCheck();
 		}
-		
+
 		if (currentInventoryMode == 0) {
 			inventoryUpdate();
 		}
-		
+
 		if (currentInventoryMode == 1) {
 			screenUpdate();
 		}
