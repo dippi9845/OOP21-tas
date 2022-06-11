@@ -19,7 +19,7 @@ import main.java.tas.model.tower.Towers;
 import main.java.tas.model.tower.factory.CannonFactory;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.utils.Position;
-import main.java.tas.model.enemies.GenericEnemy;
+import main.java.tas.model.enemy.GenericEnemy;
 
 /**
  * Class for testing every type of tower that attack
