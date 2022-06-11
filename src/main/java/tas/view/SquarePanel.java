@@ -47,7 +47,7 @@ public class SquarePanel extends AdaptivePanel {
 	 * 
 	 * @param bgImage the image of the background
 	 */
-	public SquarePanel(String bgImageName) {
+	public SquarePanel(final String bgImageName) {
 		this();
 		setBgImage(bgImageName);
 	}
@@ -60,7 +60,7 @@ public class SquarePanel extends AdaptivePanel {
 	 * @param color       the color of the line
 	 * @param thickness   the thickness of the line
 	 */
-	public SquarePanel(List<Position> linesPoints, Color color, int thickness) {
+	public SquarePanel(final List<Position> linesPoints, final Color color, final int thickness) {
 		this();
 		setLine(linesPoints, color, thickness);
 	}
@@ -70,7 +70,7 @@ public class SquarePanel extends AdaptivePanel {
 	 * 
 	 * @param e the enemy that needs a label
 	 */
-	public void addEntity(Entity e) {
+	public void addEntity(final Entity e) {
 		AdaptiveLabel entityLabel = new AdaptiveLabel();
 		try {
 			entityLabel.setIcon(new ImageIcon(imGetter.getImageByEntity(e, this.getPreferredSize())));
@@ -89,7 +89,7 @@ public class SquarePanel extends AdaptivePanel {
 	 * @param anchor the position of the label (NW, NE, SW, SE)
 	 * @throws IllegalArgumentException if the anchor is not in the list
 	 */
-	public void addTextLabel(String text, String id, String anchor) throws IllegalArgumentException {
+	public void addTextLabel(final String text, final String id, final String anchor) throws IllegalArgumentException {
 		AdaptiveLabel tempLabel = new AdaptiveLabel();
 		this.add(tempLabel);
 		tempLabel.setText(text);
@@ -101,21 +101,21 @@ public class SquarePanel extends AdaptivePanel {
 		switch (anchor) {
 		case "NW":
 			tempLabel.setPosition(
-					new Position(tempLabel.getPreferredSize().getWidth(), tempLabel.getPreferredSize().getHeight()));
+			        new Position(tempLabel.getPreferredSize().getWidth(), tempLabel.getPreferredSize().getHeight()));
 			break;
 		case "NE":
 			tempLabel.setPosition(
-					new Position(this.gameSpecs.getGameUnits().width - tempLabel.getPreferredSize().getWidth(),
-							tempLabel.getPreferredSize().getHeight()));
+			        new Position(this.gameSpecs.getGameUnits().width - tempLabel.getPreferredSize().getWidth(),
+			                tempLabel.getPreferredSize().getHeight()));
 			break;
 		case "SW":
 			tempLabel.setPosition(new Position(tempLabel.getPreferredSize().getWidth(),
-					this.gameSpecs.getGameUnits().height - tempLabel.getPreferredSize().getHeight()));
+			        this.gameSpecs.getGameUnits().height - tempLabel.getPreferredSize().getHeight()));
 			break;
 		case "SE":
 			tempLabel.setPosition(
-					new Position(this.gameSpecs.getGameUnits().width - tempLabel.getPreferredSize().getWidth(),
-							this.gameSpecs.getGameUnits().height - tempLabel.getPreferredSize().getHeight()));
+			        new Position(this.gameSpecs.getGameUnits().width - tempLabel.getPreferredSize().getWidth(),
+			                this.gameSpecs.getGameUnits().height - tempLabel.getPreferredSize().getHeight()));
 			break;
 		default:
 			throw new IllegalArgumentException("The anchor must be one of: NW, NE, SW, SE");
@@ -131,7 +131,7 @@ public class SquarePanel extends AdaptivePanel {
 	 * @param id of the label
 	 * @return the label
 	 */
-	public AdaptiveLabel getTextLabel(String id) {
+	public AdaptiveLabel getTextLabel(final String id) {
 		if (!this.textLables.containsKey(id)) {
 			return null;
 		}
@@ -143,7 +143,7 @@ public class SquarePanel extends AdaptivePanel {
 	 * 
 	 * @param id of the text Label
 	 */
-	public void removeTextLabel(String id) {
+	public void removeTextLabel(final String id) {
 		if (!this.textLables.containsKey(id)) {
 			return;
 		}
@@ -165,7 +165,7 @@ public class SquarePanel extends AdaptivePanel {
 				for (Map.Entry<Entity, AdaptiveLabel> entityMap : entityLables.entrySet()) {
 					try {
 						entityMap.getValue().setIcon(
-								new ImageIcon(imGetter.getImageByEntity(entityMap.getKey(), getPreferredSize())));
+						        new ImageIcon(imGetter.getImageByEntity(entityMap.getKey(), getPreferredSize())));
 					} catch (FileNotFoundException e1) {
 						System.out.println(e1);
 					}
@@ -195,7 +195,7 @@ public class SquarePanel extends AdaptivePanel {
 	 * @param e      the entity that has to be redrawn
 	 * @param newPos the position where the entity will be drawn
 	 */
-	public void redrawEntity(Entity e, Position newPos) {
+	public void redrawEntity(final Entity e, final Position newPos) {
 		this.entityLables.get(e).setPosition(newPos);
 	}
 
@@ -205,7 +205,7 @@ public class SquarePanel extends AdaptivePanel {
 	 * 
 	 * @param e the entity that has to be removed
 	 */
-	public void removeEntity(Entity e) {
+	public void removeEntity(final Entity e) {
 		this.remove(this.entityLables.get(e));
 		this.revalidate();
 		this.repaint();
@@ -224,7 +224,7 @@ public class SquarePanel extends AdaptivePanel {
 	/**
 	 * @param bgImage image of the background
 	 */
-	public void setBgImage(String bgImageName) {
+	public void setBgImage(final String bgImageName) {
 		this.bgImageName = bgImageName;
 		try {
 			this.bgImage = imGetter.getImageByName(bgImageName);

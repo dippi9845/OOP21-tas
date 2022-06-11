@@ -13,7 +13,7 @@ public interface TimeCurve {
 	 * @param func a lambda function with one variable e.g. "(x) &gt; x + 1" can be
 	 *             seen as "f(x) = x + 1"
 	 */
-	void setFunction(IntArgumentOperator func);
+	void setFunction(final IntArgumentOperator func);
 
 	/**
 	 * This method returns True when the difference of time between now and the last
@@ -26,7 +26,7 @@ public interface TimeCurve {
 	 *         method was called and the actual time is greater then a fixed amount
 	 * @throws IllegalArgumentException if @param x is less than 0
 	 */
-	boolean isTimeForAction(int x) throws IllegalArgumentException;
+	boolean isTimeForAction(final int x) throws IllegalArgumentException;
 
 	/**
 	 * Set up a flag that confirms that an action was performed

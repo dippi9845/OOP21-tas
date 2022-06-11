@@ -49,7 +49,7 @@ public class ImageLoaderImpl implements ImageLoader {
 	 * 
 	 * @param file that is requested
 	 */
-	private void loadImage(File file) {
+	private void loadImage(final File file) {
 		try {
 			this.imagesMap.put(file.getName().replaceFirst("[.][^.]+$", ""), ImageIO.read(file));
 		} catch (IOException e) {
@@ -59,7 +59,7 @@ public class ImageLoaderImpl implements ImageLoader {
 
 	/** {@inheritDoc} */
 	@Override
-	public BufferedImage getImageByEntity(Entity entity, Dimension CanvasDimension) throws FileNotFoundException {
+	public BufferedImage getImageByEntity(final Entity entity, Dimension CanvasDimension) throws FileNotFoundException {
 		if (CanvasDimension.width == 0 || CanvasDimension.height == 0) {
 			CanvasDimension = this.gameSpecs.getGameUnits();
 		}
@@ -75,7 +75,7 @@ public class ImageLoaderImpl implements ImageLoader {
 
 	/** {@inheritDoc} */
 	@Override
-	public BufferedImage getImageByName(String imageName) throws FileNotFoundException {
+	public BufferedImage getImageByName(final String imageName) throws FileNotFoundException {
 		if (!this.imagesMap.containsKey(imageName)) {
 			throw new FileNotFoundException("There is no image named (" + imageName + ") in the 'res' folder");
 		}
@@ -84,7 +84,7 @@ public class ImageLoaderImpl implements ImageLoader {
 
 	/** {@inheritDoc} */
 	@Override
-	public BufferedImage getImageByName(String imageName, Dimension CanvasDimension) throws FileNotFoundException {
+	public BufferedImage getImageByName(final String imageName, Dimension CanvasDimension) throws FileNotFoundException {
 		return scaleImage(getImageByName(imageName), CanvasDimension);
 	}
 
@@ -112,7 +112,7 @@ public class ImageLoaderImpl implements ImageLoader {
 	 * @param newDimension the new dimension of the image
 	 * @return the scaled image
 	 */
-	private BufferedImage scaleImage(BufferedImage src, Dimension newDimension) {
+	private BufferedImage scaleImage(final BufferedImage src, final Dimension newDimension) {
 		int newWidth = newDimension.width;
 		int newHeight = newDimension.height;
 		BufferedImage img = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);

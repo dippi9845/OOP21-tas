@@ -14,20 +14,20 @@ public class GameModelImpl implements GameModel {
 	 * @param playerMaxHealth     the initial player's health
 	 * @param playerStartingMoney the initial player's money
 	 */
-	public GameModelImpl(int playerMaxHealth, int playerStartingMoney) {
+	public GameModelImpl(final int playerMaxHealth, final int playerStartingMoney) {
 		this.playerHP = playerMaxHealth;
 		this.playerMoney = playerStartingMoney;
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public void giveMoney2Player(int money) {
+	public void giveMoney2Player(final int money) {
 		this.playerMoney += money;
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public void dealDamage2Player(int damage) {
+	public void dealDamage2Player(final int damage) {
 		this.playerHP -= damage;
 	}
 

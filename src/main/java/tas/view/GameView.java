@@ -30,37 +30,37 @@ public class GameView implements ViewComponent {
 
 	/** {@inheritDoc} */
 	@Override
-	public void drawEntity(Entity entity) {
+	public void drawEntity(final Entity entity) {
 		this.gameBoard.redrawEntity(entity, entity.getPosition());
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public void addEntityLabel(Entity entity) {
+	public void addEntityLabel(final Entity entity) {
 		this.gameBoard.addEntity(entity);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public void removeEntityLabel(Entity entity) {
+	public void removeEntityLabel(final Entity entity) {
 		this.gameBoard.removeEntity(entity);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public void addTextLabel(String text, String id, String anchor) {
+	public void addTextLabel(final String text, final String id, final String anchor) {
 		this.gameBoard.addTextLabel(text, id, anchor);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public AdaptiveLabel getTextLabel(String id) {
+	public AdaptiveLabel getTextLabel(final String id) {
 		return this.gameBoard.getTextLabel(id);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public void removeTextLabel(String id) {
+	public void removeTextLabel(final String id) {
 		this.gameBoard.removeTextLabel(id);
 	}
 
@@ -78,7 +78,7 @@ public class GameView implements ViewComponent {
 	}
 
 
-	public void setObserver(SceneController gameController) {
+	public void setObserver(final SceneController gameController) {
 		this.gameBoard.addMouseListener(((GameController) gameController).getMouseListener());
 	}
 
