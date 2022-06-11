@@ -75,12 +75,9 @@ public class Towers {
 	 *         enemy found
 	 */
 	static public Optional<Enemy> findFistEnemyByPredicate(final Predicate<Enemy> f, final List<Enemy> enemyList) {
-		for (var i : enemyList) {
-			if (f.test(i) && !i.isDead()) {
-				return Optional.ofNullable(i);
-			}
+		synchronized(enemyList) {
+			return enemyList.stream().filter(f).findFirst();
 		}
-		return Optional.empty();
 	}
 
 	/**
