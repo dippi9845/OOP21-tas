@@ -5,7 +5,6 @@ import javax.swing.JPanel;
 import main.java.tas.controller.SceneController;
 import main.java.tas.view.GameView;
 import main.java.tas.view.InventoryView;
-import main.java.tas.view.ViewComponent;
 
 /**
  * Class that implements a {@link GameScene}.
