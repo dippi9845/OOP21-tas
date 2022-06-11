@@ -47,7 +47,6 @@ public class GameController implements SceneController {
 	 */
 	public GameController(final GameScene scene, GameModel gameModel) {
 		this.gameScene = scene;
-
 		this.playerStats = gameModel;
 
 		List<Position> pathNodes = Arrays.asList(new Position(500, 500), new Position(750, 750), new Position(0, 1000));
