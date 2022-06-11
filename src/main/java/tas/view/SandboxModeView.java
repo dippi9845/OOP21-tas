@@ -1,7 +1,7 @@
 package main.java.tas.view;
 
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -13,19 +13,17 @@ import main.java.tas.model.MenuModel;
 public class SandboxModeView  {
 	
 	private JPanel rootPanel = new JPanel(new BorderLayout());
-	private TileFactory buttons;
 	private JButton finishButton = new JButton("DONE");
-	private JPanel panel = new JPanel(new GridLayout(25,25));
+	private JPanel gamePanel = new JPanel(new GridBagLayout());
+	private SquarePanel gameBoard = new SquarePanel();
     
     public SandboxModeView(MenuModel theModel){
     	
     	
-    	buttons = new TileFactory(0);
-    	
-    	buttons.addToPannel(this.panel);
-    	
-    	this.rootPanel.add(panel, BorderLayout.CENTER);
-    	this.rootPanel.add(finishButton, BorderLayout.SOUTH);
+		this.gameBoard.setBgImage("bgImage");
+		this.gamePanel.add(this.gameBoard);
+    	this.rootPanel.add(this.gamePanel, BorderLayout.CENTER);
+    	this.rootPanel.add(this.finishButton, BorderLayout.SOUTH);
     	
     	
     }
@@ -35,10 +33,7 @@ public class SandboxModeView  {
     }
 	
 	public void setObserver(SceneController sandboxModeController) {
-		buttons.addToActionListener(((SandboxModeController) sandboxModeController).getListener());
+		this.gamePanel.addMouseListener(((SandboxModeController) sandboxModeController).getListener());;
     }
 	
-	public TileFactory getButtons() {
-		return buttons;
-	}
 }

@@ -1,6 +1,7 @@
 package main.java.tas.controller;
 
-import java.awt.event.ActionListener;
+
+import java.awt.event.MouseListener;
 
 import main.java.tas.model.MenuModel;
 import main.java.tas.view.scene.GameScene;
@@ -12,7 +13,6 @@ public class SandboxModeController implements SceneController {
 	private SandboxModeListener listener;
 	private Scene scene;
 	private MenuModel model;
-	private LevelStorageMod mod;
 	
 	public SandboxModeController(Scene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
@@ -28,14 +28,12 @@ public class SandboxModeController implements SceneController {
 	@Override
 	public void nextTick() {
 		if (this.listener.checkUpdate()) {
-			((SandboxModeScene) scene).getView().getButtons().turnOff();
-			mod = new LevelStorageMod(this.listener.getNTilesSelected());
-			mod.addLevel(((SandboxModeScene) scene).getView().getButtons().getTiles());
+		
 			
 		}
 	}
 	
-	public ActionListener getListener() {
+	public MouseListener getListener() {
 		return this.listener;
 	}
 	

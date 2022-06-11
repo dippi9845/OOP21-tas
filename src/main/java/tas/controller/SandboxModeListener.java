@@ -1,19 +1,20 @@
 package main.java.tas.controller;
 
+import main.java.tas.utils.Position;
 import main.java.tas.view.TileButton;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.AbstractButton;
 
 
-public class SandboxModeListener implements ActionListener{
+public class SandboxModeListener implements MouseListener{
 	
 	private boolean update = false;
-	private boolean firstTileSelected = false;
-	private TileButton lastTileSelected;
-	private int nTilesSelected = 0;
+	private Position nodeSelected[] ;
 	
 	public boolean checkUpdate() {
 		return this.update;
@@ -22,30 +23,33 @@ public class SandboxModeListener implements ActionListener{
 	public void resetUpdate() {
 		this.update = false;
 	}
-	
-	public TileButton getLastTileSelected() {
-		return this.lastTileSelected;
-	}
-	
-	public int getNTilesSelected() {
-		return this.nTilesSelected;
-	}
-	
+
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(((AbstractButton)e.getSource()).getText() == "DONE") {
-			update = true;
-		}
-		else if(!firstTileSelected) {
-			lastTileSelected = ((TileButton)e.getSource());
-			((TileButton) e.getSource()).setType(3);
-			nTilesSelected++;
-			firstTileSelected = true;
-		}
-		else {
-			lastTileSelected = ((TileButton)e.getSource());
-			((TileButton) e.getSource()).setType(2);
-			nTilesSelected++;
-		}
+	public void mouseClicked(MouseEvent e) {
+		//TODO aggiungi la posizione alla lista di nodi e ritorna anche la posizione (oltre a update = true)
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
