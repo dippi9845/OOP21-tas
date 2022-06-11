@@ -75,9 +75,7 @@ public class Towers {
 	 *         enemy found
 	 */
 	static public Optional<Enemy> findFistEnemyByPredicate(final Predicate<Enemy> f, final List<Enemy> enemyList) {
-		synchronized(enemyList) {
 			return enemyList.stream().filter(f).findFirst();
-		}
 	}
 
 	/**
