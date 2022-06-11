@@ -148,10 +148,10 @@ public class GameController implements SceneController {
 	
 	public void screenUpdate() {
 		if (this.screenListener.checkUpdate()) {
-			
-			Position turretPosition = positionConverter(this.screenListener.getClickLocation(), this.gameSpecs.getGameUnits(), this.gameScene.getGameView().getGamePanel().getPreferredSize());
-			System.out.println(turretPosition.toString());
-			this.towerLogic.placeTower(currentTowerSelected, turretPosition);
+			Position mousePosition = new Position(this.screenListener.getClickLocation().getX(),this.screenListener.getClickLocation().getY());
+			mousePosition.positionConverter(this.gameSpecs.getGameUnits(), this.gameScene.getGameView().getGamePanel().getPreferredSize());
+			System.out.println(mousePosition.toString());
+			this.towerLogic.placeTower(currentTowerSelected, mousePosition);
 			this.currentInventoryMode = 0;
 			this.screenListener.resetUpdate();
 		}

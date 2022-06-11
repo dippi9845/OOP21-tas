@@ -1,5 +1,8 @@
 package main.java.tas.utils;
 
+import java.awt.Dimension;
+import java.awt.Point;
+
 /**
  * Class that models a position.
  */
@@ -61,6 +64,13 @@ public class Position {
 	 */
 	public static double findDistance(Position pos1, Position pos2) {
 		return Math.hypot(pos1.getX() - pos2.getX(), pos1.getY() - pos2.getY());
+	}
+	
+	public void positionConverter(Dimension dim, Dimension componentDim) {
+		double newX = x*dim.getWidth()/componentDim.getWidth();
+		double newY = y*dim.getHeight()/componentDim.getHeight();
+		this.x = newX;
+		this.y = newY;
 	}
 
 	/** {@inheritDoc} */
