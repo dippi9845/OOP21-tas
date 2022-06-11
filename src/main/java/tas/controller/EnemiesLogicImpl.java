@@ -41,7 +41,10 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 		}
 
 		Enemy enemy = this.enemyToBeSpawned.remove(0);
-		this.aliveEnemiesList.add(enemy);
+		
+		synchronized(aliveEnemiesList) {
+			this.aliveEnemiesList.add(enemy);			
+		}
 
 		return Optional.of(enemy);
 	}
@@ -52,7 +55,10 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 		if (!this.aliveEnemiesList.contains(enemy)) {
 			throw new NoSuchFieldException("This enemy is not alive");
 		}
-		this.aliveEnemiesList.remove(enemy);
+		
+		synchronized(aliveEnemiesList) {
+			this.aliveEnemiesList.remove(enemy);			
+		}
 	}
 
 	/** {@inheritDoc} */
