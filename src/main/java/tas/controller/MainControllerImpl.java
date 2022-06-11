@@ -128,7 +128,6 @@ public class MainControllerImpl implements MainController {
 		double next_game_tick = System.currentTimeMillis();
 		double last_frame_time = System.currentTimeMillis();
 		int loops;
-		
 		while (this.currentMenuMode != 4) {
 			loops = 0;
 
@@ -146,6 +145,8 @@ public class MainControllerImpl implements MainController {
 			}
 
 		}
+		
+		this.mainView.destroyView();
 
 	}
 
