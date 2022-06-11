@@ -125,16 +125,17 @@ public class MainControllerImpl implements MainController {
 	/** {@inheritDoc} */
 	@Override
 	public void mainLoop() {
-
-		double next_game_tick = System.currentTimeMillis(); // TODO: qui in mezzo c'e' roba per l'FPS counter, sarebbe
-		                                                    // meglio rimuoverli
+		double next_game_tick = System.currentTimeMillis();
 		double last_frame_time = System.currentTimeMillis();
 		int loops;
+		
 		while (this.currentMenuMode != 4) {
 			loops = 0;
 
 			while (System.currentTimeMillis() > next_game_tick && loops < this.gameSpecs.getMaxFrameSkip()) {
 				this.sceneController.nextTick();
+				updateCurrentMode();
+				this.mainView.update();
 
 				next_game_tick += this.gameSpecs.getSkipTicks();
 				loops++;
@@ -144,9 +145,6 @@ public class MainControllerImpl implements MainController {
 				last_frame_time = System.currentTimeMillis();
 			}
 
-			updateCurrentMode();
-
-			this.mainView.update();
 		}
 
 	}
