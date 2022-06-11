@@ -20,7 +20,7 @@ public interface ImageLoader {
 	 * @return the requested image
 	 * @throws FileNotFoundException if there is no image
 	 */
-	BufferedImage getImageByEntity(Entity entity, Dimension CanvasDimension) throws FileNotFoundException;
+	BufferedImage getImageByEntity(final Entity entity, Dimension CanvasDimension) throws FileNotFoundException;
 
 	/**
 	 * Return the image by the given name and re-scaled to the requested dimension
@@ -30,7 +30,7 @@ public interface ImageLoader {
 	 * @return the requested image
 	 * @throws FileNotFoundException if there is no image
 	 */
-	BufferedImage getImageByName(String imageName, Dimension imageDimension) throws FileNotFoundException;
+	BufferedImage getImageByName(final String imageName, Dimension imageDimension) throws FileNotFoundException;
 
 	/**
 	 * Returns the requested image
@@ -39,6 +39,6 @@ public interface ImageLoader {
 	 * @return the requested image
 	 * @throws FileNotFoundException if there is no image
 	 */
-	BufferedImage getImageByName(String imageName) throws FileNotFoundException;
+	BufferedImage getImageByName(final String imageName) throws FileNotFoundException;
 
 }

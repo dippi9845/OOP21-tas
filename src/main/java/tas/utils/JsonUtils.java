@@ -14,7 +14,7 @@ public final class JsonUtils {
 	 * @param jsonPath where the file is
 	 * @return the relative JSONObject
 	 */
-	public static JSONObject getJsonData(String jsonPath) {
+	public static JSONObject getJsonData(final String jsonPath) {
 		String content = "";
 		try {
 			content = Files.readString(Paths.get(jsonPath));

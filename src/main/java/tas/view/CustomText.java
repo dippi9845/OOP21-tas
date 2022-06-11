@@ -12,21 +12,21 @@ public interface CustomText {
 	 * 
 	 * @param fontName
 	 */
-	void setFontName(String fontName);
+	void setFontName(final String fontName);
 
 	/**
 	 * Set up the font style.
 	 * 
 	 * @param style
 	 */
-	void setFontStyle(int style);
+	void setFontStyle(final int style);
 
 	/**
 	 * Set up the size of the font.
 	 * 
 	 * @param size
 	 */
-	void setFontSize(int size);
+	void setFontSize(final int size);
 
 	/**
 	 * @return the built Font
@@ -38,7 +38,7 @@ public interface CustomText {
 	 * 
 	 * @param text
 	 */
-	void setText(String text);
+	void setText(final String text);
 
 	/**
 	 * @return the built text

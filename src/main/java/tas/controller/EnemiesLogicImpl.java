@@ -26,7 +26,7 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 	 * @param nodesPosition is a list with the nodes that the enemies will have to
 	 *                      travel
 	 */
-	public EnemiesLogicImpl(List<Position> nodesPosition) {
+	public EnemiesLogicImpl(final List<Position> nodesPosition) {
 		this.waveFactory = new EnemyFactoryImpl(nodesPosition);
 		this.actualWave = 0;
 	}
@@ -48,7 +48,7 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 
 	/** {@inheritDoc} */
 	@Override
-	public void removeEnemy(Enemy enemy) throws NoSuchFieldException {
+	public void removeEnemy(final Enemy enemy) throws NoSuchFieldException {
 		if (!this.aliveEnemiesList.contains(enemy)) {
 			throw new NoSuchFieldException("This enemy is not alive");
 		}
