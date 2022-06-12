@@ -1,15 +1,19 @@
 package main.java.tas.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import main.java.tas.model.tower.factory.DefaultTowers;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneController;
 import main.java.tas.controller.GameController;
-import main.java.tas.controller.SettingsController;
 import main.java.tas.model.Entity;
 
 
@@ -19,9 +23,10 @@ public class InventoryView implements ViewComponent {
     private final JPanel towerButtonsCanvas;
     private final JButton  buttonList[];
     private int nTowers;
-    
+    private final HashMap<String, JLabel> textLables = new HashMap<String, JLabel>();
+    private final JPanel labelCanvas = new JPanel(new GridLayout(0,1));
     public InventoryView() {
-        this.inventoryCanvas = new JPanel();
+        this.inventoryCanvas = new JPanel(new GridLayout(0,2));
         this.inventoryCanvas.setBackground(new Color(153,102,0));    // testing
         //this.inventoryCanvas.add(new JTextField("INVENTORY"));    // testing
         
@@ -31,6 +36,7 @@ public class InventoryView implements ViewComponent {
         
         this.buttonList = new JButton [this.nTowers];
         
+        
         DefaultTowers towerNames [] = DefaultTowers.values();
         for(int i = 0; i< nTowers; i++) {
         	this.buttonList[i] = new JButton(towerNames [i].toString());
@@ -38,6 +44,7 @@ public class InventoryView implements ViewComponent {
         }
         
         this.inventoryCanvas.add(towerButtonsCanvas);
+        this.inventoryCanvas.add(labelCanvas);
         
         
         
@@ -80,12 +87,11 @@ public class InventoryView implements ViewComponent {
 		
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void addTextLabel(String text, String id, String anchor) {
 		// TODO Auto-generated method stub
-		
 	}
-
 	@Override
 	public AdaptiveLabel getTextLabel(String id) {
 		// TODO Auto-generated method stub
@@ -96,6 +102,24 @@ public class InventoryView implements ViewComponent {
 	public void removeTextLabel(String id) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void addInvetoryLabel(String txt, String id) {
+		JLabel tmpLabel = new JLabel(txt);
+		tmpLabel.setFont(new Font("Verdana", 1, 20));;
+		tmpLabel.setForeground(Color.BLACK);
+		this.labelCanvas.add(tmpLabel);
+		this.textLables.put(id, tmpLabel);
+		
+		
+	}
+	
+	public HashMap<String, JLabel> getInventoryLabels(){
+		return this.textLables;
+	}
+	
+	public JLabel getInventoryLabel(String key) {
+		return this.textLables.get(key);
 	}
 	
 

@@ -46,4 +46,10 @@ public class GameSceneImpl implements GameScene {
 	public GameView getGameView() {
 		return this.gameView;
 	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public InventoryView getInventoryView() {
+		return this.inventoryView;
+	}
 }
