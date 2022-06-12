@@ -163,20 +163,23 @@ public class GameController implements SceneController {
 	
 		List <Position> linePoints = this.gameScene.getGameView().getGamePanel().getLine();
 		for (int i = 1; i < linePoints.size(); i++) {
+			
 			double a = linePoints.get(i-1).getX();
 			double b = linePoints.get(i-1).getY();
 			double c = linePoints.get(i).getX();
 			double d = linePoints.get(i).getY();
 			double e = turretPosition.getX();
 			double f = turretPosition.getY();
+			if (((Math.max(a, c)) > e) && ((Math.max(b, d)) > f) && (Math.min(a, c)) < e && Math.min(b, d) < f) {
+				double h = (Math.abs((a*d)-(b*c)+(c*f)-(d*e)+(b*e)-(a*f)))/Math.sqrt(Math.pow(c-a,2)+Math.pow(d-b, 2));
 			
-			double h = (Math.abs((a*d)-(b*c)+(c*f)-(d*e)+(b*e)-(a*f)))/Math.sqrt(Math.pow(c-a,2)+Math.pow(d-b, 2));
-			
-			if(h <= this.pathThickness + 50) {
-				System.out.println("cannot place on the enemy path");
-				return false;
-				//TODO check if it really works (I think there is an edge case were it does not work)
+				if(h <= this.pathThickness + 50) {
+					System.out.println("cannot place on the enemy path");
+					return false;
+					//TODO check if it really works (I think there is an edge case were it does not work)
+				}
 			}
+			
 		}
 		//TODO gestire il return (per ora è sempre vero(ovvero è sempre una posizione legale))
 		return true;
