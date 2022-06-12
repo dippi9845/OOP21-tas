@@ -65,6 +65,12 @@ public class Position {
 		return Math.hypot(pos1.getX() - pos2.getX(), pos1.getY() - pos2.getY());
 	}
 	
+	/**
+	 * Converts the values of x and y into the values depending on the window dimensions.
+	 * 
+	 * @param dim the current dimensions of the game board
+	 * @param componentDim the current dimensions of the window
+	 */
 	public void positionConverter(Dimension dim, Dimension componentDim) {
 		double newX = x*dim.getWidth()/componentDim.getWidth();
 		double newY = y*dim.getHeight()/componentDim.getHeight();
