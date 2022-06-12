@@ -23,7 +23,7 @@ public class InventoryView implements ViewComponent {
     private final JPanel towerButtonsCanvas;
     private final JButton  buttonList[];
     private int nTowers;
-    private final HashMap<String, JLabel> textLables = new HashMap<String, JLabel>();
+    private final HashMap<String, AdaptiveLabel> textLables = new HashMap<String, AdaptiveLabel>();
     private final JPanel labelCanvas = new JPanel(new GridLayout(0,1));
     public InventoryView() {
         this.inventoryCanvas = new JPanel(new GridLayout(0,2));
@@ -105,8 +105,9 @@ public class InventoryView implements ViewComponent {
 	}
 	
 	public void addInvetoryLabel(String txt, String id) {
-		JLabel tmpLabel = new JLabel(txt);
-		tmpLabel.setFont(new Font("Verdana", 1, 20));;
+		AdaptiveLabel tmpLabel = new AdaptiveLabel();
+		tmpLabel.setText(txt);
+		tmpLabel.setFont("Verdana", 1, 20);
 		tmpLabel.setForeground(Color.BLACK);
 		this.labelCanvas.add(tmpLabel);
 		this.textLables.put(id, tmpLabel);
@@ -114,7 +115,7 @@ public class InventoryView implements ViewComponent {
 		
 	}
 	
-	public HashMap<String, JLabel> getInventoryLabels(){
+	public HashMap<String, AdaptiveLabel> getInventoryLabels(){
 		return this.textLables;
 	}
 	
