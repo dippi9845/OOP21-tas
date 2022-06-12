@@ -146,20 +146,47 @@ public class GameController implements SceneController {
 		return new Position(x, y);
 	}
 	
+	public boolean checkTurretPosition(Position turretPosition){
+		//TODO check if tower positioning is legal
+		
+		//check if position is inside the game Board
+		
+		//then check there isnt a tower overlapping with the new tower
+	
+		//then check if the new tower overlaps with the white line
+	
+		List <Position> linePoints = this.gameScene.getGameView().getGamePanel().getLine();
+		for (int i = 1; i < linePoints.size(); i++) {
+			double a = linePoints.get(i-1).getX();
+			double b = linePoints.get(i-1).getY();
+			double c = linePoints.get(i).getX();
+			double d = linePoints.get(i).getY();
+			double e = turretPosition.getX();
+			double f = turretPosition.getY();
+			
+			double h = (Math.abs((a*d)-(b*c)+(c*f)-(d*e)+(b*e)-(a*f)))/Math.sqrt(Math.pow(c-a,2)+Math.pow(d-b, 2));
+			
+			if(h <= this.pathThickness + 50) {
+				return false;
+			}
+		}
+		//TODO gestire il return (per ora è sempre vero(ovvero è sempre una posizione legale))
+		return true;
+	}
+	
+	
+	
 	public void screenUpdate() {
 		if (this.screenListener.checkUpdate()) {
 			Position mousePosition = new Position(this.screenListener.getClickLocation().getX(),this.screenListener.getClickLocation().getY());
 			mousePosition.positionConverter(this.gameSpecs.getGameUnits(), this.gameScene.getGameView().getGamePanel().getPreferredSize());
 			System.out.println(mousePosition.toString());
-			//TODO check if tower positioning is legal
-				//first check there isnt a tower overlapping with the new tower
+			if(checkTurretPosition(mousePosition)) {
+				this.towerLogic.placeTower(currentTowerSelected, mousePosition);
+				this.currentInventoryMode = 0;
+				this.screenListener.stopListening();
+			}
 			
-				//then check if the new tower overlaps with the white line
-			
-			//this.gameScene.getGameView().getGamePanel().get
-			this.towerLogic.placeTower(currentTowerSelected, mousePosition);
-			this.currentInventoryMode = 0;
-			this.screenListener.stopListening();
 			this.screenListener.resetUpdate();
 		}
 	}
