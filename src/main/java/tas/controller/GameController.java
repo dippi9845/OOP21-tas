@@ -155,6 +155,8 @@ public class GameController implements SceneController {
 				//first check there isnt a tower overlapping with the new tower
 			
 				//then check if the new tower overlaps with the white line
+			
+			//this.gameScene.getGameView().getGamePanel().get
 			this.towerLogic.placeTower(currentTowerSelected, mousePosition);
 			this.currentInventoryMode = 0;
 			this.screenListener.stopListening();
