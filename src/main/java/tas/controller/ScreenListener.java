@@ -9,6 +9,7 @@ public class ScreenListener implements MouseListener{
 	
 	private boolean update = false;
 	private Point clickLocation;
+	private boolean listening = false;
 	
 	public boolean checkUpdate() {
 		return this.update;
@@ -21,12 +22,23 @@ public class ScreenListener implements MouseListener{
 	public Point getClickLocation() {
 		return this.clickLocation;
 	}
+	
+	public void startListening() {
+		this.listening = true;
+	}
+	
+	public void stopListening() {
+		this.listening = false;
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		this.clickLocation = e.getPoint();
-		System.out.println(clickLocation.toString());
-		this.update = true;
+		if(listening) {
+			this.clickLocation = e.getPoint();
+			System.out.println(clickLocation.toString());
+			this.update = true;
+		}
+		
 		
 		
 	}

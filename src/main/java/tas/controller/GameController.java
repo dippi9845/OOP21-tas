@@ -32,7 +32,7 @@ public class GameController implements SceneController {
 	private final TowerLogic towerLogic;
 	private int currentInventoryMode = 0;
 	private DefaultTowers currentTowerSelected;
-	private final ScreenListener screenListener = new ScreenListener();
+	private ScreenListener screenListener = new ScreenListener();
 	private final InventoryListener inventoryListener = new InventoryListener();
 	private final GameSpecs gameSpecs = new GameSpecs();
 
@@ -136,6 +136,7 @@ public class GameController implements SceneController {
 			this.currentTowerSelected = inventoryListener.getTowerSelected();
 			this.currentInventoryMode = 1;
 			this.inventoryListener.resetUpdate();
+			this.screenListener.startListening();
 		}
 	}
 	
@@ -152,6 +153,7 @@ public class GameController implements SceneController {
 			System.out.println(mousePosition.toString());
 			this.towerLogic.placeTower(currentTowerSelected, mousePosition);
 			this.currentInventoryMode = 0;
+			this.screenListener.stopListening();
 			this.screenListener.resetUpdate();
 		}
 	}
