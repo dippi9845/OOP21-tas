@@ -2,7 +2,6 @@ package main.java.tas.view;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -10,7 +9,6 @@ import javax.swing.JPanel;
 import main.java.tas.controller.SandboxModeController;
 import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
-import main.java.tas.utils.Position;
 
 public class SandboxModeView  {
 	

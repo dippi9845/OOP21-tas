@@ -3,14 +3,12 @@ package main.java.tas.controller;
 
 import java.awt.Color;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import main.java.tas.model.GameSpecs;
 import main.java.tas.model.MenuModel;
 import main.java.tas.utils.Position;
-import main.java.tas.view.scene.GameScene;
 import main.java.tas.view.scene.SandboxModeScene;
 import main.java.tas.view.scene.Scene;
 

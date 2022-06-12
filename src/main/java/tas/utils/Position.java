@@ -1,7 +1,6 @@
 package main.java.tas.utils;
 
 import java.awt.Dimension;
-import java.awt.Point;
 
 /**
  * Class that models a position.

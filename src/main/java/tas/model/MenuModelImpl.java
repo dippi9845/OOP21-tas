@@ -14,7 +14,6 @@ public class MenuModelImpl implements MenuModel {
 	private int mainScene = 1;
 	private int menuMode = 1;
 	private int currentLevel = 0;
-	private int nLevels = 3;
 	private String jsonLevelPath = "res" + System.getProperty("file.separator") + "levelStorage" + System.getProperty("file.separator") + "levelStorage.json";
 	
 	public MenuModelImpl() {

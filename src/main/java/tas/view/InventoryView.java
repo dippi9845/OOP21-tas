@@ -1,11 +1,8 @@
 package main.java.tas.view;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.GridLayout;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import main.java.tas.model.tower.factory.DefaultTowers;
 import javax.swing.JButton;

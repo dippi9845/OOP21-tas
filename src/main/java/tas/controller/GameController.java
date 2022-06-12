@@ -149,7 +149,7 @@ public class GameController implements SceneController {
 	public boolean checkTurretPosition(Position turretPosition){
 		//TODO check if tower positioning is legal
 		
-		//check if position is inside the game Board
+		//DONE check if position is inside the game Board
 		
 		if (turretPosition.getY() < 55 || turretPosition.getY() > 945 || turretPosition.getX() < 55 || turretPosition.getX() > 945) {
 			System.out.println("not inside border");
@@ -157,9 +157,9 @@ public class GameController implements SceneController {
 			
 		}
 			
-		//then check there isnt a tower overlapping with the new tower
+		//then check there isn't a tower overlapping with the new tower
 	
-		//then check if the new tower overlaps with the white line
+		//DONE then check if the new tower overlaps with the white line
 	
 		List <Position> linePoints = this.gameScene.getGameView().getGamePanel().getLine();
 		for (int i = 1; i < linePoints.size(); i++) {
