@@ -12,6 +12,9 @@ import main.java.tas.utils.Position;
 import main.java.tas.view.scene.SandboxModeScene;
 import main.java.tas.view.scene.Scene;
 
+/**
+ * Class that implements {@link SceneController}.
+ */
 public class SandboxModeController implements SceneController {
 	
 	private SandboxModeListener listener;
@@ -20,9 +23,13 @@ public class SandboxModeController implements SceneController {
 	private final GameSpecs gameSpecs = new GameSpecs();
 	private final Color pathColor = new Color(255, 255, 255);
 	private final int pathThickness = 50;
-	//private List <Position> linePositionList = new ArrayList <Position>();
 	private List <Position> linePositionList = Arrays.asList(new Position(10,10),new Position(200,200));
 	
+	/**
+	 * Constructor that creates a menu controller for the sandbox mode menu.
+	 * @param sceneIn the sandbox mode scene
+	 * @param theModel the menu model
+	 */
 	public SandboxModeController(Scene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
 		((SandboxModeScene)this.scene).getView().getGameBoard().setLine(linePositionList, pathColor, pathThickness);
@@ -31,10 +38,15 @@ public class SandboxModeController implements SceneController {
 		this.model = theModel;
 	}
 	
+	/**
+	 * 
+	 * @return the model
+	 */
 	public MenuModel getModel() {
 		return this.model;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public void nextTick() {
 		if (this.listener.checkUpdate()) {
@@ -45,6 +57,10 @@ public class SandboxModeController implements SceneController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return the listener
+	 */
 	public MouseListener getListener() {
 		return this.listener;
 	}

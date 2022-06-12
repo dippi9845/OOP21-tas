@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Point;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
@@ -41,8 +39,9 @@ public class GameController implements SceneController {
 	private final String moneySymbol = "Money";
 
 	/**
-	 * Constructor that creates a game controller for the given game scene.
+	 * * Constructor that creates a game controller for the given game scene.
 	 * 
+	 * @param gameModel the game model
 	 * @param scene the graphic scene controller
 	 */
 	public GameController(final GameScene scene, GameModel gameModel) {
@@ -131,6 +130,10 @@ public class GameController implements SceneController {
 		}
 	}
 	
+	/**
+	 * Called for checking if a tower has been selected by the user 
+	 * in the inventoryScene.
+	 */
 	public void inventoryUpdate() {
 		if (this.inventoryListener.checkUpdate()) {
 			this.currentTowerSelected = inventoryListener.getTowerSelected();
@@ -139,12 +142,12 @@ public class GameController implements SceneController {
 			this.screenListener.startListening();
 		}
 	}
-	
-	public Position positionConverter(Point ptr, Dimension dim, Dimension componentDim) {
-		double x = ptr.getX()*dim.getWidth()/componentDim.getWidth();
-		double y = ptr.getY()*dim.getHeight()/componentDim.getHeight();
-		return new Position(x, y);
-	}
+
+	/**
+	 * Checks if turretPosition is a valid Position for a new tower.
+	 * @param turretPosition the Position of the new tower
+	 * @return true if the position is valid, false otherwise
+	 */
 	
 	public boolean checkTurretPosition(Position turretPosition){
 		//TODO check if tower positioning is legal
@@ -186,7 +189,10 @@ public class GameController implements SceneController {
 	}
 	
 	
-	
+	/**
+	 * Called for checking if the screen is been clicked, and if so it places 
+	 * a tower there.
+	 */
 	public void screenUpdate() {
 		if (this.screenListener.checkUpdate()) {
 			Position mousePosition = new Position(this.screenListener.getClickLocation().getX(),this.screenListener.getClickLocation().getY());
@@ -202,10 +208,17 @@ public class GameController implements SceneController {
 		}
 	}
 	
+	/**
+	 * @return screenListener
+	 */
 	public MouseListener getMouseListener(){
 		return this.screenListener;
 	}
 	
+	/**
+	 * 
+	 * @return inventoryListener
+	 */
 	public ActionListener getListener() {
 		return this.inventoryListener;
 	}
