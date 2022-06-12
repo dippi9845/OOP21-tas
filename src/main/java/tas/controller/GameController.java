@@ -151,6 +151,10 @@ public class GameController implements SceneController {
 			Position mousePosition = new Position(this.screenListener.getClickLocation().getX(),this.screenListener.getClickLocation().getY());
 			mousePosition.positionConverter(this.gameSpecs.getGameUnits(), this.gameScene.getGameView().getGamePanel().getPreferredSize());
 			System.out.println(mousePosition.toString());
+			//TODO check if tower positioning is legal
+				//first check there isnt a tower overlapping with the new tower
+			
+				//then check if the new tower overlaps with the white line
 			this.towerLogic.placeTower(currentTowerSelected, mousePosition);
 			this.currentInventoryMode = 0;
 			this.screenListener.stopListening();
