@@ -2,9 +2,8 @@ package main.java.tas.model;
 
 import java.util.List;
 
-import org.json.JSONObject;
 
-import main.java.tas.utils.JsonUtils;
+import main.java.tas.utils.LevelHandler;
 import main.java.tas.utils.Position;
 
 /**
@@ -15,7 +14,6 @@ public class MenuModelImpl implements MenuModel {
 	private int mainScene = 1;
 	private int menuMode = 1;
 	private int currentLevel = 0;
-	private String jsonLevelPath = "res" + System.getProperty("file.separator") + "levelStorage" + System.getProperty("file.separator") + "levelStorage.json";
 	
 	/** {@inheritDoc} */
 	@Override
@@ -57,9 +55,7 @@ public class MenuModelImpl implements MenuModel {
 	/** {@inheritDoc} */
 	@Override
 	public int getNLevels() {
-		JSONObject json = JsonUtils.getJsonData(this.jsonLevelPath);
-		System.out.println(json.length());
-		return json.length();
+		return LevelHandler.getNElements();
 	}
 	
 	/** {@inheritDoc} */
