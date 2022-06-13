@@ -28,7 +28,7 @@ public interface View {
     JPanel getPanel();
     
     /**
-     * disposes of the window
+     * Disposes of the window.
      */
     void dispose();
 

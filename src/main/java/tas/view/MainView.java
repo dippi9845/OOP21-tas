@@ -69,6 +69,7 @@ public class MainView implements View {
         this.frame.revalidate();
     }
 
+    /** {@inheritDoc} */
 	@Override
 	public void dispose() {
 		this.frame.dispose();

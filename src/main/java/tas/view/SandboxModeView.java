@@ -10,6 +10,9 @@ import main.java.tas.controller.SandboxModeController;
 import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
 
+/**
+ * Class that builds the sandbox mode view.
+ */
 public class SandboxModeView  {
 	
 	private JPanel rootPanel = new JPanel(new BorderLayout());
@@ -17,6 +20,10 @@ public class SandboxModeView  {
 	private JPanel gamePanel = new JPanel(new GridBagLayout());
 	private SquarePanel gameBoard = new SquarePanel();
     
+	/**
+	 * Constructor that builds the sandbox mode view
+	 * @param theModel the model
+	 */
     public SandboxModeView(MenuModel theModel){
     	
 		this.gameBoard.setBgImage("bgImage");
@@ -27,10 +34,18 @@ public class SandboxModeView  {
     	
     }
     
+    /**
+     * 
+     * @return the root panel
+     */
 	public JPanel getPanel() {
         return this.rootPanel;
     }
 	
+	/**
+	 * 
+	 * @return the game board
+	 */
 	public SquarePanel getGameBoard(){
 		return this.gameBoard;
 	}

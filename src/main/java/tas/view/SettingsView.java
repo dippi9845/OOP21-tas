@@ -11,6 +11,9 @@ import main.java.tas.controller.SettingsController;
 import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
 
+/**
+ * Class that builds the settings menu view.
+ */
 public class SettingsView  {
 	
 	private JPanel rootPanel = new JPanel(new GridLayout(0, 1, 5, 10));
@@ -18,6 +21,10 @@ public class SettingsView  {
 	private JLabel label2;
 	private JButton backButton;
     
+	/**
+	 * Constructor that builds the settings menu view
+	 * @param theModel the model
+	 */
     public SettingsView(MenuModel theModel){
     	label = new JLabel("Sorry there are no settings to mess with.");
     	label.setFont(new Font("Serif", Font.PLAIN, 30));
@@ -31,6 +38,10 @@ public class SettingsView  {
     	this.rootPanel.add(backButton);
     }
     
+    /**
+     * 
+     * @return the root panel
+     */
 	public JPanel getPanel() {
         return this.rootPanel;
     }
