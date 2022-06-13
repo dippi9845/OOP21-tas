@@ -4,12 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Class that implements {@link ActionListener} used as a listener for the
- * settings menu.
+ * Class that implements {@link ActionListener} used as a listener for a single button.
  * 
  *
  */
-public class SettingsListener implements ActionListener{
+public class ButtonListener implements ActionListener{
 	
 	private boolean update = false;
 	

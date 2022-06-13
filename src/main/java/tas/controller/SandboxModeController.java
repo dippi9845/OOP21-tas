@@ -27,7 +27,7 @@ public class SandboxModeController implements SceneController {
 	private final Color pathColor = new Color(255, 255, 255);
 	private final int pathThickness = 50;
 	private List <Position> linePositionList = new ArrayList <Position>();
-	private final SettingsListener doneButtonListener = new SettingsListener();
+	private final ButtonListener doneButtonListener = new ButtonListener();
 	/**
 	 * Constructor that creates a menu controller for the sandbox mode menu.
 	 * @param sceneIn the sandbox mode scene

@@ -12,7 +12,7 @@ import main.java.tas.view.scene.SettingsSceneImpl;
  */
 public class SettingsController implements SceneController {
 	
-	private SettingsListener listener;
+	private ButtonListener listener = new ButtonListener();
 	private Scene scene;
 	private MenuModel model;
 	
@@ -24,7 +24,6 @@ public class SettingsController implements SceneController {
 	public SettingsController(Scene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
 		((SettingsSceneImpl) scene).setObserver(this);
-		this.listener = new SettingsListener();
 		this.model = theModel;
 	}
 	
