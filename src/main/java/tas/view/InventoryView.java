@@ -95,7 +95,6 @@ public class InventoryView implements ViewComponent {
 	}
 	@Override
 	public AdaptiveLabel getTextLabel(String id) {
-		System.out.println(this.textLables.keySet());
 		return this.textLables.get(id);
 	}
 
