@@ -9,6 +9,7 @@ import java.util.List;
 
 import main.java.tas.model.GameSpecs;
 import main.java.tas.model.MenuModel;
+import main.java.tas.utils.LevelHandler;
 import main.java.tas.utils.Position;
 import main.java.tas.view.scene.SandboxModeScene;
 import main.java.tas.view.scene.Scene;
@@ -78,7 +79,7 @@ public class SandboxModeController implements SceneController {
 			this.listener.resetUpdate();
 		}
 		if (this.doneButtonListener.checkUpdate()) {
-			//TODO add the level to the json
+			LevelHandler.writeLevel(linePositionList);
 			this.model.setMainScene(1);
 			this.doneButtonListener.resetUpdate();
 		}
