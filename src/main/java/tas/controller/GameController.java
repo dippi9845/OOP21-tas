@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Point;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
@@ -32,7 +30,7 @@ public class GameController implements SceneController {
 	private final TowerLogic towerLogic;
 	private int currentInventoryMode = 0;
 	private DefaultTowers currentTowerSelected;
-	private final ScreenListener screenListener = new ScreenListener();
+	private ScreenListener screenListener = new ScreenListener();
 	private final InventoryListener inventoryListener = new InventoryListener();
 	private final GameSpecs gameSpecs = new GameSpecs();
 
@@ -41,8 +39,9 @@ public class GameController implements SceneController {
 	private final String moneySymbol = "Money";
 
 	/**
-	 * Constructor that creates a game controller for the given game scene.
+	 * * Constructor that creates a game controller for the given game scene.
 	 * 
+	 * @param gameModel the game model
 	 * @param scene the graphic scene controller
 	 */
 	public GameController(final GameScene scene, final GameModel gameModel) {
@@ -55,11 +54,10 @@ public class GameController implements SceneController {
 
 		this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(),
 		        this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
-
-		this.gameScene.getGameView().addTextLabel(this.healthSymbol + " " + this.playerStats.getHP(), "healt", "NW");
-		this.gameScene.getGameView().addTextLabel(this.waveSymbol + " " + this.enemiesHandler.getWave(), "wave", "NE");
-		this.gameScene.getGameView().addTextLabel(this.moneySymbol + " " + this.playerStats.getPlayerMoney(), "money",
-		        "SE");
+		
+		this.gameScene.getInventoryView().addInvetoryLabel(this.healthSymbol + " " + this.playerStats.getHP(), "health");
+		this.gameScene.getInventoryView().addInvetoryLabel(this.waveSymbol + " " + this.enemiesHandler.getWave(), "wave");
+		this.gameScene.getInventoryView().addInvetoryLabel(this.moneySymbol + " " + this.playerStats.getPlayerMoney(), "money");
 
 		// TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
 	}
@@ -99,7 +97,7 @@ public class GameController implements SceneController {
 	 */
 	private void increaseWave() {
 		this.enemiesHandler.setNextWave();
-		this.gameScene.getGameView().getTextLabel("wave")
+		this.gameScene.getInventoryView().getInventoryLabel("wave")
 		        .setText(this.waveSymbol + " " + this.enemiesHandler.getWave());
 	}
 
@@ -130,39 +128,92 @@ public class GameController implements SceneController {
 			this.gameScene.getGameView().drawEntity(enemy);
 		}
 	}
-
+	
+	/**
+	 * Called for checking if a tower has been selected by the user 
+	 * in the inventoryScene.
+	 */
 	public void inventoryUpdate() {
 		if (this.inventoryListener.checkUpdate()) {
 			this.currentTowerSelected = inventoryListener.getTowerSelected();
 			this.currentInventoryMode = 1;
 			this.inventoryListener.resetUpdate();
+			this.screenListener.startListening();
 		}
 	}
 
-	public Position positionConverter(final Point ptr, final Dimension dim, final Dimension componentDim) {
-		double x = ptr.getX() * dim.getWidth() / componentDim.getWidth();
-		double y = ptr.getY() * dim.getHeight() / componentDim.getHeight();
-		return new Position(x, y);
+	/**
+	 * Checks if turretPosition is a valid Position for a new tower.
+	 * @param turretPosition the Position of the new tower
+	 * @return true if the position is valid, false otherwise
+	 */
+	
+	public boolean checkTurretPosition(Position turretPosition){
+		//TODO check if tower positioning is legal
+		
+		//DONE check if position is inside the game Board
+		
+		if (turretPosition.getY() < 55 || turretPosition.getY() > 945 || turretPosition.getX() < 55 || turretPosition.getX() > 945) {
+			System.out.println("not inside border");
+			return false;
+		}
+			
+		//then check there isn't a tower overlapping with the new tower
+	
+		//DONE then check if the new tower overlaps with the white line
+	
+		List <Position> linePoints = this.gameScene.getGameView().getGamePanel().getLine();
+		for (int i = 1; i < linePoints.size(); i++) {
+			
+			double a = linePoints.get(i-1).getX();
+			double b = linePoints.get(i-1).getY();
+			double c = linePoints.get(i).getX();
+			double d = linePoints.get(i).getY();
+			double e = turretPosition.getX();
+			double f = turretPosition.getY();
+			if (((Math.max(a, c)) > e) && ((Math.max(b, d)) > f) && (Math.min(a, c)) < e && Math.min(b, d) < f) {
+				double h = (Math.abs((a*d)-(b*c)+(c*f)-(d*e)+(b*e)-(a*f)))/Math.sqrt(Math.pow(c-a,2)+Math.pow(d-b, 2));
+			
+				if(h <= this.pathThickness + 50) {
+					System.out.println("cannot place on the enemy path");
+					return false;
+				}
+			}	
+		}
+		return true;
 	}
-
+	
+	
+	/**
+	 * Called for checking if the screen is been clicked, and if so it places 
+	 * a tower there.
+	 */
 	public void screenUpdate() {
 		if (this.screenListener.checkUpdate()) {
-
-			Position turretPosition = positionConverter(this.screenListener.getClickLocation(),
-			        this.gameSpecs.getGameUnits(), this.gameScene.getGameView().getGamePanel().getPreferredSize());
-			System.out.println(turretPosition.toString());
-			this.towerLogic.placeTower(currentTowerSelected, turretPosition);
-			this.gameScene.getGameView().getTextLabel("money")
-			        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
-			this.currentInventoryMode = 0;
+			Position mousePosition = new Position(this.screenListener.getClickLocation().getX(),this.screenListener.getClickLocation().getY());
+			mousePosition.positionConverter(this.gameSpecs.getGameUnits(), this.gameScene.getGameView().getGamePanel().getPreferredSize());
+			System.out.println(mousePosition.toString());
+			if(checkTurretPosition(mousePosition)) {
+				this.towerLogic.placeTower(currentTowerSelected, mousePosition);
+				this.currentInventoryMode = 0;
+				this.screenListener.stopListening();
+			}
+			
 			this.screenListener.resetUpdate();
 		}
 	}
-
-	public MouseListener getMouseListener() {
+	
+	/**
+	 * @return screenListener
+	 */
+	public MouseListener getMouseListener(){
 		return this.screenListener;
 	}
-
+	
+	/**
+	 * 
+	 * @return inventoryListener
+	 */
 	public ActionListener getListener() {
 		return this.inventoryListener;
 	}

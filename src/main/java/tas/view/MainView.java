@@ -75,16 +75,5 @@ public class MainView implements View {
 		this.frame.dispose();
 		
 	}
-	
-	public void removePanel(){
-		this.frame.getContentPane().removeAll();
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public void destroyView() {
-		this.frame.setVisible(false);
-		dispose();
-	}
 
 }

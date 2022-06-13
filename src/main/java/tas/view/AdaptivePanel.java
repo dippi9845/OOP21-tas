@@ -45,6 +45,15 @@ public abstract class AdaptivePanel extends JPanel {
 		this.lineThickness = thickness;
 		this.linePoints = linesPoints;
 	}
+	
+	/**
+	 * returns the list linesPoints
+	 * 
+	 * @return linesPoints
+	 */
+	public List<Position> getLine(){
+		return this.linePoints;
+	}
 
 	/** {@inheritDoc} */
 	@Override
