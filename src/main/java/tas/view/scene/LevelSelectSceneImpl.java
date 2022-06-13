@@ -2,12 +2,16 @@ package main.java.tas.view.scene;
 
 import java.awt.BorderLayout;
 
-
 import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
 import main.java.tas.view.LevelSelectView;
+
+/**
+ * Class that builds the level select menu scene.
+ * Class that implements {@link Scene}.
+ */
 public class LevelSelectSceneImpl implements Scene {
 	
 	private JPanel rootPanel;
@@ -15,7 +19,8 @@ public class LevelSelectSceneImpl implements Scene {
 	
 	/**
      * Constructor that set up the select level scene
-     * @param root is the {@link JPanel} that will contain the scene
+     * @param rootPanelIn is the {@link JPanel} that will contain the scene
+     * @param menuModel the menu model
      */
 	public LevelSelectSceneImpl(JPanel rootPanelIn, MenuModel menuModel) {
 		this.rootPanel = rootPanelIn;
@@ -25,13 +30,18 @@ public class LevelSelectSceneImpl implements Scene {
         
         this.rootPanel.add(this.View.getPanel(), BorderLayout.CENTER);
 	}
+	
+	/** {@inheritDoc} */
 	@Override
 	public void setObserver(SceneController listener) {
 		this.View.setObserver(listener);
 	}
 
+	/**
+	 * 
+	 * @return the level select view.
+	 */
 	public LevelSelectView getView() {
-		
 		return this.View;
 	}
 }

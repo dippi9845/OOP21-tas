@@ -46,21 +46,39 @@ public class MainControllerImpl implements MainController {
 		this.scene.setObserver(controller);
 		return controller;
 	}
-
+	
+	/**
+	 * Connects the level select model, with it's own view.
+	 * 
+	 * @param view the main window
+	 * @return the scene that was created
+	 */
 	public SceneController createLevelSelect(final MainView view) {
 		this.scene = new LevelSelectSceneImpl(view.getPanel(), this.menuModel);
 		SceneController controller = new LevelSelectController(this.scene, this.menuModel);
 		this.scene.setObserver(controller);
 		return controller;
 	}
-
+	
+	/**
+	 * Connects the sandbox mode model, with it's own view.
+	 * 
+	 * @param view the main window
+	 * @return the scene that was created
+	 */
 	public SceneController createSandBoxMode(final MainView view) {
 		this.scene = new SandboxModeScene(view.getPanel(), this.menuModel);
 		SceneController controller = new SandboxModeController(this.scene, this.menuModel);
 		this.scene.setObserver(controller);
 		return controller;
 	}
-
+	
+	/**
+	 * Connects the settings model, with it's own view.
+	 * 
+	 * @param view the main window
+	 * @return the scene that was created
+	 */
 	public SceneController createSettings(final MainView view) {
 		this.scene = new SettingsSceneImpl(view.getPanel(), this.menuModel);
 		SceneController controller = new SettingsController(this.scene, this.menuModel);
@@ -83,7 +101,11 @@ public class MainControllerImpl implements MainController {
 	public SceneController getController() {
 		return this.sceneController;
 	}
-
+	
+	/**
+	 * Checks if the current window is correct and if not it closes the current window
+	 * and opens the correct one
+	 */
 	private void updateCurrentMode() {
 		// I check if the currentMenuMode has changed and if it has I update it and open
 		// the new window

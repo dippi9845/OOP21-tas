@@ -1,7 +1,7 @@
 package main.java.tas.view;
 
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -10,35 +10,60 @@ import main.java.tas.controller.SandboxModeController;
 import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
 
+/**
+ * Class that builds the sandbox mode view.
+ */
 public class SandboxModeView  {
 	
 	private JPanel rootPanel = new JPanel(new BorderLayout());
-	private TileFactory buttons;
 	private JButton finishButton = new JButton("DONE");
-	private JPanel panel = new JPanel(new GridLayout(25,25));
+	private JPanel gamePanel = new JPanel(new GridBagLayout());
+	private SquarePanel gameBoard = new SquarePanel();
     
+	/**
+	 * Constructor that builds the sandbox mode view
+	 * @param theModel the model
+	 */
     public SandboxModeView(MenuModel theModel){
     	
-    	
-    	buttons = new TileFactory(0);
-    	
-    	buttons.addToPannel(this.panel);
-    	
-    	this.rootPanel.add(panel, BorderLayout.CENTER);
-    	this.rootPanel.add(finishButton, BorderLayout.SOUTH);
+		this.gameBoard.setBgImage("bgImage");
+		this.gamePanel.add(this.gameBoard);
+    	this.rootPanel.add(this.gamePanel, BorderLayout.CENTER);
+    	this.rootPanel.add(this.finishButton, BorderLayout.SOUTH);
     	
     	
     }
     
+    /**
+     * 
+     * @return the root panel
+     */
 	public JPanel getPanel() {
         return this.rootPanel;
     }
 	
+	/**
+	 * 
+	 * @return the game board
+	 */
+	public SquarePanel getGameBoard(){
+		return this.gameBoard;
+	}
+	
+	/**
+	 * sets an observer for this view
+	 * @param sandboxModeController the {@link SceneController} that is to be set as observer
+	 */
 	public void setObserver(SceneController sandboxModeController) {
-		buttons.addToActionListener(((SandboxModeController) sandboxModeController).getListener());
+		this.gamePanel.addMouseListener(((SandboxModeController) sandboxModeController).getListener());;
     }
 	
-	public TileFactory getButtons() {
-		return buttons;
+	/**
+	 * sets an observer for the done button
+	 * @param sandboxModeController the {@link SceneController} that is to be set as observer
+	 */
+	public void setButtonObserver(SceneController sandboxModeController) {
+		this.finishButton.addActionListener(((SandboxModeController) sandboxModeController).getButtonListener());
 	}
+	
 }
