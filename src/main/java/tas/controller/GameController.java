@@ -37,6 +37,7 @@ public class GameController implements SceneController {
 	private final String healthSymbol = "Health";
 	private final String waveSymbol = "Wave";
 	private final String moneySymbol = "Money";
+	private final String pointSymbol = "Points";
 
 	/**
 	 * * Constructor that creates a game controller for the given game scene.
@@ -58,6 +59,7 @@ public class GameController implements SceneController {
 		this.gameScene.getInventoryView().addInvetoryLabel(this.healthSymbol + " " + this.playerStats.getHP(), "health");
 		this.gameScene.getInventoryView().addInvetoryLabel(this.waveSymbol + " " + this.enemiesHandler.getWave(), "wave");
 		this.gameScene.getInventoryView().addInvetoryLabel(this.moneySymbol + " " + this.playerStats.getPlayerMoney(), "money");
+		this.gameScene.getInventoryView().addInvetoryLabel(this.pointSymbol + " " + this.enemiesHandler.getPoints(), "points");
 
 		// TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
 	}
