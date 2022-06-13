@@ -76,15 +76,17 @@ public class MainView implements View {
 		
 	}
 	
-	public void removePanel(){
-		this.frame.getContentPane().removeAll();
-	}
-
 	/** {@inheritDoc} */
 	@Override
 	public void destroyView() {
 		this.frame.setVisible(false);
 		dispose();
+	}
+
+	@Override
+	public void destroyView() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
