@@ -1,6 +1,5 @@
 package main.java.tas.controller;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.awt.Color;
@@ -44,11 +43,10 @@ public class GameController implements SceneController {
 	 * @param gameModel the game model
 	 * @param scene the graphic scene controller
 	 */
-	public GameController(final GameScene scene, final GameModel gameModel) {
+	public GameController(final GameScene scene, final GameModel gameModel, final List <Position> pathNodes) {
 		this.gameScene = scene;
 		this.playerStats = gameModel;
 
-		List<Position> pathNodes = Arrays.asList(new Position(500, 500), new Position(750, 750), new Position(0, 1000));
 		this.enemiesHandler = new EnemiesLogicImpl(pathNodes);
 		this.gameScene.getGameView().getGamePanel().setLine(pathNodes, pathColor, pathThickness);
 
