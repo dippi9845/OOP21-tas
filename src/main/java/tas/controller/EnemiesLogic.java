@@ -18,6 +18,12 @@ public interface EnemiesLogic {
 	Optional<Enemy> spawnEnemy() throws IndexOutOfBoundsException;
 
 	/**
+	 * return the points of the player
+	 * @return integer with the points of the player
+	 */
+	int getPoints();
+	
+	/**
 	 * Removes the given enemy from the.
 	 * 
 	 * @param enemy

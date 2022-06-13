@@ -27,7 +27,7 @@ public class LevelHandler {
 	public void readLevel(String level) {
 		JSONObject json = JsonUtils.getJsonData(PATH);
 		List <Position> list = new ArrayList <Position>();
-		JSONArray level = json.getJSONObject(level).getJSONArray()
+		//JSONArray level = json.getJSONObject(level).getJSONArray()
 	}
 	
 	public void writeLevel() {

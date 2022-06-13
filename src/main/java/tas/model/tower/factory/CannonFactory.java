@@ -27,7 +27,7 @@ public interface CannonFactory {
 	 * @return the range of Cannon Tower
 	 */
 	static public int getRange() {
-		return 9;
+		return 400;
 	}
 
 	/**

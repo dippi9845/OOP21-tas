@@ -24,7 +24,7 @@ public interface FlameFactory {
 	 * @return the range of Flame Tower
 	 */
 	static public int getRange() {
-		return 6;
+		return 250;
 	}
 
 	/**

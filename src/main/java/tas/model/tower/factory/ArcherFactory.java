@@ -27,7 +27,7 @@ public interface ArcherFactory {
 	 * @return the range of Archer Tower
 	 */
 	static public int getRange() {
-		return 14;
+		return 650;
 	}
 
 	/**
