@@ -34,7 +34,6 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 
 	/** {@inheritDoc} */
 
-	// TODO: return optional
 	@Override
 	public Optional<Enemy> spawnEnemy() {
 		if (this.enemyToBeSpawned.isEmpty()) {
