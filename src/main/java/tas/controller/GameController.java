@@ -197,6 +197,8 @@ public class GameController implements SceneController {
 				this.towerLogic.placeTower(currentTowerSelected, mousePosition);
 				this.currentInventoryMode = 0;
 				this.screenListener.stopListening();
+				this.gameScene.getInventoryView().getTextLabel("money")
+		        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
 			}
 			
 			this.screenListener.resetUpdate();
