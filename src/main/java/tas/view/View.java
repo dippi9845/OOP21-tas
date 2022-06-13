@@ -31,5 +31,10 @@ public interface View {
      * Disposes of the window.
      */
     void dispose();
+    
+    /**
+     * Closes the view
+     */
+    void destroyView();
 
 }

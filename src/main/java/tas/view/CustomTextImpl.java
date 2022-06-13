@@ -17,19 +17,19 @@ public class CustomTextImpl implements CustomText {
 
 	/** {@inheritDoc} */
 	@Override
-	public void setFontName(String fontName) {
+	public void setFontName(final String fontName) {
 		this.fontName = fontName;
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public void setFontStyle(int style) {
+	public void setFontStyle(final int style) {
 		this.fontStyle = style;
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public void setFontSize(int size) {
+	public void setFontSize(final int size) {
 		this.fontSize = size;
 	}
 
@@ -41,7 +41,7 @@ public class CustomTextImpl implements CustomText {
 
 	/** {@inheritDoc} */
 	@Override
-	public void setText(String text) {
+	public void setText(final String text) {
 		this.text = text;
 	}
 

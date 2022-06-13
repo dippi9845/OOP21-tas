@@ -44,9 +44,8 @@ public class GameController implements SceneController {
 	 * @param gameModel the game model
 	 * @param scene the graphic scene controller
 	 */
-	public GameController(final GameScene scene, GameModel gameModel) {
+	public GameController(final GameScene scene, final GameModel gameModel) {
 		this.gameScene = scene;
-
 		this.playerStats = gameModel;
 
 		List<Position> pathNodes = Arrays.asList(new Position(500, 500), new Position(750, 750), new Position(0, 1000));
@@ -84,7 +83,7 @@ public class GameController implements SceneController {
 	 * 
 	 * @param enemy
 	 */
-	private void killEnemy(Enemy enemy) {
+	private void killEnemy(final Enemy enemy) {
 		this.gameScene.getGameView().removeEntityLabel(enemy);
 		try {
 			this.enemiesHandler.removeEnemy(enemy);
@@ -232,11 +231,11 @@ public class GameController implements SceneController {
 		if (this.enemiesHandler.areEnemiesOnBoard()) {
 			enemiesCheck();
 		}
-		
+
 		if (currentInventoryMode == 0) {
 			inventoryUpdate();
 		}
-		
+
 		if (currentInventoryMode == 1) {
 			screenUpdate();
 		}

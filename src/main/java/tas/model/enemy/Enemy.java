@@ -17,7 +17,7 @@ public interface Enemy extends Entity {
 	 * 
 	 * @param damage the damage that will be dealt
 	 */
-	void dealDamage(double damage);
+	void dealDamage(final double damage);
 
 	/**
 	 * @return True if the enemy is dead

@@ -15,21 +15,21 @@ public interface ViewComponent {
 	 * 
 	 * @param entity the entity that will be drawn
 	 */
-	void drawEntity(Entity entity);
+	void drawEntity(final Entity entity);
 
 	/**
 	 * Create a label for the entity.
 	 * 
 	 * @param entity that needs a label
 	 */
-	void addEntityLabel(Entity entity);
+	void addEntityLabel(final Entity entity);
 
 	/**
 	 * Removes the label of a given entity.
 	 * 
 	 * @param entity that will be removed
 	 */
-	void removeEntityLabel(Entity entity);
+	void removeEntityLabel(final Entity entity);
 
 	/**
 	 * Add a text label to the Panel.
@@ -38,7 +38,7 @@ public interface ViewComponent {
 	 * @param id     the id of the label
 	 * @param anchor the position of the label
 	 */
-	void addTextLabel(String text, String id, String anchor);
+	void addTextLabel(final String text, final String id, final String anchor);
 
 	/**
 	 * Return the label of the given id. NOTE: returns null if the label does not
@@ -47,14 +47,14 @@ public interface ViewComponent {
 	 * @param id of the label
 	 * @return the label
 	 */
-	AdaptiveLabel getTextLabel(String id);
+	AdaptiveLabel getTextLabel(final String id);
 
 	/**
 	 * Removes the text label by the given id.
 	 * 
 	 * @param id
 	 */
-	void removeTextLabel(String id);
+	void removeTextLabel(final String id);
 
 	/**
 	 * @return the {@link JPanel} of the component

@@ -16,20 +16,20 @@ public class TimeCurveImpl implements TimeCurve {
 	 * @param func is the lambda function that given the x coordinate returns the y
 	 *             one
 	 */
-	public TimeCurveImpl(IntArgumentOperator func) {
+	public TimeCurveImpl(final IntArgumentOperator func) {
 		setFunction(func);
 		this.lastActionTime = 0;
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public void setFunction(IntArgumentOperator func) {
+	public void setFunction(final IntArgumentOperator func) {
 		this.function = func;
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean isTimeForAction(int x) throws IllegalArgumentException {
+	public boolean isTimeForAction(final int x) throws IllegalArgumentException {
 		if (x <= 0) {
 			throw new IllegalArgumentException("@param x can't be less than or equal to 0");
 		}

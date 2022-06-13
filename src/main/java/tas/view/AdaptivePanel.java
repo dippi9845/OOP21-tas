@@ -35,10 +35,11 @@ public abstract class AdaptivePanel extends JPanel {
 	 * @param thickness   the thickness of the line
 	 * @throws IllegalArgumentException if the given points number is 1
 	 */
-	public void setLine(List<Position> linesPoints, Color color, int thickness) throws IllegalArgumentException {
+	public void setLine(final List<Position> linesPoints, final Color color, final int thickness)
+	        throws IllegalArgumentException {
 		if (linesPoints.size() == 1) {
 			throw new IllegalArgumentException(
-					"@param linesPoints must contains at least 2 elements or 0 to remove the line!");
+			        "@param linesPoints must contains at least 2 elements or 0 to remove the line!");
 		}
 		this.lineColor = color;
 		this.lineThickness = thickness;
