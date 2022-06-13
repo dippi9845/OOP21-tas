@@ -2,7 +2,7 @@ package main.java.tas.view.scene;
 
 import main.java.tas.view.SceneActionObserver;
 
-public interface ActionScene {
+public interface ActionScene extends GenericScene {
 	/**
 	 * Set up an observer for the scene.
 	 * 
