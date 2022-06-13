@@ -30,6 +30,7 @@ public class LevelHandler {
 	public static List <Position> readLevel(String level) {
 		JSONObject json = JsonUtils.getJsonData(PATH);
 		List <Position> list = new ArrayList <Position>();
+
 		JSONArray levelNodes = json.getJSONObject(level).getJSONArray("path");
 		for(int i = 0; i < levelNodes.length(); i++) {
 			list.add(new Position(levelNodes.getJSONObject(i).getInt("x"), levelNodes.getJSONObject(i).getInt("y")));

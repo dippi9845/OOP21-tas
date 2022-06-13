@@ -2,6 +2,8 @@ package test.java.tas.model.tower;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.awt.Dimension;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,14 +16,25 @@ import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Builder;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.Towers;
+import main.java.tas.model.tower.factory.CannonFactory;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.utils.Position;
+import main.java.tas.model.enemy.GenericEnemy;
 
 /**
  * Class for testing every type of tower that attack
  *
  */
 class AttackTest {
+	
+	private Enemy getGenericEnemy(final Position pos, final double health) {
+		List<Position> nodesPosition = new LinkedList<>();
+		nodesPosition.add(pos);
+		nodesPosition.add(pos);
+		nodesPosition.add(pos);
+		
+		return new GenericEnemy(nodesPosition, health, 0, 0, 0, new Dimension(1, 1), "Niente");
+	}
 
 	@Test
 	void BasicTower() throws InterruptedException {
@@ -204,5 +217,23 @@ class AttackTest {
 		manager.closeAll();
 
 		assertTrue(e.isDead());
+	}
+	
+	@Test
+	void CannonUnmodifiable() throws InterruptedException {
+		List<Enemy> enemies = new LinkedList<>();
+		enemies.add(new FakeEnemy(new Position(50, 50), 100));
+		enemies.add(getGenericEnemy(new Position(51, 51), 100));
+
+		Tower t = CannonFactory.basicCannon(new Position(51, 51), Collections.unmodifiableList(enemies));
+		t.compute();
+		t.compute();
+		t.compute();
+		enemies.remove(0);
+		t.compute();
+		t.compute();
+		t.compute();
+
+		assertTrue(enemies.get(0).getHealth() < 51);
 	}
 }

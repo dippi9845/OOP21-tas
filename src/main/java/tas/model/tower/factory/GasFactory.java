@@ -24,7 +24,7 @@ public interface GasFactory {
 	 * @return the damage of Gas Tower
 	 */
 	static public int getRange() {
-		return 6;
+		return 250;
 	}
 
 	/**
