@@ -111,14 +111,14 @@ public class GameController implements SceneController {
 
 			if (enemy.isDead()) {
 				this.playerStats.giveMoney2Player(enemy.getMoney());
-				this.gameScene.getGameView().getTextLabel("money")
+				this.gameScene.getInventoryView().getTextLabel("money")
 				        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
 				killEnemy(enemy);
 				continue;
 			}
 			if (enemy.hasCompletedPath()) {
 				this.playerStats.dealDamage2Player(enemy.getDamage());
-				this.gameScene.getGameView().getTextLabel("healt")
+				this.gameScene.getInventoryView().getTextLabel("health")
 				        .setText(this.healthSymbol + " " + this.playerStats.getHP());
 				killEnemy(enemy);
 				continue;
