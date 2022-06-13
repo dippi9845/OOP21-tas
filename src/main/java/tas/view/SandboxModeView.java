@@ -50,8 +50,20 @@ public class SandboxModeView  {
 		return this.gameBoard;
 	}
 	
+	/**
+	 * sets an observer for this view
+	 * @param sandboxModeController the {@link SceneController} that is to be set as observer
+	 */
 	public void setObserver(SceneController sandboxModeController) {
 		this.gamePanel.addMouseListener(((SandboxModeController) sandboxModeController).getListener());;
     }
+	
+	/**
+	 * sets an observer for the done button
+	 * @param sandboxModeController the {@link SceneController} that is to be set as observer
+	 */
+	public void setButtonObserver(SceneController sandboxModeController) {
+		this.finishButton.addActionListener(((SandboxModeController) sandboxModeController).getButtonListener());
+	}
 	
 }

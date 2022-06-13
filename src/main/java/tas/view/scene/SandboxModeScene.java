@@ -34,6 +34,14 @@ public class SandboxModeScene implements Scene {
 	public void setObserver(SceneController listener) {
 		this.View.setObserver(listener);
 	}
+	
+	/**
+	 * sets an observer for the sandbox mode view
+	 * @param listener the observer
+	 */
+	public void setButtonObserver(SceneController listener) {
+		this.View.setButtonObserver(listener);
+	}
 
 	/**
 	 * 

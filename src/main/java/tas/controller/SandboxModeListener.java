@@ -63,7 +63,6 @@ public class SandboxModeListener implements MouseListener{
 		//synchronized(this.nodesSelected){
 			
 		//}
-		this.nodesSelected.add(lastNodeSelected);
 		this.update = true;	
 	}
 
