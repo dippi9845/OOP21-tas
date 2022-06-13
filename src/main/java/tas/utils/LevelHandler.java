@@ -8,12 +8,20 @@ import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.JSONString;
 
+/**
+ * 
+ * Class that modifies levelStorage.json, or accesses it for data
+ *
+ */
 public class LevelHandler {
 	
 	private static String PATH = "res" + System.getProperty("file.separator") + "levelStorage" + System.getProperty("file.separator") + "levelStorage.json";
 	
+	/**
+	 * 
+	 * @return the number of elements in levelStorage.json (which is the number of levels)
+	 */
 	public static int getNElements() {
 		try {
 			JSONObject json = JsonUtils.getJsonData(PATH);
@@ -27,6 +35,11 @@ public class LevelHandler {
 		
 	}
 	
+	/**
+	 * reads a level off levelStorage.json
+	 * @param level
+	 * @return 
+	 */
 	public static List <Position> readLevel(String level) {
 		JSONObject json = JsonUtils.getJsonData(PATH);
 		List <Position> list = new ArrayList <Position>();
@@ -53,14 +66,15 @@ public class LevelHandler {
 		saveJson(file);
 	}
 	
-	/*public static void deleteUserLevels(){
+	public static void deleteUserLevels(){
 		JSONObject json = JsonUtils.getJsonData(PATH);
-		List <Position> list = new ArrayList <Position>();
-		JSONArray levelNodes = json.getJSONObject(level).getJSONArray("path");
-		for(int i = 0; i < levelNodes.length(); i++) {
-			list.add(new Position(levelNodes.getJSONObject(i).getDouble("x"), levelNodes.getJSONObject(i).getDouble("y")));
-		}
-	}*/
+		if(getNElements() > 3) {
+			for(int i = 4; i <= (json.length() + 1); i++) {
+				json.remove("level" + Integer.toString(i));
+			}
+			saveJson(json);
+		}	
+	}
 	
 	private static void saveJson(JSONObject jsonObj) {
 		FileWriter fileWriter;

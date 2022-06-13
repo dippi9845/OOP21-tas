@@ -2,15 +2,15 @@ package main.java.tas.view.scene;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
-import main.java.tas.controller.SceneController;
 import main.java.tas.view.MenuView;
+import main.java.tas.view.SceneActionObserver;
 
 /**
  * 
- * Class that implements {@link Scene}.
+ * Class that implements {@link ActionScene}.
  *
  */
-public class MainMenuSceneImpl implements Scene {
+public class MainMenuSceneImpl implements ActionScene {
 	
 	private JPanel rootPanel;
 	private MenuView menuView;
@@ -28,8 +28,8 @@ public class MainMenuSceneImpl implements Scene {
 	
 	/** {@inheritDoc} */
 	@Override
-	public void setObserver(SceneController listener) {
-		this.menuView.setObserver(listener);
+	public void setActionObserver(SceneActionObserver listener) {
+		this.menuView.setActionObserver(listener);
 	}
 	
 	/**

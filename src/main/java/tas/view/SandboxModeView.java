@@ -6,7 +6,6 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import main.java.tas.controller.SandboxModeController;
 import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
 
@@ -54,16 +53,16 @@ public class SandboxModeView  {
 	 * sets an observer for this view
 	 * @param sandboxModeController the {@link SceneController} that is to be set as observer
 	 */
-	public void setObserver(SceneController sandboxModeController) {
-		this.gamePanel.addMouseListener(((SandboxModeController) sandboxModeController).getListener());;
+	public void setMouseObserver(SceneMouseObserver sandboxModeController) {
+		this.gamePanel.addMouseListener((sandboxModeController).getMouseListener());
     }
 	
 	/**
 	 * sets an observer for the done button
 	 * @param sandboxModeController the {@link SceneController} that is to be set as observer
 	 */
-	public void setButtonObserver(SceneController sandboxModeController) {
-		this.finishButton.addActionListener(((SandboxModeController) sandboxModeController).getButtonListener());
+	public void setActionObserver(SceneActionObserver sandboxModeController) {
+		this.finishButton.addActionListener(sandboxModeController.getListener());
 	}
 	
 }

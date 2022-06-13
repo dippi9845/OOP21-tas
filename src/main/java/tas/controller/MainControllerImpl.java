@@ -5,7 +5,7 @@ import main.java.tas.view.scene.GameSceneImpl;
 import main.java.tas.view.scene.LevelSelectSceneImpl;
 import main.java.tas.view.scene.MainMenuSceneImpl;
 import main.java.tas.view.scene.SandboxModeScene;
-import main.java.tas.view.scene.Scene;
+import main.java.tas.view.scene.ActionScene;
 import main.java.tas.view.scene.SettingsSceneImpl;
 import main.java.tas.model.GameModelImpl;
 import main.java.tas.model.GameSpecs;
@@ -19,7 +19,7 @@ import main.java.tas.utils.LevelHandler;
 public class MainControllerImpl implements MainController {
 
 	private SceneController sceneController;
-	private Scene scene;
+	private ActionScene scene;
 	private GameSpecs gameSpecs = new GameSpecs();
 
 	private int playerHealth = 100;
@@ -44,7 +44,7 @@ public class MainControllerImpl implements MainController {
 	public SceneController createMenu(final MainView view) {
 		this.scene = new MainMenuSceneImpl(view.getPanel());
 		SceneController controller = new MainMenuController(this.scene, this.menuModel);
-		this.scene.setObserver(controller);
+		this.scene.setActionObserver(controller);
 		return controller;
 	}
 	
@@ -57,8 +57,10 @@ public class MainControllerImpl implements MainController {
 	public SceneController createLevelSelect(final MainView view) {
 		this.scene = new LevelSelectSceneImpl(view.getPanel(), this.menuModel);
 		SceneController controller = new LevelSelectController(this.scene, this.menuModel);
-		this.scene.setObserver(controller);
+		this.scene.setActionObserver(controller);
+		LevelHandler.deleteUserLevels();
 		return controller;
+		
 	}
 	
 	/**
@@ -70,7 +72,7 @@ public class MainControllerImpl implements MainController {
 	public SceneController createSandBoxMode(final MainView view) {
 		this.scene = new SandboxModeScene(view.getPanel(), this.menuModel);
 		SceneController controller = new SandboxModeController(this.scene, this.menuModel);
-		this.scene.setObserver(controller);
+		this.scene.setActionObserver(controller);
 		return controller;
 	}
 	
@@ -83,7 +85,7 @@ public class MainControllerImpl implements MainController {
 	public SceneController createSettings(final MainView view) {
 		this.scene = new SettingsSceneImpl(view.getPanel(), this.menuModel);
 		SceneController controller = new SettingsController(this.scene, this.menuModel);
-		this.scene.setObserver(controller);
+		this.scene.setActionObserver(controller);
 		return controller;
 	}
 
@@ -92,8 +94,10 @@ public class MainControllerImpl implements MainController {
 	public SceneController createGame(final MainView view) {
 		this.scene = new GameSceneImpl(view.getPanel());
 		SceneController controller = new GameController(((GameSceneImpl) this.scene),
-		        new GameModelImpl(this.playerHealth, this.playerMoney), LevelHandler.readLevel("level" + Integer.toString(this.menuModel.getCurrentLevel())));
-		this.scene.setObserver(controller);
+		        new GameModelImpl(this.playerHealth, this.playerMoney),
+		        LevelHandler.readLevel("level" + Integer.toString(this.menuModel.getCurrentLevel())));
+		this.scene.setActionObserver(controller);
+		this.scene.setMouseObserver(controller);
 		return controller;
 	}
 

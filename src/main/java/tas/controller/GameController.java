@@ -13,12 +13,14 @@ import main.java.tas.model.TimeCurveImpl;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
+import main.java.tas.view.SceneActionObserver;
+import main.java.tas.view.SceneMouseObserver;
 import main.java.tas.view.scene.GameScene;
 
 /**
  * Class that implements {@link SceneController}.
  */
-public class GameController implements SceneController {
+public class GameController implements SceneController,SceneMouseObserver,SceneActionObserver {
 
 	private final GameScene gameScene;
 	private final EnemiesLogic enemiesHandler;
@@ -196,22 +198,16 @@ public class GameController implements SceneController {
 				this.currentInventoryMode = 0;
 				this.screenListener.stopListening();
 			}
-			
 			this.screenListener.resetUpdate();
 		}
 	}
 	
-	/**
-	 * @return screenListener
-	 */
+	@Override
 	public MouseListener getMouseListener(){
 		return this.screenListener;
 	}
 	
-	/**
-	 * 
-	 * @return inventoryListener
-	 */
+	@Override
 	public ActionListener getListener() {
 		return this.inventoryListener;
 	}

@@ -3,17 +3,18 @@ package main.java.tas.controller;
 import java.awt.event.ActionListener;
 
 import main.java.tas.model.MenuModel;
-import main.java.tas.view.scene.Scene;
+import main.java.tas.view.SceneActionObserver;
+import main.java.tas.view.scene.ActionScene;
 import main.java.tas.view.scene.SettingsSceneImpl;
 
 /**
  * Class that creates a controller for the settings menu
  * Class that implements {@link SceneController}.
  */
-public class SettingsController implements SceneController {
+public class SettingsController implements SceneController,SceneActionObserver {
 	
 	private ButtonListener listener = new ButtonListener();
-	private Scene scene;
+	private ActionScene scene;
 	private MenuModel model;
 	
 	/**
@@ -21,9 +22,9 @@ public class SettingsController implements SceneController {
 	 * @param sceneIn the settings menu scene
 	 * @param theModel the model
 	 */
-	public SettingsController(Scene sceneIn, MenuModel theModel) {
+	public SettingsController(ActionScene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
-		((SettingsSceneImpl) scene).setObserver(this);
+		((SettingsSceneImpl) scene).setActionObserver(this);
 		this.model = theModel;
 	}
 	
@@ -45,10 +46,7 @@ public class SettingsController implements SceneController {
 		
 	}
 	
-	/**
-	 * 
-	 * @return listener
-	 */
+	@Override
 	public ActionListener getListener() {
 		return this.listener;
 	}
