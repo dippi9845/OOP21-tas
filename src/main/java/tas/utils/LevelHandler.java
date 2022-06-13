@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.JSONString;
 
 public class LevelHandler {
 	
@@ -31,7 +32,7 @@ public class LevelHandler {
 		List <Position> list = new ArrayList <Position>();
 		JSONArray levelNodes = json.getJSONObject(level).getJSONArray("path");
 		for(int i = 0; i < levelNodes.length(); i++) {
-			list.add(new Position(levelNodes.getJSONObject(i).getDouble("x"), levelNodes.getJSONObject(i).getDouble("y")));
+			list.add(new Position(levelNodes.getJSONObject(i).getInt("x"), levelNodes.getJSONObject(i).getInt("y")));
 		}
 		return list;
 		
@@ -43,8 +44,8 @@ public class LevelHandler {
 		JSONArray path = new JSONArray();
 		for(int i = 0; i < list.size(); i++) {
 			JSONObject node = new JSONObject();
-			node.put("x", list.get(i).getX());
-			node.put("y", list.get(i).getY());
+			node.put("x", (int) list.get(i).getX());
+			node.put("y", (int) list.get(i).getY());
 			path.put(node);
 		}
 		level.put("path",path);
@@ -52,7 +53,7 @@ public class LevelHandler {
 		saveJson(file);
 	}
 	
-/*	public static void deleteUserLevels(){
+	/*public static void deleteUserLevels(){
 		JSONObject json = JsonUtils.getJsonData(PATH);
 		List <Position> list = new ArrayList <Position>();
 		JSONArray levelNodes = json.getJSONObject(level).getJSONArray("path");
@@ -65,7 +66,7 @@ public class LevelHandler {
 		FileWriter fileWriter;
 		try {
 			fileWriter = new FileWriter(PATH);
-			fileWriter.write(jsonObj.toString());
+			fileWriter.write(jsonObj.toString(4));
 			fileWriter.flush();
 			fileWriter.close();
 			
