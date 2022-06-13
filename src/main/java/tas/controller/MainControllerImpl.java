@@ -45,7 +45,7 @@ public class MainControllerImpl implements MainController {
 	@Override
 	public SceneController createMenu(final MainView view) {
 		this.scene = new MainMenuSceneImpl(view.getPanel());
-		SceneController controller = new MainMenuController((ActionScene)this.scene, this.menuModel);
+		SceneController controller = new MainMenuController(this.scene, this.menuModel);
 		((ActionScene)this.scene).setActionObserver((SceneActionObserver)controller);
 		return controller;
 	}
@@ -58,7 +58,7 @@ public class MainControllerImpl implements MainController {
 	 */
 	public SceneController createLevelSelect(final MainView view) {
 		this.scene = new LevelSelectSceneImpl(view.getPanel(), this.menuModel);
-		SceneController controller = new LevelSelectController((ActionScene)this.scene, this.menuModel);
+		SceneController controller = new LevelSelectController(this.scene, this.menuModel);
 		((ActionScene)this.scene).setActionObserver((SceneActionObserver)controller);
 		LevelHandler.deleteUserLevels();
 		return controller;
@@ -73,7 +73,7 @@ public class MainControllerImpl implements MainController {
 	 */
 	public SceneController createSandBoxMode(final MainView view) {
 		this.scene = new SandboxModeScene(view.getPanel(), this.menuModel);
-		SceneController controller = new SandboxModeController((ActionScene)this.scene, this.menuModel);
+		SceneController controller = new SandboxModeController(this.scene, this.menuModel);
 		this.scene.setActionObserver(controller);
 		this.scene.setMouseObserver(controller);
 		return controller;
@@ -87,7 +87,7 @@ public class MainControllerImpl implements MainController {
 	 */
 	public SceneController createSettings(final MainView view) {
 		this.scene = new SettingsSceneImpl(view.getPanel(), this.menuModel);
-		SceneController controller = new SettingsController((ActionScene)this.scene, this.menuModel);
+		SceneController controller = new SettingsController(this.scene, this.menuModel);
 		this.scene.setActionObserver(controller);
 		return controller;
 	}
