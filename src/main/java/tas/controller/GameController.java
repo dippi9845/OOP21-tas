@@ -157,7 +157,6 @@ public class GameController implements SceneController {
 		if (turretPosition.getY() < 55 || turretPosition.getY() > 945 || turretPosition.getX() < 55 || turretPosition.getX() > 945) {
 			System.out.println("not inside border");
 			return false;
-			
 		}
 			
 		//then check there isn't a tower overlapping with the new tower
@@ -179,12 +178,9 @@ public class GameController implements SceneController {
 				if(h <= this.pathThickness + 50) {
 					System.out.println("cannot place on the enemy path");
 					return false;
-					//TODO check if it really works (I think there is an edge case were it does not work)
 				}
-			}
-			
+			}	
 		}
-		//TODO gestire il return (per ora è sempre vero(ovvero è sempre una posizione legale))
 		return true;
 	}
 	

@@ -60,6 +60,7 @@ public class SandboxModeListener implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		//lastNodeSelected ha la posizione non ancora convertita
 		this.lastNodeSelected = new Position(e.getX(),e.getY());
+		System.out.println("click percieved");
 		//synchronized(this.nodesSelected){
 			
 		//}

@@ -4,7 +4,7 @@ package main.java.tas.controller;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import main.java.tas.model.GameSpecs;
@@ -21,10 +21,12 @@ public class SandboxModeController implements SceneController {
 	private SandboxModeListener listener;
 	private Scene scene;
 	private MenuModel model;
+	private boolean lineInitialized = false;
+	private boolean firstNodeIsSelected = false;
 	private final GameSpecs gameSpecs = new GameSpecs();
 	private final Color pathColor = new Color(255, 255, 255);
 	private final int pathThickness = 50;
-	private List <Position> linePositionList = Arrays.asList(new Position(10,10),new Position(200,200));
+	private List <Position> linePositionList = new ArrayList <Position>();
 	private final SettingsListener doneButtonListener = new SettingsListener();
 	/**
 	 * Constructor that creates a menu controller for the sandbox mode menu.
@@ -33,7 +35,6 @@ public class SandboxModeController implements SceneController {
 	 */
 	public SandboxModeController(Scene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
-		((SandboxModeScene)this.scene).getView().getGameBoard().setLine(linePositionList, pathColor, pathThickness);
 		((SandboxModeScene) scene).setObserver(this);
 		((SandboxModeScene) scene).setButtonObserver(this);
 		this.listener = new SandboxModeListener();
@@ -52,9 +53,28 @@ public class SandboxModeController implements SceneController {
 	@Override
 	public void nextTick() {
 		if (this.listener.checkUpdate()) {
-			Position lastSelectedPosition = listener.getLastNodeSelected();
-			lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(), ((SandboxModeScene)this.scene).getView().getPanel().getPreferredSize());
-			this.listener.getNodesSelected().add(lastSelectedPosition);
+			
+			if (lineInitialized) {
+				Position lastSelectedPosition = listener.getLastNodeSelected();
+				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(), ((SandboxModeScene)this.scene).getView().getGameBoard().getPreferredSize());
+				this.linePositionList.add(lastSelectedPosition);
+				
+			}
+			else if(firstNodeIsSelected) {
+				System.out.println("second node selected");
+				Position lastSelectedPosition = listener.getLastNodeSelected();
+				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(), ((SandboxModeScene)this.scene).getView().getGameBoard().getPreferredSize());
+				this.linePositionList.add(lastSelectedPosition);
+				((SandboxModeScene)this.scene).getView().getGameBoard().setLine(linePositionList, pathColor, pathThickness);
+				this.lineInitialized = true;
+			}
+			else {
+				System.out.println("fisrst node selected");
+				Position lastSelectedPosition = listener.getLastNodeSelected();
+				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(), ((SandboxModeScene)this.scene).getView().getGameBoard().getPreferredSize());
+				this.linePositionList.add(lastSelectedPosition);
+				this.firstNodeIsSelected = true;
+			}
 			this.listener.resetUpdate();
 		}
 		if (this.doneButtonListener.checkUpdate()) {
