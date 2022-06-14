@@ -11,6 +11,7 @@ import main.java.tas.model.GameModelImpl;
 import main.java.tas.model.GameSpecs;
 import main.java.tas.model.MenuModel;
 import main.java.tas.model.MenuModelImpl;
+import main.java.tas.utils.LevelHandler;
 
 /**
  * Class that implements {@link MainController}.
@@ -91,7 +92,7 @@ public class MainControllerImpl implements MainController {
 	public SceneController createGame(final MainView view) {
 		this.scene = new GameSceneImpl(view.getPanel());
 		SceneController controller = new GameController(((GameSceneImpl) this.scene),
-		        new GameModelImpl(this.playerHealth, this.playerMoney));
+		        new GameModelImpl(this.playerHealth, this.playerMoney), LevelHandler.readLevel("level" + Integer.toString(this.menuModel.getCurrentLevel())));
 		this.scene.setObserver(controller);
 		return controller;
 	}

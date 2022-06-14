@@ -74,8 +74,8 @@ public class Towers {
 	 * @return Optional of enemy, that is empty if no enemy was found, otherwise the
 	 *         enemy found
 	 */
-	static public Optional<Enemy> findFistEnemyByPredicate(final Predicate<Enemy> f, final List<Enemy> enemyList) {
-			return enemyList.stream().filter(f).findFirst();
+	static public Optional<Enemy> findFistEnemyByPredicate(final Predicate<Enemy> f, final List<Enemy> enemyList) {	
+		return enemyList.stream().filter(f).findFirst();
 	}
 
 	/**

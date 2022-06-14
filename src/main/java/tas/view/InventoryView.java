@@ -95,8 +95,7 @@ public class InventoryView implements ViewComponent {
 	}
 	@Override
 	public AdaptiveLabel getTextLabel(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.textLables.get(id);
 	}
 
 	@Override
@@ -117,8 +116,6 @@ public class InventoryView implements ViewComponent {
 		tmpLabel.setForeground(Color.BLACK);
 		this.labelCanvas.add(tmpLabel);
 		this.textLables.put(id, tmpLabel);
-		
-		
 	}
 	
 	/**

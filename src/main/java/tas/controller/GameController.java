@@ -1,6 +1,5 @@
 package main.java.tas.controller;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.awt.Color;
@@ -45,11 +44,10 @@ public class GameController implements SceneController {
 	 * @param gameModel the game model
 	 * @param scene the graphic scene controller
 	 */
-	public GameController(final GameScene scene, final GameModel gameModel) {
+	public GameController(final GameScene scene, final GameModel gameModel, final List <Position> pathNodes) {
 		this.gameScene = scene;
 		this.playerStats = gameModel;
 
-		List<Position> pathNodes = Arrays.asList(new Position(500, 500), new Position(750, 750), new Position(0, 1000));
 		this.enemiesHandler = new EnemiesLogicImpl(pathNodes);
 		this.gameScene.getGameView().getGamePanel().setLine(pathNodes, pathColor, pathThickness);
 
@@ -113,14 +111,14 @@ public class GameController implements SceneController {
 
 			if (enemy.isDead()) {
 				this.playerStats.giveMoney2Player(enemy.getMoney());
-				this.gameScene.getGameView().getTextLabel("money")
+				this.gameScene.getInventoryView().getTextLabel("money")
 				        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
 				killEnemy(enemy);
 				continue;
 			}
 			if (enemy.hasCompletedPath()) {
 				this.playerStats.dealDamage2Player(enemy.getDamage());
-				this.gameScene.getGameView().getTextLabel("healt")
+				this.gameScene.getInventoryView().getTextLabel("health")
 				        .setText(this.healthSymbol + " " + this.playerStats.getHP());
 				killEnemy(enemy);
 				continue;
@@ -199,6 +197,8 @@ public class GameController implements SceneController {
 				this.towerLogic.placeTower(currentTowerSelected, mousePosition);
 				this.currentInventoryMode = 0;
 				this.screenListener.stopListening();
+				this.gameScene.getInventoryView().getTextLabel("money")
+		        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
 			}
 			
 			this.screenListener.resetUpdate();
