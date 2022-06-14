@@ -18,7 +18,6 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 	private int actualWave;
 	private final EnemyFactory waveFactory;
 	private List<Enemy> enemyToBeSpawned = new ArrayList<Enemy>();
-	private int points;
 
 	/**
 	 * Constructor that creates the logic of the enemy waves.
@@ -29,7 +28,6 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 	public EnemiesLogicImpl(final List<Position> nodesPosition) {
 		this.waveFactory = new EnemyFactoryImpl(nodesPosition);
 		this.actualWave = 0;
-		this.points = 0;
 	}
 
 	/** {@inheritDoc} */
@@ -61,13 +59,6 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 		
 			this.aliveEnemiesList.remove(enemy);
 		}
-		this.points++;
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public int getPoints() {
-		return this.points;
 	}
 
 	/** {@inheritDoc} */
