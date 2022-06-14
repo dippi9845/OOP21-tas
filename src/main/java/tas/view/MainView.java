@@ -62,20 +62,20 @@ public class MainView implements View {
 		this.frame.setVisible(true);
 	}
 
-    /** {@inheritDoc} */
-    @Override
-    public void update() {
-        this.frame.repaint();
-        this.frame.revalidate();
-    }
+	/** {@inheritDoc} */
+	@Override
+	public void update() {
+		this.frame.repaint();
+		this.frame.revalidate();
+	}
 
-    /** {@inheritDoc} */
+	/** {@inheritDoc} */
 	@Override
 	public void dispose() {
 		this.frame.dispose();
-		
+
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public void destroyView() {
