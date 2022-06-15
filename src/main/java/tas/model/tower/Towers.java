@@ -90,7 +90,7 @@ public class Towers {
 	 */
 	static public Optional<Enemy> findFistEnemyBiPredicate(final Predicate<Enemy> f, final Predicate<Enemy> g,
 			final List<Enemy> enemyList) {
-		return enemyList.stream().filter(x->!x.isDead()).filter(f).filter(g).findFirst();
+		return enemyList.stream().filter(f).filter(g).findFirst();
 	}
 
 	/**
