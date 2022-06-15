@@ -43,12 +43,12 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 		
 		//List<Enemy> toRemove = Towers.findAll(x->x.isDead(), x->!Towers.isTargetInRange(x, this), this.getEnemyList());
 		
-		
+		/*
 		 List<Enemy> toRemove = this.getEnemyList()
 				.stream()
 				.filter(x->!Towers.isTargetInRange(x, this) || x.isDead())
 				.collect(Collectors.toList());
-		
+		*/
 		/*
 		 List<Enemy> toRemove = this.getEnemyList()
 					.stream()
@@ -57,7 +57,7 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 					.collect(Collectors.toList());
 		*/
 		
-		//List<Enemy> toRemove = Towers.findAll(x->!Towers.isTargetInRange(x, this) || x.isDead(), this.getEnemyList());
+		List<Enemy> toRemove = Towers.findAll(x->!Towers.isTargetInRange(x, this) || x.isDead(), this.getEnemyList());
 		
 		this.getEnemyList().removeAll(toRemove);
 
