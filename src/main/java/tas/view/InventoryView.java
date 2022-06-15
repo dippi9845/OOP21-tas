@@ -26,6 +26,7 @@ public class InventoryView implements ViewAction {
     
     /**
      * Constructor that sets up the inventory view
+     * @param objects a list of the name of the different towers
      */
     public <T extends Enum <T>>InventoryView(Class <T> objects) {
         this.inventoryCanvas = new JPanel(new GridLayout(0,2));

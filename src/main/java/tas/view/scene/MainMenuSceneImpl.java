@@ -9,7 +9,7 @@ import main.java.tas.view.MenuView;
 
 /**
  * 
- * Class that implements {@link ActionScene}.
+ * Class that implements {@link GenericScene}.
  *
  */
 public class MainMenuSceneImpl implements GenericScene {
@@ -19,7 +19,7 @@ public class MainMenuSceneImpl implements GenericScene {
 	
 	/**
      * Constructor that set up the menu scene
-     * @param root is the {@link JPanel} that will contain the scene
+     * @param rootPanelIn is the {@link JPanel} that will contain the scene
      */
 	public MainMenuSceneImpl(JPanel rootPanelIn) {
 		this.rootPanel = rootPanelIn;

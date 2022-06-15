@@ -17,7 +17,7 @@ public class LevelSelectView implements ViewAction {
     
 	/**
 	 * Constructor that builds the view for the level select menu.
-	 * @param theModel the menu model
+	 * @param nLevesIn the number of levels
 	 */
     public LevelSelectView(int nLevelsIn){
     	nLevels = nLevelsIn;

@@ -11,7 +11,7 @@ import main.java.tas.view.SandboxModeView;
 
 /**
  * Class that builds the sandbox mode scene.
- * Class that implements {@link ActionScene}.
+ * Class that implements {@link GenericScene}.
  */
 public class SandboxModeScene implements GenericScene {
 	
@@ -21,7 +21,6 @@ public class SandboxModeScene implements GenericScene {
 	/**
      * Constructor that set up the sandbox mode scene.
      * @param rootPanelIn is the {@link JPanel} that will contain the scene
-     * @param menuModel the menu model
      */
 	public SandboxModeScene(JPanel rootPanelIn) {
 		this.rootPanel = rootPanelIn;

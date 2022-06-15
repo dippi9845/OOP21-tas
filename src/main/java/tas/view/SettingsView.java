@@ -22,7 +22,6 @@ public class SettingsView implements ViewAction {
     
 	/**
 	 * Constructor that builds the settings menu view
-	 * @param theModel the model
 	 */
     public SettingsView(){
     	label = new JLabel("Sorry there are no settings to mess with.");

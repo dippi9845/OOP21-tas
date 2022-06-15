@@ -21,7 +21,6 @@ public class EndGameView implements ViewAction {
     
 	/**
 	 * Constructor that builds the settings menu view
-	 * @param theModel the model
 	 */
     public EndGameView(){
     	

@@ -23,7 +23,6 @@ public class FullLevelsView implements ViewAction {
     
 	/**
 	 * Constructor that builds the settings menu view
-	 * @param theModel the model
 	 */
     public FullLevelsView(){
     	label = new JLabel("You have reached the max number of levels allowed.");

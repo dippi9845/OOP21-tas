@@ -45,6 +45,8 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 	 * 
 	 * @param gameModel the game model
 	 * @param scene the graphic scene controller
+	 * @param pathNodes a {@link List} of the nodes of the level
+	 * @param menuModelIn the menu model
 	 */
 	public GameController(final GameScene scene, final GameModel gameModel, final List <Position> pathNodes, final MenuModel menuModelIn) {
 		this.menuModel = menuModelIn;

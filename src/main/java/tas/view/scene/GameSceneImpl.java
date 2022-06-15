@@ -22,6 +22,7 @@ public class GameSceneImpl implements GameScene {
 	 * Constructor that set up the game scene.
 	 * 
 	 * @param root is the {@link JPanel} that will contain the scene
+	 * @param objects list of the tower names
 	 */
 	public <T extends Enum <T>> GameSceneImpl(JPanel root, Class <T> objects) {
 		this.rootPanel = root;

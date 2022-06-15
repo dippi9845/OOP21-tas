@@ -20,7 +20,6 @@ public class SettingsScene implements GenericScene {
 	/**
      * Constructor that set up the settings scene.
      * @param rootPanelIn is the {@link JPanel} that will contain the scene
-     * @param menuModel the menu model
      */
 	public SettingsScene(JPanel rootPanelIn) {
 		this.rootPanel = rootPanelIn;

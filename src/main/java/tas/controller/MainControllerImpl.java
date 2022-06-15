@@ -5,7 +5,7 @@ import main.java.tas.view.scene.EndGameScene;
 import main.java.tas.view.scene.FullLevelsScene;
 import main.java.tas.view.scene.GameSceneImpl;
 import main.java.tas.view.scene.GenericScene;
-import main.java.tas.view.scene.LevelSelectSceneImpl;
+import main.java.tas.view.scene.LevelSelectScene;
 import main.java.tas.view.scene.MainMenuSceneImpl;
 import main.java.tas.view.scene.SandboxModeScene;
 import main.java.tas.view.scene.SettingsScene;
@@ -54,7 +54,7 @@ public class MainControllerImpl implements MainController {
 	 * @return the scene that was created
 	 */
 	public SceneController createLevelSelect(final MainView view) {
-		GenericScene scene = new LevelSelectSceneImpl(view.getPanel(), this.menuModel.getNLevels());
+		GenericScene scene = new LevelSelectScene(view.getPanel(), this.menuModel.getNLevels());
 		SceneController controller = new LevelSelectController(scene, this.menuModel);
 		scene.setObserver(controller);
 		return controller;

@@ -10,7 +10,7 @@ import main.java.tas.view.FullLevelsView;
 
 /**
  * Class that builds the sandbox mode scene.
- * Class that implements {@link ActionScene}.
+ * Class that implements {@link GenericScene}.
  */
 public class FullLevelsScene implements GenericScene {
 	
@@ -20,7 +20,6 @@ public class FullLevelsScene implements GenericScene {
 	/**
      * Constructor that set up the settings scene.
      * @param rootPanelIn is the {@link JPanel} that will contain the scene
-     * @param menuModel the menu model
      */
 	public FullLevelsScene(JPanel rootPanelIn) {
 		this.rootPanel = rootPanelIn;

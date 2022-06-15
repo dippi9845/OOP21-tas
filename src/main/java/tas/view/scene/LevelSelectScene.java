@@ -10,9 +10,9 @@ import main.java.tas.view.LevelSelectView;
 
 /**
  * Class that builds the level select menu scene.
- * Class that implements {@link ActionScene}.
+ * Class that implements {@link GenericScene}.
  */
-public class LevelSelectSceneImpl implements GenericScene {
+public class LevelSelectScene implements GenericScene {
 	
 	private JPanel rootPanel;
 	private LevelSelectView View;
@@ -20,9 +20,9 @@ public class LevelSelectSceneImpl implements GenericScene {
 	/**
      * Constructor that set up the select level scene
      * @param rootPanelIn is the {@link JPanel} that will contain the scene
-     * @param menuModel the menu model
+     * @param NLevels the number of levels
      */
-	public LevelSelectSceneImpl(JPanel rootPanelIn, int NLevels) {
+	public LevelSelectScene(JPanel rootPanelIn, int NLevels) {
 		this.rootPanel = rootPanelIn;
 		this.rootPanel.setLayout(new BorderLayout());
         

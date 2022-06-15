@@ -37,8 +37,8 @@ public class LevelHandler {
 	
 	/**
 	 * reads a level off levelStorage.json
-	 * @param level
-	 * @return 
+	 * @param level the name of the level
+	 * @return a list of the nodes of the level
 	 */
 	public static List <Position> readLevel(String level) {
 		JSONObject json = JsonUtils.getJsonData(PATH);
