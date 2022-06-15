@@ -34,7 +34,7 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 	/** {@inheritDoc} */
 	@Override
 	protected boolean isValidTarget(final Enemy e) {
-		return Towers.isTargetInRange(e, this);
+		return Towers.isTargetInRange(e, this) && !this.isFull() && !this.contains(e);
 	}
 
 	/** {@inheritDoc} */
