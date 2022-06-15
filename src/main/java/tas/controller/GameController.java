@@ -59,7 +59,7 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 		this.gameScene.getInventoryView().addInvetoryLabel(this.healthSymbol + " " + this.playerStats.getHP(), "health");
 		this.gameScene.getInventoryView().addInvetoryLabel(this.waveSymbol + " " + this.enemiesHandler.getWave(), "wave");
 		this.gameScene.getInventoryView().addInvetoryLabel(this.moneySymbol + " " + this.playerStats.getPlayerMoney(), "money");
-		this.gameScene.getInventoryView().addInvetoryLabel(this.pointSymbol + " " + this.enemiesHandler.getPoints(), "points");
+		this.gameScene.getInventoryView().addInvetoryLabel(this.pointSymbol + " " + this.playerStats.getPoints(), "points");
 
 		// TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
 	}
@@ -113,14 +113,19 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 
 			if (enemy.isDead()) {
 				this.playerStats.giveMoney2Player(enemy.getMoney());
-				this.gameScene.getGameView().getTextLabel("money")
+				this.gameScene.getInventoryView().getTextLabel("money")
 				        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
+								
 				killEnemy(enemy);
+				
+				this.playerStats.increasePoint();
+				this.gameScene.getInventoryView().getTextLabel("points").setText(this.pointSymbol + " " + this.playerStats.getPoints());
+				
 				continue;
 			}
 			if (enemy.hasCompletedPath()) {
 				this.playerStats.dealDamage2Player(enemy.getDamage());
-				this.gameScene.getGameView().getTextLabel("healt")
+				this.gameScene.getInventoryView().getTextLabel("health")
 				        .setText(this.healthSymbol + " " + this.playerStats.getHP());
 				killEnemy(enemy);
 				continue;
@@ -198,6 +203,8 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 				this.towerLogic.placeTower(currentTowerSelected, mousePosition);
 				this.currentInventoryMode = 0;
 				this.screenListener.stopListening();
+				this.gameScene.getInventoryView().getTextLabel("money")
+		        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
 			}
 			this.screenListener.resetUpdate();
 		}

@@ -18,7 +18,6 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 	private int actualWave;
 	private final EnemyFactory waveFactory;
 	private List<Enemy> enemyToBeSpawned = new ArrayList<Enemy>();
-	private int points;
 
 	/**
 	 * Constructor that creates the logic of the enemy waves.
@@ -29,7 +28,6 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 	public EnemiesLogicImpl(final List<Position> nodesPosition) {
 		this.waveFactory = new EnemyFactoryImpl(nodesPosition);
 		this.actualWave = 0;
-		this.points = 0;
 	}
 
 	/** {@inheritDoc} */
@@ -42,7 +40,9 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 
 		Enemy enemy = this.enemyToBeSpawned.remove(0);
 		
-		this.aliveEnemiesList.add(enemy);			
+		synchronized (aliveEnemiesList) {
+			this.aliveEnemiesList.add(enemy);						
+		}
 
 		return Optional.of(enemy);
 	}
@@ -50,18 +50,15 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 	/** {@inheritDoc} */
 	@Override
 	public void removeEnemy(final Enemy enemy) throws NoSuchFieldException {
-		if (!this.aliveEnemiesList.contains(enemy)) {
-			throw new NoSuchFieldException("This enemy is not alive");
-		}
 		
-		this.aliveEnemiesList.remove(enemy);
-		this.points++;
-	}
-	
-	/** {@inheritDoc} */
-	@Override
-	public int getPoints() {
-		return this.points;
+		synchronized (aliveEnemiesList) {
+			
+			if (!this.aliveEnemiesList.contains(enemy)) {
+				throw new NoSuchFieldException("This enemy is not alive");
+			}
+		
+			this.aliveEnemiesList.remove(enemy);
+		}
 	}
 
 	/** {@inheritDoc} */
@@ -86,7 +83,7 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 	/** {@inheritDoc} */
 	@Override
 	public List<Enemy> getEnemies() {
-		return List.copyOf(this.aliveEnemiesList);
+		return this.aliveEnemiesList;
 	}
 
 	/** {@inheritDoc} */
