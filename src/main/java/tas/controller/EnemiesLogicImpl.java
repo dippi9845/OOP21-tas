@@ -88,7 +88,7 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean areEnemiesOnBoard() {
+	public boolean areEnemiesAlive() {
 		return !this.aliveEnemiesList.isEmpty();
 	}
 

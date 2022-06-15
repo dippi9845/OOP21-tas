@@ -239,7 +239,7 @@ public class GameController implements SceneController, SceneMouseObserver, Scen
 			spawnEnemies();
 		}
 
-		if (this.enemiesHandler.areEnemiesOnBoard()) {
+		if (this.enemiesHandler.areEnemiesAlive()) {
 			enemiesCheck();
 		}
 

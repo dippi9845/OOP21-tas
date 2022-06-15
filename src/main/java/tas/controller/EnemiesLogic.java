@@ -50,7 +50,7 @@ public interface EnemiesLogic {
 	/**
 	 * @return true if there is at least one enemy alive
 	 */
-	boolean areEnemiesOnBoard();
+	boolean areEnemiesAlive();
 
 	/**
 	 * 
