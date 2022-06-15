@@ -40,9 +40,32 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 	/** {@inheritDoc} */
 	@Override
 	public void compute() throws InterruptedException {
+		
+		//List<Enemy> toRemove = Towers.findAll(x->x.isDead(), x->!Towers.isTargetInRange(x, this), this.getEnemyList());
+		
+		
+		 List<Enemy> toRemove = this.getEnemyList()
+				.stream()
+				.filter(x->!Towers.isTargetInRange(x, this) || x.isDead())
+				.collect(Collectors.toList());
+		
+		/*
+		 List<Enemy> toRemove = this.getEnemyList()
+					.stream()
+					.filter(x->!Towers.isTargetInRange(x, this))
+					.filter(x->x.isDead())
+					.collect(Collectors.toList());
+		*/
+		
+		//List<Enemy> toRemove = Towers.findAll(x->!Towers.isTargetInRange(x, this) || x.isDead(), this.getEnemyList());
+		
+		this.getEnemyList().removeAll(toRemove);
+
 		if (!this.isFull()) {
-			Towers.findAll(this::isValidTarget, this.getVisibleEnemyList()).stream()
-					.limit(this.getMaxEnemy() - this.getEnemyList().size()).forEach(this::setTarget);
+			Towers.findAll(this::isValidTarget, this.getVisibleEnemyList())
+					.stream()
+					.limit(this.getMaxEnemy() - this.getEnemyList().size())
+					.forEach(this::setTarget);
 		}
 		/*
 		List<Enemy> toRemove = new LinkedList<>();
@@ -54,14 +77,6 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 		}
 		*/
 		
-		List<Enemy> toRemove = this.getEnemyList()
-									.stream()
-									.filter(x->x.isDead())
-									.filter(x->!Towers.isTargetInRange(x, this))
-									.collect(Collectors.toList());
-		
-		this.getEnemyList().removeAll(toRemove);
-
 		this.attack();
 		Thread.sleep(this.getDelay());
 	}
