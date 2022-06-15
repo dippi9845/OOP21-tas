@@ -7,13 +7,14 @@ import javax.swing.JPanel;
 import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
 import main.java.tas.view.SandboxModeView;
-import main.java.tas.controller.SandboxModeController;
+import main.java.tas.view.SceneActionObserver;
+import main.java.tas.view.SceneMouseObserver;
 
 /**
  * Class that builds the sandbox mode scene.
- * Class that implements {@link Scene}.
+ * Class that implements {@link ActionScene}.
  */
-public class SandboxModeScene implements Scene {
+public class SandboxModeScene implements GenericScene {
 	
 	private JPanel rootPanel;
 	private SandboxModeView View;
@@ -32,16 +33,9 @@ public class SandboxModeScene implements Scene {
 	
 	/** {@inheritDoc} */
 	@Override
-	public void setObserver(SceneController listener) {
-		this.View.getGameBoard().addMouseListener(((SandboxModeController)listener).getListener());
-	}
-	
-	/**
-	 * sets an observer for the sandbox mode view
-	 * @param listener the observer
-	 */
-	public void setButtonObserver(SceneController listener) {
-		this.View.setButtonObserver(listener);
+	public void setObserver(SceneController observer) {
+		this.View.setActionObserver((SceneActionObserver)observer);
+		this.View.setMouseObserver((SceneMouseObserver)observer);
 	}
 
 	/**

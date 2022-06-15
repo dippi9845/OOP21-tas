@@ -6,13 +6,14 @@ import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
+import main.java.tas.view.SceneActionObserver;
 import main.java.tas.view.SettingsView;
 
 /**
  * Class that builds the sandbox mode scene.
- * Class that implements {@link Scene}.
+ * Class that implements {@link ActionScene}.
  */
-public class SettingsSceneImpl implements Scene {
+public class SettingsSceneImpl implements GenericScene {
 	
 	private JPanel rootPanel;
 	private SettingsView View;
@@ -34,7 +35,7 @@ public class SettingsSceneImpl implements Scene {
 	/** {@inheritDoc} */
 	@Override
 	public void setObserver(SceneController listener) {
-		this.View.setObserver(listener);
+		this.View.setActionObserver((SceneActionObserver) listener);
 	}
 
 	/**

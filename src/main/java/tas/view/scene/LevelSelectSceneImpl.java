@@ -7,12 +7,13 @@ import javax.swing.JPanel;
 import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
 import main.java.tas.view.LevelSelectView;
+import main.java.tas.view.SceneActionObserver;
 
 /**
  * Class that builds the level select menu scene.
- * Class that implements {@link Scene}.
+ * Class that implements {@link ActionScene}.
  */
-public class LevelSelectSceneImpl implements Scene {
+public class LevelSelectSceneImpl implements GenericScene {
 	
 	private JPanel rootPanel;
 	private LevelSelectView View;
@@ -34,7 +35,7 @@ public class LevelSelectSceneImpl implements Scene {
 	/** {@inheritDoc} */
 	@Override
 	public void setObserver(SceneController listener) {
-		this.View.setObserver(listener);
+		this.View.setActionObserver((SceneActionObserver) listener);
 	}
 
 	/**

@@ -33,6 +33,11 @@ public interface View {
     void dispose();
     
     /**
+     * Removes everything from the view
+     */
+    void clearView();
+    
+    /**
      * Closes the view
      */
     void destroyView();

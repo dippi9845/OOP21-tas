@@ -8,13 +8,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import main.java.tas.controller.SceneController;
-import main.java.tas.controller.GameController;
 import main.java.tas.model.Entity;
 
 /**
  * Class that implements a {@link ViewComponent}.
  */
-public class InventoryView implements ViewComponent {
+public class InventoryView implements ViewAction {
     
     private final JPanel inventoryCanvas;
     private final JPanel towerButtonsCanvas;
@@ -57,10 +56,10 @@ public class InventoryView implements ViewComponent {
     }
     
 
-
-    public void setObserver(SceneController gameController) {
+    @Override
+    public void setActionObserver(SceneActionObserver gameController) {
     	for(int i = 0; i< nTowers; i++) {
-        	buttonList[i].addActionListener(((GameController) gameController).getListener());
+        	buttonList[i].addActionListener(gameController.getActionListener());
         } 
         
     }
@@ -81,12 +80,6 @@ public class InventoryView implements ViewComponent {
         // TODO Auto-generated method stub
         
     }
-
-	@Override
-	public void setObserver() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	/** {@inheritDoc} */
 	@Override
@@ -134,6 +127,7 @@ public class InventoryView implements ViewComponent {
 	public JLabel getInventoryLabel(String key) {
 		return this.textLables.get(key);
 	}
+
 	
 
 	
