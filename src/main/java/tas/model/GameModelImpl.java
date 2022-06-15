@@ -7,6 +7,7 @@ public class GameModelImpl implements GameModel {
 
 	private int playerHP;
 	private int playerMoney;
+	private int playerPoints;
 
 	/**
 	 * Constructor that creates the game model and set up the player attributes.
@@ -17,8 +18,15 @@ public class GameModelImpl implements GameModel {
 	public GameModelImpl(final int playerMaxHealth, final int playerStartingMoney) {
 		this.playerHP = playerMaxHealth;
 		this.playerMoney = playerStartingMoney;
+		this.playerPoints = 0;
 	}
-
+	
+	/** {@inheritDoc} */
+	@Override
+	public int getPoints() {
+		return this.playerPoints;
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public void giveMoney2Player(final int money) {
@@ -51,6 +59,12 @@ public class GameModelImpl implements GameModel {
 		} else {
 			return false;
 		}
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public void increasePoint() {
+		this.playerPoints++;
 	}
 
 }

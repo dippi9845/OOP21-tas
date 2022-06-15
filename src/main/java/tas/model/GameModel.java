@@ -30,6 +30,17 @@ public interface GameModel {
 	int getPlayerMoney();
 
 	/**
+	 * Returns the current points
+	 * @return integer describing the player points
+	 */
+	public int getPoints();
+	
+	/**
+	 * increase the count of points
+	 */
+	public void increasePoint();
+	
+	/**
 	 * Decreases the amount of money.
 	 * 
 	 * @param amount amount by which it will be decreased
