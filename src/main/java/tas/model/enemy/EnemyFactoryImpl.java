@@ -40,7 +40,7 @@ public class EnemyFactoryImpl implements EnemyFactory {
 	 * @param wave of the game
 	 * @return a list with the enemies
 	 */
-	private List<Enemy> getRedEnemyByWave(final int wave) {
+	public List<Enemy> getRedEnemyByWave(final int wave) {
 		int enemiesForWave = 0;
 		List<Enemy> eList = new ArrayList<Enemy>();
 
@@ -68,7 +68,7 @@ public class EnemyFactoryImpl implements EnemyFactory {
 	 * @param wave of the game
 	 * @return a list with the enemies
 	 */
-	private List<Enemy> getGreenEnemyByWave(final int wave) {
+	public List<Enemy> getGreenEnemyByWave(final int wave) {
 		int enemiesForWave = 0;
 		List<Enemy> eList = new ArrayList<Enemy>();
 
@@ -94,7 +94,7 @@ public class EnemyFactoryImpl implements EnemyFactory {
 	 * @param wave of the game
 	 * @return a list with the enemies
 	 */
-	private List<Enemy> getPinkEnemyByWave(final int wave) {
+	public List<Enemy> getPinkEnemyByWave(final int wave) {
 		int enemiesForWave = 0;
 		List<Enemy> eList = new ArrayList<Enemy>();
 
