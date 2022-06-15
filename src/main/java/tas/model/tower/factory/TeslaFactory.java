@@ -73,6 +73,5 @@ public interface TeslaFactory {
 				.findFirst(() -> {
 					return Towers.findFirstEnemyInRange(pos, 9, enemyList);
 				}).build();
-
 	}
 }
