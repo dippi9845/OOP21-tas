@@ -1,6 +1,10 @@
 package main.java.tas.view;
 
-public interface ViewAction extends ViewComponent {
+import javax.swing.JPanel;
+
+public interface ViewAction {
+	
+	public JPanel getPanel();
 
 	public void setActionObserver(SceneActionObserver observer);
 }

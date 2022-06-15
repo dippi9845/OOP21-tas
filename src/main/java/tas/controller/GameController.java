@@ -56,10 +56,10 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 		this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(),
 		        this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
 		
-		this.gameScene.getInventoryView().addInvetoryLabel(this.healthSymbol + " " + this.playerStats.getHP(), "health");
-		this.gameScene.getInventoryView().addInvetoryLabel(this.waveSymbol + " " + this.enemiesHandler.getWave(), "wave");
-		this.gameScene.getInventoryView().addInvetoryLabel(this.moneySymbol + " " + this.playerStats.getPlayerMoney(), "money");
-		this.gameScene.getInventoryView().addInvetoryLabel(this.pointSymbol + " " + this.playerStats.getPoints(), "points");
+		this.gameScene.getInventoryView().addTextLabel(this.healthSymbol + " " + this.playerStats.getHP(), "health");
+		this.gameScene.getInventoryView().addTextLabel(this.waveSymbol + " " + this.enemiesHandler.getWave(), "wave");
+		this.gameScene.getInventoryView().addTextLabel(this.moneySymbol + " " + this.playerStats.getPlayerMoney(), "money");
+		this.gameScene.getInventoryView().addTextLabel(this.pointSymbol + " " + this.playerStats.getPoints(), "points");
 
 		// TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
 	}
@@ -99,7 +99,7 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 	 */
 	private void increaseWave() {
 		this.enemiesHandler.setNextWave();
-		this.gameScene.getInventoryView().getInventoryLabel("wave")
+		this.gameScene.getInventoryView().getTextLabel("wave")
 		        .setText(this.waveSymbol + " " + this.enemiesHandler.getWave());
 	}
 

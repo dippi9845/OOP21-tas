@@ -4,8 +4,6 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import main.java.tas.model.Entity;
-
 
 /**
  * Class that creates the main menu view.
@@ -74,41 +72,5 @@ public class MenuView implements ViewAction {
 	 */
 	public JButton getExitButton() {
 		return this.exitButton;
-	}
-
-	@Override
-	public void drawEntity(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void addEntityLabel(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeEntityLabel(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void addTextLabel(String text, String id, String anchor) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public AdaptiveLabel getTextLabel(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void removeTextLabel(String id) {
-		// TODO Auto-generated method stub
-		
 	}
 }

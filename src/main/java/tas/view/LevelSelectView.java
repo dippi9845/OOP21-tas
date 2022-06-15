@@ -8,7 +8,7 @@ import main.java.tas.model.MenuModel;
 /**
  * Class that implements a {@link ViewComponent}.
  */
-public class LevelSelectView  {
+public class LevelSelectView implements ViewAction {
 	
 	private JPanel rootPanel = new JPanel(new GridLayout(0, 1, 5, 10));
 	private JButton buttonList [];
@@ -38,6 +38,7 @@ public class LevelSelectView  {
         return this.rootPanel;
     }
 	
+	@Override
 	public void setActionObserver(SceneActionObserver levelSelectController) {
 		for(int counter = 0; counter < nLevels; counter++) {
 			buttonList[counter].addActionListener(levelSelectController.getActionListener());

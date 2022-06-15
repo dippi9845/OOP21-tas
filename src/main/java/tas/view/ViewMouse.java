@@ -1,6 +1,10 @@
 package main.java.tas.view;
 
-public interface ViewMouse extends ViewComponent {
+import javax.swing.JPanel;
+
+public interface ViewMouse {
+	
+	public JPanel getPanel();
 
 	public void setMouseObserver(SceneMouseObserver observer);
 }

@@ -7,8 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import main.java.tas.model.Entity;
-import main.java.tas.model.MenuModel;
 
 /**
  * Class that builds the settings menu view.
@@ -24,7 +22,7 @@ public class SettingsView implements ViewAction {
 	 * Constructor that builds the settings menu view
 	 * @param theModel the model
 	 */
-    public SettingsView(MenuModel theModel){
+    public SettingsView(){
     	label = new JLabel("Sorry there are no settings to mess with.");
     	label.setFont(new Font("Serif", Font.PLAIN, 30));
     	label.setHorizontalAlignment(JLabel.CENTER);
@@ -49,42 +47,5 @@ public class SettingsView implements ViewAction {
 	public void setActionObserver(SceneActionObserver settingsController) {
 		backButton.addActionListener(settingsController.getActionListener());
     }
-
-	@Override
-	public void drawEntity(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void addEntityLabel(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeEntityLabel(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void addTextLabel(String text, String id, String anchor) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public AdaptiveLabel getTextLabel(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void removeTextLabel(String id) {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 }

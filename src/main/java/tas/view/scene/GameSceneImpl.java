@@ -23,12 +23,12 @@ public class GameSceneImpl implements GameScene {
 	 * 
 	 * @param root is the {@link JPanel} that will contain the scene
 	 */
-	public GameSceneImpl(JPanel root) {
+	public <T extends Enum <T>> GameSceneImpl(JPanel root, Class <T> objects) {
 		this.rootPanel = root;
 		this.rootPanel.setLayout(new BorderLayout());
 
 		this.gameView = new GameView();
-		this.inventoryView = new InventoryView();
+		this.inventoryView = new InventoryView(objects);
 
 		this.rootPanel.add(this.gameView.getPanel(), BorderLayout.CENTER);
 		this.rootPanel.add(this.inventoryView.getPanel(), BorderLayout.EAST);

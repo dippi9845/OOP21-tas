@@ -5,7 +5,6 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneController;
-import main.java.tas.model.MenuModel;
 import main.java.tas.view.SceneActionObserver;
 import main.java.tas.view.SettingsView;
 
@@ -23,11 +22,11 @@ public class SettingsSceneImpl implements GenericScene {
      * @param rootPanelIn is the {@link JPanel} that will contain the scene
      * @param menuModel the menu model
      */
-	public SettingsSceneImpl(JPanel rootPanelIn, MenuModel menuModel) {
+	public SettingsSceneImpl(JPanel rootPanelIn) {
 		this.rootPanel = rootPanelIn;
 		this.rootPanel.setLayout(new BorderLayout());
         
-        this.View = new SettingsView(menuModel);
+        this.View = new SettingsView();
         
         this.rootPanel.add(this.View.getPanel(), BorderLayout.CENTER);
 	}

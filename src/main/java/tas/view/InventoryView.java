@@ -2,12 +2,14 @@ package main.java.tas.view;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+
 import main.java.tas.model.tower.factory.DefaultTowers;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import main.java.tas.model.Entity;
 
 /**
  * Class that implements a {@link ViewComponent}.
@@ -24,7 +26,7 @@ public class InventoryView implements ViewAction {
     /**
      * Constructor that sets up the inventory view
      */
-    public InventoryView() {
+    public <T extends Enum <T>>InventoryView(Class <T> objects) {
         this.inventoryCanvas = new JPanel(new GridLayout(0,2));
         this.inventoryCanvas.setBackground(new Color(153,102,0));
         
@@ -35,9 +37,9 @@ public class InventoryView implements ViewAction {
         this.buttonList = new JButton [this.nTowers];
         
         
-        DefaultTowers towerNames [] = DefaultTowers.values();
+        List <T> towerNames = Arrays.asList(objects.getEnumConstants());
         for(int i = 0; i< nTowers; i++) {
-        	this.buttonList[i] = new JButton(towerNames [i].toString());
+        	this.buttonList[i] = new JButton(towerNames.get(i).toString());
         	this.towerButtonsCanvas.add(buttonList[i]);
         }
         
@@ -62,46 +64,13 @@ public class InventoryView implements ViewAction {
         } 
         
     }
-    @Override
-    public void drawEntity(Entity entity) {
-        // TODO Auto-generated method stub
-        
-    }
-    
-    @Override
-    public void addEntityLabel(Entity entity) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void removeEntityLabel(Entity entity) {
-        // TODO Auto-generated method stub
-        
-    }
-
-	/** {@inheritDoc} */
-	@Override
-	public void addTextLabel(String text, String id, String anchor) {
-		// TODO Auto-generated method stub
-	}
-	@Override
-	public AdaptiveLabel getTextLabel(String id) {
-		return this.textLables.get(id);
-	}
-
-	@Override
-	public void removeTextLabel(String id) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	/**
 	 * adds a label to the right of the inventory
 	 * @param txt the string that has to appear on the label
 	 * @param id the key of the label in the HashMap
 	 */
-	public void addInvetoryLabel(String txt, String id) {
+	public void addTextLabel(String txt, String id) {
 		AdaptiveLabel tmpLabel = new AdaptiveLabel();
 		tmpLabel.setText(txt);
 		tmpLabel.setFont("Verdana", 1, 20);
@@ -123,7 +92,7 @@ public class InventoryView implements ViewAction {
 	 * @param key the key of the label
 	 * @return the label corresponding to the asked key
 	 */
-	public JLabel getInventoryLabel(String key) {
+	public JLabel getTextLabel(String key) {
 		return this.textLables.get(key);
 	}
 

@@ -11,6 +11,7 @@ import main.java.tas.model.GameModelImpl;
 import main.java.tas.model.GameSpecs;
 import main.java.tas.model.MenuModel;
 import main.java.tas.model.MenuModelImpl;
+import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.utils.LevelHandler;
 
 /**
@@ -81,7 +82,7 @@ public class MainControllerImpl implements MainController {
 	 * @return the scene that was created
 	 */
 	public SceneController createSettings(final MainView view) {
-		GenericScene scene = new SettingsSceneImpl(view.getPanel(), this.menuModel);
+		GenericScene scene = new SettingsSceneImpl(view.getPanel());
 		SceneController controller = new SettingsController(scene, this.menuModel);
 		scene.setObserver(controller);
 		return controller;
@@ -90,7 +91,7 @@ public class MainControllerImpl implements MainController {
 	/** {@inheritDoc} */
 	@Override
 	public SceneController createGame(final MainView view) {
-		GameSceneImpl scene = new GameSceneImpl(view.getPanel());
+		GameSceneImpl scene = new GameSceneImpl(view.getPanel(), DefaultTowers.class);
 		SceneController controller = new GameController(scene, new GameModelImpl(this.playerHealth, this.playerMoney),
 		        LevelHandler.readLevel("level" + Integer.toString(this.menuModel.getCurrentLevel())));
 		scene.setObserver(controller);
