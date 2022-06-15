@@ -45,7 +45,7 @@ public abstract class AbstractBasicTower implements Tower {
 
 	protected List<Enemy> getVisibleEnemyList() {
 		synchronized (this.visibleEnemyList) {
-			return Collections.unmodifiableList(this.visibleEnemyList);
+			return List.copyOf(this.visibleEnemyList);
 		}
 	}
 

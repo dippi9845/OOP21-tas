@@ -92,7 +92,7 @@ public class Towers {
 	 */
 	static public Optional<Enemy> findFistEnemyBiPredicate(final Predicate<Enemy> f, final Predicate<Enemy> g,
 			final List<Enemy> enemyList) {
-		return enemyList.stream().filter(x->!x.isDead()).filter(f).filter(g).findFirst();
+		return enemyList.stream().filter(f).filter(g).findFirst();
 	}
 
 	/**
@@ -103,14 +103,21 @@ public class Towers {
 	 * @return List containing all the enemies that satisfies the predicate
 	 */
 	static public List<Enemy> findAll(final Predicate<Enemy> f, final List<Enemy> enemyList) {
+		/*
 		List<Enemy> rtr = new LinkedList<Enemy>();
+		
+>>>>>>> Filippo
 		for (var i : enemyList) {
 			if (!i.isDead() && f.test(i)) {
 				rtr.add(i);
 			}
 		}
 		return rtr;
+<<<<<<< HEAD
 		//return enemyList.stream().filter(x->!x.isDead()).filter(f).collect(Collectors.toList());
+=======
+		*/
+		return enemyList.stream().filter(f).collect(Collectors.toList());
 	}
 
 	/**
