@@ -12,7 +12,7 @@
     },
     "GreenEnemy":{
         "image":"greenEnemy",
-        "health":600,
+        "health":6000,
         "money":100,
         "damage":40,
         "speed":30,
