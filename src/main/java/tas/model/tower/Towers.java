@@ -1,5 +1,6 @@
 package main.java.tas.model.tower;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -90,7 +91,7 @@ public class Towers {
 	 */
 	static public Optional<Enemy> findFistEnemyBiPredicate(final Predicate<Enemy> f, final Predicate<Enemy> g,
 			final List<Enemy> enemyList) {
-		return enemyList.stream().filter(x->!x.isDead()).filter(f).filter(g).findFirst();
+		return enemyList.stream().filter(f).filter(g).findFirst();
 	}
 
 	/**
@@ -101,7 +102,18 @@ public class Towers {
 	 * @return List containing all the enemies that satisfies the predicate
 	 */
 	static public List<Enemy> findAll(final Predicate<Enemy> f, final List<Enemy> enemyList) {
-		return enemyList.stream().filter(x->!x.isDead()).filter(f).collect(Collectors.toList());
+		/*
+		List<Enemy> rtr = new LinkedList<Enemy>();
+		
+		for (var i : enemyList) {
+			if (!i.isDead() && f.test(i)) {
+				rtr.add(i);
+			}
+		}
+		return rtr;
+		//return enemyList.stream().filter(x->!x.isDead()).filter(f).collect(Collectors.toList());
+		*/
+		return enemyList.stream().filter(f).collect(Collectors.toList());
 	}
 
 	/**
