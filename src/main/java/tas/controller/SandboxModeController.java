@@ -80,7 +80,9 @@ public class SandboxModeController implements SceneActionObserver,SceneMouseObse
 			this.listener.resetUpdate();
 		}
 		if (this.doneButtonListener.checkUpdate()) {
-			LevelHandler.writeLevel(linePositionList);
+			if(!linePositionList.isEmpty()) {
+				LevelHandler.writeLevel(linePositionList);
+			}
 			this.model.setMainScene(1);
 			this.doneButtonListener.resetUpdate();
 		}
