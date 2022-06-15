@@ -1,8 +1,6 @@
 package main.java.tas.model.tower;
 
-import java.util.Collections;
 import java.util.List;
-
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 
