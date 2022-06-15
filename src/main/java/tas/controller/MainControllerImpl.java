@@ -155,7 +155,6 @@ public class MainControllerImpl implements MainController {
 			if (System.currentTimeMillis() - last_frame_time > 1000) {
 				last_frame_time = System.currentTimeMillis();
 			}
-
 		}
 
 		this.mainView.destroyView();
