@@ -27,7 +27,6 @@ public class Towers {
 	 * @return True if the distance is under radius
 	 */
 	static public boolean isInRange(final Position x, final Position y, final int radius) {
-		System.out.println(Position.findDistance(x, y));
 		return Position.findDistance(x, y) <= radius;
 	}
 
