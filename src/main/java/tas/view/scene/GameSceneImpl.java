@@ -3,11 +3,11 @@ package main.java.tas.view.scene;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
+import main.java.tas.controller.SceneActionObserver;
 import main.java.tas.controller.SceneController;
+import main.java.tas.controller.SceneMouseObserver;
 import main.java.tas.view.GameView;
 import main.java.tas.view.InventoryView;
-import main.java.tas.view.SceneActionObserver;
-import main.java.tas.view.SceneMouseObserver;
 
 /**
  * Class that implements a {@link GameScene}.

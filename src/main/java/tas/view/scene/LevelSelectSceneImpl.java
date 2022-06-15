@@ -4,10 +4,10 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
+import main.java.tas.controller.SceneActionObserver;
 import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
 import main.java.tas.view.LevelSelectView;
-import main.java.tas.view.SceneActionObserver;
 
 /**
  * Class that builds the level select menu scene.

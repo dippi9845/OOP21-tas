@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import main.java.tas.controller.SceneActionObserver;
+
 
 /**
  * Class that builds the settings menu view.

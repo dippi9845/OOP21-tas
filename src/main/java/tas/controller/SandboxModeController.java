@@ -12,8 +12,6 @@ import main.java.tas.model.MenuModel;
 import main.java.tas.utils.LevelHandler;
 import main.java.tas.utils.Position;
 import main.java.tas.view.scene.SandboxModeScene;
-import main.java.tas.view.SceneActionObserver;
-import main.java.tas.view.SceneMouseObserver;
 import main.java.tas.view.scene.GenericScene;
 
 /**

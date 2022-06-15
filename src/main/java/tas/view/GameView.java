@@ -5,6 +5,7 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
+import main.java.tas.controller.SceneMouseObserver;
 import main.java.tas.model.Entity;
 
 /**

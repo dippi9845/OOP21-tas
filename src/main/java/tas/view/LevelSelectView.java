@@ -3,6 +3,8 @@ package main.java.tas.view;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import main.java.tas.controller.SceneActionObserver;
 import main.java.tas.model.MenuModel;
 
 /**

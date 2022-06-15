@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import main.java.tas.controller.SceneActionObserver;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import javax.swing.JButton;
 import javax.swing.JLabel;

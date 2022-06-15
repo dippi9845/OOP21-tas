@@ -4,6 +4,8 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import main.java.tas.controller.SceneActionObserver;
+
 
 /**
  * Class that creates the main menu view.

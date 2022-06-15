@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import main.java.tas.controller.SceneActionObserver;
+import main.java.tas.controller.SceneMouseObserver;
 import main.java.tas.model.MenuModel;
 
 /**

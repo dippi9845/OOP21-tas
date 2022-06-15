@@ -13,8 +13,6 @@ import main.java.tas.model.TimeCurveImpl;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
-import main.java.tas.view.SceneActionObserver;
-import main.java.tas.view.SceneMouseObserver;
 import main.java.tas.view.scene.GameScene;
 
 /**
