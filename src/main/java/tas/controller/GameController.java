@@ -106,33 +106,31 @@ public class GameController implements SceneController {
 	 * they completed their path.
 	 */
 	private void enemiesCheck() {
-		synchronized(enemiesHandler.getEnemies()) {
-			for (int i = 0; i < enemiesHandler.getEnemies().size(); i++) {
-				Enemy enemy = enemiesHandler.getEnemies().get(i);
-	
-				if (enemy.isDead()) {
-					this.playerStats.giveMoney2Player(enemy.getMoney());
-					this.gameScene.getInventoryView().getTextLabel("money")
-					        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
-									
-					killEnemy(enemy);
-					
-					this.playerStats.increasePoint();
-					this.gameScene.getInventoryView().getTextLabel("points").setText(this.pointSymbol + " " + this.playerStats.getPoints());
-					
-					continue;
-				}
-				if (enemy.hasCompletedPath()) {
-					this.playerStats.dealDamage2Player(enemy.getDamage());
-					this.gameScene.getInventoryView().getTextLabel("health")
-					        .setText(this.healthSymbol + " " + this.playerStats.getHP());
-					killEnemy(enemy);
-					continue;
-				}
-	
-				enemy.moveForward();
-				this.gameScene.getGameView().drawEntity(enemy);
+		for (int i = 0; i < enemiesHandler.getEnemies().size(); i++) {
+			Enemy enemy = enemiesHandler.getEnemies().get(i);
+
+			if (enemy.isDead()) {
+				this.playerStats.giveMoney2Player(enemy.getMoney());
+				this.gameScene.getInventoryView().getTextLabel("money")
+				        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
+								
+				killEnemy(enemy);
+				
+				this.playerStats.increasePoint();
+				this.gameScene.getInventoryView().getTextLabel("points").setText(this.pointSymbol + " " + this.playerStats.getPoints());
+				
+				continue;
 			}
+			if (enemy.hasCompletedPath()) {
+				this.playerStats.dealDamage2Player(enemy.getDamage());
+				this.gameScene.getInventoryView().getTextLabel("health")
+				        .setText(this.healthSymbol + " " + this.playerStats.getHP());
+				killEnemy(enemy);
+				continue;
+			}
+
+			enemy.moveForward();
+			this.gameScene.getGameView().drawEntity(enemy);
 		}
 	}
 	
