@@ -11,10 +11,9 @@ import javax.swing.AbstractButton;
  * 
  *
  */
-public class LevelSelectListener implements ActionListener{
+public class LevelSelectListener extends GenericListener implements ActionListener{
 	
 	private int currentComand = 0;
-	private boolean update = false;
 	
 	/**
 	 * 
@@ -24,25 +23,10 @@ public class LevelSelectListener implements ActionListener{
 		return this.currentComand;
 	}
 	
-	/**
-	 * 
-	 * @return update
-	 */
-	public boolean checkUpdate() {
-		return this.update;
-	}
-	
-	/**
-	 * It sets the update to false
-	 */
-	public void resetUpdate() {
-		this.update = false;
-	}
-	
 	/** {@inheritDoc} */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.currentComand = Integer.parseInt(((AbstractButton) e.getSource()).getText());
-		this.update = true;
+		setUpdate();
 	}
 }

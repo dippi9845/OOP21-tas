@@ -14,26 +14,11 @@ import java.util.List;
  * Class that implements {@link MouseListener}
  *
  */
-public class SandboxModeListener implements MouseListener{
+public class SandboxModeListener extends GenericListener implements MouseListener{
 	
-	private boolean update = false;
 	private List <Position> nodesSelected = new ArrayList <Position>();
 	private Position lastNodeSelected;
 	
-	/**
-	 * 
-	 * @return update
-	 */
-	public boolean checkUpdate() {
-		return this.update;
-	}
-	
-	/**
-	 * Sets update to false.
-	 */
-	public void resetUpdate() {
-		this.update = false;
-	}
 	
 	/**
 	 * 
@@ -58,16 +43,13 @@ public class SandboxModeListener implements MouseListener{
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		//lastNodeSelected ha la posizione non ancora convertita
 		this.lastNodeSelected = new Position(e.getX(),e.getY());
 		System.out.println("click percieved");
-		//synchronized(this.nodesSelected){
-			
-		//}
-		this.update = true;	
+		setUpdate();
 	}
 
 	/** It is not used */
+	@Override
 	public void mousePressed(MouseEvent e) {
 	}
 

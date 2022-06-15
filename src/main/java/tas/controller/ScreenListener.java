@@ -12,26 +12,11 @@ import java.awt.event.MouseEvent;
  * Class that implements {@link MouseListener}.
  *
  */
-public class ScreenListener implements MouseListener{
+public class ScreenListener extends GenericListener implements MouseListener{
 	
-	private boolean update = false;
 	private Point clickLocation;
 	private boolean listening = false;
 	
-	/**
-	 * 
-	 * @return update
-	 */
-	public boolean checkUpdate() {
-		return this.update;
-	}
-	
-	/** 
-	 * sets update to false
-	 */
-	public void resetUpdate() {
-		this.update = false;
-	}
 	
 	/**
 	 * 
@@ -64,7 +49,7 @@ public class ScreenListener implements MouseListener{
 		if(listening) {
 			this.clickLocation = e.getPoint();
 			System.out.println(clickLocation.toString());
-			this.update = true;
+			setUpdate();
 		}
 		
 		

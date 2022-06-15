@@ -7,7 +7,6 @@ import main.java.tas.model.tower.factory.DefaultTowers;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import main.java.tas.controller.SceneController;
 import main.java.tas.model.Entity;
 
 /**
