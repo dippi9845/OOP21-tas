@@ -2,6 +2,8 @@ package main.java.tas.view.scene;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
+
+import main.java.tas.controller.SceneController;
 import main.java.tas.view.GameView;
 import main.java.tas.view.InventoryView;
 import main.java.tas.view.SceneActionObserver;
@@ -35,15 +37,10 @@ public class GameSceneImpl implements GameScene {
 
 	/** {@inheritDoc} */
 	@Override
-	public void setActionObserver(SceneActionObserver observer) {
+	public void setObserver(SceneController observer) {
 		
-		this.inventoryView.setActionObserver(observer);
-
-	}
-	
-	@Override
-	public void setMouseObserver(SceneMouseObserver observer) {
-		this.gameView.setMouseObserver(observer);
+		this.inventoryView.setActionObserver((SceneActionObserver) observer);
+		this.gameView.setMouseObserver((SceneMouseObserver) observer);
 	}
 
 	/** {@inheritDoc} */

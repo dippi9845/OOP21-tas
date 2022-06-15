@@ -40,7 +40,7 @@ public class LevelSelectView  {
 	
 	public void setActionObserver(SceneActionObserver levelSelectController) {
 		for(int counter = 0; counter < nLevels; counter++) {
-			buttonList[counter].addActionListener(levelSelectController.getListener());
+			buttonList[counter].addActionListener(levelSelectController.getActionListener());
 		}
     }
 }

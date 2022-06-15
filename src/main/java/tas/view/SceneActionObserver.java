@@ -7,6 +7,6 @@ import main.java.tas.controller.SceneController;
 
 public interface SceneActionObserver extends SceneController {
 
-	public ActionListener getListener();
+	public ActionListener getActionListener();
 	
 }

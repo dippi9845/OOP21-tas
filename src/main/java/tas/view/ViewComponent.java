@@ -2,7 +2,6 @@ package main.java.tas.view;
 
 import javax.swing.JPanel;
 
-import main.java.tas.controller.SceneController;
 import main.java.tas.model.Entity;
 
 /**
@@ -61,10 +60,5 @@ public interface ViewComponent {
 	 * @return the {@link JPanel} of the component
 	 */
 	JPanel getPanel();
-
-	/**
-	 * Set up the observer.
-	 */
-	void setObserver(SceneController observer);
 
 }

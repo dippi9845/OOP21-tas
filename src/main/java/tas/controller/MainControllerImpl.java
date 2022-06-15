@@ -1,13 +1,11 @@
 package main.java.tas.controller;
 
 import main.java.tas.view.MainView;
-import main.java.tas.view.SceneActionObserver;
 import main.java.tas.view.scene.GameSceneImpl;
 import main.java.tas.view.scene.GenericScene;
 import main.java.tas.view.scene.LevelSelectSceneImpl;
 import main.java.tas.view.scene.MainMenuSceneImpl;
 import main.java.tas.view.scene.SandboxModeScene;
-import main.java.tas.view.scene.ActionScene;
 import main.java.tas.view.scene.SettingsSceneImpl;
 import main.java.tas.model.GameModelImpl;
 import main.java.tas.model.GameSpecs;
@@ -46,7 +44,7 @@ public class MainControllerImpl implements MainController {
 	public SceneController createMenu(final MainView view) {
 		this.scene = new MainMenuSceneImpl(view.getPanel());
 		SceneController controller = new MainMenuController(this.scene, this.menuModel);
-		((ActionScene)this.scene).setActionObserver((SceneActionObserver)controller);
+		this.scene.setObserver(controller);
 		return controller;
 	}
 	
@@ -59,7 +57,7 @@ public class MainControllerImpl implements MainController {
 	public SceneController createLevelSelect(final MainView view) {
 		this.scene = new LevelSelectSceneImpl(view.getPanel(), this.menuModel);
 		SceneController controller = new LevelSelectController(this.scene, this.menuModel);
-		((ActionScene)this.scene).setActionObserver((SceneActionObserver)controller);
+		this.scene.setObserver(controller);
 		LevelHandler.deleteUserLevels();
 		return controller;
 		
@@ -74,8 +72,7 @@ public class MainControllerImpl implements MainController {
 	public SceneController createSandBoxMode(final MainView view) {
 		this.scene = new SandboxModeScene(view.getPanel(), this.menuModel);
 		SceneController controller = new SandboxModeController(this.scene, this.menuModel);
-		this.scene.setActionObserver(controller);
-		this.scene.setMouseObserver(controller);
+		this.scene.setObserver(controller);
 		return controller;
 	}
 	
@@ -88,7 +85,7 @@ public class MainControllerImpl implements MainController {
 	public SceneController createSettings(final MainView view) {
 		this.scene = new SettingsSceneImpl(view.getPanel(), this.menuModel);
 		SceneController controller = new SettingsController(this.scene, this.menuModel);
-		this.scene.setActionObserver(controller);
+		this.scene.setObserver(controller);
 		return controller;
 	}
 
@@ -99,8 +96,7 @@ public class MainControllerImpl implements MainController {
 		SceneController controller = new GameController(((GameSceneImpl) this.scene),
 		        new GameModelImpl(this.playerHealth, this.playerMoney),
 		        LevelHandler.readLevel("level" + Integer.toString(this.menuModel.getCurrentLevel())));
-		this.scene.setActionObserver(controller);
-		this.scene.setMouseObserver(controller);
+		this.scene.setObserver(controller);
 		return controller;
 	}
 

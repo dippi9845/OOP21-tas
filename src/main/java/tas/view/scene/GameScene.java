@@ -6,7 +6,7 @@ import main.java.tas.view.InventoryView;
 /**
  * Interface for a game scene.
  */
-public interface GameScene extends ActionScene,MouseScene {
+public interface GameScene extends GenericScene {
  
 
 

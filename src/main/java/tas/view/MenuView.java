@@ -39,10 +39,10 @@ public class MenuView implements ViewAction {
 	
 	@Override
 	public void setActionObserver(SceneActionObserver menuController) {
-        this.newGameButton.addActionListener(menuController.getListener());
-        this.settingsButton.addActionListener(menuController.getListener());
-        this.sandboxModeButton.addActionListener(menuController.getListener());
-        this.exitButton.addActionListener(menuController.getListener());
+        this.newGameButton.addActionListener(menuController.getActionListener());
+        this.settingsButton.addActionListener(menuController.getActionListener());
+        this.sandboxModeButton.addActionListener(menuController.getActionListener());
+        this.exitButton.addActionListener(menuController.getActionListener());
     }
 	
 	/**
@@ -109,12 +109,6 @@ public class MenuView implements ViewAction {
 
 	@Override
 	public void removeTextLabel(String id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setObserver(SceneController observer) {
 		// TODO Auto-generated method stub
 		
 	}

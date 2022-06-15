@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
+import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
 import main.java.tas.view.SandboxModeView;
 import main.java.tas.view.SceneActionObserver;
@@ -13,7 +14,7 @@ import main.java.tas.view.SceneMouseObserver;
  * Class that builds the sandbox mode scene.
  * Class that implements {@link ActionScene}.
  */
-public class SandboxModeScene implements MouseScene,ActionScene {
+public class SandboxModeScene implements GenericScene {
 	
 	private JPanel rootPanel;
 	private SandboxModeView View;
@@ -32,16 +33,9 @@ public class SandboxModeScene implements MouseScene,ActionScene {
 	
 	/** {@inheritDoc} */
 	@Override
-	public void setMouseObserver(SceneMouseObserver observer) {
-		this.View.getGameBoard().addMouseListener(observer.getMouseListener());
-	}
-	
-	/**
-	 * sets an observer for the sandbox mode view
-	 * @param listener the observer
-	 */
-	public void setActionObserver(SceneActionObserver listener) {
-		this.View.setActionObserver(listener);
+	public void setObserver(SceneController observer) {
+		this.View.setActionObserver((SceneActionObserver)observer);
+		this.View.setMouseObserver((SceneMouseObserver)observer);
 	}
 
 	/**

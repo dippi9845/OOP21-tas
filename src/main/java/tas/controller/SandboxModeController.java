@@ -11,18 +11,18 @@ import main.java.tas.model.GameSpecs;
 import main.java.tas.model.MenuModel;
 import main.java.tas.utils.LevelHandler;
 import main.java.tas.utils.Position;
+import main.java.tas.view.scene.SandboxModeScene;
 import main.java.tas.view.SceneActionObserver;
 import main.java.tas.view.SceneMouseObserver;
-import main.java.tas.view.scene.SandboxModeScene;
-import main.java.tas.view.scene.ActionScene;
+import main.java.tas.view.scene.GenericScene;
 
 /**
  * Class that implements {@link SceneController}.
  */
-public class SandboxModeController implements SceneController,SceneActionObserver,SceneMouseObserver {
+public class SandboxModeController implements SceneActionObserver,SceneMouseObserver {
 	
 	private SandboxModeListener listener;
-	private ActionScene scene;
+	private GenericScene scene;
 	private MenuModel model;
 	private boolean lineInitialized = false;
 	private boolean firstNodeIsSelected = false;
@@ -36,10 +36,9 @@ public class SandboxModeController implements SceneController,SceneActionObserve
 	 * @param sceneIn the sandbox mode scene
 	 * @param theModel the menu model
 	 */
-	public SandboxModeController(ActionScene sceneIn, MenuModel theModel) {
+	public SandboxModeController(GenericScene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
-		((SandboxModeScene) scene).setActionObserver(this);
-		((SandboxModeScene) scene).setButtonObserver(this);
+		((SandboxModeScene) scene).setObserver(this);
 		this.listener = new SandboxModeListener();
 		this.model = theModel;
 	}
@@ -89,7 +88,7 @@ public class SandboxModeController implements SceneController,SceneActionObserve
 	
 	/**
 	 * 
-	 * @return the listener
+	 * {@inheritDoc}
 	 */
 	@Override
 	public MouseListener getMouseListener() {
@@ -101,7 +100,7 @@ public class SandboxModeController implements SceneController,SceneActionObserve
 	 * @return the done button listener
 	 */
 	@Override
-	public ActionListener getListener() {
+	public ActionListener getActionListener() {
 		return this.doneButtonListener;
 	}
 	

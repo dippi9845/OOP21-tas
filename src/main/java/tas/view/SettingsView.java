@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import main.java.tas.controller.SceneController;
 import main.java.tas.model.Entity;
 import main.java.tas.model.MenuModel;
 
@@ -48,7 +47,7 @@ public class SettingsView implements ViewAction {
 	
 	@Override
 	public void setActionObserver(SceneActionObserver settingsController) {
-		backButton.addActionListener(settingsController.getListener());
+		backButton.addActionListener(settingsController.getActionListener());
     }
 
 	@Override
@@ -87,10 +86,5 @@ public class SettingsView implements ViewAction {
 		
 	}
 
-	@Override
-	public void setObserver(SceneController observer) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

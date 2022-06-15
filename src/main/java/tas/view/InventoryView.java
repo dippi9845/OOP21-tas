@@ -59,7 +59,7 @@ public class InventoryView implements ViewAction {
     @Override
     public void setActionObserver(SceneActionObserver gameController) {
     	for(int i = 0; i< nTowers; i++) {
-        	buttonList[i].addActionListener(gameController.getListener());
+        	buttonList[i].addActionListener(gameController.getActionListener());
         } 
         
     }
@@ -131,11 +131,6 @@ public class InventoryView implements ViewAction {
 		return this.textLables.get(key);
 	}
 
-	@Override
-	public void setObserver(SceneController observer) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 
 	

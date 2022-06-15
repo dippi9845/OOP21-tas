@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
+import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
 import main.java.tas.view.LevelSelectView;
 import main.java.tas.view.SceneActionObserver;
@@ -12,7 +13,7 @@ import main.java.tas.view.SceneActionObserver;
  * Class that builds the level select menu scene.
  * Class that implements {@link ActionScene}.
  */
-public class LevelSelectSceneImpl implements ActionScene {
+public class LevelSelectSceneImpl implements GenericScene {
 	
 	private JPanel rootPanel;
 	private LevelSelectView View;
@@ -33,8 +34,8 @@ public class LevelSelectSceneImpl implements ActionScene {
 	
 	/** {@inheritDoc} */
 	@Override
-	public void setActionObserver(SceneActionObserver listener) {
-		this.View.setActionObserver(listener);
+	public void setObserver(SceneController listener) {
+		this.View.setActionObserver((SceneActionObserver) listener);
 	}
 
 	/**

@@ -83,10 +83,4 @@ public class MainView implements View {
 		dispose();
 	}
 
-	@Override
-	public void destroyView() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

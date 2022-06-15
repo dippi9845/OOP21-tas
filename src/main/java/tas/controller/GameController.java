@@ -151,7 +151,6 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 	 */
 	
 	public boolean checkTurretPosition(Position turretPosition){
-		//TODO check if tower positioning is legal
 		
 		//DONE check if position is inside the game Board
 		
@@ -210,7 +209,7 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 	}
 	
 	@Override
-	public ActionListener getListener() {
+	public ActionListener getActionListener() {
 		return this.inventoryListener;
 	}
 

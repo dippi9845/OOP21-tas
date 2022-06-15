@@ -5,7 +5,6 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
-import main.java.tas.controller.SceneController;
 import main.java.tas.model.Entity;
 
 /**
@@ -80,12 +79,6 @@ public class GameView implements ViewMouse {
 	@Override
 	public void setMouseObserver(final SceneMouseObserver observer) {
 		this.gameBoard.addMouseListener(observer.getMouseListener());
-		
-	}
-
-	@Override
-	public void setObserver(SceneController observer) {
-		// TODO Auto-generated method stub
 		
 	}
 
