@@ -96,6 +96,29 @@ class AttackTest {
 
 		assertTrue(e.getHealth() < 51 && e1.isDead());
 	}
+	
+	@Test
+	void BasicMultipleTowerMoreThan2() throws InterruptedException {
+		List<Enemy> enemies = new LinkedList<>();
+		FakeEnemy e = new FakeEnemy(new Position(50, 50), 100);
+		FakeEnemy e1 = new FakeEnemy(new Position(51, 50), 100);
+		FakeEnemy e2 = new FakeEnemy(new Position(50, 50), 100);
+		FakeEnemy e3 = new FakeEnemy(new Position(51, 50), 100);
+		
+		enemies.add(e);
+		enemies.add(e1);
+		enemies.add(e2);
+		enemies.add(e3);
+
+		Tower t = new Builder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).attackType(AttackType.MULTIPLE)
+				.maximumTarget(2).build();
+		t.compute();
+		t.compute();
+		t.compute();
+		t.compute();
+
+		assertTrue(e.isDead() && e1.isDead() && e2.isDead() && e3.isDead());
+	}
 
 	@Test
 	void BasicMultipleTowerMaximumTargetTest() throws InterruptedException {
