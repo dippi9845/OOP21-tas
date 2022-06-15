@@ -7,14 +7,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import main.java.tas.controller.SettingsController;
-import main.java.tas.controller.SceneController;
+import main.java.tas.model.Entity;
 import main.java.tas.model.MenuModel;
 
 /**
  * Class that builds the settings menu view.
  */
-public class SettingsView  {
+public class SettingsView implements ViewAction {
 	
 	private JPanel rootPanel = new JPanel(new GridLayout(0, 1, 5, 10));
 	private JLabel label;
@@ -46,7 +45,46 @@ public class SettingsView  {
         return this.rootPanel;
     }
 	
-	public void setObserver(SceneController settingsController) {
-		backButton.addActionListener(((SettingsController) settingsController).getListener());
+	@Override
+	public void setActionObserver(SceneActionObserver settingsController) {
+		backButton.addActionListener(settingsController.getActionListener());
     }
+
+	@Override
+	public void drawEntity(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addEntityLabel(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeEntityLabel(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addTextLabel(String text, String id, String anchor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public AdaptiveLabel getTextLabel(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void removeTextLabel(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }

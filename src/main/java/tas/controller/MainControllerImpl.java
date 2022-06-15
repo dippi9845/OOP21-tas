@@ -2,10 +2,10 @@ package main.java.tas.controller;
 
 import main.java.tas.view.MainView;
 import main.java.tas.view.scene.GameSceneImpl;
+import main.java.tas.view.scene.GenericScene;
 import main.java.tas.view.scene.LevelSelectSceneImpl;
 import main.java.tas.view.scene.MainMenuSceneImpl;
 import main.java.tas.view.scene.SandboxModeScene;
-import main.java.tas.view.scene.Scene;
 import main.java.tas.view.scene.SettingsSceneImpl;
 import main.java.tas.model.GameModelImpl;
 import main.java.tas.model.GameSpecs;
@@ -19,7 +19,7 @@ import main.java.tas.utils.LevelHandler;
 public class MainControllerImpl implements MainController {
 
 	private SceneController sceneController;
-	private Scene scene;
+	private GenericScene scene;
 	private GameSpecs gameSpecs = new GameSpecs();
 
 	private int playerHealth = 100;
@@ -58,7 +58,9 @@ public class MainControllerImpl implements MainController {
 		this.scene = new LevelSelectSceneImpl(view.getPanel(), this.menuModel);
 		SceneController controller = new LevelSelectController(this.scene, this.menuModel);
 		this.scene.setObserver(controller);
+		LevelHandler.deleteUserLevels();
 		return controller;
+		
 	}
 	
 	/**
@@ -92,7 +94,8 @@ public class MainControllerImpl implements MainController {
 	public SceneController createGame(final MainView view) {
 		this.scene = new GameSceneImpl(view.getPanel());
 		SceneController controller = new GameController(((GameSceneImpl) this.scene),
-		        new GameModelImpl(this.playerHealth, this.playerMoney), LevelHandler.readLevel("level" + Integer.toString(this.menuModel.getCurrentLevel())));
+		        new GameModelImpl(this.playerHealth, this.playerMoney),
+		        LevelHandler.readLevel("level" + Integer.toString(this.menuModel.getCurrentLevel())));
 		this.scene.setObserver(controller);
 		return controller;
 	}

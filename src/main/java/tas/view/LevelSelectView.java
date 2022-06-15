@@ -3,8 +3,6 @@ package main.java.tas.view;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import main.java.tas.controller.LevelSelectController;
-import main.java.tas.controller.SceneController;
 import main.java.tas.model.MenuModel;
 
 /**
@@ -40,9 +38,9 @@ public class LevelSelectView  {
         return this.rootPanel;
     }
 	
-	public void setObserver(SceneController levelSelectController) {
+	public void setActionObserver(SceneActionObserver levelSelectController) {
 		for(int counter = 0; counter < nLevels; counter++) {
-			buttonList[counter].addActionListener(((LevelSelectController) levelSelectController).getListener());
+			buttonList[counter].addActionListener(levelSelectController.getActionListener());
 		}
     }
 }

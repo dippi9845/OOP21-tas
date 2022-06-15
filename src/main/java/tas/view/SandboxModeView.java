@@ -6,14 +6,13 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import main.java.tas.controller.SandboxModeController;
-import main.java.tas.controller.SceneController;
+import main.java.tas.model.Entity;
 import main.java.tas.model.MenuModel;
 
 /**
  * Class that builds the sandbox mode view.
  */
-public class SandboxModeView  {
+public class SandboxModeView implements ViewAction,ViewMouse  {
 	
 	private JPanel rootPanel = new JPanel(new BorderLayout());
 	private JButton finishButton = new JButton("DONE");
@@ -49,21 +48,55 @@ public class SandboxModeView  {
 	public SquarePanel getGameBoard(){
 		return this.gameBoard;
 	}
-	
-	/**
-	 * sets an observer for this view
-	 * @param sandboxModeController the {@link SceneController} that is to be set as observer
-	 */
-	public void setObserver(SceneController sandboxModeController) {
-		this.gamePanel.addMouseListener(((SandboxModeController) sandboxModeController).getListener());;
-    }
-	
-	/**
-	 * sets an observer for the done button
-	 * @param sandboxModeController the {@link SceneController} that is to be set as observer
-	 */
-	public void setButtonObserver(SceneController sandboxModeController) {
-		this.finishButton.addActionListener(((SandboxModeController) sandboxModeController).getButtonListener());
+
+	@Override
+	public void drawEntity(Entity entity) {
+		// TODO Auto-generated method stub
+		
 	}
+
+	@Override
+	public void addEntityLabel(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeEntityLabel(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addTextLabel(String text, String id, String anchor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public AdaptiveLabel getTextLabel(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void removeTextLabel(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setMouseObserver(SceneMouseObserver observer) {
+		this.gameBoard.addMouseListener(observer.getMouseListener());
+		
+	}
+
+	@Override
+	public void setActionObserver(SceneActionObserver observer) {
+		this.finishButton.addActionListener(observer.getActionListener());
+		
+	}
+
+	
 	
 }

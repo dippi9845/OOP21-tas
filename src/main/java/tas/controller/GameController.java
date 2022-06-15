@@ -13,12 +13,14 @@ import main.java.tas.model.TimeCurveImpl;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
+import main.java.tas.view.SceneActionObserver;
+import main.java.tas.view.SceneMouseObserver;
 import main.java.tas.view.scene.GameScene;
 
 /**
  * Class that implements {@link SceneController}.
  */
-public class GameController implements SceneController {
+public class GameController implements SceneController,SceneMouseObserver,SceneActionObserver {
 
 	private final GameScene gameScene;
 	private final EnemiesLogic enemiesHandler;
@@ -154,7 +156,6 @@ public class GameController implements SceneController {
 	 */
 	
 	public boolean checkTurretPosition(Position turretPosition){
-		//TODO check if tower positioning is legal
 		
 		//DONE check if position is inside the game Board
 		
@@ -205,23 +206,17 @@ public class GameController implements SceneController {
 				this.gameScene.getInventoryView().getTextLabel("money")
 		        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
 			}
-			
 			this.screenListener.resetUpdate();
 		}
 	}
 	
-	/**
-	 * @return screenListener
-	 */
+	@Override
 	public MouseListener getMouseListener(){
 		return this.screenListener;
 	}
 	
-	/**
-	 * 
-	 * @return inventoryListener
-	 */
-	public ActionListener getListener() {
+	@Override
+	public ActionListener getActionListener() {
 		return this.inventoryListener;
 	}
 
