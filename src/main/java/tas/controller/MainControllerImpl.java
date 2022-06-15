@@ -2,10 +2,10 @@ package main.java.tas.controller;
 
 import main.java.tas.view.MainView;
 import main.java.tas.view.scene.GameSceneImpl;
+import main.java.tas.view.scene.GenericScene;
 import main.java.tas.view.scene.LevelSelectSceneImpl;
 import main.java.tas.view.scene.MainMenuSceneImpl;
 import main.java.tas.view.scene.SandboxModeScene;
-import main.java.tas.view.scene.Scene;
 import main.java.tas.view.scene.SettingsSceneImpl;
 import main.java.tas.model.GameModelImpl;
 import main.java.tas.model.GameSpecs;
@@ -56,7 +56,9 @@ public class MainControllerImpl implements MainController {
 		Scene scene = new LevelSelectSceneImpl(view.getPanel(), this.menuModel);
 		SceneController controller = new LevelSelectController(scene, this.menuModel);
 		scene.setObserver(controller);
+		LevelHandler.deleteUserLevels();
 		return controller;
+		
 	}
 
 	/**
