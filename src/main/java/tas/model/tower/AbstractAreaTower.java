@@ -2,7 +2,6 @@ package main.java.tas.model.tower;
 
 import java.util.List;
 import java.util.Optional;
-
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 

@@ -2,7 +2,6 @@ package main.java.tas.model.tower.factory;
 
 import java.util.List;
 import java.util.function.UnaryOperator;
-
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Builder;

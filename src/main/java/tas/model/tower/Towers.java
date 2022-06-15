@@ -1,11 +1,9 @@
 package main.java.tas.model.tower;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 

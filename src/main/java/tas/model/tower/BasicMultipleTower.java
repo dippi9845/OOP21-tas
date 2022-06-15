@@ -1,10 +1,6 @@
 package main.java.tas.model.tower;
 
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
-
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 
@@ -41,22 +37,6 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 	@Override
 	public void compute() throws InterruptedException {
 		
-		//List<Enemy> toRemove = Towers.findAll(x->x.isDead(), x->!Towers.isTargetInRange(x, this), this.getEnemyList());
-		
-		/*
-		 List<Enemy> toRemove = this.getEnemyList()
-				.stream()
-				.filter(x->!Towers.isTargetInRange(x, this) || x.isDead())
-				.collect(Collectors.toList());
-		*/
-		/*
-		 List<Enemy> toRemove = this.getEnemyList()
-					.stream()
-					.filter(x->!Towers.isTargetInRange(x, this))
-					.filter(x->x.isDead())
-					.collect(Collectors.toList());
-		*/
-		
 		List<Enemy> toRemove = Towers.findAll(x->!Towers.isTargetInRange(x, this) || x.isDead(), this.getEnemyList());
 		
 		this.getEnemyList().removeAll(toRemove);
@@ -67,15 +47,6 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 					.limit(this.getMaxEnemy() - this.getEnemyList().size())
 					.forEach(this::setTarget);
 		}
-		/*
-		List<Enemy> toRemove = new LinkedList<>();
-		
-		for (var i : this.getEnemyList()) {
-			if (i.isDead() || !Towers.isTargetInRange(i, this)) {
-				toRemove.add(i);
-			}
-		}
-		*/
 		
 		this.attack();
 		Thread.sleep(this.getDelay());
