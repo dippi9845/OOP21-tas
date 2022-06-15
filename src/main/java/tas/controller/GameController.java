@@ -164,7 +164,7 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 			return false;
 		}
 			
-		//then check there isn't a tower overlapping with the new tower
+		//TODO then check there isn't a tower overlapping with the new tower
 	
 		//DONE then check if the new tower overlaps with the white line
 	
@@ -239,6 +239,7 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 		}
 
 		if (currentInventoryMode == 1) {
+			inventoryUpdate();
 			screenUpdate();
 		}
 		this.towerLogic.drawTowers(this.gameScene.getGameView()::drawEntity);
