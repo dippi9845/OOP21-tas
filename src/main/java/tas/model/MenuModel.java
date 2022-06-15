@@ -52,4 +52,6 @@ public interface MenuModel {
 	 */
 	public int getNLevels();
 	
+	public int getMaxLevels();
+	
 }

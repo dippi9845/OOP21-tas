@@ -1,12 +1,13 @@
 package main.java.tas.controller;
 
 import main.java.tas.view.MainView;
+import main.java.tas.view.scene.FullLevelsScene;
 import main.java.tas.view.scene.GameSceneImpl;
 import main.java.tas.view.scene.GenericScene;
 import main.java.tas.view.scene.LevelSelectSceneImpl;
 import main.java.tas.view.scene.MainMenuSceneImpl;
 import main.java.tas.view.scene.SandboxModeScene;
-import main.java.tas.view.scene.SettingsSceneImpl;
+import main.java.tas.view.scene.SettingsScene;
 import main.java.tas.model.GameModelImpl;
 import main.java.tas.model.GameSpecs;
 import main.java.tas.model.MenuModel;
@@ -25,15 +26,13 @@ public class MainControllerImpl implements MainController {
 	private int playerHealth = 100;
 	private int playerMoney = 1000;
 
-	private MainView mainView;
-	private MenuModel menuModel;
+	private MainView mainView = new MainView();;
+	private MenuModel menuModel = new MenuModelImpl();;
 
 	/**
 	 * Constructor that creates the main controller of the game
 	 */
 	public MainControllerImpl() {
-		this.menuModel = new MenuModelImpl();
-		this.mainView = new MainView();
 		this.sceneController = createMenu(this.mainView);
 		this.mainView.show();
 	}
@@ -57,7 +56,6 @@ public class MainControllerImpl implements MainController {
 		GenericScene scene = new LevelSelectSceneImpl(view.getPanel(), this.menuModel);
 		SceneController controller = new LevelSelectController(scene, this.menuModel);
 		scene.setObserver(controller);
-		LevelHandler.deleteUserLevels();
 		return controller;
 		
 	}
@@ -82,11 +80,25 @@ public class MainControllerImpl implements MainController {
 	 * @return the scene that was created
 	 */
 	public SceneController createSettings(final MainView view) {
-		GenericScene scene = new SettingsSceneImpl(view.getPanel());
+		GenericScene scene = new SettingsScene(view.getPanel());
 		SceneController controller = new SettingsController(scene, this.menuModel);
 		scene.setObserver(controller);
 		return controller;
 	}
+	
+	/**
+	 * Connects the levels full menu model, with it's own view.
+	 * 
+	 * @param view the main window
+	 * @return the scene that was created
+	 */
+	public SceneController createFullLevels(final MainView view) {
+		GenericScene scene = new FullLevelsScene(view.getPanel());
+		SceneController controller = new FullLevelsController(scene, this.menuModel);
+		scene.setObserver(controller);
+		return controller;
+	}
+
 
 	/** {@inheritDoc} */
 	@Override
@@ -126,7 +138,13 @@ public class MainControllerImpl implements MainController {
 			this.sceneController = createSettings(this.mainView);
 		}
 		if (menuState == 6) {
-			this.sceneController = createSandBoxMode(this.mainView);
+			
+			if(LevelHandler.getNElements() < this.menuModel.getMaxLevels()) {
+				this.sceneController = createSandBoxMode(this.mainView);
+			}
+			else {
+				this.sceneController = createFullLevels(this.mainView);
+			}
 		}
 		return menuState;
 	}

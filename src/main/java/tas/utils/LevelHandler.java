@@ -70,7 +70,7 @@ public class LevelHandler {
 	public static void deleteUserLevels(){
 		JSONObject json = JsonUtils.getJsonData(PATH);
 		if(getNElements() > 3) {
-			for(int i = 4; i <= (json.length() + 1); i++) {
+			for(int i = 4; i <= (json.length() + 2); i++) {
 				json.remove("level" + Integer.toString(i));
 			}
 			saveJson(json);
