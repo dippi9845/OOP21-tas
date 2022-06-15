@@ -12,7 +12,7 @@
     },
     "GreenEnemy":{
         "image":"greenEnemy",
-        "health":10,
+        "health":600,
         "money":100,
         "damage":40,
         "speed":30,
@@ -23,7 +23,7 @@
     },
     "PinkEnemy":{
         "image":"pinkEnemy",
-        "health":2,
+        "health":2200,
         "money":100,
         "damage":10,
         "speed":90,

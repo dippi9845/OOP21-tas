@@ -23,9 +23,16 @@ public interface TeslaFactory {
 	 * @return Tesla tower
 	 */
 	static public Tower basicTesla(final Position pos, final List<Enemy> enemyList) {
-		return new Builder(pos, 100, 500, 1100, "tesla", enemyList).attackType(AttackType.AREA).damageRange(7)
-				.setUpgradable(true).upgradeCost(x -> 15).upgradeDamage(x -> 50).maxLevel(15).startUpgradeCost(10)
-				.maximumTarget(4).findFirst(() -> {
+		return new Builder(pos, 100, 500, 1100, "tesla", enemyList)
+				.attackType(AttackType.AREA)
+				.damageRange(7)
+				.setUpgradable(true)
+				.upgradeCost(x -> 15)
+				.upgradeDamage(x -> 50)
+				.maxLevel(15)
+				.startUpgradeCost(10)
+				.maximumTarget(4)
+				.findFirst(() -> {
 					return Towers.findFirstEnemyInRange(pos, 9, enemyList);
 				}).build();
 	}
