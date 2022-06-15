@@ -201,7 +201,7 @@ public class GameController implements SceneController, SceneMouseObserver, Scen
 	 * Called for checking if the screen is been clicked, and if so it places a
 	 * tower there.
 	 */
-	public void screenUpdate() {
+	private void screenUpdate() {
 		if (this.screenListener.checkUpdate()) {
 			Position mousePosition = new Position(this.screenListener.getClickLocation().getX(),
 			        this.screenListener.getClickLocation().getY());
