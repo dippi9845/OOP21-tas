@@ -98,7 +98,7 @@ class AttackTest {
 	}
 	
 	@Test
-	void BasicMultipleTowerMoreThan2() throws InterruptedException {
+	void BasicMultipleTowerRemoveDeath() throws InterruptedException {
 		List<Enemy> enemies = new LinkedList<>();
 		FakeEnemy e = new FakeEnemy(new Position(50, 50), 100);
 		FakeEnemy e1 = new FakeEnemy(new Position(51, 50), 100);
