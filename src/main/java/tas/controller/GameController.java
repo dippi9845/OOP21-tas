@@ -128,7 +128,7 @@ public class GameController implements SceneController, SceneMouseObserver, Scen
 
 				continue;
 			}
-			if (enemy.hasCompletedPath()) {
+			if (enemy.isPathCompleted()) {
 				this.playerStats.dealDamage2Player(enemy.getDamage());
 				this.gameScene.getInventoryView().getTextLabel("health")
 				        .setText(this.healthSymbol + " " + this.playerStats.getHP());

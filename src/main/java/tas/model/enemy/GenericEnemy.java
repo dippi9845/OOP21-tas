@@ -124,7 +124,7 @@ public class GenericEnemy implements Enemy {
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean hasCompletedPath() {
+	public boolean isPathCompleted() {
 		return this.reachedNode + 1 >= this.nodesPosition.size();
 	}
 
