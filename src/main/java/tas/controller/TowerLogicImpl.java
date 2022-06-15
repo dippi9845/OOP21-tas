@@ -17,7 +17,7 @@ import main.java.tas.model.tower.factory.GasFactory;
 import main.java.tas.model.tower.factory.MortarFactory;
 import main.java.tas.model.tower.factory.TeslaFactory;
 import main.java.tas.utils.Position;
-
+import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -126,6 +126,17 @@ public class TowerLogicImpl implements TowerLogic {
 	@Override
 	public void drawTowers(final Consumer<Entity> draw) {
 		this.builtTowers.forEach(draw::accept);
+	}
+	
+	private double getDiagonal(final Dimension d) {
+		return Math.hypot(d.getHeight(), d.getWidth());
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public boolean thereIsTowerNear(final Position pos) {
+		return this.builtTowers.stream()
+				.anyMatch(t->Position.findDistance(t.getPos(), pos) <= getDiagonal(t.getBodyDimension()));
 	}
 
 }
