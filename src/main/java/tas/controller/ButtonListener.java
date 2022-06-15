@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 /**
  * Class that implements {@link ActionListener} used as a listener for a single button.
- * 
+ * Extends {@link GenericListener}
  *
  */
 public class ButtonListener extends GenericListener implements ActionListener{

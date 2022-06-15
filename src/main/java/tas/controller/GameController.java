@@ -213,11 +213,13 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 		}
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public MouseListener getMouseListener(){
 		return this.screenListener;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public ActionListener getActionListener() {
 		return this.inventoryListener;

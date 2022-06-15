@@ -52,6 +52,10 @@ public class LevelHandler {
 		
 	}
 	
+	/**
+	 * adds a level on levelsStorege.json
+	 * @param list the list of nodes of the new level
+	 */
 	public static void writeLevel(List <Position> list) {
 		JSONObject file = JsonUtils.getJsonData(PATH);
 		JSONObject level = new JSONObject ();
@@ -67,6 +71,9 @@ public class LevelHandler {
 		saveJson(file);
 	}
 	
+	/**
+	 * deletes the user made levels
+	 */
 	public static void deleteUserLevels(){
 		JSONObject json = JsonUtils.getJsonData(PATH);
 		if(getNElements() > 3) {
@@ -77,6 +84,10 @@ public class LevelHandler {
 		}	
 	}
 	
+	/**
+	 * saves the JSON
+	 * @param jsonObj the JSON
+	 */
 	private static void saveJson(JSONObject jsonObj) {
 		FileWriter fileWriter;
 		try {
