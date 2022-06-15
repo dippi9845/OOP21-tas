@@ -1,6 +1,7 @@
 package main.java.tas.controller;
 
 import main.java.tas.view.MainView;
+import main.java.tas.view.scene.EndGameScene;
 import main.java.tas.view.scene.FullLevelsScene;
 import main.java.tas.view.scene.GameSceneImpl;
 import main.java.tas.view.scene.GenericScene;
@@ -53,11 +54,10 @@ public class MainControllerImpl implements MainController {
 	 * @return the scene that was created
 	 */
 	public SceneController createLevelSelect(final MainView view) {
-		GenericScene scene = new LevelSelectSceneImpl(view.getPanel(), this.menuModel);
+		GenericScene scene = new LevelSelectSceneImpl(view.getPanel(), this.menuModel.getNLevels());
 		SceneController controller = new LevelSelectController(scene, this.menuModel);
 		scene.setObserver(controller);
 		return controller;
-		
 	}
 
 	/**
@@ -67,8 +67,21 @@ public class MainControllerImpl implements MainController {
 	 * @return the scene that was created
 	 */
 	public SceneController createSandBoxMode(final MainView view) {
-		GenericScene scene = new SandboxModeScene(view.getPanel(), this.menuModel);
+		GenericScene scene = new SandboxModeScene(view.getPanel());
 		SceneController controller = new SandboxModeController(scene, this.menuModel);
+		scene.setObserver(controller);
+		return controller;
+	}
+	
+	/**
+	 * Connects the end game menu model, with it's own view.
+	 * 
+	 * @param view the main window
+	 * @return the scene that was created
+	 */
+	public SceneController createEndGame(final MainView view) {
+		GenericScene scene = new EndGameScene(view.getPanel());
+		SceneController controller = new EndGameController(scene, this.menuModel);
 		scene.setObserver(controller);
 		return controller;
 	}
@@ -105,7 +118,8 @@ public class MainControllerImpl implements MainController {
 	public SceneController createGame(final MainView view) {
 		GameSceneImpl scene = new GameSceneImpl(view.getPanel(), DefaultTowers.class);
 		SceneController controller = new GameController(scene, new GameModelImpl(this.playerHealth, this.playerMoney),
-		        LevelHandler.readLevel("level" + Integer.toString(this.menuModel.getCurrentLevel())));
+		        LevelHandler.readLevel("level" + Integer.toString(this.menuModel.getCurrentLevel())), 
+		        this.menuModel);
 		scene.setObserver(controller);
 		return controller;
 	}
@@ -145,6 +159,9 @@ public class MainControllerImpl implements MainController {
 			else {
 				this.sceneController = createFullLevels(this.mainView);
 			}
+		}
+		if (menuState == 5) {
+			this.sceneController = createEndGame(this.mainView);
 		}
 		return menuState;
 	}

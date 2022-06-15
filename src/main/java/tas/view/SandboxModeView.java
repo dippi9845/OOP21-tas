@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneActionObserver;
 import main.java.tas.controller.SceneMouseObserver;
-import main.java.tas.model.MenuModel;
 
 /**
  * Class that builds the sandbox mode view.
@@ -24,7 +23,7 @@ public class SandboxModeView implements ViewAction,ViewMouse  {
 	 * Constructor that builds the sandbox mode view
 	 * @param theModel the model
 	 */
-    public SandboxModeView(MenuModel theModel){
+    public SandboxModeView(){
     	
 		this.gameBoard.setBgImage("bgImage");
 		this.gamePanel.add(this.gameBoard);

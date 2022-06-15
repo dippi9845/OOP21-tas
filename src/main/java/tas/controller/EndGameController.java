@@ -9,7 +9,7 @@ import main.java.tas.view.scene.GenericScene;
  * Class that creates a controller for the settings menu
  * Class that implements {@link SceneController}.
  */
-public class SettingsController implements SceneActionObserver {
+public class EndGameController implements SceneActionObserver {
 	
 	private ButtonListener listener = new ButtonListener();
 	private GenericScene scene;
@@ -20,7 +20,7 @@ public class SettingsController implements SceneActionObserver {
 	 * @param sceneIn the settings menu scene
 	 * @param theModel the model
 	 */
-	public SettingsController(GenericScene sceneIn, MenuModel theModel) {
+	public EndGameController(GenericScene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
 		scene.setObserver(this);
 		this.model = theModel;
@@ -39,14 +39,12 @@ public class SettingsController implements SceneActionObserver {
 	public void nextTick() {
 		if (this.listener.checkUpdate()) {
 			this.model.setMainScene(1);
-			listener.resetUpdate();
 		}
-		
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public ActionListener getActionListener() {
 		return this.listener;
 	}
 }
-

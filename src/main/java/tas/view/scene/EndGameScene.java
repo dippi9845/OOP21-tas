@@ -6,27 +6,27 @@ import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneActionObserver;
 import main.java.tas.controller.SceneController;
-import main.java.tas.view.SettingsView;
+import main.java.tas.view.EndGameView;
 
 /**
  * Class that builds the settings mode scene.
  * Class that implements {@link GenericScene}.
  */
-public class SettingsScene implements GenericScene {
+public class EndGameScene implements GenericScene {
 	
 	private JPanel rootPanel;
-	private SettingsView View;
+	private EndGameView View;
 	
 	/**
      * Constructor that set up the settings scene.
      * @param rootPanelIn is the {@link JPanel} that will contain the scene
      * @param menuModel the menu model
      */
-	public SettingsScene(JPanel rootPanelIn) {
+	public EndGameScene(JPanel rootPanelIn) {
 		this.rootPanel = rootPanelIn;
 		this.rootPanel.setLayout(new BorderLayout());
         
-        this.View = new SettingsView();
+        this.View = new EndGameView();
         
         this.rootPanel.add(this.View.getPanel(), BorderLayout.CENTER);
 	}
@@ -41,7 +41,7 @@ public class SettingsScene implements GenericScene {
 	 * 
 	 * @return the settings view
 	 */
-	public SettingsView getView() {
+	public EndGameView getView() {
 		return this.View;
 	}
 }

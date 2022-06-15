@@ -5,7 +5,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneActionObserver;
-import main.java.tas.model.MenuModel;
 
 /**
  * Class that implements a {@link ViewComponent}.
@@ -20,8 +19,8 @@ public class LevelSelectView implements ViewAction {
 	 * Constructor that builds the view for the level select menu.
 	 * @param theModel the menu model
 	 */
-    public LevelSelectView(MenuModel theModel){
-    	nLevels = theModel.getNLevels();
+    public LevelSelectView(int nLevelsIn){
+    	nLevels = nLevelsIn;
     	buttonList = new JButton [nLevels];
     	int counter = 0; 
     	for (JButton button : buttonList) {

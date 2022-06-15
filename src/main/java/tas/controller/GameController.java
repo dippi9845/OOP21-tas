@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 
 import main.java.tas.model.GameModel;
 import main.java.tas.model.GameSpecs;
+import main.java.tas.model.MenuModel;
 import main.java.tas.model.TimeCurve;
 import main.java.tas.model.TimeCurveImpl;
 import main.java.tas.model.tower.factory.DefaultTowers;
@@ -32,6 +33,7 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 	private ScreenListener screenListener = new ScreenListener();
 	private final InventoryListener inventoryListener = new InventoryListener();
 	private final GameSpecs gameSpecs = new GameSpecs();
+	private MenuModel menuModel;
 
 	private final String healthSymbol = "Health";
 	private final String waveSymbol = "Wave";
@@ -44,7 +46,8 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 	 * @param gameModel the game model
 	 * @param scene the graphic scene controller
 	 */
-	public GameController(final GameScene scene, final GameModel gameModel, final List <Position> pathNodes) {
+	public GameController(final GameScene scene, final GameModel gameModel, final List <Position> pathNodes, final MenuModel menuModelIn) {
+		this.menuModel = menuModelIn;
 		this.gameScene = scene;
 		this.playerStats = gameModel;
 
@@ -230,6 +233,10 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 
 		if (this.enemiesHandler.areEnemiesOnBoard()) {
 			enemiesCheck();
+		}
+		
+		if (this.playerStats.getHP() <= 0) {
+			this.menuModel.setMainScene(7);
 		}
 
 		if (currentInventoryMode == 0) {
