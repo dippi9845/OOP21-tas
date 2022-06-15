@@ -45,9 +45,16 @@ public interface TeslaFactory {
 	 * @return Super Tesla tower
 	 */
 	static public Tower superTesla(final Position pos, final List<Enemy> enemyList) {
-		return new Builder(pos, 150, 500, 1100, "supertesla", enemyList).attackType(AttackType.AREA).damageRange(7)
-				.setUpgradable(true).upgradeCost(x -> x * x).upgradeDamage(x -> x * x * 3).maxLevel(10)
-				.startUpgradeCost(20).maximumTarget(8).findFirst(() -> {
+		return new Builder(pos, 150, 500, 1100, "supertesla", enemyList)
+				.attackType(AttackType.AREA)
+				.damageRange(7)
+				.setUpgradable(true)
+				.upgradeCost(x -> x * x)
+				.upgradeDamage(x -> x * x * 3)
+				.maxLevel(10)
+				.startUpgradeCost(20)
+				.maximumTarget(8)
+				.findFirst(() -> {
 					return Towers.findFirstEnemyInRange(pos, 9, enemyList);
 				}).build();
 	}
@@ -66,5 +73,6 @@ public interface TeslaFactory {
 				.findFirst(() -> {
 					return Towers.findFirstEnemyInRange(pos, 9, enemyList);
 				}).build();
+
 	}
 }
