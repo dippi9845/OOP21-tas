@@ -1,7 +1,7 @@
 {
     "RedEnemy":{
         "image":"redEnemy",
-        "health":1,
+        "health":800,
         "money":50,
         "damage":10,
         "speed":60,

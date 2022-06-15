@@ -1,5 +1,7 @@
 package main.java.tas.model.tower;
 
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,9 +44,22 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 			Towers.findAll(this::isValidTarget, this.getVisibleEnemyList()).stream()
 					.limit(this.getMaxEnemy() - this.getEnemyList().size()).forEach(this::setTarget);
 		}
-
-		List<Enemy> toRemove = this.getEnemyList().stream().filter(x -> !Towers.isTargetInRange(x, this))
-				.collect(Collectors.toList());
+		/*
+		List<Enemy> toRemove = new LinkedList<>();
+		
+		for (var i : this.getEnemyList()) {
+			if (i.isDead() || !Towers.isTargetInRange(i, this)) {
+				toRemove.add(i);
+			}
+		}
+		*/
+		
+		List<Enemy> toRemove = this.getEnemyList()
+									.stream()
+									.filter(x->x.isDead())
+									.filter(x->!Towers.isTargetInRange(x, this))
+									.collect(Collectors.toList());
+		
 		this.getEnemyList().removeAll(toRemove);
 
 		this.attack();
