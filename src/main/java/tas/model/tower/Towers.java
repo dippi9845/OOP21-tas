@@ -106,16 +106,13 @@ public class Towers {
 		/*
 		List<Enemy> rtr = new LinkedList<Enemy>();
 		
->>>>>>> Filippo
 		for (var i : enemyList) {
 			if (!i.isDead() && f.test(i)) {
 				rtr.add(i);
 			}
 		}
 		return rtr;
-<<<<<<< HEAD
 		//return enemyList.stream().filter(x->!x.isDead()).filter(f).collect(Collectors.toList());
-=======
 		*/
 		return enemyList.stream().filter(f).collect(Collectors.toList());
 	}
