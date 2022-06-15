@@ -1,6 +1,4 @@
-package main.java.tas.model;
-
-import main.java.tas.utils.IntArgumentOperator;
+package main.java.tas.utils;
 
 /**
  * Class that implements {@link TimeCurve}.
