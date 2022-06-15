@@ -3,13 +3,15 @@ package main.java.tas.view;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import main.java.tas.controller.MainMenuController;
+
 import main.java.tas.controller.SceneController;
+import main.java.tas.model.Entity;
+
 
 /**
  * Class that creates the main menu view.
  */
-public class MenuView {
+public class MenuView implements ViewAction {
 	
 	private JPanel rootPanel = new JPanel(new GridLayout(0, 1, 5, 10));
 	private JButton newGameButton = new JButton("NEW GAME");
@@ -35,12 +37,12 @@ public class MenuView {
         return this.rootPanel;
     }
 	
-	
-	public void setObserver(SceneController menuController) {
-        this.newGameButton.addActionListener(((MainMenuController) menuController).getListener());
-        this.settingsButton.addActionListener(((MainMenuController) menuController).getListener());
-        this.sandboxModeButton.addActionListener(((MainMenuController) menuController).getListener());
-        this.exitButton.addActionListener(((MainMenuController) menuController).getListener());
+	@Override
+	public void setActionObserver(SceneActionObserver menuController) {
+        this.newGameButton.addActionListener(menuController.getActionListener());
+        this.settingsButton.addActionListener(menuController.getActionListener());
+        this.sandboxModeButton.addActionListener(menuController.getActionListener());
+        this.exitButton.addActionListener(menuController.getActionListener());
     }
 	
 	/**
@@ -73,5 +75,41 @@ public class MenuView {
 	 */
 	public JButton getExitButton() {
 		return this.exitButton;
+	}
+
+	@Override
+	public void drawEntity(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addEntityLabel(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeEntityLabel(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addTextLabel(String text, String id, String anchor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public AdaptiveLabel getTextLabel(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void removeTextLabel(String id) {
+		// TODO Auto-generated method stub
+		
 	}
 }

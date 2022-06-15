@@ -61,9 +61,4 @@ public interface ViewComponent {
 	 */
 	JPanel getPanel();
 
-	/**
-	 * Set up the observer.
-	 */
-	void setObserver();
-
 }

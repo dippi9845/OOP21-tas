@@ -75,6 +75,14 @@ public class MainView implements View {
 		this.frame.dispose();
 
 	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public void clearView() {
+		this.rootPanel.removeAll();
+		this.rootPanel.revalidate();
+		this.rootPanel.repaint();
+	}
 
 	/** {@inheritDoc} */
 	@Override

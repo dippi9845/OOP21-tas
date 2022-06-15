@@ -2,10 +2,10 @@ package main.java.tas.controller;
 
 import main.java.tas.view.MainView;
 import main.java.tas.view.scene.GameSceneImpl;
+import main.java.tas.view.scene.GenericScene;
 import main.java.tas.view.scene.LevelSelectSceneImpl;
 import main.java.tas.view.scene.MainMenuSceneImpl;
 import main.java.tas.view.scene.SandboxModeScene;
-import main.java.tas.view.scene.Scene;
 import main.java.tas.view.scene.SettingsSceneImpl;
 import main.java.tas.model.GameModelImpl;
 import main.java.tas.model.GameSpecs;
@@ -19,7 +19,6 @@ import main.java.tas.utils.LevelHandler;
 public class MainControllerImpl implements MainController {
 
 	private SceneController sceneController;
-	private Scene scene;
 	private GameSpecs gameSpecs = new GameSpecs();
 
 	private int playerHealth = 100;
@@ -27,7 +26,6 @@ public class MainControllerImpl implements MainController {
 
 	private MainView mainView;
 	private MenuModel menuModel;
-	private int currentMenuMode = 1;
 
 	/**
 	 * Constructor that creates the main controller of the game
@@ -42,12 +40,12 @@ public class MainControllerImpl implements MainController {
 	/** {@inheritDoc} */
 	@Override
 	public SceneController createMenu(final MainView view) {
-		this.scene = new MainMenuSceneImpl(view.getPanel());
-		SceneController controller = new MainMenuController(this.scene, this.menuModel);
-		this.scene.setObserver(controller);
+		GenericScene scene = new MainMenuSceneImpl(view.getPanel());
+		SceneController controller = new MainMenuController(scene, this.menuModel);
+		scene.setObserver(controller);
 		return controller;
 	}
-	
+
 	/**
 	 * Connects the level select model, with it's own view.
 	 * 
@@ -55,12 +53,14 @@ public class MainControllerImpl implements MainController {
 	 * @return the scene that was created
 	 */
 	public SceneController createLevelSelect(final MainView view) {
-		this.scene = new LevelSelectSceneImpl(view.getPanel(), this.menuModel);
-		SceneController controller = new LevelSelectController(this.scene, this.menuModel);
-		this.scene.setObserver(controller);
+		GenericScene scene = new LevelSelectSceneImpl(view.getPanel(), this.menuModel);
+		SceneController controller = new LevelSelectController(scene, this.menuModel);
+		scene.setObserver(controller);
+		LevelHandler.deleteUserLevels();
 		return controller;
+		
 	}
-	
+
 	/**
 	 * Connects the sandbox mode model, with it's own view.
 	 * 
@@ -68,12 +68,12 @@ public class MainControllerImpl implements MainController {
 	 * @return the scene that was created
 	 */
 	public SceneController createSandBoxMode(final MainView view) {
-		this.scene = new SandboxModeScene(view.getPanel(), this.menuModel);
-		SceneController controller = new SandboxModeController(this.scene, this.menuModel);
-		this.scene.setObserver(controller);
+		GenericScene scene = new SandboxModeScene(view.getPanel(), this.menuModel);
+		SceneController controller = new SandboxModeController(scene, this.menuModel);
+		scene.setObserver(controller);
 		return controller;
 	}
-	
+
 	/**
 	 * Connects the settings model, with it's own view.
 	 * 
@@ -81,19 +81,19 @@ public class MainControllerImpl implements MainController {
 	 * @return the scene that was created
 	 */
 	public SceneController createSettings(final MainView view) {
-		this.scene = new SettingsSceneImpl(view.getPanel(), this.menuModel);
-		SceneController controller = new SettingsController(this.scene, this.menuModel);
-		this.scene.setObserver(controller);
+		GenericScene scene = new SettingsSceneImpl(view.getPanel(), this.menuModel);
+		SceneController controller = new SettingsController(scene, this.menuModel);
+		scene.setObserver(controller);
 		return controller;
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public SceneController createGame(final MainView view) {
-		this.scene = new GameSceneImpl(view.getPanel());
-		SceneController controller = new GameController(((GameSceneImpl) this.scene),
-		        new GameModelImpl(this.playerHealth, this.playerMoney), LevelHandler.readLevel("level" + Integer.toString(this.menuModel.getCurrentLevel())));
-		this.scene.setObserver(controller);
+		GameSceneImpl scene = new GameSceneImpl(view.getPanel());
+		SceneController controller = new GameController(scene, new GameModelImpl(this.playerHealth, this.playerMoney),
+		        LevelHandler.readLevel("level" + Integer.toString(this.menuModel.getCurrentLevel())));
+		scene.setObserver(controller);
 		return controller;
 	}
 
@@ -102,47 +102,32 @@ public class MainControllerImpl implements MainController {
 	public SceneController getController() {
 		return this.sceneController;
 	}
-	
+
 	/**
-	 * Checks if the current window is correct and if not it closes the current window
-	 * and opens the correct one
+	 * Checks if the current window is correct and if not it closes the current
+	 * window and opens the correct one
 	 */
-	private void updateCurrentMode() {
+	private int updateCurrentMode(final int menuState) {
 		// I check if the currentMenuMode has changed and if it has I update it and open
 		// the new window
-		if (this.currentMenuMode != this.menuModel.getMainScene()) {
-			this.currentMenuMode = this.menuModel.getMainScene();
-			if (this.currentMenuMode == 1) {
-				this.mainView.dispose();
-				this.mainView = new MainView();
-				this.mainView.show();
-				this.sceneController = createMenu(this.mainView);
-			}
-			if (this.currentMenuMode == 2) {
-				this.mainView.dispose();
-				this.mainView = new MainView();
-				this.mainView.show();
-				this.sceneController = createGame(this.mainView);
-			}
-			if (this.currentMenuMode == 3) {
-				this.mainView.dispose();
-				this.mainView = new MainView();
-				this.mainView.show();
-				this.sceneController = createLevelSelect(this.mainView);
-			}
-			if (this.currentMenuMode == 5) {
-				this.mainView.dispose();
-				this.mainView = new MainView();
-				this.mainView.show();
-				this.sceneController = createSettings(this.mainView);
-			}
-			if (this.currentMenuMode == 6) {
-				this.mainView.dispose();
-				this.mainView = new MainView();
-				this.mainView.show();
-				this.sceneController = createSandBoxMode(this.mainView);
-			}
+		this.mainView.clearView();
+
+		if (menuState == 1) {
+			this.sceneController = createMenu(this.mainView);
 		}
+		if (menuState == 2) {
+			this.sceneController = createGame(this.mainView);
+		}
+		if (menuState == 3) {
+			this.sceneController = createLevelSelect(this.mainView);
+		}
+		if (menuState == 5) {
+			this.sceneController = createSettings(this.mainView);
+		}
+		if (menuState == 6) {
+			this.sceneController = createSandBoxMode(this.mainView);
+		}
+		return menuState;
 	}
 
 	/** {@inheritDoc} */
@@ -151,12 +136,18 @@ public class MainControllerImpl implements MainController {
 		double next_game_tick = System.currentTimeMillis();
 		double last_frame_time = System.currentTimeMillis();
 		int loops;
-		while (this.currentMenuMode != 4) {
+
+		int menuState = this.menuModel.getMainScene();
+
+		while (menuState != 4) {
 			loops = 0;
+
+			if (menuState != this.menuModel.getMainScene()) {
+				menuState = updateCurrentMode(this.menuModel.getMainScene());
+			}
 
 			while (System.currentTimeMillis() > next_game_tick && loops < this.gameSpecs.getMaxFrameSkip()) {
 				this.sceneController.nextTick();
-				updateCurrentMode();
 				this.mainView.update();
 
 				next_game_tick += this.gameSpecs.getSkipTicks();
@@ -166,9 +157,8 @@ public class MainControllerImpl implements MainController {
 			if (System.currentTimeMillis() - last_frame_time > 1000) {
 				last_frame_time = System.currentTimeMillis();
 			}
-
 		}
-		
+
 		this.mainView.destroyView();
 
 	}

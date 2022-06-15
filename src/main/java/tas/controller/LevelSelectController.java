@@ -3,17 +3,17 @@ package main.java.tas.controller;
 import java.awt.event.ActionListener;
 
 import main.java.tas.model.MenuModel;
-import main.java.tas.view.scene.LevelSelectSceneImpl;
-import main.java.tas.view.scene.Scene;
+import main.java.tas.view.SceneActionObserver;
+import main.java.tas.view.scene.GenericScene;
 
 /**
  * Class that creates a controller for the level select menu
  * Class that implements {@link SceneController}.
  */
-public class LevelSelectController implements SceneController {
+public class LevelSelectController implements SceneController,SceneActionObserver {
 	
 	private LevelSelectListener listener;
-	private Scene scene;
+	private GenericScene scene;
 	private MenuModel model;
 	
 	/**
@@ -21,9 +21,9 @@ public class LevelSelectController implements SceneController {
 	 * @param sceneIn the level select scene
 	 * @param theModel the menu model
 	 */
-	public LevelSelectController(Scene sceneIn, MenuModel theModel) {
+	public LevelSelectController(GenericScene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
-		((LevelSelectSceneImpl) scene).setObserver(this);
+		scene.setObserver(this);
 		this.listener = new LevelSelectListener();
 		this.model = theModel;
 	}
@@ -51,7 +51,8 @@ public class LevelSelectController implements SceneController {
 	 * 
 	 * @return the listener
 	 */
-	public ActionListener getListener() {
+	@Override
+	public ActionListener getActionListener() {
 		return this.listener;
 	}
 	
