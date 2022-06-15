@@ -145,7 +145,7 @@ public class GameController implements SceneController, SceneMouseObserver, Scen
 	 * Called for checking if a tower has been selected by the user in the
 	 * inventoryScene.
 	 */
-	public void inventoryUpdate() {
+	private void inventoryUpdate() {
 		if (this.inventoryListener.checkUpdate()) {
 			this.currentTowerSelected = inventoryListener.getTowerSelected();
 			this.currentInventoryMode = 1;
