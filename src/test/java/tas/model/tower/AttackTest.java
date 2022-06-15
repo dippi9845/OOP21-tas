@@ -114,6 +114,10 @@ class AttackTest {
 				.maximumTarget(2).build();
 		t.compute();
 		t.compute();
+		
+		enemies.remove(e); // the enemies dead are removed from list
+		enemies.remove(e1);
+		
 		t.compute();
 		t.compute();
 
@@ -139,7 +143,7 @@ class AttackTest {
 
 		t.compute();
 
-		assertTrue(e.getHealth() < 51 && e1.isDead() && e2.getHealth() == 100);
+		assertTrue(e.getHealth() < 51 && e1.isDead() && e2.getHealth() < 51);
 	}
 
 	@Test
