@@ -80,7 +80,7 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 	/** {@inheritDoc} */
 	@Override
 	public List<Enemy> getEnemies() {
-		return this.aliveEnemiesList;
+		return Collections.unmodifiableList(this.aliveEnemiesList);
 	}
 
 	/** {@inheritDoc} */
