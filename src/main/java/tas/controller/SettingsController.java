@@ -6,8 +6,8 @@ import main.java.tas.model.MenuModel;
 import main.java.tas.view.scene.GenericScene;
 
 /**
- * Class that creates a controller for the settings menu
- * Class that implements {@link SceneController}.
+ * Class that creates a controller for the settings menu.
+ * Class that implements {@link SceneActionObserver}.
  */
 public class SettingsController implements SceneActionObserver {
 	
@@ -27,7 +27,6 @@ public class SettingsController implements SceneActionObserver {
 	}
 	
 	/**
-	 * 
 	 * @return the model
 	 */
 	public MenuModel getModel() {
@@ -44,6 +43,7 @@ public class SettingsController implements SceneActionObserver {
 		
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public ActionListener getActionListener() {
 		return this.listener;

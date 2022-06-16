@@ -9,9 +9,9 @@ import main.java.tas.controller.SceneMouseObserver;
 import main.java.tas.model.Entity;
 
 /**
- * Class that implements a {@link ViewComponent}.
+ * Class that implements a {@link ViewComponent}, {@link ViewMouse}.
  */
-public class  GameView implements ViewMouse,ViewComponent {
+public class GameView implements ViewMouse,ViewComponent {
 
 	private final JPanel rootCanvas = new JPanel(new GridBagLayout());
 	private final SquarePanel gameBoard = new SquarePanel();
@@ -76,11 +76,9 @@ public class  GameView implements ViewMouse,ViewComponent {
 		return this.gameBoard;
 	}
 
-
+	/** {@inheritDoc} */
 	@Override
 	public void setMouseObserver(final SceneMouseObserver observer) {
 		this.gameBoard.addMouseListener(observer.getMouseListener());
-		
 	}
-
 }

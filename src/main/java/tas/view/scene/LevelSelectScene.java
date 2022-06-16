@@ -25,9 +25,7 @@ public class LevelSelectScene implements GenericScene {
 	public LevelSelectScene(JPanel rootPanelIn, int NLevels) {
 		this.rootPanel = rootPanelIn;
 		this.rootPanel.setLayout(new BorderLayout());
-        
         this.View = new LevelSelectView(NLevels);
-        
         this.rootPanel.add(this.View.getPanel(), BorderLayout.CENTER);
 	}
 	
@@ -38,7 +36,6 @@ public class LevelSelectScene implements GenericScene {
 	}
 
 	/**
-	 * 
 	 * @return the level select view.
 	 */
 	public LevelSelectView getView() {

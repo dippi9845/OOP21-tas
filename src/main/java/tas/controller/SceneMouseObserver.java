@@ -11,7 +11,6 @@ import java.awt.event.MouseListener;
 public interface SceneMouseObserver extends SceneController{
 	
 	/**
-	 * 
 	 * @return the mouse listener
 	 */
 	public MouseListener getMouseListener ();

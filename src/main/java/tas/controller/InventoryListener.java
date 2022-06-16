@@ -7,16 +7,15 @@ import javax.swing.AbstractButton;
 
 
 /**
- * Listener for the inventory
- * Class that extends {@link GenericListener}.
- * Class that implements {@link ActionListener}.
+ * Class that implements {@link ActionListener} used as a listener for the
+ * inventory.
+ * Class extends {@link GenericListener}.
  */
 public class InventoryListener extends GenericListener implements ActionListener{
 	
 	private DefaultTowers towerSelected;
 
 	/**
-	 * 
 	 * @return towerSelected
 	 */
 	public DefaultTowers getTowerSelected() {

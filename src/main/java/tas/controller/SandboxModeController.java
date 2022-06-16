@@ -15,7 +15,8 @@ import main.java.tas.view.scene.SandboxModeScene;
 import main.java.tas.view.scene.GenericScene;
 
 /**
- * Class that implements {@link SceneController}.
+ * Class that creates the sandbox mode menu controller.
+ * Class that implements {@link SceneActionObserver}, {@link SceneMouseObserver}.
  */
 public class SandboxModeController implements SceneActionObserver,SceneMouseObserver {
 	
@@ -42,7 +43,6 @@ public class SandboxModeController implements SceneActionObserver,SceneMouseObse
 	}
 	
 	/**
-	 * 
 	 * @return the model
 	 */
 	public MenuModel getModel() {
@@ -86,19 +86,13 @@ public class SandboxModeController implements SceneActionObserver,SceneMouseObse
 		}
 	}
 	
-	/**
-	 * 
-	 * {@inheritDoc}
-	 */
+	/**{@inheritDoc}*/	 
 	@Override
 	public MouseListener getMouseListener() {
 		return this.listener;
 	}
 	
-	/**
-	 * 
-	 * @return the done button listener
-	 */
+	/**{@inheritDoc}*/
 	@Override
 	public ActionListener getActionListener() {
 		return this.doneButtonListener;

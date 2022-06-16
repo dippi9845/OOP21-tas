@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 public interface SceneActionObserver extends SceneController {
 	
 	/**
-	 * 
 	 * @return the action listener
 	 */
 	public ActionListener getActionListener();

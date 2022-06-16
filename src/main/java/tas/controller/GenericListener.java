@@ -1,16 +1,13 @@
 package main.java.tas.controller;
 
 /**
- * 
  * A basic class for other listeners to extend
- *
  */
 public class GenericListener {
 
 	private boolean update = false;
 	
 	/**
-	 * 
 	 * @return update
 	 */
 	public boolean checkUpdate() {
@@ -18,14 +15,14 @@ public class GenericListener {
 	}
 	
 	/**
-	 * sets the update to false.
+	 * Sets the update to false.
 	 */
 	public void resetUpdate() {
 		this.update = false;
 	}
 	
 	/**
-	 * sets the update to true
+	 * Sets the update to true
 	 */
 	public void setUpdate() {
 		this.update = true;

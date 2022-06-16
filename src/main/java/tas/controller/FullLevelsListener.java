@@ -8,8 +8,7 @@ import javax.swing.AbstractButton;
 /**
  * Class that implements {@link ActionListener} used as a listener for the
  *  full levels menu.
- * Class extends {@link GenericListener}
- *
+ * Class extends {@link GenericListener}.
  */
 public class FullLevelsListener extends GenericListener implements ActionListener{
 	

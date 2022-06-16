@@ -9,6 +9,7 @@ import main.java.tas.view.MenuView;
  * 
  * Class that implements {@link ActionListener} used as a listener for
  * the main menu scene.
+ * Class that extends {@link GenericListener}.
  *
  */
 public class MainMenuListener extends GenericListener implements ActionListener{
@@ -25,7 +26,6 @@ public class MainMenuListener extends GenericListener implements ActionListener{
 	}
 	
 	/**
-	 * 
 	 * @return the current command
 	 */
 	public int getCommand() {

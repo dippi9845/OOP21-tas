@@ -8,20 +8,20 @@ import main.java.tas.controller.SceneController;
 import main.java.tas.view.MenuView;
 
 /**
- * 
+ * Class that builds the main menu scene.
  * Class that implements {@link GenericScene}.
- *
  */
-public class MainMenuSceneImpl implements GenericScene {
+public class MainMenuScene implements GenericScene {
 	
 	private JPanel rootPanel;
 	private MenuView menuView;
 	
 	/**
-     * Constructor that set up the menu scene
+     * Constructor that set up the menu scene.
+     * 
      * @param rootPanelIn is the {@link JPanel} that will contain the scene
      */
-	public MainMenuSceneImpl(JPanel rootPanelIn) {
+	public MainMenuScene(JPanel rootPanelIn) {
 		this.rootPanel = rootPanelIn;
 		this.rootPanel.setLayout(new BorderLayout());
         this.menuView = new MenuView();
@@ -35,14 +35,9 @@ public class MainMenuSceneImpl implements GenericScene {
 	}
 	
 	/**
-	 * 
 	 * @return the menu view
 	 */
-	public MenuView getMenuView() {
-		
+	public MenuView getMenuView() {		
 		return this.menuView;
 	}
-	
-
-
 }

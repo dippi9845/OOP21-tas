@@ -1,7 +1,5 @@
 package main.java.tas.utils;
 
-
-
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +8,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * 
- * Class that modifies levelStorage.json, or accesses it for data
- *
+ * Class that modifies levelStorage.json, or accesses it for data.
  */
 public class LevelHandler {
 	
 	private static String PATH = "res" + System.getProperty("file.separator") + "levelStorage" + System.getProperty("file.separator") + "levelStorage.json";
 	
 	/**
-	 * 
 	 * @return the number of elements in levelStorage.json (which is the number of levels)
 	 */
 	public static int getNElements() {
@@ -36,7 +31,8 @@ public class LevelHandler {
 	}
 	
 	/**
-	 * reads a level off levelStorage.json
+	 * Reads a level off levelStorage.json.
+	 * 
 	 * @param level the name of the level
 	 * @return a list of the nodes of the level
 	 */
@@ -53,7 +49,8 @@ public class LevelHandler {
 	}
 	
 	/**
-	 * adds a level on levelsStorege.json
+	 * Adds a level on levelsStorege.json.
+	 * 
 	 * @param list the list of nodes of the new level
 	 */
 	public static void writeLevel(List <Position> list) {
@@ -72,7 +69,7 @@ public class LevelHandler {
 	}
 	
 	/**
-	 * deletes the user made levels
+	 * Deletes the user made levels.
 	 */
 	public static void deleteUserLevels(){
 		JSONObject json = JsonUtils.getJsonData(PATH);
@@ -85,7 +82,8 @@ public class LevelHandler {
 	}
 	
 	/**
-	 * saves the JSON
+	 * Saves the JSON.
+	 * 
 	 * @param jsonObj the JSON
 	 */
 	private static void saveJson(JSONObject jsonObj) {

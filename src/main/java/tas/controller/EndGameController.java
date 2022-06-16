@@ -6,8 +6,8 @@ import main.java.tas.model.MenuModel;
 import main.java.tas.view.scene.GenericScene;
 
 /**
- * Class that creates a controller for the settings menu
- * Class that implements {@link SceneController}.
+ * Class that creates a controller for the end game menu.
+ * Class that implements {@link SceneActionObserver}.
  */
 public class EndGameController implements SceneActionObserver {
 	
@@ -16,8 +16,8 @@ public class EndGameController implements SceneActionObserver {
 	private MenuModel model;
 	
 	/**
-	 * Constructor that creates the settings menu controller, and connects it to its scene.
-	 * @param sceneIn the settings menu scene
+	 * Constructor that creates the end game menu controller, and connects it to its scene.
+	 * @param sceneIn the end game menu scene
 	 * @param theModel the model
 	 */
 	public EndGameController(GenericScene sceneIn, MenuModel theModel) {

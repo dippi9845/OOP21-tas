@@ -20,7 +20,7 @@ public class EndGameView implements ViewAction {
 	private JButton backButton;
     
 	/**
-	 * Constructor that builds the settings menu view
+	 * Constructor that builds the settings menu view.
 	 */
     public EndGameView(){
     	
@@ -33,14 +33,13 @@ public class EndGameView implements ViewAction {
     	this.rootPanel.add(backButton);
     }
     
-    /**
-     * 
-     * @return the root panel
-     */
+    /** {@inheritDoc} */
+	@Override
 	public JPanel getPanel() {
         return this.rootPanel;
     }
 	
+	/** {@inheritDoc} */
 	@Override
 	public void setActionObserver(SceneActionObserver observer) {
 		backButton.addActionListener(observer.getActionListener());

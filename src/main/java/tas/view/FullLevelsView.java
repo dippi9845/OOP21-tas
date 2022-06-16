@@ -11,7 +11,7 @@ import main.java.tas.controller.SceneActionObserver;
 
 
 /**
- * Class that builds the settings menu view.
+ * Class that builds the levels full menu view.
  */
 public class FullLevelsView implements ViewAction {
 	
@@ -22,7 +22,7 @@ public class FullLevelsView implements ViewAction {
 	private JButton deleteButton;
     
 	/**
-	 * Constructor that builds the settings menu view
+	 * Constructor that builds the settings menu view.
 	 */
     public FullLevelsView(){
     	label = new JLabel("You have reached the max number of levels allowed.");
@@ -39,20 +39,16 @@ public class FullLevelsView implements ViewAction {
     	this.rootPanel.add(backButton);
     }
     
-    /**
-     * 
-     * @return the root panel
-     */
-    
+    /** {@inheritDoc} */
     @Override
 	public JPanel getPanel() {
         return this.rootPanel;
     }
 	
-	@Override
+    /** {@inheritDoc} */
+    @Override
 	public void setActionObserver(SceneActionObserver observer) {
 		backButton.addActionListener(observer.getActionListener());
 		deleteButton.addActionListener(observer.getActionListener());
     }
-
 }

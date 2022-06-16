@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
  * The listening parameter is used to check if the listener should update the user click
  * stored.
  * Class that implements {@link MouseListener}.
+ * Class that extends {@link GenericListener}.
  *
  */
 public class ScreenListener extends GenericListener implements MouseListener{
@@ -41,28 +42,23 @@ public class ScreenListener extends GenericListener implements MouseListener{
 	}
 	
 	/**
+	 * It is not used.
+	 */
+	@Override
+	public void mouseClicked(MouseEvent e) {
+	}
+	
+	/**
 	 * If the class is listening, it updates the clicked position with the last 
 	 * clicked position by the user.
 	 */
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void mousePressed(MouseEvent e) {
 		if(listening) {
 			this.clickLocation = e.getPoint();
 			System.out.println(clickLocation.toString());
 			setUpdate();
 		}
-		
-		
-		
-	}
-	
-	/**
-	 * It is not used.
-	 */
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/**
@@ -70,8 +66,6 @@ public class ScreenListener extends GenericListener implements MouseListener{
 	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/**
@@ -79,8 +73,6 @@ public class ScreenListener extends GenericListener implements MouseListener{
 	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/**
@@ -88,7 +80,5 @@ public class ScreenListener extends GenericListener implements MouseListener{
 	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 }

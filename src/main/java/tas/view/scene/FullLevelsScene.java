@@ -9,7 +9,7 @@ import main.java.tas.controller.SceneController;
 import main.java.tas.view.FullLevelsView;
 
 /**
- * Class that builds the sandbox mode scene.
+ * Class that builds the levels full menu scene.
  * Class that implements {@link GenericScene}.
  */
 public class FullLevelsScene implements GenericScene {
@@ -24,9 +24,7 @@ public class FullLevelsScene implements GenericScene {
 	public FullLevelsScene(JPanel rootPanelIn) {
 		this.rootPanel = rootPanelIn;
 		this.rootPanel.setLayout(new BorderLayout());
-        
         this.View = new FullLevelsView();
-        
         this.rootPanel.add(this.View.getPanel(), BorderLayout.CENTER);
 	}
 	
@@ -37,7 +35,6 @@ public class FullLevelsScene implements GenericScene {
 	}
 
 	/**
-	 * 
 	 * @return the settings view
 	 */
 	public FullLevelsView getView() {

@@ -7,7 +7,8 @@ import javax.swing.JPanel;
 import main.java.tas.controller.SceneActionObserver;
 
 /**
- * Class that implements a {@link ViewComponent}.
+ * Class that builds the inventory view.
+ * Class that implements a {@link ViewAction}.
  */
 public class LevelSelectView implements ViewAction {
 	
@@ -31,14 +32,13 @@ public class LevelSelectView implements ViewAction {
     	}
     }
     
-    /**
-     * 
-     * @return the root panel
-     */
+    /** {@inheritDoc} */
+	@Override
 	public JPanel getPanel() {
         return this.rootPanel;
     }
 	
+	/** {@inheritDoc} */
 	@Override
 	public void setActionObserver(SceneActionObserver levelSelectController) {
 		for(int counter = 0; counter < nLevels; counter++) {

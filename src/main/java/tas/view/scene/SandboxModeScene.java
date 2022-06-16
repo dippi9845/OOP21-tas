@@ -20,6 +20,7 @@ public class SandboxModeScene implements GenericScene {
 	
 	/**
      * Constructor that set up the sandbox mode scene.
+     * 
      * @param rootPanelIn is the {@link JPanel} that will contain the scene
      */
 	public SandboxModeScene(JPanel rootPanelIn) {
@@ -37,7 +38,6 @@ public class SandboxModeScene implements GenericScene {
 	}
 
 	/**
-	 * 
 	 * @return the sandbox mode view
 	 */
 	public SandboxModeView getView() {

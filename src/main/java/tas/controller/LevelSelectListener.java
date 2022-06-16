@@ -8,15 +8,13 @@ import javax.swing.AbstractButton;
 /**
  * Class that implements {@link ActionListener} used as a listener for the
  *  level select menu.
- * 
- *
+ *  Class that extends {@link GenericListener}
  */
 public class LevelSelectListener extends GenericListener implements ActionListener{
 	
 	private int currentComand = 0;
 	
 	/**
-	 * 
 	 * @return the currentCommand
 	 */
 	public int getCommand() {

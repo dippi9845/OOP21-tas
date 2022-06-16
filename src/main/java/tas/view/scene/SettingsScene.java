@@ -19,14 +19,13 @@ public class SettingsScene implements GenericScene {
 	
 	/**
      * Constructor that set up the settings scene.
+     * 
      * @param rootPanelIn is the {@link JPanel} that will contain the scene
      */
 	public SettingsScene(JPanel rootPanelIn) {
 		this.rootPanel = rootPanelIn;
 		this.rootPanel.setLayout(new BorderLayout());
-        
         this.View = new SettingsView();
-        
         this.rootPanel.add(this.View.getPanel(), BorderLayout.CENTER);
 	}
 	
@@ -37,7 +36,6 @@ public class SettingsScene implements GenericScene {
 	}
 
 	/**
-	 * 
 	 * @return the settings view
 	 */
 	public SettingsView getView() {

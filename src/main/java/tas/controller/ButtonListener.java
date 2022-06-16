@@ -11,7 +11,8 @@ import java.awt.event.ActionListener;
 public class ButtonListener extends GenericListener implements ActionListener{
 	
 	/**
-	 * Sets the update to true if an action is performed
+	 * Sets the update to true if an action is performed.
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {

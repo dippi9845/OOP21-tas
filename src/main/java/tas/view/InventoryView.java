@@ -13,7 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * Class that implements a {@link ViewComponent}.
+ * Class that builds the inventory view.
+ * Class that implements a {@link ViewAction}.
  */
 public class InventoryView implements ViewAction {
     
@@ -25,7 +26,7 @@ public class InventoryView implements ViewAction {
     private final JPanel labelCanvas = new JPanel(new GridLayout(0,1));
     
     /**
-     * Constructor that sets up the inventory view
+     * Constructor that sets up the inventory view.
      * @param objects a list of the name of the different towers
      */
     public <T extends Enum <T>>InventoryView(Class <T> objects) {
@@ -58,17 +59,16 @@ public class InventoryView implements ViewAction {
         return this.inventoryCanvas;
     }
     
-
+    /** {@inheritDoc} */
     @Override
     public void setActionObserver(SceneActionObserver gameController) {
     	for(int i = 0; i< nTowers; i++) {
         	buttonList[i].addActionListener(gameController.getActionListener());
-        } 
-        
+        }
     }
 	
 	/**
-	 * adds a label to the right of the inventory
+	 * Adds a label to the right of the inventory.
 	 * @param txt the string that has to appear on the label
 	 * @param id the key of the label in the HashMap
 	 */
@@ -82,7 +82,6 @@ public class InventoryView implements ViewAction {
 	}
 	
 	/**
-	 * 
 	 * @return the HashMap containing all the labels
 	 */
 	public HashMap<String, AdaptiveLabel> getInventoryLabels(){
@@ -90,7 +89,7 @@ public class InventoryView implements ViewAction {
 	}
 	
 	/**
-	 * 
+	 * Gets a label from the inventory labels.
 	 * @param key the key of the label
 	 * @return the label corresponding to the asked key
 	 */

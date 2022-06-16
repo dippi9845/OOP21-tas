@@ -12,6 +12,7 @@ import main.java.tas.controller.SceneActionObserver;
 
 /**
  * Class that builds the settings menu view.
+ * Class that implements a {@link ViewAction}.
  */
 public class SettingsView implements ViewAction {
 	
@@ -36,17 +37,14 @@ public class SettingsView implements ViewAction {
     	this.rootPanel.add(backButton);
     }
     
-    /**
-     * 
-     * @return the root panel
-     */
+    /** {@inheritDoc} */
 	public JPanel getPanel() {
         return this.rootPanel;
     }
 	
+	/** {@inheritDoc} */
 	@Override
 	public void setActionObserver(SceneActionObserver observer) {
 		backButton.addActionListener(observer.getActionListener());
     }
-
 }

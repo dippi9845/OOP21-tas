@@ -20,7 +20,7 @@ public interface MainController {
 	 * @param view the main window
 	 * @return the scene that was created
 	 */
-	SceneController createMenu(final MainView view);
+	SceneController createMenu(MainView view);
 
 	/**
 	 * Connects the game model, with it's own view.
@@ -28,8 +28,48 @@ public interface MainController {
 	 * @param view the main window
 	 * @return the scene that was created
 	 */
-	SceneController createGame(final MainView view);
+	SceneController createGame(MainView view);
 
+	/**
+	 * Connects the sandbox mode model, with it's own view.
+	 * 
+	 * @param view the main window
+	 * @return the scene that was created
+	 */
+	SceneController createSandBoxMode(MainView view);
+	
+	/**
+	 * Connects the level select model, with it's own view.
+	 * 
+	 * @param view the main window
+	 * @return the scene that was created
+	 */
+	SceneController createLevelSelect(MainView view);
+	
+	/**
+	 * Connects the end game menu model, with it's own view.
+	 * 
+	 * @param view the main window
+	 * @return the scene that was created
+	 */
+	SceneController createEndGame(MainView view);
+	
+	/**
+	 * Connects the settings model, with it's own view.
+	 * 
+	 * @param view the main window
+	 * @return the scene that was created
+	 */
+	SceneController createSettings(MainView view);
+	
+	/**
+	 * Connects the levels full menu model, with it's own view.
+	 * 
+	 * @param view the main window
+	 * @return the scene that was created
+	 */
+	SceneController createFullLevels(MainView view);
+	
 	/**
 	 * @return the SceneController that is in use.
 	 */

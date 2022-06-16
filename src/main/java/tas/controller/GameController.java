@@ -17,9 +17,9 @@ import main.java.tas.utils.Position;
 import main.java.tas.view.scene.GameScene;
 
 /**
- * Class that implements {@link SceneController}.
+ * Class that implements {@link SceneMouseObserver}, {@link SceneActionObserver}.
  */
-public class GameController implements SceneController,SceneMouseObserver,SceneActionObserver {
+public class GameController implements SceneMouseObserver,SceneActionObserver {
 
 	private final GameScene gameScene;
 	private final EnemiesLogic enemiesHandler;
@@ -41,7 +41,7 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 	private final String pointSymbol = "Points";
 
 	/**
-	 * * Constructor that creates a game controller for the given game scene.
+	 * Constructor that creates a game controller for the given game scene.
 	 * 
 	 * @param gameModel the game model
 	 * @param scene the graphic scene controller

@@ -8,7 +8,8 @@ import main.java.tas.controller.SceneActionObserver;
 
 
 /**
- * Class that creates the main menu view.
+ * Class that builds the main menu view.
+ * Class that implements a {@link ViewAction}.
  */
 public class MenuView implements ViewAction {
 	
@@ -28,15 +29,14 @@ public class MenuView implements ViewAction {
     	this.rootPanel.add(this.exitButton);
     }
     
-    /**
-     * 
-     * @return the root panel
-     */
+    /** {@inheritDoc} */
+    @Override
 	public JPanel getPanel() {
         return this.rootPanel;
     }
 	
-	@Override
+    /** {@inheritDoc} */
+    @Override
 	public void setActionObserver(SceneActionObserver menuController) {
         this.newGameButton.addActionListener(menuController.getActionListener());
         this.settingsButton.addActionListener(menuController.getActionListener());
@@ -45,7 +45,6 @@ public class MenuView implements ViewAction {
     }
 	
 	/**
-	 * 
 	 * @return the new game button
 	 */
 	public JButton getNewGameButton() {
@@ -53,7 +52,6 @@ public class MenuView implements ViewAction {
 	}
 	
 	/**
-	 * 
 	 * @return the settings button
 	 */
 	public JButton getSettingsButton() {
@@ -61,7 +59,6 @@ public class MenuView implements ViewAction {
 	}
 	
 	/**
-	 * 
 	 * @return the sandbox mode button
 	 */
 	public JButton getSandboxModeButton() {
@@ -69,7 +66,6 @@ public class MenuView implements ViewAction {
 	}
 	
 	/**
-	 * 
 	 * @return the exit button
 	 */
 	public JButton getExitButton() {
