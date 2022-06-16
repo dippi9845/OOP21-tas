@@ -9,11 +9,11 @@ import main.java.tas.view.scene.LevelSelectScene;
 import main.java.tas.view.scene.MainMenuScene;
 import main.java.tas.view.scene.SandboxModeScene;
 import main.java.tas.view.scene.SettingsScene;
-import main.java.tas.model.GameModelImpl;
-import main.java.tas.model.GameSpecs;
-import main.java.tas.model.MenuModel;
-import main.java.tas.model.MenuModelImpl;
+import main.java.tas.model.game.GameModelImpl;
+import main.java.tas.model.menu.MenuModel;
+import main.java.tas.model.menu.MenuModelImpl;
 import main.java.tas.model.tower.factory.DefaultTowers;
+import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.LevelHandler;
 
 /**
@@ -64,7 +64,7 @@ public class MainControllerImpl implements MainController {
 		scene.setObserver(controller);
 		return controller;
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public SceneController createEndGame(final MainView view) {
@@ -82,7 +82,7 @@ public class MainControllerImpl implements MainController {
 		scene.setObserver(controller);
 		return controller;
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public SceneController createFullLevels(final MainView view) {
@@ -92,14 +92,12 @@ public class MainControllerImpl implements MainController {
 		return controller;
 	}
 
-
 	/** {@inheritDoc} */
 	@Override
 	public SceneController createGame(final MainView view) {
 		GameSceneImpl scene = new GameSceneImpl(view.getPanel(), DefaultTowers.class);
 		SceneController controller = new GameController(scene, new GameModelImpl(this.playerHealth, this.playerMoney),
-		        LevelHandler.readLevel("level" + Integer.toString(this.menuModel.getCurrentLevel())), 
-		        this.menuModel);
+		        LevelHandler.readLevel("level" + Integer.toString(this.menuModel.getCurrentLevel())), this.menuModel);
 		scene.setObserver(controller);
 		return controller;
 	}
@@ -132,11 +130,10 @@ public class MainControllerImpl implements MainController {
 			this.sceneController = createSettings(this.mainView);
 		}
 		if (menuState == 6) {
-			
-			if(LevelHandler.getNElements() < this.menuModel.getMaxLevels()) {
+
+			if (LevelHandler.getNElements() < this.menuModel.getMaxLevels()) {
 				this.sceneController = createSandBoxMode(this.mainView);
-			}
-			else {
+			} else {
 				this.sceneController = createFullLevels(this.mainView);
 			}
 		}

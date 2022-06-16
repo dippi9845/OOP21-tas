@@ -13,18 +13,18 @@ import main.java.tas.controller.tower.TowerLogicImpl;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.game.GameModel;
+import main.java.tas.model.menu.MenuModel;
 import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.Position;
 import main.java.tas.utils.TimeCurve;
 import main.java.tas.utils.TimeCurveImpl;
-import main.java.tas.view.SceneActionObserver;
-import main.java.tas.view.SceneMouseObserver;
 import main.java.tas.view.scene.GameScene;
 
 /**
- * Class that implements {@link SceneMouseObserver}, {@link SceneActionObserver}.
+ * Class that implements {@link SceneMouseObserver},
+ * {@link SceneActionObserver}.
  */
-public class GameController implements SceneMouseObserver,SceneActionObserver {
+public class GameController implements SceneMouseObserver, SceneActionObserver {
 
 	private final GameScene gameScene;
 	private final EnemiesLogic enemiesHandler;
@@ -48,12 +48,13 @@ public class GameController implements SceneMouseObserver,SceneActionObserver {
 	/**
 	 * Constructor that creates a game controller for the given game scene.
 	 * 
-	 * @param gameModel the game model
-	 * @param scene the graphic scene controller
-	 * @param pathNodes a {@link List} of the nodes of the level
+	 * @param gameModel   the game model
+	 * @param scene       the graphic scene controller
+	 * @param pathNodes   a {@link List} of the nodes of the level
 	 * @param menuModelIn the menu model
 	 */
-	public GameController(final GameScene scene, final GameModel gameModel, final List <Position> pathNodes, final MenuModel menuModelIn) {
+	public GameController(final GameScene scene, final GameModel gameModel, final List<Position> pathNodes,
+	        final MenuModel menuModelIn) {
 		this.menuModel = menuModelIn;
 		this.gameScene = scene;
 		this.playerStats = gameModel;
@@ -63,10 +64,11 @@ public class GameController implements SceneMouseObserver,SceneActionObserver {
 
 		this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(),
 		        this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
-		
+
 		this.gameScene.getInventoryView().addTextLabel(this.healthSymbol + " " + this.playerStats.getHP(), "health");
 		this.gameScene.getInventoryView().addTextLabel(this.waveSymbol + " " + this.enemiesHandler.getWave(), "wave");
-		this.gameScene.getInventoryView().addTextLabel(this.moneySymbol + " " + this.playerStats.getPlayerMoney(), "money");
+		this.gameScene.getInventoryView().addTextLabel(this.moneySymbol + " " + this.playerStats.getPlayerMoney(),
+		        "money");
 		this.gameScene.getInventoryView().addTextLabel(this.pointSymbol + " " + this.playerStats.getPoints(), "points");
 
 		// TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
@@ -174,15 +176,15 @@ public class GameController implements SceneMouseObserver,SceneActionObserver {
 			System.out.println("not inside border");
 			return false;
 		}
-			
-		//then check there isn't a tower overlapping with the new tower
+
+		// then check there isn't a tower overlapping with the new tower
 		if (this.towerLogic.thereIsTowerNear(turretPosition)) {
 			System.out.println("Position too close to another tower");
 			return false;
 		}
-		//DONE then check if the new tower overlaps with the white line
-	
-		List <Position> linePoints = this.gameScene.getGameView().getGamePanel().getLine();
+		// DONE then check if the new tower overlaps with the white line
+
+		List<Position> linePoints = this.gameScene.getGameView().getGamePanel().getLine();
 		for (int i = 1; i < linePoints.size(); i++) {
 
 			double a = linePoints.get(i - 1).getX();
@@ -231,7 +233,7 @@ public class GameController implements SceneMouseObserver,SceneActionObserver {
 	public MouseListener getMouseListener() {
 		return this.screenListener;
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public ActionListener getActionListener() {
@@ -251,7 +253,7 @@ public class GameController implements SceneMouseObserver,SceneActionObserver {
 		if (this.enemiesHandler.areEnemiesAlive()) {
 			enemiesCheck();
 		}
-		
+
 		if (this.playerStats.getHP() <= 0) {
 			this.menuModel.setMainScene(7);
 		}
