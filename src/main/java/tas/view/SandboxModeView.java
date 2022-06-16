@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import main.java.tas.model.Entity;
-import main.java.tas.model.MenuModel;
+import main.java.tas.model.menu.MenuModel;
 
 /**
  * Class that builds the sandbox mode view.
