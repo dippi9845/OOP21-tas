@@ -39,7 +39,6 @@ public class GameSceneImpl implements GameScene {
 	/** {@inheritDoc} */
 	@Override
 	public void setObserver(SceneController observer) {
-		
 		this.inventoryView.setActionObserver((SceneActionObserver) observer);
 		this.gameView.setMouseObserver((SceneMouseObserver) observer);
 	}

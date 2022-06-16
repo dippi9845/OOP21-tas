@@ -15,13 +15,14 @@ import javax.swing.JPanel;
 /**
  * Class that builds the inventory view.
  * Class that implements a {@link ViewAction}.
+ * @param <T>
  */
 public class InventoryView implements ViewAction {
     
     private final JPanel inventoryCanvas;
     private final JPanel towerButtonsCanvas;
-    private final JButton  buttonList[];
-    private int nTowers;
+    private final HashMap<String, JButton> buttonList = new HashMap<String, JButton>();
+    private final int nTowers;
     private final HashMap<String, AdaptiveLabel> textLables = new HashMap<String, AdaptiveLabel>();
     private final JPanel labelCanvas = new JPanel(new GridLayout(0,1));
     
@@ -32,25 +33,18 @@ public class InventoryView implements ViewAction {
     public <T extends Enum <T>>InventoryView(Class <T> objects) {
         this.inventoryCanvas = new JPanel(new GridLayout(0,2));
         this.inventoryCanvas.setBackground(new Color(153,102,0));
-        
         this.towerButtonsCanvas = new JPanel(new GridLayout(0,1));
         
         this.nTowers = DefaultTowers.values().length;
         
-        this.buttonList = new JButton [this.nTowers];
-        
-        
         List <T> towerNames = Arrays.asList(objects.getEnumConstants());
         for(int i = 0; i< nTowers; i++) {
-        	this.buttonList[i] = new JButton(towerNames.get(i).toString());
-        	this.towerButtonsCanvas.add(buttonList[i]);
+        	String tower = towerNames.get(i).toString();
+        	this.buttonList.put((tower), new JButton(tower));
+        	this.towerButtonsCanvas.add(buttonList.get(tower));
         }
-        
         this.inventoryCanvas.add(towerButtonsCanvas);
-        this.inventoryCanvas.add(labelCanvas);
-        
-        
-        
+        this.inventoryCanvas.add(labelCanvas); 
     }
     
     /** {@inheritDoc} */
@@ -62,13 +56,14 @@ public class InventoryView implements ViewAction {
     /** {@inheritDoc} */
     @Override
     public void setActionObserver(SceneActionObserver gameController) {
-    	for(int i = 0; i< nTowers; i++) {
-        	buttonList[i].addActionListener(gameController.getActionListener());
+    	for(JButton button : buttonList.values()) {
+        	button.addActionListener(gameController.getActionListener());
         }
     }
 	
 	/**
 	 * Adds a label to the right of the inventory.
+	 * 
 	 * @param txt the string that has to appear on the label
 	 * @param id the key of the label in the HashMap
 	 */
@@ -90,12 +85,17 @@ public class InventoryView implements ViewAction {
 	
 	/**
 	 * Gets a label from the inventory labels.
+	 * 
 	 * @param key the key of the label
 	 * @return the label corresponding to the asked key
 	 */
 	public JLabel getTextLabel(String key) {
 		return this.textLables.get(key);
 	}
+	
+	//TODO ottenere un pulsante specifico
+	
+	//public void selectButton(String name);
 
 	
 
