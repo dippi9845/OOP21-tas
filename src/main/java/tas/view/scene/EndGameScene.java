@@ -1,7 +1,5 @@
 package main.java.tas.view.scene;
 
-import java.awt.BorderLayout;
-
 import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneActionObserver;
@@ -24,9 +22,8 @@ public class EndGameScene implements GenericScene {
      */
 	public EndGameScene(JPanel rootPanelIn) {
 		this.rootPanel = rootPanelIn;
-		this.rootPanel.setLayout(new BorderLayout());
         this.View = new EndGameView();
-        this.rootPanel.add(this.View.getPanel(), BorderLayout.CENTER);
+        this.rootPanel.add(this.View.getPanel());
 	}
 	
 	/** {@inheritDoc} */
