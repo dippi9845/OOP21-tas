@@ -6,10 +6,10 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
-import main.java.tas.model.GameModel;
 import main.java.tas.model.GameSpecs;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.model.enemy.Enemy;
+import main.java.tas.model.game.GameModel;
 import main.java.tas.utils.Position;
 import main.java.tas.utils.TimeCurve;
 import main.java.tas.utils.TimeCurveImpl;
