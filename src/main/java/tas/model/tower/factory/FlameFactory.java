@@ -16,7 +16,7 @@ public interface FlameFactory {
 	 * @return the damage of Flame Tower
 	 */
 	static public int getDamage() {
-		return 10;
+		return 100;
 	}
 
 	/**
