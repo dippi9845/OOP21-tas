@@ -1,7 +1,9 @@
 package main.java.tas.view;
 
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.awt.RenderingHints;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -84,7 +86,8 @@ public class ImageLoaderImpl implements ImageLoader {
 
 	/** {@inheritDoc} */
 	@Override
-	public BufferedImage getImageByName(final String imageName, Dimension CanvasDimension) throws FileNotFoundException {
+	public BufferedImage getImageByName(final String imageName, Dimension CanvasDimension)
+	        throws FileNotFoundException {
 		return scaleImage(getImageByName(imageName), CanvasDimension);
 	}
 
@@ -98,9 +101,9 @@ public class ImageLoaderImpl implements ImageLoader {
 	 */
 	private Dimension getNewImageDimension(Dimension canvasDimension, Dimension originalImageDimension) {
 		int newX = (int) ((double) canvasDimension.width
-				/ ((double) this.gameSpecs.getGameUnits().width / (double) originalImageDimension.width));
+		        / ((double) this.gameSpecs.getGameUnits().width / (double) originalImageDimension.width));
 		int newY = (int) ((double) canvasDimension.height
-				/ ((double) this.gameSpecs.getGameUnits().height / (double) originalImageDimension.height));
+		        / ((double) this.gameSpecs.getGameUnits().height / (double) originalImageDimension.height));
 
 		return new Dimension(newX, newY);
 	}
@@ -113,23 +116,15 @@ public class ImageLoaderImpl implements ImageLoader {
 	 * @return the scaled image
 	 */
 	private BufferedImage scaleImage(final BufferedImage src, final Dimension newDimension) {
-		int newWidth = newDimension.width;
-		int newHeight = newDimension.height;
-		BufferedImage img = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
-		int originalWidth = src.getWidth();
-		int originalHeight = src.getHeight();
-		int[] ys = new int[newHeight];
+		BufferedImage resizedImg = new BufferedImage((int) newDimension.getWidth(), (int) newDimension.getHeight(),
+		        BufferedImage.TRANSLUCENT);
 
-		for (int y = 0; y < newHeight; y++)
-			ys[y] = y * originalHeight / newHeight;
-		for (int x = 0; x < newWidth; x++) {
-			int newX = x * originalWidth / newWidth;
-			for (int y = 0; y < newHeight; y++) {
-				int col = src.getRGB(newX, ys[y]);
-				img.setRGB(x, y, col);
-			}
-		}
-		return img;
+		Graphics2D g2 = resizedImg.createGraphics();
+
+		g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		g2.drawImage(src, 0, 0, (int) newDimension.getWidth(), (int) newDimension.getHeight(), null);
+		g2.dispose();
+		return resizedImg;
 	}
 
 }
