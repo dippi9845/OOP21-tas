@@ -30,34 +30,9 @@ public class TowerLogicImpl implements TowerLogic {
 	private final List<Thread> towerThreads = new LinkedList<Thread>();
 	private final Consumer<Entity> addToPanel;
 	private final Predicate<Integer> spendMoney;
-	private final Map<DefaultTowers, BiFunction<Position, List<Enemy>, Tower>> buildMap;
 	private final List<Enemy> enemyList;
 
-	/**
-	 * Initialize the map with all functions that build a tower by the given
-	 * enumeration code
-	 */
-	private void initBuildMap() {
-		this.buildMap.put(DefaultTowers.BASICARCHER, ArcherFactory::basicArcher);
-		this.buildMap.put(DefaultTowers.BIARCHER, ArcherFactory::biArcher);
-		this.buildMap.put(DefaultTowers.TRIARCHER, ArcherFactory::triArcher);
-		this.buildMap.put(DefaultTowers.QUADARCHER, ArcherFactory::quadArcher);
-		this.buildMap.put(DefaultTowers.BASICCANNON, CannonFactory::basicCannon);
-		this.buildMap.put(DefaultTowers.BICANNON, CannonFactory::biCannon);
-		this.buildMap.put(DefaultTowers.TRICANNON, CannonFactory::triCannon);
-		this.buildMap.put(DefaultTowers.QUADCANNON, CannonFactory::quadCannon);
-		this.buildMap.put(DefaultTowers.BASICFLAME, FlameFactory::basicFlame);
-		this.buildMap.put(DefaultTowers.BIFLAME, FlameFactory::biFlame);
-		this.buildMap.put(DefaultTowers.TRIFLAME, FlameFactory::triFlame);
-		this.buildMap.put(DefaultTowers.QUADFLAME, FlameFactory::quadFlame);
-		this.buildMap.put(DefaultTowers.GASTOWER, GasFactory::gasTower);
-		this.buildMap.put(DefaultTowers.BASICMORTAR, MortarFactory::basicMortar);
-		this.buildMap.put(DefaultTowers.SUPERMORTAR, MortarFactory::superMortar);
-		this.buildMap.put(DefaultTowers.GODMORTAR, MortarFactory::godMortar);
-		this.buildMap.put(DefaultTowers.BASICTESLA, TeslaFactory::basicTesla);
-		this.buildMap.put(DefaultTowers.SUPERTESLA, TeslaFactory::superTesla);
-		this.buildMap.put(DefaultTowers.GODTESLA, TeslaFactory::godTesla);
-	}
+	
 
 	/**
 	 * Add the tower to the list, and create a thread on that
@@ -91,9 +66,6 @@ public class TowerLogicImpl implements TowerLogic {
 		this.addToPanel = addToPanel;
 		this.spendMoney = spendMoney;
 		this.enemyList = enemyList;
-
-		this.buildMap = new HashMap<>();
-		this.initBuildMap();
 	}
 
 	/** {@inheritDoc} */
