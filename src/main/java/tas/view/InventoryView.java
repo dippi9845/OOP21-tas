@@ -108,12 +108,20 @@ public class InventoryView implements ViewAction {
 		return this.textLables.get(key);
 	}
 	
+	/**
+	 * Resets the color of all the buttons.
+	 */
 	public void resetButtonBackground() {
 		for(JButton button : buttonList.values()) {
 			button.setBackground(null);
 		}
 	}
 	
+	/**
+	 * Turns the selected button red.
+	 * 
+	 * @param name the button
+	 */
 	public void selectButton(String name) {
 		this.buttonList.get(name).setBackground(Color.RED);
 	};
