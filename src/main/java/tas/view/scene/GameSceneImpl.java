@@ -1,6 +1,8 @@
 package main.java.tas.view.scene;
 
 import java.awt.BorderLayout;
+import java.util.List;
+
 import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneActionObserver;
@@ -53,5 +55,10 @@ public class GameSceneImpl implements GameScene {
 	@Override
 	public InventoryView getInventoryView() {
 		return this.inventoryView;
+	}
+
+	@Override
+	public void disableButtons(List<String> names) {
+		this.inventoryView.disableButtons(names);
 	}
 }
