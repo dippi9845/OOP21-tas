@@ -14,12 +14,15 @@ public class DefaultTowersInfo {
 	
 	private DefaultTowersInfo() {}
 	
-	public static final String TOWERJSONPATH = "res" + System.getProperty("file.separator") + "data"
+	// json file with all preset
+	public static final String TOWERSJSONFILE = "res" + System.getProperty("file.separator") + "data"
 	        + System.getProperty("file.separator") + "towers" + System.getProperty("file.separator") + "DefaultTowers.json";
 	
-	public static final Map<DefaultTowers, String> DEFAULTJSON = initMap();
+	// name inside the json file
+	public static final Map<DefaultTowers, String> TOWERSJSONNAME = initMapName();
 
-    private static Map<DefaultTowers, String> initMap() {
+	// init map with all json file name
+	private static Map<DefaultTowers, String> initMapName() {
         Map<DefaultTowers, String> map = new HashMap<>();
         
         Arrays.stream(DefaultTowers.values())
