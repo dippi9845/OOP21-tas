@@ -42,6 +42,6 @@ public interface Enemy extends Entity {
 	/**
 	 * @return True if the enemy has completed its path
 	 */
-	boolean hasCompletedPath();
+	boolean isPathCompleted();
 
 }

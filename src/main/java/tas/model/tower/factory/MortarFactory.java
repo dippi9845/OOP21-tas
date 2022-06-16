@@ -1,7 +1,6 @@
 package main.java.tas.model.tower.factory;
 
 import java.util.List;
-
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Builder;

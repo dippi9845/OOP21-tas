@@ -2,7 +2,6 @@ package main.java.tas.model.tower;
 
 import java.util.LinkedList;
 import java.util.List;
-
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 
@@ -93,7 +92,7 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 	/** {@inheritDoc} */
 	@Override
 	protected void setTarget(final Enemy e) {
-		if (!this.isFull() && !this.contains(e)) {
+		if (this.isValidTarget(e)) {
 			this.enemyList.add(e);
 		}
 	}

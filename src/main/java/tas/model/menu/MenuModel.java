@@ -1,4 +1,4 @@
-package main.java.tas.model;
+package main.java.tas.model.menu;
 
 /** 
  * Interface for the menu model.

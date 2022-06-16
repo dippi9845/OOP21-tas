@@ -3,7 +3,7 @@ package main.java.tas.model.enemy;
 import java.awt.Dimension;
 import java.util.List;
 
-import main.java.tas.model.GameSpecs;
+import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.Position;
 
 /**
@@ -124,7 +124,7 @@ public class GenericEnemy implements Enemy {
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean hasCompletedPath() {
+	public boolean isPathCompleted() {
 		return this.reachedNode + 1 >= this.nodesPosition.size();
 	}
 

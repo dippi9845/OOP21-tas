@@ -2,7 +2,6 @@ package main.java.tas.model.tower;
 
 import java.util.List;
 import java.util.Optional;
-
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 
@@ -61,7 +60,10 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 	 * Target all the enemies nearby the first target
 	 */
 	private void addNearbyTarget() {
-		Towers.findAll(this::isValidTarget, this.getVisibleEnemyList()).forEach(this::setTarget);
+		List<Enemy> tmp = Towers.findAll(this::isValidTarget, this.getVisibleEnemyList());
+		for (var i : tmp) {
+			this.setTarget(i);
+		}
 	}
 
 	/**
@@ -79,6 +81,7 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 		if (target.isPresent()) {
 			this.targetPos = target.get().getPosition();
 			this.addNearbyTarget();
+			System.out.println(this.getEnemyList());
 			this.attack();
 			this.clear();
 		}

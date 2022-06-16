@@ -2,7 +2,6 @@ package main.java.tas.model.tower.factory;
 
 import java.util.List;
 import java.util.function.UnaryOperator;
-
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.utils.Position;
@@ -17,7 +16,7 @@ public interface FlameFactory {
 	 * @return the damage of Flame Tower
 	 */
 	static public int getDamage() {
-		return 10;
+		return 100;
 	}
 
 	/**

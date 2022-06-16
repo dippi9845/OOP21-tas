@@ -1,8 +1,6 @@
 package main.java.tas.model.tower;
 
-import java.util.Collections;
 import java.util.List;
-
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 
@@ -45,7 +43,7 @@ public abstract class AbstractBasicTower implements Tower {
 
 	protected List<Enemy> getVisibleEnemyList() {
 		synchronized (this.visibleEnemyList) {
-			return Collections.unmodifiableList(this.visibleEnemyList);
+			return List.copyOf(this.visibleEnemyList);
 		}
 	}
 

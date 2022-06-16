@@ -1,8 +1,6 @@
 package main.java.tas.model.tower;
 
 import java.util.List;
-import java.util.stream.Collectors;
-
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 
@@ -32,21 +30,28 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 	/** {@inheritDoc} */
 	@Override
 	protected boolean isValidTarget(final Enemy e) {
-		return Towers.isTargetInRange(e, this);
+		return Towers.isTargetInRange(e, this) && !this.isFull() && !this.contains(e);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void compute() throws InterruptedException {
-		if (!this.isFull()) {
-			Towers.findAll(this::isValidTarget, this.getVisibleEnemyList()).stream()
-					.limit(this.getMaxEnemy() - this.getEnemyList().size()).forEach(this::setTarget);
-		}
-
-		List<Enemy> toRemove = this.getEnemyList().stream().filter(x -> !Towers.isTargetInRange(x, this))
-				.collect(Collectors.toList());
+		/*
+		List<Enemy> toRemove = Towers.findAll(x->!Towers.isTargetInRange(x, this) || x.isDead(), this.getEnemyList());
+		
 		this.getEnemyList().removeAll(toRemove);
-
+		*/
+		Towers.findAll(x->!Towers.isTargetInRange(x, this) || x.isDead(),this.getEnemyList())
+				.stream()
+				.forEach(this::remove);
+		
+		if (!this.isFull()) {
+			Towers.findAll(this::isValidTarget, this.getVisibleEnemyList())
+					.stream()
+					.limit(this.getMaxEnemy() - this.getEnemyList().size())
+					.forEach(this::setTarget);
+		}
+		
 		this.attack();
 		Thread.sleep(this.getDelay());
 	}

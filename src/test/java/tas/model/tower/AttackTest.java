@@ -9,8 +9,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import main.java.tas.controller.TowerLogic;
-import main.java.tas.controller.TowerLogicImpl;
+import main.java.tas.controller.tower.TowerLogic;
+import main.java.tas.controller.tower.TowerLogicImpl;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Builder;
@@ -96,6 +96,33 @@ class AttackTest {
 
 		assertTrue(e.getHealth() < 51 && e1.isDead());
 	}
+	
+	@Test
+	void BasicMultipleTowerRemoveDeath() throws InterruptedException {
+		List<Enemy> enemies = new LinkedList<>();
+		FakeEnemy e = new FakeEnemy(new Position(50, 50), 100);
+		FakeEnemy e1 = new FakeEnemy(new Position(51, 50), 100);
+		FakeEnemy e2 = new FakeEnemy(new Position(50, 50), 100);
+		FakeEnemy e3 = new FakeEnemy(new Position(51, 50), 100);
+		
+		enemies.add(e);
+		enemies.add(e1);
+		enemies.add(e2);
+		enemies.add(e3);
+
+		Tower t = new Builder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).attackType(AttackType.MULTIPLE)
+				.maximumTarget(2).build();
+		t.compute();
+		t.compute();
+		
+		enemies.remove(e); // the enemies dead are removed from list
+		enemies.remove(e1);
+		
+		t.compute();
+		t.compute();
+
+		assertTrue(e.isDead() && e1.isDead() && e2.isDead() && e3.isDead());
+	}
 
 	@Test
 	void BasicMultipleTowerMaximumTargetTest() throws InterruptedException {
@@ -116,7 +143,7 @@ class AttackTest {
 
 		t.compute();
 
-		assertTrue(e.getHealth() < 51 && e1.isDead() && e2.getHealth() == 100);
+		assertTrue(e.getHealth() < 51 && e1.isDead() && e2.getHealth() < 51);
 	}
 
 	@Test

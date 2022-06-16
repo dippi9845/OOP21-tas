@@ -2,22 +2,23 @@ package main.java.tas.controller;
 
 import java.awt.event.ActionListener;
 
-import main.java.tas.model.MenuModel;
+import main.java.tas.model.menu.MenuModel;
 import main.java.tas.view.scene.GenericScene;
 
 /**
- * Class that creates a controller for the level select menu.
- * Class that implements {@link SceneActionObserver}.
+ * Class that creates a controller for the level select menu. Class that
+ * implements {@link SceneActionObserver}.
  */
 public class LevelSelectController implements SceneActionObserver {
-	
+
 	private LevelSelectListener listener;
 	private GenericScene scene;
 	private MenuModel model;
-	
+
 	/**
 	 * Constructor that creates a menu controller for the level select menu.
-	 * @param sceneIn the level select scene
+	 * 
+	 * @param sceneIn  the level select scene
 	 * @param theModel the menu model
 	 */
 	public LevelSelectController(GenericScene sceneIn, MenuModel theModel) {
@@ -26,7 +27,7 @@ public class LevelSelectController implements SceneActionObserver {
 		this.listener = new LevelSelectListener();
 		this.model = theModel;
 	}
-	
+
 	/**
 	 * 
 	 * @return the menu model
@@ -34,7 +35,7 @@ public class LevelSelectController implements SceneActionObserver {
 	public MenuModel getModel() {
 		return this.model;
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public void nextTick() {
@@ -43,9 +44,9 @@ public class LevelSelectController implements SceneActionObserver {
 			this.model.setMainScene(2);
 			listener.resetUpdate();
 		}
-		
+
 	}
-	
+
 	/**
 	 * 
 	 * @return the listener
@@ -54,6 +55,5 @@ public class LevelSelectController implements SceneActionObserver {
 	public ActionListener getActionListener() {
 		return this.listener;
 	}
-	
 
 }

@@ -1,6 +1,7 @@
-package main.java.tas.controller;
+package main.java.tas.controller.enemy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +15,7 @@ import main.java.tas.utils.Position;
  */
 public class EnemiesLogicImpl implements EnemiesLogic {
 
-	private final List<Enemy> aliveEnemiesList = new ArrayList<Enemy>();
+	private final List<Enemy> aliveEnemiesList = Collections.synchronizedList(new ArrayList<Enemy>());
 	private int actualWave;
 	private final EnemyFactory waveFactory;
 	private List<Enemy> enemyToBeSpawned = new ArrayList<Enemy>();
@@ -40,9 +41,7 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 
 		Enemy enemy = this.enemyToBeSpawned.remove(0);
 		
-		synchronized (aliveEnemiesList) {
-			this.aliveEnemiesList.add(enemy);						
-		}
+		this.aliveEnemiesList.add(enemy);
 
 		return Optional.of(enemy);
 	}
@@ -50,15 +49,13 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 	/** {@inheritDoc} */
 	@Override
 	public void removeEnemy(final Enemy enemy) throws NoSuchFieldException {
-		
-		synchronized (aliveEnemiesList) {
 			
-			if (!this.aliveEnemiesList.contains(enemy)) {
-				throw new NoSuchFieldException("This enemy is not alive");
-			}
-		
-			this.aliveEnemiesList.remove(enemy);
+		if (!this.aliveEnemiesList.contains(enemy)) {
+			throw new NoSuchFieldException("This enemy is not alive");
 		}
+	
+		this.aliveEnemiesList.remove(enemy);
+		
 	}
 
 	/** {@inheritDoc} */
@@ -83,12 +80,12 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 	/** {@inheritDoc} */
 	@Override
 	public List<Enemy> getEnemies() {
-		return this.aliveEnemiesList;
+		return Collections.unmodifiableList(this.aliveEnemiesList);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean areEnemiesOnBoard() {
+	public boolean areEnemiesAlive() {
 		return !this.aliveEnemiesList.isEmpty();
 	}
 
