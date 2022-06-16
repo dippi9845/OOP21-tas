@@ -13,7 +13,7 @@ import main.java.tas.utils.JsonUtils;
  * A class specialized to Build , to start, you have to call the constructor,
  * next you have to call the method to set more parameters, in cascade notation
  */
-public class Builder {
+public class TowerBuilder {
 
 	private AttackType attackType;
 	private final Position pos;
@@ -53,7 +53,7 @@ public class Builder {
 	 * @param imageName Name of the image of the tower
 	 * @param enemyList List of all enemy in the map
 	 */
-	public Builder(final Position pos, final int damage, final int radius, final int delay, final String imageName,
+	public TowerBuilder(final Position pos, final int damage, final int radius, final int delay, final String imageName,
 			final List<Enemy> enemyList) {
 		this.pos = pos;
 		this.damage = damage;
@@ -83,7 +83,7 @@ public class Builder {
 	 * @param delay     Delay of the Tower
 	 * @param imageName Name of the image of the tower
 	 */
-	public Builder(final Position pos, final int damage, final int radius, final int delay, final String imageName) {
+	public TowerBuilder(final Position pos, final int damage, final int radius, final int delay, final String imageName) {
 		this.pos = pos;
 		this.damage = damage;
 		this.radius = radius;
@@ -103,7 +103,7 @@ public class Builder {
 		this.maxLevel = Optional.empty();
 	}
 	
-	public Builder(final Position pos, final JSONObject dataset) {
+	public TowerBuilder(final Position pos, final JSONObject dataset) {
 		this(pos, dataset.getInt(DAMAGEFIELD), dataset.getInt(RADIUSFIELD), dataset.getInt(DELAYFIELD), dataset.getString(IMAGENAMEFIELD));
 		
 		if (dataset.has(COSTFIELD)) {
@@ -117,7 +117,7 @@ public class Builder {
 	 * @param enemyList List of all enemy in the map
 	 * @return this object
 	 */
-	public Builder setEnemylist(final List<Enemy> enemyList) {
+	public TowerBuilder setEnemylist(final List<Enemy> enemyList) {
 		this.visibleEnemy = Optional.ofNullable(enemyList);
 		return this;
 	}
@@ -128,7 +128,7 @@ public class Builder {
 	 * @param attackType the attack type
 	 * @return this object
 	 */
-	public Builder attackType(final AttackType attackType) {
+	public TowerBuilder attackType(final AttackType attackType) {
 		this.attackType = attackType;
 		return this;
 	}
@@ -140,7 +140,7 @@ public class Builder {
 	 *                   otherwise
 	 * @return this object
 	 */
-	public Builder setUpgradable(final boolean upgradable) {
+	public TowerBuilder setUpgradable(final boolean upgradable) {
 		this.upgradable = upgradable;
 		return this;
 	}
@@ -151,7 +151,7 @@ public class Builder {
 	 * @param cost integer that must be greater than 0
 	 * @return this object
 	 */
-	public Builder cost(final int cost) {
+	public TowerBuilder cost(final int cost) {
 		this.cost = cost;
 		return this;
 	}
@@ -163,7 +163,7 @@ public class Builder {
 	 * @param max integer that must be greater than 0
 	 * @return this object
 	 */
-	public Builder maximumTarget(final int max) {
+	public TowerBuilder maximumTarget(final int max) {
 		this.maximumTarget = Optional.ofNullable(max);
 		return this;
 	}
@@ -174,7 +174,7 @@ public class Builder {
 	 * @param range integer that must be greater than 0
 	 * @return this object
 	 */
-	public Builder damageRange(final int range) {
+	public TowerBuilder damageRange(final int range) {
 		this.attackRange = Optional.ofNullable(range);
 		return this;
 	}
@@ -185,7 +185,7 @@ public class Builder {
 	 * @param findFirstEnemy supplier that provide the enemies
 	 * @return this object
 	 */
-	public Builder findFirst(final Supplier<Optional<Enemy>> findFirstEnemy) {
+	public TowerBuilder findFirst(final Supplier<Optional<Enemy>> findFirstEnemy) {
 		this.findFirst = Optional.ofNullable(findFirstEnemy);
 		return this;
 	}
@@ -198,7 +198,7 @@ public class Builder {
 	 *                      level
 	 * @return this object
 	 */
-	public Builder upgradeDamage(final UnaryOperator<Integer> upgradeDamage) {
+	public TowerBuilder upgradeDamage(final UnaryOperator<Integer> upgradeDamage) {
 		this.upgradeDamage = Optional.ofNullable(upgradeDamage);
 		return this;
 	}
@@ -211,7 +211,7 @@ public class Builder {
 	 *                    level
 	 * @return this object
 	 */
-	public Builder upgradeCost(final UnaryOperator<Integer> upgradeCost) {
+	public TowerBuilder upgradeCost(final UnaryOperator<Integer> upgradeCost) {
 		this.upgradeCost = Optional.ofNullable(upgradeCost);
 		return this;
 	}
@@ -222,7 +222,7 @@ public class Builder {
 	 * @param startUpgradeCost integer that must be grater than 0
 	 * @return this object
 	 */
-	public Builder startUpgradeCost(final int startUpgradeCost) {
+	public TowerBuilder startUpgradeCost(final int startUpgradeCost) {
 		this.startUpgradeCost = Optional.ofNullable(startUpgradeCost);
 		return this;
 	}
@@ -233,7 +233,7 @@ public class Builder {
 	 * @param maxLevel integer that must be grater than 0
 	 * @return this object
 	 */
-	public Builder maxLevel(final int maxLevel) {
+	public TowerBuilder maxLevel(final int maxLevel) {
 		this.maxLevel = Optional.ofNullable(maxLevel);
 		return this;
 	}

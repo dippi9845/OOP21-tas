@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import main.java.tas.controller.tower.TowerLogicImpl;
 import main.java.tas.model.enemy.Enemy;
-import main.java.tas.model.tower.Builder;
+import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.utils.Position;
 
 class TowerLogic {
@@ -20,7 +20,7 @@ class TowerLogic {
 		
 		TowerLogicImpl t = new TowerLogicImpl(a, x->{}, x->{return true;});
 		
-		t.placeTower(new Builder(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
 		
 		assertTrue(t.thereIsTowerNear(new Position(51, 51)));
 	}
@@ -31,7 +31,7 @@ class TowerLogic {
 		
 		TowerLogicImpl t = new TowerLogicImpl(a, x->{}, x->{return true;});
 		
-		t.placeTower(new Builder(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
 		
 		assertFalse(t.thereIsTowerNear(new Position(51, 121)));
 	}

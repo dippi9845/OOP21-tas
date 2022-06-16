@@ -3,7 +3,7 @@ package main.java.tas.model.tower.factory;
 import java.util.List;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.AttackType;
-import main.java.tas.model.tower.Builder;
+import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.Towers;
 import main.java.tas.utils.Position;
@@ -22,7 +22,7 @@ public interface TeslaFactory {
 	 * @return Tesla tower
 	 */
 	static public Tower basicTesla(final Position pos, final List<Enemy> enemyList) {
-		return new Builder(pos, 100, 500, 1100, "tesla", enemyList)
+		return new TowerBuilder(pos, 100, 500, 1100, "tesla", enemyList)
 				.attackType(AttackType.AREA)
 				.damageRange(7)
 				.setUpgradable(true)
@@ -44,7 +44,7 @@ public interface TeslaFactory {
 	 * @return Super Tesla tower
 	 */
 	static public Tower superTesla(final Position pos, final List<Enemy> enemyList) {
-		return new Builder(pos, 150, 500, 1100, "supertesla", enemyList)
+		return new TowerBuilder(pos, 150, 500, 1100, "supertesla", enemyList)
 				.attackType(AttackType.AREA)
 				.damageRange(7)
 				.setUpgradable(true)
@@ -66,7 +66,7 @@ public interface TeslaFactory {
 	 * @return God Tesla tower
 	 */
 	static public Tower godTesla(final Position pos, final List<Enemy> enemyList) {
-		return new Builder(pos, 200, 500, 1100, "godtesla", enemyList)
+		return new TowerBuilder(pos, 200, 500, 1100, "godtesla", enemyList)
 				.attackType(AttackType.AREA)
 				.damageRange(7)
 				.setUpgradable(true)

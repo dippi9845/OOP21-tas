@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.function.UnaryOperator;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.AttackType;
-import main.java.tas.model.tower.Builder;
+import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.utils.Position;
 
 /**
@@ -99,8 +99,8 @@ class ClassicTowerFactory {
 	 * @param pos position of the tower
 	 * @return builder with all preset already set
 	 */
-	public Builder basicStarndard(final Position pos) {
-		return new Builder(pos, this.getDamage(), this.getRange(), this.getDelay(), this.getImageName(), this.enemyList)
+	public TowerBuilder basicStarndard(final Position pos) {
+		return new TowerBuilder(pos, this.getDamage(), this.getRange(), this.getDelay(), this.getImageName(), this.enemyList)
 				.cost(this.getBuildCost());
 	}
 
@@ -112,7 +112,7 @@ class ClassicTowerFactory {
 	 *                 damage
 	 * @return builder with all preset already set
 	 */
-	public Builder upgradableStarndard(final Position pos, final UnaryOperator<Integer> upCost,
+	public TowerBuilder upgradableStarndard(final Position pos, final UnaryOperator<Integer> upCost,
 			final UnaryOperator<Integer> upDamage) {
 		return this.basicStarndard(pos).setUpgradable(true).maxLevel(this.getMaxLevel()).upgradeCost(upCost)
 				.upgradeDamage(upDamage).startUpgradeCost(this.getStartUpCost());
@@ -128,7 +128,7 @@ class ClassicTowerFactory {
 	 * @param n        number of maximum target for the tower
 	 * @return builder with all preset already set
 	 */
-	public Builder nTargetStandard(final Position pos, final UnaryOperator<Integer> upCost,
+	public TowerBuilder nTargetStandard(final Position pos, final UnaryOperator<Integer> upCost,
 			final UnaryOperator<Integer> upDamage, final int n) {
 		return this.upgradableStarndard(pos, upCost, upDamage).attackType(AttackType.MULTIPLE).maximumTarget(n);
 	}
