@@ -6,6 +6,10 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
+import main.java.tas.controller.enemy.EnemiesLogic;
+import main.java.tas.controller.enemy.EnemiesLogicImpl;
+import main.java.tas.controller.tower.TowerLogic;
+import main.java.tas.controller.tower.TowerLogicImpl;
 import main.java.tas.model.GameSpecs;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.model.enemy.Enemy;

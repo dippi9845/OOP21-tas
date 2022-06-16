@@ -1,4 +1,4 @@
-package main.java.tas.controller;
+package main.java.tas.controller.enemy;
 
 import java.util.ArrayList;
 import java.util.List;

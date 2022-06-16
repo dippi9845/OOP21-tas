@@ -1,4 +1,4 @@
-package main.java.tas.controller;
+package main.java.tas.controller.tower;
 
 import java.util.function.Consumer;
 import main.java.tas.model.Entity;

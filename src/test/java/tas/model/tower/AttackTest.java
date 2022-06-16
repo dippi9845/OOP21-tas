@@ -9,8 +9,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import main.java.tas.controller.TowerLogic;
-import main.java.tas.controller.TowerLogicImpl;
+import main.java.tas.controller.tower.TowerLogic;
+import main.java.tas.controller.tower.TowerLogicImpl;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Builder;
