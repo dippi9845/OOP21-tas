@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
+import org.json.JSONObject;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
+import main.java.tas.utils.JsonUtils;
 
 /**
  * A class specialized to Build , to start, you have to call the constructor,
@@ -32,6 +34,12 @@ public class Builder {
 	private Optional<UnaryOperator<Integer>> upgradeCost;
 	private Optional<Integer> startUpgradeCost;
 	private Optional<Integer> maxLevel;
+	
+	public static final String DAMAGEFIELD = "damage";
+	public static final String RADIUSFIELD = "radius";
+	public static final String DELAYFIELD = "delay";
+	public static final String IMAGENAMEFIELD = "image name";
+	public static final String COSTFIELD = "cost";
 
 	/**
 	 * The constructor has the basic fields, that without one of them the tower
@@ -65,7 +73,7 @@ public class Builder {
 		this.startUpgradeCost = Optional.empty();
 		this.maxLevel = Optional.empty();
 	}
-
+	
 	/**
 	 * The constructor has the basic fields, without the list of all visible enemy
 	 * 
@@ -93,6 +101,14 @@ public class Builder {
 		this.upgradeCost = Optional.empty();
 		this.startUpgradeCost = Optional.empty();
 		this.maxLevel = Optional.empty();
+	}
+	
+	public Builder(final Position pos, final JSONObject dataset) {
+		this(pos, dataset.getInt(DAMAGEFIELD), dataset.getInt(RADIUSFIELD), dataset.getInt(DELAYFIELD), dataset.getString(IMAGENAMEFIELD));
+		
+		if (dataset.has(COSTFIELD)) {
+			this.cost = dataset.getInt(COSTFIELD);
+		}
 	}
 
 	/**
