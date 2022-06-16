@@ -2,7 +2,7 @@ package main.java.tas.controller.tower;
 
 import java.util.function.Consumer;
 import main.java.tas.model.Entity;
-import main.java.tas.model.tower.Builder;
+import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.utils.Position;
 
@@ -26,7 +26,7 @@ public interface TowerLogic {
 	 * @param preset Build with all parameters set
 	 * @return true if the tower is successfully build
 	 */
-	public boolean placeTower(final Builder preset);
+	public boolean placeTower(final TowerBuilder preset);
 
 	/**
 	 * Wait for all threads to join

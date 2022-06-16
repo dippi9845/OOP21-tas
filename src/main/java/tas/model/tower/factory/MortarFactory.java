@@ -3,7 +3,7 @@ package main.java.tas.model.tower.factory;
 import java.util.List;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.AttackType;
-import main.java.tas.model.tower.Builder;
+import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.Towers;
 import main.java.tas.utils.Position;
@@ -23,7 +23,7 @@ public interface MortarFactory {
 	 * @return Mortar tower
 	 */
 	static public Tower basicMortar(final Position pos, final List<Enemy> enemyList) {
-		return new Builder(pos, 25, 650, 5000, "mortar", enemyList)
+		return new TowerBuilder(pos, 25, 650, 5000, "mortar", enemyList)
 				.attackType(AttackType.AREA)
 				.damageRange(3)
 				.setUpgradable(true)
@@ -46,7 +46,7 @@ public interface MortarFactory {
 	 * @return Mortar tower
 	 */
 	static public Tower superMortar(final Position pos, final List<Enemy> enemyList) {
-		return new Builder(pos, 10, 650, 8000, "supermortar", enemyList)
+		return new TowerBuilder(pos, 10, 650, 8000, "supermortar", enemyList)
 				.attackType(AttackType.AREA)
 				.damageRange(4)
 				.setUpgradable(true)
@@ -69,7 +69,7 @@ public interface MortarFactory {
 	 * @return Mortar tower
 	 */
 	static public Tower godMortar(final Position pos, final List<Enemy> enemyList) {
-		return new Builder(pos, 10, 650, 8000, "godmortar", enemyList)
+		return new TowerBuilder(pos, 10, 650, 8000, "godmortar", enemyList)
 				.attackType(AttackType.AREA)
 				.damageRange(6)
 				.setUpgradable(true)

@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 import java.util.function.BiFunction;
 import main.java.tas.model.Entity;
 import main.java.tas.model.enemy.Enemy;
-import main.java.tas.model.tower.Builder;
+import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.factory.ArcherFactory;
 import main.java.tas.model.tower.factory.CannonFactory;
@@ -77,7 +77,7 @@ public class TowerLogicImpl implements TowerLogic {
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean placeTower(final Builder preset) {
+	public boolean placeTower(final TowerBuilder preset) {
 		return this.buildTower(preset.setEnemylist(this.enemyList).build());
 	}
 
