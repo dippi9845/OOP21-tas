@@ -12,6 +12,7 @@ import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.factory.ArcherFactory;
 import main.java.tas.model.tower.factory.CannonFactory;
 import main.java.tas.model.tower.factory.DefaultTowers;
+import main.java.tas.model.tower.factory.DefaultTowersInfo;
 import main.java.tas.model.tower.factory.FlameFactory;
 import main.java.tas.model.tower.factory.GasFactory;
 import main.java.tas.model.tower.factory.MortarFactory;
@@ -71,7 +72,7 @@ public class TowerLogicImpl implements TowerLogic {
 	/** {@inheritDoc} */
 	@Override
 	public boolean placeTower(final DefaultTowers tower, final Position pos) {
-		return this.buildTower(this.buildMap.get(tower).apply(pos, this.enemyList));
+		return this.buildTower(DefaultTowersInfo.BUILDMAP.get(tower).apply(pos, this.enemyList));
 	}
 
 	/** {@inheritDoc} */
