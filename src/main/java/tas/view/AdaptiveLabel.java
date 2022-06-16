@@ -2,7 +2,7 @@ package main.java.tas.view;
 
 import javax.swing.JLabel;
 
-import main.java.tas.model.GameSpecs;
+import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.Position;
 
 /**

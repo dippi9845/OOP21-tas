@@ -3,7 +3,7 @@ package main.java.tas.model.enemy;
 import java.awt.Dimension;
 import java.util.List;
 
-import main.java.tas.model.GameSpecs;
+import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.Position;
 
 /**

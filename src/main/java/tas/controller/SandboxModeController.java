@@ -7,8 +7,8 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.tas.model.GameSpecs;
 import main.java.tas.model.menu.MenuModel;
+import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.LevelHandler;
 import main.java.tas.utils.Position;
 import main.java.tas.view.scene.SandboxModeScene;

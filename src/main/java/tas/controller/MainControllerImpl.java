@@ -7,10 +7,10 @@ import main.java.tas.view.scene.LevelSelectSceneImpl;
 import main.java.tas.view.scene.MainMenuSceneImpl;
 import main.java.tas.view.scene.SandboxModeScene;
 import main.java.tas.view.scene.SettingsSceneImpl;
-import main.java.tas.model.GameSpecs;
 import main.java.tas.model.game.GameModelImpl;
 import main.java.tas.model.menu.MenuModel;
 import main.java.tas.model.menu.MenuModelImpl;
+import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.LevelHandler;
 
 /**

@@ -14,7 +14,7 @@ import java.io.FileNotFoundException;
 import javax.imageio.ImageIO;
 
 import main.java.tas.model.Entity;
-import main.java.tas.model.GameSpecs;
+import main.java.tas.utils.GameSpecs;
 
 /**
  * Class that implements an {@link ImageLoader}.
