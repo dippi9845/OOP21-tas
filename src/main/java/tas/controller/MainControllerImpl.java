@@ -24,8 +24,8 @@ public class MainControllerImpl implements MainController {
 	private SceneController sceneController;
 	private GameSpecs gameSpecs = new GameSpecs();
 
-	private int playerHealth = 10;
-	private int playerMoney = 1000;
+	private int playerHealth = 100;
+	private int plaerMoney = 500;
 
 	private MainView mainView = new MainView();;
 	private MenuModel menuModel = new MenuModelImpl();;
