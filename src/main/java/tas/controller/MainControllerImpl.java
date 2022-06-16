@@ -24,8 +24,8 @@ public class MainControllerImpl implements MainController {
 	private SceneController sceneController;
 	private GameSpecs gameSpecs = new GameSpecs();
 
-	private int playerHealth = 100;
-	private int playerMoney = 1000;
+	private int playerHealth = 10;
+	private int playerMoney = 10;
 
 	private MainView mainView = new MainView();;
 	private MenuModel menuModel = new MenuModelImpl();;
@@ -112,7 +112,7 @@ public class MainControllerImpl implements MainController {
 
 	/**
 	 * Checks if the current window is correct and if not it closes the current
-	 * window and opens the correct one
+	 * window and opens the correct one.
 	 */
 	private int updateCurrentMode(final int menuState) {
 		// I check if the currentMenuMode has changed and if it has I update it and open
@@ -140,7 +140,7 @@ public class MainControllerImpl implements MainController {
 				this.sceneController = createFullLevels(this.mainView);
 			}
 		}
-		if (menuState == 5) {
+		if (menuState == 7) {
 			this.sceneController = createEndGame(this.mainView);
 		}
 		return menuState;

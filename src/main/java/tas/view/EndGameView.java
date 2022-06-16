@@ -25,7 +25,7 @@ public class EndGameView implements ViewAction {
     public EndGameView(){
     	
     	//TODO aggiungere lo score
-    	label = new JLabel("You lost. Your score is 1");
+    	label = new JLabel("You lost. Game over. Too bad. You suck.");
     	label.setFont(new Font("Serif", Font.PLAIN, 30));
     	label.setHorizontalAlignment(JLabel.CENTER);
     	this.rootPanel.add(label);
