@@ -5,7 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneController;
-import main.java.tas.model.MenuModel;
+import main.java.tas.model.menu.MenuModel;
 import main.java.tas.view.SandboxModeView;
 import main.java.tas.view.SceneActionObserver;
 import main.java.tas.view.SceneMouseObserver;

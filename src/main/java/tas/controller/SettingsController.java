@@ -2,7 +2,7 @@ package main.java.tas.controller;
 
 import java.awt.event.ActionListener;
 
-import main.java.tas.model.MenuModel;
+import main.java.tas.model.menu.MenuModel;
 import main.java.tas.view.SceneActionObserver;
 import main.java.tas.view.scene.GenericScene;
 

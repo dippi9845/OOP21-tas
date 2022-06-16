@@ -74,7 +74,7 @@ class FakeEnemy implements Enemy {
 	}
 
 	@Override
-	public boolean hasCompletedPath() {
+	public boolean isPathCompleted() {
 		return true;
 	}
 

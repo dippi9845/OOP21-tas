@@ -1,4 +1,4 @@
-package main.java.tas.controller;
+package main.java.tas.controller.enemy;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -85,7 +85,7 @@ public class EnemiesLogicImpl implements EnemiesLogic {
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean areEnemiesOnBoard() {
+	public boolean areEnemiesAlive() {
 		return !this.aliveEnemiesList.isEmpty();
 	}
 

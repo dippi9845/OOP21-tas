@@ -1,4 +1,4 @@
-package main.java.tas.controller;
+package main.java.tas.controller.enemy;
 
 import java.util.List;
 import java.util.Optional;
@@ -50,7 +50,7 @@ public interface EnemiesLogic {
 	/**
 	 * @return true if there is at least one enemy alive
 	 */
-	boolean areEnemiesOnBoard();
+	boolean areEnemiesAlive();
 
 	/**
 	 * 

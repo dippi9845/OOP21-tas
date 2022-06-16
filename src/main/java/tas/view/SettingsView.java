@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.java.tas.model.Entity;
-import main.java.tas.model.MenuModel;
+import main.java.tas.model.menu.MenuModel;
 
 /**
  * Class that builds the settings menu view.

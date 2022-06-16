@@ -6,13 +6,17 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
-import main.java.tas.model.GameModel;
-import main.java.tas.model.GameSpecs;
-import main.java.tas.model.TimeCurve;
-import main.java.tas.model.TimeCurveImpl;
+import main.java.tas.controller.enemy.EnemiesLogic;
+import main.java.tas.controller.enemy.EnemiesLogicImpl;
+import main.java.tas.controller.tower.TowerLogic;
+import main.java.tas.controller.tower.TowerLogicImpl;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.model.enemy.Enemy;
+import main.java.tas.model.game.GameModel;
+import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.Position;
+import main.java.tas.utils.TimeCurve;
+import main.java.tas.utils.TimeCurveImpl;
 import main.java.tas.view.SceneActionObserver;
 import main.java.tas.view.SceneMouseObserver;
 import main.java.tas.view.scene.GameScene;
@@ -20,7 +24,7 @@ import main.java.tas.view.scene.GameScene;
 /**
  * Class that implements {@link SceneController}.
  */
-public class GameController implements SceneController,SceneMouseObserver,SceneActionObserver {
+public class GameController implements SceneController, SceneMouseObserver, SceneActionObserver {
 
 	private final GameScene gameScene;
 	private final EnemiesLogic enemiesHandler;
@@ -44,9 +48,9 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 	 * * Constructor that creates a game controller for the given game scene.
 	 * 
 	 * @param gameModel the game model
-	 * @param scene the graphic scene controller
+	 * @param scene     the graphic scene controller
 	 */
-	public GameController(final GameScene scene, final GameModel gameModel, final List <Position> pathNodes) {
+	public GameController(final GameScene scene, final GameModel gameModel, final List<Position> pathNodes) {
 		this.gameScene = scene;
 		this.playerStats = gameModel;
 
@@ -55,11 +59,15 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 
 		this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(),
 		        this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
-		
-		this.gameScene.getInventoryView().addInvetoryLabel(this.healthSymbol + " " + this.playerStats.getHP(), "health");
-		this.gameScene.getInventoryView().addInvetoryLabel(this.waveSymbol + " " + this.enemiesHandler.getWave(), "wave");
-		this.gameScene.getInventoryView().addInvetoryLabel(this.moneySymbol + " " + this.playerStats.getPlayerMoney(), "money");
-		this.gameScene.getInventoryView().addInvetoryLabel(this.pointSymbol + " " + this.playerStats.getPoints(), "points");
+
+		this.gameScene.getInventoryView().addInvetoryLabel(this.healthSymbol + " " + this.playerStats.getHP(),
+		        "health");
+		this.gameScene.getInventoryView().addInvetoryLabel(this.waveSymbol + " " + this.enemiesHandler.getWave(),
+		        "wave");
+		this.gameScene.getInventoryView().addInvetoryLabel(this.moneySymbol + " " + this.playerStats.getPlayerMoney(),
+		        "money");
+		this.gameScene.getInventoryView().addInvetoryLabel(this.pointSymbol + " " + this.playerStats.getPoints(),
+		        "points");
 
 		// TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
 	}
@@ -115,15 +123,16 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 				this.playerStats.giveMoney2Player(enemy.getMoney());
 				this.gameScene.getInventoryView().getTextLabel("money")
 				        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
-								
+
 				killEnemy(enemy);
-				
+
 				this.playerStats.increasePoint();
-				this.gameScene.getInventoryView().getTextLabel("points").setText(this.pointSymbol + " " + this.playerStats.getPoints());
-				
+				this.gameScene.getInventoryView().getTextLabel("points")
+				        .setText(this.pointSymbol + " " + this.playerStats.getPoints());
+
 				continue;
 			}
-			if (enemy.hasCompletedPath()) {
+			if (enemy.isPathCompleted()) {
 				this.playerStats.dealDamage2Player(enemy.getDamage());
 				this.gameScene.getInventoryView().getTextLabel("health")
 				        .setText(this.healthSymbol + " " + this.playerStats.getHP());
@@ -135,12 +144,12 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 			this.gameScene.getGameView().drawEntity(enemy);
 		}
 	}
-	
+
 	/**
-	 * Called for checking if a tower has been selected by the user 
-	 * in the inventoryScene.
+	 * Called for checking if a tower has been selected by the user in the
+	 * inventoryScene.
 	 */
-	public void inventoryUpdate() {
+	private void inventoryUpdate() {
 		if (this.inventoryListener.checkUpdate()) {
 			this.currentTowerSelected = inventoryListener.getTowerSelected();
 			this.currentInventoryMode = 1;
@@ -151,15 +160,17 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 
 	/**
 	 * Checks if turretPosition is a valid Position for a new tower.
+	 * 
 	 * @param turretPosition the Position of the new tower
 	 * @return true if the position is valid, false otherwise
 	 */
-	
-	public boolean checkTurretPosition(Position turretPosition){
-		
-		//DONE check if position is inside the game Board
-		
-		if (turretPosition.getY() < 55 || turretPosition.getY() > 945 || turretPosition.getX() < 55 || turretPosition.getX() > 945) {
+
+	public boolean checkTurretPosition(Position turretPosition) {
+
+		// DONE check if position is inside the game Board
+
+		if (turretPosition.getY() < 55 || turretPosition.getY() > 945 || turretPosition.getX() < 55
+		        || turretPosition.getX() > 945) {
 			System.out.println("not inside border");
 			return false;
 		}
@@ -173,51 +184,53 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 	
 		List <Position> linePoints = this.gameScene.getGameView().getGamePanel().getLine();
 		for (int i = 1; i < linePoints.size(); i++) {
-			
-			double a = linePoints.get(i-1).getX();
-			double b = linePoints.get(i-1).getY();
+
+			double a = linePoints.get(i - 1).getX();
+			double b = linePoints.get(i - 1).getY();
 			double c = linePoints.get(i).getX();
 			double d = linePoints.get(i).getY();
 			double e = turretPosition.getX();
 			double f = turretPosition.getY();
 			if (((Math.max(a, c)) > e) && ((Math.max(b, d)) > f) && (Math.min(a, c)) < e && Math.min(b, d) < f) {
-				double h = (Math.abs((a*d)-(b*c)+(c*f)-(d*e)+(b*e)-(a*f)))/Math.sqrt(Math.pow(c-a,2)+Math.pow(d-b, 2));
-			
-				if(h <= this.pathThickness + 50) {
+				double h = (Math.abs((a * d) - (b * c) + (c * f) - (d * e) + (b * e) - (a * f)))
+				        / Math.sqrt(Math.pow(c - a, 2) + Math.pow(d - b, 2));
+
+				if (h <= this.pathThickness + 50) {
 					System.out.println("cannot place on the enemy path");
 					return false;
 				}
-			}	
+			}
 		}
 		return true;
 	}
-	
-	
+
 	/**
-	 * Called for checking if the screen is been clicked, and if so it places 
-	 * a tower there.
+	 * Called for checking if the screen is been clicked, and if so it places a
+	 * tower there.
 	 */
-	public void screenUpdate() {
+	private void screenUpdate() {
 		if (this.screenListener.checkUpdate()) {
-			Position mousePosition = new Position(this.screenListener.getClickLocation().getX(),this.screenListener.getClickLocation().getY());
-			mousePosition.positionConverter(this.gameSpecs.getGameUnits(), this.gameScene.getGameView().getGamePanel().getPreferredSize());
+			Position mousePosition = new Position(this.screenListener.getClickLocation().getX(),
+			        this.screenListener.getClickLocation().getY());
+			mousePosition.positionConverter(this.gameSpecs.getGameUnits(),
+			        this.gameScene.getGameView().getGamePanel().getPreferredSize());
 			System.out.println(mousePosition.toString());
-			if(checkTurretPosition(mousePosition)) {
+			if (checkTurretPosition(mousePosition)) {
 				this.towerLogic.placeTower(currentTowerSelected, mousePosition);
 				this.currentInventoryMode = 0;
 				this.screenListener.stopListening();
 				this.gameScene.getInventoryView().getTextLabel("money")
-		        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
+				        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
 			}
 			this.screenListener.resetUpdate();
 		}
 	}
-	
+
 	@Override
-	public MouseListener getMouseListener(){
+	public MouseListener getMouseListener() {
 		return this.screenListener;
 	}
-	
+
 	@Override
 	public ActionListener getActionListener() {
 		return this.inventoryListener;
@@ -233,7 +246,7 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 			spawnEnemies();
 		}
 
-		if (this.enemiesHandler.areEnemiesOnBoard()) {
+		if (this.enemiesHandler.areEnemiesAlive()) {
 			enemiesCheck();
 		}
 
