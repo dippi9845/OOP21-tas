@@ -1,10 +1,8 @@
-package main.java.tas.model;
+package main.java.tas.utils;
 
 import java.awt.Dimension;
 
 import org.json.JSONObject;
-
-import main.java.tas.utils.JsonUtils;
 
 /**
  * Class that handles some game attributes.

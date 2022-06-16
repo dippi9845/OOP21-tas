@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import main.java.tas.model.Entity;
-import main.java.tas.model.GameSpecs;
+import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.Position;
 
 /**

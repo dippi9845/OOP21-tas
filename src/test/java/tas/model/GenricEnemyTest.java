@@ -70,8 +70,8 @@ public class GenricEnemyTest {
 		final Enemy enemy2 = new GenericEnemy(Arrays.asList(pos1, pos2), 1, 50, 10, 60, new Dimension(100, 100),
 				"redEnemy");
 
-		assertFalse(enemy2.hasCompletedPath());
-		assertTrue(enemy1.hasCompletedPath());
+		assertFalse(enemy2.isPathCompleted());
+		assertTrue(enemy1.isPathCompleted());
 	}
 
 	@Test(expected = IllegalArgumentException.class)

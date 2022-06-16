@@ -1,4 +1,4 @@
-package main.java.tas.model;
+package main.java.tas.model.game;
 
 /**
  * An interface for a Game Model.
@@ -30,13 +30,14 @@ public interface GameModel {
 	int getPlayerMoney();
 
 	/**
-	 * Returns the current points
+	 * Returns the current points.
+	 * 
 	 * @return integer describing the player points
 	 */
 	public int getPoints();
 	
 	/**
-	 * increase the count of points
+	 * Increase the count of points.
 	 */
 	public void increasePoint();
 	

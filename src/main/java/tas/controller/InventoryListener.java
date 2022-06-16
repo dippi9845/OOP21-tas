@@ -7,34 +7,19 @@ import javax.swing.AbstractButton;
 
 
 /**
- * Class that implements {@link ActionListener}.
+ * Class that implements {@link ActionListener} used as a listener for the
+ * inventory.
+ * Class extends {@link GenericListener}.
  */
-public class InventoryListener implements ActionListener{
+public class InventoryListener extends GenericListener implements ActionListener{
 	
-	private boolean update = false;
 	private DefaultTowers towerSelected;
-	
+
 	/**
-	 * 
-	 * @return update
-	 */
-	public boolean checkUpdate() {
-		return this.update;
-	}
-	
-	/**
-	 * 
 	 * @return towerSelected
 	 */
 	public DefaultTowers getTowerSelected() {
 		return this.towerSelected;
-	}
-	
-	/**
-	 * Sets update to false.
-	 */
-	public void resetUpdate() {
-		this.update = false;
 	}
 	
 	/** {@inheritDoc} */
@@ -43,7 +28,7 @@ public class InventoryListener implements ActionListener{
 		DefaultTowers towerList [] = DefaultTowers.values();
 		for(int i = 0; i < towerList.length; i++) {
 			if(((AbstractButton) e.getSource()).getText().equals(towerList[i].toString())) {
-				this.update = true;
+				setUpdate();
 				this.towerSelected = towerList[i];
 			}
 		}

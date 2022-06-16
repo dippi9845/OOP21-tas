@@ -2,6 +2,9 @@ package main.java.tas.view.scene;
 
 import main.java.tas.controller.SceneController;
 
+/**
+ * Interface for a generic scene.
+ */
 public interface GenericScene {
 	
 	/**

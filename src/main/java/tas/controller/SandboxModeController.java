@@ -7,17 +7,16 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.tas.model.GameSpecs;
-import main.java.tas.model.MenuModel;
+import main.java.tas.model.menu.MenuModel;
+import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.LevelHandler;
 import main.java.tas.utils.Position;
 import main.java.tas.view.scene.SandboxModeScene;
-import main.java.tas.view.SceneActionObserver;
-import main.java.tas.view.SceneMouseObserver;
 import main.java.tas.view.scene.GenericScene;
 
 /**
- * Class that implements {@link SceneController}.
+ * Class that creates the sandbox mode menu controller.
+ * Class that implements {@link SceneActionObserver}, {@link SceneMouseObserver}.
  */
 public class SandboxModeController implements SceneActionObserver,SceneMouseObserver {
 	
@@ -44,7 +43,6 @@ public class SandboxModeController implements SceneActionObserver,SceneMouseObse
 	}
 	
 	/**
-	 * 
 	 * @return the model
 	 */
 	public MenuModel getModel() {
@@ -80,25 +78,21 @@ public class SandboxModeController implements SceneActionObserver,SceneMouseObse
 			this.listener.resetUpdate();
 		}
 		if (this.doneButtonListener.checkUpdate()) {
-			LevelHandler.writeLevel(linePositionList);
+			if(!linePositionList.isEmpty()) {
+				LevelHandler.writeLevel(linePositionList);
+			}
 			this.model.setMainScene(1);
 			this.doneButtonListener.resetUpdate();
 		}
 	}
 	
-	/**
-	 * 
-	 * {@inheritDoc}
-	 */
+	/**{@inheritDoc}*/	 
 	@Override
 	public MouseListener getMouseListener() {
 		return this.listener;
 	}
 	
-	/**
-	 * 
-	 * @return the done button listener
-	 */
+	/**{@inheritDoc}*/
 	@Override
 	public ActionListener getActionListener() {
 		return this.doneButtonListener;

@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import main.java.tas.model.GameModel;
-import main.java.tas.model.GameModelImpl;
+import main.java.tas.model.game.GameModel;
+import main.java.tas.model.game.GameModelImpl;
 
 public class GameModelImplTest {
 

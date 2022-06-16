@@ -4,31 +4,27 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
+import main.java.tas.controller.SceneActionObserver;
 import main.java.tas.controller.SceneController;
-import main.java.tas.model.MenuModel;
-import main.java.tas.view.SceneActionObserver;
-import main.java.tas.view.SettingsView;
+import main.java.tas.view.FullLevelsView;
 
 /**
- * Class that builds the sandbox mode scene.
- * Class that implements {@link ActionScene}.
+ * Class that builds the levels full menu scene.
+ * Class that implements {@link GenericScene}.
  */
-public class SettingsSceneImpl implements GenericScene {
+public class FullLevelsScene implements GenericScene {
 	
 	private JPanel rootPanel;
-	private SettingsView View;
+	private FullLevelsView View;
 	
 	/**
      * Constructor that set up the settings scene.
      * @param rootPanelIn is the {@link JPanel} that will contain the scene
-     * @param menuModel the menu model
      */
-	public SettingsSceneImpl(JPanel rootPanelIn, MenuModel menuModel) {
+	public FullLevelsScene(JPanel rootPanelIn) {
 		this.rootPanel = rootPanelIn;
 		this.rootPanel.setLayout(new BorderLayout());
-        
-        this.View = new SettingsView(menuModel);
-        
+        this.View = new FullLevelsView();
         this.rootPanel.add(this.View.getPanel(), BorderLayout.CENTER);
 	}
 	
@@ -39,11 +35,9 @@ public class SettingsSceneImpl implements GenericScene {
 	}
 
 	/**
-	 * 
 	 * @return the settings view
 	 */
-	public SettingsView getView() {
-		
+	public FullLevelsView getView() {
 		return this.View;
 	}
 }

@@ -10,33 +10,16 @@ import java.util.List;
 
 /**
  * Class that listens for the user clicks and stores their position for
- * the controller to retrieve them
- * Class that implements {@link MouseListener}
+ * the controller to retrieve them.
+ * Class that implements {@link MouseListener}.
  *
  */
-public class SandboxModeListener implements MouseListener{
+public class SandboxModeListener extends GenericListener implements MouseListener{
 	
-	private boolean update = false;
 	private List <Position> nodesSelected = new ArrayList <Position>();
 	private Position lastNodeSelected;
 	
 	/**
-	 * 
-	 * @return update
-	 */
-	public boolean checkUpdate() {
-		return this.update;
-	}
-	
-	/**
-	 * Sets update to false.
-	 */
-	public void resetUpdate() {
-		this.update = false;
-	}
-	
-	/**
-	 * 
 	 * @return a list of all the nodes selected
 	 */
 	public List <Position> getNodesSelected(){
@@ -44,51 +27,41 @@ public class SandboxModeListener implements MouseListener{
 	}
 	
 	/**
-	 * 
 	 * @return the last node that has been added to the path
 	 */
 	public Position getLastNodeSelected(){
 		return this.lastNodeSelected;
 	}
 	
-	/**
-	 * Puts the Position the user has cliked on in lastNodeSelected.
-	 * Adds lastNodeSelected to nosedSelcted
-	 * sets update to true
-	 */
+	/** It is not used */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		//lastNodeSelected ha la posizione non ancora convertita
-		this.lastNodeSelected = new Position(e.getX(),e.getY());
-		System.out.println("click percieved");
-		//synchronized(this.nodesSelected){
-			
-		//}
-		this.update = true;	
 	}
 
-	/** It is not used */
+	/**
+	 * Puts the Position the user has clicked on in lastNodeSelected.
+	 * Adds lastNodeSelected to nosedSelected.
+	 * Sets update to true.
+	 */
+	@Override
 	public void mousePressed(MouseEvent e) {
+		this.lastNodeSelected = new Position(e.getX(),e.getY());
+		System.out.println("click percieved");
+		setUpdate();
 	}
 
 	/** It is not used */
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/** It is not used */
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/** It is not used */
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 }

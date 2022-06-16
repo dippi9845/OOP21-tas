@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import main.java.tas.controller.TowerLogicImpl;
+import main.java.tas.controller.tower.TowerLogicImpl;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.Builder;
 import main.java.tas.utils.Position;
