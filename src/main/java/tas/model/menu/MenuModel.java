@@ -1,14 +1,11 @@
 package main.java.tas.model.menu;
 
 /** 
- * 
  * Interface for the menu model.
- *
  */
 public interface MenuModel {
 	
 	/**
-	 * 
 	 * @return mainScene
 	 */
 	public int getMainScene();
@@ -21,7 +18,6 @@ public interface MenuModel {
 	public void setMainScene(int newMainScene);
 	
 	/**
-	 * 
 	 * @return menuMode
 	 */
 	public int getMenuMode();
@@ -41,15 +37,19 @@ public interface MenuModel {
 	public void setCurrentLevel(int currentLevelIn);
 	
 	/**
-	 * 
 	 * @return currentLevel
 	 */
 	public int getCurrentLevel();
 	
 	/**
-	 * 
 	 * @return the number of levels currently saved in levelStorage.json
 	 */
 	public int getNLevels();
+	
+	/**
+	 * 
+	 * @return the max number of levels allowed in levelsStorage.json
+	 */
+	public int getMaxLevels();
 	
 }

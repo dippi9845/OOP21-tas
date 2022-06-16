@@ -22,9 +22,9 @@ import main.java.tas.view.SceneMouseObserver;
 import main.java.tas.view.scene.GameScene;
 
 /**
- * Class that implements {@link SceneController}.
+ * Class that implements {@link SceneMouseObserver}, {@link SceneActionObserver}.
  */
-public class GameController implements SceneController, SceneMouseObserver, SceneActionObserver {
+public class GameController implements SceneMouseObserver,SceneActionObserver {
 
 	private final GameScene gameScene;
 	private final EnemiesLogic enemiesHandler;
@@ -38,6 +38,7 @@ public class GameController implements SceneController, SceneMouseObserver, Scen
 	private ScreenListener screenListener = new ScreenListener();
 	private final InventoryListener inventoryListener = new InventoryListener();
 	private final GameSpecs gameSpecs = new GameSpecs();
+	private MenuModel menuModel;
 
 	private final String healthSymbol = "Health";
 	private final String waveSymbol = "Wave";
@@ -45,12 +46,15 @@ public class GameController implements SceneController, SceneMouseObserver, Scen
 	private final String pointSymbol = "Points";
 
 	/**
-	 * * Constructor that creates a game controller for the given game scene.
+	 * Constructor that creates a game controller for the given game scene.
 	 * 
 	 * @param gameModel the game model
-	 * @param scene     the graphic scene controller
+	 * @param scene the graphic scene controller
+	 * @param pathNodes a {@link List} of the nodes of the level
+	 * @param menuModelIn the menu model
 	 */
-	public GameController(final GameScene scene, final GameModel gameModel, final List<Position> pathNodes) {
+	public GameController(final GameScene scene, final GameModel gameModel, final List <Position> pathNodes, final MenuModel menuModelIn) {
+		this.menuModel = menuModelIn;
 		this.gameScene = scene;
 		this.playerStats = gameModel;
 
@@ -59,15 +63,11 @@ public class GameController implements SceneController, SceneMouseObserver, Scen
 
 		this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(),
 		        this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
-
-		this.gameScene.getInventoryView().addInvetoryLabel(this.healthSymbol + " " + this.playerStats.getHP(),
-		        "health");
-		this.gameScene.getInventoryView().addInvetoryLabel(this.waveSymbol + " " + this.enemiesHandler.getWave(),
-		        "wave");
-		this.gameScene.getInventoryView().addInvetoryLabel(this.moneySymbol + " " + this.playerStats.getPlayerMoney(),
-		        "money");
-		this.gameScene.getInventoryView().addInvetoryLabel(this.pointSymbol + " " + this.playerStats.getPoints(),
-		        "points");
+		
+		this.gameScene.getInventoryView().addTextLabel(this.healthSymbol + " " + this.playerStats.getHP(), "health");
+		this.gameScene.getInventoryView().addTextLabel(this.waveSymbol + " " + this.enemiesHandler.getWave(), "wave");
+		this.gameScene.getInventoryView().addTextLabel(this.moneySymbol + " " + this.playerStats.getPlayerMoney(), "money");
+		this.gameScene.getInventoryView().addTextLabel(this.pointSymbol + " " + this.playerStats.getPoints(), "points");
 
 		// TODO: manca l'inserimento dinamico della posizione dello spawner e altro...
 	}
@@ -107,7 +107,7 @@ public class GameController implements SceneController, SceneMouseObserver, Scen
 	 */
 	private void increaseWave() {
 		this.enemiesHandler.setNextWave();
-		this.gameScene.getInventoryView().getInventoryLabel("wave")
+		this.gameScene.getInventoryView().getTextLabel("wave")
 		        .setText(this.waveSymbol + " " + this.enemiesHandler.getWave());
 	}
 
@@ -226,11 +226,13 @@ public class GameController implements SceneController, SceneMouseObserver, Scen
 		}
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public MouseListener getMouseListener() {
 		return this.screenListener;
 	}
-
+	
+	/** {@inheritDoc} */
 	@Override
 	public ActionListener getActionListener() {
 		return this.inventoryListener;
@@ -249,12 +251,17 @@ public class GameController implements SceneController, SceneMouseObserver, Scen
 		if (this.enemiesHandler.areEnemiesAlive()) {
 			enemiesCheck();
 		}
+		
+		if (this.playerStats.getHP() <= 0) {
+			this.menuModel.setMainScene(7);
+		}
 
 		if (currentInventoryMode == 0) {
 			inventoryUpdate();
 		}
 
 		if (currentInventoryMode == 1) {
+			inventoryUpdate();
 			screenUpdate();
 		}
 		this.towerLogic.drawTowers(this.gameScene.getGameView()::drawEntity);

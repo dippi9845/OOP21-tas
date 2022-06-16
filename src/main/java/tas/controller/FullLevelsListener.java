@@ -7,14 +7,15 @@ import javax.swing.AbstractButton;
 
 /**
  * Class that implements {@link ActionListener} used as a listener for the
- *  level select menu.
- *  Class that extends {@link GenericListener}
+ *  full levels menu.
+ * Class extends {@link GenericListener}.
  */
-public class LevelSelectListener extends GenericListener implements ActionListener{
+public class FullLevelsListener extends GenericListener implements ActionListener{
 	
 	private int currentComand = 0;
 	
 	/**
+	 * 
 	 * @return the currentCommand
 	 */
 	public int getCommand() {
@@ -24,7 +25,12 @@ public class LevelSelectListener extends GenericListener implements ActionListen
 	/** {@inheritDoc} */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.currentComand = Integer.parseInt(((AbstractButton) e.getSource()).getText());
+		if(((AbstractButton) e.getSource()).getText() == "BACK") {
+			this.currentComand = 1;
+		}
+		if(((AbstractButton) e.getSource()).getText() == "DELETE USER LEVELS") {
+			this.currentComand = 2;
+		}		
 		setUpdate();
 	}
 }

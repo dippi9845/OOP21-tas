@@ -5,33 +5,18 @@ import java.awt.event.ActionListener;
 
 /**
  * Class that implements {@link ActionListener} used as a listener for a single button.
- * 
+ * Extends {@link GenericListener}
  *
  */
-public class ButtonListener implements ActionListener{
-	
-	private boolean update = false;
+public class ButtonListener extends GenericListener implements ActionListener{
 	
 	/**
-	 * 
-	 * @return update
-	 */
-	public boolean checkUpdate() {
-		return this.update;
-	}
-	
-	/**
-	 * sets the update to false.
-	 */
-	public void resetUpdate() {
-		this.update = false;
-	}
-	/**
-	 * Sets the update to true if an action is performed
+	 * Sets the update to true if an action is performed.
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.update = true;
+		setUpdate();
 	}
 }
 

@@ -52,7 +52,7 @@ public interface ViewComponent {
 	/**
 	 * Removes the text label by the given id.
 	 * 
-	 * @param id
+	 * @param
 	 */
 	void removeTextLabel(final String id);
 

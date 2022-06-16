@@ -1,7 +1,5 @@
 package main.java.tas.utils;
 
-
-
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +8,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * 
- * Class that modifies levelStorage.json, or accesses it for data
- *
+ * Class that modifies levelStorage.json, or accesses it for data.
  */
 public class LevelHandler {
 	
 	private static String PATH = "res" + System.getProperty("file.separator") + "levelStorage" + System.getProperty("file.separator") + "levelStorage.json";
 	
 	/**
-	 * 
 	 * @return the number of elements in levelStorage.json (which is the number of levels)
 	 */
 	public static int getNElements() {
@@ -36,9 +31,10 @@ public class LevelHandler {
 	}
 	
 	/**
-	 * reads a level off levelStorage.json
-	 * @param level
-	 * @return 
+	 * Reads a level off levelStorage.json.
+	 * 
+	 * @param level the name of the level
+	 * @return a list of the nodes of the level
 	 */
 	public static List <Position> readLevel(String level) {
 		JSONObject json = JsonUtils.getJsonData(PATH);
@@ -52,6 +48,11 @@ public class LevelHandler {
 		
 	}
 	
+	/**
+	 * Adds a level on levelsStorege.json.
+	 * 
+	 * @param list the list of nodes of the new level
+	 */
 	public static void writeLevel(List <Position> list) {
 		JSONObject file = JsonUtils.getJsonData(PATH);
 		JSONObject level = new JSONObject ();
@@ -67,16 +68,24 @@ public class LevelHandler {
 		saveJson(file);
 	}
 	
+	/**
+	 * Deletes the user made levels.
+	 */
 	public static void deleteUserLevels(){
 		JSONObject json = JsonUtils.getJsonData(PATH);
 		if(getNElements() > 3) {
-			for(int i = 4; i <= (json.length() + 1); i++) {
+			for(int i = 4; i <= (json.length() + 2); i++) {
 				json.remove("level" + Integer.toString(i));
 			}
 			saveJson(json);
 		}	
 	}
 	
+	/**
+	 * Saves the JSON.
+	 * 
+	 * @param jsonObj the JSON
+	 */
 	private static void saveJson(JSONObject jsonObj) {
 		FileWriter fileWriter;
 		try {

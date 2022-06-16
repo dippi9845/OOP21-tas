@@ -7,10 +7,10 @@ import main.java.tas.view.SceneActionObserver;
 import main.java.tas.view.scene.GenericScene;
 
 /**
- * Class that creates a controller for the level select menu
- * Class that implements {@link SceneController}.
+ * Class that creates a controller for the level select menu.
+ * Class that implements {@link SceneActionObserver}.
  */
-public class LevelSelectController implements SceneController,SceneActionObserver {
+public class LevelSelectController implements SceneActionObserver {
 	
 	private LevelSelectListener listener;
 	private GenericScene scene;

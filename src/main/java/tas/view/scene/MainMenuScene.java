@@ -3,25 +3,25 @@ package main.java.tas.view.scene;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
+import main.java.tas.controller.SceneActionObserver;
 import main.java.tas.controller.SceneController;
 import main.java.tas.view.MenuView;
-import main.java.tas.view.SceneActionObserver;
 
 /**
- * 
- * Class that implements {@link ActionScene}.
- *
+ * Class that builds the main menu scene.
+ * Class that implements {@link GenericScene}.
  */
-public class MainMenuSceneImpl implements GenericScene {
+public class MainMenuScene implements GenericScene {
 	
 	private JPanel rootPanel;
 	private MenuView menuView;
 	
 	/**
-     * Constructor that set up the menu scene
-     * @param root is the {@link JPanel} that will contain the scene
+     * Constructor that set up the menu scene.
+     * 
+     * @param rootPanelIn is the {@link JPanel} that will contain the scene
      */
-	public MainMenuSceneImpl(JPanel rootPanelIn) {
+	public MainMenuScene(JPanel rootPanelIn) {
 		this.rootPanel = rootPanelIn;
 		this.rootPanel.setLayout(new BorderLayout());
         this.menuView = new MenuView();
@@ -35,14 +35,9 @@ public class MainMenuSceneImpl implements GenericScene {
 	}
 	
 	/**
-	 * 
 	 * @return the menu view
 	 */
-	public MenuView getMenuView() {
-		
+	public MenuView getMenuView() {		
 		return this.menuView;
 	}
-	
-
-
 }

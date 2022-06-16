@@ -4,16 +4,16 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
+import main.java.tas.controller.SceneActionObserver;
 import main.java.tas.controller.SceneController;
 import main.java.tas.model.menu.MenuModel;
 import main.java.tas.view.LevelSelectView;
-import main.java.tas.view.SceneActionObserver;
 
 /**
  * Class that builds the level select menu scene.
- * Class that implements {@link ActionScene}.
+ * Class that implements {@link GenericScene}.
  */
-public class LevelSelectSceneImpl implements GenericScene {
+public class LevelSelectScene implements GenericScene {
 	
 	private JPanel rootPanel;
 	private LevelSelectView View;
@@ -21,14 +21,12 @@ public class LevelSelectSceneImpl implements GenericScene {
 	/**
      * Constructor that set up the select level scene
      * @param rootPanelIn is the {@link JPanel} that will contain the scene
-     * @param menuModel the menu model
+     * @param NLevels the number of levels
      */
-	public LevelSelectSceneImpl(JPanel rootPanelIn, MenuModel menuModel) {
+	public LevelSelectScene(JPanel rootPanelIn, int NLevels) {
 		this.rootPanel = rootPanelIn;
 		this.rootPanel.setLayout(new BorderLayout());
-        
-        this.View = new LevelSelectView(menuModel);
-        
+        this.View = new LevelSelectView(NLevels);
         this.rootPanel.add(this.View.getPanel(), BorderLayout.CENTER);
 	}
 	
@@ -39,7 +37,6 @@ public class LevelSelectSceneImpl implements GenericScene {
 	}
 
 	/**
-	 * 
 	 * @return the level select view.
 	 */
 	public LevelSelectView getView() {

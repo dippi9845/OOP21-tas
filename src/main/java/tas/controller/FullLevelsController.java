@@ -2,32 +2,33 @@ package main.java.tas.controller;
 
 import java.awt.event.ActionListener;
 
-import main.java.tas.model.menu.MenuModel;
-import main.java.tas.view.SceneActionObserver;
+import main.java.tas.model.MenuModel;
 import main.java.tas.view.scene.GenericScene;
+import main.java.tas.utils.LevelHandler;
 
 /**
- * Class that creates a controller for the settings menu.
+ * Class that creates a controller for the levels full menu
  * Class that implements {@link SceneActionObserver}.
  */
-public class SettingsController implements SceneActionObserver {
+public class FullLevelsController implements SceneActionObserver {
 	
-	private ButtonListener listener = new ButtonListener();
+	private FullLevelsListener listener = new FullLevelsListener();
 	private GenericScene scene;
 	private MenuModel model;
 	
 	/**
-	 * Constructor that creates the settings menu controller, and connects it to its scene.
-	 * @param sceneIn the settings menu scene
+	 * Constructor that creates the full levels menu controller, and connects it to its scene.
+	 * @param sceneIn the full levels menu scene
 	 * @param theModel the model
 	 */
-	public SettingsController(GenericScene sceneIn, MenuModel theModel) {
+	public FullLevelsController(GenericScene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
 		scene.setObserver(this);
 		this.model = theModel;
 	}
 	
 	/**
+	 * 
 	 * @return the model
 	 */
 	public MenuModel getModel() {
@@ -38,7 +39,13 @@ public class SettingsController implements SceneActionObserver {
 	@Override
 	public void nextTick() {
 		if (this.listener.checkUpdate()) {
-			this.model.setMainScene(1);
+			if(this.listener.getCommand() == 1) {
+				this.model.setMainScene(1);
+			}
+			if(this.listener.getCommand() == 2) {
+				LevelHandler.deleteUserLevels();
+				this.model.setMainScene(1);
+			}
 			listener.resetUpdate();
 		}
 		
@@ -49,5 +56,6 @@ public class SettingsController implements SceneActionObserver {
 	public ActionListener getActionListener() {
 		return this.listener;
 	}
-}
+	
 
+}

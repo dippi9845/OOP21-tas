@@ -4,12 +4,12 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import main.java.tas.controller.SceneController;
-import main.java.tas.model.Entity;
+import main.java.tas.controller.SceneActionObserver;
 
 
 /**
- * Class that creates the main menu view.
+ * Class that builds the main menu view.
+ * Class that implements a {@link ViewAction}.
  */
 public class MenuView implements ViewAction {
 	
@@ -29,15 +29,14 @@ public class MenuView implements ViewAction {
     	this.rootPanel.add(this.exitButton);
     }
     
-    /**
-     * 
-     * @return the root panel
-     */
+    /** {@inheritDoc} */
+    @Override
 	public JPanel getPanel() {
         return this.rootPanel;
     }
 	
-	@Override
+    /** {@inheritDoc} */
+    @Override
 	public void setActionObserver(SceneActionObserver menuController) {
         this.newGameButton.addActionListener(menuController.getActionListener());
         this.settingsButton.addActionListener(menuController.getActionListener());
@@ -46,7 +45,6 @@ public class MenuView implements ViewAction {
     }
 	
 	/**
-	 * 
 	 * @return the new game button
 	 */
 	public JButton getNewGameButton() {
@@ -54,7 +52,6 @@ public class MenuView implements ViewAction {
 	}
 	
 	/**
-	 * 
 	 * @return the settings button
 	 */
 	public JButton getSettingsButton() {
@@ -62,7 +59,6 @@ public class MenuView implements ViewAction {
 	}
 	
 	/**
-	 * 
 	 * @return the sandbox mode button
 	 */
 	public JButton getSandboxModeButton() {
@@ -70,46 +66,9 @@ public class MenuView implements ViewAction {
 	}
 	
 	/**
-	 * 
 	 * @return the exit button
 	 */
 	public JButton getExitButton() {
 		return this.exitButton;
-	}
-
-	@Override
-	public void drawEntity(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void addEntityLabel(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeEntityLabel(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void addTextLabel(String text, String id, String anchor) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public AdaptiveLabel getTextLabel(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void removeTextLabel(String id) {
-		// TODO Auto-generated method stub
-		
 	}
 }

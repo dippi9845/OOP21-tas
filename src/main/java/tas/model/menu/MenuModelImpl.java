@@ -1,16 +1,13 @@
 package main.java.tas.model.menu;
 
-import java.util.List;
-
-
 import main.java.tas.utils.LevelHandler;
-import main.java.tas.utils.Position;
 
 /**
  * Class that implements {@link MenuModel}.
  */
 public class MenuModelImpl implements MenuModel {
 	
+	private int maxLevels = 6;
 	private int mainScene = 1;
 	private int menuMode = 1;
 	private int currentLevel = 0;
@@ -57,11 +54,11 @@ public class MenuModelImpl implements MenuModel {
 	public int getNLevels() {
 		return LevelHandler.getNElements();
 	}
-	
+
 	/** {@inheritDoc} */
-	public List<Position> getNodePositions(int nLevel){
-		//TODO passare un array di nodi del livello nLevel
-		return null;
+	@Override
+	public int getMaxLevels() {
+		return this.maxLevels;
 	}
 	
 	
