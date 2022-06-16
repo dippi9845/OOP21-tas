@@ -165,7 +165,10 @@ public class GameController implements SceneController,SceneMouseObserver,SceneA
 		}
 			
 		//then check there isn't a tower overlapping with the new tower
-	
+		if (this.towerLogic.thereIsTowerNear(turretPosition)) {
+			System.out.println("Position too close to another tower");
+			return false;
+		}
 		//DONE then check if the new tower overlaps with the white line
 	
 		List <Position> linePoints = this.gameScene.getGameView().getGamePanel().getLine();

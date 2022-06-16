@@ -34,6 +34,13 @@ public interface TowerLogic {
 	public void closeAll();
 
 	/**
+	 * Checks if a position passed is too close to another tower builded
+	 * @param pos position to be checked
+	 * @return true if position in not closer to any tower, false otherwise
+	 */
+	public boolean thereIsTowerNear(final Position pos);
+	
+	/**
 	 * draw all the towers
 	 * 
 	 * @param draw consumer of Entity that draw every tower built
