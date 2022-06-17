@@ -1,7 +1,6 @@
 package main.java.tas.model.tower.factory;
 
 import java.util.List;
-import java.util.function.UnaryOperator;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.utils.Position;
@@ -12,94 +11,6 @@ import main.java.tas.utils.Position;
 public interface CannonFactory {
 
 	/**
-	 * Return the damage of Cannon Tower
-	 * 
-	 * @return the damage of Cannon Tower
-	 */
-	static public int getDamage() {
-		return 50;
-	}
-
-	/**
-	 * Return the range of Cannon Tower
-	 * 
-	 * @return the range of Cannon Tower
-	 */
-	static public int getRange() {
-		return 400;
-	}
-
-	/**
-	 * Return the delay of Cannon Tower
-	 * 
-	 * @return the delay of Cannon Tower
-	 */
-	static public int getDelay() {
-		return 500;
-	}
-
-	/**
-	 * Return the build cost of Cannon Tower
-	 * 
-	 * @return the build cost of Cannon Tower
-	 */
-	static public int getBuildCost() {
-		return 200;
-	}
-
-	/**
-	 * Return the start upgrade cost of Cannon Tower
-	 * 
-	 * @return the start upgrade cost of Cannon Tower
-	 */
-	static public int getStartUpCost() {
-		return 50;
-	}
-
-	/**
-	 * Return the max level of Cannon Tower
-	 * 
-	 * @return the max level of Cannon Tower
-	 */
-	static public int getMaxLevel() {
-		return 20;
-	}
-
-	/**
-	 * Return ClassicTowerFactory with all preset for Cannon Tower
-	 * 
-	 * @param imageName image name of the tower
-	 * @param enemyList List of all enemy in the map
-	 * @return ClassicTowerFactory with all preset for Cannon Tower
-	 */
-	static private ClassicTowerFactory constructor(final String imageName, final List<Enemy> enemyList) {
-		return new ClassicTowerFactory(getDamage(), getRange(), getDelay(), getBuildCost(), getStartUpCost(),
-				getMaxLevel(), imageName, enemyList);
-	}
-
-	/**
-	 * Return the UnaryOperator that associate for a level an increase of cost of
-	 * Cannon Tower
-	 * 
-	 * @return the UnaryOperator that associate for a level an increase of cost of
-	 *         Cannon Tower
-	 */
-	static private UnaryOperator<Integer> getIncreaseCost() {
-		return (x -> 5);
-	}
-
-	/**
-	 * Return the UnaryOperator that associate for a level an increase of damage of
-	 * Cannon Tower
-	 * 
-	 * @return the UnaryOperator that associate for a level an increase of damage of
-	 *         Cannon Tower
-	 */
-	static private UnaryOperator<Integer> getIncreaseDamage() {
-		return (x -> 10);
-	}
-
-	/**
 	 * Return an cannon with only one target possible, and upgradable
 	 * 
 	 * @param pos       Position of the tower
@@ -107,7 +18,8 @@ public interface CannonFactory {
 	 * @return an cannon with only one target possible, and upgradable
 	 */
 	static public Tower basicCannon(final Position pos, final List<Enemy> enemyList) {
-		return constructor("cannon", enemyList).upgradableStarndard(pos, getIncreaseCost(), getIncreaseDamage())
+		return new ClassicTowerFactory(DefaultTowers.BASICCANNON, enemyList)
+				.upgradableStarndard(pos, 25, 200, x->5, x->10)
 				.build();
 	}
 
@@ -119,7 +31,8 @@ public interface CannonFactory {
 	 * @return an cannon with two targets possible, and upgradable
 	 */
 	static public Tower biCannon(final Position pos, final List<Enemy> enemyList) {
-		return constructor("bicannon", enemyList).nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 2)
+		return new ClassicTowerFactory(DefaultTowers.BICANNON, enemyList)
+				.nTargetStandard(pos, 25, 300, x->15, x->20, 2)
 				.build();
 	}
 
@@ -131,7 +44,8 @@ public interface CannonFactory {
 	 * @return an cannon with three targets possible, and upgradable
 	 */
 	static public Tower triCannon(final Position pos, final List<Enemy> enemyList) {
-		return constructor("tricannon", enemyList).nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 3)
+		return new ClassicTowerFactory(DefaultTowers.TRICANNON, enemyList)
+				.nTargetStandard(pos, 25, 400, x->35, x->30, 3)
 				.build();
 	}
 
@@ -143,7 +57,8 @@ public interface CannonFactory {
 	 * @return an cannon with four targets possible, and upgradable
 	 */
 	static public Tower quadCannon(final Position pos, final List<Enemy> enemyList) {
-		return constructor("quadcannon", enemyList).nTargetStandard(pos, getIncreaseCost(), getIncreaseDamage(), 4)
+		return new ClassicTowerFactory(DefaultTowers.QUADCANNON, enemyList)
+				.nTargetStandard(pos, 25, 500, x->45, x->40, 4)
 				.build();
 	}
 
