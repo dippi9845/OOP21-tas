@@ -6,8 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
+
+import org.json.JSONObject;
+
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.Tower;
+import main.java.tas.utils.JsonUtils;
 import main.java.tas.utils.Position;
 
 public class DefaultTowersInfo {
@@ -18,8 +22,15 @@ public class DefaultTowersInfo {
 	public static final String TOWERSJSONFILE = "res" + System.getProperty("file.separator") + "data"
 	        + System.getProperty("file.separator") + "towers" + System.getProperty("file.separator") + "DefaultTowers.json";
 	
+	// object containing already the contet of TOWERS JSON FILE
+	public static final JSONObject JSONDATAFILE = JsonUtils.getJsonData(TOWERSJSONFILE);
+
 	// name inside the json file
 	public static final Map<DefaultTowers, String> TOWERSJSONNAME = initMapName();
+
+	public static final Map<DefaultTowers, JSONObject> TOWERSJSONOBJECT = initMapJsonObject();
+
+	public static final Map<DefaultTowers, BiFunction<Position, List<Enemy>, Tower>> BUILDMAP = initBuildMap();
 
 	// init map with all json file name
 	private static Map<DefaultTowers, String> initMapName() {
@@ -31,8 +42,15 @@ public class DefaultTowersInfo {
         return Collections.unmodifiableMap(map);
     }
     
-    public static final Map<DefaultTowers, BiFunction<Position, List<Enemy>, Tower>> BUILDMAP = initBuildMap();
-    
+    private static Map<DefaultTowers, JSONObject> initMapJsonObject() {
+    	Map<DefaultTowers, JSONObject> map = new HashMap<>();
+    	
+    	Arrays.stream(DefaultTowers.values())
+    		.forEach(x->map.put(x, JSONDATAFILE.getJSONObject(TOWERSJSONNAME.get(x))));
+    	
+		return Collections.unmodifiableMap(map);
+	}
+
     /**
 	 * Initialize the map with all functions that build a tower by the given
 	 * enumeration code
