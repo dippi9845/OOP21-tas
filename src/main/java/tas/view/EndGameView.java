@@ -23,7 +23,7 @@ public class EndGameView implements ViewAction {
 	 * Constructor that builds the settings menu view.
 	 */
     public EndGameView(){
-    	label = new JLabel("You lost. Game over. Too bad. You suck.");
+    	label = new JLabel("Game over.");
     	label.setFont(new Font("Serif", Font.PLAIN, 30));
     	label.setHorizontalAlignment(JLabel.CENTER);
     	this.rootPanel.add(label);
