@@ -16,6 +16,16 @@ import main.java.tas.utils.Position;
 
 public class DefaultTowersInfo {
 	
+	public static final String COSTFIELD = "cost";
+
+	public static final String IMAGENAMEFIELD = "image name";
+
+	public static final String DELAYFIELD = "delay";
+
+	public static final String RADIUSFIELD = "radius";
+
+	public static final String DAMAGEFIELD = "damage";
+
 	private DefaultTowersInfo() {}
 	
 	// json file with all preset
