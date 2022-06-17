@@ -81,7 +81,6 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 		if (target.isPresent()) {
 			this.targetPos = target.get().getPosition();
 			this.addNearbyTarget();
-			System.out.println(this.getEnemyList());
 			this.attack();
 			this.clear();
 		}
