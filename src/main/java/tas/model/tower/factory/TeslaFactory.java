@@ -22,9 +22,9 @@ public interface TeslaFactory {
 	 * @return Tesla tower
 	 */
 	static public Tower basicTesla(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, 100, 500, 1100, "tesla", enemyList)
+		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.BASICTESLA), enemyList)
 				.attackType(AttackType.AREA)
-				.damageRange(7)
+				.damageRange(400)
 				.setUpgradable(true)
 				.upgradeCost(x -> 15)
 				.upgradeDamage(x -> 50)
@@ -32,7 +32,7 @@ public interface TeslaFactory {
 				.startUpgradeCost(10)
 				.maximumTarget(4)
 				.findFirst(() -> {
-					return Towers.findFirstEnemyInRange(pos, 9, enemyList);
+					return Towers.findFirstEnemyInRange(pos, 500, enemyList);
 				}).build();
 	}
 
@@ -44,9 +44,9 @@ public interface TeslaFactory {
 	 * @return Super Tesla tower
 	 */
 	static public Tower superTesla(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, 150, 500, 1100, "supertesla", enemyList)
+		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.SUPERTESLA), enemyList)
 				.attackType(AttackType.AREA)
-				.damageRange(7)
+				.damageRange(400)
 				.setUpgradable(true)
 				.upgradeCost(x -> x * x)
 				.upgradeDamage(x -> x * x * 3)
@@ -54,7 +54,7 @@ public interface TeslaFactory {
 				.startUpgradeCost(20)
 				.maximumTarget(8)
 				.findFirst(() -> {
-					return Towers.findFirstEnemyInRange(pos, 9, enemyList);
+					return Towers.findFirstEnemyInRange(pos, 500, enemyList);
 				}).build();
 	}
 
@@ -66,17 +66,17 @@ public interface TeslaFactory {
 	 * @return God Tesla tower
 	 */
 	static public Tower godTesla(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, 200, 500, 1100, "godtesla", enemyList)
+		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.GODTESLA), enemyList)
 				.attackType(AttackType.AREA)
-				.damageRange(7)
+				.damageRange(400)
 				.setUpgradable(true)
 				.upgradeCost(x -> (int) Math.pow(x, x) + 20)
 				.upgradeDamage(x -> (int) Math.pow(x, x))
-				.maxLevel(5).
-				startUpgradeCost(100)
+				.maxLevel(5)
+				.startUpgradeCost(100)
 				.maximumTarget(100)
 				.findFirst(() -> {
-					return Towers.findFirstEnemyInRange(pos, 9, enemyList);
+					return Towers.findFirstEnemyInRange(pos, 500, enemyList);
 				}).build();
 	}
 }
