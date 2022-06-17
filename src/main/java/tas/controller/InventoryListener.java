@@ -28,8 +28,8 @@ public class InventoryListener extends GenericListener implements ActionListener
 		DefaultTowers towerList [] = DefaultTowers.values();
 		for(int i = 0; i < towerList.length; i++) {
 			if(((AbstractButton) e.getSource()).getText().equals(towerList[i].toString())) {
-				setUpdate();
 				this.towerSelected = towerList[i];
+				setUpdate();
 			}
 		}
 	}
