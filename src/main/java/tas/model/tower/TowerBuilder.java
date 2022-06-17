@@ -110,6 +110,11 @@ public class TowerBuilder {
 			this.cost = dataset.getInt(COSTFIELD);
 		}
 	}
+	
+	public TowerBuilder(final Position pos, final JSONObject dataset, final List<Enemy> enemyList) {
+		this(pos, dataset);
+		this.visibleEnemy = Optional.ofNullable(enemyList);
+	}
 
 	/**
 	 * Set the list of all enemy in the map
