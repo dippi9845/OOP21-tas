@@ -17,7 +17,6 @@ public class SettingsView implements ViewAction {
 
 	private JPanel rootPanel = new JPanel(new GridLayout(0, 1, 5, 10));
 	private JLabel label;
-	private JLabel label2;
 	private JButton backButton;
 
 	/**
@@ -28,10 +27,6 @@ public class SettingsView implements ViewAction {
 		label.setFont(new Font("Serif", Font.PLAIN, 30));
 		label.setHorizontalAlignment(JLabel.CENTER);
 		this.rootPanel.add(label);
-		label2 = new JLabel("This isn't Elden Ring.");
-		label2.setFont(new Font("Serif", Font.PLAIN, 30));
-		label2.setHorizontalAlignment(JLabel.CENTER);
-		this.rootPanel.add(label2);
 		backButton = new JButton("OK GO BACK THEN");
 		this.rootPanel.add(backButton);
 	}
