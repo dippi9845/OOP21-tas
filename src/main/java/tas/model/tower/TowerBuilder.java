@@ -6,8 +6,8 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 import org.json.JSONObject;
 import main.java.tas.model.enemy.Enemy;
+import main.java.tas.model.tower.factory.DefaultTowersInfo;
 import main.java.tas.utils.Position;
-import main.java.tas.utils.JsonUtils;
 
 /**
  * A class specialized to Build , to start, you have to call the constructor,
@@ -35,12 +35,6 @@ public class TowerBuilder {
 	private Optional<Integer> startUpgradeCost;
 	private Optional<Integer> maxLevel;
 	
-	public static final String DAMAGEFIELD = "damage";
-	public static final String RADIUSFIELD = "radius";
-	public static final String DELAYFIELD = "delay";
-	public static final String IMAGENAMEFIELD = "image name";
-	public static final String COSTFIELD = "cost";
-
 	/**
 	 * The constructor has the basic fields, that without one of them the tower
 	 * can't be instanced (except for enemy list, that must be added with the
@@ -104,10 +98,10 @@ public class TowerBuilder {
 	}
 	
 	public TowerBuilder(final Position pos, final JSONObject dataset) {
-		this(pos, dataset.getInt(DAMAGEFIELD), dataset.getInt(RADIUSFIELD), dataset.getInt(DELAYFIELD), dataset.getString(IMAGENAMEFIELD));
+		this(pos, dataset.getInt(DefaultTowersInfo.DAMAGEFIELD), dataset.getInt(DefaultTowersInfo.RADIUSFIELD), dataset.getInt(DefaultTowersInfo.DELAYFIELD), dataset.getString(DefaultTowersInfo.IMAGENAMEFIELD));
 		
-		if (dataset.has(COSTFIELD)) {
-			this.cost = dataset.getInt(COSTFIELD);
+		if (dataset.has(DefaultTowersInfo.COSTFIELD)) {
+			this.cost = dataset.getInt(DefaultTowersInfo.COSTFIELD);
 		}
 	}
 	
@@ -116,6 +110,10 @@ public class TowerBuilder {
 		this.visibleEnemy = Optional.ofNullable(enemyList);
 	}
 
+	public int getRange() {
+		return this.radius;
+	}
+	
 	/**
 	 * Set the list of all enemy in the map
 	 * 

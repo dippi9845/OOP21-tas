@@ -23,8 +23,8 @@ public interface MortarFactory {
 	 * @return Mortar tower
 	 */
 	static public Tower basicMortar(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.BASICMORTAR), enemyList)
-				.attackType(AttackType.AREA)
+		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.BASICMORTAR), enemyList);
+		return t.attackType(AttackType.AREA)
 				.damageRange(400)
 				.setUpgradable(true)
 				.upgradeCost(x -> 10)
@@ -34,7 +34,7 @@ public interface MortarFactory {
 				.maximumTarget(Integer.MAX_VALUE)
 				.findFirst(() -> {
 					return Towers.findFistEnemyBiPredicate(
-							e -> Towers.isInRange(pos, e.getPosition(), 650),
+							e -> Towers.isInRange(pos, e.getPosition(), t.getRange()),
 							e ->!Towers.isInRange(pos, e.getPosition(), 140),
 							enemyList);
 				}).build();
@@ -48,8 +48,8 @@ public interface MortarFactory {
 	 * @return Mortar tower
 	 */
 	static public Tower superMortar(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.SUPERMORTAR), enemyList)
-				.attackType(AttackType.AREA)
+		final TowerBuilder t =  new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.SUPERMORTAR), enemyList);
+		return t.attackType(AttackType.AREA)
 				.damageRange(450)
 				.setUpgradable(true)
 				.upgradeCost(x -> x * x)
@@ -59,7 +59,7 @@ public interface MortarFactory {
 				.maximumTarget(Integer.MAX_VALUE)
 				.findFirst(() -> {
 					return Towers.findFistEnemyBiPredicate(
-							e -> Towers.isInRange(pos, e.getPosition(), 650),
+							e -> Towers.isInRange(pos, e.getPosition(), t.getRange()),
 							e ->!Towers.isInRange(pos, e.getPosition(), 140),
 							enemyList);
 				}).build();
@@ -73,8 +73,8 @@ public interface MortarFactory {
 	 * @return Mortar tower
 	 */
 	static public Tower godMortar(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.GODMORTAR), enemyList)
-				.attackType(AttackType.AREA)
+		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.GODMORTAR), enemyList);
+		return t.attackType(AttackType.AREA)
 				.damageRange(600)
 				.setUpgradable(true)
 				.upgradeCost(x -> (int) Math.pow(x, x) + 15)
@@ -83,7 +83,7 @@ public interface MortarFactory {
 				.startUpgradeCost(100)
 				.maximumTarget(Integer.MAX_VALUE).findFirst(() -> {
 					return Towers.findFistEnemyBiPredicate(
-							e -> Towers.isInRange(pos, e.getPosition(), 650),
+							e -> Towers.isInRange(pos, e.getPosition(), t.getRange()),
 							e ->!Towers.isInRange(pos, e.getPosition(), 140),
 							enemyList);
 				}).build();

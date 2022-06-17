@@ -1,25 +1,16 @@
 package main.java.tas.controller.tower;
 
 import java.util.List;
-import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
-import java.util.function.BiFunction;
 import main.java.tas.model.Entity;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.model.tower.Tower;
-import main.java.tas.model.tower.factory.ArcherFactory;
-import main.java.tas.model.tower.factory.CannonFactory;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.model.tower.factory.DefaultTowersInfo;
-import main.java.tas.model.tower.factory.FlameFactory;
-import main.java.tas.model.tower.factory.GasFactory;
-import main.java.tas.model.tower.factory.MortarFactory;
-import main.java.tas.model.tower.factory.TeslaFactory;
 import main.java.tas.utils.Position;
 import java.awt.Dimension;
-import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
