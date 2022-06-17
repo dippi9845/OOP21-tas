@@ -21,7 +21,6 @@ import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.game.GameModel;
 import main.java.tas.model.menu.MenuModel;
 import main.java.tas.utils.GameSpecs;
-import main.java.tas.utils.JsonUtils;
 import main.java.tas.utils.Position;
 import main.java.tas.utils.TimeCurve;
 import main.java.tas.utils.TimeCurveImpl;
@@ -47,7 +46,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver {
 	private final InventoryListener inventoryListener = new InventoryListener();
 	private final GameSpecs gameSpecs = new GameSpecs();
 	private MenuModel menuModel;
-	private HashMap <String, Integer> towerInfo;
+	private HashMap <String, Integer> towerInfo = new HashMap <String, Integer>();
 
 	private final String healthSymbol = "Health";
 	private final String waveSymbol = "Wave";
@@ -67,14 +66,10 @@ public class GameController implements SceneMouseObserver, SceneActionObserver {
 		this.menuModel = menuModelIn;
 		this.gameScene = scene;
 		this.playerStats = gameModel;
-		
-		HashMap <String,Integer> towerInfoIn = new HashMap <String, Integer>();
-		JSONObject towers = JsonUtils.getJsonData(DefaultTowersInfo.TOWERSJSONFILE);
 		for (DefaultTowers tower : DefaultTowers.values()) {
-			JSONObject tmp  = towers.getJSONObject(DefaultTowersInfo.TOWERSJSONNAME.get(tower));
-			towerInfoIn.put(tower.toString(), tmp.getInt(TowerBuilder.COSTFIELD));
+			JSONObject tmp  = DefaultTowersInfo.TOWERSJSONOBJECT.get(tower);
+			this.towerInfo.put(tower.toString(), tmp.getInt(TowerBuilder.COSTFIELD));
 		}
-		this.towerInfo = towerInfoIn;
 		
 		this.enemiesHandler = new EnemiesLogicImpl(pathNodes);
 		this.gameScene.getGameView().getGamePanel().setLine(pathNodes, pathColor, pathThickness);
