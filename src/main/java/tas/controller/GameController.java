@@ -25,7 +25,6 @@ import main.java.tas.utils.Position;
 import main.java.tas.utils.TimeCurve;
 import main.java.tas.utils.TimeCurveImpl;
 import main.java.tas.view.scene.GameScene;
-import main.java.tas.model.tower.TowerBuilder;
 
 /**
  * Class that implements {@link SceneMouseObserver},
@@ -68,7 +67,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver {
 		this.playerStats = gameModel;
 		for (DefaultTowers tower : DefaultTowers.values()) {
 			JSONObject tmp  = DefaultTowersInfo.TOWERSJSONOBJECT.get(tower);
-			this.towerInfo.put(tower.toString(), tmp.getInt(TowerBuilder.COSTFIELD));
+			this.towerInfo.put(tower.toString(), tmp.getInt(DefaultTowersInfo.COSTFIELD));
 		}
 		
 		this.enemiesHandler = new EnemiesLogicImpl(pathNodes);
