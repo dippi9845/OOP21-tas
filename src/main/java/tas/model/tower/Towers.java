@@ -100,17 +100,6 @@ public class Towers {
 	 * @return List containing all the enemies that satisfies the predicate
 	 */
 	static public List<Enemy> findAll(final Predicate<Enemy> f, final List<Enemy> enemyList) {
-		/*
-		List<Enemy> rtr = new LinkedList<Enemy>();
-		
-		for (var i : enemyList) {
-			if (!i.isDead() && f.test(i)) {
-				rtr.add(i);
-			}
-		}
-		return rtr;
-		//return enemyList.stream().filter(x->!x.isDead()).filter(f).collect(Collectors.toList());
-		*/
 		return enemyList.stream().filter(f).collect(Collectors.toList());
 	}
 

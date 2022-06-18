@@ -36,11 +36,6 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 	/** {@inheritDoc} */
 	@Override
 	public void compute() throws InterruptedException {
-		/*
-		List<Enemy> toRemove = Towers.findAll(x->!Towers.isTargetInRange(x, this) || x.isDead(), this.getEnemyList());
-		
-		this.getEnemyList().removeAll(toRemove);
-		*/
 		Towers.findAll(x->!Towers.isTargetInRange(x, this) || x.isDead(),this.getEnemyList())
 				.stream()
 				.forEach(this::remove);
