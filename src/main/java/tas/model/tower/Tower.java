@@ -52,12 +52,8 @@ public interface Tower extends Entity, Runnable {
 	 * Method used by thread, to run the tower in concurrency
 	 */
 	default void run() {
-		try {
-			while (!this.isStop()) {
-				this.compute();
-			}
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		while (!this.isStop()) {
+			this.compute();
 		}
 	}
 
@@ -67,7 +63,7 @@ public interface Tower extends Entity, Runnable {
 	 * 
 	 * @throws InterruptedException, if some error occurs during Thread.sleep
 	 */
-	public void compute() throws InterruptedException;
+	public void compute();
 
 	/**
 	 * @return the damage of the tower

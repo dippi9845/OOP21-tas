@@ -18,7 +18,7 @@ public interface FlameFactory {
 	 */
 	static public Tower basicFlame(final Position pos, final List<Enemy> enemyList) {
 		return new ClassicTowerFactory(DefaultTowers.BASICFLAME, enemyList)
-				.upgradableStarndard(pos, 25, 400, x->15, x->15)
+				.upgradableStarndard(pos, 25, 1000, x->15, x->15)
 				.build();
 	}
 
@@ -29,7 +29,7 @@ public interface FlameFactory {
 	 */
 	static public Tower biFlame(final Position pos, final List<Enemy> enemyList) {
 		return new ClassicTowerFactory(DefaultTowers.BIFLAME, enemyList)
-				.nTargetStandard(pos, 25, 600, x->25, x->25, 2)
+				.nTargetStandard(pos, 25, 1000, x->25, x->25, 2)
 				.build();
 	}
 
@@ -40,7 +40,7 @@ public interface FlameFactory {
 	 */
 	static public Tower triFlame(final Position pos, final List<Enemy> enemyList) {
 		return new ClassicTowerFactory(DefaultTowers.TRIFLAME, enemyList)
-				.nTargetStandard(pos, 25, 800, x->35, x->35, 3)
+				.nTargetStandard(pos, 25, 1000, x->35, x->35, 3)
 				.build();
 	}
 

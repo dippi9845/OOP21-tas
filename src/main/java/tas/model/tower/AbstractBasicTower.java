@@ -47,6 +47,14 @@ public abstract class AbstractBasicTower implements Tower {
 		}
 	}
 
+	protected void sleep() {
+		try {
+			Thread.sleep(this.getDelay());
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
 	/** {@inheritDoc} */
 	public boolean isStop() {
 		return this.stopTh;

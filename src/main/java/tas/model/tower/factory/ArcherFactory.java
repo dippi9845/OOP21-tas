@@ -19,7 +19,7 @@ public interface ArcherFactory {
 	 */
 	static public Tower basicArcher(final Position pos, final List<Enemy> enemyList) {
 		return new ClassicTowerFactory(DefaultTowers.BASICARCHER, enemyList)
-				.upgradableStarndard(pos, 25, 100, x->20, x->15)
+				.upgradableStarndard(pos, 25, 1000, x->20, x->15)
 				.build();
 	}
 
@@ -32,7 +32,7 @@ public interface ArcherFactory {
 	 */
 	static public Tower biArcher(final Position pos, final List<Enemy> enemyList) {
 		return new ClassicTowerFactory(DefaultTowers.BIARCHER, enemyList)
-				.nTargetStandard(pos, 25, 200, x->25, x->20, 2)
+				.nTargetStandard(pos, 25, 1000, x->25, x->20, 2)
 				.build();
 	}
 
@@ -45,7 +45,7 @@ public interface ArcherFactory {
 	 */
 	static public Tower triArcher(final Position pos, final List<Enemy> enemyList) {
 		return new ClassicTowerFactory(DefaultTowers.TRIARCHER, enemyList)
-				.nTargetStandard(pos, 25, 300, x->30, x->25, 3)
+				.nTargetStandard(pos, 25, 1000, x->30, x->25, 3)
 				.build();
 	}
 
@@ -58,7 +58,7 @@ public interface ArcherFactory {
 	 */
 	static public Tower quadArcher(final Position pos, final List<Enemy> enemyList) {
 		return new ClassicTowerFactory(DefaultTowers.QUADARCHER, enemyList)
-				.nTargetStandard(pos, 25, 400, x->35, x->30, 4)
+				.nTargetStandard(pos, 25, 1000, x->35, x->30, 4)
 				.build();
 	}
 }

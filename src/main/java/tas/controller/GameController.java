@@ -278,6 +278,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver {
 		}
 
 		if (this.playerStats.getHP() <= 0) {
+			this.towerLogic.closeAll();
 			this.menuModel.setMainScene(7);
 		}
 
