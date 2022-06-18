@@ -68,7 +68,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver {
 		this.playerStats = gameModel;
 		for (DefaultTowers tower : DefaultTowers.values()) {
 			JSONObject tmp  = DefaultTowersInfo.TOWERSJSONOBJECT.get(tower);
-			this.towerInfo.put(tower.toString(), tmp.getInt(TowerBuilder.COSTFIELD));
+			this.towerInfo.put(tower.toString(), tmp.getInt(DefaultTowersInfo.COSTFIELD));
 		}
 		
 		this.enemiesHandler = new EnemiesLogicImpl(pathNodes);
