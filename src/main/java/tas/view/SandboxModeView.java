@@ -22,8 +22,6 @@ public class SandboxModeView implements ViewAction, ViewMouse {
 
 	/**
 	 * Constructor that builds the sandbox mode view.
-	 * 
-	 * @param theModel the model
 	 */
 	public SandboxModeView() {
 		this.gameBoard.setBgImage("bgImage");

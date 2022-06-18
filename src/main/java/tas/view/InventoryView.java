@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 /**
  * Class that builds the inventory view.
  * Class that implements a {@link ViewAction}.
- * @param <T>
  */
 public class InventoryView implements ViewAction {
     
@@ -30,6 +29,7 @@ public class InventoryView implements ViewAction {
     
     /**
      * Constructor that sets up the inventory view.
+     * 
      * @param objects a list of the name of the different towers
      */
     public <T extends Enum <T>>InventoryView(Class <T> objects) {
@@ -48,6 +48,11 @@ public class InventoryView implements ViewAction {
         this.inventoryCanvas.add(labelCanvas); 
     }
     
+    /**
+     * Disables the buttons of the turrets given as input.
+     * 
+     * @param names the list of turret names
+     */
     public void disableButtons(List <String> names) {
     	List <String> towersToEnable = new ArrayList <String> ();
     	for(String name : this.towerNames) {
@@ -125,9 +130,4 @@ public class InventoryView implements ViewAction {
 	public void selectButton(String name) {
 		this.buttonList.get(name).setBackground(Color.RED);
 	};
-
-	
-
-	
-
 }

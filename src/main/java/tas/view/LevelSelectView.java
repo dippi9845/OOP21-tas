@@ -12,7 +12,7 @@ import main.java.tas.controller.SceneActionObserver;
  */
 public class LevelSelectView implements ViewAction {
 
-	private JPanel rootPanel = new JPanel(new GridLayout(0, 1, 5, 10));
+	private final JPanel rootPanel = new JPanel(new GridLayout(0, 1, 5, 10));
 	private JButton buttonList[];
 	private int nLevels;
 
