@@ -18,7 +18,7 @@ public interface GasFactory {
 	 */
 	static public Tower gasTower(final Position pos, final List<Enemy> enemyList) {
 		return new ClassicTowerFactory(DefaultTowers.GASTOWER, enemyList)
-				.nTargetStandard(pos, 25, 400, x->15, x->15, Integer.MAX_VALUE)
+				.nTargetStandard(pos, 25, 1000, x->15, x->15, Integer.MAX_VALUE)
 				.build();
 	}
 }
