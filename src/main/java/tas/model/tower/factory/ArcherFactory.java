@@ -2,7 +2,9 @@ package main.java.tas.model.tower.factory;
 
 import java.util.List;
 import main.java.tas.model.enemy.Enemy;
+import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Tower;
+import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.utils.Position;
 
 /**
@@ -18,8 +20,12 @@ public interface ArcherFactory {
 	 * @return an archer with only one target possible, and upgradable
 	 */
 	static public Tower basicArcher(final Position pos, final List<Enemy> enemyList) {
-		return new ClassicTowerFactory(DefaultTowers.BASICARCHER, enemyList)
-				.upgradableStarndard(pos, 25, 1000, x->20, x->15)
+		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.BASICARCHER), enemyList)
+				.setUpgradable(true)
+				.maxLevel(25)
+				.startUpgradeCost(1000)
+				.upgradeCost(x->20)
+				.upgradeDamage(x->15)
 				.build();
 	}
 
@@ -31,8 +37,14 @@ public interface ArcherFactory {
 	 * @return an archer with two targets possible, and upgradable
 	 */
 	static public Tower biArcher(final Position pos, final List<Enemy> enemyList) {
-		return new ClassicTowerFactory(DefaultTowers.BIARCHER, enemyList)
-				.nTargetStandard(pos, 25, 1000, x->25, x->20, 2)
+		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.BIARCHER), enemyList)
+				.attackType(AttackType.MULTIPLE)
+				.maximumTarget(2)
+				.setUpgradable(true)
+				.maxLevel(25)
+				.startUpgradeCost(1000)
+				.upgradeCost(x->25)
+				.upgradeDamage(x->20)
 				.build();
 	}
 
@@ -44,8 +56,14 @@ public interface ArcherFactory {
 	 * @return an archer with three targets possible, and upgradable
 	 */
 	static public Tower triArcher(final Position pos, final List<Enemy> enemyList) {
-		return new ClassicTowerFactory(DefaultTowers.TRIARCHER, enemyList)
-				.nTargetStandard(pos, 25, 1000, x->30, x->25, 3)
+		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.TRIARCHER), enemyList)
+				.attackType(AttackType.MULTIPLE)
+				.maximumTarget(3)
+				.setUpgradable(true)
+				.maxLevel(25)
+				.startUpgradeCost(1000)
+				.upgradeCost(x->30)
+				.upgradeDamage(x->25)
 				.build();
 	}
 
@@ -57,8 +75,14 @@ public interface ArcherFactory {
 	 * @return an archer with four targets possible, and upgradable
 	 */
 	static public Tower quadArcher(final Position pos, final List<Enemy> enemyList) {
-		return new ClassicTowerFactory(DefaultTowers.QUADARCHER, enemyList)
-				.nTargetStandard(pos, 25, 1000, x->35, x->30, 4)
+		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.QUADARCHER), enemyList)
+				.attackType(AttackType.MULTIPLE)
+				.maximumTarget(4)
+				.setUpgradable(true)
+				.maxLevel(25)
+				.startUpgradeCost(1000)
+				.upgradeCost(x->35)
+				.upgradeDamage(x->30)
 				.build();
 	}
 }

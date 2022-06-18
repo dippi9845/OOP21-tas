@@ -16,11 +16,11 @@ import main.java.tas.utils.Position;
 public interface MortarFactory {
 
 	/**
-	 * this Mortar has a growth of the damage and cost linear
+	 * This Mortar has a growth of the damage and cost linear
 	 * 
 	 * @param pos       Position of the Mortar
 	 * @param enemyList List of all enemy in the map
-	 * @return Mortar tower
+	 * @return Mortar tower upgradable
 	 */
 	static public Tower basicMortar(final Position pos, final List<Enemy> enemyList) {
 		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.BASICMORTAR), enemyList);
@@ -41,11 +41,11 @@ public interface MortarFactory {
 	}
 
 	/**
-	 * this Mortar has a growth of the damage and cost quadratic
+	 * This Mortar has a growth of the damage and cost quadratic
 	 * 
 	 * @param pos       Position of the Mortar
 	 * @param enemyList List of all enemy in the map
-	 * @return Mortar tower
+	 * @return Mortar tower upgradable
 	 */
 	static public Tower superMortar(final Position pos, final List<Enemy> enemyList) {
 		final TowerBuilder t =  new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.SUPERMORTAR), enemyList);
@@ -66,11 +66,11 @@ public interface MortarFactory {
 	}
 
 	/**
-	 * this Mortar has a growth of the damage and cost exponential
+	 * This Mortar has a growth of the damage and cost exponential
 	 * 
 	 * @param pos       Position of the Mortar
 	 * @param enemyList List of all enemy in the map
-	 * @return Mortar tower
+	 * @return Mortar tower upgradable
 	 */
 	static public Tower godMortar(final Position pos, final List<Enemy> enemyList) {
 		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.GODMORTAR), enemyList);

@@ -10,8 +10,9 @@ import main.java.tas.model.tower.factory.DefaultTowersInfo;
 import main.java.tas.utils.Position;
 
 /**
- * A class specialized to Build , to start, you have to call the constructor,
- * next you have to call the method to set more parameters, in cascade notation
+ * A class specialized to Build a Tower, to start, you have to call the constructor,
+ * next you have to call the method to set more parameters, in cascade notation, after that,
+ * you need to call the build method {@link TowerBuilder#build()} for create that Tower
  */
 public class TowerBuilder {
 
@@ -36,9 +37,9 @@ public class TowerBuilder {
 	private Optional<Integer> maxLevel;
 	
 	/**
-	 * The constructor has the basic fields, that without one of them the tower
+	 * The constructor with a Position {@link Position}, and all the basic fields, that without one of them the tower
 	 * can't be instanced (except for enemy list, that must be added with the
-	 * specific method)
+	 * specific method, before the build call {@link TowerBuilder#build()})
 	 * 
 	 * @param pos       Position of the Tower
 	 * @param damage    Damage of the Tower
@@ -69,7 +70,8 @@ public class TowerBuilder {
 	}
 	
 	/**
-	 * The constructor has the basic fields, without the list of all visible enemy
+	 * The constructor with Position {@link Position}, and all the basic fields, without the list of all visible enemy, that must be set,
+	 * with the specific method {@link TowerBuilder#setEnemylist(List)} before the call to build method {@link TowerBuilder#build()}
 	 * 
 	 * @param pos       Position of the Tower
 	 * @param damage    Damage of the Tower
@@ -78,38 +80,47 @@ public class TowerBuilder {
 	 * @param imageName Name of the image of the tower
 	 */
 	public TowerBuilder(final Position pos, final int damage, final int radius, final int delay, final String imageName) {
-		this.pos = pos;
-		this.damage = damage;
-		this.radius = radius;
-		this.delay = delay;
-		this.imageName = imageName;
-		this.visibleEnemy = Optional.empty();
-
-		this.attackType = AttackType.BASIC;
-		this.upgradable = false;
-
-		this.maximumTarget = Optional.empty();
-		this.attackRange = Optional.empty();
-		this.findFirst = Optional.empty();
-		this.upgradeDamage = Optional.empty();
-		this.upgradeCost = Optional.empty();
-		this.startUpgradeCost = Optional.empty();
-		this.maxLevel = Optional.empty();
+		this(pos, damage, radius, delay, imageName, null);
 	}
 	
+	/**
+	 * The constructor takes in input a Position {@link Position} and a JSONObject {@link org.json.JSONObject},
+	 * containing all basic fields for building a tower, (same fields of {@link TowerBuilder#TowerBuilder(Position, int, int, int, String)})
+	 * without the list of all visible enemy, that must be set,
+	 * with the specific method {@link TowerBuilder#setEnemylist(List)} before the call to build method {@link TowerBuilder#build()}
+	 * @param pos position of the tower
+	 * @param dataset a JSONObject with all the necessary fields
+	 */
 	public TowerBuilder(final Position pos, final JSONObject dataset) {
-		this(pos, dataset.getInt(DefaultTowersInfo.DAMAGEFIELD), dataset.getInt(DefaultTowersInfo.RADIUSFIELD), dataset.getInt(DefaultTowersInfo.DELAYFIELD), dataset.getString(DefaultTowersInfo.IMAGENAMEFIELD));
+		this(pos,
+			dataset.getInt(DefaultTowersInfo.DAMAGEFIELD),
+			dataset.getInt(DefaultTowersInfo.RADIUSFIELD),
+			dataset.getInt(DefaultTowersInfo.DELAYFIELD),
+			dataset.getString(DefaultTowersInfo.IMAGENAMEFIELD));
 		
 		if (dataset.has(DefaultTowersInfo.COSTFIELD)) {
 			this.cost = dataset.getInt(DefaultTowersInfo.COSTFIELD);
 		}
 	}
 	
+	/**
+	 * The constructor with Position {@link Position} and a JSONObject {@link org.json.JSONObject},
+	 * containing all basic fields for building a tower, (same fields of {@link TowerBuilder#TowerBuilder(Position, int, int, int, String)})
+	 * that without one of them the tower can't be instanced (except for enemy list, that must be added with the
+	 * specific method, before the build call {@link TowerBuilder#build()})
+	 * @param pos position of the tower
+	 * @param dataset a JSONObject with all the necessary fields
+	 * @param enemyList List of all enemy in the map
+	 */
 	public TowerBuilder(final Position pos, final JSONObject dataset, final List<Enemy> enemyList) {
 		this(pos, dataset);
 		this.visibleEnemy = Optional.ofNullable(enemyList);
 	}
 
+	/**
+	 * Returns the range of the current building tower
+	 * @return the range of the current building tower
+	 */
 	public int getRange() {
 		return this.radius;
 	}
@@ -183,7 +194,7 @@ public class TowerBuilder {
 	}
 
 	/**
-	 * set the finstFirst function for the area tower attack type must be area
+	 * Set the finstFirst function for the area tower attack type must be area
 	 * 
 	 * @param findFirstEnemy supplier that provide the enemies
 	 * @return this object
@@ -194,7 +205,7 @@ public class TowerBuilder {
 	}
 
 	/**
-	 * set the function that provide an increase of damage by giving the level, the
+	 * Set the function that provide an increase of damage by giving the level, the
 	 * tower must be upgradable
 	 * 
 	 * @param upgradeDamage UnaryOperator that associate an increase of damage to a
@@ -207,7 +218,7 @@ public class TowerBuilder {
 	}
 
 	/**
-	 * set the function that provide an increase of cost by giving the level, the
+	 * Set the function that provide an increase of cost by giving the level, the
 	 * tower must be upgradable
 	 * 
 	 * @param upgradeCost UnaryOperator that associate an increase of cost to a
@@ -220,7 +231,7 @@ public class TowerBuilder {
 	}
 
 	/**
-	 * set the staring upgrade cost, the tower must be upgradable
+	 * Set the staring upgrade cost, the tower must be upgradable
 	 * 
 	 * @param startUpgradeCost integer that must be grater than 0
 	 * @return this object
@@ -231,7 +242,7 @@ public class TowerBuilder {
 	}
 
 	/**
-	 * set the maximum level of upgrade, the tower must be upgradable
+	 * Set the maximum level of upgrade, the tower must be upgradable
 	 * 
 	 * @param maxLevel integer that must be grater than 0
 	 * @return this object
@@ -243,7 +254,7 @@ public class TowerBuilder {
 
 	/**
 	 * Build the tower requested, by the given parameters, even performing a check
-	 * of the parameters
+	 * of the combination of use of parameters
 	 * 
 	 * @return the actual tower, by the given parameters
 	 * @throws IllegalStateException    if there is a bad configuration of the
@@ -298,7 +309,9 @@ public class TowerBuilder {
 		}
 
 		final AbstractBasicTower t;
+		
 		switch (this.attackType) {
+		
 		case BASIC:
 			if (this.attackRange.isPresent() || this.maximumTarget.isPresent() || this.findFirst.isPresent()) {
 				throw new IllegalStateException(
