@@ -86,7 +86,7 @@ public class ImageLoaderImpl implements ImageLoader {
 
 	/** {@inheritDoc} */
 	@Override
-	public BufferedImage getImageByName(final String imageName, Dimension CanvasDimension)
+	public BufferedImage getImageByName(final String imageName, final Dimension CanvasDimension)
 	        throws FileNotFoundException {
 		return scaleImage(getImageByName(imageName), CanvasDimension);
 	}
@@ -99,7 +99,7 @@ public class ImageLoaderImpl implements ImageLoader {
 	 * @param originalImageDimension the original dimension of the image
 	 * @return the new dimension of the image
 	 */
-	private Dimension getNewImageDimension(Dimension canvasDimension, Dimension originalImageDimension) {
+	private Dimension getNewImageDimension(final Dimension canvasDimension, final Dimension originalImageDimension) {
 		int newX = (int) ((double) canvasDimension.width
 		        / ((double) this.gameSpecs.getGameUnits().width / (double) originalImageDimension.width));
 		int newY = (int) ((double) canvasDimension.height
@@ -116,10 +116,10 @@ public class ImageLoaderImpl implements ImageLoader {
 	 * @return the scaled image
 	 */
 	private BufferedImage scaleImage(final BufferedImage src, final Dimension newDimension) {
-		BufferedImage resizedImg = new BufferedImage((int) newDimension.getWidth(), (int) newDimension.getHeight(),
+		final BufferedImage resizedImg = new BufferedImage((int) newDimension.getWidth(), (int) newDimension.getHeight(),
 		        BufferedImage.TRANSLUCENT);
 
-		Graphics2D g2 = resizedImg.createGraphics();
+		final Graphics2D g2 = resizedImg.createGraphics();
 
 		g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 		g2.drawImage(src, 0, 0, (int) newDimension.getWidth(), (int) newDimension.getHeight(), null);
