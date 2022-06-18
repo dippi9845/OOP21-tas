@@ -11,7 +11,8 @@ import main.java.tas.utils.Position;
 public class UpgradableTowerImpl implements UpgradableTower {
 
 	private final AbstractBasicTower tower;
-	private int upgradecost;
+	private int computecount;
+	private int upgradecountcost;
 	private final UnaryOperator<Integer> increasedamage;
 	private final UnaryOperator<Integer> increasecost;
 	private int level;
@@ -33,8 +34,9 @@ public class UpgradableTowerImpl implements UpgradableTower {
 		this.tower = tower;
 		this.increasedamage = increasedamage;
 		this.increasecost = increasecost;
-		this.upgradecost = startCostUpgrade;
+		this.upgradecountcost = startCostUpgrade;
 		this.level = 1;
+		this.computecount = 0;
 		this.maxLevel = maxLevel;
 	}
 
@@ -43,14 +45,20 @@ public class UpgradableTowerImpl implements UpgradableTower {
 	 * 
 	 * @return True if the current level is under the maximum, False otherwise
 	 */
-	private boolean levelUnderMax() {
+	public boolean levelUnderMax() {
 		return this.getLevel() < this.maxLevel;
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public void compute() throws InterruptedException {
+	public void compute() {
 		this.tower.compute();
+		this.computecount++;
+		
+		if (this.isTimeToUpgrade()) {
+			this.computecount = 0;
+			this.upgradeDamage();
+		}
 	}
 
 	/** {@inheritDoc} */
@@ -85,24 +93,14 @@ public class UpgradableTowerImpl implements UpgradableTower {
 
 	/** {@inheritDoc} */
 	@Override
-	public int costUpgrade() {
-		return this.upgradecost;
-	}
-
-	/** {@inheritDoc} */
-	@Override
 	public String getTowerImageName() {
 		return this.tower.getImageName();
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public void upgradeDamage() {
-		if (this.levelUnderMax()) {
-			this.tower.increaseDamage(this.increasedamage.apply(this.getLevel()));
-			this.upgradecost += this.increasecost.apply(this.getLevel());
-			this.level++;
-		}
+	private void upgradeDamage() {
+		this.tower.increaseDamage(this.increasedamage.apply(this.getLevel()));
+		this.upgradecountcost += this.increasecost.apply(this.getLevel());
+		this.level++;
 	}
 
 	/** {@inheritDoc} */
@@ -113,17 +111,11 @@ public class UpgradableTowerImpl implements UpgradableTower {
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean upgradable(final int money) {
-		return this.costUpgrade() <= money && this.levelUnderMax();
-	}
-
-	/** {@inheritDoc} */
-	@Override
 	public String toString() {
-		return "UpgradableTower [tower=" + tower + ", upgradecost=" + upgradecost + ", increasedamage=" + increasedamage
+		return "UpgradableTower [tower=" + tower + ", upgradecost=" + upgradecountcost + ", increasedamage=" + increasedamage
 				+ ", increasecost=" + increasecost + ", level=" + level + ", maxLevel=" + maxLevel + ", getDamage()="
 				+ getDamage() + ", getRadius()=" + getRadius() + ", getCost()=" + getCost() + ", getDelay()="
-				+ getDelay() + ", getPos()=" + getPos() + ", costUpgrade()=" + costUpgrade() + ", getTowerImageName()="
+				+ getDelay() + ", getPos()=" + getPos() + ", getTowerImageName()="
 				+ getTowerImageName() + ", getLevel()=" + getLevel() + "]";
 	}
 
@@ -136,5 +128,12 @@ public class UpgradableTowerImpl implements UpgradableTower {
 	public void stop() {
 		this.tower.stop();
 	}
+
+	@Override
+	public boolean isTimeToUpgrade() {
+		return this.computecount == this.upgradecountcost && this.levelUnderMax();
+	}
+
+	
 
 }
