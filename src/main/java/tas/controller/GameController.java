@@ -25,7 +25,6 @@ import main.java.tas.utils.Position;
 import main.java.tas.utils.TimeCurve;
 import main.java.tas.utils.TimeCurveImpl;
 import main.java.tas.view.scene.GameScene;
-import main.java.tas.model.tower.TowerBuilder;
 
 /**
  * Class that implements {@link SceneMouseObserver},
