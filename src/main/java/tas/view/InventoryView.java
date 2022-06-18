@@ -2,6 +2,7 @@ package main.java.tas.view;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +26,7 @@ public class InventoryView implements ViewAction {
     private final int nTowers;
     private final HashMap<String, AdaptiveLabel> textLables = new HashMap<String, AdaptiveLabel>();
     private final JPanel labelCanvas = new JPanel(new GridLayout(0,1));
+    private List <String> towerNames = new ArrayList <String>();
     
     /**
      * Constructor that sets up the inventory view.
@@ -34,17 +36,30 @@ public class InventoryView implements ViewAction {
         this.inventoryCanvas = new JPanel(new GridLayout(0,2));
         this.inventoryCanvas.setBackground(new Color(153,102,0));
         this.towerButtonsCanvas = new JPanel(new GridLayout(0,1));
-        
         this.nTowers = DefaultTowers.values().length;
-        
-        List <T> towerNames = Arrays.asList(objects.getEnumConstants());
+        List <T> towerNamesIn = Arrays.asList(objects.getEnumConstants());
         for(int i = 0; i< nTowers; i++) {
-        	String tower = towerNames.get(i).toString();
+        	String tower = towerNamesIn.get(i).toString();
         	this.buttonList.put((tower), new JButton(tower));
         	this.towerButtonsCanvas.add(buttonList.get(tower));
+        	this.towerNames.add(tower.toString());
         }
         this.inventoryCanvas.add(towerButtonsCanvas);
         this.inventoryCanvas.add(labelCanvas); 
+    }
+    
+    public void disableButtons(List <String> names) {
+    	List <String> towersToEnable = new ArrayList <String> ();
+    	for(String name : this.towerNames) {
+    		towersToEnable.add(name);
+    	}
+    	for(String name : names) {
+    		this.buttonList.get(name).setEnabled(false);
+    		towersToEnable.remove(name);
+    	}
+    	for(String name : towersToEnable) {
+    		this.buttonList.get(name).setEnabled(true);
+    	}
     }
     
     /** {@inheritDoc} */
@@ -93,9 +108,23 @@ public class InventoryView implements ViewAction {
 		return this.textLables.get(key);
 	}
 	
-	//TODO ottenere un pulsante specifico
+	/**
+	 * Resets the color of all the buttons.
+	 */
+	public void resetButtonBackground() {
+		for(JButton button : buttonList.values()) {
+			button.setBackground(null);
+		}
+	}
 	
-	//public void selectButton(String name);
+	/**
+	 * Turns the selected button red.
+	 * 
+	 * @param name the button
+	 */
+	public void selectButton(String name) {
+		this.buttonList.get(name).setBackground(Color.RED);
+	};
 
 	
 
