@@ -10,7 +10,7 @@ import main.java.tas.utils.Position;
  * targeted.
  */
 public abstract class AbstractMultipleTower extends AbstractBasicTower implements Tower {
-	private List<Enemy> enemyList = new LinkedList<>();
+	private List<Enemy> enemyList;
 	private final int maxEnemy;
 
 	/**
@@ -29,6 +29,7 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 			final int cost, final String imageName, final List<Enemy> enemyList, final int maxTarget) {
 		super(pos, damage, radius, delay, cost, imageName, enemyList);
 		this.maxEnemy = maxTarget;
+		this.enemyList = new LinkedList<Enemy>();
 	}
 
 	/**
