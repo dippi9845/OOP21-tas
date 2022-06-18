@@ -6,7 +6,7 @@ import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 
 /**
- * This concrete class model a Simple Tower with just one target
+ * This concrete class model a simple Tower with just one target, to attack
  *
  */
 public class BasicTower extends AbstractBasicTower {
@@ -42,7 +42,13 @@ public class BasicTower extends AbstractBasicTower {
 		this.target = Optional.ofNullable(e);
 	}
 
-	/** {@inheritDoc} */
+	/** 
+	 * {@inheritDoc} 
+	 *
+	 * This tower first checks if it found an enemy before, then checks if is still in range, then checks if is not dead,
+	 * if there 3 conditions are satisfied the target is still valid so can be attacked.
+	 * Otherwise the tower try to seek one enemy from the list {@link AbstractBasicTower#getVisibleEnemyList()}
+ 	 */
 	@Override
 	public void compute() {
 		if (this.target.isPresent() && Towers.isTargetInRange(this.target.get(), this) && !this.target.get().isDead()) {

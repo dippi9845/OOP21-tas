@@ -1,5 +1,6 @@
 package main.java.tas.model.tower;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import main.java.tas.model.enemy.Enemy;
@@ -9,7 +10,7 @@ import main.java.tas.utils.Position;
  * An abstract class that model a Tower with an undefined number of enemies
  * targeted.
  */
-public abstract class AbstractMultipleTower extends AbstractBasicTower implements Tower {
+public abstract class AbstractMultipleTower extends AbstractBasicTower {
 	private List<Enemy> enemyList;
 	private final int maxEnemy;
 
@@ -33,7 +34,7 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 	}
 
 	/**
-	 * Check if an enemy is contained
+	 * Check if an enemy is contained, from the internal list of target
 	 * 
 	 * @param e Enemy to check if is contained
 	 * @return true if the enemy is contained, false otherwise
@@ -43,16 +44,16 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 	}
 
 	/**
-	 * Return the current target list, must be mutable, due to the possibility to
-	 * remove a target during the game
+	 * Return the current target list
 	 * 
-	 * @return a mutable list of current enemies targeted
+	 * @return list of current enemies targeted
 	 */
 	protected List<Enemy> getEnemyList() {
-		return this.enemyList;
+		return Collections.unmodifiableList(this.enemyList);
 	}
 
 	/**
+	 * Return the maximum enemy to be targeted by the tower
 	 * @return the maximum enemy to be targeted by the tower
 	 */
 	protected int getMaxEnemy() {
@@ -69,16 +70,16 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 	}
 
 	/**
-	 * Removes an enemy to enemies targeted
+	 * Removes an enemy from the enemies targeted
 	 * 
-	 * @param e
+	 * @param e Enemy to be removed
 	 */
 	protected void remove(final Enemy e) {
 		this.enemyList.remove(e);
 	}
 
 	/**
-	 * Clear enemy list
+	 * Clear enemy targeted list
 	 */
 	protected void clear() {
 		this.enemyList.clear();
@@ -99,7 +100,7 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower implement
 	}
 
 	/**
-	 * Check if an enemy is a valid target
+	 * Check if an enemy is a valid target for this tower
 	 * 
 	 * @param e Enemy
 	 * @return True if the enemy e is valid as target

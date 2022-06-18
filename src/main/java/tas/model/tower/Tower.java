@@ -7,8 +7,7 @@ import java.awt.Dimension;
 /**
  * An Interface that model a generic Tower, that extends Entity and Runnable
  * 
- * Extends Entity: so can be drawable Extends Runnable: so every tower can run
- * concurrently
+ * Extends Runnable: so every tower can run concurrently
  */
 public interface Tower extends Entity, Runnable {
 
@@ -37,14 +36,15 @@ public interface Tower extends Entity, Runnable {
 	}
 
 	/**
-	 * Return true if is time to stop for the thread
+	 * Return true if is time to stop for the thread, false if the current thread can go on
 	 * 
-	 * @return true if is time to stop for the thread
+	 * @return true if is time to stop for the thread, false if the current thread can go on
 	 */
 	public boolean isStop();
 
 	/**
-	 * Stop the thread
+	 * This function is called when is necessary to stop the run method {@link Tower#run()},
+	 * after a call to this method {@link Tower#isStop()} must return true
 	 */
 	public void stop();
 
@@ -58,39 +58,42 @@ public interface Tower extends Entity, Runnable {
 	}
 
 	/**
-	 * This method implements the behavior of the tower, at every wake up of the
-	 * Thread
-	 * 
-	 * @throws InterruptedException, if some error occurs during Thread.sleep
+	 * This method implements the behavior of the tower, that change depending from the implementation, is used in the run method {@link Tower#run()}
 	 */
 	public void compute();
 
 	/**
+	 * Return the damage of the tower
 	 * @return the damage of the tower
 	 */
 	public int getDamage();
 
 	/**
+	 * Return the radius of the tower
 	 * @return the radius of the tower
 	 */
 	public int getRadius();
 
 	/**
+	 * Return the cost of the tower
 	 * @return the cost of the tower
 	 */
 	public int getCost();
 
 	/**
+	 * Return the delay of the tower
 	 * @return the delay of the tower
 	 */
 	public int getDelay();
 
 	/**
+	 * Return the name of the image linked to the tower
 	 * @return the name of the image linked to the tower
 	 */
 	public String getTowerImageName();
 
 	/**
+	 * Return the position of the tower
 	 * @return the position of the tower
 	 */
 	public Position getPos();
