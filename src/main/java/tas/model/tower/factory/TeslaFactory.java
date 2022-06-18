@@ -10,16 +10,16 @@ import main.java.tas.utils.Position;
 
 /**
  * Interface that build a Tesla tower, is an area tower, and the first target is
- * the nearest
+ * the first nearest to the tower
  */
 public interface TeslaFactory {
 
 	/**
-	 * this tesla has a growth of the damage and cost linear
+	 * This tesla has a growth of the damage and cost linear
 	 * 
 	 * @param pos       Position of the Tesla
 	 * @param enemyList List of all enemy in the map
-	 * @return Tesla tower
+	 * @return Tesla tower upgradable
 	 */
 	static public Tower basicTesla(final Position pos, final List<Enemy> enemyList) {
 		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.BASICTESLA), enemyList);
@@ -38,11 +38,11 @@ public interface TeslaFactory {
 	}
 
 	/**
-	 * this tesla has a growth of the damage and cost quadratic
+	 * This tesla has a growth of the damage and cost quadratic
 	 * 
 	 * @param pos       Position of the Tesla
 	 * @param enemyList List of all enemy in the map
-	 * @return Super Tesla tower
+	 * @return Super Tesla tower upgradable
 	 */
 	static public Tower superTesla(final Position pos, final List<Enemy> enemyList) {
 		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.SUPERTESLA), enemyList);
@@ -60,11 +60,11 @@ public interface TeslaFactory {
 	}
 
 	/**
-	 * this tesla has a growth of the damage and cost exponential
+	 * This tesla has a growth of the damage and cost exponential
 	 * 
 	 * @param pos       Position of the Tesla
 	 * @param enemyList List of all enemy in the map
-	 * @return God Tesla tower
+	 * @return God Tesla tower upgradable
 	 */
 	static public Tower godTesla(final Position pos, final List<Enemy> enemyList) {
 		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.GODTESLA), enemyList);
