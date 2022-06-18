@@ -73,15 +73,15 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 
 	/** {@inheritDoc} */
 	@Override
-	public void compute() throws InterruptedException {
+	public void compute() {
 		Optional<Enemy> target = this.firstTarget();
 		if (target.isPresent()) {
-			this.targetPos = target.get().getPosition();
+			this.setTargetPosition(target.get().getPosition());
 			this.addNearbyTarget();
 			this.attack();
 			this.clear();
 		}
-		Thread.sleep(this.getDelay());
+		this.sleep();
 	}
 
 	/** {@inheritDoc} */

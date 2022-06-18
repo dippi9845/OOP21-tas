@@ -19,7 +19,7 @@ public interface CannonFactory {
 	 */
 	static public Tower basicCannon(final Position pos, final List<Enemy> enemyList) {
 		return new ClassicTowerFactory(DefaultTowers.BASICCANNON, enemyList)
-				.upgradableStarndard(pos, 25, 200, x->5, x->10)
+				.upgradableStarndard(pos, 25, 1000, x->5, x->10)
 				.build();
 	}
 
@@ -32,7 +32,7 @@ public interface CannonFactory {
 	 */
 	static public Tower biCannon(final Position pos, final List<Enemy> enemyList) {
 		return new ClassicTowerFactory(DefaultTowers.BICANNON, enemyList)
-				.nTargetStandard(pos, 25, 300, x->15, x->20, 2)
+				.nTargetStandard(pos, 25, 1000, x->15, x->20, 2)
 				.build();
 	}
 
@@ -45,7 +45,7 @@ public interface CannonFactory {
 	 */
 	static public Tower triCannon(final Position pos, final List<Enemy> enemyList) {
 		return new ClassicTowerFactory(DefaultTowers.TRICANNON, enemyList)
-				.nTargetStandard(pos, 25, 400, x->35, x->30, 3)
+				.nTargetStandard(pos, 25, 1000, x->35, x->30, 3)
 				.build();
 	}
 
@@ -58,7 +58,7 @@ public interface CannonFactory {
 	 */
 	static public Tower quadCannon(final Position pos, final List<Enemy> enemyList) {
 		return new ClassicTowerFactory(DefaultTowers.QUADCANNON, enemyList)
-				.nTargetStandard(pos, 25, 500, x->45, x->40, 4)
+				.nTargetStandard(pos, 25, 1000, x->45, x->40, 4)
 				.build();
 	}
 

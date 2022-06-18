@@ -35,7 +35,7 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 
 	/** {@inheritDoc} */
 	@Override
-	public void compute() throws InterruptedException {
+	public void compute(){
 		Towers.findAll(x->!Towers.isTargetInRange(x, this) || x.isDead(),this.getEnemyList())
 				.stream()
 				.forEach(this::remove);
@@ -48,7 +48,8 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 		}
 		
 		this.attack();
-		Thread.sleep(this.getDelay());
+		
+		this.sleep();
 	}
 
 	/** {@inheritDoc} */
