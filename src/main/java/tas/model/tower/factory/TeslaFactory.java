@@ -15,7 +15,7 @@ import main.java.tas.utils.Position;
 public interface TeslaFactory {
 
 	/**
-	 * This tesla has a growth of the damage and cost linear
+	 * This tesla has a growth of the damage linear
 	 * 
 	 * @param pos       Position of the Tesla
 	 * @param enemyList List of all enemy in the map
@@ -38,7 +38,7 @@ public interface TeslaFactory {
 	}
 
 	/**
-	 * This tesla has a growth of the damage and cost quadratic
+	 * This tesla has a growth of the damage quadratic
 	 * 
 	 * @param pos       Position of the Tesla
 	 * @param enemyList List of all enemy in the map
@@ -49,7 +49,7 @@ public interface TeslaFactory {
 		return t.attackType(AttackType.AREA)
 				.damageRange(t.getRange())
 				.setUpgradable(true)
-				.upgradeCost(x -> x * x)
+				.upgradeCost(x -> x/10)
 				.upgradeDamage(x -> x * x * 3)
 				.maxLevel(1000)
 				.startUpgradeCost(20)
@@ -60,7 +60,7 @@ public interface TeslaFactory {
 	}
 
 	/**
-	 * This tesla has a growth of the damage and cost exponential
+	 * This tesla has a growth of the damage cubic
 	 * 
 	 * @param pos       Position of the Tesla
 	 * @param enemyList List of all enemy in the map
@@ -71,10 +71,10 @@ public interface TeslaFactory {
 		return t.attackType(AttackType.AREA)
 				.damageRange(t.getRange())
 				.setUpgradable(true)
-				.upgradeCost(x -> (int) Math.pow(x, x) + 20)
-				.upgradeDamage(x -> (int) Math.pow(x, x))
-				.maxLevel(5)
-				.startUpgradeCost(1000)
+				.upgradeCost(x -> x/10)
+				.upgradeDamage(x -> x*x*x)
+				.maxLevel(20)
+				.startUpgradeCost(100)
 				.maximumTarget(100)
 				.findFirst(() -> {
 					return Towers.findFirstEnemyInRange(pos, t.getRange(), enemyList);
