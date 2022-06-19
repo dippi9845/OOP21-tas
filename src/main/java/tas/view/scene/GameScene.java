@@ -11,8 +11,8 @@ import main.java.tas.view.view.InventoryView;
 public interface GameScene extends GenericScene {
 	
 	/**
-	 * passes to the inventory view what buttons must be disabled
-	 * @param names
+	 * Passes to the inventory view what buttons must be disabled.
+	 * @param names the button names
 	 */
 	void disableButtons(List <String> names);
  
