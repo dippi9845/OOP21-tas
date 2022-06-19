@@ -15,13 +15,12 @@ import java.util.Map;
 import java.util.Optional;
 
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 
 import main.java.tas.model.Entity;
 import main.java.tas.utils.Position;
 
 /**
- * Class that implements a square version of the {@link JPanel}.
+ * Class that implements a square version {@link AdaptivePanel}.
  */
 public class SquarePanel extends AdaptivePanel {
 
@@ -42,7 +41,7 @@ public class SquarePanel extends AdaptivePanel {
 	/**
 	 * Set up the SquarePanel with an image
 	 * 
-	 * @param bgImage the image of the background
+	 * @param bgImageName name of the background image
 	 */
 	public SquarePanel(final String bgImageName) {
 		this();
@@ -141,7 +140,7 @@ public class SquarePanel extends AdaptivePanel {
 	}
 
 	/**
-	 * @param bgImage image of the background
+	 * @param bgImageName name of the background image
 	 */
 	public void setBgImage(final String bgImageName) {
 		this.bgImageName = Optional.of(bgImageName);
