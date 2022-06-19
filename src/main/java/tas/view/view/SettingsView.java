@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import main.java.tas.controller.SceneActionObserver;
+import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.view.ViewAction;
 
 /**

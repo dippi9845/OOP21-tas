@@ -8,6 +8,8 @@ import java.util.List;
 
 import main.java.tas.controller.lister.ButtonListener;
 import main.java.tas.controller.lister.SandboxModeListener;
+import main.java.tas.controller.observer.SceneActionObserver;
+import main.java.tas.controller.observer.SceneMouseObserver;
 import main.java.tas.model.menu.MenuModel;
 import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.LevelHandler;

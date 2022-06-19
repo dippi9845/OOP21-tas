@@ -2,7 +2,7 @@ package main.java.tas.view;
 
 import javax.swing.JPanel;
 
-import main.java.tas.controller.SceneActionObserver;
+import main.java.tas.controller.observer.SceneActionObserver;
 
 /**
  * Interface for a view which has buttons.

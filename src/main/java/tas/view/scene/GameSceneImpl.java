@@ -5,9 +5,9 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import main.java.tas.controller.SceneActionObserver;
 import main.java.tas.controller.SceneController;
-import main.java.tas.controller.SceneMouseObserver;
+import main.java.tas.controller.observer.SceneActionObserver;
+import main.java.tas.controller.observer.SceneMouseObserver;
 import main.java.tas.view.view.GameView;
 import main.java.tas.view.view.InventoryView;
 

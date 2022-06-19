@@ -1,6 +1,8 @@
-package main.java.tas.controller;
+package main.java.tas.controller.observer;
 
 import java.awt.event.ActionListener;
+
+import main.java.tas.controller.SceneController;
 
 /**
  * 

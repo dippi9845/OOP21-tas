@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import main.java.tas.controller.SceneActionObserver;
+import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.view.ViewAction;
 

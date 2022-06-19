@@ -15,6 +15,8 @@ import main.java.tas.controller.enemy.EnemiesLogic;
 import main.java.tas.controller.enemy.EnemiesLogicImpl;
 import main.java.tas.controller.lister.InventoryListener;
 import main.java.tas.controller.lister.ScreenListener;
+import main.java.tas.controller.observer.SceneActionObserver;
+import main.java.tas.controller.observer.SceneMouseObserver;
 import main.java.tas.controller.tower.TowerLogic;
 import main.java.tas.controller.tower.TowerLogicImpl;
 import main.java.tas.model.tower.factory.DefaultTowers;
