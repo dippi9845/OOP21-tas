@@ -16,7 +16,7 @@ public class EnemyFactoryImplTest {
 	public void testCreateEnemiesToBeSpawn() {
 		EnemyFactory enemyFactory = new EnemyFactoryImpl(Arrays.asList(new Position(0, 0)));
 
-		assertFalse(enemyFactory.createEnemiesToBeSpawn(1).isEmpty());
+		assertFalse(enemyFactory.createEnemiesToBeSpawn(100).isEmpty());
 	}
 
 }
