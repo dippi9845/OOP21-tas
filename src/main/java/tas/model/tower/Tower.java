@@ -5,38 +5,27 @@ import main.java.tas.utils.Position;
 import java.awt.Dimension;
 
 /**
- * An Interface that model a generic Tower, that extends Entity
+ * An Interface that model a generic Tower, that extends Entity, and TowerThread
  */
-public interface Tower extends Entity {
+public interface Tower extends Entity, TowerThread {
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	default Dimension getBodyDimension() {
 		return new Dimension(100, 100);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	default Position getPosition() {
 		return this.getPos();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	default String getImageName() {
 		return this.getTowerImageName();
 	}
-
-	/**
-	 * This method implements the behavior of the tower at every second, that change depending from the implementation.
-	 */
-	public void compute();
 
 	/**
 	 * Return the damage of the tower

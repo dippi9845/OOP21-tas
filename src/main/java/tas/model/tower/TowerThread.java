@@ -4,7 +4,7 @@ package main.java.tas.model.tower;
  * An interface that model a tower, with his own thread dedicated
  *
  */
-public interface TowerThread extends Tower, Runnable{
+public interface TowerThread extends Runnable{
 	
 	/**
 	 * Return true if is time to stop for the thread, false if the current thread can go on
@@ -25,4 +25,9 @@ public interface TowerThread extends Tower, Runnable{
 			this.compute();
 		}
 	}
+	
+	/**
+	 * This method implements the behavior of the tower at every second, that change depending from the implementation.
+	 */
+	public void compute();
 }

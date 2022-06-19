@@ -8,7 +8,7 @@ import main.java.tas.utils.Position;
  * This abstract class model a simple tower thread with some basic methods useful for different implementations
  * 
  */
-public abstract class AbstractBasicTower implements TowerThread {
+public abstract class AbstractBasicTower implements Tower {
 	private int damage;
 	private final Position pos;
 	private final int radius;
