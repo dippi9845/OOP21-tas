@@ -58,13 +58,13 @@ public class DefaultTowersUtils {
 	 * A {@link java.util.Map} that at every {@link DefaultTowers} value,
 	 * associate the name inside the file {@link DefaultTowersUtils#FILEJSONTOWERS} 
 	 */
-	public static final Map<DefaultTowers, String> JSONNAMEMAP = initMapName();
+	public static final Map<DefaultTowers, String> JSONNAMEMAP = initJsonNameMap();
 
 	/**
 	 * A {@link java.util.Map} that at every {@link DefaultTowers} value,
 	 * associate an {@link org.json.JSONObject} containing all field necessary
 	 */
-	public static final Map<DefaultTowers, JSONObject> JSONOBJECTMAP = initMapJsonObject();
+	public static final Map<DefaultTowers, JSONObject> JSONOBJECTMAP = initJsonObjectMap();
 
 	/**
 	 * A {@link java.util.Map} that at every {@link DefaultTowers} value,
@@ -78,7 +78,7 @@ public class DefaultTowersUtils {
 	 * @return a {@link java.util.Map} that at every {@link DefaultTowers} value, 
 	 * associate the name inside the file {@link DefaultTowersUtils#FILEJSONTOWERS}
 	 */
-	private static Map<DefaultTowers, String> initMapName() {
+	private static Map<DefaultTowers, String> initJsonNameMap() {
         Map<DefaultTowers, String> map = new HashMap<>();
         
         Arrays.stream(DefaultTowers.values())
@@ -92,7 +92,7 @@ public class DefaultTowersUtils {
 	 * @return a {@link java.util.Map} that at every {@link DefaultTowers} value,associate an 
 	 * {@link org.json.JSONObject} containing all field necessary
 	 */
-    private static Map<DefaultTowers, JSONObject> initMapJsonObject() {
+    private static Map<DefaultTowers, JSONObject> initJsonObjectMap() {
     	Map<DefaultTowers, JSONObject> map = new HashMap<>();
     	
     	Arrays.stream(DefaultTowers.values())
