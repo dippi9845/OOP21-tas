@@ -5,5 +5,16 @@ package main.java.tas.model.tower;
  * to build
  */
 public enum AttackType {
-	BASIC, MULTIPLE, AREA
+	/**
+	 * A single enemy will be attacked
+	 */
+	BASIC,
+	/**
+	 * An defined number of enemy will be attacked
+	 */
+	MULTIPLE,
+	/**
+	 * all the enemy nearby one will be attacked
+	 */
+	AREA
 }
