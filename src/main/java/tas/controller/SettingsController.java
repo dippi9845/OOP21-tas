@@ -2,14 +2,15 @@ package main.java.tas.controller;
 
 import java.awt.event.ActionListener;
 
+import main.java.tas.controller.lister.ButtonListener;
 import main.java.tas.model.menu.MenuModel;
 import main.java.tas.view.scene.GenericScene;
 
 /**
  * Class that creates a controller for the settings menu. Class that implements
- * {@link SceneActionObserver}.
+ * {@link SceneActionObserver} and {@link SceneController}.
  */
-public class SettingsController implements SceneActionObserver {
+public class SettingsController implements SceneActionObserver, SceneController {
 
 	private ButtonListener listener = new ButtonListener();
 	private GenericScene scene;

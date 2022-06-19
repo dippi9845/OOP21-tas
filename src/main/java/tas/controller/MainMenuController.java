@@ -2,15 +2,16 @@ package main.java.tas.controller;
 
 import java.awt.event.ActionListener;
 
+import main.java.tas.controller.lister.MainMenuListener;
 import main.java.tas.model.menu.MenuModel;
 import main.java.tas.view.scene.GenericScene;
 import main.java.tas.view.scene.MainMenuScene;
 
 /**
  * Class that creates the main menu controller. Class that implements
- * {@link SceneActionObserver}.
+ * {@link SceneActionObserver} and {@link SceneController}.
  */
-public class MainMenuController implements SceneActionObserver {
+public class MainMenuController implements SceneActionObserver, SceneController {
 
 	private MainMenuListener listener;
 	private GenericScene scene;

@@ -13,6 +13,8 @@ import java.awt.event.MouseListener;
 
 import main.java.tas.controller.enemy.EnemiesLogic;
 import main.java.tas.controller.enemy.EnemiesLogicImpl;
+import main.java.tas.controller.lister.InventoryListener;
+import main.java.tas.controller.lister.ScreenListener;
 import main.java.tas.controller.tower.TowerLogic;
 import main.java.tas.controller.tower.TowerLogicImpl;
 import main.java.tas.model.tower.factory.DefaultTowers;
@@ -27,10 +29,10 @@ import main.java.tas.utils.TimeCurveImpl;
 import main.java.tas.view.scene.GameScene;
 
 /**
- * Class that implements {@link SceneMouseObserver},
- * {@link SceneActionObserver}.
+ * Class that implements {@link SceneMouseObserver}, {@link SceneActionObserver}
+ * and {@link SceneController}.
  */
-public class GameController implements SceneMouseObserver, SceneActionObserver {
+public class GameController implements SceneMouseObserver, SceneActionObserver, SceneController {
 
 	private final GameScene gameScene;
 	private final EnemiesLogic enemiesHandler;
@@ -45,7 +47,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver {
 	private final InventoryListener inventoryListener = new InventoryListener();
 	private final GameSpecs gameSpecs = new GameSpecs();
 	private MenuModel menuModel;
-	private HashMap <String, Integer> towerInfo = new HashMap <String, Integer>();
+	private HashMap<String, Integer> towerInfo = new HashMap<String, Integer>();
 
 	private final String healthSymbol = "Health";
 	private final String waveSymbol = "Wave";
@@ -66,10 +68,10 @@ public class GameController implements SceneMouseObserver, SceneActionObserver {
 		this.gameScene = scene;
 		this.playerStats = gameModel;
 		for (DefaultTowers tower : DefaultTowers.values()) {
-			JSONObject tmp  = DefaultTowersInfo.TOWERSJSONOBJECT.get(tower);
+			JSONObject tmp = DefaultTowersInfo.TOWERSJSONOBJECT.get(tower);
 			this.towerInfo.put(tower.toString(), tmp.getInt(DefaultTowersInfo.COSTFIELD));
 		}
-		
+
 		this.enemiesHandler = new EnemiesLogicImpl(pathNodes);
 		this.gameScene.getGameView().getGamePanel().setLine(pathNodes, pathColor, pathThickness);
 		this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(),
@@ -154,18 +156,18 @@ public class GameController implements SceneMouseObserver, SceneActionObserver {
 			this.gameScene.getGameView().drawEntity(enemy);
 		}
 	}
-	
+
 	/**
 	 * Turns off the buttons in the view that should not be enabled
 	 */
 	public void checkInventoryButtons() {
-		List <String> names = new ArrayList <String>();
-		for(DefaultTowers tower : DefaultTowers.values()) {
-			if(this.playerStats.getPlayerMoney() < towerInfo.get(tower.toString())) {
+		List<String> names = new ArrayList<String>();
+		for (DefaultTowers tower : DefaultTowers.values()) {
+			if (this.playerStats.getPlayerMoney() < towerInfo.get(tower.toString())) {
 				names.add(tower.toString());
 			}
 		}
-		if(!names.isEmpty()) {
+		if (!names.isEmpty()) {
 			this.gameScene.disableButtons(names);
 		}
 	}
@@ -193,18 +195,18 @@ public class GameController implements SceneMouseObserver, SceneActionObserver {
 	 */
 
 	public boolean checkTurretPosition(Position turretPosition) {
-		
+
 		if (turretPosition.getY() < 55 || turretPosition.getY() > 945 || turretPosition.getX() < 55
 		        || turretPosition.getX() > 945) {
 			System.out.println("not inside border");
 			return false;
 		}
-		
+
 		if (this.towerLogic.thereIsTowerNear(turretPosition)) {
 			System.out.println("Position too close to another tower");
 			return false;
 		}
-		
+
 		List<Position> linePoints = this.gameScene.getGameView().getGamePanel().getLine();
 		for (int i = 1; i < linePoints.size(); i++) {
 

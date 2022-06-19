@@ -4,15 +4,14 @@ import java.awt.event.ActionListener;
 
 /**
  * 
- * Interface for an action scene observer.
- * Extends {@link SceneController}.
+ * Interface for an action scene observer. Extends {@link SceneController}.
  *
  */
-public interface SceneActionObserver extends SceneController {
-	
+public interface SceneActionObserver {
+
 	/**
 	 * @return the action listener
 	 */
 	public ActionListener getActionListener();
-	
+
 }
