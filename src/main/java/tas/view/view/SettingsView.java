@@ -1,4 +1,4 @@
-package main.java.tas.view;
+package main.java.tas.view.view;
 
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -7,7 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import main.java.tas.controller.SceneActionObserver;
+import main.java.tas.controller.observer.SceneActionObserver;
+import main.java.tas.view.ViewAction;
 
 /**
  * Class that builds the settings menu view. Class that implements a

@@ -2,7 +2,7 @@ package main.java.tas.view;
 
 import javax.swing.JPanel;
 
-import main.java.tas.controller.SceneMouseObserver;
+import main.java.tas.controller.observer.SceneMouseObserver;
 
 /**
  * Interface for a view which checks if the mouse clicks on it.

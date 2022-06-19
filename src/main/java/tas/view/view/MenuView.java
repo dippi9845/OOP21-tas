@@ -1,10 +1,11 @@
-package main.java.tas.view;
+package main.java.tas.view.view;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import main.java.tas.controller.SceneActionObserver;
+import main.java.tas.controller.observer.SceneActionObserver;
+import main.java.tas.view.ViewAction;
 
 
 /**

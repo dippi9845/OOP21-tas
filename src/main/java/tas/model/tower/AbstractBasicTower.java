@@ -5,8 +5,8 @@ import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 
 /**
- * This abstract class model a simple tower with some basic methods
- *
+ * This abstract class model a simple tower with some basic methods useful for different implementations
+ * 
  */
 public abstract class AbstractBasicTower implements Tower {
 	private int damage;
@@ -41,12 +41,19 @@ public abstract class AbstractBasicTower implements Tower {
 		this.stopTh = false;
 	}
 
+	/**
+	 * Return all the enemy present in the map
+	 * @return a copy of the list containing all enemy in the map
+	 */
 	protected List<Enemy> getVisibleEnemyList() {
 		synchronized (this.visibleEnemyList) {
 			return List.copyOf(this.visibleEnemyList);
 		}
 	}
 
+	/**
+	 * This function sleeps the current thread, depending from the defined field delay {@link: AbstractBasicTower#delay}
+	 */
 	protected void sleep() {
 		try {
 			Thread.sleep(this.getDelay());
@@ -55,35 +62,36 @@ public abstract class AbstractBasicTower implements Tower {
 		}
 	}
 
-	/** {@inheritDoc} */
-	public boolean isStop() {
-		return this.stopTh;
-	}
-
-	/** {@inheritDoc} */
-	public void stop() {
-		this.stopTh = true;
-	}
 
 	/**
-	 * Deal damage to the target
+	 * Deal damage to the target. It's up to the concrete class to choose the implementation of attack
 	 */
 	abstract protected void attack();
 
 	/**
-	 * Sets the target of this tower
+	 * Set's the target of this tower, It's up to the concrete class to choose the implementation of set target
 	 * 
 	 * @param e Enemy to be focused
 	 */
 	abstract protected void setTarget(final Enemy e);
 
 	/**
-	 * Increase the damage of the tower, in order to upgrade it
+	 * Increase the damage of the tower, useful in order to upgrade it
 	 * 
 	 * @param amount Amount of damage that increase
 	 */
 	protected void increaseDamage(final int amount) {
 		this.damage += damage;
+	}
+
+	/** {@inheritDoc} */
+	public boolean isStop() {
+		return this.stopTh;
+	}
+	
+	/** {@inheritDoc} */
+	public void stop() {
+		this.stopTh = true;
 	}
 
 	/**

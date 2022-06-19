@@ -5,8 +5,8 @@ import main.java.tas.utils.Position;
 
 /**
  * A class that implements the interface UpgradableTower {@link UpgradableTower}
- * It takes an AbstracBasicTower and with delegation implements all the Tower
- * interface methods
+ * It takes an AbstracBasicTower {@link AbstractBasicTower} and with delegation implements all the Tower
+ * interface methods. The AbstractBasicTower taken will be upgradable in damage
  */
 public class UpgradableTowerImpl implements UpgradableTower {
 
@@ -21,7 +21,7 @@ public class UpgradableTowerImpl implements UpgradableTower {
 	/**
 	 * Constructor, protected
 	 * 
-	 * @param tower            Tower which can be upgradable
+	 * @param tower            Tower which will be upgradable
 	 * @param increasedamage   UnaryOperator that delegate the increase of damage of
 	 *                         the tower
 	 * @param increasecost     UnaryOperator that delegate the increase of cost of
@@ -41,15 +41,24 @@ public class UpgradableTowerImpl implements UpgradableTower {
 	}
 
 	/**
-	 * Check if the current level is under the maximum
-	 * 
-	 * @return True if the current level is under the maximum, False otherwise
+	 * Increase the damage by the given rule {@link UpgradableTowerImpl#increasedamage}
+	 * Increase the cost of upgrade by the given rule {@link UpgradableTowerImpl#increasecost}
+	 * Increase the current level by one
 	 */
-	public boolean levelUnderMax() {
-		return this.getLevel() < this.maxLevel;
+	private void upgradeDamage() {
+		this.tower.increaseDamage(this.increasedamage.apply(this.getLevel()));
+		this.upgradecountcost += this.increasecost.apply(this.getLevel());
+		this.level++;
 	}
 
-	/** {@inheritDoc} */
+	/** 
+	 * {@inheritDoc}
+	 * the computation is delegate to internal tower,
+	 * next the counter of computation is increased,
+	 * when {@link UpgradableTowerImpl#isTimeToUpgrade()},
+	 * the counter will be reseted, and the tower will
+	 * perform an upgrade
+	 */
 	@Override
 	public void compute() {
 		this.tower.compute();
@@ -59,6 +68,25 @@ public class UpgradableTowerImpl implements UpgradableTower {
 			this.computecount = 0;
 			this.upgradeDamage();
 		}
+	}
+	
+	/**
+	 * Check if the current level is under the maximum
+	 * 
+	 * @return True if the current level is under the maximum, False otherwise
+	 */
+	public boolean levelUnderMax() {
+		return this.getLevel() < this.maxLevel;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * If the compute count is equal to the upgrade count cost and the max level is not reached
+	 * is time to upgrade the tower
+	 */
+	@Override
+	public boolean isTimeToUpgrade() {
+		return this.computecount == this.upgradecountcost && this.levelUnderMax();
 	}
 
 	/** {@inheritDoc} */
@@ -97,12 +125,6 @@ public class UpgradableTowerImpl implements UpgradableTower {
 		return this.tower.getImageName();
 	}
 
-	private void upgradeDamage() {
-		this.tower.increaseDamage(this.increasedamage.apply(this.getLevel()));
-		this.upgradecountcost += this.increasecost.apply(this.getLevel());
-		this.level++;
-	}
-
 	/** {@inheritDoc} */
 	@Override
 	public int getLevel() {
@@ -119,20 +141,19 @@ public class UpgradableTowerImpl implements UpgradableTower {
 				+ getTowerImageName() + ", getLevel()=" + getLevel() + "]";
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean isStop() {
 		return this.tower.isStop();
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void stop() {
 		this.tower.stop();
 	}
 
-	@Override
-	public boolean isTimeToUpgrade() {
-		return this.computecount == this.upgradecountcost && this.levelUnderMax();
-	}
+	
 
 	
 

@@ -12,27 +12,23 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 
 import main.java.tas.model.Entity;
-import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.Position;
 
 /**
- * Class that implements a square version of the {@link JPanel}.
+ * Class that implements a square version {@link AdaptivePanel}.
  */
 public class SquarePanel extends AdaptivePanel {
 
 	private static final long serialVersionUID = 1L;
 	private final HashMap<Entity, AdaptiveLabel> entityLables = new HashMap<Entity, AdaptiveLabel>();
-	private final HashMap<String, AdaptiveLabel> textLables = new HashMap<String, AdaptiveLabel>();
 	private final ImageLoader imGetter = new ImageLoaderImpl();
-	private String bgImageName = null;
-	private BufferedImage bgImage = null;
-
-	private GameSpecs gameSpecs = new GameSpecs();
+	private Optional<String> bgImageName = Optional.empty();
+	private Optional<BufferedImage> bgImage = Optional.empty();
 
 	/**
 	 * Set up the SquarePanel.
@@ -45,7 +41,7 @@ public class SquarePanel extends AdaptivePanel {
 	/**
 	 * Set up the SquarePanel with an image
 	 * 
-	 * @param bgImage the image of the background
+	 * @param bgImageName name of the background image
 	 */
 	public SquarePanel(final String bgImageName) {
 		this();
@@ -82,79 +78,6 @@ public class SquarePanel extends AdaptivePanel {
 	}
 
 	/**
-	 * Add a text label to the SquarePanel.
-	 * 
-	 * @param text   is the text that will be shown
-	 * @param id     the id of the label
-	 * @param anchor the position of the label (NW, NE, SW, SE)
-	 * @throws IllegalArgumentException if the anchor is not in the list
-	 */
-	public void addTextLabel(final String text, final String id, final String anchor) throws IllegalArgumentException {
-		AdaptiveLabel tempLabel = new AdaptiveLabel();
-		this.add(tempLabel);
-		tempLabel.setText(text);
-		tempLabel.setFont("Verdana", 1, 20);
-		tempLabel.setForeground(Color.WHITE);
-
-		this.textLables.put(id, tempLabel);
-
-		switch (anchor) {
-		case "NW":
-			tempLabel.setPosition(
-			        new Position(tempLabel.getPreferredSize().getWidth(), tempLabel.getPreferredSize().getHeight()));
-			break;
-		case "NE":
-			tempLabel.setPosition(
-			        new Position(this.gameSpecs.getGameUnits().width - tempLabel.getPreferredSize().getWidth(),
-			                tempLabel.getPreferredSize().getHeight()));
-			break;
-		case "SW":
-			tempLabel.setPosition(new Position(tempLabel.getPreferredSize().getWidth(),
-			        this.gameSpecs.getGameUnits().height - tempLabel.getPreferredSize().getHeight()));
-			break;
-		case "SE":
-			tempLabel.setPosition(
-			        new Position(this.gameSpecs.getGameUnits().width - tempLabel.getPreferredSize().getWidth(),
-			                this.gameSpecs.getGameUnits().height - tempLabel.getPreferredSize().getHeight()));
-			break;
-		default:
-			throw new IllegalArgumentException("The anchor must be one of: NW, NE, SW, SE");
-
-		}
-
-	}
-
-	/**
-	 * Return the label of the given id. NOTE: returns null if the label does not
-	 * exist.
-	 * 
-	 * @param id of the label
-	 * @return the label
-	 */
-	public AdaptiveLabel getTextLabel(final String id) {
-		if (!this.textLables.containsKey(id)) {
-			return null;
-		}
-		return this.textLables.get(id);
-	}
-
-	/**
-	 * Removes the text label from the panel.
-	 * 
-	 * @param id of the text Label
-	 */
-	public void removeTextLabel(final String id) {
-		if (!this.textLables.containsKey(id)) {
-			return;
-		}
-
-		this.remove(this.textLables.get(id));
-		this.validate();
-		this.repaint();
-		this.textLables.remove(id);
-	}
-
-	/**
 	 * Method that set all the components of the panel to be resized with it.
 	 */
 	private void setAdaptive() {
@@ -171,15 +94,10 @@ public class SquarePanel extends AdaptivePanel {
 					}
 				}
 
-				// redraws all textLabels
-				for (Map.Entry<String, AdaptiveLabel> textLabelMap : textLables.entrySet()) {
-					textLabelMap.getValue().redraw();
-				}
-
 				// re-scale the background image
-				if (bgImage != null) {
+				if (bgImage.isPresent()) {
 					try {
-						bgImage = imGetter.getImageByName(bgImageName, getPreferredSize());
+						bgImage = Optional.of(imGetter.getImageByName(bgImageName.get(), getPreferredSize()));
 					} catch (FileNotFoundException e) {
 						e.printStackTrace();
 					}
@@ -216,18 +134,18 @@ public class SquarePanel extends AdaptivePanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		if (this.bgImage != null) {
-			g.drawImage(this.bgImage, 0, 0, null);
+			g.drawImage(this.bgImage.get(), 0, 0, null);
 		}
 		super.paintComponent(g);
 	}
 
 	/**
-	 * @param bgImage image of the background
+	 * @param bgImageName name of the background image
 	 */
 	public void setBgImage(final String bgImageName) {
-		this.bgImageName = bgImageName;
+		this.bgImageName = Optional.of(bgImageName);
 		try {
-			this.bgImage = imGetter.getImageByName(bgImageName);
+			this.bgImage = Optional.of(imGetter.getImageByName(bgImageName));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

@@ -35,9 +35,10 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 	}
 
 	/**
-	 * @return position of the last target
+	 * Return position of the last target fist target
+	 * @return position of the last target fist target
 	 */
-	protected Position getTagetPosition() {
+	protected Position getTargetPosition() {
 		return this.targetPos;
 	}
 
@@ -50,10 +51,13 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 		this.targetPos = pos;
 	}
 
-	/** {@inheritDoc} */
+	/**
+	 * {@inheritDoc}
+	 * Checks if the enemy e is near to the target choose by the tower
+	 */
 	@Override
 	protected boolean isValidTarget(final Enemy e) {
-		return Towers.isInRange(e.getPosition(), this.targetPos, this.attackRange);
+		return Towers.isInRange(e.getPosition(), this.getTargetPosition(), this.attackRange);
 	}
 
 	/**

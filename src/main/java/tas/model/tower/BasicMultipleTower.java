@@ -5,7 +5,7 @@ import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 
 /**
- * This class is a basic implementation of AbstractMultipleTower this
+ * This class is a basic implementation of AbstractMultipleTower {@link AbstractMultipleTower} this
  * BasicMultipleTower model a tower that attack the first maxTarget in the range
  */
 public class BasicMultipleTower extends AbstractMultipleTower {
@@ -27,16 +27,25 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 		super(pos, damage, radius, delay, cost, imageName, enemyList, maxTarget);
 	}
 
-	/** {@inheritDoc} */
+	/** 
+	 * {@inheritDoc}
+	 * The enemy must be in range, the list does not have to be full, and the enemy can't be added more than one time
+	 */
 	@Override
 	protected boolean isValidTarget(final Enemy e) {
 		return Towers.isTargetInRange(e, this) && !this.isFull() && !this.contains(e);
 	}
 
-	/** {@inheritDoc} */
+	/** 
+	 * {@inheritDoc}
+	 * First this tower checks for all targeted if they are still valid, so must be in range and still alive,
+	 * if there is some enemy not valid will be removed.
+	 * Second if the list is not full the tower will seek for the remaining number of enemy.
+	 * Than every targeted enemy will be attacked
+	 */
 	@Override
-	public void compute(){
-		Towers.findAll(x->!Towers.isTargetInRange(x, this) || x.isDead(),this.getEnemyList())
+	public void compute() {
+		Towers.findAll(x->!Towers.isTargetInRange(x, this) || x.isDead(), this.getEnemyList())
 				.stream()
 				.forEach(this::remove);
 		
@@ -48,7 +57,6 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 		}
 		
 		this.attack();
-		
 		this.sleep();
 	}
 

@@ -8,7 +8,7 @@ import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 
 /**
- * A collections of functions used by all towers to help them to achieve some
+ * A class with a collections of functions used by all towers to help them to achieve some
  * tasks, avoid some repetitions and abstract from other implementations
  */
 public class Towers {
@@ -54,7 +54,7 @@ public class Towers {
 	}
 
 	/**
-	 * Find the first enemy in range in the list provided
+	 * Find the first enemy in range from the tower provided, in the list provided
 	 * 
 	 * @param t         Tower of reference
 	 * @param enemyList List of all enemy in the map
