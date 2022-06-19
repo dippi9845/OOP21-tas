@@ -71,6 +71,10 @@ public class TowerLogicImpl implements TowerLogic {
 		return this.buildTower(preset.setEnemylist(this.enemyList).build());
 	}
 
+	/**
+	 * Try to join the thread passed in input, and in case of exception will be handled
+	 * @param th Thread to be joined
+	 */
 	private void tryToJoin(final Thread th) {
 		try {
 			th.join();
@@ -83,10 +87,10 @@ public class TowerLogicImpl implements TowerLogic {
 	@Override
 	public void closeAll() {
 		this.builtTowers.stream().forEach(x -> x.stop());
-		this.builtTowers.removeAll(this.builtTowers);
+		this.builtTowers.clear();
 		
 		this.towerThreads.stream().forEach(this::tryToJoin);
-		this.towerThreads.removeAll(this.towerThreads);
+		this.towerThreads.clear();
 	}
 
 	/** {@inheritDoc} */
@@ -111,11 +115,13 @@ public class TowerLogicImpl implements TowerLogic {
 				.anyMatch(t->Position.findDistance(t.getPos(), pos) <= getDiagonal(t.getBodyDimension()));
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public List<Tower> getBuildTowers() {
 		return Collections.unmodifiableList(this.builtTowers);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public List<Thread> getBuildThread() {
 		return Collections.unmodifiableList(this.towerThreads);

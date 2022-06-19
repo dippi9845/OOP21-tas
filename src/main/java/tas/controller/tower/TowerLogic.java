@@ -31,7 +31,7 @@ public interface TowerLogic {
 	public boolean placeTower(final TowerBuilder preset);
 
 	/**
-	 * Terminate all Tower placed function and wait for all threads to join
+	 * All tower placed will be removed, all Thread created will be deleted
 	 */
 	public void closeAll();
 
