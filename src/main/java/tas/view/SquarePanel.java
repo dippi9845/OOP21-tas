@@ -41,7 +41,7 @@ public class SquarePanel extends AdaptivePanel {
 	/**
 	 * Set up the SquarePanel with an image
 	 * 
-	 * @param bgImage the image of the background
+	 * @param bgImageName name of the background image
 	 */
 	public SquarePanel(final String bgImageName) {
 		this();
@@ -140,7 +140,7 @@ public class SquarePanel extends AdaptivePanel {
 	}
 
 	/**
-	 * @param bgImage image of the background
+	 * @param bgImageName name of the background image
 	 */
 	public void setBgImage(final String bgImageName) {
 		this.bgImageName = Optional.of(bgImageName);
