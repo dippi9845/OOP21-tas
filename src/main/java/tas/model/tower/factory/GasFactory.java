@@ -20,7 +20,7 @@ public interface GasFactory {
 	 * @return an Gas Tower upgradable
 	 */
 	static public Tower gasTower(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, DefaultTowersUtils.TOWERSTOJSONOBJECTMAP.get(DefaultTowers.GASTOWER), enemyList)
+		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.GASTOWER), enemyList)
 				.attackType(AttackType.MULTIPLE)
 				.maximumTarget(Integer.MAX_VALUE)
 				.setUpgradable(true)

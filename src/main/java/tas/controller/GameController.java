@@ -70,7 +70,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 		this.gameScene = scene;
 		this.playerStats = gameModel;
 		for (DefaultTowers tower : DefaultTowers.values()) {
-			JSONObject tmp = DefaultTowersUtils.TOWERSTOJSONOBJECTMAP.get(tower);
+			JSONObject tmp = DefaultTowersUtils.JSONOBJECTMAP.get(tower);
 			this.towerInfo.put(tower.toString(), tmp.getInt(DefaultTowersUtils.COSTFIELD));
 		}
 
