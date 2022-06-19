@@ -46,17 +46,17 @@ public class DefaultTowersUtils {
 	/**
 	 * Name of the file containing all default towers
 	 */
-	public static final String TOWERSJSONFILE = "res" + System.getProperty("file.separator") + "data"
+	public static final String JSONFILETOWERS = "res" + System.getProperty("file.separator") + "data"
 	        + System.getProperty("file.separator") + "towers" + System.getProperty("file.separator") + "DefaultTowers.json";
 	
 	/**
-	 * {@link org.json.JSONObject} containing the parsed content of {@link DefaultTowersUtils#TOWERSJSONFILE}
+	 * {@link org.json.JSONObject} containing the parsed content of {@link DefaultTowersUtils#JSONFILETOWERS}
 	 */
-	public static final JSONObject JSONDATAFILE = JsonUtils.getJsonData(TOWERSJSONFILE);
+	public static final JSONObject JSONDATAFILE = JsonUtils.getJsonData(JSONFILETOWERS);
 
 	/**
 	 * A {@link java.util.Map} that at every {@link DefaultTowers} value,
-	 * associate the name inside the file {@link DefaultTowersUtils#TOWERSJSONFILE} 
+	 * associate the name inside the file {@link DefaultTowersUtils#JSONFILETOWERS} 
 	 */
 	public static final Map<DefaultTowers, String> TOWERSJSONNAME = initMapName();
 
@@ -76,7 +76,7 @@ public class DefaultTowersUtils {
 	/**
 	 * This function build the constant {@link java.util.Map} {@link DefaultTowersUtils#TOWERSJSONNAME}
 	 * @return a {@link java.util.Map} that at every {@link DefaultTowers} value, 
-	 * associate the name inside the file {@link DefaultTowersUtils#TOWERSJSONFILE}
+	 * associate the name inside the file {@link DefaultTowersUtils#JSONFILETOWERS}
 	 */
 	private static Map<DefaultTowers, String> initMapName() {
         Map<DefaultTowers, String> map = new HashMap<>();
