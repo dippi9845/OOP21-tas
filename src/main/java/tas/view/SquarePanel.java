@@ -15,13 +15,12 @@ import java.util.Map;
 import java.util.Optional;
 
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 
 import main.java.tas.model.Entity;
 import main.java.tas.utils.Position;
 
 /**
- * Class that implements a square version of the {@link JPanel}.
+ * Class that implements a square version {@link AdaptivePanel}.
  */
 public class SquarePanel extends AdaptivePanel {
 
