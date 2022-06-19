@@ -1,4 +1,4 @@
-package main.java.tas.view;
+package main.java.tas.view.view;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
@@ -8,6 +8,9 @@ import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneActionObserver;
 import main.java.tas.controller.SceneMouseObserver;
+import main.java.tas.view.SquarePanel;
+import main.java.tas.view.ViewAction;
+import main.java.tas.view.ViewMouse;
 
 /**
  * Class that builds the sandbox mode menu view. Class that implements a

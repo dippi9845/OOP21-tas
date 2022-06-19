@@ -3,7 +3,7 @@ package main.java.tas.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import main.java.tas.view.MenuView;
+import main.java.tas.view.view.MenuView;
 
 /**
  * 

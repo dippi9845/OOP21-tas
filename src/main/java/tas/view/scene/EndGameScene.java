@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneActionObserver;
 import main.java.tas.controller.SceneController;
-import main.java.tas.view.EndGameView;
+import main.java.tas.view.view.EndGameView;
 
 /**
  * Class that builds the end game menu scene.

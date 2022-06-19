@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneActionObserver;
 import main.java.tas.controller.SceneController;
-import main.java.tas.view.FullLevelsView;
+import main.java.tas.view.view.FullLevelsView;
 
 /**
  * Class that builds the levels full menu scene.

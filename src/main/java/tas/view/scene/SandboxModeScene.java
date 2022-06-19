@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import main.java.tas.controller.SceneActionObserver;
 import main.java.tas.controller.SceneController;
 import main.java.tas.controller.SceneMouseObserver;
-import main.java.tas.view.SandboxModeView;
+import main.java.tas.view.view.SandboxModeView;
 
 /**
  * Class that builds the sandbox mode scene. Class that implements

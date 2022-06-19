@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneActionObserver;
 import main.java.tas.controller.SceneController;
-import main.java.tas.view.MenuView;
+import main.java.tas.view.view.MenuView;
 
 /**
  * Class that builds the main menu scene.
