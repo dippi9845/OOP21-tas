@@ -6,7 +6,7 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 import org.json.JSONObject;
 import main.java.tas.model.enemy.Enemy;
-import main.java.tas.model.tower.factory.DefaultTowersInfo;
+import main.java.tas.model.tower.factory.DefaultTowersUtils;
 import main.java.tas.utils.Position;
 
 /**
@@ -93,13 +93,13 @@ public class TowerBuilder {
 	 */
 	public TowerBuilder(final Position pos, final JSONObject dataset) {
 		this(pos,
-			dataset.getInt(DefaultTowersInfo.DAMAGEFIELD),
-			dataset.getInt(DefaultTowersInfo.RADIUSFIELD),
-			dataset.getInt(DefaultTowersInfo.DELAYFIELD),
-			dataset.getString(DefaultTowersInfo.IMAGENAMEFIELD));
+			dataset.getInt(DefaultTowersUtils.DAMAGEFIELD),
+			dataset.getInt(DefaultTowersUtils.RADIUSFIELD),
+			dataset.getInt(DefaultTowersUtils.DELAYFIELD),
+			dataset.getString(DefaultTowersUtils.IMAGENAMEFIELD));
 		
-		if (dataset.has(DefaultTowersInfo.COSTFIELD)) {
-			this.cost = dataset.getInt(DefaultTowersInfo.COSTFIELD);
+		if (dataset.has(DefaultTowersUtils.COSTFIELD)) {
+			this.cost = dataset.getInt(DefaultTowersUtils.COSTFIELD);
 		}
 	}
 	

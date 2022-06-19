@@ -20,7 +20,7 @@ import main.java.tas.controller.observer.SceneMouseObserver;
 import main.java.tas.controller.tower.TowerLogic;
 import main.java.tas.controller.tower.TowerLogicImpl;
 import main.java.tas.model.tower.factory.DefaultTowers;
-import main.java.tas.model.tower.factory.DefaultTowersInfo;
+import main.java.tas.model.tower.factory.DefaultTowersUtils;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.game.GameModel;
 import main.java.tas.model.menu.MenuModel;
@@ -70,8 +70,8 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 		this.gameScene = scene;
 		this.playerStats = gameModel;
 		for (DefaultTowers tower : DefaultTowers.values()) {
-			JSONObject tmp = DefaultTowersInfo.TOWERSJSONOBJECT.get(tower);
-			this.towerInfo.put(tower.toString(), tmp.getInt(DefaultTowersInfo.COSTFIELD));
+			JSONObject tmp = DefaultTowersUtils.TOWERSJSONOBJECT.get(tower);
+			this.towerInfo.put(tower.toString(), tmp.getInt(DefaultTowersUtils.COSTFIELD));
 		}
 
 		this.enemiesHandler = new EnemiesLogicImpl(pathNodes);

@@ -22,7 +22,7 @@ public interface TeslaFactory {
 	 * @return Tesla tower upgradable
 	 */
 	static public Tower basicTesla(final Position pos, final List<Enemy> enemyList) {
-		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.BASICTESLA), enemyList);
+		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersUtils.TOWERSJSONOBJECT.get(DefaultTowers.BASICTESLA), enemyList);
 		return t.attackType(AttackType.AREA)
 				.damageRange(t.getRange())
 				.setUpgradable(true)
@@ -45,7 +45,7 @@ public interface TeslaFactory {
 	 * @return Super Tesla tower upgradable
 	 */
 	static public Tower superTesla(final Position pos, final List<Enemy> enemyList) {
-		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.SUPERTESLA), enemyList);
+		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersUtils.TOWERSJSONOBJECT.get(DefaultTowers.SUPERTESLA), enemyList);
 		return t.attackType(AttackType.AREA)
 				.damageRange(t.getRange())
 				.setUpgradable(true)
@@ -67,7 +67,7 @@ public interface TeslaFactory {
 	 * @return God Tesla tower upgradable
 	 */
 	static public Tower godTesla(final Position pos, final List<Enemy> enemyList) {
-		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.GODTESLA), enemyList);
+		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersUtils.TOWERSJSONOBJECT.get(DefaultTowers.GODTESLA), enemyList);
 		return t.attackType(AttackType.AREA)
 				.damageRange(t.getRange())
 				.setUpgradable(true)

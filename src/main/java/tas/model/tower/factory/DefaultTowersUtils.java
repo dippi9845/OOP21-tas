@@ -14,9 +14,9 @@ import main.java.tas.model.tower.Tower;
 import main.java.tas.utils.JsonUtils;
 import main.java.tas.utils.Position;
 
-public class DefaultTowersInfo {
+public class DefaultTowersUtils {
 	
-	private DefaultTowersInfo() {}
+	private DefaultTowersUtils() {}
 	
 	/**
 	 * Filed name in json, that describes the cost
@@ -50,13 +50,13 @@ public class DefaultTowersInfo {
 	        + System.getProperty("file.separator") + "towers" + System.getProperty("file.separator") + "DefaultTowers.json";
 	
 	/**
-	 * {@link org.json.JSONObject} containing the parsed content of {@link DefaultTowersInfo#TOWERSJSONFILE}
+	 * {@link org.json.JSONObject} containing the parsed content of {@link DefaultTowersUtils#TOWERSJSONFILE}
 	 */
 	public static final JSONObject JSONDATAFILE = JsonUtils.getJsonData(TOWERSJSONFILE);
 
 	/**
 	 * A {@link java.util.Map} that at every {@link DefaultTowers} value,
-	 * associate the name inside the file {@link DefaultTowersInfo#TOWERSJSONFILE} 
+	 * associate the name inside the file {@link DefaultTowersUtils#TOWERSJSONFILE} 
 	 */
 	public static final Map<DefaultTowers, String> TOWERSJSONNAME = initMapName();
 
@@ -74,9 +74,9 @@ public class DefaultTowersInfo {
 	public static final Map<DefaultTowers, BiFunction<Position, List<Enemy>, Tower>> BUILDMAP = initBuildMap();
 
 	/**
-	 * This function build the constant {@link java.util.Map} {@link DefaultTowersInfo#TOWERSJSONNAME}
+	 * This function build the constant {@link java.util.Map} {@link DefaultTowersUtils#TOWERSJSONNAME}
 	 * @return a {@link java.util.Map} that at every {@link DefaultTowers} value, 
-	 * associate the name inside the file {@link DefaultTowersInfo#TOWERSJSONFILE}
+	 * associate the name inside the file {@link DefaultTowersUtils#TOWERSJSONFILE}
 	 */
 	private static Map<DefaultTowers, String> initMapName() {
         Map<DefaultTowers, String> map = new HashMap<>();
@@ -88,7 +88,7 @@ public class DefaultTowersInfo {
     }
     
 	/**
-	 * This function build the constant {@link java.util.Map} {@link DefaultTowersInfo#TOWERSJSONOBJECT}
+	 * This function build the constant {@link java.util.Map} {@link DefaultTowersUtils#TOWERSJSONOBJECT}
 	 * @return a {@link java.util.Map} that at every {@link DefaultTowers} value,associate an 
 	 * {@link org.json.JSONObject} containing all field necessary
 	 */
@@ -102,7 +102,7 @@ public class DefaultTowersInfo {
 	}
 
     /**
-	 * This function build the constant {@link java.util.Map} {@link DefaultTowersInfo#BUILDMAP}
+	 * This function build the constant {@link java.util.Map} {@link DefaultTowersUtils#BUILDMAP}
 	 * @return A {@link java.util.Map} that at every {@link DefaultTowers} value,
 	 * associate the function that build that specific tower,
 	 * every function that build is a {@link java.util.function.BiFunction},
