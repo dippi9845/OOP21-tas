@@ -47,24 +47,6 @@ public class GameView implements ViewMouse,ViewComponent {
 
 	/** {@inheritDoc} */
 	@Override
-	public void addTextLabel(final String text, final String id, final String anchor) {
-		this.gameBoard.addTextLabel(text, id, anchor);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public AdaptiveLabel getTextLabel(final String id) {
-		return this.gameBoard.getTextLabel(id);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public void removeTextLabel(final String id) {
-		this.gameBoard.removeTextLabel(id);
-	}
-
-	/** {@inheritDoc} */
-	@Override
 	public JPanel getPanel() {
 		return this.rootCanvas;
 	}

@@ -13,7 +13,6 @@ public class AdaptiveLabel extends JLabel {
 
 	private static final long serialVersionUID = 1L;
 	private Position actualPosition = new Position(0, 0);
-	private CustomTextImpl text = new CustomTextImpl();
 
 	private GameSpecs gameSpecs = new GameSpecs();
 
@@ -25,31 +24,6 @@ public class AdaptiveLabel extends JLabel {
 	public void setPosition(final Position pos) {
 		this.actualPosition = pos;
 		draw(this.actualPosition);
-	}
-
-	/**
-	 * Sets the font of the label.
-	 * 
-	 * @param fontName
-	 * @param style
-	 * @param size
-	 */
-	public void setFont(final String fontName, final int style, final int size) {
-		this.text.setFontName(fontName);
-		this.text.setFontStyle(style);
-		this.text.setFontSize(size);
-		super.setFont(this.text.getFont());
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public void setText(final String text) {
-		if (this.text == null) {
-			this.text = new CustomTextImpl();
-		}
-
-		this.text.setText(text);
-		super.setText(this.text.getText());
 	}
 
 	/**

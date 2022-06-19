@@ -1,6 +1,7 @@
 package main.java.tas.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +25,7 @@ public class InventoryView implements ViewAction {
     private final JPanel towerButtonsCanvas;
     private final HashMap<String, JButton> buttonList = new HashMap<String, JButton>();
     private final int nTowers;
-    private final HashMap<String, AdaptiveLabel> textLables = new HashMap<String, AdaptiveLabel>();
+    private final HashMap<String, JLabel> textLables = new HashMap<String, JLabel>();
     private final JPanel labelCanvas = new JPanel(new GridLayout(0,1));
     private List <String> towerNames = new ArrayList <String>();
     
@@ -83,9 +84,9 @@ public class InventoryView implements ViewAction {
 	 * @param id the key of the label in the HashMap
 	 */
 	public void addTextLabel(String txt, String id) {
-		AdaptiveLabel tmpLabel = new AdaptiveLabel();
+		JLabel tmpLabel = new JLabel();
 		tmpLabel.setText(txt);
-		tmpLabel.setFont("Verdana", 1, 20);
+		tmpLabel.setFont(new Font("Verdana", 1, 20));
 		tmpLabel.setForeground(Color.BLACK);
 		this.labelCanvas.add(tmpLabel);
 		this.textLables.put(id, tmpLabel);
@@ -94,7 +95,7 @@ public class InventoryView implements ViewAction {
 	/**
 	 * @return the HashMap containing all the labels
 	 */
-	public HashMap<String, AdaptiveLabel> getInventoryLabels(){
+	public HashMap<String, JLabel> getInventoryLabels(){
 		return this.textLables;
 	}
 	
