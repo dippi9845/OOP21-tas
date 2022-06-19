@@ -14,7 +14,7 @@ public enum AttackType {
 	 */
 	MULTIPLE,
 	/**
-	 * all the enemy nearby one will be attacked
+	 * All the enemy nearby one will be attacked
 	 */
 	AREA
 }
