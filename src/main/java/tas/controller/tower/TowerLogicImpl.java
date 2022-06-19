@@ -11,6 +11,7 @@ import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.model.tower.factory.DefaultTowersInfo;
 import main.java.tas.utils.Position;
 import java.awt.Dimension;
+import java.util.Collections;
 import java.util.LinkedList;
 
 /**
@@ -104,6 +105,16 @@ public class TowerLogicImpl implements TowerLogic {
 	public boolean thereIsTowerNear(final Position pos) {
 		return this.builtTowers.stream()
 				.anyMatch(t->Position.findDistance(t.getPos(), pos) <= getDiagonal(t.getBodyDimension()));
+	}
+
+	@Override
+	public List<Tower> getBuildTowers() {
+		return Collections.unmodifiableList(this.builtTowers);
+	}
+
+	@Override
+	public List<Thread> getBuildThread() {
+		return Collections.unmodifiableList(this.towerThreads);
 	}
 
 }
