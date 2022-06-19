@@ -8,7 +8,7 @@ import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.factory.DefaultTowers;
-import main.java.tas.model.tower.factory.DefaultTowersInfo;
+import main.java.tas.model.tower.factory.DefaultTowersUtils;
 import main.java.tas.utils.Position;
 import java.awt.Dimension;
 import java.util.Collections;
@@ -62,7 +62,7 @@ public class TowerLogicImpl implements TowerLogic {
 	/** {@inheritDoc} */
 	@Override
 	public boolean placeTower(final DefaultTowers tower, final Position pos) {
-		return this.buildTower(DefaultTowersInfo.BUILDMAP.get(tower).apply(pos, this.enemyList));
+		return this.buildTower(DefaultTowersUtils.BUILDMAP.get(tower).apply(pos, this.enemyList));
 	}
 
 	/** {@inheritDoc} */
@@ -71,18 +71,22 @@ public class TowerLogicImpl implements TowerLogic {
 		return this.buildTower(preset.setEnemylist(this.enemyList).build());
 	}
 
+	private void tryToJoin(final Thread th) {
+		try {
+			th.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public void closeAll() {
 		this.builtTowers.stream().forEach(x -> x.stop());
-
-		this.towerThreads.stream().forEach(x -> {
-			try {
-				x.join();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		});
+		this.builtTowers.removeAll(this.builtTowers);
+		
+		this.towerThreads.stream().forEach(this::tryToJoin);
+		this.towerThreads.removeAll(this.towerThreads);
 	}
 
 	/** {@inheritDoc} */
