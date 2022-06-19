@@ -5,10 +5,10 @@ import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 
 /**
- * This abstract class model a simple tower with some basic methods useful for different implementations
+ * This abstract class model a simple tower thread with some basic methods useful for different implementations
  * 
  */
-public abstract class AbstractBasicTower implements Tower {
+public abstract class AbstractBasicTower implements TowerThread {
 	private int damage;
 	private final Position pos;
 	private final int radius;

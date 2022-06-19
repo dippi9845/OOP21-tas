@@ -8,7 +8,7 @@ import main.java.tas.utils.Position;
  * It takes an {@link AbstractBasicTower} and with delegation implements all the Tower
  * interface methods. The {@link AbstractBasicTower} taken will be upgradable in damage
  */
-public class UpgradableTowerImpl implements UpgradableTower {
+public class UpgradableTowerImpl implements UpgradableTower, TowerThread{
 
 	private final AbstractBasicTower tower;
 	private int computecount;
