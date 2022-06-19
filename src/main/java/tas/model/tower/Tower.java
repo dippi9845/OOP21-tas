@@ -58,7 +58,8 @@ public interface Tower extends Entity, Runnable {
 	}
 
 	/**
-	 * This method implements the behavior of the tower, that change depending from the implementation, is used in the run method {@link Tower#run()}
+	 * This method implements the behavior of the tower, that change depending from the implementation,
+	 * is used in the run method {@link Tower#run()}.
 	 */
 	public void compute();
 

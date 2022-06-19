@@ -1,7 +1,9 @@
 package main.java.tas.controller.tower;
 
+import java.util.List;
 import java.util.function.Consumer;
 import main.java.tas.model.Entity;
+import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.utils.Position;
@@ -29,7 +31,7 @@ public interface TowerLogic {
 	public boolean placeTower(final TowerBuilder preset);
 
 	/**
-	 * Wait for all threads to join
+	 * All tower placed will be removed, all Thread created will be deleted
 	 */
 	public void closeAll();
 
@@ -46,4 +48,20 @@ public interface TowerLogic {
 	 * @param draw consumer of Entity that draw every tower built
 	 */
 	public void drawTowers(final Consumer<Entity> draw);
+	
+	/**
+	 * Return a {@link java.util.List} containing all built towers,
+	 * by the method {@link TowerLogic#placeTower(DefaultTowers, Position)}
+	 * or the method {@link TowerLogic#placeTower(TowerBuilder)}
+	 * @return a {@link java.util.List} containing all built towers
+	 */
+	public List<Tower> getBuildTowers();
+	
+	/**
+	 * Return a {@link java.util.List} containing all thread, created when was called,
+	 * the method {@link TowerLogic#placeTower(DefaultTowers, Position)}
+	 * or the method {@link TowerLogic#placeTower(TowerBuilder)}
+	 * @return a {@link java.util.List} containing all thread created
+	 */
+	public List<Thread> getBuildThread();
 }

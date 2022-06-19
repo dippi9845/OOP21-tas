@@ -4,9 +4,9 @@ import java.util.function.UnaryOperator;
 import main.java.tas.utils.Position;
 
 /**
- * A class that implements the interface UpgradableTower {@link UpgradableTower}
- * It takes an AbstracBasicTower {@link AbstractBasicTower} and with delegation implements all the Tower
- * interface methods. The AbstractBasicTower taken will be upgradable in damage
+ * A class that implements the interface {@link UpgradableTower}
+ * It takes an {@link AbstractBasicTower} and with delegation implements all the Tower
+ * interface methods. The {@link AbstractBasicTower} taken will be upgradable in damage
  */
 public class UpgradableTowerImpl implements UpgradableTower {
 

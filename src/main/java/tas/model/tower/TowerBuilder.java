@@ -6,7 +6,7 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 import org.json.JSONObject;
 import main.java.tas.model.enemy.Enemy;
-import main.java.tas.model.tower.factory.DefaultTowersInfo;
+import main.java.tas.model.tower.factory.DefaultTowersUtils;
 import main.java.tas.utils.Position;
 
 /**
@@ -37,7 +37,7 @@ public class TowerBuilder {
 	private Optional<Integer> maxLevel;
 	
 	/**
-	 * The constructor with a Position {@link Position}, and all the basic fields, that without one of them the tower
+	 * The constructor with a {@link Position}, and all the basic fields, that without one of them the tower
 	 * can't be instanced (except for enemy list, that must be added with the
 	 * specific method, before the build call {@link TowerBuilder#build()})
 	 * 
@@ -70,7 +70,7 @@ public class TowerBuilder {
 	}
 	
 	/**
-	 * The constructor with Position {@link Position}, and all the basic fields, without the list of all visible enemy, that must be set,
+	 * The constructor with {@link Position}, and all the basic fields, without the list of all visible enemy, that must be set,
 	 * with the specific method {@link TowerBuilder#setEnemylist(List)} before the call to build method {@link TowerBuilder#build()}
 	 * 
 	 * @param pos       Position of the Tower
@@ -84,27 +84,27 @@ public class TowerBuilder {
 	}
 	
 	/**
-	 * The constructor takes in input a Position {@link Position} and a JSONObject {@link org.json.JSONObject},
+	 * The constructor takes in input a {@link Position} and a {@link org.json.JSONObject},
 	 * containing all basic fields for building a tower, (same fields of {@link TowerBuilder#TowerBuilder(Position, int, int, int, String)})
 	 * without the list of all visible enemy, that must be set,
-	 * with the specific method {@link TowerBuilder#setEnemylist(List)} before the call to build method {@link TowerBuilder#build()}
+	 * with the specific method {@link TowerBuilder#setEnemylist(List)} before the call to {@link TowerBuilder#build()} method
 	 * @param pos position of the tower
 	 * @param dataset a JSONObject with all the necessary fields
 	 */
 	public TowerBuilder(final Position pos, final JSONObject dataset) {
 		this(pos,
-			dataset.getInt(DefaultTowersInfo.DAMAGEFIELD),
-			dataset.getInt(DefaultTowersInfo.RADIUSFIELD),
-			dataset.getInt(DefaultTowersInfo.DELAYFIELD),
-			dataset.getString(DefaultTowersInfo.IMAGENAMEFIELD));
+			dataset.getInt(DefaultTowersUtils.DAMAGEFIELD),
+			dataset.getInt(DefaultTowersUtils.RADIUSFIELD),
+			dataset.getInt(DefaultTowersUtils.DELAYFIELD),
+			dataset.getString(DefaultTowersUtils.IMAGENAMEFIELD));
 		
-		if (dataset.has(DefaultTowersInfo.COSTFIELD)) {
-			this.cost = dataset.getInt(DefaultTowersInfo.COSTFIELD);
+		if (dataset.has(DefaultTowersUtils.COSTFIELD)) {
+			this.cost = dataset.getInt(DefaultTowersUtils.COSTFIELD);
 		}
 	}
 	
 	/**
-	 * The constructor with Position {@link Position} and a JSONObject {@link org.json.JSONObject},
+	 * The constructor with {@link Position} and a {@link org.json.JSONObject},
 	 * containing all basic fields for building a tower, (same fields of {@link TowerBuilder#TowerBuilder(Position, int, int, int, String)})
 	 * that without one of them the tower can't be instanced (except for enemy list, that must be added with the
 	 * specific method, before the build call {@link TowerBuilder#build()})
