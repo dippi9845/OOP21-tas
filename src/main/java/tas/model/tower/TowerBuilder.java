@@ -104,7 +104,7 @@ public class TowerBuilder {
 	}
 	
 	/**
-	 * The constructor with Position {@link Position} and a JSONObject {@link org.json.JSONObject},
+	 * The constructor with {@link Position} and a {@link org.json.JSONObject},
 	 * containing all basic fields for building a tower, (same fields of {@link TowerBuilder#TowerBuilder(Position, int, int, int, String)})
 	 * that without one of them the tower can't be instanced (except for enemy list, that must be added with the
 	 * specific method, before the build call {@link TowerBuilder#build()})

@@ -106,7 +106,8 @@ public class DefaultTowersInfo {
 	 * @return A {@link java.util.Map} that at every {@link DefaultTowers} value,
 	 * associate the function that build that specific tower,
 	 * every function that build is a {@link java.util.function.BiFunction},
-	 * that takes in input a {@link main.java.tas.utils.Position} and a List of enemies, and returns a Tower
+	 * that takes in input a {@link main.java.tas.utils.Position} and a {@link java.util.List} of
+	 * {@link main.java.tas.model.enemy.Enemy} and returns a Tower
 	 */
 	private static Map<DefaultTowers, BiFunction<Position, List<Enemy>, Tower>> initBuildMap() {
 		 Map<DefaultTowers, BiFunction<Position, List<Enemy>, Tower>> map = new HashMap<>();

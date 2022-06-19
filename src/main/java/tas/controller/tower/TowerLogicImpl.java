@@ -24,8 +24,6 @@ public class TowerLogicImpl implements TowerLogic {
 	private final Predicate<Integer> spendMoney;
 	private final List<Enemy> enemyList;
 
-	
-
 	/**
 	 * Add the tower to the list, and create a thread on that
 	 * 
@@ -92,6 +90,11 @@ public class TowerLogicImpl implements TowerLogic {
 		this.builtTowers.forEach(draw::accept);
 	}
 	
+	/**
+	 * Returns the diagonal of the rectangle described by Dimension
+	 * @param d the dimension of the rectangle
+	 * @return the diagonal described by the rectangle described by Dimension
+	 */
 	private double getDiagonal(final Dimension d) {
 		return Math.hypot(d.getHeight(), d.getWidth());
 	}

@@ -29,7 +29,7 @@ public interface TowerLogic {
 	public boolean placeTower(final TowerBuilder preset);
 
 	/**
-	 * Wait for all threads to join
+	 * Terminate all Tower placed function and wait for all threads to join
 	 */
 	public void closeAll();
 
