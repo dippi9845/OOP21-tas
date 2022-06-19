@@ -12,7 +12,7 @@ import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.utils.Position;
 
-class TowerLogic {
+class TowerLogicTest {
 
 	@Test
 	void NearbyTower() {
@@ -26,14 +26,14 @@ class TowerLogic {
 	}
 	
 	@Test
-	void NearbyTower2() {
+	void NearbyTowerTooFar() {
 		List<Enemy> a = new ArrayList<>();
 		
 		TowerLogicImpl t = new TowerLogicImpl(a, x->{}, x->{return true;});
 		
 		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
 		
-		assertFalse(t.thereIsTowerNear(new Position(51, 121)));
+		assertFalse(t.thereIsTowerNear(new Position(51, 192)));
 	}
 
 }
