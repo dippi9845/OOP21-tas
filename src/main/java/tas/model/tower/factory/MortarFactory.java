@@ -23,7 +23,7 @@ public interface MortarFactory {
 	 * @return Mortar tower upgradable
 	 */
 	static public Tower basicMortar(final Position pos, final List<Enemy> enemyList) {
-		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersUtils.TOWERSJSONOBJECT.get(DefaultTowers.BASICMORTAR), enemyList);
+		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersUtils.TOWERSTOJSONOBJECTMAP.get(DefaultTowers.BASICMORTAR), enemyList);
 		return t.attackType(AttackType.AREA)
 				.damageRange(400)
 				.setUpgradable(true)
@@ -48,7 +48,7 @@ public interface MortarFactory {
 	 * @return Mortar tower upgradable
 	 */
 	static public Tower superMortar(final Position pos, final List<Enemy> enemyList) {
-		final TowerBuilder t =  new TowerBuilder(pos, DefaultTowersUtils.TOWERSJSONOBJECT.get(DefaultTowers.SUPERMORTAR), enemyList);
+		final TowerBuilder t =  new TowerBuilder(pos, DefaultTowersUtils.TOWERSTOJSONOBJECTMAP.get(DefaultTowers.SUPERMORTAR), enemyList);
 		return t.attackType(AttackType.AREA)
 				.damageRange(450)
 				.setUpgradable(true)
@@ -73,7 +73,7 @@ public interface MortarFactory {
 	 * @return Mortar tower upgradable
 	 */
 	static public Tower godMortar(final Position pos, final List<Enemy> enemyList) {
-		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersUtils.TOWERSJSONOBJECT.get(DefaultTowers.GODMORTAR), enemyList);
+		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersUtils.TOWERSTOJSONOBJECTMAP.get(DefaultTowers.GODMORTAR), enemyList);
 		return t.attackType(AttackType.AREA)
 				.damageRange(600)
 				.setUpgradable(true)

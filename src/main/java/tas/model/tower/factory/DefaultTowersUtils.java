@@ -64,7 +64,7 @@ public class DefaultTowersUtils {
 	 * A {@link java.util.Map} that at every {@link DefaultTowers} value,
 	 * associate an {@link org.json.JSONObject} containing all field necessary
 	 */
-	public static final Map<DefaultTowers, JSONObject> TOWERSJSONOBJECT = initMapJsonObject();
+	public static final Map<DefaultTowers, JSONObject> TOWERSTOJSONOBJECTMAP = initMapJsonObject();
 
 	/**
 	 * A {@link java.util.Map} that at every {@link DefaultTowers} value,
@@ -88,7 +88,7 @@ public class DefaultTowersUtils {
     }
     
 	/**
-	 * This function build the constant {@link java.util.Map} {@link DefaultTowersUtils#TOWERSJSONOBJECT}
+	 * This function build the constant {@link java.util.Map} {@link DefaultTowersUtils#TOWERSTOJSONOBJECTMAP}
 	 * @return a {@link java.util.Map} that at every {@link DefaultTowers} value,associate an 
 	 * {@link org.json.JSONObject} containing all field necessary
 	 */

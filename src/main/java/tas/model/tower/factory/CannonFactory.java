@@ -20,7 +20,7 @@ public interface CannonFactory {
 	 * @return an cannon with only one target possible, and upgradable
 	 */
 	static public Tower basicCannon(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, DefaultTowersUtils.TOWERSJSONOBJECT.get(DefaultTowers.BASICCANNON), enemyList)
+		return new TowerBuilder(pos, DefaultTowersUtils.TOWERSTOJSONOBJECTMAP.get(DefaultTowers.BASICCANNON), enemyList)
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
@@ -37,7 +37,7 @@ public interface CannonFactory {
 	 * @return an cannon with two targets possible, and upgradable
 	 */
 	static public Tower biCannon(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, DefaultTowersUtils.TOWERSJSONOBJECT.get(DefaultTowers.BICANNON), enemyList)
+		return new TowerBuilder(pos, DefaultTowersUtils.TOWERSTOJSONOBJECTMAP.get(DefaultTowers.BICANNON), enemyList)
 				.attackType(AttackType.MULTIPLE)
 				.maximumTarget(2)
 				.maxLevel(25)
@@ -55,7 +55,7 @@ public interface CannonFactory {
 	 * @return an cannon with three targets possible, and upgradable
 	 */
 	static public Tower triCannon(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, DefaultTowersUtils.TOWERSJSONOBJECT.get(DefaultTowers.TRICANNON), enemyList)
+		return new TowerBuilder(pos, DefaultTowersUtils.TOWERSTOJSONOBJECTMAP.get(DefaultTowers.TRICANNON), enemyList)
 				.attackType(AttackType.MULTIPLE)
 				.maximumTarget(3)
 				.maxLevel(25)
@@ -73,7 +73,7 @@ public interface CannonFactory {
 	 * @return an cannon with four targets possible, and upgradable
 	 */
 	static public Tower quadCannon(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, DefaultTowersUtils.TOWERSJSONOBJECT.get(DefaultTowers.QUADCANNON), enemyList)
+		return new TowerBuilder(pos, DefaultTowersUtils.TOWERSTOJSONOBJECTMAP.get(DefaultTowers.QUADCANNON), enemyList)
 				.attackType(AttackType.MULTIPLE)
 				.maximumTarget(4)
 				.maxLevel(25)
