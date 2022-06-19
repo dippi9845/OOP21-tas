@@ -13,14 +13,14 @@ import main.java.tas.view.ViewAction;
  */
 public class LevelSelectView implements ViewAction {
 
-	private JPanel rootPanel = new JPanel(new GridLayout(0, 1, 5, 10));
+	private final JPanel rootPanel = new JPanel(new GridLayout(0, 1, 5, 10));
 	private JButton buttonList[];
 	private int nLevels;
 
 	/**
 	 * Constructor that builds the view for the level select menu.
 	 * 
-	 * @param nLevesIn the number of levels
+	 * @param nLevelsIn the number of levels
 	 */
 	public LevelSelectView(int nLevelsIn) {
 		nLevels = nLevelsIn;
