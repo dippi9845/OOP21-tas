@@ -263,4 +263,6 @@ class AttackTest {
 
 		assertTrue(enemies.get(0).getHealth() < 51);
 	}
+	
+	// TODO: testare le torri upgradabili
 }
