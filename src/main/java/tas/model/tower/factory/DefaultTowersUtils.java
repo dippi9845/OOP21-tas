@@ -58,7 +58,7 @@ public class DefaultTowersUtils {
 	 * A {@link java.util.Map} that at every {@link DefaultTowers} value,
 	 * associate the name inside the file {@link DefaultTowersUtils#FILEJSONTOWERS} 
 	 */
-	public static final Map<DefaultTowers, String> TOWERSJSONNAME = initMapName();
+	public static final Map<DefaultTowers, String> TOWERSTOJSONNAMEMAP = initMapName();
 
 	/**
 	 * A {@link java.util.Map} that at every {@link DefaultTowers} value,
@@ -74,7 +74,7 @@ public class DefaultTowersUtils {
 	public static final Map<DefaultTowers, BiFunction<Position, List<Enemy>, Tower>> BUILDMAP = initBuildMap();
 
 	/**
-	 * This function build the constant {@link java.util.Map} {@link DefaultTowersUtils#TOWERSJSONNAME}
+	 * This function build the constant {@link java.util.Map} {@link DefaultTowersUtils#TOWERSTOJSONNAMEMAP}
 	 * @return a {@link java.util.Map} that at every {@link DefaultTowers} value, 
 	 * associate the name inside the file {@link DefaultTowersUtils#FILEJSONTOWERS}
 	 */
@@ -96,7 +96,7 @@ public class DefaultTowersUtils {
     	Map<DefaultTowers, JSONObject> map = new HashMap<>();
     	
     	Arrays.stream(DefaultTowers.values())
-    		.forEach(x->map.put(x, JSONDATAFILE.getJSONObject(TOWERSJSONNAME.get(x))));
+    		.forEach(x->map.put(x, JSONDATAFILE.getJSONObject(TOWERSTOJSONNAMEMAP.get(x))));
     	
 		return Collections.unmodifiableMap(map);
 	}
