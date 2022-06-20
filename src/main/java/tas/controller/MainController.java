@@ -1,7 +1,7 @@
 package main.java.tas.controller;
 
 
-import main.java.tas.view.MainView;
+import main.java.tas.view.MainViewImpl;
 
 /**
  * Interface that models the project controller.
@@ -20,7 +20,7 @@ public interface MainController {
 	 * @param view the main window
 	 * @return the scene that was created
 	 */
-	SceneController createMenu(MainView view);
+	SceneController createMenu(MainViewImpl view);
 
 	/**
 	 * Connects the game model, with it's own view.
@@ -28,7 +28,7 @@ public interface MainController {
 	 * @param view the main window
 	 * @return the scene that was created
 	 */
-	SceneController createGame(MainView view);
+	SceneController createGame(MainViewImpl view);
 
 	/**
 	 * Connects the sandbox mode model, with it's own view.
@@ -36,7 +36,7 @@ public interface MainController {
 	 * @param view the main window
 	 * @return the scene that was created
 	 */
-	SceneController createSandBoxMode(MainView view);
+	SceneController createSandBoxMode(MainViewImpl view);
 	
 	/**
 	 * Connects the level select model, with it's own view.
@@ -44,7 +44,7 @@ public interface MainController {
 	 * @param view the main window
 	 * @return the scene that was created
 	 */
-	SceneController createLevelSelect(MainView view);
+	SceneController createLevelSelect(MainViewImpl view);
 	
 	/**
 	 * Connects the end game menu model, with it's own view.
@@ -52,7 +52,7 @@ public interface MainController {
 	 * @param view the main window
 	 * @return the scene that was created
 	 */
-	SceneController createEndGame(MainView view);
+	SceneController createEndGame(MainViewImpl view);
 	
 	/**
 	 * Connects the settings model, with it's own view.
@@ -60,7 +60,7 @@ public interface MainController {
 	 * @param view the main window
 	 * @return the scene that was created
 	 */
-	SceneController createSettings(MainView view);
+	SceneController createSettings(MainViewImpl view);
 	
 	/**
 	 * Connects the levels full menu model, with it's own view.
@@ -68,7 +68,7 @@ public interface MainController {
 	 * @param view the main window
 	 * @return the scene that was created
 	 */
-	SceneController createFullLevels(MainView view);
+	SceneController createFullLevels(MainViewImpl view);
 	
 	/**
 	 * @return the SceneController that is in use.
