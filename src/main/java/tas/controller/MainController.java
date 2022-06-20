@@ -1,7 +1,7 @@
 package main.java.tas.controller;
 
 
-import main.java.tas.view.view.MainView;
+import main.java.tas.view.MainView;
 
 /**
  * Interface that models the project controller.

@@ -1,4 +1,4 @@
-package main.java.tas.view.view;
+package main.java.tas.view;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;

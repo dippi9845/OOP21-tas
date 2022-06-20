@@ -1,5 +1,6 @@
 package main.java.tas.controller;
 
+import main.java.tas.view.MainView;
 import main.java.tas.view.scene.EndGameScene;
 import main.java.tas.view.scene.FullLevelsScene;
 import main.java.tas.view.scene.GameSceneImpl;
@@ -8,7 +9,6 @@ import main.java.tas.view.scene.LevelSelectScene;
 import main.java.tas.view.scene.MainMenuScene;
 import main.java.tas.view.scene.SandboxModeScene;
 import main.java.tas.view.scene.SettingsScene;
-import main.java.tas.view.view.MainView;
 import main.java.tas.model.game.GameModelImpl;
 import main.java.tas.model.menu.MenuModel;
 import main.java.tas.model.menu.MenuModelImpl;

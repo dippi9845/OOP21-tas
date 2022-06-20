@@ -1,4 +1,4 @@
-package main.java.tas.view.view;
+package main.java.tas.view;
 
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import main.java.tas.controller.observer.SceneActionObserver;
-import main.java.tas.view.ViewAction;
 
 /**
  * Class that builds the inventory view. Class that implements a
