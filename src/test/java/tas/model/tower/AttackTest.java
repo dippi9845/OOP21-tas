@@ -337,16 +337,17 @@ class AttackTest {
 	@Test
 	void LongUpgradeTest() {
 		List<Enemy> enemies = new LinkedList<>();
+		int cost = 100;
 		
 		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies)
 					  .setUpgradable(true)
 					  .maxLevel(4)
 					  .upgradeCost(x->x+10)
 					  .upgradeDamage(x->50)
-					  .startUpgradeCost(100)
+					  .startUpgradeCost(cost)
 					  .build();
 		
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < cost; i++) {
 			t.compute();
 		}
 		
@@ -354,7 +355,7 @@ class AttackTest {
 			fail("Tower damage expected to be 150, but was less or equal ( " + t.getDamage() + " )");
 		}
 		
-		for (int i = 0; i < 110; i++) {
+		for (int i = 0; i < cost + 10; i++) {
 			t.compute();
 		}
 		
@@ -362,7 +363,7 @@ class AttackTest {
 			fail("Tower damage expected to be 200, but was less or equal ( " + t.getDamage() + " )");
 		}
 		
-		for (int i = 0; i < 120; i++) {
+		for (int i = 0; i < cost + 20; i++) {
 			t.compute();
 		}
 		
