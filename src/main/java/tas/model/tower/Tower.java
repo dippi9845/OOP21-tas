@@ -53,8 +53,8 @@ public interface Tower extends Entity, TowerThread {
 	public int getDelay();
 
 	/**
-	 * Return the name of the image linked to the tower
-	 * @return the name of the image linked to the tower
+	 * Return the name of the tower
+	 * @return the name of the tower
 	 */
 	public String getTowerName();
 

@@ -22,7 +22,7 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 	 * @param radius      Tower radius, where it can attack enemies
 	 * @param delay       Tower delay
 	 * @param cost        Tower cost
-	 * @param towerName   Tower image name
+	 * @param towerName   Tower name
 	 * @param enemyList   List of all enemy in the map
 	 * @param maxTarget   Max number of target that this tower can attack by area at
 	 *                    the time

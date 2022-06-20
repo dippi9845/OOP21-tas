@@ -26,7 +26,7 @@ public abstract class AbstractBasicTower implements Tower {
 	 * @param radius    Tower radius, where it can attack enemies
 	 * @param delay     Tower delay
 	 * @param cost      Tower cost
-	 * @param towerName Tower image name
+	 * @param towerName Tower name
 	 * @param enemyList List of all enemy in the map
 	 */
 	protected AbstractBasicTower(final Position pos, final int damage, final int radius, final int delay,

@@ -45,7 +45,7 @@ public class TowerBuilder {
 	 * @param damage    Damage of the Tower
 	 * @param radius    Radius of the Tower
 	 * @param delay     Delay of the Tower
-	 * @param towerName Name of the image of the tower
+	 * @param towerName Name of the tower
 	 * @param enemyList List of all enemy in the map
 	 */
 	public TowerBuilder(final Position pos, final int damage, final int radius, final int delay, final String towerName,
