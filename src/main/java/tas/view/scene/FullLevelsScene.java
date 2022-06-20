@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneController;
 import main.java.tas.controller.observer.SceneActionObserver;
-import main.java.tas.view.view.FullLevelsView;
+import main.java.tas.view.FullLevelsView;
 
 /**
  * Class that builds the levels full menu scene.
@@ -34,9 +34,8 @@ public class FullLevelsScene implements GenericScene {
 		this.View.setActionObserver((SceneActionObserver) listener);
 	}
 
-	/**
-	 * @return the settings view
-	 */
+	/** {@inheritDoc} */
+	@Override
 	public FullLevelsView getView() {
 		return this.View;
 	}

@@ -6,6 +6,9 @@ import java.nio.file.Paths;
 
 import org.json.JSONObject;
 
+/**
+ * Class that provides some useful functions for JSON object handling.
+ */
 public final class JsonUtils {
 
 	/**

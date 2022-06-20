@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 import main.java.tas.controller.lister.MainMenuListener;
 import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.model.menu.MenuModel;
+import main.java.tas.view.ViewAction;
 import main.java.tas.view.scene.GenericScene;
-import main.java.tas.view.scene.MainMenuScene;
 
 /**
  * Class that creates the main menu controller. Class that implements
@@ -27,7 +27,7 @@ public class MainMenuController implements SceneActionObserver, SceneController 
 	public MainMenuController(GenericScene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
 		// ((MainMenuSceneImpl) scene).setObserver(this);
-		this.listener = new MainMenuListener(((MainMenuScene) scene).getMenuView());
+		this.listener = new MainMenuListener(((ViewAction)scene.getView()));
 		this.model = theModel;
 	}
 
@@ -44,13 +44,13 @@ public class MainMenuController implements SceneActionObserver, SceneController 
 			if (this.listener.getCommand() == 1) {
 				this.model.setMainScene(3);
 			}
-			if (this.listener.getCommand() == 2) {
+			if (this.listener.getCommand() == 3) {
 				this.model.setMainScene(5);
 			}
 			if (this.listener.getCommand() == 4) {
 				this.model.setMainScene(4);
 			}
-			if (this.listener.getCommand() == 3) {
+			if (this.listener.getCommand() == 2) {
 				this.model.setMainScene(6);
 			}
 			listener.resetUpdate();

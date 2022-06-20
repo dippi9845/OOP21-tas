@@ -1,6 +1,6 @@
 {
     "RedEnemy":{
-        "image":"redEnemy",
+        "name":"RedEnemy",
         "health":800,
         "money":50,
         "damage":10,
@@ -11,7 +11,7 @@
         }
     },
     "GreenEnemy":{
-        "image":"greenEnemy",
+        "name":"GreenEnemy",
         "health":6000,
         "money":100,
         "damage":40,
@@ -22,7 +22,7 @@
         }
     },
     "PinkEnemy":{
-        "image":"pinkEnemy",
+        "name":"PinkEnemy",
         "health":2200,
         "money":100,
         "damage":10,

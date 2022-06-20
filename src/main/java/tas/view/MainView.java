@@ -1,11 +1,11 @@
-package main.java.tas.view.view;
+package main.java.tas.view;
 
 import javax.swing.JPanel;
 
 /**
  * Interface for a generic view.
  */
-public interface View {
+public interface MainView {
    
     /**
      * Creates a window

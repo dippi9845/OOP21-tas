@@ -2,8 +2,8 @@ package main.java.tas.view.scene;
 
 import java.util.List;
 
-import main.java.tas.view.view.GameView;
-import main.java.tas.view.view.InventoryView;
+import main.java.tas.view.GameView;
+import main.java.tas.view.InventoryView;
 
 /**
  * Interface for a game scene.

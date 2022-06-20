@@ -1,14 +1,15 @@
-package main.java.tas.view.view;
+package main.java.tas.view;
 
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.java.tas.controller.observer.SceneActionObserver;
-import main.java.tas.view.ViewAction;
 
 /**
  * Class that builds the settings menu view. Class that implements a
@@ -19,6 +20,7 @@ public class SettingsView implements ViewAction {
 	private JPanel rootPanel = new JPanel(new GridLayout(0, 1, 5, 10));
 	private JLabel label;
 	private JButton backButton;
+	private List <JButton> buttonList = new ArrayList <JButton>();
 
 	/**
 	 * Constructor that builds the settings menu view
@@ -30,6 +32,7 @@ public class SettingsView implements ViewAction {
 		this.rootPanel.add(label);
 		backButton = new JButton("OK GO BACK THEN");
 		this.rootPanel.add(backButton);
+		this.buttonList.add(backButton);
 	}
 
 	/** {@inheritDoc} */
@@ -41,5 +44,11 @@ public class SettingsView implements ViewAction {
 	@Override
 	public void setActionObserver(SceneActionObserver observer) {
 		backButton.addActionListener(observer.getActionListener());
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public List<JButton> getButtons() {
+		return this.buttonList;
 	}
 }

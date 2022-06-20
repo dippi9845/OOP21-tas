@@ -1,11 +1,13 @@
-package main.java.tas.view.view;
+package main.java.tas.view;
 
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import main.java.tas.controller.observer.SceneActionObserver;
-import main.java.tas.view.ViewAction;
 
 
 /**
@@ -19,6 +21,7 @@ public class MenuView implements ViewAction {
 	private JButton sandboxModeButton = new JButton("SANDBOX MODE");
 	private JButton	settingsButton = new JButton("SETTINGS");
     private JButton exitButton = new JButton("EXIT");
+	private List <JButton> buttonList = new ArrayList <JButton>();
     
     /**
      * Constructor that builds the main menu view.
@@ -28,6 +31,10 @@ public class MenuView implements ViewAction {
     	this.rootPanel.add(this.sandboxModeButton);
     	this.rootPanel.add(this.settingsButton);
     	this.rootPanel.add(this.exitButton);
+    	this.buttonList.add(this.newGameButton);
+    	this.buttonList.add(this.sandboxModeButton);
+    	this.buttonList.add(this.settingsButton);
+    	this.buttonList.add(this.exitButton);
     }
     
     /** {@inheritDoc} */
@@ -44,32 +51,10 @@ public class MenuView implements ViewAction {
         this.sandboxModeButton.addActionListener(menuController.getActionListener());
         this.exitButton.addActionListener(menuController.getActionListener());
     }
-	
-	/**
-	 * @return the new game button
-	 */
-	public JButton getNewGameButton() {
-		return this.newGameButton;
-	}
-	
-	/**
-	 * @return the settings button
-	 */
-	public JButton getSettingsButton() {
-		return this.settingsButton;
-	}
-	
-	/**
-	 * @return the sandbox mode button
-	 */
-	public JButton getSandboxModeButton() {
-		return this.sandboxModeButton;
-	}
-	
-	/**
-	 * @return the exit button
-	 */
-	public JButton getExitButton() {
-		return this.exitButton;
+
+    /** {@inheritDoc} */
+	@Override
+	public List<JButton> getButtons() {
+		return this.buttonList;
 	}
 }

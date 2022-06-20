@@ -1,16 +1,15 @@
-package main.java.tas.view.view;
+package main.java.tas.view;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.controller.observer.SceneMouseObserver;
-import main.java.tas.view.SquarePanel;
-import main.java.tas.view.ViewAction;
-import main.java.tas.view.ViewMouse;
 
 /**
  * Class that builds the sandbox mode menu view. Class that implements a
@@ -22,6 +21,7 @@ public class SandboxModeView implements ViewAction, ViewMouse {
 	private JButton finishButton = new JButton("DONE");
 	private JPanel gamePanel = new JPanel(new GridBagLayout());
 	private SquarePanel gameBoard = new SquarePanel();
+	private List <JButton> buttonList = new ArrayList <JButton>();
 
 	/**
 	 * Constructor that builds the sandbox mode view.
@@ -31,6 +31,7 @@ public class SandboxModeView implements ViewAction, ViewMouse {
 		this.gamePanel.add(this.gameBoard);
 		this.rootPanel.add(this.gamePanel, BorderLayout.CENTER);
 		this.rootPanel.add(this.finishButton, BorderLayout.SOUTH);
+		this.buttonList.add(finishButton);
 	}
 
 	/**
@@ -57,5 +58,11 @@ public class SandboxModeView implements ViewAction, ViewMouse {
 	@Override
 	public void setActionObserver(SceneActionObserver observer) {
 		this.finishButton.addActionListener(observer.getActionListener());
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public List<JButton> getButtons() {
+		return this.buttonList;
 	}
 }

@@ -16,11 +16,11 @@ public interface EnemiesLogic {
 	 * @return returns the enemy
 	 */
 	Optional<Enemy> spawnEnemy() throws IndexOutOfBoundsException;
-	
+
 	/**
-	 * Removes the given enemy from the.
+	 * Removes the given enemy from the alive enemy list.
 	 * 
-	 * @param enemy
+	 * @param enemy that will be removed
 	 * @throws NoSuchFieldException if the given enemy is not in the alive list
 	 */
 	void removeEnemy(final Enemy enemy) throws NoSuchFieldException;
@@ -37,7 +37,7 @@ public interface EnemiesLogic {
 	 */
 	int getWave();
 
-	/*
+	/**
 	 * Increase the wave counter and generates the enemies queue.
 	 */
 	void setNextWave();

@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneController;
 import main.java.tas.controller.observer.SceneActionObserver;
-import main.java.tas.view.view.EndGameView;
+import main.java.tas.view.EndGameView;
 
 /**
  * Class that builds the end game menu scene.
@@ -32,9 +32,7 @@ public class EndGameScene implements GenericScene {
 		this.View.setActionObserver((SceneActionObserver) listener);
 	}
 
-	/**
-	 * @return the settings view
-	 */
+	/** {@inheritDoc} */
 	public EndGameView getView() {
 		return this.View;
 	}

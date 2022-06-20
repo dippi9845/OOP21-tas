@@ -3,7 +3,9 @@ package main.java.tas.controller.lister;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import main.java.tas.view.view.MenuView;
+import javax.swing.JButton;
+
+import main.java.tas.view.ViewAction;
 
 /**
  * 
@@ -14,14 +16,14 @@ import main.java.tas.view.view.MenuView;
  */
 public class MainMenuListener extends GenericListener implements ActionListener{
 	
-	private MenuView theView;
+	private ViewAction theView;
 	private int currentComand = 0;
 	
 	/**
 	 * Constructor that creates the main menu listener.
 	 * @param theViewIn the main menu view
 	 */
-	public MainMenuListener(MenuView theViewIn) {
+	public MainMenuListener(ViewAction theViewIn) {
 		this.theView = theViewIn;
 	}
 	
@@ -38,24 +40,13 @@ public class MainMenuListener extends GenericListener implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()== theView.getNewGameButton()) {
-			this.currentComand = 1;
-			setUpdate();
+		int counter = 0;
+		for(JButton button : this.theView.getButtons()) {
+			counter++;
+			if(e.getSource() == button) {
+				this.currentComand = counter;
+			}
 		}
-		
-		else if(e.getSource() == theView.getSettingsButton()) {
-			this.currentComand = 2;
-			setUpdate();
-		}
-		
-		else if(e.getSource() == theView.getSandboxModeButton()) {
-			this.currentComand = 3;
-			setUpdate();
-		}
-		
-		else if(e.getSource() == theView.getExitButton()) {
-			this.currentComand = 4;
-			setUpdate();
-		}
+		setUpdate();
 	}
 }

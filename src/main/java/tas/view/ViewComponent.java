@@ -1,4 +1,4 @@
-package main.java.tas.view.view;
+package main.java.tas.view;
 
 import javax.swing.JPanel;
 
