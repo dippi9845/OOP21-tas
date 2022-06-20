@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import main.java.tas.controller.lister.FullLevelsListener;
 import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.model.menu.MenuModel;
+import main.java.tas.view.ViewAction;
 import main.java.tas.view.scene.GenericScene;
 import main.java.tas.utils.LevelHandler;
 
@@ -14,7 +15,7 @@ import main.java.tas.utils.LevelHandler;
  */
 public class FullLevelsController implements SceneActionObserver, SceneController {
 
-	private FullLevelsListener listener = new FullLevelsListener();
+	private FullLevelsListener listener;
 	private GenericScene scene;
 	private MenuModel model;
 
@@ -29,6 +30,7 @@ public class FullLevelsController implements SceneActionObserver, SceneControlle
 		scene = sceneIn;
 		scene.setObserver(this);
 		this.model = theModel;
+		this.listener = new FullLevelsListener(((ViewAction) this.scene.getView()).getButtons());
 	}
 
 	/**
@@ -43,16 +45,15 @@ public class FullLevelsController implements SceneActionObserver, SceneControlle
 	@Override
 	public void nextTick() {
 		if (this.listener.checkUpdate()) {
-			if (this.listener.getCommand() == 1) {
+			if (this.listener.getCommand() == 2) {
 				this.model.setMainScene(1);
 			}
-			if (this.listener.getCommand() == 2) {
+			if (this.listener.getCommand() == 1) {
 				LevelHandler.deleteUserLevels();
 				this.model.setMainScene(1);
 			}
 			listener.resetUpdate();
 		}
-
 	}
 
 	/** {@inheritDoc} */

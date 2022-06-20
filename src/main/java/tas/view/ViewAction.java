@@ -1,18 +1,20 @@
 package main.java.tas.view;
 
-import javax.swing.JPanel;
+import java.util.List;
+
+import javax.swing.JButton;
 
 import main.java.tas.controller.observer.SceneActionObserver;
 
 /**
  * Interface for a view which has buttons.
  */
-public interface ViewAction {
+public interface ViewAction extends GenericView {
 	
 	/**
-	 * @return the panel
+	 * @return the buttons of the view
 	 */
-	public JPanel getPanel();
+	public List <JButton> getButtons();
 
 	/**
 	 * Sets an observer for the view.

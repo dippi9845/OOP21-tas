@@ -1,18 +1,11 @@
 package main.java.tas.view;
 
-import javax.swing.JPanel;
-
 import main.java.tas.controller.observer.SceneMouseObserver;
 
 /**
  * Interface for a view which checks if the mouse clicks on it.
  */
-public interface ViewMouse {
-	
-	/**
-	 * @return the panel
-	 */
-	public JPanel getPanel();
+public interface ViewMouse extends GenericView {
 
 	/**
 	 * Sets an observer for the view.

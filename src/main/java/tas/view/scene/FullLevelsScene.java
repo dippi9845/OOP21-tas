@@ -34,9 +34,8 @@ public class FullLevelsScene implements GenericScene {
 		this.View.setActionObserver((SceneActionObserver) listener);
 	}
 
-	/**
-	 * @return the settings view
-	 */
+	/** {@inheritDoc} */
+	@Override
 	public FullLevelsView getView() {
 		return this.View;
 	}

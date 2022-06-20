@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import main.java.tas.controller.SceneController;
 import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.controller.observer.SceneMouseObserver;
+import main.java.tas.view.GenericView;
 import main.java.tas.view.view.GameView;
 import main.java.tas.view.view.InventoryView;
 
@@ -49,6 +50,12 @@ public class GameSceneImpl implements GameScene {
 	/** {@inheritDoc} */
 	@Override
 	public GameView getGameView() {
+		return this.gameView;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public GenericView getView() {
 		return this.gameView;
 	}
 	
