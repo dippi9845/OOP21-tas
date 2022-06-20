@@ -20,8 +20,8 @@ public interface Entity {
 	Dimension getBodyDimension();
 
 	/**
-	 * @return the name of the image that the entity will use
+	 * @return the name of the entity
 	 */
-	String getImageName();
+	String getEntityName();
 
 }

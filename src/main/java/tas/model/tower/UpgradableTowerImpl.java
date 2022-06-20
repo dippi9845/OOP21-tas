@@ -124,7 +124,7 @@ public class UpgradableTowerImpl implements UpgradableTower{
 	/** {@inheritDoc} */
 	@Override
 	public String getTowerImageName() {
-		return this.tower.getImageName();
+		return this.tower.getEntityName();
 	}
 
 	/** {@inheritDoc} */

@@ -19,7 +19,7 @@ public class GenericEnemy implements Enemy {
 	private final int money;
 	private final int damage;
 	private final double speed;
-	private final String imageName;
+	private final String enemyName;
 
 	private int reachedNode;
 	private final List<Position> nodesPosition;
@@ -33,11 +33,11 @@ public class GenericEnemy implements Enemy {
 	 * @param damage        the damage that the enemy can deal
 	 * @param speed         the speed of the enemy (pixels/seconds)
 	 * @param bodyDimension the dimension of the enemy
-	 * @param imageName     the name of the image of the enemy
+	 * @param enemyName     the name of the enemy
 	 * @throws IllegalArgumentException if @param nodesPosition is empty
 	 */
 	public GenericEnemy(final List<Position> nodesPosition, final double health, final int money, final int damage, final double speed,
-			final Dimension bodyDimension, final String imageName) throws IllegalArgumentException {
+			final Dimension bodyDimension, final String enemyName) throws IllegalArgumentException {
 		if (nodesPosition.isEmpty()) {
 			throw new IllegalArgumentException("@param nodesPosition can't be an empty array!");
 		}
@@ -52,7 +52,7 @@ public class GenericEnemy implements Enemy {
 		this.money = money;
 		this.damage = damage;
 		this.speed = speed / this.gameSpecs.getTickRate();
-		this.imageName = imageName;
+		this.enemyName = enemyName;
 	}
 
 	/** {@inheritDoc} */
@@ -129,8 +129,8 @@ public class GenericEnemy implements Enemy {
 	}
 
 	@Override
-	public String getImageName() {
-		return this.imageName;
+	public String getEntityName() {
+		return this.enemyName;
 	}
 
 }
