@@ -138,7 +138,7 @@ public class InventoryView implements ViewAction {
 	/** {@inheritDoc} */
 	@Override
 	public List<JButton> getButtons() {
-		List <JButton> list = new ArrayList(this.buttonList.values());
+		List <JButton> list = new ArrayList <JButton> (this.buttonList.values());
 		return list;
 	};
 }
