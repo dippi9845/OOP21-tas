@@ -46,9 +46,7 @@ public abstract class AbstractBasicTower implements Tower {
 	 * @return a copy of the list containing all enemy in the map
 	 */
 	protected List<Enemy> getVisibleEnemyList() {
-		//synchronized (this.visibleEnemyList) {
-			return List.copyOf(this.visibleEnemyList);
-		//}
+		return List.copyOf(this.visibleEnemyList);
 	}
 
 	/**
