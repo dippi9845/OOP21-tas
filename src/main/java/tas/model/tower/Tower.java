@@ -23,8 +23,9 @@ public interface Tower extends Entity, TowerThread {
 
 	/** {@inheritDoc} */
 	@Override
+
 	default String getEntityName() {
-		return this.getTowerImageName();
+		return this.getTowerName();
 	}
 
 	/**
@@ -55,7 +56,7 @@ public interface Tower extends Entity, TowerThread {
 	 * Return the name of the image linked to the tower
 	 * @return the name of the image linked to the tower
 	 */
-	public String getTowerImageName();
+	public String getTowerName();
 
 	/**
 	 * Return the position of the tower

@@ -21,7 +21,7 @@ public class TowerBuilder {
 	private final int damage;
 	private final int radius;
 	private final int delay;
-	private final String imageName;
+	private final String towerName;
 	private int cost;
 	private boolean upgradable;
 	private Optional<List<Enemy>> visibleEnemy;
@@ -45,16 +45,16 @@ public class TowerBuilder {
 	 * @param damage    Damage of the Tower
 	 * @param radius    Radius of the Tower
 	 * @param delay     Delay of the Tower
-	 * @param imageName Name of the image of the tower
+	 * @param towerName Name of the image of the tower
 	 * @param enemyList List of all enemy in the map
 	 */
-	public TowerBuilder(final Position pos, final int damage, final int radius, final int delay, final String imageName,
+	public TowerBuilder(final Position pos, final int damage, final int radius, final int delay, final String towerName,
 			final List<Enemy> enemyList) {
 		this.pos = pos;
 		this.damage = damage;
 		this.radius = radius;
 		this.delay = delay;
-		this.imageName = imageName;
+		this.towerName = towerName;
 		this.visibleEnemy = Optional.ofNullable(enemyList);
 
 		this.attackType = AttackType.BASIC;
@@ -77,10 +77,10 @@ public class TowerBuilder {
 	 * @param damage    Damage of the Tower
 	 * @param radius    Radius of the Tower
 	 * @param delay     Delay of the Tower
-	 * @param imageName Name of the image of the tower
+	 * @param towerName Name of the image of the tower
 	 */
-	public TowerBuilder(final Position pos, final int damage, final int radius, final int delay, final String imageName) {
-		this(pos, damage, radius, delay, imageName, null);
+	public TowerBuilder(final Position pos, final int damage, final int radius, final int delay, final String towerName) {
+		this(pos, damage, radius, delay, towerName, null);
 	}
 	
 	/**
@@ -300,8 +300,8 @@ public class TowerBuilder {
 			throw new IllegalArgumentException("maxLevel can't be less equal to zero");
 		}
 
-		if (this.imageName.isBlank()) {
-			throw new IllegalArgumentException("imageName is blanck");
+		if (this.towerName.isBlank()) {
+			throw new IllegalArgumentException("tower name is blanck");
 		}
 
 		if (this.visibleEnemy.isEmpty()) {
@@ -318,7 +318,7 @@ public class TowerBuilder {
 						"attack range or maximum target or find first cannot be defined in a basic tower");
 			}
 
-			t = new BasicTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.imageName,
+			t = new BasicTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.towerName,
 					this.visibleEnemy.get());
 			break;
 
@@ -327,7 +327,7 @@ public class TowerBuilder {
 				throw new IllegalStateException(
 						"maximum target not defined or attack range or find first cannot be definde in a multiple tower");
 			}
-			t = new BasicMultipleTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.imageName,
+			t = new BasicMultipleTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.towerName,
 					this.visibleEnemy.get(), this.maximumTarget.get());
 			break;
 
@@ -335,7 +335,7 @@ public class TowerBuilder {
 			if (this.maximumTarget.isEmpty() || this.attackRange.isEmpty() || this.findFirst.isEmpty()) {
 				throw new IllegalStateException("maximum target or attack range or findfisrt is not defined");
 			}
-			t = new AbstractAreaTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.imageName,
+			t = new AbstractAreaTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.towerName,
 					this.visibleEnemy.get(), this.maximumTarget.get(), this.attackRange.get()) {
 
 				@Override
