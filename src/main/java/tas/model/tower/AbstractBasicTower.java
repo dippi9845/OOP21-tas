@@ -5,7 +5,7 @@ import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 
 /**
- * This abstract class model a simple tower thread with some basic methods useful for different implementations
+ * This abstract class model a simple tower with some basic methods useful for different implementations
  * 
  */
 public abstract class AbstractBasicTower implements Tower {
@@ -46,9 +46,9 @@ public abstract class AbstractBasicTower implements Tower {
 	 * @return a copy of the list containing all enemy in the map
 	 */
 	protected List<Enemy> getVisibleEnemyList() {
-		synchronized (this.visibleEnemyList) {
+		//synchronized (this.visibleEnemyList) {
 			return List.copyOf(this.visibleEnemyList);
-		}
+		//}
 	}
 
 	/**
@@ -81,7 +81,7 @@ public abstract class AbstractBasicTower implements Tower {
 	 * @param amount Amount of damage that increase
 	 */
 	protected void increaseDamage(final int amount) {
-		this.damage += damage;
+		this.damage += amount;
 	}
 
 	/** {@inheritDoc} */
