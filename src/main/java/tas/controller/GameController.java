@@ -169,9 +169,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 				names.add(tower.toString());
 			}
 		}
-		if (!names.isEmpty()) {
-			this.gameScene.disableButtons(names);
-		}
+		this.gameScene.disableButtons(names);
 	}
 
 	/**
