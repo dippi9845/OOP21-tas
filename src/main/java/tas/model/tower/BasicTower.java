@@ -53,11 +53,11 @@ public class BasicTower extends AbstractBasicTower {
 	public void compute() {
 		if (this.target.isPresent() && Towers.isTargetInRange(this.target.get(), this) && !this.target.get().isDead()) {
 			this.attack();
-			this.sleep();
 		} else {
 			Towers.findFirstEnemyInRange(this, this.getVisibleEnemyList()).ifPresent(this::setTarget);
 		}
 
+		this.sleep();
 	}
 
 	/** {@inheritDoc} */
