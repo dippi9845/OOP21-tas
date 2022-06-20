@@ -26,7 +26,7 @@ public class DefaultTowersUtils {
 	/**
 	 * Filed name in json, that describes the image name
 	 */
-	public static final String IMAGENAMEFIELD = "image name";
+	public static final String TOWERNAMEFIELD = "name";
 
 	/**
 	 * Filed name in json, that describes the delay

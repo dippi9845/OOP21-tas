@@ -96,7 +96,7 @@ public class TowerBuilder {
 			dataset.getInt(DefaultTowersUtils.DAMAGEFIELD),
 			dataset.getInt(DefaultTowersUtils.RADIUSFIELD),
 			dataset.getInt(DefaultTowersUtils.DELAYFIELD),
-			dataset.getString(DefaultTowersUtils.IMAGENAMEFIELD));
+			dataset.getString(DefaultTowersUtils.TOWERNAMEFIELD));
 		
 		if (dataset.has(DefaultTowersUtils.COSTFIELD)) {
 			this.cost = dataset.getInt(DefaultTowersUtils.COSTFIELD);
