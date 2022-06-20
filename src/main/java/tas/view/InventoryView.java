@@ -1,4 +1,4 @@
-package main.java.tas.view.view;
+package main.java.tas.view;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,7 +10,6 @@ import java.util.List;
 
 import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.model.tower.factory.DefaultTowers;
-import main.java.tas.view.ViewAction;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;

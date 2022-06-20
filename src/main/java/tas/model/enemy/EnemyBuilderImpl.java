@@ -48,7 +48,7 @@ public class EnemyBuilderImpl implements EnemyBuilder {
 		        eStats.getInt("damage"), eStats.getDouble("speed"),
 		        new Dimension(eStats.getJSONObject("bodyDimension").getInt("width"),
 		                eStats.getJSONObject("bodyDimension").getInt("height")),
-		        eStats.getString("image"));
+		        eStats.getString("name"));
 	}
 
 	/** {@inheritDoc} */

@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneController;
 import main.java.tas.controller.observer.SceneActionObserver;
-import main.java.tas.view.view.SettingsView;
+import main.java.tas.view.SettingsView;
 
 /**
  * Class that builds the settings mode scene. Class that implements

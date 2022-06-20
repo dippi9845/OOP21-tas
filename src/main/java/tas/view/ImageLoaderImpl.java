@@ -66,7 +66,7 @@ public class ImageLoaderImpl implements ImageLoader {
 			CanvasDimension = this.gameSpecs.getGameUnits();
 		}
 
-		String entityName = entity.getImageName();
+		String entityName = entity.getEntityName().toLowerCase();
 		if (!this.imagesMap.containsKey(entityName)) {
 			throw new FileNotFoundException("The given entity (" + entity + ") has no image in the 'res' folder");
 		}

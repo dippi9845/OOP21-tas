@@ -23,7 +23,7 @@ public interface Tower extends Entity, TowerThread {
 
 	/** {@inheritDoc} */
 	@Override
-	default String getImageName() {
+	default String getEntityName() {
 		return this.getTowerImageName();
 	}
 

@@ -1,4 +1,4 @@
-package main.java.tas.view.view;
+package main.java.tas.view;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -7,9 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
- * Class that implements a {@link View}.
+ * Class that implements a {@link MainView}.
  */
-public class MainView implements View {
+public class MainViewImpl implements MainView {
 	private static final String WINDOW_NAME = "Towers and Stuff";
 	private static final Dimension SCREEN_SIZE = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
 	private final Dimension defaultWindowSize = scaleDimension(SCREEN_SIZE, 2);
@@ -21,7 +21,7 @@ public class MainView implements View {
 	/**
 	 * Constructor that set up the main view.
 	 */
-	public MainView() {
+	public MainViewImpl() {
 		createWindow();
 	}
 
