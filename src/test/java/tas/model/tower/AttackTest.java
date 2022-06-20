@@ -10,8 +10,8 @@ import java.util.function.UnaryOperator;
 
 import org.junit.jupiter.api.Test;
 
-import main.java.tas.controller.tower.TowerLogic;
-import main.java.tas.controller.tower.TowerLogicImpl;
+import main.java.tas.controller.tower.TowerController;
+import main.java.tas.controller.tower.TowerControllermpl;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.TowerBuilder;
@@ -254,7 +254,7 @@ class AttackTest {
 		FakeEnemy e = new FakeEnemy(new Position(51, 51), 100);
 		enemies.add(e);
 
-		TowerLogic manager = new TowerLogicImpl(enemies, x -> {}, x -> true);
+		TowerController manager = new TowerControllermpl(enemies, x -> {}, x -> true);
 
 		manager.placeTower(DefaultTowers.BASICCANNON, new Position(52, 52));
 		manager.placeTower(DefaultTowers.BASICCANNON, new Position(53, 53));
