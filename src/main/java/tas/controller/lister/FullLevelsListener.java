@@ -2,8 +2,9 @@ package main.java.tas.controller.lister;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
-import javax.swing.AbstractButton;
+import javax.swing.JButton;
 
 /**
  * Class that implements {@link ActionListener} used as a listener for the
@@ -13,9 +14,13 @@ import javax.swing.AbstractButton;
 public class FullLevelsListener extends GenericListener implements ActionListener{
 	
 	private int currentComand = 0;
+	private List <JButton> buttonList;
+	
+	public FullLevelsListener(List <JButton> buttons) {
+		this.buttonList = buttons;
+	}
 	
 	/**
-	 * 
 	 * @return the currentCommand
 	 */
 	public int getCommand() {
@@ -25,12 +30,13 @@ public class FullLevelsListener extends GenericListener implements ActionListene
 	/** {@inheritDoc} */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(((AbstractButton) e.getSource()).getText() == "BACK") {
-			this.currentComand = 1;
+		int counter = 0;
+		for(JButton button : this.buttonList) {
+			counter++;
+			if(e.getSource() == button) {
+				this.currentComand = counter;
+			}	
 		}
-		if(((AbstractButton) e.getSource()).getText() == "DELETE USER LEVELS") {
-			this.currentComand = 2;
-		}		
 		setUpdate();
 	}
 }

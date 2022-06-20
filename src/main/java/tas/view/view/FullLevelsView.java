@@ -2,6 +2,8 @@ package main.java.tas.view.view;
 
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -21,6 +23,7 @@ public class FullLevelsView implements ViewAction {
 	private JLabel label2;
 	private JButton backButton;
 	private JButton deleteButton;
+	private List <JButton> buttonList = new ArrayList <JButton>();
     
 	/**
 	 * Constructor that builds the settings menu view.
@@ -38,6 +41,8 @@ public class FullLevelsView implements ViewAction {
     	this.rootPanel.add(deleteButton);
     	backButton = new JButton("BACK");
     	this.rootPanel.add(backButton);
+    	this.buttonList.add(deleteButton);
+    	this.buttonList.add(backButton);
     }
     
     /** {@inheritDoc} */
@@ -45,6 +50,12 @@ public class FullLevelsView implements ViewAction {
 	public JPanel getPanel() {
         return this.rootPanel;
     }
+    
+	/** {@inheritDoc} */
+	@Override
+	public List <JButton> getButtons(){
+		return this.buttonList;
+	}
 	
     /** {@inheritDoc} */
     @Override
