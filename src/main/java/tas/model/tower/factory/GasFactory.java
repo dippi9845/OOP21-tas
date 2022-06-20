@@ -26,7 +26,7 @@ public interface GasFactory {
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->15)
+				.upgradeCost(x->x+15)
 				.upgradeDamage(x->15)
 				.build();
 	}

@@ -5,63 +5,27 @@ import main.java.tas.utils.Position;
 import java.awt.Dimension;
 
 /**
- * An Interface that model a generic Tower, that extends Entity and Runnable
- * 
- * Extends Runnable: so every tower can run concurrently
+ * An Interface that model a generic Tower, that extends Entity, and TowerThread
  */
-public interface Tower extends Entity, Runnable {
+public interface Tower extends Entity, TowerThread {
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	default Dimension getBodyDimension() {
 		return new Dimension(100, 100);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	default Position getPosition() {
 		return this.getPos();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	default String getImageName() {
 		return this.getTowerImageName();
 	}
-
-	/**
-	 * Return true if is time to stop for the thread, false if the current thread can go on
-	 * 
-	 * @return true if is time to stop for the thread, false if the current thread can go on
-	 */
-	public boolean isStop();
-
-	/**
-	 * This function is called when is necessary to stop the run method {@link Tower#run()},
-	 * after a call to this method {@link Tower#isStop()} must return true
-	 */
-	public void stop();
-
-	/**
-	 * Method used by thread, to run the tower in concurrency
-	 */
-	default void run() {
-		while (!this.isStop()) {
-			this.compute();
-		}
-	}
-
-	/**
-	 * This method implements the behavior of the tower, that change depending from the implementation,
-	 * is used in the run method {@link Tower#run()}.
-	 */
-	public void compute();
 
 	/**
 	 * Return the damage of the tower
