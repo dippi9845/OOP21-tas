@@ -7,7 +7,7 @@ import java.awt.Dimension;
 /**
  * An Interface that model a generic Tower, that extends Entity, and TowerThread
  */
-public interface Tower extends Entity, TowerThread {
+public interface Tower extends Entity{
 
 	/** {@inheritDoc} */
 	@Override
@@ -27,6 +27,11 @@ public interface Tower extends Entity, TowerThread {
 	default String getEntityName() {
 		return this.getTowerName();
 	}
+	
+	/**
+	 * This method implements the behavior of the tower at every second, that change depending from the implementation.
+	 */
+	public void compute();
 
 	/**
 	 * Return the damage of the tower
