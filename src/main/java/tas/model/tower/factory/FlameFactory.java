@@ -26,7 +26,7 @@ public interface FlameFactory {
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->15)
+				.upgradeCost(x->x+15)
 				.upgradeDamage(x->15)
 				.build();
 	}
@@ -44,7 +44,7 @@ public interface FlameFactory {
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->25)
+				.upgradeCost(x->x+25)
 				.upgradeDamage(x->25)
 				.build();
 	}
@@ -63,7 +63,7 @@ public interface FlameFactory {
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->35)
+				.upgradeCost(x->x+35)
 				.upgradeDamage(x->35)
 				.build();
 	}
@@ -82,7 +82,7 @@ public interface FlameFactory {
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->45)
+				.upgradeCost(x->x+45)
 				.upgradeDamage(x->45)
 				.build();
 	}

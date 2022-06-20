@@ -24,7 +24,7 @@ public interface CannonFactory {
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->5)
+				.upgradeCost(x->x+5)
 				.upgradeDamage(x->10)
 				.build();
 	}
@@ -42,7 +42,7 @@ public interface CannonFactory {
 				.maximumTarget(2)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->15)
+				.upgradeCost(x->x+15)
 				.upgradeDamage(x->20)
 				.build();
 	}
@@ -60,7 +60,7 @@ public interface CannonFactory {
 				.maximumTarget(3)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->35)
+				.upgradeCost(x->x+35)
 				.upgradeDamage(x->30)
 				.build();
 	}
@@ -78,7 +78,7 @@ public interface CannonFactory {
 				.maximumTarget(4)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->45)
+				.upgradeCost(x->x+45)
 				.upgradeDamage(x->40)
 				.build();
 	}

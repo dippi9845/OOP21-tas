@@ -24,7 +24,7 @@ public interface ArcherFactory {
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->20)
+				.upgradeCost(x->x+20)
 				.upgradeDamage(x->15)
 				.build();
 	}
@@ -43,7 +43,7 @@ public interface ArcherFactory {
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->25)
+				.upgradeCost(x->x+25)
 				.upgradeDamage(x->20)
 				.build();
 	}
@@ -62,7 +62,7 @@ public interface ArcherFactory {
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->30)
+				.upgradeCost(x->x+30)
 				.upgradeDamage(x->25)
 				.build();
 	}
@@ -81,7 +81,7 @@ public interface ArcherFactory {
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->35)
+				.upgradeCost(x->x+35)
 				.upgradeDamage(x->30)
 				.build();
 	}
