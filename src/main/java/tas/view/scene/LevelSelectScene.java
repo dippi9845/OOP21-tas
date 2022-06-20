@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 
 import main.java.tas.controller.SceneController;
 import main.java.tas.controller.observer.SceneActionObserver;
+import main.java.tas.view.GenericView;
 import main.java.tas.view.view.LevelSelectView;
 
 /**
@@ -15,7 +16,7 @@ import main.java.tas.view.view.LevelSelectView;
 public class LevelSelectScene implements GenericScene {
 
 	private JPanel rootPanel;
-	private LevelSelectView View;
+	private LevelSelectView view;
 
 	/**
 	 * Constructor that set up the select level scene
@@ -26,20 +27,19 @@ public class LevelSelectScene implements GenericScene {
 	public LevelSelectScene(JPanel rootPanelIn, int NLevels) {
 		this.rootPanel = rootPanelIn;
 		this.rootPanel.setLayout(new BorderLayout());
-		this.View = new LevelSelectView(NLevels);
-		this.rootPanel.add(this.View.getPanel(), BorderLayout.CENTER);
+		this.view = new LevelSelectView(NLevels);
+		this.rootPanel.add(this.view.getPanel(), BorderLayout.CENTER);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void setObserver(SceneController listener) {
-		this.View.setActionObserver((SceneActionObserver) listener);
+		this.view.setActionObserver((SceneActionObserver) listener);
 	}
 
-	/**
-	 * @return the level select view.
-	 */
-	public LevelSelectView getView() {
-		return this.View;
+	/** {@inheritDoc} */
+	@Override
+	public GenericView getView() {
+		return this.view;
 	}
 }

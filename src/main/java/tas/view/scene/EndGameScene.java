@@ -32,9 +32,7 @@ public class EndGameScene implements GenericScene {
 		this.View.setActionObserver((SceneActionObserver) listener);
 	}
 
-	/**
-	 * @return the settings view
-	 */
+	/** {@inheritDoc} */
 	public EndGameView getView() {
 		return this.View;
 	}

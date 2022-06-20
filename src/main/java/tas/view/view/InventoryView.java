@@ -133,5 +133,12 @@ public class InventoryView implements ViewAction {
 	 */
 	public void selectButton(String name) {
 		this.buttonList.get(name).setBackground(Color.RED);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public List<JButton> getButtons() {
+		List <JButton> list = new ArrayList <JButton> (this.buttonList.values());
+		return list;
 	};
 }

@@ -169,9 +169,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 				names.add(tower.toString());
 			}
 		}
-		if (!names.isEmpty()) {
-			this.gameScene.disableButtons(names);
-		}
+		this.gameScene.disableButtons(names);
 	}
 
 	/**
@@ -210,14 +208,27 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 		}
 
 		List<Position> linePoints = this.gameScene.getGameView().getGamePanel().getLine();
+		
 		for (int i = 1; i < linePoints.size(); i++) {
-
+			
 			double a = linePoints.get(i - 1).getX();
 			double b = linePoints.get(i - 1).getY();
 			double c = linePoints.get(i).getX();
 			double d = linePoints.get(i).getY();
 			double e = turretPosition.getX();
 			double f = turretPosition.getY();
+			if (i == 1) {
+				double dist = Math.sqrt(Math.pow(e - a, 2) + Math.pow(f - b, 2));
+				if(dist < this.pathThickness + 50) {
+					System.out.println("cannot place on the enemy path (NODE)");
+					return false;
+				}
+			}
+			double dist = Math.sqrt(Math.pow(e - c, 2) + Math.pow(f - d, 2));
+			if(dist < this.pathThickness + 50) {
+				System.out.println("cannot place on the enemy path (NODE)");
+				return false;
+			}
 			if (((Math.max(a, c)) > e) && ((Math.max(b, d)) > f) && (Math.min(a, c)) < e && Math.min(b, d) < f) {
 				double h = (Math.abs((a * d) - (b * c) + (c * f) - (d * e) + (b * e) - (a * f)))
 				        / Math.sqrt(Math.pow(c - a, 2) + Math.pow(d - b, 2));
