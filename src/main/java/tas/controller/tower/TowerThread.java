@@ -1,10 +1,12 @@
-package main.java.tas.model.tower;
+package main.java.tas.controller.tower;
+
+import main.java.tas.model.tower.Tower;
 
 /**
  * An interface that model a tower, with his own thread dedicated
  *
  */
-public interface TowerThread extends Runnable{
+public interface TowerThread extends Runnable, Tower{
 	
 	/**
 	 * Return true if is time to stop for the thread, false if the current thread can go on
@@ -18,16 +20,5 @@ public interface TowerThread extends Runnable{
 	 * after a call to this method {@link TowerThread#isStop()} must return true
 	 */
 	public void stop();
-
-	/** {@inheritDoc} */
-	default void run() {
-		while (!this.isStop()) {
-			this.compute();
-		}
-	}
 	
-	/**
-	 * This method implements the behavior of the tower at every second, that change depending from the implementation.
-	 */
-	public void compute();
 }

@@ -24,9 +24,9 @@ public class DefaultTowersUtils {
 	public static final String COSTFIELD = "cost";
 
 	/**
-	 * Filed name in json, that describes the image name
+	 * Filed name in json, that describes the tower name
 	 */
-	public static final String IMAGENAMEFIELD = "image name";
+	public static final String TOWERNAMEFIELD = "name";
 
 	/**
 	 * Filed name in json, that describes the delay

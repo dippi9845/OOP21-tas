@@ -21,7 +21,7 @@ public class BasicTower extends AbstractBasicTower {
 	 * @param radius    Tower radius, where it can attack enemies
 	 * @param delay     Tower delay
 	 * @param cost      Tower cost
-	 * @param towerName Tower image name
+	 * @param towerName Tower name
 	 * @param enemyList List of all enemy in the map
 	 */
 	protected BasicTower(final Position pos, final int damage, final int radius, final int delay, final int cost,
@@ -53,11 +53,11 @@ public class BasicTower extends AbstractBasicTower {
 	public void compute() {
 		if (this.target.isPresent() && Towers.isTargetInRange(this.target.get(), this) && !this.target.get().isDead()) {
 			this.attack();
-			this.sleep();
 		} else {
 			Towers.findFirstEnemyInRange(this, this.getVisibleEnemyList()).ifPresent(this::setTarget);
 		}
 
+		this.sleep();
 	}
 
 	/** {@inheritDoc} */

@@ -18,8 +18,8 @@ import java.util.LinkedList;
  * A class that has the objective to keep controlled all the built towers, and
  * create them
  */
-public class TowerLogicImpl implements TowerLogic {
-	private final List<Tower> builtTowers = new LinkedList<Tower>();
+public class TowerControllermpl implements TowerController {
+	private final List<TowerThread> builtTowers = new LinkedList<TowerThread>();
 	private final List<Thread> towerThreads = new LinkedList<Thread>();
 	private final Consumer<Entity> addToPanel;
 	private final Predicate<Integer> spendMoney;
@@ -33,12 +33,15 @@ public class TowerLogicImpl implements TowerLogic {
 	 */
 	private boolean buildTower(final Tower t) {
 		if (this.spendMoney.test(t.getCost())) {
-			final Thread th = new Thread(t);
+			final TowerThread twth = new TowerThreadImpl(t);
+			final Thread th = new Thread(twth);
+			
 			th.start();
 			this.towerThreads.add(th);
 
-			this.builtTowers.add(t);
-			this.addToPanel.accept(t);
+			this.builtTowers.add(twth);
+			this.addToPanel.accept(twth);
+
 			return true;
 		} else {
 			return false;
@@ -52,7 +55,7 @@ public class TowerLogicImpl implements TowerLogic {
 	 * @param addToPanel function that add towers to the panel
 	 * @param spendMoney
 	 */
-	public TowerLogicImpl(final List<Enemy> enemyList, final Consumer<Entity> addToPanel,
+	public TowerControllermpl(final List<Enemy> enemyList, final Consumer<Entity> addToPanel,
 			final Predicate<Integer> spendMoney) {
 		this.addToPanel = addToPanel;
 		this.spendMoney = spendMoney;

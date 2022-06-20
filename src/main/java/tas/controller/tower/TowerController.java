@@ -11,7 +11,7 @@ import main.java.tas.utils.Position;
 /**
  * An interface that manage all the built towers
  */
-public interface TowerLogic {
+public interface TowerController {
 
 	/**
 	 * Build a tower in that position
@@ -51,16 +51,16 @@ public interface TowerLogic {
 	
 	/**
 	 * Return a {@link java.util.List} containing all built towers,
-	 * by the method {@link TowerLogic#placeTower(DefaultTowers, Position)}
-	 * or the method {@link TowerLogic#placeTower(TowerBuilder)}
+	 * by the method {@link TowerController#placeTower(DefaultTowers, Position)}
+	 * or the method {@link TowerController#placeTower(TowerBuilder)}
 	 * @return a {@link java.util.List} containing all built towers
 	 */
 	public List<Tower> getBuildTowers();
 	
 	/**
 	 * Return a {@link java.util.List} containing all thread, created when was called,
-	 * the method {@link TowerLogic#placeTower(DefaultTowers, Position)}
-	 * or the method {@link TowerLogic#placeTower(TowerBuilder)}
+	 * the method {@link TowerController#placeTower(DefaultTowers, Position)}
+	 * or the method {@link TowerController#placeTower(TowerBuilder)}
 	 * @return a {@link java.util.List} containing all thread created
 	 */
 	public List<Thread> getBuildThread();

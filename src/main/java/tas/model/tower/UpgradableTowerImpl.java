@@ -143,20 +143,4 @@ public class UpgradableTowerImpl implements UpgradableTower{
 				+ getTowerName() + ", getLevel()=" + getLevel() + "]";
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public boolean isStop() {
-		return this.tower.isStop();
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public void stop() {
-		this.tower.stop();
-	}
-
-	
-
-	
-
 }

@@ -45,7 +45,7 @@ public class TowerBuilder {
 	 * @param damage    Damage of the Tower
 	 * @param radius    Radius of the Tower
 	 * @param delay     Delay of the Tower
-	 * @param towerName Name of the image of the tower
+	 * @param towerName Name of the tower
 	 * @param enemyList List of all enemy in the map
 	 */
 	public TowerBuilder(final Position pos, final int damage, final int radius, final int delay, final String towerName,
@@ -77,7 +77,7 @@ public class TowerBuilder {
 	 * @param damage    Damage of the Tower
 	 * @param radius    Radius of the Tower
 	 * @param delay     Delay of the Tower
-	 * @param towerName Name of the image of the tower
+	 * @param towerName Name of the tower
 	 */
 	public TowerBuilder(final Position pos, final int damage, final int radius, final int delay, final String towerName) {
 		this(pos, damage, radius, delay, towerName, null);
@@ -96,7 +96,7 @@ public class TowerBuilder {
 			dataset.getInt(DefaultTowersUtils.DAMAGEFIELD),
 			dataset.getInt(DefaultTowersUtils.RADIUSFIELD),
 			dataset.getInt(DefaultTowersUtils.DELAYFIELD),
-			dataset.getString(DefaultTowersUtils.IMAGENAMEFIELD));
+			dataset.getString(DefaultTowersUtils.TOWERNAMEFIELD));
 		
 		if (dataset.has(DefaultTowersUtils.COSTFIELD)) {
 			this.cost = dataset.getInt(DefaultTowersUtils.COSTFIELD);
