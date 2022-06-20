@@ -5,7 +5,7 @@ import main.java.tas.utils.Position;
 import java.awt.Dimension;
 
 /**
- * An Interface that model a generic Tower, that extends Entity, and TowerThread
+ * An Interface that model a generic Tower, that extends Entity
  */
 public interface Tower extends Entity{
 
