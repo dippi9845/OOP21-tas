@@ -16,7 +16,6 @@ public abstract class AbstractBasicTower implements Tower {
 	private final int cost;
 	private final String towerName;
 	private final List<Enemy> visibleEnemyList;
-	private boolean stopTh;
 
 	/**
 	 * Constructor, protected
@@ -38,7 +37,6 @@ public abstract class AbstractBasicTower implements Tower {
 		this.cost = cost;
 		this.towerName = towerName;
 		this.visibleEnemyList = enemyList;
-		this.stopTh = false;
 	}
 
 	/**
@@ -80,16 +78,6 @@ public abstract class AbstractBasicTower implements Tower {
 	 */
 	protected void increaseDamage(final int amount) {
 		this.damage += amount;
-	}
-
-	/** {@inheritDoc} */
-	public boolean isStop() {
-		return this.stopTh;
-	}
-	
-	/** {@inheritDoc} */
-	public void stop() {
-		this.stopTh = true;
 	}
 
 	/**
