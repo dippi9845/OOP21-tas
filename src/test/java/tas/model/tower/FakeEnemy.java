@@ -37,8 +37,8 @@ class FakeEnemy implements Enemy {
 	}
 
 	@Override
-	public String getImageName() {
-		return "Niente Immagine";
+	public String getTowerName() {
+		return "Niente Nome";
 	}
 
 	@Override

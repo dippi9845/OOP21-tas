@@ -123,7 +123,7 @@ public class UpgradableTowerImpl implements UpgradableTower{
 
 	/** {@inheritDoc} */
 	@Override
-	public String getTowerImageName() {
+	public String getTowerName() {
 		return this.tower.getImageName();
 	}
 
@@ -140,7 +140,7 @@ public class UpgradableTowerImpl implements UpgradableTower{
 				+ ", increasecost=" + increasecost + ", level=" + level + ", maxLevel=" + maxLevel + ", getDamage()="
 				+ getDamage() + ", getRadius()=" + getRadius() + ", getCost()=" + getCost() + ", getDelay()="
 				+ getDelay() + ", getPos()=" + getPos() + ", getTowerImageName()="
-				+ getTowerImageName() + ", getLevel()=" + getLevel() + "]";
+				+ getTowerName() + ", getLevel()=" + getLevel() + "]";
 	}
 
 	/** {@inheritDoc} */

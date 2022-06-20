@@ -14,7 +14,7 @@ public abstract class AbstractBasicTower implements Tower {
 	private final int radius;
 	private final int delay;
 	private final int cost;
-	private final String imageName;
+	private final String towerName;
 	private final List<Enemy> visibleEnemyList;
 	private boolean stopTh;
 
@@ -26,17 +26,17 @@ public abstract class AbstractBasicTower implements Tower {
 	 * @param radius    Tower radius, where it can attack enemies
 	 * @param delay     Tower delay
 	 * @param cost      Tower cost
-	 * @param imageName Tower image name
+	 * @param towerName Tower image name
 	 * @param enemyList List of all enemy in the map
 	 */
 	protected AbstractBasicTower(final Position pos, final int damage, final int radius, final int delay,
-			final int cost, final String imageName, final List<Enemy> enemyList) {
+			final int cost, final String towerName, final List<Enemy> enemyList) {
 		this.damage = damage;
 		this.pos = pos;
 		this.radius = radius;
 		this.delay = delay;
 		this.cost = cost;
-		this.imageName = imageName;
+		this.towerName = towerName;
 		this.visibleEnemyList = enemyList;
 		this.stopTh = false;
 	}
@@ -136,7 +136,7 @@ public abstract class AbstractBasicTower implements Tower {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getTowerImageName() {
-		return this.imageName;
+	public String getTowerName() {
+		return this.towerName;
 	}
 }
