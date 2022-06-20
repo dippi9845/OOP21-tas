@@ -19,7 +19,7 @@ import java.util.LinkedList;
  * create them
  */
 public class TowerLogicImpl implements TowerLogic {
-	private final List<Tower> builtTowers = new LinkedList<Tower>();
+	private final List<TowerThread> builtTowers = new LinkedList<TowerThread>();
 	private final List<Thread> towerThreads = new LinkedList<Thread>();
 	private final Consumer<Entity> addToPanel;
 	private final Predicate<Integer> spendMoney;
@@ -33,12 +33,15 @@ public class TowerLogicImpl implements TowerLogic {
 	 */
 	private boolean buildTower(final Tower t) {
 		if (this.spendMoney.test(t.getCost())) {
-			final Thread th = new Thread(t);
+			final TowerThread twth = new TowerThreadImpl(t);
+			final Thread th = new Thread(twth);
+			
 			th.start();
 			this.towerThreads.add(th);
 
-			this.builtTowers.add(t);
-			this.addToPanel.accept(t);
+			this.builtTowers.add(twth);
+			this.addToPanel.accept(twth);
+
 			return true;
 		} else {
 			return false;
