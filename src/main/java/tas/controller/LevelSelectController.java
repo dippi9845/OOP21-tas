@@ -6,7 +6,7 @@ import main.java.tas.controller.lister.LevelSelectListener;
 import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.model.menu.MenuModel;
 import main.java.tas.view.ViewAction;
-import main.java.tas.view.scene.GenericScene;
+import main.java.tas.view.scene.LevelSelectScene;
 
 /**
  * Class that creates a controller for the level select menu. Class that
@@ -15,7 +15,7 @@ import main.java.tas.view.scene.GenericScene;
 public class LevelSelectController implements SceneActionObserver, SceneController {
 
 	private LevelSelectListener listener;
-	private GenericScene scene;
+	private LevelSelectScene scene;
 	private MenuModel model;
 
 	/**
@@ -24,7 +24,7 @@ public class LevelSelectController implements SceneActionObserver, SceneControll
 	 * @param sceneIn  the level select scene
 	 * @param theModel the menu model
 	 */
-	public LevelSelectController(GenericScene sceneIn, MenuModel theModel) {
+	public LevelSelectController(LevelSelectScene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
 		scene.setObserver(this);
 		this.listener = new LevelSelectListener(((ViewAction) this.scene.getView()));
