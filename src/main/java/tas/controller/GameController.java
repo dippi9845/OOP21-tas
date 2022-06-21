@@ -19,6 +19,8 @@ import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.controller.observer.SceneMouseObserver;
 import main.java.tas.controller.tower.TowerController;
 import main.java.tas.controller.tower.TowerControllermpl;
+import main.java.tas.model.tower.Tower;
+import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.model.tower.factory.DefaultTowersUtils;
 import main.java.tas.model.enemy.Enemy;
@@ -194,19 +196,18 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 	 * @return true if the position is valid, false otherwise
 	 */
 
-	public boolean checkTurretPosition(Position turretPosition) {
+	public boolean checkTurretPosition(final Position turretPosition, final DefaultTowers selected) {
 
 		if (turretPosition.getY() < 55 || turretPosition.getY() > 945 || turretPosition.getX() < 55
 		        || turretPosition.getX() > 945) {
 			System.out.println("not inside border");
 			return false;
 		}
-
-		if (this.towerController.thereIsTowerNear(turretPosition)) {
-			System.out.println("Position too close to another tower");
+		
+		if (this.towerController.thereIsTowerNear(turretPosition, DefaultTowersUtils.getDefaultTowersDimension(selected))) {
+			System.out.println("Too close to another tower");
 			return false;
 		}
-
 		List<Position> linePoints = this.gameScene.getGameView().getGamePanel().getLine();
 		
 		for (int i = 1; i < linePoints.size(); i++) {
@@ -253,7 +254,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 			mousePosition.positionConverter(this.gameSpecs.getGameUnits(),
 			        this.gameScene.getGameView().getGamePanel().getPreferredSize());
 			System.out.println(mousePosition.toString());
-			if (checkTurretPosition(mousePosition)) {
+			if (checkTurretPosition(mousePosition, currentTowerSelected)) {
 				this.towerController.placeTower(currentTowerSelected, mousePosition);
 				this.currentInventoryMode = 0;
 				this.screenListener.stopListening();
