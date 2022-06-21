@@ -7,6 +7,8 @@ import java.util.Optional;
 
 import org.json.JSONObject;
 
+import java.awt.Dimension;
+
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
@@ -197,14 +199,19 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 	 */
 
 	public boolean checkTurretPosition(final Position turretPosition, final DefaultTowers selected) {
-
-		if (turretPosition.getY() < 55 || turretPosition.getY() > 945 || turretPosition.getX() < 55
-		        || turretPosition.getX() > 945) {
+		
+		final Dimension towerDimension = DefaultTowersUtils.getDefaultTowersDimension(selected);
+		
+		if (turretPosition.getY() < towerDimension.getWidth() / 2 || 
+			turretPosition.getY() > this.gameSpecs.getGameUnits().getWidth() - towerDimension.getWidth() / 2 ||
+			turretPosition.getX() < towerDimension.getHeight() ||
+			turretPosition.getX() > this.gameSpecs.getGameUnits().getWidth() - towerDimension.getWidth() / 2) {
+			
 			System.out.println("not inside border");
 			return false;
 		}
 		
-		if (this.towerController.thereIsTowerNear(turretPosition, DefaultTowersUtils.getDefaultTowersDimension(selected))) {
+		if (this.towerController.thereIsTowerNear(turretPosition, towerDimension)) {
 			System.out.println("Too close to another tower");
 			return false;
 		}
