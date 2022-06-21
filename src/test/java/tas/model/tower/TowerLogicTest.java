@@ -2,7 +2,7 @@ package test.java.tas.model.tower;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.awt.Dimension;
+import main.java.tas.utils.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
