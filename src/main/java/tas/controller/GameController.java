@@ -21,8 +21,6 @@ import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.controller.observer.SceneMouseObserver;
 import main.java.tas.controller.tower.TowerController;
 import main.java.tas.controller.tower.TowerControllermpl;
-import main.java.tas.model.tower.Tower;
-import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.model.tower.factory.DefaultTowersUtils;
 import main.java.tas.model.enemy.Enemy;
