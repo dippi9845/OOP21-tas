@@ -15,7 +15,6 @@ import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.LevelHandler;
 import main.java.tas.utils.Position;
 import main.java.tas.view.scene.SandboxModeScene;
-import main.java.tas.view.scene.GenericScene;
 import main.java.tas.utils.Dimension;
 
 /**
@@ -25,7 +24,7 @@ import main.java.tas.utils.Dimension;
 public class SandboxModeController implements SceneActionObserver, SceneMouseObserver, SceneController {
 
 	private SandboxModeListener listener;
-	private GenericScene scene;
+	private SandboxModeScene scene;
 	private MenuModel model;
 	private boolean lineInitialized = false;
 	private boolean firstNodeIsSelected = false;
@@ -41,9 +40,9 @@ public class SandboxModeController implements SceneActionObserver, SceneMouseObs
 	 * @param sceneIn  the sandbox mode scene
 	 * @param theModel the menu model
 	 */
-	public SandboxModeController(GenericScene sceneIn, MenuModel theModel) {
+	public SandboxModeController(SandboxModeScene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
-		((SandboxModeScene) scene).setObserver(this);
+		scene.setObserver(this);
 		this.listener = new SandboxModeListener();
 		this.model = theModel;
 	}
@@ -62,17 +61,15 @@ public class SandboxModeController implements SceneActionObserver, SceneMouseObs
 
 			if (lineInitialized) {
 				Position lastSelectedPosition = listener.getLastNodeSelected();
-				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(), new Dimension(
-						((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getWidth(),
-						((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getHeight()));
+				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
+				        new Dimension(this.scene.getView().getGameBoard().getPreferredSize().getWidth(), this.scene.getView().getGameBoard().getPreferredSize().getHeight()));
 				this.linePositionList.add(lastSelectedPosition);
 
 			} else if (firstNodeIsSelected) {
 				System.out.println("second node selected");
 				Position lastSelectedPosition = listener.getLastNodeSelected();
-				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(), new Dimension(
-						((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getWidth(),
-						((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getHeight()));
+				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
+						new Dimension(this.scene.getView().getGameBoard().getPreferredSize().getWidth(), this.scene.getView().getGameBoard().getPreferredSize().getHeight()));
 				this.linePositionList.add(lastSelectedPosition);
 				((SandboxModeScene) this.scene).getView().getGameBoard().setLine(linePositionList, pathColor,
 						pathThickness);
@@ -80,9 +77,8 @@ public class SandboxModeController implements SceneActionObserver, SceneMouseObs
 			} else {
 				System.out.println("fisrst node selected");
 				Position lastSelectedPosition = listener.getLastNodeSelected();
-				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(), new Dimension(
-						((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getWidth(),
-						((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getHeight()));
+				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
+						new Dimension(this.scene.getView().getGameBoard().getPreferredSize().getWidth(), this.scene.getView().getGameBoard().getPreferredSize().getHeight()));
 				this.linePositionList.add(lastSelectedPosition);
 				this.firstNodeIsSelected = true;
 			}
