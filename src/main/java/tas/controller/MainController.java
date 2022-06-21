@@ -1,6 +1,5 @@
 package main.java.tas.controller;
 
-
 import main.java.tas.view.MainViewImpl;
 
 /**
@@ -37,7 +36,7 @@ public interface MainController {
 	 * @return the scene that was created
 	 */
 	SceneController createSandBoxMode(MainViewImpl view);
-	
+
 	/**
 	 * Connects the level select model, with it's own view.
 	 * 
@@ -45,7 +44,7 @@ public interface MainController {
 	 * @return the scene that was created
 	 */
 	SceneController createLevelSelect(MainViewImpl view);
-	
+
 	/**
 	 * Connects the end game menu model, with it's own view.
 	 * 
@@ -53,7 +52,7 @@ public interface MainController {
 	 * @return the scene that was created
 	 */
 	SceneController createEndGame(MainViewImpl view);
-	
+
 	/**
 	 * Connects the settings model, with it's own view.
 	 * 
@@ -61,7 +60,7 @@ public interface MainController {
 	 * @return the scene that was created
 	 */
 	SceneController createSettings(MainViewImpl view);
-	
+
 	/**
 	 * Connects the levels full menu model, with it's own view.
 	 * 
@@ -69,7 +68,7 @@ public interface MainController {
 	 * @return the scene that was created
 	 */
 	SceneController createFullLevels(MainViewImpl view);
-	
+
 	/**
 	 * @return the SceneController that is in use.
 	 */

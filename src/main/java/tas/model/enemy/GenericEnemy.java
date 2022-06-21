@@ -36,8 +36,8 @@ public class GenericEnemy implements Enemy {
 	 * @param enemyName     the name of the enemy
 	 * @throws IllegalArgumentException if @param nodesPosition is empty
 	 */
-	public GenericEnemy(final List<Position> nodesPosition, final double health, final int money, final int damage, final double speed,
-			final Dimension bodyDimension, final String enemyName) throws IllegalArgumentException {
+	public GenericEnemy(final List<Position> nodesPosition, final double health, final int money, final int damage,
+			final double speed, final Dimension bodyDimension, final String enemyName) throws IllegalArgumentException {
 		if (nodesPosition.isEmpty()) {
 			throw new IllegalArgumentException("@param nodesPosition can't be an empty array!");
 		}
@@ -78,7 +78,7 @@ public class GenericEnemy implements Enemy {
 			// avoid overshooting the objective
 			if (Position.findDistance(this.actualPosition, nextPos) > this.speed) {
 				double angle = Math.atan2(nextPos.getY() - this.actualPosition.getY(),
-				        nextPos.getX() - this.actualPosition.getX());
+						nextPos.getX() - this.actualPosition.getX());
 				double newX = this.actualPosition.getX() + this.speed * Math.cos(angle);
 				double newY = this.actualPosition.getY() + this.speed * Math.sin(angle);
 

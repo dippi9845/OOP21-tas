@@ -6,12 +6,12 @@ import main.java.tas.utils.LevelHandler;
  * Class that implements {@link MenuModel}.
  */
 public class MenuModelImpl implements MenuModel {
-	
+
 	private int maxLevels = 6;
 	private int mainScene = 1;
 	private int menuMode = 1;
 	private int currentLevel = 0;
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public int getMainScene() {
@@ -40,13 +40,13 @@ public class MenuModelImpl implements MenuModel {
 	@Override
 	public void setCurrentLevel(int currentLevelIn) {
 		this.currentLevel = currentLevelIn;
-		
+
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public int getCurrentLevel() {
-		return this.currentLevel;	
+		return this.currentLevel;
 	}
 
 	/** {@inheritDoc} */
@@ -60,10 +60,5 @@ public class MenuModelImpl implements MenuModel {
 	public int getMaxLevels() {
 		return this.maxLevels;
 	}
-	
-	
-	
-	
-	
 
 }

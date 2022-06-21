@@ -20,7 +20,7 @@ public class SettingsView implements ViewAction {
 	private JPanel rootPanel = new JPanel(new GridLayout(0, 1, 5, 10));
 	private JLabel label;
 	private JButton backButton;
-	private List <JButton> buttonList = new ArrayList <JButton>();
+	private List<JButton> buttonList = new ArrayList<JButton>();
 
 	/**
 	 * Constructor that builds the settings menu view
@@ -45,7 +45,7 @@ public class SettingsView implements ViewAction {
 	public void setActionObserver(SceneActionObserver observer) {
 		backButton.addActionListener(observer.getActionListener());
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public List<JButton> getButtons() {

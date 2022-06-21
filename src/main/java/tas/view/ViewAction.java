@@ -10,11 +10,11 @@ import main.java.tas.controller.observer.SceneActionObserver;
  * Interface for a view which has buttons.
  */
 public interface ViewAction extends GenericView {
-	
+
 	/**
 	 * @return the buttons of the view
 	 */
-	public List <JButton> getButtons();
+	public List<JButton> getButtons();
 
 	/**
 	 * Sets an observer for the view.

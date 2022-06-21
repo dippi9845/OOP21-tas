@@ -66,7 +66,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 	 * @param menuModelIn the menu model
 	 */
 	public GameController(final GameScene scene, final GameModel gameModel, final List<Position> pathNodes,
-	        final MenuModel menuModelIn) {
+			final MenuModel menuModelIn) {
 		this.menuModel = menuModelIn;
 		this.gameScene = scene;
 		this.playerStats = gameModel;
@@ -78,12 +78,12 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 		this.enemiesHandler = new EnemiesLogicImpl(pathNodes);
 		this.gameScene.getGameView().getGamePanel().setLine(pathNodes, pathColor, pathThickness);
 		this.towerController = new TowerControllermpl(this.enemiesHandler.getEnemies(),
-		        this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
+				this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
 
 		this.gameScene.getInventoryView().addTextLabel(this.healthSymbol + " " + this.playerStats.getHP(), "health");
 		this.gameScene.getInventoryView().addTextLabel(this.waveSymbol + " " + this.enemiesHandler.getWave(), "wave");
 		this.gameScene.getInventoryView().addTextLabel(this.moneySymbol + " " + this.playerStats.getPlayerMoney(),
-		        "money");
+				"money");
 		this.gameScene.getInventoryView().addTextLabel(this.pointSymbol + " " + this.playerStats.getPoints(), "points");
 	}
 
@@ -123,7 +123,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 	private void increaseWave() {
 		this.enemiesHandler.setNextWave();
 		this.gameScene.getInventoryView().getTextLabel("wave")
-		        .setText(this.waveSymbol + " " + this.enemiesHandler.getWave());
+				.setText(this.waveSymbol + " " + this.enemiesHandler.getWave());
 	}
 
 	/**
@@ -137,20 +137,20 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 			if (enemy.isDead()) {
 				this.playerStats.giveMoney2Player(enemy.getMoney());
 				this.gameScene.getInventoryView().getTextLabel("money")
-				        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
+						.setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
 
 				killEnemy(enemy);
 
 				this.playerStats.increasePoint();
 				this.gameScene.getInventoryView().getTextLabel("points")
-				        .setText(this.pointSymbol + " " + this.playerStats.getPoints());
+						.setText(this.pointSymbol + " " + this.playerStats.getPoints());
 
 				continue;
 			}
 			if (enemy.isPathCompleted()) {
 				this.playerStats.dealDamage2Player(enemy.getDamage());
 				this.gameScene.getInventoryView().getTextLabel("health")
-				        .setText(this.healthSymbol + " " + this.playerStats.getHP());
+						.setText(this.healthSymbol + " " + this.playerStats.getHP());
 				killEnemy(enemy);
 				continue;
 			}
@@ -196,26 +196,26 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 	 */
 
 	public boolean checkTurretPosition(final Position turretPosition, final DefaultTowers selected) {
-		
+
 		final Dimension towerDimension = DefaultTowersUtils.getDefaultTowersDimension(selected);
-		
-		if (turretPosition.getY() < towerDimension.getWidth() / 2 || 
-			turretPosition.getY() > this.gameSpecs.getGameUnits().getWidth() - towerDimension.getWidth() / 2 ||
-			turretPosition.getX() < towerDimension.getHeight() ||
-			turretPosition.getX() > this.gameSpecs.getGameUnits().getWidth() - towerDimension.getWidth() / 2) {
-			
+
+		if (turretPosition.getY() < towerDimension.getWidth() / 2
+				|| turretPosition.getY() > this.gameSpecs.getGameUnits().getWidth() - towerDimension.getWidth() / 2
+				|| turretPosition.getX() < towerDimension.getHeight()
+				|| turretPosition.getX() > this.gameSpecs.getGameUnits().getWidth() - towerDimension.getWidth() / 2) {
+
 			System.out.println("not inside border");
 			return false;
 		}
-		
+
 		if (this.towerController.thereIsTowerNear(turretPosition, towerDimension)) {
 			System.out.println("Too close to another tower");
 			return false;
 		}
 		List<Position> linePoints = this.gameScene.getGameView().getGamePanel().getLine();
-		
+
 		for (int i = 1; i < linePoints.size(); i++) {
-			
+
 			double a = linePoints.get(i - 1).getX();
 			double b = linePoints.get(i - 1).getY();
 			double c = linePoints.get(i).getX();
@@ -224,19 +224,19 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 			double f = turretPosition.getY();
 			if (i == 1) {
 				double dist = Math.sqrt(Math.pow(e - a, 2) + Math.pow(f - b, 2));
-				if(dist < this.pathThickness + 50) {
+				if (dist < this.pathThickness + 50) {
 					System.out.println("cannot place on the enemy path (NODE)");
 					return false;
 				}
 			}
 			double dist = Math.sqrt(Math.pow(e - c, 2) + Math.pow(f - d, 2));
-			if(dist < this.pathThickness + 50) {
+			if (dist < this.pathThickness + 50) {
 				System.out.println("cannot place on the enemy path (NODE)");
 				return false;
 			}
 			if (((Math.max(a, c)) > e) && ((Math.max(b, d)) > f) && (Math.min(a, c)) < e && Math.min(b, d) < f) {
 				double h = (Math.abs((a * d) - (b * c) + (c * f) - (d * e) + (b * e) - (a * f)))
-				        / Math.sqrt(Math.pow(c - a, 2) + Math.pow(d - b, 2));
+						/ Math.sqrt(Math.pow(c - a, 2) + Math.pow(d - b, 2));
 
 				if (h <= this.pathThickness + 50) {
 					System.out.println("cannot place on the enemy path");
@@ -254,16 +254,17 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 	private void screenUpdate() {
 		if (this.screenListener.checkUpdate()) {
 			Position mousePosition = new Position(this.screenListener.getClickLocation().getX(),
-			        this.screenListener.getClickLocation().getY());
+					this.screenListener.getClickLocation().getY());
 			mousePosition.positionConverter(this.gameSpecs.getGameUnits(),
-			        new Dimension(this.gameScene.getGameView().getGamePanel().getPreferredSize().getWidth(), this.gameScene.getGameView().getGamePanel().getPreferredSize().getHeight()));
+					new Dimension(this.gameScene.getGameView().getGamePanel().getPreferredSize().getWidth(),
+							this.gameScene.getGameView().getGamePanel().getPreferredSize().getHeight()));
 			System.out.println(mousePosition.toString());
 			if (checkTurretPosition(mousePosition, currentTowerSelected)) {
 				this.towerController.placeTower(currentTowerSelected, mousePosition);
 				this.currentInventoryMode = 0;
 				this.screenListener.stopListening();
 				this.gameScene.getInventoryView().getTextLabel("money")
-				        .setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
+						.setText(this.moneySymbol + " " + this.playerStats.getPlayerMoney());
 				this.gameScene.getInventoryView().resetButtonBackground();
 			}
 			this.screenListener.resetUpdate();

@@ -72,7 +72,7 @@ public class SandboxModeController implements SceneActionObserver, SceneMouseObs
 						new Dimension(this.scene.getView().getGameBoard().getPreferredSize().getWidth(), this.scene.getView().getGameBoard().getPreferredSize().getHeight()));
 				this.linePositionList.add(lastSelectedPosition);
 				((SandboxModeScene) this.scene).getView().getGameBoard().setLine(linePositionList, pathColor,
-				        pathThickness);
+						pathThickness);
 				this.lineInitialized = true;
 			} else {
 				System.out.println("fisrst node selected");
