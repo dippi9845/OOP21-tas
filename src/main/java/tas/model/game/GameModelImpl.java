@@ -20,13 +20,13 @@ public class GameModelImpl implements GameModel {
 		this.playerMoney = playerStartingMoney;
 		this.playerPoints = 0;
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public int getPoints() {
 		return this.playerPoints;
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public void giveMoney2Player(final int money) {

@@ -54,6 +54,7 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower {
 
 	/**
 	 * Return the maximum enemy to be targeted by the tower
+	 * 
 	 * @return the maximum enemy to be targeted by the tower
 	 */
 	protected int getMaxEnemy() {

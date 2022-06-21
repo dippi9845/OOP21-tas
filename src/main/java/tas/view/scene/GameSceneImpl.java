@@ -24,11 +24,11 @@ public class GameSceneImpl implements GameScene {
 	/**
 	 * Constructor that set up the game scene.
 	 * 
-	 * @param root is the {@link JPanel} that will contain the scene
+	 * @param root    is the {@link JPanel} that will contain the scene
 	 * @param objects list of the tower names
-	 * @param <T> the class of objects
+	 * @param <T>     the class of objects
 	 */
-	public <T extends Enum <T>> GameSceneImpl(JPanel root, Class <T> objects) {
+	public <T extends Enum<T>> GameSceneImpl(JPanel root, Class<T> objects) {
 		this.rootPanel = root;
 		this.rootPanel.setLayout(new BorderLayout());
 
@@ -52,13 +52,13 @@ public class GameSceneImpl implements GameScene {
 	public GameView getGameView() {
 		return this.gameView;
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public GenericView getView() {
 		return this.gameView;
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public InventoryView getInventoryView() {

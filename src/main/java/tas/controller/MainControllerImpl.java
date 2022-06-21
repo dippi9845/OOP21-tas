@@ -96,7 +96,7 @@ public class MainControllerImpl implements MainController {
 	public SceneController createGame(final MainViewImpl view) {
 		GameSceneImpl scene = new GameSceneImpl(view.getPanel(), DefaultTowers.class);
 		SceneController controller = new GameController(scene, new GameModelImpl(this.playerHealth, this.playerMoney),
-		        LevelHandler.readLevel("level" + Integer.toString(this.menuModel.getCurrentLevel())), this.menuModel);
+				LevelHandler.readLevel("level" + Integer.toString(this.menuModel.getCurrentLevel())), this.menuModel);
 		scene.setObserver(controller);
 		return controller;
 	}

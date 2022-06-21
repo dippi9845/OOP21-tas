@@ -4,22 +4,25 @@ import main.java.tas.model.tower.Tower;
 import main.java.tas.utils.Position;
 
 /**
- * A class that model a thread that contains a tower, and it run concurrently to the main thread
+ * A class that model a thread that contains a tower, and it run concurrently to
+ * the main thread
  *
  */
-public class TowerThreadImpl implements TowerThread{
+public class TowerThreadImpl implements TowerThread {
 	private final Tower tower;
 	private boolean stopTh;
-	
+
 	/**
-	 * Constructor, with only one parameter, a tower that we want to run in our thread
+	 * Constructor, with only one parameter, a tower that we want to run in our
+	 * thread
+	 * 
 	 * @param t tower that we want to run in our thread
 	 */
 	protected TowerThreadImpl(final Tower t) {
 		this.tower = t;
 		this.stopTh = false;
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public void run() {

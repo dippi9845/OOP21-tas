@@ -5,7 +5,8 @@ import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 
 /**
- * This abstract class model a simple tower with some basic methods useful for different implementations
+ * This abstract class model a simple tower with some basic methods useful for
+ * different implementations
  * 
  */
 public abstract class AbstractBasicTower implements Tower {
@@ -41,6 +42,7 @@ public abstract class AbstractBasicTower implements Tower {
 
 	/**
 	 * Return all the enemy present in the map
+	 * 
 	 * @return a copy of the list containing all enemy in the map
 	 */
 	protected List<Enemy> getVisibleEnemyList() {
@@ -48,7 +50,8 @@ public abstract class AbstractBasicTower implements Tower {
 	}
 
 	/**
-	 * This function sleeps the current thread, depending from the defined field delay {@link: AbstractBasicTower#delay}
+	 * This function sleeps the current thread, depending from the defined field
+	 * delay {@link: AbstractBasicTower#delay}
 	 */
 	protected void sleep() {
 		try {
@@ -58,14 +61,15 @@ public abstract class AbstractBasicTower implements Tower {
 		}
 	}
 
-
 	/**
-	 * Deal damage to the target. It's up to the concrete class to choose the implementation of attack
+	 * Deal damage to the target. It's up to the concrete class to choose the
+	 * implementation of attack
 	 */
 	abstract protected void attack();
 
 	/**
-	 * Set's the target of this tower, It's up to the concrete class to choose the implementation of set target
+	 * Set's the target of this tower, It's up to the concrete class to choose the
+	 * implementation of set target
 	 * 
 	 * @param e Enemy to be focused
 	 */
