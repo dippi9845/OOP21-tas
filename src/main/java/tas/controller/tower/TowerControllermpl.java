@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import main.java.tas.model.Entity;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.TowerBuilder;
+import main.java.tas.model.tower.Towers;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.model.tower.factory.DefaultTowersUtils;
@@ -108,14 +109,14 @@ public class TowerControllermpl implements TowerController {
 	 * @return the diagonal described by the rectangle described by Dimension
 	 */
 	private double getDiagonal(final Dimension d) {
-		return Math.hypot(d.getHeight(), d.getWidth());
+		return Math.hypot(d.getHeight(), d.getWidth()) / 2;
 	}
 	
 	/** {@inheritDoc} */
 	@Override
-	public boolean thereIsTowerNear(final Position pos) {
+	public boolean thereIsTowerNear(final Position pos, final Dimension dim) {
 		return this.builtTowers.stream()
-				.anyMatch(t->Position.findDistance(t.getPos(), pos) <= getDiagonal(t.getBodyDimension()));
+				.anyMatch(x->Position.findDistance(x.getPos(), pos) <= this.getDiagonal(dim) + Towers.getFarthest(x));
 	}
 
 	/** {@inheritDoc} */
