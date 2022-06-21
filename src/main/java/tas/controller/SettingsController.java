@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import main.java.tas.controller.lister.ButtonListener;
 import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.model.menu.MenuModel;
-import main.java.tas.view.scene.GenericScene;
+import main.java.tas.view.scene.SettingsScene;
 
 /**
  * Class that creates a controller for the settings menu. Class that implements
@@ -14,7 +14,7 @@ import main.java.tas.view.scene.GenericScene;
 public class SettingsController implements SceneActionObserver, SceneController {
 
 	private ButtonListener listener = new ButtonListener();
-	private GenericScene scene;
+	private SettingsScene scene;
 	private MenuModel model;
 
 	/**
@@ -24,7 +24,7 @@ public class SettingsController implements SceneActionObserver, SceneController 
 	 * @param sceneIn  the settings menu scene
 	 * @param theModel the model
 	 */
-	public SettingsController(GenericScene sceneIn, MenuModel theModel) {
+	public SettingsController(SettingsScene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
 		scene.setObserver(this);
 		this.model = theModel;

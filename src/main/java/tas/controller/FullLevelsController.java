@@ -6,7 +6,7 @@ import main.java.tas.controller.lister.FullLevelsListener;
 import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.model.menu.MenuModel;
 import main.java.tas.view.ViewAction;
-import main.java.tas.view.scene.GenericScene;
+import main.java.tas.view.scene.FullLevelsScene;
 import main.java.tas.utils.LevelHandler;
 
 /**
@@ -16,7 +16,7 @@ import main.java.tas.utils.LevelHandler;
 public class FullLevelsController implements SceneActionObserver, SceneController {
 
 	private FullLevelsListener listener;
-	private GenericScene scene;
+	private FullLevelsScene scene;
 	private MenuModel model;
 
 	/**
@@ -26,7 +26,7 @@ public class FullLevelsController implements SceneActionObserver, SceneControlle
 	 * @param sceneIn  the full levels menu scene
 	 * @param theModel the model
 	 */
-	public FullLevelsController(GenericScene sceneIn, MenuModel theModel) {
+	public FullLevelsController(FullLevelsScene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
 		scene.setObserver(this);
 		this.model = theModel;

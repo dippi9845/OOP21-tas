@@ -4,7 +4,6 @@ import main.java.tas.view.MainViewImpl;
 import main.java.tas.view.scene.EndGameScene;
 import main.java.tas.view.scene.FullLevelsScene;
 import main.java.tas.view.scene.GameSceneImpl;
-import main.java.tas.view.scene.GenericScene;
 import main.java.tas.view.scene.LevelSelectScene;
 import main.java.tas.view.scene.MainMenuScene;
 import main.java.tas.view.scene.SandboxModeScene;
@@ -27,8 +26,8 @@ public class MainControllerImpl implements MainController {
 	private int playerHealth = 100;
 	private int playerMoney = 500;
 
-	private MainViewImpl mainView = new MainViewImpl();;
-	private MenuModel menuModel = new MenuModelImpl();;
+	private MainViewImpl mainView = new MainViewImpl();
+	private MenuModel menuModel = new MenuModelImpl();
 
 	/**
 	 * Constructor that creates the main controller of the game.
@@ -41,7 +40,7 @@ public class MainControllerImpl implements MainController {
 	/** {@inheritDoc} */
 	@Override
 	public SceneController createMenu(final MainViewImpl view) {
-		GenericScene scene = new MainMenuScene(view.getPanel());
+		MainMenuScene scene = new MainMenuScene(view.getPanel());
 		SceneController controller = new MainMenuController(scene, this.menuModel);
 		scene.setObserver(controller);
 		return controller;
@@ -50,7 +49,7 @@ public class MainControllerImpl implements MainController {
 	/** {@inheritDoc} */
 	@Override
 	public SceneController createLevelSelect(final MainViewImpl view) {
-		GenericScene scene = new LevelSelectScene(view.getPanel(), this.menuModel.getNLevels());
+		LevelSelectScene scene = new LevelSelectScene(view.getPanel(), this.menuModel.getNLevels());
 		SceneController controller = new LevelSelectController(scene, this.menuModel);
 		scene.setObserver(controller);
 		return controller;
@@ -59,7 +58,7 @@ public class MainControllerImpl implements MainController {
 	/** {@inheritDoc} */
 	@Override
 	public SceneController createSandBoxMode(final MainViewImpl view) {
-		GenericScene scene = new SandboxModeScene(view.getPanel());
+		SandboxModeScene scene = new SandboxModeScene(view.getPanel());
 		SceneController controller = new SandboxModeController(scene, this.menuModel);
 		scene.setObserver(controller);
 		return controller;
@@ -68,7 +67,7 @@ public class MainControllerImpl implements MainController {
 	/** {@inheritDoc} */
 	@Override
 	public SceneController createEndGame(final MainViewImpl view) {
-		GenericScene scene = new EndGameScene(view.getPanel());
+		EndGameScene scene = new EndGameScene(view.getPanel());
 		SceneController controller = new EndGameController(scene, this.menuModel);
 		scene.setObserver(controller);
 		return controller;
@@ -77,7 +76,7 @@ public class MainControllerImpl implements MainController {
 	/** {@inheritDoc} */
 	@Override
 	public SceneController createSettings(final MainViewImpl view) {
-		GenericScene scene = new SettingsScene(view.getPanel());
+		SettingsScene scene = new SettingsScene(view.getPanel());
 		SceneController controller = new SettingsController(scene, this.menuModel);
 		scene.setObserver(controller);
 		return controller;
@@ -86,7 +85,7 @@ public class MainControllerImpl implements MainController {
 	/** {@inheritDoc} */
 	@Override
 	public SceneController createFullLevels(final MainViewImpl view) {
-		GenericScene scene = new FullLevelsScene(view.getPanel());
+		FullLevelsScene scene = new FullLevelsScene(view.getPanel());
 		SceneController controller = new FullLevelsController(scene, this.menuModel);
 		scene.setObserver(controller);
 		return controller;
