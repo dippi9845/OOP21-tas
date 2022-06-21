@@ -16,6 +16,7 @@ import main.java.tas.utils.LevelHandler;
 import main.java.tas.utils.Position;
 import main.java.tas.view.scene.SandboxModeScene;
 import main.java.tas.view.scene.GenericScene;
+import main.java.tas.utils.Dimension;
 
 /**
  * Class that creates the sandbox mode menu controller. Class that implements
@@ -62,14 +63,14 @@ public class SandboxModeController implements SceneActionObserver, SceneMouseObs
 			if (lineInitialized) {
 				Position lastSelectedPosition = listener.getLastNodeSelected();
 				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
-				        ((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize());
+				        new Dimension(((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getWidth(), ((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getHeight()));
 				this.linePositionList.add(lastSelectedPosition);
 
 			} else if (firstNodeIsSelected) {
 				System.out.println("second node selected");
 				Position lastSelectedPosition = listener.getLastNodeSelected();
 				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
-				        ((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize());
+						new Dimension(((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getWidth(), ((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getHeight()));
 				this.linePositionList.add(lastSelectedPosition);
 				((SandboxModeScene) this.scene).getView().getGameBoard().setLine(linePositionList, pathColor,
 				        pathThickness);
@@ -78,7 +79,7 @@ public class SandboxModeController implements SceneActionObserver, SceneMouseObs
 				System.out.println("fisrst node selected");
 				Position lastSelectedPosition = listener.getLastNodeSelected();
 				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
-				        ((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize());
+						new Dimension(((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getWidth(), ((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getHeight()));
 				this.linePositionList.add(lastSelectedPosition);
 				this.firstNodeIsSelected = true;
 			}
