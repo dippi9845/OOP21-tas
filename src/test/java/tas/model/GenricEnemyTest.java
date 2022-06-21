@@ -2,7 +2,6 @@ package test.java.tas.model;
 
 import static org.junit.Assert.*;
 
-import java.awt.Dimension;
 import java.util.Arrays;
 
 import org.junit.Test;
@@ -10,6 +9,7 @@ import org.junit.Test;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.enemy.GenericEnemy;
 import main.java.tas.utils.Position;
+import main.java.tas.utils.Dimension;
 
 public class GenricEnemyTest {
 
