@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 
+import java.awt.Dimension;
+
 import org.json.JSONObject;
 
 import main.java.tas.model.enemy.Enemy;
@@ -43,6 +45,10 @@ public class DefaultTowersUtils {
 	 */
 	public static final String DAMAGEFIELD = "damage";
 	
+	public static final String DIMENSIONFIELD = "dimension";
+	
+	public static final Dimension DEFAULTDIMENSION = new Dimension(100, 100);
+	
 	/**
 	 * Name of the file containing all default towers
 	 */
@@ -72,6 +78,18 @@ public class DefaultTowersUtils {
 	 * {@link java.util.function.BiFunction}, that takes in input a a Position and a List of enemies, and returns a Tower
 	 */
 	public static final Map<DefaultTowers, BiFunction<Position, List<Enemy>, Tower>> BUILDMAP = initBuildMap();
+	
+	public static Dimension getDefaultTowersDimension(final DefaultTowers type) {
+		if (JSONOBJECTMAP.get(type).has(DIMENSIONFIELD)) {
+			
+			final JSONObject dimensionField = JSONOBJECTMAP.get(type).getJSONObject(DIMENSIONFIELD);
+			
+			return new Dimension(dimensionField.getInt("width"), dimensionField.getInt("heigh"));
+		}
+		else {
+			return DEFAULTDIMENSION;
+		}
+	}
 
 	/**
 	 * This function build the constant {@link java.util.Map} {@link DefaultTowersUtils#JSONNAMEMAP}

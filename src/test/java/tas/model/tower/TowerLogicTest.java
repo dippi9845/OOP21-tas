@@ -2,6 +2,7 @@ package test.java.tas.model.tower;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ class TowerLogicTest {
 		
 		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
 		
-		assertTrue(t.thereIsTowerNear(new Position(51, 51)));
+		assertTrue(t.thereIsTowerNear(new Position(51, 51), new Dimension(100, 100)));
 	}
 	
 	@Test
@@ -34,7 +35,7 @@ class TowerLogicTest {
 		
 		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
 		
-		assertFalse(t.thereIsTowerNear(new Position(51, 192)));
+		assertFalse(t.thereIsTowerNear(new Position(51, 192), new Dimension(100, 100)));
 	}
 	
 	@Test

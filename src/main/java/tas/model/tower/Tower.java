@@ -1,6 +1,7 @@
 package main.java.tas.model.tower;
 
 import main.java.tas.model.Entity;
+import main.java.tas.model.tower.factory.DefaultTowersUtils;
 import main.java.tas.utils.Position;
 import java.awt.Dimension;
 
@@ -12,7 +13,7 @@ public interface Tower extends Entity{
 	/** {@inheritDoc} */
 	@Override
 	default Dimension getBodyDimension() {
-		return new Dimension(100, 100);
+		return DefaultTowersUtils.DEFAULTDIMENSION;
 	}
 
 	/** {@inheritDoc} */

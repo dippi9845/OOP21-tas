@@ -7,6 +7,7 @@ import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.utils.Position;
+import java.awt.Dimension;
 
 /**
  * An interface that manage all the built towers
@@ -36,11 +37,12 @@ public interface TowerController {
 	public void closeAll();
 
 	/**
-	 * Checks if a position passed is too close to another tower builded
-	 * @param pos position to be checked
-	 * @return true if position in not closer to any tower, false otherwise
+	 * Checks if the position, and dimension passed is too close to another tower builded
+	 * @param pos Position of the tower to build
+	 * @param dim Dimension of the tower to build
+	 * @return true if is closer to minimum one tower, false otherwise
 	 */
-	public boolean thereIsTowerNear(final Position pos);
+	public boolean thereIsTowerNear(final Position pos, final Dimension dim);
 	
 	/**
 	 * draw all the towers
