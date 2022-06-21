@@ -46,7 +46,6 @@ public class SandboxModeListener extends GenericListener implements MouseListene
 	@Override
 	public void mousePressed(MouseEvent e) {
 		this.lastNodeSelected = new Position(e.getX(),e.getY());
-		System.out.println("click percieved");
 		setUpdate();
 	}
 

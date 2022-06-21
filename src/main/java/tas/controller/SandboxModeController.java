@@ -66,7 +66,6 @@ public class SandboxModeController implements SceneActionObserver, SceneMouseObs
 				this.linePositionList.add(lastSelectedPosition);
 
 			} else if (firstNodeIsSelected) {
-				System.out.println("second node selected");
 				Position lastSelectedPosition = listener.getLastNodeSelected();
 				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
 						new Dimension(this.scene.getView().getGameBoard().getPreferredSize().getWidth(), this.scene.getView().getGameBoard().getPreferredSize().getHeight()));
@@ -75,7 +74,6 @@ public class SandboxModeController implements SceneActionObserver, SceneMouseObs
 				        pathThickness);
 				this.lineInitialized = true;
 			} else {
-				System.out.println("fisrst node selected");
 				Position lastSelectedPosition = listener.getLastNodeSelected();
 				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
 						new Dimension(this.scene.getView().getGameBoard().getPreferredSize().getWidth(), this.scene.getView().getGameBoard().getPreferredSize().getHeight()));

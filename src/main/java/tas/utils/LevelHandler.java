@@ -23,8 +23,7 @@ public class LevelHandler {
 			return json.length();
 		}
 		catch (Exception e){
-			System.out.println("Error: No enemy json file detected!");
-			System.out.println(e);
+			e.printStackTrace();
 			return 0;
 		}
 		
@@ -96,7 +95,7 @@ public class LevelHandler {
 			
 		}
 		catch(Exception e){
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 }

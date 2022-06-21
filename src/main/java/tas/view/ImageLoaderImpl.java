@@ -42,7 +42,7 @@ public class ImageLoaderImpl implements ImageLoader {
 		try (Stream<Path> paths = Files.walk(Paths.get(RESOURCE_PATH))) {
 			paths.filter(Files::isRegularFile).forEach(filePath -> loadImage(filePath.toFile()));
 		} catch (IOException e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 
@@ -55,7 +55,7 @@ public class ImageLoaderImpl implements ImageLoader {
 		try {
 			this.imagesMap.put(file.getName().replaceFirst("[.][^.]+$", ""), ImageIO.read(file));
 		} catch (IOException e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 

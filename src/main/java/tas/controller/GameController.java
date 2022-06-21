@@ -203,13 +203,10 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 			turretPosition.getY() > this.gameSpecs.getGameUnits().getWidth() - towerDimension.getWidth() / 2 ||
 			turretPosition.getX() < towerDimension.getHeight() ||
 			turretPosition.getX() > this.gameSpecs.getGameUnits().getWidth() - towerDimension.getWidth() / 2) {
-			
-			System.out.println("not inside border");
 			return false;
 		}
 		
 		if (this.towerController.thereIsTowerNear(turretPosition, towerDimension)) {
-			System.out.println("Too close to another tower");
 			return false;
 		}
 		List<Position> linePoints = this.gameScene.getGameView().getGamePanel().getLine();
@@ -225,13 +222,11 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 			if (i == 1) {
 				double dist = Math.sqrt(Math.pow(e - a, 2) + Math.pow(f - b, 2));
 				if(dist < this.pathThickness + 50) {
-					System.out.println("cannot place on the enemy path (NODE)");
 					return false;
 				}
 			}
 			double dist = Math.sqrt(Math.pow(e - c, 2) + Math.pow(f - d, 2));
 			if(dist < this.pathThickness + 50) {
-				System.out.println("cannot place on the enemy path (NODE)");
 				return false;
 			}
 			if (((Math.max(a, c)) > e) && ((Math.max(b, d)) > f) && (Math.min(a, c)) < e && Math.min(b, d) < f) {
@@ -239,7 +234,6 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 				        / Math.sqrt(Math.pow(c - a, 2) + Math.pow(d - b, 2));
 
 				if (h <= this.pathThickness + 50) {
-					System.out.println("cannot place on the enemy path");
 					return false;
 				}
 			}
@@ -257,7 +251,6 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 			        this.screenListener.getClickLocation().getY());
 			mousePosition.positionConverter(this.gameSpecs.getGameUnits(),
 			        new Dimension(this.gameScene.getGameView().getGamePanel().getPreferredSize().getWidth(), this.gameScene.getGameView().getGamePanel().getPreferredSize().getHeight()));
-			System.out.println(mousePosition.toString());
 			if (checkTurretPosition(mousePosition, currentTowerSelected)) {
 				this.towerController.placeTower(currentTowerSelected, mousePosition);
 				this.currentInventoryMode = 0;
