@@ -1,7 +1,5 @@
 package main.java.tas.utils;
 
-import java.awt.Dimension;
-
 /**
  * Class that models a position.
  */
