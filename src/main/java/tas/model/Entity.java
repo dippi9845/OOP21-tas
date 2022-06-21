@@ -1,6 +1,6 @@
 package main.java.tas.model;
 
-import java.awt.Dimension;
+import main.java.tas.utils.Dimension;
 
 import main.java.tas.utils.Position;
 
