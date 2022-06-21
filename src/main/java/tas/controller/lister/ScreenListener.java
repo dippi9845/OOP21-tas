@@ -53,7 +53,6 @@ public class ScreenListener extends GenericListener implements MouseListener {
 	public void mousePressed(MouseEvent e) {
 		if (listening) {
 			this.clickLocation = e.getPoint();
-			System.out.println(clickLocation.toString());
 			setUpdate();
 		}
 	}

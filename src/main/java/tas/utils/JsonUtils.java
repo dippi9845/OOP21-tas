@@ -22,8 +22,7 @@ public final class JsonUtils {
 		try {
 			content = Files.readString(Paths.get(jsonPath));
 		} catch (IOException e) {
-			System.out.println("Error: No enemy json file detected!");
-			System.out.println(e);
+			e.printStackTrace();
 		}
 		return new JSONObject(content);
 	}
