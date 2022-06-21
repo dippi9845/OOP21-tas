@@ -62,16 +62,17 @@ public class Position {
 	public static double findDistance(final Position pos1, final Position pos2) {
 		return Math.hypot(pos1.getX() - pos2.getX(), pos1.getY() - pos2.getY());
 	}
-	
+
 	/**
-	 * Converts the values of x and y into the values depending on the window dimensions.
+	 * Converts the values of x and y into the values depending on the window
+	 * dimensions.
 	 * 
-	 * @param dim the current dimensions of the game board
+	 * @param dim          the current dimensions of the game board
 	 * @param componentDim the current dimensions of the window
 	 */
 	public void positionConverter(Dimension dim, Dimension componentDim) {
-		double newX = x*dim.getWidth()/componentDim.getWidth();
-		double newY = y*dim.getHeight()/componentDim.getHeight();
+		double newX = x * dim.getWidth() / componentDim.getWidth();
+		double newY = y * dim.getHeight() / componentDim.getHeight();
 		this.x = newX;
 		this.y = newY;
 	}

@@ -62,24 +62,27 @@ public class SandboxModeController implements SceneActionObserver, SceneMouseObs
 
 			if (lineInitialized) {
 				Position lastSelectedPosition = listener.getLastNodeSelected();
-				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
-				        new Dimension(((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getWidth(), ((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getHeight()));
+				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(), new Dimension(
+						((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getWidth(),
+						((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getHeight()));
 				this.linePositionList.add(lastSelectedPosition);
 
 			} else if (firstNodeIsSelected) {
 				System.out.println("second node selected");
 				Position lastSelectedPosition = listener.getLastNodeSelected();
-				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
-						new Dimension(((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getWidth(), ((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getHeight()));
+				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(), new Dimension(
+						((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getWidth(),
+						((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getHeight()));
 				this.linePositionList.add(lastSelectedPosition);
 				((SandboxModeScene) this.scene).getView().getGameBoard().setLine(linePositionList, pathColor,
-				        pathThickness);
+						pathThickness);
 				this.lineInitialized = true;
 			} else {
 				System.out.println("fisrst node selected");
 				Position lastSelectedPosition = listener.getLastNodeSelected();
-				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
-						new Dimension(((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getWidth(), ((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getHeight()));
+				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(), new Dimension(
+						((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getWidth(),
+						((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize().getHeight()));
 				this.linePositionList.add(lastSelectedPosition);
 				this.firstNodeIsSelected = true;
 			}

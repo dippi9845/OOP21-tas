@@ -11,7 +11,7 @@ import main.java.tas.model.Entity;
 /**
  * Class that implements a {@link ViewComponent}, {@link ViewMouse}.
  */
-public class GameView implements ViewMouse,ViewComponent {
+public class GameView implements ViewMouse, ViewComponent {
 
 	private final JPanel rootCanvas = new JPanel(new GridBagLayout());
 	private final SquarePanel gameBoard = new SquarePanel();
@@ -19,7 +19,7 @@ public class GameView implements ViewMouse,ViewComponent {
 	/**
 	 * Constructor that set up the component.
 	 */
-	public  GameView() {
+	public GameView() {
 		this.rootCanvas.add(this.gameBoard);
 		this.gameBoard.setLayout(null);
 

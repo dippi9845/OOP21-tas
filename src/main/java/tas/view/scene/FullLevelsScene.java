@@ -9,25 +9,26 @@ import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.view.FullLevelsView;
 
 /**
- * Class that builds the levels full menu scene.
- * Class that implements {@link GenericScene}.
+ * Class that builds the levels full menu scene. Class that implements
+ * {@link GenericScene}.
  */
 public class FullLevelsScene implements GenericScene {
-	
+
 	private JPanel rootPanel;
 	private FullLevelsView View;
-	
+
 	/**
-     * Constructor that set up the settings scene.
-     * @param rootPanelIn is the {@link JPanel} that will contain the scene
-     */
+	 * Constructor that set up the settings scene.
+	 * 
+	 * @param rootPanelIn is the {@link JPanel} that will contain the scene
+	 */
 	public FullLevelsScene(JPanel rootPanelIn) {
 		this.rootPanel = rootPanelIn;
 		this.rootPanel.setLayout(new BorderLayout());
-        this.View = new FullLevelsView();
-        this.rootPanel.add(this.View.getPanel(), BorderLayout.CENTER);
+		this.View = new FullLevelsView();
+		this.rootPanel.add(this.View.getPanel(), BorderLayout.CENTER);
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public void setObserver(SceneController listener) {

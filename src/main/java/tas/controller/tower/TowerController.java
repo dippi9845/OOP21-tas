@@ -37,32 +37,37 @@ public interface TowerController {
 	public void closeAll();
 
 	/**
-	 * Checks if the position, and dimension passed is too close to another tower builded
+	 * Checks if the position, and dimension passed is too close to another tower
+	 * builded
+	 * 
 	 * @param pos Position of the tower to build
 	 * @param dim Dimension of the tower to build
 	 * @return true if is closer to minimum one tower, false otherwise
 	 */
 	public boolean thereIsTowerNear(final Position pos, final Dimension dim);
-	
+
 	/**
 	 * draw all the towers
 	 * 
 	 * @param draw consumer of Entity that draw every tower built
 	 */
 	public void drawTowers(final Consumer<Entity> draw);
-	
+
 	/**
-	 * Return a {@link java.util.List} containing all built towers,
-	 * by the method {@link TowerController#placeTower(DefaultTowers, Position)}
-	 * or the method {@link TowerController#placeTower(TowerBuilder)}
+	 * Return a {@link java.util.List} containing all built towers, by the method
+	 * {@link TowerController#placeTower(DefaultTowers, Position)} or the method
+	 * {@link TowerController#placeTower(TowerBuilder)}
+	 * 
 	 * @return a {@link java.util.List} containing all built towers
 	 */
 	public List<Tower> getBuildTowers();
-	
+
 	/**
-	 * Return a {@link java.util.List} containing all thread, created when was called,
-	 * the method {@link TowerController#placeTower(DefaultTowers, Position)}
-	 * or the method {@link TowerController#placeTower(TowerBuilder)}
+	 * Return a {@link java.util.List} containing all thread, created when was
+	 * called, the method
+	 * {@link TowerController#placeTower(DefaultTowers, Position)} or the method
+	 * {@link TowerController#placeTower(TowerBuilder)}
+	 * 
 	 * @return a {@link java.util.List} containing all thread created
 	 */
 	public List<Thread> getBuildThread();

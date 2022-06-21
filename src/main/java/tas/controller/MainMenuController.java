@@ -27,7 +27,7 @@ public class MainMenuController implements SceneActionObserver, SceneController 
 	public MainMenuController(GenericScene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
 		// ((MainMenuSceneImpl) scene).setObserver(this);
-		this.listener = new MainMenuListener(((ViewAction)scene.getView()));
+		this.listener = new MainMenuListener(((ViewAction) scene.getView()));
 		this.model = theModel;
 	}
 

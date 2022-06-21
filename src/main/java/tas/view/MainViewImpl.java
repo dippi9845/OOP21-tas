@@ -75,7 +75,7 @@ public class MainViewImpl implements MainView {
 		this.frame.dispose();
 
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public void clearView() {
