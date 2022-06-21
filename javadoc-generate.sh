@@ -1,5 +1,5 @@
 #!/bin/bash
-./lib-unpacker.sh
+./lib-upacker.sh
 javadoc -cp bin/ -d "./doc/" -sourcepath "./src/" -subpackages main.java.tas
 echo -n "Do you want to generate the jar with javadoc ? [N/y] "
 read choose

@@ -105,21 +105,11 @@ public class TowerControllermpl implements TowerController {
 		this.builtTowers.forEach(draw::accept);
 	}
 
-	/**
-	 * Returns the diagonal of the rectangle described by Dimension
-	 * 
-	 * @param d the dimension of the rectangle
-	 * @return the diagonal described by the rectangle described by Dimension
-	 */
-	private double getDiagonal(final Dimension d) {
-		return Math.hypot(d.getHeight(), d.getWidth()) / 2;
-	}
-
 	/** {@inheritDoc} */
 	@Override
 	public boolean thereIsTowerNear(final Position pos, final Dimension dim) {
 		return this.builtTowers.stream()
-				.anyMatch(x -> Position.findDistance(x.getPos(), pos) <= this.getDiagonal(dim) + Towers.getFarthest(x));
+				.anyMatch(x -> Position.findDistance(x.getPos(), pos) <= dim.getDiagonal() + Towers.getFarthest(x));
 	}
 
 	/** {@inheritDoc} */

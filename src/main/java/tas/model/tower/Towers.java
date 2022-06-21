@@ -112,7 +112,7 @@ public class Towers {
 	 * @return the farthest point of the rectangle described by the Tower
 	 */
 	static public double getFarthest(final Tower t) {
-		return Math.hypot(t.getBodyDimension().getHeight(), t.getBodyDimension().getWidth()) / 2;
+		return t.getBodyDimension().getDiagonal();
 	}
 
 	/**

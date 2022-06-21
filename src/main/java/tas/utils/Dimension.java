@@ -43,5 +43,15 @@ public class Dimension {
 	public double getHeight() {
 		return this.height;
 	}
+	
+	/**
+	 * Returns the diagonal of the rectangle described by Dimension
+	 * 
+	 * @param d the dimension of the rectangle
+	 * @return the diagonal described by the rectangle described by Dimension
+	 */
+	public double getDiagonal() {
+		return Math.hypot(this.width, this.height) / 2;
+	}
 
 }
