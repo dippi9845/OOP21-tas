@@ -10,7 +10,8 @@ public class Dimension {
 
 	/**
 	 * Constructor that set up a dimension by double values.
-	 * @param width of the dimension.
+	 * 
+	 * @param width  of the dimension.
 	 * @param height of the dimension.
 	 */
 	public Dimension(double width, double height) {
@@ -20,7 +21,8 @@ public class Dimension {
 
 	/**
 	 * Constructor that set up a dimension by integer values.
-	 * @param width of the dimension.
+	 * 
+	 * @param width  of the dimension.
 	 * @param height of the dimension.
 	 */
 	public Dimension(int width, int height) {
