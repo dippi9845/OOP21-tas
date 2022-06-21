@@ -1,6 +1,6 @@
 package main.java.tas.view;
 
-import java.awt.Dimension;
+import main.java.tas.utils.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 

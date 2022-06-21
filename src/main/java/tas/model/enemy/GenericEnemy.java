@@ -1,6 +1,6 @@
 package main.java.tas.model.enemy;
 
-import java.awt.Dimension;
+import main.java.tas.utils.Dimension;
 import java.util.List;
 
 import main.java.tas.utils.GameSpecs;
