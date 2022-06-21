@@ -6,11 +6,12 @@ import java.awt.Dimension;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.UnaryOperator;
 
 import org.junit.jupiter.api.Test;
 
-import main.java.tas.controller.tower.TowerLogic;
-import main.java.tas.controller.tower.TowerLogicImpl;
+import main.java.tas.controller.tower.TowerController;
+import main.java.tas.controller.tower.TowerControllermpl;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.TowerBuilder;
@@ -37,7 +38,7 @@ class AttackTest {
 	}
 
 	@Test
-	void BasicTower() throws InterruptedException {
+	void BasicTower() {
 		List<Enemy> enemies = new LinkedList<>();
 		enemies.add(new FakeEnemy(new Position(50, 50), 100));
 
@@ -49,7 +50,7 @@ class AttackTest {
 	}
 
 	@Test
-	void BasicTowerWithMovement() throws InterruptedException {
+	void BasicTowerWithMovement() {
 		List<Enemy> enemies = new LinkedList<>();
 		FakeEnemy e = new FakeEnemy(new Position(50, 50), 100);
 		enemies.add(e);
@@ -66,28 +67,32 @@ class AttackTest {
 	}
 
 	@Test
-	void BasicMultipleTower() throws InterruptedException {
+	void BasicMultipleTower() {
 		List<Enemy> enemies = new LinkedList<>();
 		enemies.add(new FakeEnemy(new Position(50, 50), 100));
 		enemies.add(new FakeEnemy(new Position(51, 50), 100));
 
-		Tower t = new TowerBuilder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).attackType(AttackType.MULTIPLE)
-				.maximumTarget(2).build();
+		Tower t = new TowerBuilder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies)
+				.attackType(AttackType.MULTIPLE)
+				.maximumTarget(2)
+				.build();
 		t.compute();
 
 		assertTrue(enemies.get(0).getHealth() < 51 && enemies.get(1).getHealth() < 51);
 	}
 
 	@Test
-	void BasicMultipleTowerWithMovement() throws InterruptedException {
+	void BasicMultipleTowerWithMovement() {
 		List<Enemy> enemies = new LinkedList<>();
 		FakeEnemy e = new FakeEnemy(new Position(50, 50), 100);
 		FakeEnemy e1 = new FakeEnemy(new Position(51, 50), 100);
 		enemies.add(e);
 		enemies.add(e1);
 
-		Tower t = new TowerBuilder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).attackType(AttackType.MULTIPLE)
-				.maximumTarget(2).build();
+		Tower t = new TowerBuilder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies)
+				.attackType(AttackType.MULTIPLE)
+				.maximumTarget(2)
+				.build();
 		t.compute();
 
 		e.setPosition(new Position(150, 150));
@@ -98,7 +103,7 @@ class AttackTest {
 	}
 	
 	@Test
-	void BasicMultipleTowerRemoveDeath() throws InterruptedException {
+	void BasicMultipleTowerRemoveDeath() {
 		List<Enemy> enemies = new LinkedList<>();
 		FakeEnemy e = new FakeEnemy(new Position(50, 50), 100);
 		FakeEnemy e1 = new FakeEnemy(new Position(51, 50), 100);
@@ -110,8 +115,10 @@ class AttackTest {
 		enemies.add(e2);
 		enemies.add(e3);
 
-		Tower t = new TowerBuilder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).attackType(AttackType.MULTIPLE)
-				.maximumTarget(2).build();
+		Tower t = new TowerBuilder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies)
+				.attackType(AttackType.MULTIPLE)
+				.maximumTarget(2)
+				.build();
 		t.compute();
 		t.compute();
 		
@@ -125,7 +132,7 @@ class AttackTest {
 	}
 
 	@Test
-	void BasicMultipleTowerMaximumTargetTest() throws InterruptedException {
+	void BasicMultipleTowerMaximumTargetTest() {
 		List<Enemy> enemies = new LinkedList<>();
 		FakeEnemy e = new FakeEnemy(new Position(50, 50), 100);
 		FakeEnemy e1 = new FakeEnemy(new Position(51, 50), 100);
@@ -135,8 +142,10 @@ class AttackTest {
 		enemies.add(e1);
 		enemies.add(e2);
 
-		Tower t = new TowerBuilder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).attackType(AttackType.MULTIPLE)
-				.maximumTarget(2).build();
+		Tower t = new TowerBuilder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies)
+				.attackType(AttackType.MULTIPLE)
+				.maximumTarget(2)
+				.build();
 		t.compute();
 
 		e.setPosition(new Position(150, 150));
@@ -147,15 +156,18 @@ class AttackTest {
 	}
 
 	@Test
-	void AreaTower() throws InterruptedException {
+	void AreaTower() {
 		List<Enemy> enemies = new LinkedList<>();
 		FakeEnemy e = new FakeEnemy(new Position(50, 50), 100);
 		FakeEnemy e1 = new FakeEnemy(new Position(51, 50), 100);
 		enemies.add(e);
 		enemies.add(e1);
 
-		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies).attackType(AttackType.AREA)
-				.damageRange(7).maximumTarget(4).findFirst(() -> {
+		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies)
+				.attackType(AttackType.AREA)
+				.damageRange(7)
+				.maximumTarget(4)
+				.findFirst(() -> {
 					return Towers.findFirstEnemyInRange(new Position(51, 51), 9, enemies);
 				}).build();
 		t.compute();
@@ -164,15 +176,18 @@ class AttackTest {
 	}
 
 	@Test
-	void AreaTowerWithMovement() throws InterruptedException {
+	void AreaTowerWithMovement() {
 		List<Enemy> enemies = new LinkedList<>();
 		FakeEnemy e = new FakeEnemy(new Position(50, 50), 200);
 		FakeEnemy e1 = new FakeEnemy(new Position(51, 50), 200);
 		enemies.add(e);
 		enemies.add(e1);
 
-		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies).attackType(AttackType.AREA)
-				.damageRange(7).maximumTarget(4).findFirst(() -> {
+		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies)
+				.attackType(AttackType.AREA)
+				.damageRange(7)
+				.maximumTarget(4)
+				.findFirst(() -> {
 					return Towers.findFirstEnemyInRange(new Position(51, 51), 9, enemies);
 				}).build();
 		t.compute();
@@ -185,7 +200,7 @@ class AttackTest {
 	}
 
 	@Test
-	void AreaTowerWithMovement2() throws InterruptedException {
+	void AreaTowerWithMovement2() {
 		List<Enemy> enemies = new LinkedList<>();
 		FakeEnemy e = new FakeEnemy(new Position(50, 50), 200);
 		FakeEnemy e1 = new FakeEnemy(new Position(51, 50), 200);
@@ -195,8 +210,11 @@ class AttackTest {
 		enemies.add(e1);
 		enemies.add(e2);
 
-		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies).attackType(AttackType.AREA)
-				.damageRange(7).maximumTarget(4).findFirst(() -> {
+		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies)
+				.attackType(AttackType.AREA)
+				.damageRange(7)
+				.maximumTarget(4)
+				.findFirst(() -> {
 					return Towers.findFirstEnemyInRange(new Position(51, 51), 9, enemies);
 				}).build();
 
@@ -211,15 +229,18 @@ class AttackTest {
 	}
 
 	@Test
-	void AreaTowerOverTheRange() throws InterruptedException {
+	void AreaTowerOverTheRange() {
 		List<Enemy> enemies = new LinkedList<>();
 		FakeEnemy e = new FakeEnemy(new Position(60, 51), 100);
 		FakeEnemy e1 = new FakeEnemy(new Position(62, 53), 100);
 		enemies.add(e);
 		enemies.add(e1);
 
-		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies).attackType(AttackType.AREA)
-				.damageRange(7).maximumTarget(4).findFirst(() -> {
+		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies)
+				.attackType(AttackType.AREA)
+				.damageRange(7)
+				.maximumTarget(4)
+				.findFirst(() -> {
 					return Towers.findFirstEnemyInRange(new Position(51, 51), 9, enemies);
 				}).build();
 		t.compute();
@@ -233,8 +254,7 @@ class AttackTest {
 		FakeEnemy e = new FakeEnemy(new Position(51, 51), 100);
 		enemies.add(e);
 
-		TowerLogic manager = new TowerLogicImpl(enemies, x -> {
-		}, x -> true);
+		TowerController manager = new TowerControllermpl(enemies, x -> {}, x -> true);
 
 		manager.placeTower(DefaultTowers.BASICCANNON, new Position(52, 52));
 		manager.placeTower(DefaultTowers.BASICCANNON, new Position(53, 53));
@@ -247,7 +267,7 @@ class AttackTest {
 	}
 	
 	@Test
-	void CannonUnmodifiable() throws InterruptedException {
+	void CannonUnmodifiable() {
 		List<Enemy> enemies = new LinkedList<>();
 		enemies.add(new FakeEnemy(new Position(50, 50), 100));
 		enemies.add(getGenericEnemy(new Position(51, 51), 100));
@@ -262,5 +282,94 @@ class AttackTest {
 		t.compute();
 
 		assertTrue(enemies.get(0).getHealth() < 51);
+	}
+	
+	@Test
+	void UpgradeTest() {
+		List<Enemy> enemies = new LinkedList<>();
+		
+		UnaryOperator<Integer> up = x->x+10;
+		
+		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies)
+					  .setUpgradable(true)
+					  .maxLevel(2)
+					  .upgradeCost(up)
+					  .upgradeDamage(up)
+					  .startUpgradeCost(1)
+					  .build();
+		
+		int startDamage = t.getDamage();
+		t.compute();
+		
+		assertTrue(t.getDamage() > startDamage);
+	}
+	
+	@Test
+	void UpgradeAttack() {
+		List<Enemy> enemies = new LinkedList<>();
+		
+		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies)
+				  .setUpgradable(true)
+				  .maxLevel(3)
+				  .upgradeCost(x->1)
+				  .upgradeDamage(x->50)
+				  .startUpgradeCost(1)
+				  .build();
+		
+		if (t.getDamage() != 100) {
+			fail("Damage not valid expected 100, but " + t.getDamage() + " was");
+		}
+		
+		t.compute();
+		
+		if (t.getDamage() != 150) {
+			fail("Damage not valid expected 150, but " + t.getDamage() + " was");
+		}
+		
+		t.compute();
+		t.compute();
+		
+		if (t.getDamage() != 200) {
+			fail("Damage not valid expected 200, but " + t.getDamage() + " was");
+		}
+	}
+	
+	@Test
+	void LongUpgradeTest() {
+		List<Enemy> enemies = new LinkedList<>();
+		int cost = 100;
+		
+		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies)
+					  .setUpgradable(true)
+					  .maxLevel(4)
+					  .upgradeCost(x->x+10)
+					  .upgradeDamage(x->50)
+					  .startUpgradeCost(cost)
+					  .build();
+		
+		for (int i = 0; i < cost; i++) {
+			t.compute();
+		}
+		
+		if(t.getDamage() != 150) {
+			fail("Tower damage expected to be 150, but was less or equal ( " + t.getDamage() + " )");
+		}
+		
+		for (int i = 0; i < cost + 10; i++) {
+			t.compute();
+		}
+		
+		if(t.getDamage() != 200) {
+			fail("Tower damage expected to be 200, but was less or equal ( " + t.getDamage() + " )");
+		}
+		
+		for (int i = 0; i < cost + 20; i++) {
+			t.compute();
+		}
+		
+		if(t.getDamage() != 250) {
+			fail("Tower damage expected to be 250, but was less or equal ( " + t.getDamage() + " )");
+		}
+		
 	}
 }

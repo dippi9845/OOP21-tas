@@ -6,7 +6,7 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 import org.json.JSONObject;
 import main.java.tas.model.enemy.Enemy;
-import main.java.tas.model.tower.factory.DefaultTowersInfo;
+import main.java.tas.model.tower.factory.DefaultTowersUtils;
 import main.java.tas.utils.Position;
 
 /**
@@ -21,7 +21,7 @@ public class TowerBuilder {
 	private final int damage;
 	private final int radius;
 	private final int delay;
-	private final String imageName;
+	private final String towerName;
 	private int cost;
 	private boolean upgradable;
 	private Optional<List<Enemy>> visibleEnemy;
@@ -37,7 +37,7 @@ public class TowerBuilder {
 	private Optional<Integer> maxLevel;
 	
 	/**
-	 * The constructor with a Position {@link Position}, and all the basic fields, that without one of them the tower
+	 * The constructor with a {@link Position}, and all the basic fields, that without one of them the tower
 	 * can't be instanced (except for enemy list, that must be added with the
 	 * specific method, before the build call {@link TowerBuilder#build()})
 	 * 
@@ -45,16 +45,16 @@ public class TowerBuilder {
 	 * @param damage    Damage of the Tower
 	 * @param radius    Radius of the Tower
 	 * @param delay     Delay of the Tower
-	 * @param imageName Name of the image of the tower
+	 * @param towerName Name of the tower
 	 * @param enemyList List of all enemy in the map
 	 */
-	public TowerBuilder(final Position pos, final int damage, final int radius, final int delay, final String imageName,
+	public TowerBuilder(final Position pos, final int damage, final int radius, final int delay, final String towerName,
 			final List<Enemy> enemyList) {
 		this.pos = pos;
 		this.damage = damage;
 		this.radius = radius;
 		this.delay = delay;
-		this.imageName = imageName;
+		this.towerName = towerName;
 		this.visibleEnemy = Optional.ofNullable(enemyList);
 
 		this.attackType = AttackType.BASIC;
@@ -70,41 +70,41 @@ public class TowerBuilder {
 	}
 	
 	/**
-	 * The constructor with Position {@link Position}, and all the basic fields, without the list of all visible enemy, that must be set,
+	 * The constructor with {@link Position}, and all the basic fields, without the list of all visible enemy, that must be set,
 	 * with the specific method {@link TowerBuilder#setEnemylist(List)} before the call to build method {@link TowerBuilder#build()}
 	 * 
 	 * @param pos       Position of the Tower
 	 * @param damage    Damage of the Tower
 	 * @param radius    Radius of the Tower
 	 * @param delay     Delay of the Tower
-	 * @param imageName Name of the image of the tower
+	 * @param towerName Name of the tower
 	 */
-	public TowerBuilder(final Position pos, final int damage, final int radius, final int delay, final String imageName) {
-		this(pos, damage, radius, delay, imageName, null);
+	public TowerBuilder(final Position pos, final int damage, final int radius, final int delay, final String towerName) {
+		this(pos, damage, radius, delay, towerName, null);
 	}
 	
 	/**
-	 * The constructor takes in input a Position {@link Position} and a JSONObject {@link org.json.JSONObject},
+	 * The constructor takes in input a {@link Position} and a {@link org.json.JSONObject},
 	 * containing all basic fields for building a tower, (same fields of {@link TowerBuilder#TowerBuilder(Position, int, int, int, String)})
 	 * without the list of all visible enemy, that must be set,
-	 * with the specific method {@link TowerBuilder#setEnemylist(List)} before the call to build method {@link TowerBuilder#build()}
+	 * with the specific method {@link TowerBuilder#setEnemylist(List)} before the call to {@link TowerBuilder#build()} method
 	 * @param pos position of the tower
 	 * @param dataset a JSONObject with all the necessary fields
 	 */
 	public TowerBuilder(final Position pos, final JSONObject dataset) {
 		this(pos,
-			dataset.getInt(DefaultTowersInfo.DAMAGEFIELD),
-			dataset.getInt(DefaultTowersInfo.RADIUSFIELD),
-			dataset.getInt(DefaultTowersInfo.DELAYFIELD),
-			dataset.getString(DefaultTowersInfo.IMAGENAMEFIELD));
+			dataset.getInt(DefaultTowersUtils.DAMAGEFIELD),
+			dataset.getInt(DefaultTowersUtils.RADIUSFIELD),
+			dataset.getInt(DefaultTowersUtils.DELAYFIELD),
+			dataset.getString(DefaultTowersUtils.TOWERNAMEFIELD));
 		
-		if (dataset.has(DefaultTowersInfo.COSTFIELD)) {
-			this.cost = dataset.getInt(DefaultTowersInfo.COSTFIELD);
+		if (dataset.has(DefaultTowersUtils.COSTFIELD)) {
+			this.cost = dataset.getInt(DefaultTowersUtils.COSTFIELD);
 		}
 	}
 	
 	/**
-	 * The constructor with Position {@link Position} and a JSONObject {@link org.json.JSONObject},
+	 * The constructor with {@link Position} and a {@link org.json.JSONObject},
 	 * containing all basic fields for building a tower, (same fields of {@link TowerBuilder#TowerBuilder(Position, int, int, int, String)})
 	 * that without one of them the tower can't be instanced (except for enemy list, that must be added with the
 	 * specific method, before the build call {@link TowerBuilder#build()})
@@ -300,8 +300,8 @@ public class TowerBuilder {
 			throw new IllegalArgumentException("maxLevel can't be less equal to zero");
 		}
 
-		if (this.imageName.isBlank()) {
-			throw new IllegalArgumentException("imageName is blanck");
+		if (this.towerName.isBlank()) {
+			throw new IllegalArgumentException("tower name is blanck");
 		}
 
 		if (this.visibleEnemy.isEmpty()) {
@@ -318,7 +318,7 @@ public class TowerBuilder {
 						"attack range or maximum target or find first cannot be defined in a basic tower");
 			}
 
-			t = new BasicTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.imageName,
+			t = new BasicTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.towerName,
 					this.visibleEnemy.get());
 			break;
 
@@ -327,7 +327,7 @@ public class TowerBuilder {
 				throw new IllegalStateException(
 						"maximum target not defined or attack range or find first cannot be definde in a multiple tower");
 			}
-			t = new BasicMultipleTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.imageName,
+			t = new BasicMultipleTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.towerName,
 					this.visibleEnemy.get(), this.maximumTarget.get());
 			break;
 
@@ -335,7 +335,7 @@ public class TowerBuilder {
 			if (this.maximumTarget.isEmpty() || this.attackRange.isEmpty() || this.findFirst.isEmpty()) {
 				throw new IllegalStateException("maximum target or attack range or findfisrt is not defined");
 			}
-			t = new AbstractAreaTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.imageName,
+			t = new AbstractAreaTower(this.pos, this.damage, this.radius, this.delay, this.cost, this.towerName,
 					this.visibleEnemy.get(), this.maximumTarget.get(), this.attackRange.get()) {
 
 				@Override

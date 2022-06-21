@@ -13,10 +13,11 @@ import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.utils.JsonUtils;
 import main.java.tas.utils.Position;
+import main.java.tas.utils.Dimension;
 
-public class DefaultTowersInfo {
+public class DefaultTowersUtils {
 	
-	private DefaultTowersInfo() {}
+	private DefaultTowersUtils() {}
 	
 	/**
 	 * Filed name in json, that describes the cost
@@ -24,9 +25,9 @@ public class DefaultTowersInfo {
 	public static final String COSTFIELD = "cost";
 
 	/**
-	 * Filed name in json, that describes the image name
+	 * Filed name in json, that describes the tower name
 	 */
-	public static final String IMAGENAMEFIELD = "image name";
+	public static final String TOWERNAMEFIELD = "name";
 
 	/**
 	 * Filed name in json, that describes the delay
@@ -43,41 +44,58 @@ public class DefaultTowersInfo {
 	 */
 	public static final String DAMAGEFIELD = "damage";
 	
+	public static final String DIMENSIONFIELD = "dimension";
+	
+	public static final Dimension DEFAULTDIMENSION = new Dimension(100, 100);
+	
 	/**
 	 * Name of the file containing all default towers
 	 */
-	public static final String TOWERSJSONFILE = "res" + System.getProperty("file.separator") + "data"
+	public static final String FILEJSONTOWERS = "res" + System.getProperty("file.separator") + "data"
 	        + System.getProperty("file.separator") + "towers" + System.getProperty("file.separator") + "DefaultTowers.json";
 	
 	/**
-	 * JSONObject {@link org.json.JSONObject} containing the parsed content of {@link DefaultTowersInfo#TOWERSJSONFILE}
+	 * {@link org.json.JSONObject} containing the parsed content of {@link DefaultTowersUtils#FILEJSONTOWERS}
 	 */
-	public static final JSONObject JSONDATAFILE = JsonUtils.getJsonData(TOWERSJSONFILE);
+	public static final JSONObject JSONDATAFILE = JsonUtils.getJsonData(FILEJSONTOWERS);
 
 	/**
-	 * A Map {@link java.util.Map} that at every DefaultTowers value, {@link DefaultTowers},
-	 * associate the name inside the file {@link DefaultTowersInfo#TOWERSJSONFILE} 
+	 * A {@link java.util.Map} that at every {@link DefaultTowers} value,
+	 * associate the name inside the file {@link DefaultTowersUtils#FILEJSONTOWERS} 
 	 */
-	public static final Map<DefaultTowers, String> TOWERSJSONNAME = initMapName();
+	public static final Map<DefaultTowers, String> JSONNAMEMAP = initJsonNameMap();
 
 	/**
-	 * A Map {@link java.util.Map} that at every DefaultTowers value, {@link DefaultTowers},
-	 * associate an JSONObject {@link org.json.JSONObject} containing all field necessary
+	 * A {@link java.util.Map} that at every {@link DefaultTowers} value,
+	 * associate an {@link org.json.JSONObject} containing all field necessary
 	 */
-	public static final Map<DefaultTowers, JSONObject> TOWERSJSONOBJECT = initMapJsonObject();
+	public static final Map<DefaultTowers, JSONObject> JSONOBJECTMAP = initJsonObjectMap();
 
 	/**
-	 * A Map {@link java.util.Map} that at every DefaultTowers value, {@link DefaultTowers},
-	 * associate the function that build that specific tower, every function that build is a BiFunction 
+	 * A {@link java.util.Map} that at every {@link DefaultTowers} value,
+	 * associate the function that build that specific tower, every function that build is a 
 	 * {@link java.util.function.BiFunction}, that takes in input a a Position and a List of enemies, and returns a Tower
 	 */
 	public static final Map<DefaultTowers, BiFunction<Position, List<Enemy>, Tower>> BUILDMAP = initBuildMap();
+	
+	public static Dimension getDefaultTowersDimension(final DefaultTowers type) {
+		if (JSONOBJECTMAP.get(type).has(DIMENSIONFIELD)) {
+			
+			final JSONObject dimensionField = JSONOBJECTMAP.get(type).getJSONObject(DIMENSIONFIELD);
+			
+			return new Dimension(dimensionField.getInt("width"), dimensionField.getInt("heigh"));
+		}
+		else {
+			return DEFAULTDIMENSION;
+		}
+	}
 
 	/**
-	 * This function build the constant map {@link DefaultTowersInfo#TOWERSJSONNAME}
-	 * @return a Map {@link java.util.Map} that at every DefaultTowers value, {@link DefaultTowers}, associate the name inside the file {@link DefaultTowersInfo#TOWERSJSONFILE}
+	 * This function build the constant {@link java.util.Map} {@link DefaultTowersUtils#JSONNAMEMAP}
+	 * @return a {@link java.util.Map} that at every {@link DefaultTowers} value, 
+	 * associate the name inside the file {@link DefaultTowersUtils#FILEJSONTOWERS}
 	 */
-	private static Map<DefaultTowers, String> initMapName() {
+	private static Map<DefaultTowers, String> initJsonNameMap() {
         Map<DefaultTowers, String> map = new HashMap<>();
         
         Arrays.stream(DefaultTowers.values())
@@ -87,21 +105,26 @@ public class DefaultTowersInfo {
     }
     
 	/**
-	 * This function build the constant map {@link DefaultTowersInfo#TOWERSJSONOBJECT}
-	 * @return a Map {@link java.util.Map} that at every DefaultTowers value, {@link DefaultTowers}, associate an JSONObject {@link org.json.JSONObject} containing all field necessary
+	 * This function build the constant {@link java.util.Map} {@link DefaultTowersUtils#JSONOBJECTMAP}
+	 * @return a {@link java.util.Map} that at every {@link DefaultTowers} value,associate an 
+	 * {@link org.json.JSONObject} containing all field necessary
 	 */
-    private static Map<DefaultTowers, JSONObject> initMapJsonObject() {
+    private static Map<DefaultTowers, JSONObject> initJsonObjectMap() {
     	Map<DefaultTowers, JSONObject> map = new HashMap<>();
     	
     	Arrays.stream(DefaultTowers.values())
-    		.forEach(x->map.put(x, JSONDATAFILE.getJSONObject(TOWERSJSONNAME.get(x))));
+    		.forEach(x->map.put(x, JSONDATAFILE.getJSONObject(JSONNAMEMAP.get(x))));
     	
 		return Collections.unmodifiableMap(map);
 	}
 
     /**
-	 * This function build the constant map {@link DefaultTowersInfo#BUILDMAP}
-	 * @return A Map {@link java.util.Map} that at every DefaultTowers value, {@link DefaultTowers}, associate the function that build that specific tower, every function that build is a BiFunction {@link java.util.function.BiFunction}, that takes in input a a Position and a List of enemies, and returns a Tower
+	 * This function build the constant {@link java.util.Map} {@link DefaultTowersUtils#BUILDMAP}
+	 * @return A {@link java.util.Map} that at every {@link DefaultTowers} value,
+	 * associate the function that build that specific tower,
+	 * every function that build is a {@link java.util.function.BiFunction},
+	 * that takes in input a {@link main.java.tas.utils.Position} and a {@link java.util.List} of
+	 * {@link main.java.tas.model.enemy.Enemy} and returns a Tower
 	 */
 	private static Map<DefaultTowers, BiFunction<Position, List<Enemy>, Tower>> initBuildMap() {
 		 Map<DefaultTowers, BiFunction<Position, List<Enemy>, Tower>> map = new HashMap<>();

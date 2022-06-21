@@ -14,9 +14,8 @@ public abstract class AbstractBasicTower implements Tower {
 	private final int radius;
 	private final int delay;
 	private final int cost;
-	private final String imageName;
+	private final String towerName;
 	private final List<Enemy> visibleEnemyList;
-	private boolean stopTh;
 
 	/**
 	 * Constructor, protected
@@ -26,19 +25,18 @@ public abstract class AbstractBasicTower implements Tower {
 	 * @param radius    Tower radius, where it can attack enemies
 	 * @param delay     Tower delay
 	 * @param cost      Tower cost
-	 * @param imageName Tower image name
+	 * @param towerName Tower name
 	 * @param enemyList List of all enemy in the map
 	 */
 	protected AbstractBasicTower(final Position pos, final int damage, final int radius, final int delay,
-			final int cost, final String imageName, final List<Enemy> enemyList) {
+			final int cost, final String towerName, final List<Enemy> enemyList) {
 		this.damage = damage;
 		this.pos = pos;
 		this.radius = radius;
 		this.delay = delay;
 		this.cost = cost;
-		this.imageName = imageName;
+		this.towerName = towerName;
 		this.visibleEnemyList = enemyList;
-		this.stopTh = false;
 	}
 
 	/**
@@ -46,9 +44,7 @@ public abstract class AbstractBasicTower implements Tower {
 	 * @return a copy of the list containing all enemy in the map
 	 */
 	protected List<Enemy> getVisibleEnemyList() {
-		synchronized (this.visibleEnemyList) {
-			return List.copyOf(this.visibleEnemyList);
-		}
+		return List.copyOf(this.visibleEnemyList);
 	}
 
 	/**
@@ -81,17 +77,7 @@ public abstract class AbstractBasicTower implements Tower {
 	 * @param amount Amount of damage that increase
 	 */
 	protected void increaseDamage(final int amount) {
-		this.damage += damage;
-	}
-
-	/** {@inheritDoc} */
-	public boolean isStop() {
-		return this.stopTh;
-	}
-	
-	/** {@inheritDoc} */
-	public void stop() {
-		this.stopTh = true;
+		this.damage += amount;
 	}
 
 	/**
@@ -138,7 +124,7 @@ public abstract class AbstractBasicTower implements Tower {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getTowerImageName() {
-		return this.imageName;
+	public String getTowerName() {
+		return this.towerName;
 	}
 }

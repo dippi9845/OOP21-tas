@@ -8,9 +8,9 @@ import javax.swing.JPanel;
 import main.java.tas.controller.SceneController;
 import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.controller.observer.SceneMouseObserver;
+import main.java.tas.view.GameView;
 import main.java.tas.view.GenericView;
-import main.java.tas.view.view.GameView;
-import main.java.tas.view.view.InventoryView;
+import main.java.tas.view.InventoryView;
 
 /**
  * Class that implements a {@link GameScene}.

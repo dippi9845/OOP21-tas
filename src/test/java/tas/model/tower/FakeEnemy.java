@@ -15,8 +15,7 @@ class FakeEnemy implements Enemy {
 	private double health;
 
 	@SuppressWarnings("unused")
-	private FakeEnemy() {
-	};
+	private FakeEnemy() {};
 
 	protected FakeEnemy(final Position pos, final double health) {
 		this.pos = pos;
@@ -38,8 +37,8 @@ class FakeEnemy implements Enemy {
 	}
 
 	@Override
-	public String getImageName() {
-		return "Niente Immagine";
+	public String getEntityName() {
+		return "Niente Nome";
 	}
 
 	@Override

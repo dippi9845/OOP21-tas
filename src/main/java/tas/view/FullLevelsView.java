@@ -1,4 +1,4 @@
-package main.java.tas.view.view;
+package main.java.tas.view;
 
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -10,48 +10,56 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.java.tas.controller.observer.SceneActionObserver;
-import main.java.tas.view.ViewAction;
 
 
 /**
- * Class that builds the end game view.
+ * Class that builds the levels full menu view.
  */
-public class EndGameView implements ViewAction {
+public class FullLevelsView implements ViewAction {
 	
 	private JPanel rootPanel = new JPanel(new GridLayout(0, 1, 5, 10));
 	private JLabel label;
+	private JLabel label2;
 	private JButton backButton;
+	private JButton deleteButton;
 	private List <JButton> buttonList = new ArrayList <JButton>();
     
 	/**
 	 * Constructor that builds the settings menu view.
 	 */
-    public EndGameView(){
-    	label = new JLabel("Game over.");
+    public FullLevelsView(){
+    	label = new JLabel("You have reached the max number of levels allowed.");
     	label.setFont(new Font("Serif", Font.PLAIN, 30));
     	label.setHorizontalAlignment(JLabel.CENTER);
     	this.rootPanel.add(label);
-    	backButton = new JButton("BACK TO MAIN MENU");
+    	label2 = new JLabel("Select 'DELETE USER LEVELS' to delete all user levels.");
+    	label2.setFont(new Font("Serif", Font.PLAIN, 30));
+    	label2.setHorizontalAlignment(JLabel.CENTER);
+    	this.rootPanel.add(label2);
+    	deleteButton = new JButton("DELETE USER LEVELS");
+    	this.rootPanel.add(deleteButton);
+    	backButton = new JButton("BACK");
     	this.rootPanel.add(backButton);
+    	this.buttonList.add(deleteButton);
     	this.buttonList.add(backButton);
     }
     
     /** {@inheritDoc} */
-	@Override
+    @Override
 	public JPanel getPanel() {
         return this.rootPanel;
     }
-	
+    
 	/** {@inheritDoc} */
 	@Override
 	public List <JButton> getButtons(){
 		return this.buttonList;
 	}
 	
-	/** {@inheritDoc} */
-	@Override
+    /** {@inheritDoc} */
+    @Override
 	public void setActionObserver(SceneActionObserver observer) {
 		backButton.addActionListener(observer.getActionListener());
+		deleteButton.addActionListener(observer.getActionListener());
     }
-
 }

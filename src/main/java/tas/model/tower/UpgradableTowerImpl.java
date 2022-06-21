@@ -4,11 +4,11 @@ import java.util.function.UnaryOperator;
 import main.java.tas.utils.Position;
 
 /**
- * A class that implements the interface UpgradableTower {@link UpgradableTower}
- * It takes an AbstracBasicTower {@link AbstractBasicTower} and with delegation implements all the Tower
- * interface methods. The AbstractBasicTower taken will be upgradable in damage
+ * A class that implements the interface {@link UpgradableTower}
+ * It takes an {@link AbstractBasicTower} and with delegation implements all the Tower
+ * interface methods. The {@link AbstractBasicTower} taken will be upgradable in damage
  */
-public class UpgradableTowerImpl implements UpgradableTower {
+public class UpgradableTowerImpl implements UpgradableTower{
 
 	private final AbstractBasicTower tower;
 	private int computecount;
@@ -47,7 +47,9 @@ public class UpgradableTowerImpl implements UpgradableTower {
 	 */
 	private void upgradeDamage() {
 		this.tower.increaseDamage(this.increasedamage.apply(this.getLevel()));
-		this.upgradecountcost += this.increasecost.apply(this.getLevel());
+		System.out.print(this.upgradecountcost + " + " + this.increasecost.apply(this.upgradecountcost) + " = ");
+		this.upgradecountcost = this.increasecost.apply(this.upgradecountcost);
+		System.out.println(this.upgradecountcost);
 		this.level++;
 	}
 
@@ -121,8 +123,8 @@ public class UpgradableTowerImpl implements UpgradableTower {
 
 	/** {@inheritDoc} */
 	@Override
-	public String getTowerImageName() {
-		return this.tower.getImageName();
+	public String getTowerName() {
+		return this.tower.getTowerName();
 	}
 
 	/** {@inheritDoc} */
@@ -137,24 +139,8 @@ public class UpgradableTowerImpl implements UpgradableTower {
 		return "UpgradableTower [tower=" + tower + ", upgradecost=" + upgradecountcost + ", increasedamage=" + increasedamage
 				+ ", increasecost=" + increasecost + ", level=" + level + ", maxLevel=" + maxLevel + ", getDamage()="
 				+ getDamage() + ", getRadius()=" + getRadius() + ", getCost()=" + getCost() + ", getDelay()="
-				+ getDelay() + ", getPos()=" + getPos() + ", getTowerImageName()="
-				+ getTowerImageName() + ", getLevel()=" + getLevel() + "]";
+				+ getDelay() + ", getPos()=" + getPos() + ", getTowerName()="
+				+ getTowerName() + ", getLevel()=" + getLevel() + "]";
 	}
-
-	/** {@inheritDoc} */
-	@Override
-	public boolean isStop() {
-		return this.tower.isStop();
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public void stop() {
-		this.tower.stop();
-	}
-
-	
-
-	
 
 }

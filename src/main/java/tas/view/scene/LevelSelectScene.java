@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import main.java.tas.controller.SceneController;
 import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.view.GenericView;
-import main.java.tas.view.view.LevelSelectView;
+import main.java.tas.view.LevelSelectView;
 
 /**
  * Class that builds the level select menu scene. Class that implements

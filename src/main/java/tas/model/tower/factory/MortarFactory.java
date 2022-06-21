@@ -16,18 +16,18 @@ import main.java.tas.utils.Position;
 public interface MortarFactory {
 
 	/**
-	 * This Mortar has a growth of the damage and cost linear
+	 * This Mortar has a growth of the damage linear
 	 * 
 	 * @param pos       Position of the Mortar
 	 * @param enemyList List of all enemy in the map
 	 * @return Mortar tower upgradable
 	 */
 	static public Tower basicMortar(final Position pos, final List<Enemy> enemyList) {
-		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.BASICMORTAR), enemyList);
+		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.BASICMORTAR), enemyList);
 		return t.attackType(AttackType.AREA)
 				.damageRange(400)
 				.setUpgradable(true)
-				.upgradeCost(x -> 10)
+				.upgradeCost(x -> x+10)
 				.upgradeDamage(x -> 15)
 				.maxLevel(15)
 				.startUpgradeCost(1000)
@@ -41,18 +41,18 @@ public interface MortarFactory {
 	}
 
 	/**
-	 * This Mortar has a growth of the damage and cost quadratic
+	 * This Mortar has a growth of the damage quadratic
 	 * 
 	 * @param pos       Position of the Mortar
 	 * @param enemyList List of all enemy in the map
 	 * @return Mortar tower upgradable
 	 */
 	static public Tower superMortar(final Position pos, final List<Enemy> enemyList) {
-		final TowerBuilder t =  new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.SUPERMORTAR), enemyList);
+		final TowerBuilder t =  new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.SUPERMORTAR), enemyList);
 		return t.attackType(AttackType.AREA)
 				.damageRange(450)
 				.setUpgradable(true)
-				.upgradeCost(x -> x * x)
+				.upgradeCost(x -> x + 10)
 				.upgradeDamage(x -> x * x * 2)
 				.maxLevel(10)
 				.startUpgradeCost(1000)
@@ -66,20 +66,20 @@ public interface MortarFactory {
 	}
 
 	/**
-	 * This Mortar has a growth of the damage and cost exponential
+	 * This Mortar has a growth of the damage cubic
 	 * 
 	 * @param pos       Position of the Mortar
 	 * @param enemyList List of all enemy in the map
 	 * @return Mortar tower upgradable
 	 */
 	static public Tower godMortar(final Position pos, final List<Enemy> enemyList) {
-		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.GODMORTAR), enemyList);
+		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.GODMORTAR), enemyList);
 		return t.attackType(AttackType.AREA)
 				.damageRange(600)
 				.setUpgradable(true)
-				.upgradeCost(x -> (int) Math.pow(x, x) + 15)
-				.upgradeDamage(x -> (int) Math.pow(x, x))
-				.maxLevel(5)
+				.upgradeCost(x -> x*x/10)
+				.upgradeDamage(x -> x*x*x)
+				.maxLevel(20)
 				.startUpgradeCost(1000)
 				.maximumTarget(Integer.MAX_VALUE).findFirst(() -> {
 					return Towers.findFistEnemyBiPredicate(

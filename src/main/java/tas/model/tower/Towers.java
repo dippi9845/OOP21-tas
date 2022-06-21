@@ -102,6 +102,15 @@ public class Towers {
 	static public List<Enemy> findAll(final Predicate<Enemy> f, final List<Enemy> enemyList) {
 		return enemyList.stream().filter(f).collect(Collectors.toList());
 	}
+	
+	/**
+	 * Returns the farthest point of the rectangle described by the Tower, as well as the diagonal
+	 * @param t Tower to find the farthest point
+	 * @return the farthest point of the rectangle described by the Tower
+	 */
+	static public double getFarthest(final Tower t) {
+		return Math.hypot(t.getBodyDimension().getHeight(), t.getBodyDimension().getWidth()) / 2;
+	}
 
 	/**
 	 * Deal damage to an Enemy, in order to abstract from the Enemy implementation

@@ -17,13 +17,14 @@ import main.java.tas.controller.lister.InventoryListener;
 import main.java.tas.controller.lister.ScreenListener;
 import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.controller.observer.SceneMouseObserver;
-import main.java.tas.controller.tower.TowerLogic;
-import main.java.tas.controller.tower.TowerLogicImpl;
+import main.java.tas.controller.tower.TowerController;
+import main.java.tas.controller.tower.TowerControllermpl;
 import main.java.tas.model.tower.factory.DefaultTowers;
-import main.java.tas.model.tower.factory.DefaultTowersInfo;
+import main.java.tas.model.tower.factory.DefaultTowersUtils;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.game.GameModel;
 import main.java.tas.model.menu.MenuModel;
+import main.java.tas.utils.Dimension;
 import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.Position;
 import main.java.tas.utils.TimeCurve;
@@ -42,7 +43,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 	private final TimeCurve timer = new TimeCurveImpl((x) -> (int) (10 / (x + 1.5) + 1));
 	private final Color pathColor = new Color(255, 255, 255);
 	private final int pathThickness = 50;
-	private final TowerLogic towerLogic;
+	private final TowerController towerController;
 	private int currentInventoryMode = 0;
 	private DefaultTowers currentTowerSelected;
 	private ScreenListener screenListener = new ScreenListener();
@@ -70,13 +71,13 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 		this.gameScene = scene;
 		this.playerStats = gameModel;
 		for (DefaultTowers tower : DefaultTowers.values()) {
-			JSONObject tmp = DefaultTowersInfo.TOWERSJSONOBJECT.get(tower);
-			this.towerInfo.put(tower.toString(), tmp.getInt(DefaultTowersInfo.COSTFIELD));
+			JSONObject tmp = DefaultTowersUtils.JSONOBJECTMAP.get(tower);
+			this.towerInfo.put(tower.toString(), tmp.getInt(DefaultTowersUtils.COSTFIELD));
 		}
 
 		this.enemiesHandler = new EnemiesLogicImpl(pathNodes);
 		this.gameScene.getGameView().getGamePanel().setLine(pathNodes, pathColor, pathThickness);
-		this.towerLogic = new TowerLogicImpl(this.enemiesHandler.getEnemies(),
+		this.towerController = new TowerControllermpl(this.enemiesHandler.getEnemies(),
 		        this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
 
 		this.gameScene.getInventoryView().addTextLabel(this.healthSymbol + " " + this.playerStats.getHP(), "health");
@@ -194,19 +195,23 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 	 * @return true if the position is valid, false otherwise
 	 */
 
-	public boolean checkTurretPosition(Position turretPosition) {
-
-		if (turretPosition.getY() < 55 || turretPosition.getY() > 945 || turretPosition.getX() < 55
-		        || turretPosition.getX() > 945) {
+	public boolean checkTurretPosition(final Position turretPosition, final DefaultTowers selected) {
+		
+		final Dimension towerDimension = DefaultTowersUtils.getDefaultTowersDimension(selected);
+		
+		if (turretPosition.getY() < towerDimension.getWidth() / 2 || 
+			turretPosition.getY() > this.gameSpecs.getGameUnits().getWidth() - towerDimension.getWidth() / 2 ||
+			turretPosition.getX() < towerDimension.getHeight() ||
+			turretPosition.getX() > this.gameSpecs.getGameUnits().getWidth() - towerDimension.getWidth() / 2) {
+			
 			System.out.println("not inside border");
 			return false;
 		}
-
-		if (this.towerLogic.thereIsTowerNear(turretPosition)) {
-			System.out.println("Position too close to another tower");
+		
+		if (this.towerController.thereIsTowerNear(turretPosition, towerDimension)) {
+			System.out.println("Too close to another tower");
 			return false;
 		}
-
 		List<Position> linePoints = this.gameScene.getGameView().getGamePanel().getLine();
 		
 		for (int i = 1; i < linePoints.size(); i++) {
@@ -251,10 +256,10 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 			Position mousePosition = new Position(this.screenListener.getClickLocation().getX(),
 			        this.screenListener.getClickLocation().getY());
 			mousePosition.positionConverter(this.gameSpecs.getGameUnits(),
-			        this.gameScene.getGameView().getGamePanel().getPreferredSize());
+			        new Dimension(this.gameScene.getGameView().getGamePanel().getPreferredSize().getWidth(), this.gameScene.getGameView().getGamePanel().getPreferredSize().getHeight()));
 			System.out.println(mousePosition.toString());
-			if (checkTurretPosition(mousePosition)) {
-				this.towerLogic.placeTower(currentTowerSelected, mousePosition);
+			if (checkTurretPosition(mousePosition, currentTowerSelected)) {
+				this.towerController.placeTower(currentTowerSelected, mousePosition);
 				this.currentInventoryMode = 0;
 				this.screenListener.stopListening();
 				this.gameScene.getInventoryView().getTextLabel("money")
@@ -292,7 +297,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 		}
 
 		if (this.playerStats.getHP() <= 0) {
-			this.towerLogic.closeAll();
+			this.towerController.closeAll();
 			this.menuModel.setMainScene(7);
 		}
 
@@ -305,6 +310,6 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 			screenUpdate();
 		}
 		checkInventoryButtons();
-		this.towerLogic.drawTowers(this.gameScene.getGameView()::drawEntity);
+		this.towerController.drawTowers(this.gameScene.getGameView()::drawEntity);
 	}
 }

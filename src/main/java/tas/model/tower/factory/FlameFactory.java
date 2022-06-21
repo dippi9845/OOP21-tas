@@ -22,11 +22,11 @@ public interface FlameFactory {
 	 * @return an Flame with only one target possible, and upgradable
 	 */
 	static public Tower basicFlame(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.BASICFLAME), enemyList)
+		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.BASICFLAME), enemyList)
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->15)
+				.upgradeCost(x->x+15)
 				.upgradeDamage(x->15)
 				.build();
 	}
@@ -38,13 +38,13 @@ public interface FlameFactory {
 	 * @return an Flame with two targets possible, and upgradable
 	 */
 	static public Tower biFlame(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.BIFLAME), enemyList)
+		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.BIFLAME), enemyList)
 				.attackType(AttackType.MULTIPLE)
 				.maximumTarget(2)
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->25)
+				.upgradeCost(x->x+25)
 				.upgradeDamage(x->25)
 				.build();
 	}
@@ -57,13 +57,13 @@ public interface FlameFactory {
 	 * @return an Flame with three targets possible, and upgradable
 	 */
 	static public Tower triFlame(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.TRIFLAME), enemyList)
+		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.TRIFLAME), enemyList)
 				.attackType(AttackType.MULTIPLE)
 				.maximumTarget(3)
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->35)
+				.upgradeCost(x->x+35)
 				.upgradeDamage(x->35)
 				.build();
 	}
@@ -76,13 +76,13 @@ public interface FlameFactory {
 	 * @return an Flame with four targets possible, and upgradable
 	 */
 	static public Tower quadFlame(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.QUADFLAME), enemyList)
+		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.QUADFLAME), enemyList)
 				.attackType(AttackType.MULTIPLE)
 				.maximumTarget(4)
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->45)
+				.upgradeCost(x->x+45)
 				.upgradeDamage(x->45)
 				.build();
 	}

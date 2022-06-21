@@ -4,132 +4,132 @@
         "radius": 650,
         "delay" : 500,
         "cost": 200,
-        "image name": "archer"
+        "name": "archer"
     },
     "biarcher": {
         "damage": 65,
         "radius": 650,
         "delay" : 500,
         "cost": 250,
-        "image name": "biarcher"
+        "name": "biarcher"
     },
     "triarcher": {
         "damage": 70,
         "radius": 650,
         "delay" : 500,
         "cost": 300,
-        "image name": "triarcher"
+        "name": "triarcher"
     },
     "quadarcher": {
         "damage": 75,
         "radius": 650,
         "delay" : 500,
         "cost": 350,
-        "image name": "quadarcher"
+        "name": "quadarcher"
     },
     "basiccannon": {
         "damage": 50,
         "radius": 400,
         "delay" : 500,
         "cost": 200,
-        "image name": "cannon"
+        "name": "cannon"
     },
     "bicannon": {
         "damage": 55,
         "radius": 400,
         "delay" : 500,
         "cost": 250,
-        "image name": "bicannon"
+        "name": "bicannon"
     },
     "tricannon": {
         "damage": 60,
         "radius": 400,
         "delay" : 500,
         "cost": 300,
-        "image name": "tricannon"
+        "name": "tricannon"
     },
     "quadcannon": {
         "damage": 65,
         "radius": 400,
         "delay" : 500,
         "cost": 350,
-        "image name": "quadcannon"
+        "name": "quadcannon"
     },
     "basicflame": {
         "damage": 62,
         "radius": 250,
         "delay" : 100,
         "cost": 500,
-        "image name": "flame"
+        "name": "flame"
     },
     "biflame": {
         "damage": 75,
         "radius": 250,
         "delay" : 100,
         "cost": 750,
-        "image name": "biflame"
+        "name": "biflame"
     },
     "triflame": {
         "damage": 100,
         "radius": 250,
         "delay" : 100,
         "cost": 1000,
-        "image name": "triflame"
+        "name": "triflame"
     },
     "quadflame": {
         "damage": 125,
         "radius": 250,
         "delay" : 100,
         "cost": 1500,
-        "image name": "quadflame"
+        "name": "quadflame"
     },
     "gastower": {
         "damage": 75,
         "radius": 250,
         "delay" : 100,
         "cost": 1000,
-        "image name": "gas"
+        "name": "gas"
     },
     "basicmortar": {
         "damage": 200,
         "radius": 750,
         "delay" : 5000,
         "cost": 700,
-        "image name": "mortar"
+        "name": "mortar"
     },
     "supermortar": {
         "damage": 300,
         "radius": 750,
         "delay" : 5000,
         "cost": 900,
-        "image name": "supermortar"
+        "name": "supermortar"
     },
     "godmortar": {
         "damage": 700,
         "radius": 750,
         "delay" : 5000,
         "cost": 2000,
-        "image name": "godmortar"
+        "name": "godmortar"
     },
     "basictesla": {
         "damage": 100,
         "radius": 500,
         "delay" : 1100,
         "cost": 300,
-        "image name": "tesla"
+        "name": "tesla"
     },
     "supertesla": {
         "damage": 200,
         "radius": 500,
         "delay" : 1100,
         "cost": 400,
-        "image name": "supertesla"
+        "name": "supertesla"
     },
     "godtesla": {
         "damage": 300,
         "radius": 500,
         "delay" : 1100,
         "cost": 600,
-        "image name": "godtesla"
+        "name": "godtesla"
     }
 }

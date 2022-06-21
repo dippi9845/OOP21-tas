@@ -20,11 +20,11 @@ public interface ArcherFactory {
 	 * @return an archer with only one target possible, and upgradable
 	 */
 	static public Tower basicArcher(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.BASICARCHER), enemyList)
+		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.BASICARCHER), enemyList)
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->20)
+				.upgradeCost(x->x+20)
 				.upgradeDamage(x->15)
 				.build();
 	}
@@ -37,13 +37,13 @@ public interface ArcherFactory {
 	 * @return an archer with two targets possible, and upgradable
 	 */
 	static public Tower biArcher(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.BIARCHER), enemyList)
+		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.BIARCHER), enemyList)
 				.attackType(AttackType.MULTIPLE)
 				.maximumTarget(2)
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->25)
+				.upgradeCost(x->x+25)
 				.upgradeDamage(x->20)
 				.build();
 	}
@@ -56,13 +56,13 @@ public interface ArcherFactory {
 	 * @return an archer with three targets possible, and upgradable
 	 */
 	static public Tower triArcher(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.TRIARCHER), enemyList)
+		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.TRIARCHER), enemyList)
 				.attackType(AttackType.MULTIPLE)
 				.maximumTarget(3)
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->30)
+				.upgradeCost(x->x+30)
 				.upgradeDamage(x->25)
 				.build();
 	}
@@ -75,13 +75,13 @@ public interface ArcherFactory {
 	 * @return an archer with four targets possible, and upgradable
 	 */
 	static public Tower quadArcher(final Position pos, final List<Enemy> enemyList) {
-		return new TowerBuilder(pos, DefaultTowersInfo.TOWERSJSONOBJECT.get(DefaultTowers.QUADARCHER), enemyList)
+		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.QUADARCHER), enemyList)
 				.attackType(AttackType.MULTIPLE)
 				.maximumTarget(4)
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->35)
+				.upgradeCost(x->x+35)
 				.upgradeDamage(x->30)
 				.build();
 	}

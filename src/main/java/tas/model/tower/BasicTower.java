@@ -21,12 +21,12 @@ public class BasicTower extends AbstractBasicTower {
 	 * @param radius    Tower radius, where it can attack enemies
 	 * @param delay     Tower delay
 	 * @param cost      Tower cost
-	 * @param imageName Tower image name
+	 * @param towerName Tower name
 	 * @param enemyList List of all enemy in the map
 	 */
 	protected BasicTower(final Position pos, final int damage, final int radius, final int delay, final int cost,
-			final String imageName, final List<Enemy> enemyList) {
-		super(pos, damage, radius, delay, cost, imageName, enemyList);
+			final String towerName, final List<Enemy> enemyList) {
+		super(pos, damage, radius, delay, cost, towerName, enemyList);
 		this.target = Optional.empty();
 	}
 
@@ -53,11 +53,11 @@ public class BasicTower extends AbstractBasicTower {
 	public void compute() {
 		if (this.target.isPresent() && Towers.isTargetInRange(this.target.get(), this) && !this.target.get().isDead()) {
 			this.attack();
-			this.sleep();
 		} else {
 			Towers.findFirstEnemyInRange(this, this.getVisibleEnemyList()).ifPresent(this::setTarget);
 		}
 
+		this.sleep();
 	}
 
 	/** {@inheritDoc} */
@@ -65,7 +65,7 @@ public class BasicTower extends AbstractBasicTower {
 	public String toString() {
 		return "BasicTower [target=" + target + ", getDelay()=" + getDelay() + ", getCost()=" + getCost()
 				+ ", getDamage()=" + getDamage() + ", getPos()=" + getPos() + ", getRadius()=" + getRadius()
-				+ ", getTowerImageName()=" + getTowerImageName() + "]";
+				+ ", getTowerName()=" + getTowerName() + "]";
 	}
 
 }

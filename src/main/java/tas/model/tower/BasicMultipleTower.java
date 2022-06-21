@@ -5,7 +5,7 @@ import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
 
 /**
- * This class is a basic implementation of AbstractMultipleTower {@link AbstractMultipleTower} this
+ * This class is a basic implementation of {@link AbstractMultipleTower} this
  * BasicMultipleTower model a tower that attack the first maxTarget in the range
  */
 public class BasicMultipleTower extends AbstractMultipleTower {
@@ -18,13 +18,13 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 	 * @param radius    Tower radius, where it can attack enemies
 	 * @param delay     Tower delay
 	 * @param cost      Tower cost
-	 * @param imageName Tower image name
+	 * @param towerName Tower name
 	 * @param enemyList List of all enemy in the map
 	 * @param maxTarget Max number of target that this tower can handle at the time
 	 */
 	protected BasicMultipleTower(final Position pos, final int damage, final int radius, final int delay,
-			final int cost, final String imageName, final List<Enemy> enemyList, final int maxTarget) {
-		super(pos, damage, radius, delay, cost, imageName, enemyList, maxTarget);
+			final int cost, final String towerName, final List<Enemy> enemyList, final int maxTarget) {
+		super(pos, damage, radius, delay, cost, towerName, enemyList, maxTarget);
 	}
 
 	/** 
@@ -66,7 +66,7 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 		return "BasicMultipleTower [getEnemyList()=" + getEnemyList() + ", getMaxEnemy()=" + getMaxEnemy()
 				+ ", isFull()=" + isFull() + ", getDelay()=" + getDelay() + ", getCost()=" + getCost()
 				+ ", getDamage()=" + getDamage() + ", getPos()=" + getPos() + ", getRadius()=" + getRadius()
-				+ ", getTowerImageName()=" + getTowerImageName() + "]";
+				+ ", getTowerName()=" + getTowerName() + "]";
 	}
 
 }

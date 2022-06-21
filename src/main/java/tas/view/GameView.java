@@ -1,4 +1,4 @@
-package main.java.tas.view.view;
+package main.java.tas.view;
 
 import java.awt.GridBagLayout;
 import java.awt.Color;
@@ -7,8 +7,6 @@ import javax.swing.JPanel;
 
 import main.java.tas.controller.observer.SceneMouseObserver;
 import main.java.tas.model.Entity;
-import main.java.tas.view.SquarePanel;
-import main.java.tas.view.ViewMouse;
 
 /**
  * Class that implements a {@link ViewComponent}, {@link ViewMouse}.

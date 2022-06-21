@@ -17,6 +17,7 @@ import java.util.Optional;
 import javax.swing.ImageIcon;
 
 import main.java.tas.model.Entity;
+import main.java.tas.utils.Dimension;
 import main.java.tas.utils.Position;
 
 /**
@@ -69,7 +70,8 @@ public class SquarePanel extends AdaptivePanel {
 	public void addEntity(final Entity e) {
 		AdaptiveLabel entityLabel = new AdaptiveLabel();
 		try {
-			entityLabel.setIcon(new ImageIcon(imGetter.getImageByEntity(e, this.getPreferredSize())));
+			entityLabel.setIcon(new ImageIcon(imGetter.getImageByEntity(e,
+			        new Dimension(this.getPreferredSize().getWidth(), this.getPreferredSize().getHeight()))));
 		} catch (FileNotFoundException e1) {
 			System.out.println(e1);
 		}
@@ -87,8 +89,8 @@ public class SquarePanel extends AdaptivePanel {
 				// redraws all entities
 				for (Map.Entry<Entity, AdaptiveLabel> entityMap : entityLables.entrySet()) {
 					try {
-						entityMap.getValue().setIcon(
-						        new ImageIcon(imGetter.getImageByEntity(entityMap.getKey(), getPreferredSize())));
+						entityMap.getValue().setIcon(new ImageIcon(imGetter.getImageByEntity(entityMap.getKey(),
+						        new Dimension(getPreferredSize().getWidth(), getPreferredSize().getHeight()))));
 					} catch (FileNotFoundException e1) {
 						System.out.println(e1);
 					}
@@ -97,7 +99,8 @@ public class SquarePanel extends AdaptivePanel {
 				// re-scale the background image
 				if (bgImage.isPresent()) {
 					try {
-						bgImage = Optional.of(imGetter.getImageByName(bgImageName.get(), getPreferredSize()));
+						bgImage = Optional.of(imGetter.getImageByName(bgImageName.get(),
+						        new Dimension(getPreferredSize().getWidth(), getPreferredSize().getHeight())));
 					} catch (FileNotFoundException e) {
 						e.printStackTrace();
 					}
