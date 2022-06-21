@@ -38,7 +38,6 @@ public class EnemiesBuilderImplTest {
 				}
 			}
 		}
-		System.out.println(enemyTypeNumber);
 		assertEquals(enemiesList.size(), enemiesNumber * enemyTypeNumber);
 	}
 

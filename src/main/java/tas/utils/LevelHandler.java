@@ -23,9 +23,9 @@ public class LevelHandler {
 		try {
 			JSONObject json = JsonUtils.getJsonData(PATH);
 			return json.length();
-		} catch (Exception e) {
-			System.out.println("Error: No enemy json file detected!");
-			System.out.println(e);
+    }
+		catch (Exception e){
+			e.printStackTrace();
 			return 0;
 		}
 
@@ -94,9 +94,9 @@ public class LevelHandler {
 			fileWriter.write(jsonObj.toString(4));
 			fileWriter.flush();
 			fileWriter.close();
-
-		} catch (Exception e) {
-			System.out.println(e);
+		}
+		catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 }

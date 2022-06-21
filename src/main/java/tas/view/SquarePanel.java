@@ -73,7 +73,7 @@ public class SquarePanel extends AdaptivePanel {
 			entityLabel.setIcon(new ImageIcon(imGetter.getImageByEntity(e,
 					new Dimension(this.getPreferredSize().getWidth(), this.getPreferredSize().getHeight()))));
 		} catch (FileNotFoundException e1) {
-			System.out.println(e1);
+			e1.printStackTrace();
 		}
 		entityLables.put(e, entityLabel);
 		this.add(entityLabel);
@@ -92,7 +92,7 @@ public class SquarePanel extends AdaptivePanel {
 						entityMap.getValue().setIcon(new ImageIcon(imGetter.getImageByEntity(entityMap.getKey(),
 								new Dimension(getPreferredSize().getWidth(), getPreferredSize().getHeight()))));
 					} catch (FileNotFoundException e1) {
-						System.out.println(e1);
+						e1.printStackTrace();
 					}
 				}
 
