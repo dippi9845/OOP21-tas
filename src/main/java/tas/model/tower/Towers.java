@@ -1,6 +1,5 @@
 package main.java.tas.model.tower;
 
-import java.awt.Dimension;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;

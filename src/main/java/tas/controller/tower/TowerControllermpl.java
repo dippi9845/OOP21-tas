@@ -11,7 +11,7 @@ import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.model.tower.factory.DefaultTowersUtils;
 import main.java.tas.utils.Position;
-import java.awt.Dimension;
+import main.java.tas.utils.Dimension;
 import java.util.Collections;
 import java.util.LinkedList;
 

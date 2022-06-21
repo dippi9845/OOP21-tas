@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 
-import java.awt.Dimension;
-
 import org.json.JSONObject;
 
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.utils.JsonUtils;
 import main.java.tas.utils.Position;
+import main.java.tas.utils.Dimension;
 
 public class DefaultTowersUtils {
 	

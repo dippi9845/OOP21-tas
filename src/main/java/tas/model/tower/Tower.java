@@ -3,7 +3,7 @@ package main.java.tas.model.tower;
 import main.java.tas.model.Entity;
 import main.java.tas.model.tower.factory.DefaultTowersUtils;
 import main.java.tas.utils.Position;
-import java.awt.Dimension;
+import main.java.tas.utils.Dimension;
 
 /**
  * An Interface that model a generic Tower, that extends Entity

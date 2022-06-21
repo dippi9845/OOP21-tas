@@ -7,8 +7,6 @@ import java.util.Optional;
 
 import org.json.JSONObject;
 
-import java.awt.Dimension;
-
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
@@ -21,13 +19,12 @@ import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.controller.observer.SceneMouseObserver;
 import main.java.tas.controller.tower.TowerController;
 import main.java.tas.controller.tower.TowerControllermpl;
-import main.java.tas.model.tower.Tower;
-import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.model.tower.factory.DefaultTowersUtils;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.game.GameModel;
 import main.java.tas.model.menu.MenuModel;
+import main.java.tas.utils.Dimension;
 import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.Position;
 import main.java.tas.utils.TimeCurve;
@@ -259,7 +256,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 			Position mousePosition = new Position(this.screenListener.getClickLocation().getX(),
 			        this.screenListener.getClickLocation().getY());
 			mousePosition.positionConverter(this.gameSpecs.getGameUnits(),
-			        this.gameScene.getGameView().getGamePanel().getPreferredSize());
+			        new Dimension(this.gameScene.getGameView().getGamePanel().getPreferredSize().getWidth(), this.gameScene.getGameView().getGamePanel().getPreferredSize().getHeight()));
 			System.out.println(mousePosition.toString());
 			if (checkTurretPosition(mousePosition, currentTowerSelected)) {
 				this.towerController.placeTower(currentTowerSelected, mousePosition);

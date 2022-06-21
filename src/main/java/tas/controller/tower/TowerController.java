@@ -7,7 +7,7 @@ import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.utils.Position;
-import java.awt.Dimension;
+import main.java.tas.utils.Dimension;
 
 /**
  * An interface that manage all the built towers
