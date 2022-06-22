@@ -3,10 +3,10 @@ package main.java.tas.controller.tower;
 import java.util.List;
 import java.util.function.Consumer;
 
+import main.java.tas.controller.tower.builder.TowerBuilder;
 import main.java.tas.controller.tower.factory.DefaultTowers;
 import main.java.tas.model.Entity;
 import main.java.tas.model.tower.Tower;
-import main.java.tas.model.tower.TowerBuilderImpl;
 import main.java.tas.utils.Position;
 import main.java.tas.utils.Dimension;
 
@@ -30,7 +30,7 @@ public interface TowerController {
 	 * @param preset Build with all parameters set
 	 * @return true if the tower is successfully build
 	 */
-	public boolean placeTower(final TowerBuilderImpl preset);
+	public boolean placeTower(final TowerBuilder preset);
 
 	/**
 	 * All tower placed will be removed, all Thread created will be deleted

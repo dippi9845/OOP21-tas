@@ -5,7 +5,6 @@ import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 import org.json.JSONObject;
-
 import main.java.tas.controller.tower.factory.DefaultTowersUtils;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.AbstractAreaTower;
