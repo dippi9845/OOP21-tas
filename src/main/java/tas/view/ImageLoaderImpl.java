@@ -111,6 +111,8 @@ public class ImageLoaderImpl implements ImageLoader {
 
 	/**
 	 * Scale an image to a new dimension.
+	 * This code was taken by
+	 * https://stackoverflow.com/questions/4216123/how-to-scale-a-bufferedimage
 	 * 
 	 * @param src          the image that has to be scaled
 	 * @param newDimension the new dimension of the image

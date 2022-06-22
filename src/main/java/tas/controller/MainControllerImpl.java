@@ -142,7 +142,11 @@ public class MainControllerImpl implements MainController {
 		return menuState;
 	}
 
-	/** {@inheritDoc} */
+	/** 
+	 * {@inheritDoc} 
+	 * The FPS limiter is adapted by
+	 * https://stackoverflow.com/questions/771206/how-do-i-cap-my-framerate-at-60-fps-in-java 
+	 *  */
 	@Override
 	public void mainLoop() {
 		double next_game_tick = System.currentTimeMillis();
