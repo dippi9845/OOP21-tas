@@ -1,6 +1,6 @@
 package main.java.tas.model.enemy;
 
-import main.java.tas.utils.Dimension;
+import main.java.tas.utils.Size;
 import java.util.List;
 
 import org.json.JSONObject;
@@ -46,7 +46,7 @@ public class EnemyBuilderImpl implements EnemyBuilder {
 	private Enemy spawnGenericEnemy(final JSONObject eStats) {
 		return new GenericEnemy(this.nodesPosition, eStats.getDouble("health"), eStats.getInt("money"),
 				eStats.getInt("damage"), eStats.getDouble("speed"),
-				new Dimension(eStats.getJSONObject("bodyDimension").getInt("width"),
+				new Size(eStats.getJSONObject("bodyDimension").getInt("width"),
 						eStats.getJSONObject("bodyDimension").getInt("height")),
 				eStats.getString("name"));
 	}
