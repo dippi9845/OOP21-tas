@@ -1,4 +1,4 @@
-package main.java.tas.model.tower.factory;
+package main.java.tas.controller.tower.factory;
 
 import java.util.List;
 import main.java.tas.model.enemy.Enemy;

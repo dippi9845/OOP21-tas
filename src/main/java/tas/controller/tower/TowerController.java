@@ -2,10 +2,11 @@ package main.java.tas.controller.tower;
 
 import java.util.List;
 import java.util.function.Consumer;
+
+import main.java.tas.controller.tower.factory.DefaultTowers;
 import main.java.tas.model.Entity;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.TowerBuilder;
-import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.utils.Position;
 import main.java.tas.utils.Dimension;
 
