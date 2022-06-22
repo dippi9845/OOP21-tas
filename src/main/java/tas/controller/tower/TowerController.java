@@ -57,7 +57,7 @@ public interface TowerController {
 	/**
 	 * Return a {@link java.util.List} containing all built towers, by the method
 	 * {@link TowerController#placeTower(DefaultTowers, Position)} or the method
-	 * {@link TowerController#placeTower(TowerBuilderImpl)}
+	 * {@link TowerController#placeTower(TowerBuilder)}
 	 * 
 	 * @return a {@link java.util.List} containing all built towers
 	 */
@@ -67,7 +67,7 @@ public interface TowerController {
 	 * Return a {@link java.util.List} containing all thread, created when was
 	 * called, the method
 	 * {@link TowerController#placeTower(DefaultTowers, Position)} or the method
-	 * {@link TowerController#placeTower(TowerBuilderImpl)}
+	 * {@link TowerController#placeTower(TowerBuilder)}
 	 * 
 	 * @return a {@link java.util.List} containing all thread created
 	 */
