@@ -13,8 +13,8 @@ import java.awt.event.MouseListener;
 
 import main.java.tas.controller.enemy.EnemiesLogic;
 import main.java.tas.controller.enemy.EnemiesLogicImpl;
-import main.java.tas.controller.lister.InventoryListener;
-import main.java.tas.controller.lister.ScreenListener;
+import main.java.tas.controller.listener.InventoryListener;
+import main.java.tas.controller.listener.ScreenListener;
 import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.controller.observer.SceneMouseObserver;
 import main.java.tas.controller.tower.TowerController;
