@@ -1,4 +1,4 @@
-package main.java.tas.controller.tower.builder;
+package main.java.tas.model.tower;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,12 +8,6 @@ import org.json.JSONObject;
 
 import main.java.tas.controller.tower.factory.DefaultTowersUtils;
 import main.java.tas.model.enemy.Enemy;
-import main.java.tas.model.tower.AbstractAreaTower;
-import main.java.tas.model.tower.AbstractBasicTower;
-import main.java.tas.model.tower.BasicMultipleTower;
-import main.java.tas.model.tower.BasicTower;
-import main.java.tas.model.tower.Tower;
-import main.java.tas.model.tower.UpgradableTowerImpl;
 import main.java.tas.utils.Position;
 
 /**

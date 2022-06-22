@@ -9,8 +9,6 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 import org.junit.jupiter.api.Test;
 import main.java.tas.utils.Position;
-import main.java.tas.controller.tower.builder.AttackType;
-import main.java.tas.controller.tower.builder.TowerBuilder;
 import main.java.tas.controller.tower.factory.ArcherFactory;
 import main.java.tas.controller.tower.factory.CannonFactory;
 import main.java.tas.controller.tower.factory.FlameFactory;
@@ -18,7 +16,9 @@ import main.java.tas.controller.tower.factory.GasFactory;
 import main.java.tas.controller.tower.factory.MortarFactory;
 import main.java.tas.controller.tower.factory.TeslaFactory;
 import main.java.tas.model.enemy.Enemy;
+import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Tower;
+import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.model.tower.Towers;
 
 @SuppressWarnings("unused")
