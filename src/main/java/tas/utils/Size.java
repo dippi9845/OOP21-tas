@@ -47,7 +47,6 @@ public class Size {
 	/**
 	 * Returns the diagonal of the rectangle described by Dimension
 	 * 
-	 * @param d the dimension of the rectangle
 	 * @return the diagonal described by the rectangle described by Dimension
 	 */
 	public double getDiagonal() {
