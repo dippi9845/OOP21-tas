@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
+import main.java.tas.controller.tower.builder.TowerBuilder;
 import main.java.tas.controller.tower.factory.DefaultTowers;
 import main.java.tas.controller.tower.factory.DefaultTowersUtils;
 import main.java.tas.model.Entity;
 import main.java.tas.model.enemy.Enemy;
-import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.model.tower.Towers;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.utils.Position;

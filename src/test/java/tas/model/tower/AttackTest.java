@@ -12,11 +12,11 @@ import org.junit.jupiter.api.Test;
 
 import main.java.tas.controller.tower.TowerController;
 import main.java.tas.controller.tower.TowerControllermpl;
+import main.java.tas.controller.tower.builder.AttackType;
+import main.java.tas.controller.tower.builder.TowerBuilder;
 import main.java.tas.controller.tower.factory.CannonFactory;
 import main.java.tas.controller.tower.factory.DefaultTowers;
 import main.java.tas.model.enemy.Enemy;
-import main.java.tas.model.tower.AttackType;
-import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.Towers;
 import main.java.tas.utils.Position;

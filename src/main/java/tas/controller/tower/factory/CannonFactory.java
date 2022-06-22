@@ -1,10 +1,11 @@
 package main.java.tas.controller.tower.factory;
 
 import java.util.List;
+
+import main.java.tas.controller.tower.builder.AttackType;
+import main.java.tas.controller.tower.builder.TowerBuilder;
 import main.java.tas.model.enemy.Enemy;
-import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Tower;
-import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.utils.Position;
 
 /**
