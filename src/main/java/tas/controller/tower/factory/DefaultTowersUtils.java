@@ -1,6 +1,5 @@
 package main.java.tas.controller.tower.factory;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +10,7 @@ import org.json.JSONObject;
 
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.Tower;
+import main.java.tas.model.tower.Towers;
 import main.java.tas.utils.JsonUtils;
 import main.java.tas.utils.Position;
 import main.java.tas.utils.Dimension;
@@ -46,8 +46,6 @@ public class DefaultTowersUtils {
 	public static final String DAMAGEFIELD = "damage";
 
 	public static final String DIMENSIONFIELD = "dimension";
-
-	public static final Dimension DEFAULTDIMENSION = new Dimension(100, 100);
 
 	/**
 	 * Name of the file containing all default towers
@@ -89,7 +87,7 @@ public class DefaultTowersUtils {
 
 			return new Dimension(dimensionField.getInt("width"), dimensionField.getInt("heigh"));
 		} else {
-			return DEFAULTDIMENSION;
+			return Towers.DEFAULTDIMENSION;
 		}
 	}
 
