@@ -12,7 +12,7 @@ import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.Towers;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.utils.Position;
-import main.java.tas.utils.Dimension;
+import main.java.tas.utils.Size;
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -109,7 +109,7 @@ public class TowerControllerImpl implements TowerController {
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean thereIsTowerNear(final Position pos, final Dimension dim) {
+	public boolean thereIsTowerNear(final Position pos, final Size dim) {
 		return this.builtTowers.stream()
 				.anyMatch(x -> Position.findDistance(x.getPos(), pos) <= dim.getDiagonal() + Towers.getFarthest(x));
 	}

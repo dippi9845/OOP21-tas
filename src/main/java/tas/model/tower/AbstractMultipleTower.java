@@ -11,7 +11,7 @@ import main.java.tas.utils.Position;
  * targeted.
  */
 public abstract class AbstractMultipleTower extends AbstractBasicTower {
-	private List<Enemy> enemyList;
+	private final List<Enemy> enemyList;
 	private final int maxEnemy;
 
 	/**

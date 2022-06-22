@@ -24,7 +24,7 @@ import main.java.tas.controller.tower.factory.DefaultTowersUtils;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.game.GameModel;
 import main.java.tas.model.menu.MenuModel;
-import main.java.tas.utils.Dimension;
+import main.java.tas.utils.Size;
 import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.Position;
 import main.java.tas.utils.TimeCurve;
@@ -197,7 +197,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 
 	public boolean checkTurretPosition(final Position turretPosition, final DefaultTowers selected) {
 
-		final Dimension towerDimension = DefaultTowersUtils.getDefaultTowersDimension(selected);
+		final Size towerDimension = DefaultTowersUtils.getDefaultTowersDimension(selected);
 
 		if (turretPosition.getY() < towerDimension.getWidth() / 2
 				|| turretPosition.getY() > this.gameSpecs.getGameUnits().getWidth() - towerDimension.getWidth() / 2
@@ -253,7 +253,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 			Position mousePosition = new Position(this.screenListener.getClickLocation().getX(),
 					this.screenListener.getClickLocation().getY());
 			mousePosition.positionConverter(this.gameSpecs.getGameUnits(),
-					new Dimension(this.gameScene.getGameView().getGamePanel().getPreferredSize().getWidth(),
+					new Size(this.gameScene.getGameView().getGamePanel().getPreferredSize().getWidth(),
 							this.gameScene.getGameView().getGamePanel().getPreferredSize().getHeight()));
       
 			if (checkTurretPosition(mousePosition, currentTowerSelected)) {

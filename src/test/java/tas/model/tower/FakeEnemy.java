@@ -1,6 +1,6 @@
 package test.java.tas.model.tower;
 
-import main.java.tas.utils.Dimension;
+import main.java.tas.utils.Size;
 
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.utils.Position;
@@ -33,8 +33,8 @@ class FakeEnemy implements Enemy {
 	}
 
 	@Override
-	public Dimension getBodyDimension() {
-		return new Dimension(10, 10);
+	public Size getBodyDimension() {
+		return new Size(10, 10);
 	}
 
 	@Override

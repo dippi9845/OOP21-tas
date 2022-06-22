@@ -11,7 +11,7 @@ public final class GameSpecs {
 	private final String enemiesJsonSetup = RESOURCE_PATH + System.getProperty("file.separator") + "data"
 			+ System.getProperty("file.separator") + "game" + System.getProperty("file.separator") + "gameSpecs.json";
 
-	private final Dimension gameUnits;
+	private final Size gameUnits;
 
 	private final int tickRate;
 	private final int skipTicks;
@@ -23,7 +23,7 @@ public final class GameSpecs {
 	public GameSpecs() {
 		JSONObject jsonSetupList = JsonUtils.getJsonData(enemiesJsonSetup);
 
-		this.gameUnits = new Dimension(jsonSetupList.getJSONObject("gameUnits").getInt("width"),
+		this.gameUnits = new Size(jsonSetupList.getJSONObject("gameUnits").getInt("width"),
 				jsonSetupList.getJSONObject("gameUnits").getInt("height"));
 		this.tickRate = jsonSetupList.getInt("tickRate");
 		this.maxFrameSkip = jsonSetupList.getInt("maxFrameSkip");
@@ -33,7 +33,7 @@ public final class GameSpecs {
 	/**
 	 * @return the game board dimension
 	 */
-	public Dimension getGameUnits() {
+	public Size getGameUnits() {
 		return this.gameUnits;
 	}
 
