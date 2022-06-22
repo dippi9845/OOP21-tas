@@ -7,9 +7,7 @@ import org.json.JSONObject;
  */
 public final class GameSpecs {
 
-	private static String RESOURCE_PATH = "res";
-	private final String enemiesJsonSetup = RESOURCE_PATH + System.getProperty("file.separator") + "data"
-			+ System.getProperty("file.separator") + "game" + System.getProperty("file.separator") + "gameSpecs.json";
+	private final String enemiesJsonSetup = "data" + "/" + "game" + "/" + "gameSpecs.json";
 
 	private final Size gameUnits;
 
@@ -24,7 +22,7 @@ public final class GameSpecs {
 		JSONObject jsonSetupList = JsonUtils.getJsonData(enemiesJsonSetup);
 
 		this.gameUnits = new Size(jsonSetupList.getJSONObject("gameUnits").getInt("width"),
-				jsonSetupList.getJSONObject("gameUnits").getInt("height"));
+		        jsonSetupList.getJSONObject("gameUnits").getInt("height"));
 		this.tickRate = jsonSetupList.getInt("tickRate");
 		this.maxFrameSkip = jsonSetupList.getInt("maxFrameSkip");
 		this.skipTicks = 1000 / this.tickRate;

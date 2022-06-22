@@ -16,10 +16,7 @@ public class EnemyBuilderImpl implements EnemyBuilder {
 	private final List<Position> nodesPosition;
 	private final JSONObject enemiesSetup;
 
-	private static String RESOURCE_PATH = "res";
-	private final String enemiesJsonSetup = RESOURCE_PATH + System.getProperty("file.separator") + "data"
-			+ System.getProperty("file.separator") + "enemies" + System.getProperty("file.separator")
-			+ "basicEnemies.json";
+	private final String enemiesJsonSetup = "data" + "/" + "enemies" + "/" + "basicEnemies.json";
 
 	/**
 	 * Constructor that creates a factory for the enemies .
@@ -45,10 +42,10 @@ public class EnemyBuilderImpl implements EnemyBuilder {
 	 */
 	private Enemy spawnGenericEnemy(final JSONObject eStats) {
 		return new GenericEnemy(this.nodesPosition, eStats.getDouble("health"), eStats.getInt("money"),
-				eStats.getInt("damage"), eStats.getDouble("speed"),
-				new Size(eStats.getJSONObject("bodyDimension").getInt("width"),
-						eStats.getJSONObject("bodyDimension").getInt("height")),
-				eStats.getString("name"));
+		        eStats.getInt("damage"), eStats.getDouble("speed"),
+		        new Size(eStats.getJSONObject("bodyDimension").getInt("width"),
+		                eStats.getJSONObject("bodyDimension").getInt("height")),
+		        eStats.getString("name"));
 	}
 
 	/** {@inheritDoc} */
