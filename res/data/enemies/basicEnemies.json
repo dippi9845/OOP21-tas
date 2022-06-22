@@ -25,7 +25,7 @@
         "name":"PinkEnemy",
         "health":2200,
         "money":100,
-        "damage":10,
+        "damage":20,
         "speed":90,
         "bodyDimension":{
             "width":100,
