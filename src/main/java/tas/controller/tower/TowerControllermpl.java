@@ -10,7 +10,7 @@ import main.java.tas.model.Entity;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.Towers;
 import main.java.tas.model.tower.Tower;
-import main.java.tas.model.tower.TowerBuilder;
+import main.java.tas.model.tower.TowerBuilderImpl;
 import main.java.tas.utils.Position;
 import main.java.tas.utils.Dimension;
 import java.util.Collections;
@@ -86,7 +86,7 @@ public class TowerControllermpl implements TowerController {
 
 	/** {@inheritDoc} */
 	@Override
-	public boolean placeTower(final TowerBuilder preset) {
+	public boolean placeTower(final TowerBuilderImpl preset) {
 		return this.buildTower(preset.setEnemylist(this.enemyList).build());
 	}
 

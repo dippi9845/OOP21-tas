@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import main.java.tas.controller.tower.TowerController;
 import main.java.tas.controller.tower.TowerControllermpl;
 import main.java.tas.model.enemy.Enemy;
-import main.java.tas.model.tower.TowerBuilder;
+import main.java.tas.model.tower.TowerBuilderImpl;
 import main.java.tas.utils.Position;
 
 class TowerLogicTest {
@@ -25,7 +25,7 @@ class TowerLogicTest {
 			return true;
 		});
 
-		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
 
 		assertTrue(t.thereIsTowerNear(new Position(51, 51), new Dimension(100, 100)));
 	}
@@ -39,7 +39,7 @@ class TowerLogicTest {
 			return true;
 		});
 
-		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
 
 		assertFalse(t.thereIsTowerNear(new Position(51, 192), new Dimension(100, 100)));
 	}
@@ -53,7 +53,7 @@ class TowerLogicTest {
 			return true;
 		});
 
-		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
 
 		assertTrue(t.getBuildTowers().size() == 1);
 	}
@@ -67,7 +67,7 @@ class TowerLogicTest {
 			return true;
 		});
 
-		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
 
 		assertTrue(t.getBuildThread().size() == 1);
 	}
@@ -81,7 +81,7 @@ class TowerLogicTest {
 			return true;
 		});
 
-		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
 
 		assertTrue(t.getBuildThread().get(0).isAlive());
 	}
@@ -95,8 +95,8 @@ class TowerLogicTest {
 			return true;
 		});
 
-		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
-		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
 
 		assertTrue(t.getBuildThread().get(0).isAlive() && t.getBuildThread().get(1).isAlive());
 	}
@@ -110,8 +110,8 @@ class TowerLogicTest {
 			return true;
 		});
 
-		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
-		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
 
 		t.closeAll();
 
@@ -126,8 +126,8 @@ class TowerLogicTest {
 			return true;
 		});
 
-		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
-		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
 
 		t.closeAll();
 

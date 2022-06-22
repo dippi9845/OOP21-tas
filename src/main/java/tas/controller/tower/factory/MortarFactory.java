@@ -5,7 +5,7 @@ import java.util.List;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Tower;
-import main.java.tas.model.tower.TowerBuilder;
+import main.java.tas.model.tower.TowerBuilderImpl;
 import main.java.tas.model.tower.Towers;
 import main.java.tas.utils.Position;
 
@@ -24,7 +24,7 @@ public interface MortarFactory {
 	 * @return Mortar tower upgradable
 	 */
 	static public Tower basicMortar(final Position pos, final List<Enemy> enemyList) {
-		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.BASICMORTAR), enemyList);
+		final TowerBuilderImpl t = new TowerBuilderImpl(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.BASICMORTAR), enemyList);
 		return t.attackType(AttackType.AREA)
 				.damageRange(400)
 				.setUpgradable(true)
@@ -49,7 +49,7 @@ public interface MortarFactory {
 	 * @return Mortar tower upgradable
 	 */
 	static public Tower superMortar(final Position pos, final List<Enemy> enemyList) {
-		final TowerBuilder t =  new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.SUPERMORTAR), enemyList);
+		final TowerBuilderImpl t =  new TowerBuilderImpl(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.SUPERMORTAR), enemyList);
 		return t.attackType(AttackType.AREA)
 				.damageRange(450)
 				.setUpgradable(true)
@@ -74,7 +74,7 @@ public interface MortarFactory {
 	 * @return Mortar tower upgradable
 	 */
 	static public Tower godMortar(final Position pos, final List<Enemy> enemyList) {
-		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.GODMORTAR), enemyList);
+		final TowerBuilderImpl t = new TowerBuilderImpl(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.GODMORTAR), enemyList);
 		return t.attackType(AttackType.AREA)
 				.damageRange(600)
 				.setUpgradable(true)

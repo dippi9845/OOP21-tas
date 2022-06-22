@@ -5,7 +5,7 @@ import java.util.List;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Tower;
-import main.java.tas.model.tower.TowerBuilder;
+import main.java.tas.model.tower.TowerBuilderImpl;
 import main.java.tas.model.tower.Towers;
 import main.java.tas.utils.Position;
 
@@ -23,7 +23,7 @@ public interface TeslaFactory {
 	 * @return Tesla tower upgradable
 	 */
 	static public Tower basicTesla(final Position pos, final List<Enemy> enemyList) {
-		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.BASICTESLA), enemyList);
+		final TowerBuilderImpl t = new TowerBuilderImpl(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.BASICTESLA), enemyList);
 		return t.attackType(AttackType.AREA)
 				.damageRange(t.getRange())
 				.setUpgradable(true)
@@ -46,7 +46,7 @@ public interface TeslaFactory {
 	 * @return Super Tesla tower upgradable
 	 */
 	static public Tower superTesla(final Position pos, final List<Enemy> enemyList) {
-		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.SUPERTESLA), enemyList);
+		final TowerBuilderImpl t = new TowerBuilderImpl(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.SUPERTESLA), enemyList);
 		return t.attackType(AttackType.AREA)
 				.damageRange(t.getRange())
 				.setUpgradable(true)
@@ -68,7 +68,7 @@ public interface TeslaFactory {
 	 * @return God Tesla tower upgradable
 	 */
 	static public Tower godTesla(final Position pos, final List<Enemy> enemyList) {
-		final TowerBuilder t = new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.GODTESLA), enemyList);
+		final TowerBuilderImpl t = new TowerBuilderImpl(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.GODTESLA), enemyList);
 		return t.attackType(AttackType.AREA)
 				.damageRange(t.getRange())
 				.setUpgradable(true)
