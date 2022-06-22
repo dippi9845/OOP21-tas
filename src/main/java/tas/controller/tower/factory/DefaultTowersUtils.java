@@ -17,7 +17,8 @@ import main.java.tas.utils.Size;
 
 /**
  * 
- * Class with static methods and static fields useful for all default towers present in the game
+ * Class with static methods and static fields useful for all default towers
+ * present in the game
  *
  */
 public class DefaultTowersUtils {
@@ -58,9 +59,7 @@ public class DefaultTowersUtils {
 	/**
 	 * Name of the file containing all default towers
 	 */
-	public static final String FILEJSONTOWERS = "res" + System.getProperty("file.separator") + "data"
-			+ System.getProperty("file.separator") + "towers" + System.getProperty("file.separator")
-			+ "DefaultTowers.json";
+	public static final String FILEJSONTOWERS = "data" + "/" + "towers" + "/" + "DefaultTowers.json";
 
 	/**
 	 * {@link org.json.JSONObject} containing the parsed content of
@@ -90,6 +89,7 @@ public class DefaultTowersUtils {
 
 	/**
 	 * Returns the dimension of the tower, given the enum type
+	 * 
 	 * @param type Value of the default tower
 	 * @return the dimension of the tower
 	 */
@@ -114,7 +114,7 @@ public class DefaultTowersUtils {
 	 */
 	private static Map<DefaultTowers, String> initJsonNameMap() {
 		Map<DefaultTowers, String> map = new HashMap<>();
-		
+
 		for (var i : DefaultTowers.values()) {
 			map.put(i, i.toString().toLowerCase());
 		}
