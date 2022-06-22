@@ -15,6 +15,11 @@ import main.java.tas.utils.JsonUtils;
 import main.java.tas.utils.Position;
 import main.java.tas.utils.Dimension;
 
+/**
+ * 
+ * Class with static methods and static fields useful for all default towers present in the game
+ *
+ */
 public class DefaultTowersUtils {
 
 	private DefaultTowersUtils() {
@@ -45,6 +50,9 @@ public class DefaultTowersUtils {
 	 */
 	public static final String DAMAGEFIELD = "damage";
 
+	/**
+	 * Filed name in json, that describes the dimension of the tower
+	 */
 	public static final String DIMENSIONFIELD = "dimension";
 
 	/**
@@ -80,6 +88,11 @@ public class DefaultTowersUtils {
 	 */
 	public static final Map<DefaultTowers, BiFunction<Position, List<Enemy>, Tower>> BUILDMAP = initBuildMap();
 
+	/**
+	 * Returns the dimension of the tower, given the enum type
+	 * @param type Value of the default tower
+	 * @return the dimension of the tower
+	 */
 	public static Dimension getDefaultTowersDimension(final DefaultTowers type) {
 		if (JSONOBJECTMAP.get(type).has(DIMENSIONFIELD)) {
 

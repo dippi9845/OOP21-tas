@@ -1,5 +1,10 @@
 package main.java.tas.controller.tower.factory;
 
+/**
+ * 
+ * Enumeration with all default towers present in the game
+ *
+ */
 public enum DefaultTowers {
 	/**
 	 * {@link main.java.tas.controller.tower.factory.ArcherFactory#basicArcher(main.java.tas.utils.Position, java.util.List)}
