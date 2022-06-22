@@ -103,8 +103,10 @@ public class DefaultTowersUtils {
 	 */
 	private static Map<DefaultTowers, String> initJsonNameMap() {
 		Map<DefaultTowers, String> map = new HashMap<>();
-
-		Arrays.stream(DefaultTowers.values()).forEach(x -> map.put(x, x.toString().toLowerCase()));
+		
+		for (var i : DefaultTowers.values()) {
+			map.put(i, i.toString().toLowerCase());
+		}
 
 		return Collections.unmodifiableMap(map);
 	}
@@ -120,7 +122,9 @@ public class DefaultTowersUtils {
 	private static Map<DefaultTowers, JSONObject> initJsonObjectMap() {
 		Map<DefaultTowers, JSONObject> map = new HashMap<>();
 
-		Arrays.stream(DefaultTowers.values()).forEach(x -> map.put(x, JSONDATAFILE.getJSONObject(JSONNAMEMAP.get(x))));
+		for (var i : DefaultTowers.values()) {
+			map.put(i, JSONDATAFILE.getJSONObject(JSONNAMEMAP.get(i)));
+		}
 
 		return Collections.unmodifiableMap(map);
 	}
