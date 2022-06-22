@@ -1,3 +1,3 @@
 #!/bin/bash
-./lib-upacker.sh
+./lib-unpacker.sh
 javac -cp bin/:. -d bin $(find src/main/ -name "*.java" )

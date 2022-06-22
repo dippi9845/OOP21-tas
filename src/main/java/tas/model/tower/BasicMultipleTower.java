@@ -22,7 +22,7 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 	 * @param enemyList List of all enemy in the map
 	 * @param maxTarget Max number of target that this tower can handle at the time
 	 */
-	protected BasicMultipleTower(final Position pos, final int damage, final int radius, final int delay,
+	public BasicMultipleTower(final Position pos, final int damage, final int radius, final int delay,
 			final int cost, final String towerName, final List<Enemy> enemyList, final int maxTarget) {
 		super(pos, damage, radius, delay, cost, towerName, enemyList, maxTarget);
 	}
