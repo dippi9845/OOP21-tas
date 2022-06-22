@@ -11,13 +11,13 @@ import java.util.function.UnaryOperator;
 import org.junit.jupiter.api.Test;
 
 import main.java.tas.controller.tower.TowerController;
-import main.java.tas.controller.tower.TowerControllermpl;
+import main.java.tas.controller.tower.TowerControllerImpl;
+import main.java.tas.controller.tower.builder.AttackType;
+import main.java.tas.controller.tower.builder.TowerBuilder;
 import main.java.tas.controller.tower.factory.CannonFactory;
 import main.java.tas.controller.tower.factory.DefaultTowers;
 import main.java.tas.model.enemy.Enemy;
-import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Tower;
-import main.java.tas.model.tower.TowerBuilderImpl;
 import main.java.tas.model.tower.Towers;
 import main.java.tas.utils.Position;
 import main.java.tas.model.enemy.GenericEnemy;
@@ -42,7 +42,7 @@ class AttackTest {
 		List<Enemy> enemies = new LinkedList<>();
 		enemies.add(new FakeEnemy(new Position(50, 50), 100));
 
-		Tower t = new TowerBuilderImpl(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).build();
+		Tower t = new TowerBuilder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).build();
 		t.compute();
 		t.compute();
 
@@ -55,7 +55,7 @@ class AttackTest {
 		FakeEnemy e = new FakeEnemy(new Position(50, 50), 100);
 		enemies.add(e);
 
-		Tower t = new TowerBuilderImpl(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).build();
+		Tower t = new TowerBuilder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).build();
 		t.compute();
 		t.compute();
 
@@ -72,7 +72,7 @@ class AttackTest {
 		enemies.add(new FakeEnemy(new Position(50, 50), 100));
 		enemies.add(new FakeEnemy(new Position(51, 50), 100));
 
-		Tower t = new TowerBuilderImpl(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).attackType(AttackType.MULTIPLE)
+		Tower t = new TowerBuilder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).attackType(AttackType.MULTIPLE)
 				.maximumTarget(2).build();
 		t.compute();
 
@@ -87,7 +87,7 @@ class AttackTest {
 		enemies.add(e);
 		enemies.add(e1);
 
-		Tower t = new TowerBuilderImpl(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).attackType(AttackType.MULTIPLE)
+		Tower t = new TowerBuilder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).attackType(AttackType.MULTIPLE)
 				.maximumTarget(2).build();
 		t.compute();
 
@@ -111,7 +111,7 @@ class AttackTest {
 		enemies.add(e2);
 		enemies.add(e3);
 
-		Tower t = new TowerBuilderImpl(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).attackType(AttackType.MULTIPLE)
+		Tower t = new TowerBuilder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).attackType(AttackType.MULTIPLE)
 				.maximumTarget(2).build();
 		t.compute();
 		t.compute();
@@ -136,7 +136,7 @@ class AttackTest {
 		enemies.add(e1);
 		enemies.add(e2);
 
-		Tower t = new TowerBuilderImpl(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).attackType(AttackType.MULTIPLE)
+		Tower t = new TowerBuilder(new Position(51, 51), 50, 10, 10, "BlaBla", enemies).attackType(AttackType.MULTIPLE)
 				.maximumTarget(2).build();
 		t.compute();
 
@@ -155,7 +155,7 @@ class AttackTest {
 		enemies.add(e);
 		enemies.add(e1);
 
-		Tower t = new TowerBuilderImpl(new Position(51, 51), 100, 9, 10, "tesla", enemies).attackType(AttackType.AREA)
+		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies).attackType(AttackType.AREA)
 				.damageRange(7).maximumTarget(4).findFirst(() -> {
 					return Towers.findFirstEnemyInRange(new Position(51, 51), 9, enemies);
 				}).build();
@@ -172,7 +172,7 @@ class AttackTest {
 		enemies.add(e);
 		enemies.add(e1);
 
-		Tower t = new TowerBuilderImpl(new Position(51, 51), 100, 9, 10, "tesla", enemies).attackType(AttackType.AREA)
+		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies).attackType(AttackType.AREA)
 				.damageRange(7).maximumTarget(4).findFirst(() -> {
 					return Towers.findFirstEnemyInRange(new Position(51, 51), 9, enemies);
 				}).build();
@@ -196,7 +196,7 @@ class AttackTest {
 		enemies.add(e1);
 		enemies.add(e2);
 
-		Tower t = new TowerBuilderImpl(new Position(51, 51), 100, 9, 10, "tesla", enemies).attackType(AttackType.AREA)
+		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies).attackType(AttackType.AREA)
 				.damageRange(7).maximumTarget(4).findFirst(() -> {
 					return Towers.findFirstEnemyInRange(new Position(51, 51), 9, enemies);
 				}).build();
@@ -219,7 +219,7 @@ class AttackTest {
 		enemies.add(e);
 		enemies.add(e1);
 
-		Tower t = new TowerBuilderImpl(new Position(51, 51), 100, 9, 10, "tesla", enemies).attackType(AttackType.AREA)
+		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies).attackType(AttackType.AREA)
 				.damageRange(7).maximumTarget(4).findFirst(() -> {
 					return Towers.findFirstEnemyInRange(new Position(51, 51), 9, enemies);
 				}).build();
@@ -234,7 +234,7 @@ class AttackTest {
 		FakeEnemy e = new FakeEnemy(new Position(51, 51), 100);
 		enemies.add(e);
 
-		TowerController manager = new TowerControllermpl(enemies, x -> {
+		TowerController manager = new TowerControllerImpl(enemies, x -> {
 		}, x -> true);
 
 		manager.placeTower(DefaultTowers.BASICCANNON, new Position(52, 52));
@@ -271,7 +271,7 @@ class AttackTest {
 
 		UnaryOperator<Integer> up = x -> x + 10;
 
-		Tower t = new TowerBuilderImpl(new Position(51, 51), 100, 9, 10, "tesla", enemies).setUpgradable(true).maxLevel(2)
+		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies).setUpgradable(true).maxLevel(2)
 				.upgradeCost(up).upgradeDamage(up).startUpgradeCost(1).build();
 
 		int startDamage = t.getDamage();
@@ -284,7 +284,7 @@ class AttackTest {
 	void UpgradeAttack() {
 		List<Enemy> enemies = new LinkedList<>();
 
-		Tower t = new TowerBuilderImpl(new Position(51, 51), 100, 9, 10, "tesla", enemies).setUpgradable(true).maxLevel(3)
+		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies).setUpgradable(true).maxLevel(3)
 				.upgradeCost(x -> 1).upgradeDamage(x -> 50).startUpgradeCost(1).build();
 
 		if (t.getDamage() != 100) {
@@ -310,7 +310,7 @@ class AttackTest {
 		List<Enemy> enemies = new LinkedList<>();
 		int cost = 100;
 
-		Tower t = new TowerBuilderImpl(new Position(51, 51), 100, 9, 10, "tesla", enemies).setUpgradable(true).maxLevel(4)
+		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies).setUpgradable(true).maxLevel(4)
 				.upgradeCost(x -> x + 10).upgradeDamage(x -> 50).startUpgradeCost(cost).build();
 
 		for (int i = 0; i < cost; i++) {

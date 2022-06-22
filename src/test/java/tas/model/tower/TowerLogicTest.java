@@ -9,10 +9,11 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import main.java.tas.controller.tower.TowerController;
-import main.java.tas.controller.tower.TowerControllermpl;
+import main.java.tas.controller.tower.TowerControllerImpl;
 import main.java.tas.model.enemy.Enemy;
-import main.java.tas.model.tower.TowerBuilderImpl;
+import main.java.tas.controller.tower.builder.TowerBuilder;
 import main.java.tas.utils.Position;
+
 
 class TowerLogicTest {
 
@@ -20,12 +21,12 @@ class TowerLogicTest {
 	void NearbyTower() {
 		List<Enemy> a = new ArrayList<>();
 
-		TowerController t = new TowerControllermpl(a, x -> {
+		TowerController t = new TowerControllerImpl(a, x -> {
 		}, x -> {
 			return true;
 		});
 
-		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
 
 		assertTrue(t.thereIsTowerNear(new Position(51, 51), new Dimension(100, 100)));
 	}
@@ -34,12 +35,12 @@ class TowerLogicTest {
 	void NearbyTowerTooFar() {
 		List<Enemy> a = new ArrayList<>();
 
-		TowerController t = new TowerControllermpl(a, x -> {
+		TowerController t = new TowerControllerImpl(a, x -> {
 		}, x -> {
 			return true;
 		});
 
-		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
 
 		assertFalse(t.thereIsTowerNear(new Position(51, 192), new Dimension(100, 100)));
 	}
@@ -48,12 +49,12 @@ class TowerLogicTest {
 	void AddTower() {
 		List<Enemy> a = new ArrayList<>();
 
-		TowerController t = new TowerControllermpl(a, x -> {
+		TowerController t = new TowerControllerImpl(a, x -> {
 		}, x -> {
 			return true;
 		});
 
-		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
 
 		assertTrue(t.getBuildTowers().size() == 1);
 	}
@@ -62,12 +63,12 @@ class TowerLogicTest {
 	void AddTowerThread() {
 		List<Enemy> a = new ArrayList<>();
 
-		TowerController t = new TowerControllermpl(a, x -> {
+		TowerController t = new TowerControllerImpl(a, x -> {
 		}, x -> {
 			return true;
 		});
 
-		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
 
 		assertTrue(t.getBuildThread().size() == 1);
 	}
@@ -76,12 +77,12 @@ class TowerLogicTest {
 	void IsThreadRunning() {
 		List<Enemy> a = new ArrayList<>();
 
-		TowerController t = new TowerControllermpl(a, x -> {
+		TowerController t = new TowerControllerImpl(a, x -> {
 		}, x -> {
 			return true;
 		});
 
-		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
 
 		assertTrue(t.getBuildThread().get(0).isAlive());
 	}
@@ -90,13 +91,13 @@ class TowerLogicTest {
 	void AreThreadRunning() {
 		List<Enemy> a = new ArrayList<>();
 
-		TowerController t = new TowerControllermpl(a, x -> {
+		TowerController t = new TowerControllerImpl(a, x -> {
 		}, x -> {
 			return true;
 		});
 
-		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
-		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
 
 		assertTrue(t.getBuildThread().get(0).isAlive() && t.getBuildThread().get(1).isAlive());
 	}
@@ -105,13 +106,13 @@ class TowerLogicTest {
 	void ClearFromTowers() {
 		List<Enemy> a = new ArrayList<>();
 
-		TowerController t = new TowerControllermpl(a, x -> {
+		TowerController t = new TowerControllerImpl(a, x -> {
 		}, x -> {
 			return true;
 		});
 
-		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
-		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
 
 		t.closeAll();
 
@@ -121,13 +122,13 @@ class TowerLogicTest {
 	void ClearFromThreads() {
 		List<Enemy> a = new ArrayList<>();
 
-		TowerController t = new TowerControllermpl(a, x -> {
+		TowerController t = new TowerControllerImpl(a, x -> {
 		}, x -> {
 			return true;
 		});
 
-		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
-		t.placeTower(new TowerBuilderImpl(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
+		t.placeTower(new TowerBuilder(new Position(50, 50), 100, 100, 100, "bla bla"));
 
 		t.closeAll();
 
