@@ -30,7 +30,7 @@ public class UpgradableTowerImpl implements UpgradableTower {
 	 * @param startCostUpgrade the stating cost of upgrade
 	 * @param maxLevel         maximum level that the tower can reach
 	 */
-	protected UpgradableTowerImpl(final AbstractBasicTower tower, final UnaryOperator<Integer> increasedamage,
+	public UpgradableTowerImpl(final AbstractBasicTower tower, final UnaryOperator<Integer> increasedamage,
 			final UnaryOperator<Integer> increasecost, final int startCostUpgrade, final int maxLevel) {
 		this.tower = tower;
 		this.increasedamage = increasedamage;

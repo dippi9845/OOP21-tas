@@ -12,7 +12,7 @@ import main.java.tas.utils.Position;
 public class BasicTower extends AbstractBasicTower {
 
 	private Optional<Enemy> target;
-
+	
 	/**
 	 * Constructor, protected
 	 * 
@@ -24,7 +24,7 @@ public class BasicTower extends AbstractBasicTower {
 	 * @param towerName Tower name
 	 * @param enemyList List of all enemy in the map
 	 */
-	protected BasicTower(final Position pos, final int damage, final int radius, final int delay, final int cost,
+	public BasicTower(final Position pos, final int damage, final int radius, final int delay, final int cost,
 			final String towerName, final List<Enemy> enemyList) {
 		super(pos, damage, radius, delay, cost, towerName, enemyList);
 		this.target = Optional.empty();
