@@ -28,7 +28,7 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 	 *                    the time
 	 * @param attackRange Range of attack given by the first target
 	 */
-	protected AbstractAreaTower(final Position pos, final int damage, final int radius, final int delay, final int cost,
+	public AbstractAreaTower(final Position pos, final int damage, final int radius, final int delay, final int cost,
 			final String towerName, final List<Enemy> enemyList, final int maxTarget, final int attackRange) {
 		super(pos, damage, radius, delay, cost, towerName, enemyList, maxTarget);
 		this.attackRange = attackRange;

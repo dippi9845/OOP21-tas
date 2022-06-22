@@ -2,8 +2,10 @@ package main.java.tas.controller.listener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import main.java.tas.model.tower.factory.DefaultTowers;
+
 import javax.swing.AbstractButton;
+
+import main.java.tas.controller.tower.factory.DefaultTowers;
 
 /**
  * Class that implements {@link ActionListener} used as a listener for the

@@ -29,7 +29,7 @@ public abstract class AbstractBasicTower implements Tower {
 	 * @param towerName Tower name
 	 * @param enemyList List of all enemy in the map
 	 */
-	protected AbstractBasicTower(final Position pos, final int damage, final int radius, final int delay,
+	public AbstractBasicTower(final Position pos, final int damage, final int radius, final int delay,
 			final int cost, final String towerName, final List<Enemy> enemyList) {
 		this.damage = damage;
 		this.pos = pos;

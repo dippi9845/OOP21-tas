@@ -8,10 +8,10 @@ import main.java.tas.view.scene.LevelSelectScene;
 import main.java.tas.view.scene.MainMenuScene;
 import main.java.tas.view.scene.SandboxModeScene;
 import main.java.tas.view.scene.SettingsScene;
+import main.java.tas.controller.tower.factory.DefaultTowers;
 import main.java.tas.model.game.GameModelImpl;
 import main.java.tas.model.menu.MenuModel;
 import main.java.tas.model.menu.MenuModelImpl;
-import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.LevelHandler;
 

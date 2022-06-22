@@ -18,9 +18,9 @@ import main.java.tas.controller.listener.ScreenListener;
 import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.controller.observer.SceneMouseObserver;
 import main.java.tas.controller.tower.TowerController;
-import main.java.tas.controller.tower.TowerControllermpl;
-import main.java.tas.model.tower.factory.DefaultTowers;
-import main.java.tas.model.tower.factory.DefaultTowersUtils;
+import main.java.tas.controller.tower.TowerControllerImpl;
+import main.java.tas.controller.tower.factory.DefaultTowers;
+import main.java.tas.controller.tower.factory.DefaultTowersUtils;
 import main.java.tas.model.enemy.Enemy;
 import main.java.tas.model.game.GameModel;
 import main.java.tas.model.menu.MenuModel;
@@ -77,7 +77,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 
 		this.enemiesHandler = new EnemiesLogicImpl(pathNodes);
 		this.gameScene.getGameView().getGamePanel().setLine(pathNodes, pathColor, pathThickness);
-		this.towerController = new TowerControllermpl(this.enemiesHandler.getEnemies(),
+		this.towerController = new TowerControllerImpl(this.enemiesHandler.getEnemies(),
 				this.gameScene.getGameView().getGamePanel()::addEntity, this.playerStats::spendMoney);
 
 		this.gameScene.getInventoryView().addTextLabel(this.healthSymbol + " " + this.playerStats.getHP(), "health");

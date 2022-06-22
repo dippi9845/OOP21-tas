@@ -9,10 +9,11 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import main.java.tas.controller.tower.TowerController;
-import main.java.tas.controller.tower.TowerControllermpl;
+import main.java.tas.controller.tower.TowerControllerImpl;
 import main.java.tas.model.enemy.Enemy;
-import main.java.tas.model.tower.TowerBuilder;
+import main.java.tas.controller.tower.builder.TowerBuilder;
 import main.java.tas.utils.Position;
+
 
 class TowerLogicTest {
 
@@ -20,7 +21,7 @@ class TowerLogicTest {
 	void NearbyTower() {
 		List<Enemy> a = new ArrayList<>();
 
-		TowerController t = new TowerControllermpl(a, x -> {
+		TowerController t = new TowerControllerImpl(a, x -> {
 		}, x -> {
 			return true;
 		});
@@ -34,7 +35,7 @@ class TowerLogicTest {
 	void NearbyTowerTooFar() {
 		List<Enemy> a = new ArrayList<>();
 
-		TowerController t = new TowerControllermpl(a, x -> {
+		TowerController t = new TowerControllerImpl(a, x -> {
 		}, x -> {
 			return true;
 		});
@@ -48,7 +49,7 @@ class TowerLogicTest {
 	void AddTower() {
 		List<Enemy> a = new ArrayList<>();
 
-		TowerController t = new TowerControllermpl(a, x -> {
+		TowerController t = new TowerControllerImpl(a, x -> {
 		}, x -> {
 			return true;
 		});
@@ -62,7 +63,7 @@ class TowerLogicTest {
 	void AddTowerThread() {
 		List<Enemy> a = new ArrayList<>();
 
-		TowerController t = new TowerControllermpl(a, x -> {
+		TowerController t = new TowerControllerImpl(a, x -> {
 		}, x -> {
 			return true;
 		});
@@ -76,7 +77,7 @@ class TowerLogicTest {
 	void IsThreadRunning() {
 		List<Enemy> a = new ArrayList<>();
 
-		TowerController t = new TowerControllermpl(a, x -> {
+		TowerController t = new TowerControllerImpl(a, x -> {
 		}, x -> {
 			return true;
 		});
@@ -90,7 +91,7 @@ class TowerLogicTest {
 	void AreThreadRunning() {
 		List<Enemy> a = new ArrayList<>();
 
-		TowerController t = new TowerControllermpl(a, x -> {
+		TowerController t = new TowerControllerImpl(a, x -> {
 		}, x -> {
 			return true;
 		});
@@ -105,7 +106,7 @@ class TowerLogicTest {
 	void ClearFromTowers() {
 		List<Enemy> a = new ArrayList<>();
 
-		TowerController t = new TowerControllermpl(a, x -> {
+		TowerController t = new TowerControllerImpl(a, x -> {
 		}, x -> {
 			return true;
 		});
@@ -121,7 +122,7 @@ class TowerLogicTest {
 	void ClearFromThreads() {
 		List<Enemy> a = new ArrayList<>();
 
-		TowerController t = new TowerControllermpl(a, x -> {
+		TowerController t = new TowerControllerImpl(a, x -> {
 		}, x -> {
 			return true;
 		});

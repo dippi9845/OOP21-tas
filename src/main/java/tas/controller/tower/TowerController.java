@@ -2,10 +2,11 @@ package main.java.tas.controller.tower;
 
 import java.util.List;
 import java.util.function.Consumer;
+
+import main.java.tas.controller.tower.builder.TowerBuilder;
+import main.java.tas.controller.tower.factory.DefaultTowers;
 import main.java.tas.model.Entity;
 import main.java.tas.model.tower.Tower;
-import main.java.tas.model.tower.TowerBuilder;
-import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.utils.Position;
 import main.java.tas.utils.Dimension;
 
@@ -56,7 +57,7 @@ public interface TowerController {
 	/**
 	 * Return a {@link java.util.List} containing all built towers, by the method
 	 * {@link TowerController#placeTower(DefaultTowers, Position)} or the method
-	 * {@link TowerController#placeTower(TowerBuilder)}
+	 * {@link TowerController#placeTower(TowerBuilderImpl)}
 	 * 
 	 * @return a {@link java.util.List} containing all built towers
 	 */
@@ -66,7 +67,7 @@ public interface TowerController {
 	 * Return a {@link java.util.List} containing all thread, created when was
 	 * called, the method
 	 * {@link TowerController#placeTower(DefaultTowers, Position)} or the method
-	 * {@link TowerController#placeTower(TowerBuilder)}
+	 * {@link TowerController#placeTower(TowerBuilderImpl)}
 	 * 
 	 * @return a {@link java.util.List} containing all thread created
 	 */

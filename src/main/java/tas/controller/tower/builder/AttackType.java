@@ -1,4 +1,4 @@
-package main.java.tas.model.tower;
+package main.java.tas.controller.tower.builder;
 
 /**
  * This enumeration is used to specify the attack type of the tower that we want
@@ -10,7 +10,7 @@ public enum AttackType {
 	 */
 	BASIC,
 	/**
-	 * An defined number of enemy will be attacked
+	 * A defined number of enemy will be attacked
 	 */
 	MULTIPLE,
 	/**
