@@ -36,7 +36,7 @@ public class TowerControllermpl implements TowerController {
 		if (this.spendMoney.test(t.getCost())) {
 			final TowerThread twth = new TowerThreadImpl(t);
 			final Thread th = new Thread(twth);
-			
+
 			th.start();
 			this.towerThreads.add(th);
 
@@ -76,7 +76,9 @@ public class TowerControllermpl implements TowerController {
 	}
 
 	/**
-	 * Try to join the thread passed in input, and in case of exception will be handled
+	 * Try to join the thread passed in input, and in case of exception will be
+	 * handled
+	 * 
 	 * @param th Thread to be joined
 	 */
 	private void tryToJoin(final Thread th) {
@@ -86,13 +88,13 @@ public class TowerControllermpl implements TowerController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public void closeAll() {
 		this.builtTowers.stream().forEach(x -> x.stop());
 		this.builtTowers.clear();
-		
+
 		this.towerThreads.stream().forEach(this::tryToJoin);
 		this.towerThreads.clear();
 	}
@@ -102,21 +104,22 @@ public class TowerControllermpl implements TowerController {
 	public void drawTowers(final Consumer<Entity> draw) {
 		this.builtTowers.forEach(draw::accept);
 	}
-	
+
 	/**
 	 * Returns the diagonal of the rectangle described by Dimension
+	 * 
 	 * @param d the dimension of the rectangle
 	 * @return the diagonal described by the rectangle described by Dimension
 	 */
 	private double getDiagonal(final Dimension d) {
 		return Math.hypot(d.getHeight(), d.getWidth()) / 2;
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public boolean thereIsTowerNear(final Position pos, final Dimension dim) {
 		return this.builtTowers.stream()
-				.anyMatch(x->Position.findDistance(x.getPos(), pos) <= this.getDiagonal(dim) + Towers.getFarthest(x));
+				.anyMatch(x -> Position.findDistance(x.getPos(), pos) <= this.getDiagonal(dim) + Towers.getFarthest(x));
 	}
 
 	/** {@inheritDoc} */

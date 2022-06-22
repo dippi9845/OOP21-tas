@@ -36,6 +36,7 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 
 	/**
 	 * Return position of the last target fist target
+	 * 
 	 * @return position of the last target fist target
 	 */
 	protected Position getTargetPosition() {
@@ -52,8 +53,7 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * Checks if the enemy e is near to the target choose by the tower
+	 * {@inheritDoc} Checks if the enemy e is near to the target choose by the tower
 	 */
 	@Override
 	protected boolean isValidTarget(final Enemy e) {

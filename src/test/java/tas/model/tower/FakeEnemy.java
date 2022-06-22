@@ -15,7 +15,8 @@ class FakeEnemy implements Enemy {
 	private double health;
 
 	@SuppressWarnings("unused")
-	private FakeEnemy() {};
+	private FakeEnemy() {
+	};
 
 	protected FakeEnemy(final Position pos, final double health) {
 		this.pos = pos;

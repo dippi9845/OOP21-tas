@@ -52,7 +52,7 @@ public class EnemyFactoryImpl implements EnemyFactory {
 			// y = -(0.095 * (x - 5.2)^4 - 0.2 * (x - 5.2)^3 -1.2 * (x - 5.2)^2 +0.8 * (x -
 			// 5.2))
 			enemiesForWave = (int) Math.round(-(0.095 * Math.pow((wave - 5.2), 4) - 0.2 * Math.pow((wave - 5.2), 3)
-			        - 1.2 * Math.pow((wave - 5.2), 2) + 0.8 * (wave - 5.2)) + 3.7);
+					- 1.2 * Math.pow((wave - 5.2), 2) + 0.8 * (wave - 5.2)) + 3.7);
 		}
 
 		for (int i = 0; i < enemiesForWave; i++) {
