@@ -49,7 +49,6 @@ public class UpgradableTowerImpl implements UpgradableTower {
 	 */
 	private void upgradeDamage() {
 		this.tower.increaseDamage(this.increasedamage.apply(this.getLevel()));
-		System.out.print(this.upgradecountcost + " + " + this.increasecost.apply(this.upgradecountcost) + " = ");
 		this.upgradecountcost = this.increasecost.apply(this.upgradecountcost);
 		this.level++;
 	}

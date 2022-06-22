@@ -50,6 +50,20 @@ public class TowerControllermpl implements TowerController {
 	}
 
 	/**
+	 * Try to join the thread passed in input, and in case of exception will be
+	 * handled
+	 * 
+	 * @param th Thread to be joined
+	 */
+	private void tryToJoin(final Thread th) {
+		try {
+			th.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
 	 * Constructor
 	 * 
 	 * @param enemyList  list that contains all the enemies alive
@@ -75,19 +89,6 @@ public class TowerControllermpl implements TowerController {
 		return this.buildTower(preset.setEnemylist(this.enemyList).build());
 	}
 
-	/**
-	 * Try to join the thread passed in input, and in case of exception will be
-	 * handled
-	 * 
-	 * @param th Thread to be joined
-	 */
-	private void tryToJoin(final Thread th) {
-		try {
-			th.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
 
 	/** {@inheritDoc} */
 	@Override

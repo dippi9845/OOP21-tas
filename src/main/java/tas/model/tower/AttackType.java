@@ -10,7 +10,7 @@ public enum AttackType {
 	 */
 	BASIC,
 	/**
-	 * An defined number of enemy will be attacked
+	 * A defined number of enemy will be attacked
 	 */
 	MULTIPLE,
 	/**
