@@ -8,7 +8,7 @@ import main.java.tas.controller.tower.factory.DefaultTowers;
 import main.java.tas.model.Entity;
 import main.java.tas.model.tower.Tower;
 import main.java.tas.utils.Position;
-import main.java.tas.utils.Dimension;
+import main.java.tas.utils.Size;
 
 /**
  * An interface that manage all the built towers
@@ -45,7 +45,7 @@ public interface TowerController {
 	 * @param dim Dimension of the tower to build
 	 * @return true if is closer to minimum one tower, false otherwise
 	 */
-	public boolean thereIsTowerNear(final Position pos, final Dimension dim);
+	public boolean thereIsTowerNear(final Position pos, final Size dim);
 
 	/**
 	 * draw all the towers

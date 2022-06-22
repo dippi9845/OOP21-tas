@@ -5,7 +5,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import main.java.tas.model.enemy.Enemy;
-import main.java.tas.utils.Dimension;
+import main.java.tas.utils.Size;
 import main.java.tas.utils.Position;
 
 /**
@@ -19,7 +19,7 @@ public class Towers {
 	private Towers() {
 	}
 
-	public static final Dimension DEFAULTDIMENSION = new Dimension(100, 100);
+	public static final Size DEFAULTDIMENSION = new Size(100, 100);
 
 	/**
 	 * Check if the distance between two position is under the radius

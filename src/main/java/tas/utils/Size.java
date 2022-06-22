@@ -3,7 +3,7 @@ package main.java.tas.utils;
 /**
  * Class that models a dimension.
  */
-public class Dimension {
+public class Size {
 
 	private double width;
 	private double height;
@@ -14,7 +14,7 @@ public class Dimension {
 	 * @param width  of the dimension.
 	 * @param height of the dimension.
 	 */
-	public Dimension(double width, double height) {
+	public Size(double width, double height) {
 		this.width = width;
 		this.height = height;
 	}
@@ -25,7 +25,7 @@ public class Dimension {
 	 * @param width  of the dimension.
 	 * @param height of the dimension.
 	 */
-	public Dimension(int width, int height) {
+	public Size(int width, int height) {
 		this.width = width;
 		this.height = height;
 	}

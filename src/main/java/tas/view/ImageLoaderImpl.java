@@ -1,6 +1,6 @@
 package main.java.tas.view;
 
-import main.java.tas.utils.Dimension;
+import main.java.tas.utils.Size;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.RenderingHints;
@@ -61,7 +61,7 @@ public class ImageLoaderImpl implements ImageLoader {
 
 	/** {@inheritDoc} */
 	@Override
-	public BufferedImage getImageByEntity(final Entity entity, Dimension CanvasDimension) throws FileNotFoundException {
+	public BufferedImage getImageByEntity(final Entity entity, Size CanvasDimension) throws FileNotFoundException {
 		if (CanvasDimension.getWidth() == 0 || CanvasDimension.getHeight() == 0) {
 			CanvasDimension = this.gameSpecs.getGameUnits();
 		}
@@ -72,7 +72,7 @@ public class ImageLoaderImpl implements ImageLoader {
 			throw new FileNotFoundException("The given entity (" + entity + ") has no image in the 'res' folder");
 		}
 
-		Dimension newImageDimension = getNewImageDimension(CanvasDimension, entity.getBodyDimension());
+		Size newImageDimension = getNewImageDimension(CanvasDimension, entity.getBodyDimension());
 		return scaleImage(this.imagesMap.get(entityName), newImageDimension);
 	}
 
@@ -87,7 +87,7 @@ public class ImageLoaderImpl implements ImageLoader {
 
 	/** {@inheritDoc} */
 	@Override
-	public BufferedImage getImageByName(final String imageName, final Dimension CanvasDimension)
+	public BufferedImage getImageByName(final String imageName, final Size CanvasDimension)
 			throws FileNotFoundException {
 		return scaleImage(getImageByName(imageName), CanvasDimension);
 	}
@@ -100,13 +100,13 @@ public class ImageLoaderImpl implements ImageLoader {
 	 * @param originalImageDimension the original dimension of the image
 	 * @return the new dimension of the image
 	 */
-	private Dimension getNewImageDimension(final Dimension canvasDimension, final Dimension originalImageDimension) {
+	private Size getNewImageDimension(final Size canvasDimension, final Size originalImageDimension) {
 		int newX = (int) ((double) canvasDimension.getWidth()
 				/ ((double) this.gameSpecs.getGameUnits().getWidth() / (double) originalImageDimension.getWidth()));
 		int newY = (int) ((double) canvasDimension.getHeight()
 				/ ((double) this.gameSpecs.getGameUnits().getHeight() / (double) originalImageDimension.getHeight()));
 
-		return new Dimension(newX, newY);
+		return new Size(newX, newY);
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class ImageLoaderImpl implements ImageLoader {
 	 * @param newDimension the new dimension of the image
 	 * @return the scaled image
 	 */
-	private BufferedImage scaleImage(final BufferedImage src, final Dimension newDimension) {
+	private BufferedImage scaleImage(final BufferedImage src, final Size newDimension) {
 		final BufferedImage resizedImg = new BufferedImage((int) newDimension.getWidth(),
 				(int) newDimension.getHeight(), BufferedImage.TRANSLUCENT);
 

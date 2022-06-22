@@ -70,7 +70,7 @@ public class Position {
 	 * @param dim          the current dimensions of the game board
 	 * @param componentDim the current dimensions of the window
 	 */
-	public void positionConverter(Dimension dim, Dimension componentDim) {
+	public void positionConverter(Size dim, Size componentDim) {
 		double newX = x * dim.getWidth() / componentDim.getWidth();
 		double newY = y * dim.getHeight() / componentDim.getHeight();
 		this.x = newX;

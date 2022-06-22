@@ -1,6 +1,6 @@
 package main.java.tas.model.enemy;
 
-import main.java.tas.utils.Dimension;
+import main.java.tas.utils.Size;
 import java.util.List;
 
 import main.java.tas.utils.GameSpecs;
@@ -13,7 +13,7 @@ public class GenericEnemy implements Enemy {
 
 	private GameSpecs gameSpecs = new GameSpecs();
 
-	private final Dimension bodyDimension;
+	private final Size bodyDimension;
 	private final Position actualPosition;
 	private double health;
 	private final int money;
@@ -37,7 +37,7 @@ public class GenericEnemy implements Enemy {
 	 * @throws IllegalArgumentException if @param nodesPosition is empty
 	 */
 	public GenericEnemy(final List<Position> nodesPosition, final double health, final int money, final int damage,
-			final double speed, final Dimension bodyDimension, final String enemyName) throws IllegalArgumentException {
+			final double speed, final Size bodyDimension, final String enemyName) throws IllegalArgumentException {
 		if (nodesPosition.isEmpty()) {
 			throw new IllegalArgumentException("@param nodesPosition can't be an empty array!");
 		}
@@ -63,7 +63,7 @@ public class GenericEnemy implements Enemy {
 
 	/** {@inheritDoc} */
 	@Override
-	public Dimension getBodyDimension() {
+	public Size getBodyDimension() {
 		return this.bodyDimension;
 	}
 

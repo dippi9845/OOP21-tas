@@ -2,7 +2,7 @@ package test.java.tas.model.tower;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import main.java.tas.utils.Dimension;
+import main.java.tas.utils.Size;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,7 +34,7 @@ class AttackTest {
 		nodesPosition.add(pos);
 		nodesPosition.add(pos);
 
-		return new GenericEnemy(nodesPosition, health, 0, 0, 0, new Dimension(1, 1), "Niente");
+		return new GenericEnemy(nodesPosition, health, 0, 0, 0, new Size(1, 1), "Niente");
 	}
 
 	@Test

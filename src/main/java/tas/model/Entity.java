@@ -1,6 +1,6 @@
 package main.java.tas.model;
 
-import main.java.tas.utils.Dimension;
+import main.java.tas.utils.Size;
 
 import main.java.tas.utils.Position;
 
@@ -19,7 +19,7 @@ public interface Entity {
 	 * Return the dimension of the entity
 	 * @return the dimension of the entity
 	 */
-	Dimension getBodyDimension();
+	Size getBodyDimension();
 
 	/**
 	 * Return the name of the entity

@@ -13,7 +13,7 @@ import main.java.tas.model.tower.Tower;
 import main.java.tas.model.tower.Towers;
 import main.java.tas.utils.JsonUtils;
 import main.java.tas.utils.Position;
-import main.java.tas.utils.Dimension;
+import main.java.tas.utils.Size;
 
 /**
  * 
@@ -93,12 +93,12 @@ public class DefaultTowersUtils {
 	 * @param type Value of the default tower
 	 * @return the dimension of the tower
 	 */
-	public static Dimension getDefaultTowersDimension(final DefaultTowers type) {
+	public static Size getDefaultTowersDimension(final DefaultTowers type) {
 		if (JSONOBJECTMAP.get(type).has(DIMENSIONFIELD)) {
 
 			final JSONObject dimensionField = JSONOBJECTMAP.get(type).getJSONObject(DIMENSIONFIELD);
 
-			return new Dimension(dimensionField.getInt("width"), dimensionField.getInt("heigh"));
+			return new Size(dimensionField.getInt("width"), dimensionField.getInt("heigh"));
 		} else {
 			return Towers.DEFAULTDIMENSION;
 		}
