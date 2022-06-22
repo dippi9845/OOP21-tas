@@ -2,10 +2,11 @@ package main.java.tas.controller.tower;
 
 import java.util.List;
 import java.util.function.Consumer;
+
+import main.java.tas.controller.tower.builder.TowerBuilder;
+import main.java.tas.controller.tower.factory.DefaultTowers;
 import main.java.tas.model.Entity;
 import main.java.tas.model.tower.Tower;
-import main.java.tas.model.tower.TowerBuilder;
-import main.java.tas.model.tower.factory.DefaultTowers;
 import main.java.tas.utils.Position;
 import main.java.tas.utils.Dimension;
 
@@ -37,32 +38,37 @@ public interface TowerController {
 	public void closeAll();
 
 	/**
-	 * Checks if the position, and dimension passed is too close to another tower builded
+	 * Checks if the position, and dimension passed is too close to another tower
+	 * builded
+	 * 
 	 * @param pos Position of the tower to build
 	 * @param dim Dimension of the tower to build
 	 * @return true if is closer to minimum one tower, false otherwise
 	 */
 	public boolean thereIsTowerNear(final Position pos, final Dimension dim);
-	
+
 	/**
 	 * draw all the towers
 	 * 
 	 * @param draw consumer of Entity that draw every tower built
 	 */
 	public void drawTowers(final Consumer<Entity> draw);
-	
+
 	/**
-	 * Return a {@link java.util.List} containing all built towers,
-	 * by the method {@link TowerController#placeTower(DefaultTowers, Position)}
-	 * or the method {@link TowerController#placeTower(TowerBuilder)}
+	 * Return a {@link java.util.List} containing all built towers, by the method
+	 * {@link TowerController#placeTower(DefaultTowers, Position)} or the method
+	 * {@link TowerController#placeTower(TowerBuilderImpl)}
+	 * 
 	 * @return a {@link java.util.List} containing all built towers
 	 */
 	public List<Tower> getBuildTowers();
-	
+
 	/**
-	 * Return a {@link java.util.List} containing all thread, created when was called,
-	 * the method {@link TowerController#placeTower(DefaultTowers, Position)}
-	 * or the method {@link TowerController#placeTower(TowerBuilder)}
+	 * Return a {@link java.util.List} containing all thread, created when was
+	 * called, the method
+	 * {@link TowerController#placeTower(DefaultTowers, Position)} or the method
+	 * {@link TowerController#placeTower(TowerBuilderImpl)}
+	 * 
 	 * @return a {@link java.util.List} containing all thread created
 	 */
 	public List<Thread> getBuildThread();

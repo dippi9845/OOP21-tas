@@ -2,11 +2,11 @@ package main.java.tas.controller;
 
 import java.awt.event.ActionListener;
 
-import main.java.tas.controller.lister.MainMenuListener;
+import main.java.tas.controller.listener.MainMenuListener;
 import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.model.menu.MenuModel;
 import main.java.tas.view.ViewAction;
-import main.java.tas.view.scene.GenericScene;
+import main.java.tas.view.scene.MainMenuScene;
 
 /**
  * Class that creates the main menu controller. Class that implements
@@ -15,7 +15,7 @@ import main.java.tas.view.scene.GenericScene;
 public class MainMenuController implements SceneActionObserver, SceneController {
 
 	private MainMenuListener listener;
-	private GenericScene scene;
+	private MainMenuScene scene;
 	private MenuModel model;
 
 	/**
@@ -24,10 +24,10 @@ public class MainMenuController implements SceneActionObserver, SceneController 
 	 * @param sceneIn  the menu scene
 	 * @param theModel the menu model
 	 */
-	public MainMenuController(GenericScene sceneIn, MenuModel theModel) {
+	public MainMenuController(MainMenuScene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
 		// ((MainMenuSceneImpl) scene).setObserver(this);
-		this.listener = new MainMenuListener(((ViewAction)scene.getView()));
+		this.listener = new MainMenuListener(((ViewAction) scene.getView()));
 		this.model = theModel;
 	}
 

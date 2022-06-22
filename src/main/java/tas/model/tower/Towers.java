@@ -5,16 +5,21 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import main.java.tas.model.enemy.Enemy;
+import main.java.tas.utils.Dimension;
 import main.java.tas.utils.Position;
 
 /**
- * A class with a collections of functions used by all towers to help them to achieve some
- * tasks, avoid some repetitions and abstract from other implementations
+ * A class with a collections of functions used by all towers to help them to
+ * achieve some tasks, avoid some repetitions and abstract from other
+ * implementations
  */
 public class Towers {
 
+
 	private Towers() {
 	}
+
+	public static final Dimension DEFAULTDIMENSION = new Dimension(100, 100);
 
 	/**
 	 * Check if the distance between two position is under the radius
@@ -73,7 +78,7 @@ public class Towers {
 	 * @return Optional of enemy, that is empty if no enemy was found, otherwise the
 	 *         enemy found
 	 */
-	static public Optional<Enemy> findFistEnemyByPredicate(final Predicate<Enemy> f, final List<Enemy> enemyList) {	
+	static public Optional<Enemy> findFistEnemyByPredicate(final Predicate<Enemy> f, final List<Enemy> enemyList) {
 		return enemyList.stream().filter(f).findFirst();
 	}
 
@@ -102,14 +107,16 @@ public class Towers {
 	static public List<Enemy> findAll(final Predicate<Enemy> f, final List<Enemy> enemyList) {
 		return enemyList.stream().filter(f).collect(Collectors.toList());
 	}
-	
+
 	/**
-	 * Returns the farthest point of the rectangle described by the Tower, as well as the diagonal
+	 * Returns the farthest point of the rectangle described by the Tower, as well
+	 * as the diagonal
+	 * 
 	 * @param t Tower to find the farthest point
 	 * @return the farthest point of the rectangle described by the Tower
 	 */
 	static public double getFarthest(final Tower t) {
-		return Math.hypot(t.getBodyDimension().getHeight(), t.getBodyDimension().getWidth()) / 2;
+		return t.getBodyDimension().getDiagonal();
 	}
 
 	/**

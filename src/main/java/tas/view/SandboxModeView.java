@@ -21,7 +21,7 @@ public class SandboxModeView implements ViewAction, ViewMouse {
 	private JButton finishButton = new JButton("DONE");
 	private JPanel gamePanel = new JPanel(new GridBagLayout());
 	private SquarePanel gameBoard = new SquarePanel();
-	private List <JButton> buttonList = new ArrayList <JButton>();
+	private List<JButton> buttonList = new ArrayList<JButton>();
 
 	/**
 	 * Constructor that builds the sandbox mode view.

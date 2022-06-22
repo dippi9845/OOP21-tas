@@ -1,10 +1,11 @@
-package main.java.tas.model.tower.factory;
+package main.java.tas.controller.tower.factory;
 
 import java.util.List;
+
+import main.java.tas.controller.tower.builder.AttackType;
+import main.java.tas.controller.tower.builder.TowerBuilder;
 import main.java.tas.model.enemy.Enemy;
-import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Tower;
-import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.utils.Position;
 
 /**
@@ -21,11 +22,7 @@ public interface ArcherFactory {
 	 */
 	static public Tower basicArcher(final Position pos, final List<Enemy> enemyList) {
 		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.BASICARCHER), enemyList)
-				.setUpgradable(true)
-				.maxLevel(25)
-				.startUpgradeCost(1000)
-				.upgradeCost(x->x+20)
-				.upgradeDamage(x->15)
+				.setUpgradable(true).maxLevel(25).startUpgradeCost(1000).upgradeCost(x -> x + 20).upgradeDamage(x -> 15)
 				.build();
 	}
 
@@ -43,9 +40,7 @@ public interface ArcherFactory {
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->x+25)
-				.upgradeDamage(x->20)
-				.build();
+				.upgradeCost(x -> x + 25).upgradeDamage(x -> 20).build();
 	}
 
 	/**
@@ -57,14 +52,8 @@ public interface ArcherFactory {
 	 */
 	static public Tower triArcher(final Position pos, final List<Enemy> enemyList) {
 		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.TRIARCHER), enemyList)
-				.attackType(AttackType.MULTIPLE)
-				.maximumTarget(3)
-				.setUpgradable(true)
-				.maxLevel(25)
-				.startUpgradeCost(1000)
-				.upgradeCost(x->x+30)
-				.upgradeDamage(x->25)
-				.build();
+				.attackType(AttackType.MULTIPLE).maximumTarget(3).setUpgradable(true).maxLevel(25)
+				.startUpgradeCost(1000).upgradeCost(x -> x + 30).upgradeDamage(x -> 25).build();
 	}
 
 	/**
@@ -76,13 +65,7 @@ public interface ArcherFactory {
 	 */
 	static public Tower quadArcher(final Position pos, final List<Enemy> enemyList) {
 		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.QUADARCHER), enemyList)
-				.attackType(AttackType.MULTIPLE)
-				.maximumTarget(4)
-				.setUpgradable(true)
-				.maxLevel(25)
-				.startUpgradeCost(1000)
-				.upgradeCost(x->x+35)
-				.upgradeDamage(x->30)
-				.build();
+				.attackType(AttackType.MULTIPLE).maximumTarget(4).setUpgradable(true).maxLevel(25)
+				.startUpgradeCost(1000).upgradeCost(x -> x + 35).upgradeDamage(x -> 30).build();
 	}
 }

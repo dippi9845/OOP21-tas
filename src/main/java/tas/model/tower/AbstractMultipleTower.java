@@ -26,7 +26,7 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower {
 	 * @param enemyList List of all enemy in the map
 	 * @param maxTarget Max number of target that this tower can handle at the time
 	 */
-	protected AbstractMultipleTower(final Position pos, final int damage, final int radius, final int delay,
+	public AbstractMultipleTower(final Position pos, final int damage, final int radius, final int delay,
 			final int cost, final String towerName, final List<Enemy> enemyList, final int maxTarget) {
 		super(pos, damage, radius, delay, cost, towerName, enemyList);
 		this.maxEnemy = maxTarget;
@@ -54,6 +54,7 @@ public abstract class AbstractMultipleTower extends AbstractBasicTower {
 
 	/**
 	 * Return the maximum enemy to be targeted by the tower
+	 * 
 	 * @return the maximum enemy to be targeted by the tower
 	 */
 	protected int getMaxEnemy() {

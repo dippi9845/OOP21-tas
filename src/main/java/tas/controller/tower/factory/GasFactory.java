@@ -1,10 +1,11 @@
-package main.java.tas.model.tower.factory;
+package main.java.tas.controller.tower.factory;
 
 import java.util.List;
+
+import main.java.tas.controller.tower.builder.AttackType;
+import main.java.tas.controller.tower.builder.TowerBuilder;
 import main.java.tas.model.enemy.Enemy;
-import main.java.tas.model.tower.AttackType;
 import main.java.tas.model.tower.Tower;
-import main.java.tas.model.tower.TowerBuilder;
 import main.java.tas.utils.Position;
 
 /**
@@ -15,6 +16,7 @@ public interface GasFactory {
 
 	/**
 	 * This is a basic gas tower
+	 * 
 	 * @param pos       Position of the tower
 	 * @param enemyList List of all enemy in the map
 	 * @return an Gas Tower upgradable
@@ -26,8 +28,8 @@ public interface GasFactory {
 				.setUpgradable(true)
 				.maxLevel(25)
 				.startUpgradeCost(1000)
-				.upgradeCost(x->x+15)
-				.upgradeDamage(x->15)
+				.upgradeCost(x -> x + 15)
+				.upgradeDamage(x -> 15)
 				.build();
 	}
 }

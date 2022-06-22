@@ -6,8 +6,8 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.tas.controller.lister.ButtonListener;
-import main.java.tas.controller.lister.SandboxModeListener;
+import main.java.tas.controller.listener.ButtonListener;
+import main.java.tas.controller.listener.SandboxModeListener;
 import main.java.tas.controller.observer.SceneActionObserver;
 import main.java.tas.controller.observer.SceneMouseObserver;
 import main.java.tas.model.menu.MenuModel;
@@ -15,7 +15,7 @@ import main.java.tas.utils.GameSpecs;
 import main.java.tas.utils.LevelHandler;
 import main.java.tas.utils.Position;
 import main.java.tas.view.scene.SandboxModeScene;
-import main.java.tas.view.scene.GenericScene;
+import main.java.tas.utils.Dimension;
 
 /**
  * Class that creates the sandbox mode menu controller. Class that implements
@@ -24,7 +24,7 @@ import main.java.tas.view.scene.GenericScene;
 public class SandboxModeController implements SceneActionObserver, SceneMouseObserver, SceneController {
 
 	private SandboxModeListener listener;
-	private GenericScene scene;
+	private SandboxModeScene scene;
 	private MenuModel model;
 	private boolean lineInitialized = false;
 	private boolean firstNodeIsSelected = false;
@@ -40,9 +40,9 @@ public class SandboxModeController implements SceneActionObserver, SceneMouseObs
 	 * @param sceneIn  the sandbox mode scene
 	 * @param theModel the menu model
 	 */
-	public SandboxModeController(GenericScene sceneIn, MenuModel theModel) {
+	public SandboxModeController(SandboxModeScene sceneIn, MenuModel theModel) {
 		scene = sceneIn;
-		((SandboxModeScene) scene).setObserver(this);
+		scene.setObserver(this);
 		this.listener = new SandboxModeListener();
 		this.model = theModel;
 	}
@@ -62,23 +62,21 @@ public class SandboxModeController implements SceneActionObserver, SceneMouseObs
 			if (lineInitialized) {
 				Position lastSelectedPosition = listener.getLastNodeSelected();
 				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
-				        ((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize());
+				        new Dimension(this.scene.getView().getGameBoard().getPreferredSize().getWidth(), this.scene.getView().getGameBoard().getPreferredSize().getHeight()));
 				this.linePositionList.add(lastSelectedPosition);
 
 			} else if (firstNodeIsSelected) {
-				System.out.println("second node selected");
 				Position lastSelectedPosition = listener.getLastNodeSelected();
 				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
-				        ((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize());
+						new Dimension(this.scene.getView().getGameBoard().getPreferredSize().getWidth(), this.scene.getView().getGameBoard().getPreferredSize().getHeight()));
 				this.linePositionList.add(lastSelectedPosition);
 				((SandboxModeScene) this.scene).getView().getGameBoard().setLine(linePositionList, pathColor,
-				        pathThickness);
+						pathThickness);
 				this.lineInitialized = true;
 			} else {
-				System.out.println("fisrst node selected");
 				Position lastSelectedPosition = listener.getLastNodeSelected();
 				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
-				        ((SandboxModeScene) this.scene).getView().getGameBoard().getPreferredSize());
+						new Dimension(this.scene.getView().getGameBoard().getPreferredSize().getWidth(), this.scene.getView().getGameBoard().getPreferredSize().getHeight()));
 				this.linePositionList.add(lastSelectedPosition);
 				this.firstNodeIsSelected = true;
 			}

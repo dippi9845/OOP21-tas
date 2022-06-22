@@ -16,7 +16,7 @@ import main.java.tas.controller.observer.SceneActionObserver;
 public class LevelSelectView implements ViewAction {
 
 	private final JPanel rootPanel = new JPanel(new GridLayout(0, 1, 5, 10));
-	private List <JButton> buttonList = new ArrayList <JButton>();
+	private List<JButton> buttonList = new ArrayList<JButton>();
 
 	/**
 	 * Constructor that builds the view for the level select menu.
@@ -44,7 +44,7 @@ public class LevelSelectView implements ViewAction {
 			button.addActionListener(observer.getActionListener());
 		}
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public List<JButton> getButtons() {

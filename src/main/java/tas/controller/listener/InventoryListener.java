@@ -1,18 +1,18 @@
-package main.java.tas.controller.lister;
+package main.java.tas.controller.listener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import main.java.tas.model.tower.factory.DefaultTowers;
+
 import javax.swing.AbstractButton;
 
+import main.java.tas.controller.tower.factory.DefaultTowers;
 
 /**
  * Class that implements {@link ActionListener} used as a listener for the
- * inventory.
- * Class extends {@link GenericListener}.
+ * inventory. Class extends {@link GenericListener}.
  */
-public class InventoryListener extends GenericListener implements ActionListener{
-	
+public class InventoryListener extends GenericListener implements ActionListener {
+
 	private DefaultTowers towerSelected;
 
 	/**
@@ -21,13 +21,13 @@ public class InventoryListener extends GenericListener implements ActionListener
 	public DefaultTowers getTowerSelected() {
 		return this.towerSelected;
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		DefaultTowers towerList [] = DefaultTowers.values();
-		for(int i = 0; i < towerList.length; i++) {
-			if(((AbstractButton) e.getSource()).getText().equals(towerList[i].toString())) {
+		DefaultTowers towerList[] = DefaultTowers.values();
+		for (int i = 0; i < towerList.length; i++) {
+			if (((AbstractButton) e.getSource()).getText().equals(towerList[i].toString())) {
 				this.towerSelected = towerList[i];
 				setUpdate();
 			}

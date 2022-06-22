@@ -28,7 +28,7 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 	 *                    the time
 	 * @param attackRange Range of attack given by the first target
 	 */
-	protected AbstractAreaTower(final Position pos, final int damage, final int radius, final int delay, final int cost,
+	public AbstractAreaTower(final Position pos, final int damage, final int radius, final int delay, final int cost,
 			final String towerName, final List<Enemy> enemyList, final int maxTarget, final int attackRange) {
 		super(pos, damage, radius, delay, cost, towerName, enemyList, maxTarget);
 		this.attackRange = attackRange;
@@ -36,6 +36,7 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 
 	/**
 	 * Return position of the last target fist target
+	 * 
 	 * @return position of the last target fist target
 	 */
 	protected Position getTargetPosition() {
@@ -52,8 +53,7 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * Checks if the enemy e is near to the target choose by the tower
+	 * {@inheritDoc} Checks if the enemy e is near to the target choose by the tower
 	 */
 	@Override
 	protected boolean isValidTarget(final Enemy e) {

@@ -40,9 +40,9 @@ public class AdaptiveLabel extends JLabel {
 	 */
 	private void draw(final Position pos) {
 		int xPos = (int) ((double) getParent().getWidth() / (double) this.gameSpecs.getGameUnits().getWidth()
-		        * (double) pos.getX() - getPreferredSize().getWidth() / 2);
+				* (double) pos.getX() - getPreferredSize().getWidth() / 2);
 		int yPos = (int) ((double) getParent().getHeight() / (double) this.gameSpecs.getGameUnits().getHeight()
-		        * (double) pos.getY() - getPreferredSize().getHeight() / 2);
+				* (double) pos.getY() - getPreferredSize().getHeight() / 2);
 
 		setBounds(xPos, yPos, (int) getPreferredSize().getWidth(), (int) getPreferredSize().getHeight());
 	}

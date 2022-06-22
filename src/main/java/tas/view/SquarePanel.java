@@ -71,9 +71,9 @@ public class SquarePanel extends AdaptivePanel {
 		AdaptiveLabel entityLabel = new AdaptiveLabel();
 		try {
 			entityLabel.setIcon(new ImageIcon(imGetter.getImageByEntity(e,
-			        new Dimension(this.getPreferredSize().getWidth(), this.getPreferredSize().getHeight()))));
+					new Dimension(this.getPreferredSize().getWidth(), this.getPreferredSize().getHeight()))));
 		} catch (FileNotFoundException e1) {
-			System.out.println(e1);
+			e1.printStackTrace();
 		}
 		entityLables.put(e, entityLabel);
 		this.add(entityLabel);
@@ -90,9 +90,9 @@ public class SquarePanel extends AdaptivePanel {
 				for (Map.Entry<Entity, AdaptiveLabel> entityMap : entityLables.entrySet()) {
 					try {
 						entityMap.getValue().setIcon(new ImageIcon(imGetter.getImageByEntity(entityMap.getKey(),
-						        new Dimension(getPreferredSize().getWidth(), getPreferredSize().getHeight()))));
+								new Dimension(getPreferredSize().getWidth(), getPreferredSize().getHeight()))));
 					} catch (FileNotFoundException e1) {
-						System.out.println(e1);
+						e1.printStackTrace();
 					}
 				}
 
@@ -100,7 +100,7 @@ public class SquarePanel extends AdaptivePanel {
 				if (bgImage.isPresent()) {
 					try {
 						bgImage = Optional.of(imGetter.getImageByName(bgImageName.get(),
-						        new Dimension(getPreferredSize().getWidth(), getPreferredSize().getHeight())));
+								new Dimension(getPreferredSize().getWidth(), getPreferredSize().getHeight())));
 					} catch (FileNotFoundException e) {
 						e.printStackTrace();
 					}

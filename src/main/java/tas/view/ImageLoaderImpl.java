@@ -42,7 +42,7 @@ public class ImageLoaderImpl implements ImageLoader {
 		try (Stream<Path> paths = Files.walk(Paths.get(RESOURCE_PATH))) {
 			paths.filter(Files::isRegularFile).forEach(filePath -> loadImage(filePath.toFile()));
 		} catch (IOException e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 
@@ -55,7 +55,7 @@ public class ImageLoaderImpl implements ImageLoader {
 		try {
 			this.imagesMap.put(file.getName().replaceFirst("[.][^.]+$", ""), ImageIO.read(file));
 		} catch (IOException e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 
@@ -67,7 +67,7 @@ public class ImageLoaderImpl implements ImageLoader {
 		}
 
 		String entityName = entity.getEntityName().toLowerCase();
-		
+
 		if (!this.imagesMap.containsKey(entityName)) {
 			throw new FileNotFoundException("The given entity (" + entity + ") has no image in the 'res' folder");
 		}
@@ -88,7 +88,7 @@ public class ImageLoaderImpl implements ImageLoader {
 	/** {@inheritDoc} */
 	@Override
 	public BufferedImage getImageByName(final String imageName, final Dimension CanvasDimension)
-	        throws FileNotFoundException {
+			throws FileNotFoundException {
 		return scaleImage(getImageByName(imageName), CanvasDimension);
 	}
 
@@ -102,9 +102,9 @@ public class ImageLoaderImpl implements ImageLoader {
 	 */
 	private Dimension getNewImageDimension(final Dimension canvasDimension, final Dimension originalImageDimension) {
 		int newX = (int) ((double) canvasDimension.getWidth()
-		        / ((double) this.gameSpecs.getGameUnits().getWidth() / (double) originalImageDimension.getWidth()));
+				/ ((double) this.gameSpecs.getGameUnits().getWidth() / (double) originalImageDimension.getWidth()));
 		int newY = (int) ((double) canvasDimension.getHeight()
-		        / ((double) this.gameSpecs.getGameUnits().getHeight() / (double) originalImageDimension.getHeight()));
+				/ ((double) this.gameSpecs.getGameUnits().getHeight() / (double) originalImageDimension.getHeight()));
 
 		return new Dimension(newX, newY);
 	}
@@ -117,8 +117,8 @@ public class ImageLoaderImpl implements ImageLoader {
 	 * @return the scaled image
 	 */
 	private BufferedImage scaleImage(final BufferedImage src, final Dimension newDimension) {
-		final BufferedImage resizedImg = new BufferedImage((int) newDimension.getWidth(), (int) newDimension.getHeight(),
-		        BufferedImage.TRANSLUCENT);
+		final BufferedImage resizedImg = new BufferedImage((int) newDimension.getWidth(),
+				(int) newDimension.getHeight(), BufferedImage.TRANSLUCENT);
 
 		final Graphics2D g2 = resizedImg.createGraphics();
 
