@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public final class JsonUtils {
 
 	/**
-	 * Reads data from a JSON file and returns the relative JSONObject
+	 * Reads data from a JSON file in the classpath and returns the relative JSONObject
 	 * 
 	 * @param jsonPath where the file is
 	 * @return the relative JSONObject
@@ -37,6 +37,12 @@ public final class JsonUtils {
 		return new JSONObject(content);
 	}
 	
+	/**
+	 * Reads data from a JSON file and returns the relative JSONObject
+	 * 
+	 * @param jsonPath where the file is
+	 * @return the relative JSONObject
+	 */
 	public static JSONObject getJsonDataByFile(final String jsonPath) {
         String content = "";
         try {
