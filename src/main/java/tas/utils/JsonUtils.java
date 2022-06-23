@@ -38,7 +38,6 @@ public final class JsonUtils {
 	}
 	
 	public static JSONObject getJsonDataByFile(final String jsonPath) {
-		System.out.println(jsonPath);
         String content = "";
         try {
             content = Files.readString(Paths.get(jsonPath));
