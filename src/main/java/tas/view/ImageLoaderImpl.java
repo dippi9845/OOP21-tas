@@ -47,7 +47,6 @@ public class ImageLoaderImpl implements ImageLoader {
 			try {
 				fileSystem.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
