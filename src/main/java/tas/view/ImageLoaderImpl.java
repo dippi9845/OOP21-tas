@@ -42,7 +42,7 @@ public class ImageLoaderImpl implements ImageLoader {
 	 */
 	public ImageLoaderImpl() {
 		loadAllImages(RESOURCE_PATH);
-		
+
 		if (fileSystem != null) {
 			try {
 				fileSystem.close();
@@ -54,7 +54,9 @@ public class ImageLoaderImpl implements ImageLoader {
 	}
 
 	/**
-	 * Loads all of the images in the {@link #RESOURCE_PATH}.
+	 * Loads all of the images in the {@link #RESOURCE_PATH}. I took inspiration
+	 * from:
+	 * https://stackoverflow.com/questions/66341081/not-able-to-read-resource-files-from-src-test-resources-in-sts
 	 * 
 	 * @param path the path where are the images
 	 */
