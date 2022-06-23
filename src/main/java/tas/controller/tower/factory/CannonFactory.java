@@ -22,7 +22,11 @@ public interface CannonFactory {
 	 */
 	static public Tower basicCannon(final Position pos, final List<Enemy> enemyList) {
 		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.BASICCANNON), enemyList)
-				.setUpgradable(true).maxLevel(25).startUpgradeCost(1000).upgradeCost(x -> x + 5).upgradeDamage(x -> 10)
+				.setUpgradable(true)
+				.maxLevel(25)
+				.startUpgradeCost(1000)
+				.upgradeCost(x -> x + 5)
+				.upgradeDamage(x -> 10)
 				.build();
 	}
 
@@ -35,8 +39,13 @@ public interface CannonFactory {
 	 */
 	static public Tower biCannon(final Position pos, final List<Enemy> enemyList) {
 		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.BICANNON), enemyList)
-				.attackType(AttackType.MULTIPLE).maximumTarget(2).maxLevel(25).startUpgradeCost(1000)
-				.upgradeCost(x -> x + 15).upgradeDamage(x -> 20).build();
+				.attackType(AttackType.MULTIPLE)
+				.maximumTarget(2)
+				.maxLevel(25)
+				.startUpgradeCost(1000)
+				.upgradeCost(x -> x + 15)
+				.upgradeDamage(x -> 20)
+				.build();
 	}
 
 	/**
@@ -48,8 +57,13 @@ public interface CannonFactory {
 	 */
 	static public Tower triCannon(final Position pos, final List<Enemy> enemyList) {
 		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.TRICANNON), enemyList)
-				.attackType(AttackType.MULTIPLE).maximumTarget(3).maxLevel(25).startUpgradeCost(1000)
-				.upgradeCost(x -> x + 35).upgradeDamage(x -> 30).build();
+				.attackType(AttackType.MULTIPLE)
+				.maximumTarget(3)
+				.maxLevel(25)
+				.startUpgradeCost(1000)
+				.upgradeCost(x -> x + 35)
+				.upgradeDamage(x -> 30)
+				.build();
 	}
 
 	/**
@@ -61,8 +75,13 @@ public interface CannonFactory {
 	 */
 	static public Tower quadCannon(final Position pos, final List<Enemy> enemyList) {
 		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.QUADCANNON), enemyList)
-				.attackType(AttackType.MULTIPLE).maximumTarget(4).maxLevel(25).startUpgradeCost(1000)
-				.upgradeCost(x -> x + 45).upgradeDamage(x -> 40).build();
+				.attackType(AttackType.MULTIPLE)
+				.maximumTarget(4)
+				.maxLevel(25)
+				.startUpgradeCost(1000)
+				.upgradeCost(x -> x + 45)
+				.upgradeDamage(x -> 40)
+				.build();
 	}
 
 }

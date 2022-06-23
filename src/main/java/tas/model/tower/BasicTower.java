@@ -12,7 +12,7 @@ import main.java.tas.utils.Position;
 public class BasicTower extends AbstractBasicTower {
 
 	private Optional<Enemy> target;
-	
+
 	/**
 	 * Constructor, protected
 	 * 

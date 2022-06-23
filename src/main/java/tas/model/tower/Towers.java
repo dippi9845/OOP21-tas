@@ -15,7 +15,6 @@ import main.java.tas.utils.Position;
  */
 public class Towers {
 
-
 	private Towers() {
 	}
 

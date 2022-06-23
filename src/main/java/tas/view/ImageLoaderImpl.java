@@ -181,7 +181,7 @@ public class ImageLoaderImpl implements ImageLoader {
 	/** {@inheritDoc} */
 	@Override
 	public BufferedImage getImageByName(final String imageName, final Size CanvasDimension)
-	        throws FileNotFoundException {
+			throws FileNotFoundException {
 		return scaleImage(getImageByName(imageName), CanvasDimension);
 	}
 
@@ -195,9 +195,9 @@ public class ImageLoaderImpl implements ImageLoader {
 	 */
 	private Size getNewImageDimension(final Size canvasDimension, final Size originalImageDimension) {
 		int newX = (int) ((double) canvasDimension.getWidth()
-		        / ((double) this.gameSpecs.getGameUnits().getWidth() / (double) originalImageDimension.getWidth()));
+				/ ((double) this.gameSpecs.getGameUnits().getWidth() / (double) originalImageDimension.getWidth()));
 		int newY = (int) ((double) canvasDimension.getHeight()
-		        / ((double) this.gameSpecs.getGameUnits().getHeight() / (double) originalImageDimension.getHeight()));
+				/ ((double) this.gameSpecs.getGameUnits().getHeight() / (double) originalImageDimension.getHeight()));
 
 		return new Size(newX, newY);
 	}
@@ -212,7 +212,7 @@ public class ImageLoaderImpl implements ImageLoader {
 	 */
 	private BufferedImage scaleImage(final BufferedImage src, final Size newDimension) {
 		final BufferedImage resizedImg = new BufferedImage((int) newDimension.getWidth(),
-		        (int) newDimension.getHeight(), BufferedImage.TRANSLUCENT);
+				(int) newDimension.getHeight(), BufferedImage.TRANSLUCENT);
 
 		final Graphics2D g2 = resizedImg.createGraphics();
 

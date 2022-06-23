@@ -90,7 +90,6 @@ public class TowerControllerImpl implements TowerController {
 		return this.buildTower(preset.setEnemylist(this.enemyList).build());
 	}
 
-
 	/** {@inheritDoc} */
 	@Override
 	public void closeAll() {

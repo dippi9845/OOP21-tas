@@ -22,8 +22,7 @@ public interface ArcherFactory {
 	 */
 	static public Tower basicArcher(final Position pos, final List<Enemy> enemyList) {
 		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.BASICARCHER), enemyList)
-				.setUpgradable(true)
-				.maxLevel(25).startUpgradeCost(1000).upgradeCost(x -> x + 20).upgradeDamage(x -> 15)
+				.setUpgradable(true).maxLevel(25).startUpgradeCost(1000).upgradeCost(x -> x + 20).upgradeDamage(x -> 15)
 				.build();
 	}
 
@@ -36,12 +35,8 @@ public interface ArcherFactory {
 	 */
 	static public Tower biArcher(final Position pos, final List<Enemy> enemyList) {
 		return new TowerBuilder(pos, DefaultTowersUtils.JSONOBJECTMAP.get(DefaultTowers.BIARCHER), enemyList)
-				.attackType(AttackType.MULTIPLE)
-				.maximumTarget(2)
-				.setUpgradable(true)
-				.maxLevel(25)
-				.startUpgradeCost(1000)
-				.upgradeCost(x -> x + 25).upgradeDamage(x -> 20).build();
+				.attackType(AttackType.MULTIPLE).maximumTarget(2).setUpgradable(true).maxLevel(25)
+				.startUpgradeCost(1000).upgradeCost(x -> x + 25).upgradeDamage(x -> 20).build();
 	}
 
 	/**

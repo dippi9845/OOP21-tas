@@ -43,7 +43,7 @@ public class Size {
 	public double getHeight() {
 		return this.height;
 	}
-	
+
 	/**
 	 * Returns the diagonal of the rectangle described by Dimension
 	 * 

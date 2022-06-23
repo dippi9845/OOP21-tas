@@ -62,13 +62,15 @@ public class SandboxModeController implements SceneActionObserver, SceneMouseObs
 			if (lineInitialized) {
 				Position lastSelectedPosition = listener.getLastNodeSelected();
 				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
-				        new Size(this.scene.getView().getGameBoard().getPreferredSize().getWidth(), this.scene.getView().getGameBoard().getPreferredSize().getHeight()));
+						new Size(this.scene.getView().getGameBoard().getPreferredSize().getWidth(),
+								this.scene.getView().getGameBoard().getPreferredSize().getHeight()));
 				this.linePositionList.add(lastSelectedPosition);
 
 			} else if (firstNodeIsSelected) {
 				Position lastSelectedPosition = listener.getLastNodeSelected();
 				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
-						new Size(this.scene.getView().getGameBoard().getPreferredSize().getWidth(), this.scene.getView().getGameBoard().getPreferredSize().getHeight()));
+						new Size(this.scene.getView().getGameBoard().getPreferredSize().getWidth(),
+								this.scene.getView().getGameBoard().getPreferredSize().getHeight()));
 				this.linePositionList.add(lastSelectedPosition);
 				((SandboxModeScene) this.scene).getView().getGameBoard().setLine(linePositionList, pathColor,
 						pathThickness);
@@ -76,7 +78,8 @@ public class SandboxModeController implements SceneActionObserver, SceneMouseObs
 			} else {
 				Position lastSelectedPosition = listener.getLastNodeSelected();
 				lastSelectedPosition.positionConverter(this.gameSpecs.getGameUnits(),
-						new Size(this.scene.getView().getGameBoard().getPreferredSize().getWidth(), this.scene.getView().getGameBoard().getPreferredSize().getHeight()));
+						new Size(this.scene.getView().getGameBoard().getPreferredSize().getWidth(),
+								this.scene.getView().getGameBoard().getPreferredSize().getHeight()));
 				this.linePositionList.add(lastSelectedPosition);
 				this.firstNodeIsSelected = true;
 			}

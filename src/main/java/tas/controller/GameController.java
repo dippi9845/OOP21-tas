@@ -222,7 +222,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 			double f = turretPosition.getY();
 			if (i == 1) {
 				double dist = Math.sqrt(Math.pow(e - a, 2) + Math.pow(f - b, 2));
-        
+
 				if (dist < this.pathThickness + 50) {
 					return false;
 				}
@@ -255,7 +255,7 @@ public class GameController implements SceneMouseObserver, SceneActionObserver, 
 			mousePosition.positionConverter(this.gameSpecs.getGameUnits(),
 					new Size(this.gameScene.getGameView().getGamePanel().getPreferredSize().getWidth(),
 							this.gameScene.getGameView().getGamePanel().getPreferredSize().getHeight()));
-      
+
 			if (checkTurretPosition(mousePosition, currentTowerSelected)) {
 				this.towerController.placeTower(currentTowerSelected, mousePosition);
 				this.currentInventoryMode = 0;

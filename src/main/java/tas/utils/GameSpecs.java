@@ -22,7 +22,7 @@ public final class GameSpecs {
 		JSONObject jsonSetupList = JsonUtils.getJsonData(enemiesJsonSetup);
 
 		this.gameUnits = new Size(jsonSetupList.getJSONObject("gameUnits").getInt("width"),
-		        jsonSetupList.getJSONObject("gameUnits").getInt("height"));
+				jsonSetupList.getJSONObject("gameUnits").getInt("height"));
 		this.tickRate = jsonSetupList.getInt("tickRate");
 		this.maxFrameSkip = jsonSetupList.getInt("maxFrameSkip");
 		this.skipTicks = 1000 / this.tickRate;
