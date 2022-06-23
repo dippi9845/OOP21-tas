@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
 import org.json.JSONObject;
@@ -34,5 +36,16 @@ public final class JsonUtils {
 
 		return new JSONObject(content);
 	}
+	
+	public static JSONObject getJsonDataByFile(final String jsonPath) {
+		System.out.println(jsonPath);
+        String content = "";
+        try {
+            content = Files.readString(Paths.get(jsonPath));
+        } catch (IOException e) {
+        	e.printStackTrace();
+        }
+        return new JSONObject(content);
+    }
 
 }
