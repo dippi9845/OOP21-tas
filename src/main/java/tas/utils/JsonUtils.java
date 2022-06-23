@@ -1,8 +1,10 @@
 package main.java.tas.utils;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.stream.Collectors;
 
 import org.json.JSONObject;
 
@@ -18,12 +20,18 @@ public final class JsonUtils {
 	 * @return the relative JSONObject
 	 */
 	public static JSONObject getJsonData(final String jsonPath) {
-		String content = "";
+		final InputStream in = ClassLoader.getSystemResourceAsStream(jsonPath);
+		final BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
+		final String content = br.lines().collect(Collectors.joining());
+
 		try {
-			content = Files.readString(Paths.get(jsonPath));
-		} catch (IOException e) {
-			e.printStackTrace();
+			in.close();
+			br.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
 		}
+
 		return new JSONObject(content);
 	}
 

@@ -12,8 +12,7 @@ import org.json.JSONObject;
  */
 public class LevelHandler {
 
-	private static String PATH = "res" + System.getProperty("file.separator") + "levelStorage"
-			+ System.getProperty("file.separator") + "levelStorage.json";
+	private static String PATH = "levelStorage" + "/" + "levelStorage.json";
 
 	/**
 	 * @return the number of elements in levelStorage.json (which is the number of
@@ -23,8 +22,7 @@ public class LevelHandler {
 		try {
 			JSONObject json = JsonUtils.getJsonData(PATH);
 			return json.length();
-    }
-		catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			return 0;
 		}
@@ -94,8 +92,7 @@ public class LevelHandler {
 			fileWriter.write(jsonObj.toString(4));
 			fileWriter.flush();
 			fileWriter.close();
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
