@@ -33,8 +33,10 @@ public class MainControllerImpl implements MainController {
 	 * Constructor that creates the main controller of the game.
 	 */
 	public MainControllerImpl() {
+		LevelHandler.checkAssetFile();
 		this.sceneController = createMenu(this.mainView);
 		this.mainView.show();
+		
 	}
 
 	/** {@inheritDoc} */
