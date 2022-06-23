@@ -15,8 +15,8 @@ import org.json.JSONObject;
  */
 public class LevelHandler {
 	private static String ASSET_PATH = "asset";
-    private static String PATH = ASSET_PATH + "/" + "levelStorage.json";
-    private static String PATH_2_DEFAULT_LEVELS = "levelStorage/levelStorage.json";
+	private static String PATH = ASSET_PATH + File.separator + "levelStorage.json";
+	private static String PATH_2_DEFAULT_LEVELS = "levelStorage/levelStorage.json";
     
 	/**
 	 * @return the number of elements in levelStorage.json (which is the number of
@@ -24,7 +24,7 @@ public class LevelHandler {
 	 */
 	public static int getNElements() {
 		try {
-			JSONObject json = JsonUtils.getJsonData(PATH);
+			JSONObject json = JsonUtils.getJsonDataByFile(new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent() + File.separator + PATH);
 			return json.length();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -39,7 +39,12 @@ public class LevelHandler {
 	 * @return a list of the nodes of the level
 	 */
 	public static List<Position> readLevel(String level) {
-		JSONObject json = JsonUtils.getJsonData(PATH);
+		JSONObject json = new JSONObject();
+		try {
+			json = JsonUtils.getJsonDataByFile(new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent() + File.separator + PATH);
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
 		List<Position> list = new ArrayList<Position>();
 
 		JSONArray levelNodes = json.getJSONObject(level).getJSONArray("path");
@@ -55,7 +60,12 @@ public class LevelHandler {
 	 * @param list the list of nodes of the new level
 	 */
 	public static void writeLevel(List<Position> list) {
-		JSONObject file = JsonUtils.getJsonData(PATH);
+		JSONObject file = new JSONObject();
+		try {
+			file = JsonUtils.getJsonDataByFile(new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent() + File.separator + PATH);
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
 		JSONObject level = new JSONObject();
 		JSONArray path = new JSONArray();
 		for (int i = 0; i < list.size(); i++) {
@@ -73,7 +83,12 @@ public class LevelHandler {
 	 * Deletes the user made levels.
 	 */
 	public static void deleteUserLevels() {
-		JSONObject json = JsonUtils.getJsonData(PATH);
+		JSONObject json = null;
+		try {
+			json = JsonUtils.getJsonDataByFile(new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent() + File.separator + PATH);
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
 		if (getNElements() > 3) {
 			for (int i = 4; i <= (json.length() + 2); i++) {
 				json.remove("level" + Integer.toString(i));
