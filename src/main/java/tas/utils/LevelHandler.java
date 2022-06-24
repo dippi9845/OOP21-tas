@@ -17,14 +17,16 @@ public class LevelHandler {
 	private static String ASSET_PATH = "asset";
 	private static String PATH = ASSET_PATH + File.separator + "levelStorage.json";
 	private static String PATH_2_DEFAULT_LEVELS = "levelStorage/levelStorage.json";
-    
+
 	/**
 	 * @return the number of elements in levelStorage.json (which is the number of
 	 *         levels)
 	 */
 	public static int getNElements() {
 		try {
-			JSONObject json = JsonUtils.getJsonDataByFile(new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent() + File.separator + PATH);
+			JSONObject json = JsonUtils.getJsonDataByFile(
+					new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent()
+							+ File.separator + PATH);
 			return json.length();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -41,7 +43,9 @@ public class LevelHandler {
 	public static List<Position> readLevel(String level) {
 		JSONObject json = new JSONObject();
 		try {
-			json = JsonUtils.getJsonDataByFile(new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent() + File.separator + PATH);
+			json = JsonUtils.getJsonDataByFile(
+					new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent()
+							+ File.separator + PATH);
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
@@ -62,7 +66,9 @@ public class LevelHandler {
 	public static void writeLevel(List<Position> list) {
 		JSONObject file = new JSONObject();
 		try {
-			file = JsonUtils.getJsonDataByFile(new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent() + File.separator + PATH);
+			file = JsonUtils.getJsonDataByFile(
+					new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent()
+							+ File.separator + PATH);
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
@@ -85,7 +91,9 @@ public class LevelHandler {
 	public static void deleteUserLevels() {
 		JSONObject json = null;
 		try {
-			json = JsonUtils.getJsonDataByFile(new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent() + File.separator + PATH);
+			json = JsonUtils.getJsonDataByFile(
+					new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent()
+							+ File.separator + PATH);
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
@@ -113,43 +121,50 @@ public class LevelHandler {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-    * Checks if the 'asset' file exists, otherwise it creates it
-    */
-   public static boolean checkAssetFile() {
-       if (!checkFileExists(ASSET_PATH)) {
-           try {
-               File dir = new File(new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent().concat(File.separator + ASSET_PATH));
-               boolean dirCreation = dir.mkdirs();
+	 * Checks if the 'asset' file exists, otherwise it creates it
+	 */
+	public static boolean checkAssetFile() {
+		if (!checkFileExists(ASSET_PATH)) {
+			try {
+				File dir = new File(
+						new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI())
+								.getParent().concat(File.separator + ASSET_PATH));
+				boolean dirCreation = dir.mkdirs();
 
-               File jsonFile = new File(new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent().concat(File.separator + PATH));
-               boolean fileCreation = jsonFile.createNewFile();
+				File jsonFile = new File(
+						new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI())
+								.getParent().concat(File.separator + PATH));
+				boolean fileCreation = jsonFile.createNewFile();
 
-               saveJson(JsonUtils.getJsonData(PATH_2_DEFAULT_LEVELS));
+				saveJson(JsonUtils.getJsonData(PATH_2_DEFAULT_LEVELS));
 
-               return dirCreation && fileCreation;
+				return dirCreation && fileCreation;
 
-           } catch (URISyntaxException e) {
-               e.printStackTrace();
-           } catch (IOException e) {
-               e.printStackTrace();
-           }
-       }
-       return false;
-   }
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
 
-   /**
-    * Return true if the directory exists in the external path.
-    * @return true if the directory exists in the external path
-    */
-   private static boolean checkFileExists(String directory) {
-       try {
-           File dir = new File(new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent() + File.separator + directory);
-           return dir.exists();
-       } catch (URISyntaxException e) {
-           e.printStackTrace();
-           return false;
-       }
-   }
+	/**
+	 * Return true if the directory exists in the external path.
+	 * 
+	 * @return true if the directory exists in the external path
+	 */
+	private static boolean checkFileExists(String directory) {
+		try {
+			File dir = new File(
+					new File(LevelHandler.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent()
+							+ File.separator + directory);
+			return dir.exists();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

@@ -26,10 +26,8 @@ public class GenricEnemyTest {
 		final Position pos1 = new Position(10, 10);
 		final Position pos2 = new Position(20, 20);
 		final Position pos3 = new Position(10, 10);
-		final Enemy enemy1 = new GenericEnemy(Arrays.asList(pos1, pos2), 1, 50, 10, 60, new Size(100, 100),
-				"redEnemy");
-		final Enemy enemy2 = new GenericEnemy(Arrays.asList(pos1, pos3), 1, 50, 10, 60, new Size(100, 100),
-				"redEnemy");
+		final Enemy enemy1 = new GenericEnemy(Arrays.asList(pos1, pos2), 1, 50, 10, 60, new Size(100, 100), "redEnemy");
+		final Enemy enemy2 = new GenericEnemy(Arrays.asList(pos1, pos3), 1, 50, 10, 60, new Size(100, 100), "redEnemy");
 
 		enemy1.moveForward();
 		enemy2.moveForward();
@@ -67,8 +65,7 @@ public class GenricEnemyTest {
 		final Position pos1 = new Position(10, 10);
 		final Position pos2 = new Position(20, 20);
 		final Enemy enemy1 = new GenericEnemy(Arrays.asList(pos1), 1, 50, 10, 60, new Size(100, 100), "redEnemy");
-		final Enemy enemy2 = new GenericEnemy(Arrays.asList(pos1, pos2), 1, 50, 10, 60, new Size(100, 100),
-				"redEnemy");
+		final Enemy enemy2 = new GenericEnemy(Arrays.asList(pos1, pos2), 1, 50, 10, 60, new Size(100, 100), "redEnemy");
 
 		assertFalse(enemy2.isPathCompleted());
 		assertTrue(enemy1.isPathCompleted());

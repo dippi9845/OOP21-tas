@@ -42,10 +42,10 @@ public class EnemyBuilderImpl implements EnemyBuilder {
 	 */
 	private Enemy spawnGenericEnemy(final JSONObject eStats) {
 		return new GenericEnemy(this.nodesPosition, eStats.getDouble("health"), eStats.getInt("money"),
-		        eStats.getInt("damage"), eStats.getDouble("speed"),
-		        new Size(eStats.getJSONObject("bodyDimension").getInt("width"),
-		                eStats.getJSONObject("bodyDimension").getInt("height")),
-		        eStats.getString("name"));
+				eStats.getInt("damage"), eStats.getDouble("speed"),
+				new Size(eStats.getJSONObject("bodyDimension").getInt("width"),
+						eStats.getJSONObject("bodyDimension").getInt("height")),
+				eStats.getString("name"));
 	}
 
 	/** {@inheritDoc} */

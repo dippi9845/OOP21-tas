@@ -14,7 +14,6 @@ import main.java.tas.model.enemy.Enemy;
 import main.java.tas.controller.tower.builder.TowerBuilder;
 import main.java.tas.utils.Position;
 
-
 class TowerLogicTest {
 
 	@Test
