@@ -118,6 +118,7 @@ class TowerLogicTest {
 		assertTrue(t.getBuildTowers().size() == 0);
 	}
 
+	@Test
 	void ClearFromThreads() {
 		List<Enemy> a = new ArrayList<>();
 
