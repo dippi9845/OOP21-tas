@@ -31,6 +31,18 @@ public class TowerThreadImpl implements TowerThread {
 		}
 
 	}
+	
+	/**
+	 * This function sleeps the current thread, depending from the defined field
+	 * delay {@link: AbstractBasicTower#delay}
+	 */
+	protected void sleep() {
+		try {
+			Thread.sleep(this.getDelay());
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/** {@inheritDoc} */
 	@Override
@@ -48,6 +60,7 @@ public class TowerThreadImpl implements TowerThread {
 	@Override
 	public void compute() {
 		this.tower.compute();
+		this.sleep();
 	}
 
 	/** {@inheritDoc} */
