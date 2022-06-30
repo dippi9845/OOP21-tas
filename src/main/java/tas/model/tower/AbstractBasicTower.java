@@ -50,18 +50,6 @@ public abstract class AbstractBasicTower implements Tower {
 	}
 
 	/**
-	 * This function sleeps the current thread, depending from the defined field
-	 * delay {@link: AbstractBasicTower#delay}
-	 */
-	protected void sleep() {
-		try {
-			Thread.sleep(this.getDelay());
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
 	 * Deal damage to the target. It's up to the concrete class to choose the
 	 * implementation of attack
 	 */
