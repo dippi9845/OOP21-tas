@@ -28,6 +28,7 @@ public class TowerThreadImpl implements TowerThread {
 	public void run() {
 		while (!this.isStop()) {
 			this.tower.compute();
+			this.sleep();
 		}
 
 	}
@@ -60,7 +61,6 @@ public class TowerThreadImpl implements TowerThread {
 	@Override
 	public void compute() {
 		this.tower.compute();
-		this.sleep();
 	}
 
 	/** {@inheritDoc} */
