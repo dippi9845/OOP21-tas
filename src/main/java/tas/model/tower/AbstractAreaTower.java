@@ -85,7 +85,6 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 			this.attack();
 			this.clear();
 		}
-		this.sleep();
 	}
 
 	/** {@inheritDoc} */
