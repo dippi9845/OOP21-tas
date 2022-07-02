@@ -53,7 +53,6 @@ public class BasicMultipleTower extends AbstractMultipleTower {
 		}
 
 		this.attack();
-		this.sleep();
 	}
 
 	/** {@inheritDoc} */

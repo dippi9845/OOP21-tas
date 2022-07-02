@@ -64,7 +64,9 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 	 * Target all the enemies nearby the first target
 	 */
 	private void addNearbyTarget() {
-		Towers.findAll(this::isValidTarget, this.getVisibleEnemyList()).forEach(this::setTarget);
+		Towers.findAll(this::isValidTarget, this.getVisibleEnemyList())
+			.limit(this.getMaxEnemy() - this.getEnemyList().size())
+			.forEach(this::setTarget);
 	}
 
 	/**
@@ -85,7 +87,6 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 			this.attack();
 			this.clear();
 		}
-		this.sleep();
 	}
 
 	/** {@inheritDoc} */

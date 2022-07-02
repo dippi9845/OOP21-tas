@@ -57,8 +57,6 @@ public class BasicTower extends AbstractBasicTower {
 		} else {
 			Towers.findFirstEnemyInRange(this, this.getVisibleEnemyList()).ifPresent(this::setTarget);
 		}
-
-		this.sleep();
 	}
 
 	/** {@inheritDoc} */
