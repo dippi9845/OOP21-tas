@@ -227,6 +227,31 @@ class AttackTest {
 
 		assertTrue(enemies.get(0).isDead() && enemies.get(1).isDead());
 	}
+	
+	@Test
+	void AreaTowerMaxTarget() {
+		List<Enemy> enemies = new LinkedList<>();
+		FakeEnemy e = new FakeEnemy(new Position(50, 50), 200);
+		FakeEnemy e1 = new FakeEnemy(new Position(51, 50), 200);
+		FakeEnemy e2 = new FakeEnemy(new Position(52, 50), 200);
+
+		enemies.add(e);
+		enemies.add(e1);
+		enemies.add(e2);
+
+		Tower t = new TowerBuilder(new Position(51, 51), 100, 9, 10, "tesla", enemies).attackType(AttackType.AREA)
+				.damageRange(7).maximumTarget(2).findFirst(() -> {
+					return Towers.findFirstEnemyInRange(new Position(51, 51), 9, enemies);
+				}).build();
+
+		t.compute();
+		
+		t.compute();
+
+		assertTrue(e.isDead());
+		assertTrue(e1.isDead());
+		assertFalse(e2.isDead());
+	}
 
 	@Test
 	void ConcurrencyAttack() throws InterruptedException {
