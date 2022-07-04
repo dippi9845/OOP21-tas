@@ -65,6 +65,7 @@ public abstract class AbstractAreaTower extends AbstractMultipleTower {
 	 */
 	private void addNearbyTarget() {
 		Towers.findAll(this::isValidTarget, this.getVisibleEnemyList())
+			.stream()
 			.limit(this.getMaxEnemy() - this.getEnemyList().size())
 			.forEach(this::setTarget);
 	}
