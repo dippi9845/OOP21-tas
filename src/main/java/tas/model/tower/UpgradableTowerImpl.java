@@ -12,10 +12,10 @@ import main.java.tas.utils.Position;
 public class UpgradableTowerImpl implements UpgradableTower {
 
 	private final AbstractBasicTower tower;
-	private int computecount;
-	private int upgradecountcost;
-	private final UnaryOperator<Integer> increasedamage;
-	private final UnaryOperator<Integer> increasecost;
+	private int computeCount;
+	private int upgradeCountcost;
+	private final UnaryOperator<Integer> increaseDamage;
+	private final UnaryOperator<Integer> increaseCost;
 	private int level;
 	private final int maxLevel;
 
