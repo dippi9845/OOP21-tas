@@ -34,10 +34,10 @@ public class UpgradableTowerImpl implements UpgradableTower {
 			final UnaryOperator<Integer> increaseCost, final int startCostUpgrade, final int maxLevel) {
 		this.tower = tower;
 		this.increaseDamage = increaseDamage;
-		this.increasecost = increaseCost;
-		this.upgradecountcost = startCostUpgrade;
+		this.increaseCost = increaseCost;
+		this.upgradeCountCost = startCostUpgrade;
 		this.level = 1;
-		this.computecount = 0;
+		this.computeCount = 0;
 		this.maxLevel = maxLevel;
 	}
 
