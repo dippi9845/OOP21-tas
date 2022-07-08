@@ -13,7 +13,7 @@ public class UpgradableTowerImpl implements UpgradableTower {
 
 	private final AbstractBasicTower tower;
 	private int computeCount;
-	private int upgradeCountcost;
+	private int upgradeCountCost;
 	private final UnaryOperator<Integer> increaseDamage;
 	private final UnaryOperator<Integer> increaseCost;
 	private int level;
@@ -30,11 +30,11 @@ public class UpgradableTowerImpl implements UpgradableTower {
 	 * @param startCostUpgrade the stating cost of upgrade
 	 * @param maxLevel         maximum level that the tower can reach
 	 */
-	public UpgradableTowerImpl(final AbstractBasicTower tower, final UnaryOperator<Integer> increasedamage,
-			final UnaryOperator<Integer> increasecost, final int startCostUpgrade, final int maxLevel) {
+	public UpgradableTowerImpl(final AbstractBasicTower tower, final UnaryOperator<Integer> increaseDamage,
+			final UnaryOperator<Integer> increaseCost, final int startCostUpgrade, final int maxLevel) {
 		this.tower = tower;
-		this.increasedamage = increasedamage;
-		this.increasecost = increasecost;
+		this.increaseDamage = increaseDamage;
+		this.increasecost = increaseCost;
 		this.upgradecountcost = startCostUpgrade;
 		this.level = 1;
 		this.computecount = 0;
@@ -48,8 +48,8 @@ public class UpgradableTowerImpl implements UpgradableTower {
 	 * level by one
 	 */
 	private void upgradeDamage() {
-		this.tower.increaseDamage(this.increasedamage.apply(this.getLevel()));
-		this.upgradecountcost = this.increasecost.apply(this.upgradecountcost);
+		this.tower.increaseDamage(this.increaseDamage.apply(this.getLevel()));
+		this.upgradeCountCost = this.increaseCost.apply(this.upgradeCountCost);
 		this.level++;
 	}
 
@@ -62,10 +62,10 @@ public class UpgradableTowerImpl implements UpgradableTower {
 	@Override
 	public void compute() {
 		this.tower.compute();
-		this.computecount++;
+		this.computeCount++;
 
 		if (this.isTimeToUpgrade()) {
-			this.computecount = 0;
+			this.computeCount = 0;
 			this.upgradeDamage();
 		}
 	}
@@ -85,7 +85,7 @@ public class UpgradableTowerImpl implements UpgradableTower {
 	 */
 	@Override
 	public boolean isTimeToUpgrade() {
-		return this.computecount == this.upgradecountcost && this.levelUnderMax();
+		return this.computeCount == this.upgradeCountCost && this.levelUnderMax();
 	}
 
 	/** {@inheritDoc} */
